@@ -29,6 +29,7 @@ Partial Class Form1
         '
         'Button1
         '
+        Me.Button1.BackColor = System.Drawing.Color.DimGray
         Me.Button1.ImageOver = Nothing
         Me.Button1.ImageUp = Nothing
         Me.Button1.Location = New System.Drawing.Point(318, 349)
@@ -56,6 +57,7 @@ Partial Class Form1
         Me.Pane1.CanStackItems = True
         Me.Pane1.Location = New System.Drawing.Point(39, 81)
         Me.Pane1.Name = "Pane1"
+        Me.Pane1.Padding = New System.Windows.Forms.Padding(5)
         Me.Pane1.Size = New System.Drawing.Size(200, 100)
         Me.Pane1.TabIndex = 2
         '

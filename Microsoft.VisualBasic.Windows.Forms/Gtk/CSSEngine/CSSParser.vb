@@ -80,7 +80,7 @@ Namespace Gtk.CSSEngine
                                 Continue For
                             End If
 
-                            cp.Values.Add(Left(q, CInt(IIf(q.LastIndexOf(":") < 0, 0, q.LastIndexOf(":")))), q.Substring(q.LastIndexOf(":") + 1).Trim(CChar(" ")))
+                            cp.Values.Add(Left(q, CInt(IIf(q.LastIndexOf(":") < 0, 0, q.LastIndexOf(":")))).Trim, q.Substring(q.LastIndexOf(":") + 1).Trim(CChar(" ")))
 
                         Next
 
@@ -97,7 +97,7 @@ Namespace Gtk.CSSEngine
                     For Each q As String In contents
 
                         If q = "" Then Exit For
-                        cp.Values.Add(Left(q, CInt(IIf(q.LastIndexOf(":") < 0, 0, q.LastIndexOf(":")))), q.Substring(q.LastIndexOf(":") + 1).Trim(CChar(" ")))
+                        cp.Values.Add(Left(q, CInt(IIf(q.LastIndexOf(":") < 0, 0, q.LastIndexOf(":")))).Trim, q.Substring(q.LastIndexOf(":") + 1).Trim(CChar(" ")))
 
                     Next
 
@@ -320,6 +320,7 @@ no:             repchar = CChar("<")
         End Sub
 
         Public Function IsMatch(Prop As CSSProperty, query As Control) As Boolean
+            If String.IsNullOrEmpty(query.Tag) Then Return False
             If Prop.ControlID <> "" AndAlso query.Name <> Prop.ControlID Then Return False
             If Prop.ControlClass <> "" AndAlso Not CStr(" " & query.Tag.ToString & " ").Contains(" " & Prop.ControlClass & " ") Then Return False
 
@@ -444,6 +445,7 @@ no:             repchar = CChar("<")
 
         Public Function IsMatch(Prop As CSSProperty, query As Form) As Boolean
 
+            If String.IsNullOrEmpty(query.Tag) Then Return False
             If Prop.ControlID <> "" AndAlso query.Name <> Prop.ControlID Then Return False
             If Prop.ControlClass <> "" AndAlso Not CStr(" " & query.Tag.ToString & " ").Contains(" " & Prop.ControlClass & " ") Then Return False
 
