@@ -1,4 +1,6 @@
-﻿Namespace Gtk.CSSEngine
+﻿Imports Microsoft.VisualBasic.Serialization
+
+Namespace Gtk.CSSEngine
 
     Public Class CSSProperty
 
@@ -59,5 +61,9 @@
         Public Sub New(s() As String)
             Call Me.Parse(s)
         End Sub
+
+        Public Overrides Function ToString() As String
+            Return Me.GetJson
+        End Function
     End Class
 End Namespace

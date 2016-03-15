@@ -1,4 +1,5 @@
-﻿Imports System.Text.RegularExpressions
+﻿Imports System.Runtime.CompilerServices
+Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.Windows.Forms.Gtk.CSSEngine.Components
 
 Namespace Gtk.CSSEngine
@@ -13,17 +14,32 @@ Namespace Gtk.CSSEngine
 
         Public TALK As Boolean = False
 
-        Public Function ParseFile(Query As String, Location As String) As CSSFile
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="path"></param>
+        ''' <param name="urlBase">所引用的资源的网络位置，即一个网站的url</param>
+        ''' <returns></returns>
+        <Extension>
+        Public Function ParseDoc(path As String, Optional urlBase As String = "") As CSSFile
+            Return FileIO.FileSystem.ReadAllText(path).ParseFile(urlBase)
+        End Function
+
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="Query">CSS file content.</param>
+        ''' <param name="urlBase"></param>
+        ''' <returns></returns>
+        <Extension>
+        Public Function ParseFile(Query As String, urlBase As String) As CSSFile
             Dim retfile As New CSSFile
             Dim regx As New Regex("/\*[\d\D]*?\*/")
             Dim cp As CSSProperty
 
-            retfile.Location = Location
+            retfile.Location = urlBase
             Query = regx.Replace(Query, "") 'Removes comments
-
-            Do Until Not Query.Contains(vbCrLf & vbCrLf)
-                Query = Query.Replace(vbCrLf & vbCrLf, "")
-            Loop
+            Query = Query.TrimVBCrLf
 
             For Each s As String In Query.Split(CChar("}"))
 
@@ -59,6 +75,10 @@ Namespace Gtk.CSSEngine
                         cp.Parse(GetIDType(a))
 
                         For Each q As String In contents
+
+                            If String.IsNullOrEmpty(q) Then
+                                Continue For
+                            End If
 
                             cp.Values.Add(Left(q, CInt(IIf(q.LastIndexOf(":") < 0, 0, q.LastIndexOf(":")))), q.Substring(q.LastIndexOf(":") + 1).Trim(CChar(" ")))
 
