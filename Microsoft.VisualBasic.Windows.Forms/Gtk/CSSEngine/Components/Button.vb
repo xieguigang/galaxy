@@ -1,96 +1,99 @@
+Namespace Gtk.CSSEngine.Components
 
-Public Class Button
-    Inherits Control
 
-    Private SUp As Image = My.Resources.certificate_16
-    Private SOvr As Image = My.Resources.certificate_16
-    Public Status As Integer = 0
+    Public Class Button
+        Inherits Control
 
-    Public Property ImageOver() As Image
-        Get
+        Private SUp As Image
+        Private SOvr As Image
+        Public Status As Integer = 0
 
-            Return SOvr
+        Public Property ImageOver() As Image
+            Get
 
-        End Get
-        Set(ByVal value As Image)
+                Return SOvr
 
-            SOvr = value
+            End Get
+            Set(value As Image)
+
+                SOvr = value
+                Me.Refresh()
+
+            End Set
+        End Property
+
+        Public Property ImageUp() As Image
+            Get
+
+                Return SUp
+
+            End Get
+            Set(value As Image)
+
+                SUp = value
+                Me.Refresh()
+
+            End Set
+        End Property
+
+        Private Sub Button_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseDown
+
+            Status = 0
             Me.Refresh()
 
-        End Set
-    End Property
+        End Sub
 
-    Public Property ImageUp() As Image
-        Get
+        Private Sub Button_MouseEnter(sender As Object, e As System.EventArgs) Handles Me.MouseEnter
 
-            Return SUp
-
-        End Get
-        Set(ByVal value As Image)
-
-            SUp = value
+            Status = 1
             Me.Refresh()
 
-        End Set
-    End Property
+        End Sub
 
-    Private Sub Button_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseDown
+        Private Sub Button_MouseLeave(sender As Object, e As System.EventArgs) Handles Me.MouseLeave
 
-        Status = 0
-        Me.Refresh()
+            Status = 0
+            Me.Refresh()
 
-    End Sub
+        End Sub
 
-    Private Sub Button_MouseEnter(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.MouseEnter
+        Private Sub Button_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
 
-        Status = 1
-        Me.Refresh()
+            Status = 1
+            Me.Refresh()
 
-    End Sub
+        End Sub
 
-    Private Sub Button_MouseLeave(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.MouseLeave
+        Private Sub Button_Paint(sender As Object, e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
 
-        Status = 0
-        Me.Refresh()
+            Try
 
-    End Sub
+                With e.Graphics
 
-    Private Sub Button_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseUp
+                    Select Case Status
 
-        Status = 1
-        Me.Refresh()
+                        Case 0
 
-    End Sub
+                            .DrawImage(SUp, CInt((Me.Width / 2) - (SUp.Width / 2)), CInt((Me.Height / 2) - (SUp.Height / 2)), SUp.Width, SUp.Height)
 
-    Private Sub Button_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
+                        Case 1
 
-        Try
+                            .DrawImage(SOvr, CInt((Me.Width / 2) - (SOvr.Width / 2)), CInt((Me.Height / 2) - (SOvr.Height / 2)), SUp.Width, SUp.Height)
 
-            With e.Graphics
+                    End Select
 
-                Select Case Status
+                End With
 
-                    Case 0
+            Catch
 
-                        .DrawImage(SUp, CInt((Me.Width / 2) - (SUp.Width / 2)), CInt((Me.Height / 2) - (SUp.Height / 2)), SUp.Width, SUp.Height)
+            End Try
 
-                    Case 1
+        End Sub
 
-                        .DrawImage(SOvr, CInt((Me.Width / 2) - (SOvr.Width / 2)), CInt((Me.Height / 2) - (SOvr.Height / 2)), SUp.Width, SUp.Height)
-
-                End Select
-
-            End With
-
-        Catch
-
-        End Try
-
-    End Sub
-
-    Public Sub New()
-        Me.SetStyle(ControlStyles.SupportsTransparentBackColor, True)
-        Me.SetStyle(ControlStyles.OptimizedDoubleBuffer Or ControlStyles.UserPaint Or ControlStyles.AllPaintingInWmPaint, True)
-        Me.UpdateStyles()
-    End Sub
-End Class
+        Public Sub New()
+            Me.SetStyle(ControlStyles.SupportsTransparentBackColor, True)
+            Me.SetStyle(ControlStyles.OptimizedDoubleBuffer Or ControlStyles.UserPaint Or ControlStyles.AllPaintingInWmPaint, True)
+            Me.UpdateStyles()
+        End Sub
+    End Class
+End Namespace

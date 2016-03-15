@@ -1,214 +1,217 @@
-Public Class Pane
-    Inherits Panel
+Namespace Gtk.CSSEngine.Components
 
-    Private BCol As Color = Color.Black
-    Private BSty As Drawing2D.DashStyle = Drawing2D.DashStyle.Solid
-    Private BThk As Integer = 5
-    Private Stck As Boolean = True
+    Public Class Pane
+        Inherits Panel
 
-    Public Property CanStackItems() As Boolean
-        Get
+        Private BCol As Color = Color.Black
+        Private BSty As Drawing2D.DashStyle = Drawing2D.DashStyle.Solid
+        Private BThk As Integer = 5
+        Private Stck As Boolean = True
 
-            Return Stck
+        Public Property CanStackItems() As Boolean
+            Get
 
-        End Get
-        Set(ByVal value As Boolean)
+                Return Stck
 
-            Stck = value
+            End Get
+            Set(value As Boolean)
 
-        End Set
-    End Property
+                Stck = value
 
-    Public Property BorderColor() As Color
-        Get
+            End Set
+        End Property
 
-            Return BCol
+        Public Property BorderColor() As Color
+            Get
 
-        End Get
-        Set(ByVal value As Color)
+                Return BCol
 
-            BCol = value
-            Me.Refresh()
+            End Get
+            Set(value As Color)
 
-        End Set
-    End Property
+                BCol = value
+                Me.Refresh()
 
-    Public Shadows Property BorderStyle() As Drawing2D.DashStyle
-        Get
+            End Set
+        End Property
 
-            Return BSty
+        Public Shadows Property BorderStyle() As Drawing2D.DashStyle
+            Get
 
-        End Get
-        Set(ByVal value As Drawing2D.DashStyle)
+                Return BSty
 
-            BSty = value
-            Me.Refresh()
+            End Get
+            Set(value As Drawing2D.DashStyle)
 
-        End Set
-    End Property
+                BSty = value
+                Me.Refresh()
 
-    Public Shadows Property BorderThickness() As Integer
-        Get
+            End Set
+        End Property
 
-            Return BThk
+        Public Shadows Property BorderThickness() As Integer
+            Get
 
-        End Get
-        Set(ByVal value As Integer)
+                Return BThk
 
-            If value > 20 Then value = 20
-            BThk = value
-            If Me.Padding.All < BThk Then Me.Padding = New Padding(BThk)
-            Me.Refresh()
+            End Get
+            Set(value As Integer)
 
-        End Set
-    End Property
+                If value > 20 Then value = 20
+                BThk = value
+                If Me.Padding.All < BThk Then Me.Padding = New Padding(BThk)
+                Me.Refresh()
 
-    Private Sub Pane_AutoSizeChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.AutoSizeChanged
+            End Set
+        End Property
 
-        RefreshPos()
+        Private Sub Pane_AutoSizeChanged(sender As Object, e As System.EventArgs) Handles Me.AutoSizeChanged
 
-    End Sub
+            RefreshPos()
 
-    Private Sub Pane_ControlAdded(ByVal sender As Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles Me.ControlAdded
+        End Sub
 
-        RefreshPos()
+        Private Sub Pane_ControlAdded(sender As Object, e As System.Windows.Forms.ControlEventArgs) Handles Me.ControlAdded
 
-    End Sub
+            RefreshPos()
 
-    Private Sub Pane_ControlRemoved(ByVal sender As Object, ByVal e As System.Windows.Forms.ControlEventArgs) Handles Me.ControlRemoved
+        End Sub
 
-        RefreshPos()
+        Private Sub Pane_ControlRemoved(sender As Object, e As System.Windows.Forms.ControlEventArgs) Handles Me.ControlRemoved
 
-    End Sub
+            RefreshPos()
 
-    Private Sub Pane_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
+        End Sub
 
-        Dim g As Graphics = e.Graphics
-        Dim b As New Pen(BCol, BThk)
-        b.DashStyle = BSty
+        Private Sub Pane_Paint(sender As Object, e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
 
-        g.DrawLine(b, 1, CInt(BThk / 2), CInt(Me.Width - 1), CInt(BThk / 2)) 'Top
-        g.DrawLine(b, CInt(Me.Width - 1 - Math.Round(BThk / 2, MidpointRounding.AwayFromZero)), CInt(Me.Height - 1), CInt(Me.Width - 1 - Math.Round(BThk / 2, MidpointRounding.AwayFromZero)), 1) 'Right
-        g.DrawLine(b, CInt(BThk / 2), 1, CInt(BThk / 2), CInt(Me.Height - 1)) 'Left
-        g.DrawLine(b, CInt(Me.Width - 1), CInt(Me.Height - 1 - Math.Round(BThk / 2, MidpointRounding.AwayFromZero)), 1, CInt(Me.Height - 1 - Math.Round(BThk / 2, MidpointRounding.AwayFromZero))) 'Bottom
+            Dim g As Graphics = e.Graphics
+            Dim b As New Pen(BCol, BThk)
+            b.DashStyle = BSty
 
-        RefreshPos()
+            g.DrawLine(b, 1, CInt(BThk / 2), CInt(Me.Width - 1), CInt(BThk / 2)) 'Top
+            g.DrawLine(b, CInt(Me.Width - 1 - Math.Round(BThk / 2, MidpointRounding.AwayFromZero)), CInt(Me.Height - 1), CInt(Me.Width - 1 - Math.Round(BThk / 2, MidpointRounding.AwayFromZero)), 1) 'Right
+            g.DrawLine(b, CInt(BThk / 2), 1, CInt(BThk / 2), CInt(Me.Height - 1)) 'Left
+            g.DrawLine(b, CInt(Me.Width - 1), CInt(Me.Height - 1 - Math.Round(BThk / 2, MidpointRounding.AwayFromZero)), 1, CInt(Me.Height - 1 - Math.Round(BThk / 2, MidpointRounding.AwayFromZero))) 'Bottom
 
-        b.Dispose()
+            RefreshPos()
 
-    End Sub
+            b.Dispose()
 
-    Private Sub Pane_RegionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.RegionChanged
+        End Sub
 
-        RefreshPos()
+        Private Sub Pane_RegionChanged(sender As Object, e As System.EventArgs) Handles Me.RegionChanged
 
-    End Sub
+            RefreshPos()
 
-    Private Sub Pane_SizeChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.SizeChanged
+        End Sub
 
-        RefreshPos()
+        Private Sub Pane_SizeChanged(sender As Object, e As System.EventArgs) Handles Me.SizeChanged
 
-    End Sub
+            RefreshPos()
 
-    Public Sub RefreshPos()
+        End Sub
 
-        Try
+        Public Sub RefreshPos()
 
-            Dim wat As Integer = 0 'x pos of current position
-            Dim hat As Integer = 0 'Height of tallest item on line
-            Dim bat As Integer = 0 'y pos of current line
+            Try
 
-            Dim l As Control = Nothing 'The last control
+                Dim wat As Integer = 0 'x pos of current position
+                Dim hat As Integer = 0 'Height of tallest item on line
+                Dim bat As Integer = 0 'y pos of current line
 
-            l = New Control("", 0, 0, 0, 0)
+                Dim l As Control = Nothing 'The last control
 
-            For Each c As Control In Controls
+                l = New Control("", 0, 0, 0, 0)
 
-                If c.Width + c.Padding.Left > Me.Width Then 'If the control is bigger than us
+                For Each c As Control In Controls
 
-                    If hat > 0 Then 'If there is stuff on the current line
+                    If c.Width + c.Padding.Left > Me.Width Then 'If the control is bigger than us
 
-                        bat += hat
-                        c.Top = bat + c.Margin.Top
-                        c.Left = c.Margin.Left
-                        bat += c.Height
-                        bat += c.Margin.Top
-                        bat += c.Margin.Bottom
-                        hat = 0
-                        wat = 0
+                        If hat > 0 Then 'If there is stuff on the current line
 
-                    Else 'If the current line is empty
+                            bat += hat
+                            c.Top = bat + c.Margin.Top
+                            c.Left = c.Margin.Left
+                            bat += c.Height
+                            bat += c.Margin.Top
+                            bat += c.Margin.Bottom
+                            hat = 0
+                            wat = 0
 
-                        c.Top = bat + c.Margin.Top
-                        c.Left = c.Margin.Left
-                        bat += c.Height
-                        bat += c.Margin.Top
-                        bat += c.Margin.Bottom
-                        hat = 0
-                        wat = 0
+                        Else 'If the current line is empty
+
+                            c.Top = bat + c.Margin.Top
+                            c.Left = c.Margin.Left
+                            bat += c.Height
+                            bat += c.Margin.Top
+                            bat += c.Margin.Bottom
+                            hat = 0
+                            wat = 0
+
+                        End If
+
+                        GoTo nxt
 
                     End If
 
-                    GoTo nxt
+                    If wat + c.Width + c.Margin.Left > Me.Width Then
+                        'wrap
 
-                End If
+                        If l.Height + l.Margin.Top + l.Margin.Bottom + c.Height + c.Margin.Top + c.Margin.Bottom < hat AndAlso Stck = True Then
+                            'This means that the control can fit in
+                            c.Top = l.Top + l.Height + l.Margin.Bottom + c.Margin.Bottom
+                            c.Left = (l.Left - l.Margin.Left) + c.Margin.Left
 
-                If wat + c.Width + c.Margin.Left > Me.Width Then
-                    'wrap
+                        Else
 
-                    If l.Height + l.Margin.Top + l.Margin.Bottom + c.Height + c.Margin.Top + c.Margin.Bottom < hat AndAlso Stck = True Then
-                        'This means that the control can fit in
-                        c.Top = l.Top + l.Height + l.Margin.Bottom + c.Margin.Bottom
-                        c.Left = (l.Left - l.Margin.Left) + c.Margin.Left
+                            bat += hat
+                            wat = 0
+                            hat = 0
+                            c.Left = wat + c.Margin.Left
+                            c.Top = bat + c.Margin.Top
+                            hat = c.Height + c.Margin.Top + c.Margin.Bottom
+                            wat += c.Width
+                            wat += c.Margin.Left
+                            wat += c.Margin.Right
+
+                        End If
 
                     Else
-
-                        bat += hat
-                        wat = 0
-                        hat = 0
+                        'add it on
                         c.Left = wat + c.Margin.Left
                         c.Top = bat + c.Margin.Top
-                        hat = c.Height + c.Margin.Top + c.Margin.Bottom
+                        If hat < c.Height + c.Margin.Top + c.Margin.Bottom Then hat = c.Height + c.Margin.Top + c.Margin.Bottom
                         wat += c.Width
                         wat += c.Margin.Left
                         wat += c.Margin.Right
 
                     End If
 
-                Else
-                    'add it on
-                    c.Left = wat + c.Margin.Left
-                    c.Top = bat + c.Margin.Top
-                    If hat < c.Height + c.Margin.Top + c.Margin.Bottom Then hat = c.Height + c.Margin.Top + c.Margin.Bottom
-                    wat += c.Width
-                    wat += c.Margin.Left
-                    wat += c.Margin.Right
-
-                End If
-
 nxt:
 
-                l = c
+                    l = c
 
-            Next
+                Next
 
-        Catch
+            Catch
 
-        End Try
+            End Try
 
-    End Sub
+        End Sub
 
-    Public Shadows Property Padding() As Padding
-        Get
+        Public Shadows Property Padding() As Padding
+            Get
 
-            Return MyBase.Padding
+                Return MyBase.Padding
 
-        End Get
-        Set(ByVal value As Padding)
+            End Get
+            Set(value As Padding)
 
-            MyBase.Padding = value
+                MyBase.Padding = value
 
-        End Set
-    End Property
+            End Set
+        End Property
 
-End Class
+    End Class
+End Namespace
