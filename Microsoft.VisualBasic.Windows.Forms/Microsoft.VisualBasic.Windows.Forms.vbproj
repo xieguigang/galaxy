@@ -92,6 +92,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Gtk\CSSEngine\CSSUtils.vb" />
+    <Compile Include="Gtk\CSSEngine\Serialization\Reflector.vb" />
+    <Compile Include="Gtk\CSSEngine\Serialization\Reflections.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -149,6 +151,9 @@
       <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
       <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Gtk\CSSEngine\Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
