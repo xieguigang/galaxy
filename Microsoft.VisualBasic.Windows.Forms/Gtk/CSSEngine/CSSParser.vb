@@ -1,4 +1,8 @@
-﻿Namespace Gtk.CSSEngine
+﻿Imports System.Text.RegularExpressions
+Imports Microsoft.VisualBasic.Windows.Forms.Gtk.CSSEngine.Components
+
+Namespace Gtk.CSSEngine
+
     Module CSSParser
 
         Public PPInch As Integer = 72
@@ -8,19 +12,17 @@
         Public PPPc As Integer = 12
 
         Public TALK As Boolean = False
+
         Public Function ParseFile(Query As String, Location As String) As CSSFile
-
             Dim retfile As New CSSFile
-            Dim regx As New System.Text.RegularExpressions.Regex("/\*[\d\D]*?\*/")
-            Dim cp As CSSFile.CSSProperty
-            retfile.Location = Location
+            Dim regx As New Regex("/\*[\d\D]*?\*/")
+            Dim cp As CSSProperty
 
+            retfile.Location = Location
             Query = regx.Replace(Query, "") 'Removes comments
 
             Do Until Not Query.Contains(vbCrLf & vbCrLf)
-
                 Query = Query.Replace(vbCrLf & vbCrLf, "")
-
             Loop
 
             For Each s As String In Query.Split(CChar("}"))
@@ -35,7 +37,7 @@
 
                 Loop
 
-                cp = New CSSFile.CSSProperty
+                cp = New CSSProperty
                 cp.ControlID = "<" & Left(s, s.IndexOf("{")).Trim(CStr(" " & vbCrLf).ToCharArray) & ">"
 
                 Dim contents As String() = s.Substring(s.IndexOf("{") + 1).Split(CChar(";"))
@@ -64,7 +66,7 @@
 
                         retfile.Properties.Add(cp)
 
-                        cp = New CSSFile.CSSProperty
+                        cp = New CSSProperty
 
                     Next
 
@@ -86,11 +88,9 @@
             Next
 
             Return retfile
-
         End Function
 
         Public Function GetIDType(input As String) As String() '{Class, Type, ID, Pseudo-class Selector, ParentPath}
-
             Dim s As String() = {"", "", "", "", ""}
             Dim repchar As Char = CChar("<")
 
@@ -259,56 +259,47 @@ no:             repchar = CChar("<")
             'End If
 
             Return s
-
         End Function
 
-        Public Function IsDescendent(pan As CSSFile.CSSProperty, pdes As Control) As Control
-
+        Public Function IsDescendent(pan As CSSProperty, pdes As Control) As Control
             If pdes.Parent Is Nothing Then Return Nothing
             If IsMatch(pan, pdes.Parent) Then Return pdes.Parent
             Dim x As Control = IsDescendent(pan, pdes.Parent)
             If x IsNot Nothing Then Return x
-            Return Nothing
 
+            Return Nothing
         End Function
 
         Public Function IsControlAfter(pbef As Control, paf As Control) As Boolean
-
             If pbef.Parent Is Nothing OrElse paf.Parent Is Nothing OrElse Not pbef.Parent.Controls.Contains(paf) Then Return False
             If pbef.Parent.Controls.Item(pbef.Parent.Controls.IndexOf(pbef) + 1) Is paf Then Return True
 
             Return False
-
         End Function
-        Public Function IsControlAfter(pbef As Control, paf As Control, Loc As Integer) As Boolean
 
+        Public Function IsControlAfter(pbef As Control, paf As Control, Loc As Integer) As Boolean
             If pbef.Parent Is Nothing OrElse paf.Parent Is Nothing OrElse Not pbef.Parent.Controls.Contains(paf) Then Return False
             If pbef.Parent.Controls.Item(pbef.Parent.Controls.IndexOf(pbef) + Loc) Is paf Then Return True
 
             Return False
-
         End Function
-        Public Function IsControlAfter(pbef As Control, prop As CSSFile.CSSProperty, Loc As Integer) As Boolean
 
+        Public Function IsControlAfter(pbef As Control, prop As CSSProperty, Loc As Integer) As Boolean
             If pbef Is Nothing OrElse pbef.Parent Is Nothing OrElse prop Is Nothing Then Return False
             If IsMatch(prop, pbef.Parent.Controls.Item(pbef.Parent.Controls.IndexOf(pbef) + Loc)) Then Return True
 
             Return False
-
         End Function
 
         Public Sub Populate(Inch As Integer, Cm As Integer, MM As Integer, Pc As Integer, Pt As Integer)
-
             PPInch = Inch
             PPCm = Cm
             PPMm = MM
             PPPc = Pc
             PPPt = Pt
-
         End Sub
 
-        Public Function IsMatch(Prop As CSSFile.CSSProperty, query As Control) As Boolean
-
+        Public Function IsMatch(Prop As CSSProperty, query As Control) As Boolean
             If Prop.ControlID <> "" AndAlso query.Name <> Prop.ControlID Then Return False
             If Prop.ControlClass <> "" AndAlso Not CStr(" " & query.Tag.ToString & " ").Contains(" " & Prop.ControlClass & " ") Then Return False
 
@@ -390,7 +381,7 @@ no:             repchar = CChar("<")
 
                         Case "!"
 
-                            If current.GetType Is GetType(Form) OrElse CType(current, Control).Parent Is Nothing OrElse Not IsMatch(New CSSFile.CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control).Parent) Then
+                            If current.GetType Is GetType(Form) OrElse CType(current, Control).Parent Is Nothing OrElse Not IsMatch(New CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control).Parent) Then
 
                                 Return False
 
@@ -402,7 +393,7 @@ no:             repchar = CChar("<")
 
                             If current.GetType Is GetType(Form) Then Return False
 
-                            tempdesc = IsDescendent(New CSSFile.CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control))
+                            tempdesc = IsDescendent(New CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control))
 
                             If CType(current, Control).Parent Is Nothing OrElse tempdesc Is Nothing Then
 
@@ -414,7 +405,7 @@ no:             repchar = CChar("<")
 
                         Case "+"
 
-                            If current.GetType Is GetType(Form) OrElse CType(current, Control) Is Nothing OrElse Not IsControlAfter(query.Parent, New CSSFile.CSSProperty(GetIDType(Left(wa, wail))), 1) Then
+                            If current.GetType Is GetType(Form) OrElse CType(current, Control) Is Nothing OrElse Not IsControlAfter(query.Parent, New CSSProperty(GetIDType(Left(wa, wail))), 1) Then
 
                                 Return False
 
@@ -429,9 +420,9 @@ no:             repchar = CChar("<")
             End If
 
             Return True
-
         End Function
-        Public Function IsMatch(Prop As CSSFile.CSSProperty, query As Form) As Boolean
+
+        Public Function IsMatch(Prop As CSSProperty, query As Form) As Boolean
 
             If Prop.ControlID <> "" AndAlso query.Name <> Prop.ControlID Then Return False
             If Prop.ControlClass <> "" AndAlso Not CStr(" " & query.Tag.ToString & " ").Contains(" " & Prop.ControlClass & " ") Then Return False
@@ -508,7 +499,7 @@ no:             repchar = CChar("<")
 
                     Case "!"
 
-                        If current.GetType Is GetType(Form) OrElse CType(current, Control).Parent Is Nothing OrElse Not IsMatch(New CSSFile.CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control).Parent) Then
+                        If current.GetType Is GetType(Form) OrElse CType(current, Control).Parent Is Nothing OrElse Not IsMatch(New CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control).Parent) Then
 
                             Return False
 
@@ -520,7 +511,7 @@ no:             repchar = CChar("<")
 
                         If current.GetType Is GetType(Form) Then Return False
 
-                        tempdesc = IsDescendent(New CSSFile.CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control))
+                        tempdesc = IsDescendent(New CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control))
 
                         If CType(current, Control).Parent Is Nothing OrElse tempdesc Is Nothing Then
 
@@ -532,7 +523,7 @@ no:             repchar = CChar("<")
 
                     Case "+"
 
-                        If current.GetType Is GetType(Form) OrElse CType(current, Control) Is Nothing OrElse Not IsControlAfter(query.Parent, New CSSFile.CSSProperty(GetIDType(Left(wa, wail))), 1) Then
+                        If current.GetType Is GetType(Form) OrElse CType(current, Control) Is Nothing OrElse Not IsControlAfter(query.Parent, New CSSProperty(GetIDType(Left(wa, wail))), 1) Then
 
                             Return False
 
@@ -549,7 +540,6 @@ no:             repchar = CChar("<")
         End Function
 
         Private Function LeastIndex(pars() As Char, query As String) As Integer
-
             Dim least As Integer = query.Length
 
             For Each c As Char In pars
@@ -561,7 +551,7 @@ nxt:        Next
 
             If least = query.Length Then least = -1
 
+            Return least
         End Function
-
     End Module
 End Namespace

@@ -1,4 +1,6 @@
 
+Imports Microsoft.VisualBasic.Windows.Forms.Gtk.CSSEngine.Components
+
 Namespace Gtk.CSSEngine
 
     ''' <summary>
@@ -10,15 +12,16 @@ Namespace Gtk.CSSEngine
     ''' </remarks>
     Public Class CSSFile
 
-        Public Properties As New ArrayList
-        Public Location As String
+        Public Property Properties As New List(Of CSSProperty)
+        Public Property Location As String
+
         Public Event GetResource(ByRef item As Object)
 
         Public Sub ApplyWinForm(WinForm As Form)
 
             'Try
 
-            For Each p As CSSFile.CSSProperty In Properties
+            For Each p As CSSProperty In Properties
 
                 If IsMatch(p, WinForm) Then ApplyProperty(WinForm, p)
 
@@ -47,9 +50,10 @@ Namespace Gtk.CSSEngine
             'End Try
 
         End Sub
+
         Public Sub ApplyWinForm(WinForm As Control)
 
-            For Each p As CSSFile.CSSProperty In Properties
+            For Each p As CSSProperty In Properties
 
                 If IsMatch(p, WinForm) Then ApplyProperty(WinForm, p)
 
@@ -63,7 +67,7 @@ Namespace Gtk.CSSEngine
 
         End Sub
 
-        Public Sub ApplyProperty(WinForm As Form, Prop As CSSFile.CSSProperty)
+        Public Sub ApplyProperty(WinForm As Form, Prop As CSSProperty)
 
             Dim sh() As String = Nothing 'This will be used to break up shorthand values
 
@@ -113,7 +117,8 @@ Namespace Gtk.CSSEngine
             Next
 
         End Sub
-        Public Sub ApplyProperty(WinForm As Control, Prop As CSSFile.CSSProperty)
+
+        Public Sub ApplyProperty(WinForm As Control, Prop As CSSProperty)
 
             Dim sh() As String = Nothing 'This will be used to break up shorthand values
 
@@ -541,7 +546,7 @@ Namespace Gtk.CSSEngine
 
                 Case "file"
 
-                    Loc = Loc.Replace("%skinspath%", My.Application.Info.DirectoryPath & "\Skins\")
+                    loc = loc.Replace("%skinspath%", My.Application.Info.DirectoryPath & "\Skins\")
                     Return Image.FromFile(loc)
 
                 Case "url"

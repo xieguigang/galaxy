@@ -2,16 +2,18 @@
 
     Public Class CSSProperty
 
-        Public ControlType As String
-        Public ControlID As String
-        Public ControlClass As String
-        Public PSSelector As String
-        Public ParentPath As String
+        Public Property ControlType As String
+        Public Property ControlID As String
+        Public Property ControlClass As String
+        Public Property PSSelector As String
 
-        'Parent Path descriptor:
-        'Parent<GrandParent<1GGrandParent<
-
-        Public Values As New Hashtable
+        ''' <summary>
+        ''' Parent Path descriptor:
+        ''' Parent&lt;GrandParent&lt;1GGrandParent&lt;
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property ParentPath As String
+        Public Property Values As New Hashtable
 
         Public Sub Parse(s() As String)
             ControlClass = s(0)
@@ -22,7 +24,6 @@
         End Sub
 
         Public Function ExpectedUnit(Format As String, parent As Control) As Integer
-
             Format = Format.TrimStart("+-".ToCharArray)
             Format = Format.Trim("""".ToCharArray)
 
@@ -33,46 +34,30 @@
                 If Not Char.IsDigit(CChar(Format.Substring(i, 1))) Then
 
                     Select Case Format.Substring(i).ToLower
-
                         Case "px"
-
                             Return CInt(Left(Format, i))
-
                         Case "in"
-
                             Return CInt(Left(Format, i)) * PPInch
-
                         Case "cm"
-
                             Return CInt(Left(Format, i)) * PPCm
-
                         Case "mm"
-
                             Return CInt(Left(Format, i)) * PPMm
-
                         Case "pt"
-
                             Return CInt(Left(Format, i)) 'Don't add a unit mod!
-
                         Case "pc"
-
                             Return CInt(Left(Format, i)) * PPPc
-
                     End Select
-
                 End If
-
             Next
 
+            Return 0
         End Function
 
         Public Sub New()
         End Sub
+
         Public Sub New(s() As String)
-
-            Me.Parse(s)
-
+            Call Me.Parse(s)
         End Sub
-
     End Class
 End Namespace
