@@ -16,7 +16,16 @@ Public Class Form1
 
 
 
-        Dim engine As LegacyEngine = New LegacyEngine(css)
-        engine.ApplyWinForm(Me)
+        '   Dim engine As LegacyEngine = New LegacyEngine(css)
+        '    engine.ApplyWinForm(Me)
+    End Sub
+
+    Private Sub Form1_Leave(sender As Object, e As EventArgs) Handles Me.Leave
+
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim page = TabControl1.Add("test 1233")
+        page.TabPage.BackColor = Color.Black
     End Sub
 End Class

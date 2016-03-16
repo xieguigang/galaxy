@@ -24,4 +24,9 @@
     Public Overrides Function ToString() As String
         Return Text
     End Function
+
+    Protected Overrides Sub OnPrint(e As PaintEventArgs)
+        MyBase.OnPrint(e)
+        e.Graphics.DrawString(Text, Font, New SolidBrush(ForeColor), New Point(5, 5))
+    End Sub
 End Class

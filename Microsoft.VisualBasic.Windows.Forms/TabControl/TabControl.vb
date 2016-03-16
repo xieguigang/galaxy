@@ -15,15 +15,22 @@ Public Class TabControl
 
     Public Function Add(Name As String, page As TabPage) As TabLabel
         Dim label As New TabLabel(page, container:=Me) With {
-            .Text = Name
+            .Text = Name,
+            .Height = FlowLayoutPanelLabelsContainer.Height - 2,
+            .Width = 20
         }
         Call __labels.Add(label)
         Call PanelPagesContainer.Controls.Add(page)
+        Call FlowLayoutPanelLabelsContainer.Controls.Add(label)
 
         page.Location = New Point
         page.Size = PanelPagesContainer.Size
 
         Return label
+    End Function
+
+    Public Function Add(Name As String) As TabLabel
+        Return Add(Name, New TabPage)
     End Function
 
     Public Overloads Sub [Select](label As TabLabel)
