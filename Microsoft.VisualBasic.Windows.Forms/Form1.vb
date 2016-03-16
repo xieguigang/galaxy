@@ -25,15 +25,16 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim page = TabControl1.Add("test 1233")
-        page = TabControl1.Add("test 1233")
-        page = TabControl1.Add("test 1233 fffff")
-        page = TabControl1.Add("test 12     @33")
-        page = TabControl1.Add("test 1233")
-        page = TabControl1.Add("test 1233 fffff")
-        page = TabControl1.Add("test 12     @33")
-        page = TabControl1.Add("test 1233")
-        page = TabControl1.Add("test 1233 fffff")
-        page = TabControl1.Add("test 12     @33")
+        Dim page = TabControl1.Add("test 1233") : page.TabPage.BackColor = Color.Beige
+        page = TabControl1.Add("test 1233") : page.TabPage.BackColor = Color.Black
+        page = TabControl1.Add("test 1233 fffff") : page.TabPage.BackColor = Color.DarkSeaGreen
+        page = TabControl1.Add("test 12     @33") : page.TabPage.BackColor = Color.SpringGreen
+        page = TabControl1.Add("test 1233") : page.TabPage.BackColor = Color.LawnGreen
+        page = TabControl1.Add("test 1233 fffff") : page.TabPage.BackColor = Color.Violet
+        page = TabControl1.Add("test 12     @33") : page.TabPage.BackColor = Color.Fuchsia
+        page = TabControl1.Add("test 1233") : page.TabPage.BackColor = Color.Salmon
+        page = TabControl1.Add("test 1233 fffff") : page.TabPage.BackColor = Color.Peru
+        page = TabControl1.Add("test 12     @33") : page.TabPage.BackColor = Color.Yellow
+        Call page.Select()
     End Sub
 End Class

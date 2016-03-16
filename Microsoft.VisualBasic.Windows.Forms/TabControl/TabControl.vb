@@ -15,7 +15,7 @@ Public Class TabControl
     Public Property MaxWidth As Integer = 120
 
     Public Function Add(Name As String, page As TabPage) As TabLabel
-        Dim avgWidth As Integer = If(__labels.Count = 0, MaxWidth, Width / (__labels.Count * 1.2))
+        Dim avgWidth As Integer = If(__labels.Count = 0, MaxWidth, Width / (__labels.Count * 1.25))
         Dim label As New TabLabel(page, container:=Me) With {
             .Text = Name,
             .Height = FlowLayoutPanelLabelsContainer.Height - 2,

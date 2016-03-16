@@ -29,12 +29,13 @@ Partial Class TabControl
         '
         'FlowLayoutPanelLabelsContainer
         '
-        Me.FlowLayoutPanelLabelsContainer.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.FlowLayoutPanelLabelsContainer.BackColor = System.Drawing.SystemColors.Control
         Me.FlowLayoutPanelLabelsContainer.Dock = System.Windows.Forms.DockStyle.Top
         Me.FlowLayoutPanelLabelsContainer.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanelLabelsContainer.Name = "FlowLayoutPanelLabelsContainer"
         Me.FlowLayoutPanelLabelsContainer.Size = New System.Drawing.Size(688, 40)
         Me.FlowLayoutPanelLabelsContainer.TabIndex = 0
+        Me.FlowLayoutPanelLabelsContainer.WrapContents = False
         '
         'PanelPagesContainer
         '

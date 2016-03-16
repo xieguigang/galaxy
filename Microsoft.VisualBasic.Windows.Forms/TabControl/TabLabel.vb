@@ -17,6 +17,9 @@
         Me.Container = container
     End Sub
 
+    ''' <summary>
+    ''' Set current page as the current selected tab page on the tab control.
+    ''' </summary>
     Public Overloads Sub [Select]()
         Call Container.Select(Me)
     End Sub
@@ -33,5 +36,13 @@
     Private Sub TabLabel_MouseClick(sender As Object, e As MouseEventArgs) Handles Me.MouseClick
         Call [Select]()
         Call Container.TabIndicator1.SetPage(Location.X)
+    End Sub
+
+    Private Sub TabLabel_MouseEnter(sender As Object, e As EventArgs) Handles Me.MouseEnter
+        Container.TabIndicator1.PointerDock = Location.X
+    End Sub
+
+    Private Sub TabLabel_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
+        Container.TabIndicator1.PointerDock = Container.TabIndicator1.DefaultDock
     End Sub
 End Class
