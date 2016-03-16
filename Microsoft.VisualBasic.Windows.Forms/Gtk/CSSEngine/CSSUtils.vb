@@ -4,6 +4,19 @@ Namespace Gtk.CSSEngine
 
     Public Module CSSUtils
 
+        Public Function ShortHand(val As String) As String
+rest:       val.Replace("  ", " ")
+
+            If Not val.Contains(" ") Then
+
+                val.Replace(vbCrLf, " ")
+                GoTo rest
+
+            End If
+
+            Return val
+        End Function
+
         Public Function GetARGB(val As String) As Color
             Dim a As Integer
             Dim r As Integer

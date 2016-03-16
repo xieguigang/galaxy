@@ -80,6 +80,9 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Gtk\CSSEngine\LegacyEngine.vb" />
+    <Compile Include="Gtk\CSSEngine\Controls\Controls.vb" />
+    <Compile Include="Gtk\CSSEngine\Controls\Form.vb" />
     <Compile Include="Gtk\CSSEngine\CSSParser.vb" />
     <Compile Include="Gtk\CSSEngine\CSSProperty.vb" />
     <Compile Include="Gtk\CSSEngine\Components\Button.vb">
@@ -152,9 +155,7 @@
       <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Gtk\CSSEngine\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

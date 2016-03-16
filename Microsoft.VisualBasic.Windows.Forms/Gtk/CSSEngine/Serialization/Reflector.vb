@@ -1,9 +1,17 @@
-﻿Namespace Gtk.CSSEngine.Serialization
+﻿Imports System.Runtime.CompilerServices
 
-    Module Reflector
+Namespace Gtk.CSSEngine.Serialization
 
-        Public Function Fill(Of T As Class)(css As CSSFile) As T
+    Public Module Reflector
 
+        <Extension>
+        Public Function Fill(Of T As CSSEngine.Controls.Control)(css As CSSFile) As T
+            Dim type As Type = GetType(T)
+            Dim obj As Object = Activator.CreateInstance(type)
+
+
+
+            Return DirectCast(obj, T)
         End Function
 
         ''' <summary>

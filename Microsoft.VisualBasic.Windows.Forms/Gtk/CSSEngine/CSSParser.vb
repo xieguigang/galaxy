@@ -402,7 +402,7 @@ no:             repchar = CChar("<")
 
                         Case "!"
 
-                            If current.GetType Is GetType(Form) OrElse CType(current, Control).Parent Is Nothing OrElse Not IsMatch(New CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control).Parent) Then
+                            If current.GetType Is GetType(System.Windows.Forms.Form) OrElse CType(current, Control).Parent Is Nothing OrElse Not IsMatch(New CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control).Parent) Then
 
                                 Return False
 
@@ -412,7 +412,7 @@ no:             repchar = CChar("<")
 
                         Case "<"
 
-                            If current.GetType Is GetType(Form) Then Return False
+                            If current.GetType Is GetType(System.Windows.Forms.Form) Then Return False
 
                             tempdesc = IsDescendent(New CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control))
 
@@ -426,7 +426,7 @@ no:             repchar = CChar("<")
 
                         Case "+"
 
-                            If current.GetType Is GetType(Form) OrElse CType(current, Control) Is Nothing OrElse Not IsControlAfter(query.Parent, New CSSProperty(GetIDType(Left(wa, wail))), 1) Then
+                            If current.GetType Is GetType(System.Windows.Forms.Form) OrElse CType(current, Control) Is Nothing OrElse Not IsControlAfter(query.Parent, New CSSProperty(GetIDType(Left(wa, wail))), 1) Then
 
                                 Return False
 
@@ -443,7 +443,7 @@ no:             repchar = CChar("<")
             Return True
         End Function
 
-        Public Function IsMatch(Prop As CSSProperty, query As Form) As Boolean
+        Public Function IsMatch(Prop As CSSProperty, query As System.Windows.Forms.Form) As Boolean
 
             If String.IsNullOrEmpty(query.Tag) Then Return False
             If Prop.ControlID <> "" AndAlso query.Name <> Prop.ControlID Then Return False
@@ -521,7 +521,7 @@ no:             repchar = CChar("<")
 
                     Case "!"
 
-                        If current.GetType Is GetType(Form) OrElse CType(current, Control).Parent Is Nothing OrElse Not IsMatch(New CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control).Parent) Then
+                        If current.GetType Is GetType(System.Windows.Forms.Form) OrElse CType(current, Control).Parent Is Nothing OrElse Not IsMatch(New CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control).Parent) Then
 
                             Return False
 
@@ -531,7 +531,7 @@ no:             repchar = CChar("<")
 
                     Case "<"
 
-                        If current.GetType Is GetType(Form) Then Return False
+                        If current.GetType Is GetType(System.Windows.Forms.Form) Then Return False
 
                         tempdesc = IsDescendent(New CSSProperty(GetIDType(Left(wa, wail))), CType(current, Control))
 
@@ -545,7 +545,7 @@ no:             repchar = CChar("<")
 
                     Case "+"
 
-                        If current.GetType Is GetType(Form) OrElse CType(current, Control) Is Nothing OrElse Not IsControlAfter(query.Parent, New CSSProperty(GetIDType(Left(wa, wail))), 1) Then
+                        If current.GetType Is GetType(System.Windows.Forms.Form) OrElse CType(current, Control) Is Nothing OrElse Not IsControlAfter(query.Parent, New CSSProperty(GetIDType(Left(wa, wail))), 1) Then
 
                             Return False
 

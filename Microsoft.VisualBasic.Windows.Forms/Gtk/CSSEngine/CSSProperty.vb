@@ -15,7 +15,7 @@ Namespace Gtk.CSSEngine
         ''' </summary>
         ''' <returns></returns>
         Public Property ParentPath As String
-        Public Property Values As New Hashtable
+        Public Property Values As New SortedDictionary(Of String, String)
 
         Public Sub Parse(s() As String)
             ControlClass = s(0)
