@@ -25,6 +25,11 @@ Namespace Gtk.CSSEngine
             Return FileIO.FileSystem.ReadAllText(path).ParseFile(urlBase)
         End Function
 
+        <Extension>
+        Public Function LoadModel(path As String, Optional urlBase As String = "") As Models.CSSFile
+            Return New Models.CSSFile(path.ParseDoc(urlBase))
+        End Function
+
         ''' <summary>
         ''' 
         ''' </summary>

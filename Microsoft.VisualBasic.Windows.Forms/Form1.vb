@@ -12,7 +12,7 @@ Public Class Form1
 
         Dim css As CSSFile = CSSParser.ParseDoc("E:\Microsoft.VisualBasic.Windows.Forms\Arc-OSX\gtk-3.0\gtk-contained.css", "")
 
-        Dim btn = css.Fill(Of Gtk.Controls.Button)
+        Dim btn = New Models.CSSFile(css).Fill(Of Gtk.Controls.Button)
 
 
 

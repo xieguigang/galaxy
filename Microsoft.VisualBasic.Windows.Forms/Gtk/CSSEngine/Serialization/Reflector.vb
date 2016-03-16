@@ -5,7 +5,7 @@ Namespace Gtk.CSSEngine.Serialization
 
     Public Module Reflector
 
-        <Extension> Public Function Fill(Of T As Controls.Control)(css As CSSFile) As T
+        <Extension> Public Function Fill(Of T As Controls.Control)(css As Models.CSSFile) As T
             Dim type As Type = GetType(T)
             Dim obj As Object = Activator.CreateInstance(type)
             Dim props = (From prop As PropertyInfo
@@ -17,6 +17,12 @@ Namespace Gtk.CSSEngine.Serialization
 
             If typeDef Is Nothing Then
                 Throw New Exception("Could not known the css element is where?")
+            End If
+
+            Dim cssValue As Models.GtkObject = css.FindObject(typeDef.Name)
+
+            If cssValue Is Nothing Then
+                Throw New Exception(typeDef.Name & " element is unable found in the css file!")
             End If
 
             For Each prop In props

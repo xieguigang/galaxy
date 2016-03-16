@@ -95,6 +95,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Gtk\CSSEngine\CSSUtils.vb" />
+    <Compile Include="Gtk\CSSEngine\Models\GtkObject.vb" />
+    <Compile Include="Gtk\CSSEngine\Models\CSSFile.vb" />
     <Compile Include="Gtk\CSSEngine\Serialization\Reflector.vb" />
     <Compile Include="Gtk\CSSEngine\Serialization\Reflections.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

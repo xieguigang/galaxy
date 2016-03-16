@@ -23,6 +23,13 @@ Namespace Gtk.CSSEngine
 
         Public Event GetResource(ByRef item As Object) Implements ICSSEngine.GetResource
 
+        Public Function FindProperty(name As String) As CSSProperty
+            Dim LQuery = (From x As CSSProperty In Properties
+                          Where String.Equals(name, x.ControlClass, StringComparison.OrdinalIgnoreCase)
+                          Select x).FirstOrDefault
+            Return LQuery
+        End Function
+
         ''' <summary>
         ''' Load image resource from the location that this css file point to. The location it maybe a network location or local file.
         ''' </summary>
