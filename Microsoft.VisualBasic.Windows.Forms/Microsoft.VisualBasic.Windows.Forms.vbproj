@@ -137,6 +137,12 @@
     <Compile Include="TabControl\TabLabel.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TabControl\TabIndicator.Designer.vb">
+      <DependentUpon>TabIndicator.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TabControl\TabIndicator.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TabControl\TabControl.resx">
       <DependentUpon>TabControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControl\TabIndicator.resx">
+      <DependentUpon>TabIndicator.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TabControl\TabLabel.resx">
       <DependentUpon>TabLabel.vb</DependentUpon>
