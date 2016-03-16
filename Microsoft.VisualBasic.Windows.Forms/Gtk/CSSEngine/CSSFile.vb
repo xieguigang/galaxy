@@ -19,6 +19,8 @@ Namespace Gtk.CSSEngine
 
         Public Property Properties As New List(Of CSSProperty)
         Public Property Location As String
+        Public Property DefineColors As Dictionary(Of String, String)
+
         Public Event GetResource(ByRef item As Object) Implements ICSSEngine.GetResource
 
         ''' <summary>

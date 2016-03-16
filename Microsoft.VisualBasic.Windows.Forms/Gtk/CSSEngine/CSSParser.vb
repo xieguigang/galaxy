@@ -33,82 +33,108 @@ Namespace Gtk.CSSEngine
         ''' <returns></returns>
         <Extension>
         Public Function ParseFile(Query As String, urlBase As String) As CSSFile
-            Dim retfile As New CSSFile
+            Dim retfile As New CSSFile With {.Location = urlBase}
             Dim regx As New Regex("/\*[\d\D]*?\*/")
-            Dim cp As CSSProperty
 
-            retfile.Location = urlBase
             Query = regx.Replace(Query, "") 'Removes comments
             Query = Query.TrimVBCrLf
 
-            For Each s As String In Query.Split(CChar("}"))
+            Dim source As String() = Query.Split(CChar("}"))
 
-                s = s.Trim(CStr("    	" & vbCrLf).ToCharArray)
-
-                If s = "" Then Exit For
-
-                Do Until Left(s, 1) <> " " AndAlso Left(s, 1) <> vbCrLf AndAlso Right(s, 1) <> " " AndAlso Right(s, 1) <> vbCrLf
-
-                    s = s.Trim(CStr(" " & vbCrLf).ToCharArray)
-
-                Loop
-
-                cp = New CSSProperty
-                cp.ControlID = "<" & Left(s, s.IndexOf("{")).Trim(CStr(" " & vbCrLf).ToCharArray) & ">"
-
-                Dim contents As String() = s.Substring(s.IndexOf("{") + 1).Split(CChar(";"))
-
-                For Each x As String In contents
-
-                    x = x.Trim(CStr(" " & vbCrLf).ToCharArray).Replace(";", "")
-
-                Next
-
-                If contents(contents.Length - 1) = "" Then Array.Clear(contents, contents.Length - 1, 1)
-
-                If cp.ControlID.Contains(",") Then
-
-                    Dim ww() As String = cp.ControlID.Replace(",", ">,<").Split(CChar(","))
-
-                    For Each a As String In ww
-
-                        cp.Parse(GetIDType(a))
-
-                        For Each q As String In contents
-
-                            If String.IsNullOrEmpty(q) Then
-                                Continue For
-                            End If
-
-                            cp.Values.Add(Left(q, CInt(IIf(q.LastIndexOf(":") < 0, 0, q.LastIndexOf(":")))).Trim, q.Substring(q.LastIndexOf(":") + 1).Trim(CChar(" ")))
-
-                        Next
-
-                        retfile.Properties.Add(cp)
-
-                        cp = New CSSProperty
-
-                    Next
-
-                Else
-
-                    cp.Parse(GetIDType(cp.ControlID))
-
-                    For Each q As String In contents
-
-                        If q = "" Then Exit For
-                        cp.Values.Add(Left(q, CInt(IIf(q.LastIndexOf(":") < 0, 0, q.LastIndexOf(":")))).Trim, q.Substring(q.LastIndexOf(":") + 1).Trim(CChar(" ")))
-
-                    Next
-
-                    retfile.Properties.Add(cp)
-
-                End If
-
+            For Each s As String In source
+                Call PropertyParser(s, retfile)
             Next
 
             Return retfile
         End Function
+
+        Public Function DefineColorParser(value As String, ByRef css As CSSFile) As Boolean
+            Dim tokens As String() = value.Trim.Split(";"c)
+
+            If css.DefineColors Is Nothing Then
+                css.DefineColors = New Dictionary(Of String, String)
+            End If
+
+            For Each s As String In tokens
+                If Not String.IsNullOrEmpty(s) Then
+                    Call __defineParser(s, css.DefineColors)
+                End If
+            Next
+
+            Return True
+        End Function
+
+        Private Sub __defineParser(s As String, ByRef hash As Dictionary(Of String, String))
+            Dim tokens As String() = s.Split
+            Dim key As String = tokens(1)
+            Dim value As String = Mid(s, InStr(s, key) + key.Length + 1).Trim
+
+            If hash.ContainsKey(key) Then
+                Call hash.Remove(key)
+            End If
+            Call hash.Add(key, value)
+        End Sub
+
+        Public Function PropertyParser(s As String, ByRef css As CSSFile) As Boolean
+            s = s.Trim(CStr("    	" & vbCrLf).ToCharArray)
+
+            If s = "" Then Return False
+
+            Do Until Left(s, 1) <> " " AndAlso Left(s, 1) <> vbCrLf AndAlso Right(s, 1) <> " " AndAlso Right(s, 1) <> vbCrLf
+                s = s.Trim(CStr(" " & vbCrLf).ToCharArray)
+            Loop
+
+            Dim cp As CSSProperty = New CSSProperty
+            Dim i As Integer = s.IndexOf("{")
+
+            If i < 0 Then      ' @define
+                Return DefineColorParser(s, css)
+            End If
+
+            cp.ControlID = "<" & Left(s, i).Trim(CStr(" " & vbCrLf).ToCharArray) & ">"
+
+            Dim contents As String() = s.Substring(s.IndexOf("{") + 1).Split(CChar(";"))
+
+            For Each x As String In contents
+                x = x.Trim(CStr(" " & vbCrLf).ToCharArray).Replace(";", "")
+            Next
+
+            If contents(contents.Length - 1) = "" Then Array.Clear(contents, contents.Length - 1, 1)
+
+            If cp.ControlID.Contains(",") Then
+                Dim ww() As String = cp.ControlID.Replace(",", ">,<").Split(CChar(","))
+
+                For Each a As String In ww
+                    Call cp.Parse(GetIDType(a))
+                    Call __valueParser(cp, contents)
+                    Call css.Properties.Add(cp)
+
+                    cp = New CSSProperty
+                Next
+            Else
+                Call cp.Parse(GetIDType(cp.ControlID))
+                Call __valueParser(cp, contents)
+                Call css.Properties.Add(cp)
+            End If
+
+            Return True
+        End Function
+
+        Private Sub __valueParser(ByRef cp As CSSProperty, contents As String())
+            For Each q As String In contents
+                If String.IsNullOrEmpty(q) Then
+                    Continue For
+                End If
+
+                Dim key As String = Left(q, CInt(IIf(q.LastIndexOf(":") < 0, 0, q.LastIndexOf(":")))).Trim
+                Dim value As String = q.Substring(q.LastIndexOf(":") + 1).Trim(CChar(" "))
+
+                If cp.Values.ContainsKey(key) Then
+                    Call cp.Values.Remove(key)
+                End If
+                Call cp.Values.Add(key, value)
+            Next
+        End Sub
 
         Public Function GetIDType(input As String) As String() '{Class, Type, ID, Pseudo-class Selector, ParentPath}
             Dim s As String() = {"", "", "", "", ""}
@@ -443,9 +469,9 @@ no:             repchar = CChar("<")
             Return True
         End Function
 
-        Public Function IsMatch(Prop As CSSProperty, query As System.Windows.Forms.Form) As Boolean
-
+        Public Function IsMatch(Prop As CSSProperty, query As Form) As Boolean
             If String.IsNullOrEmpty(query.Tag) Then Return False
+
             If Prop.ControlID <> "" AndAlso query.Name <> Prop.ControlID Then Return False
             If Prop.ControlClass <> "" AndAlso Not CStr(" " & query.Tag.ToString & " ").Contains(" " & Prop.ControlClass & " ") Then Return False
 
