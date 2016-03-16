@@ -462,7 +462,7 @@ Namespace Gtk.CSSEngine
                         WinForm.GetType.ToString <> GetType(TextBox).ToString AndAlso
                         WinForm.GetType.ToString <> GetType(Label).ToString AndAlso
                         WinForm.GetType.ToString <> GetType(DividerLabel).ToString AndAlso
-                        WinForm.GetType.ToString <> GetType(Button).ToString _
+                        WinForm.GetType.ToString <> GetType(Components.Button).ToString _
                         Then Exit Select
                         'WinForm.GetType.ToString <> GetType(AddressBar).ToString AndAlso _
 
@@ -470,17 +470,17 @@ Namespace Gtk.CSSEngine
 
                         Select Case WinForm.GetType.ToString
 
-                            Case GetType(Button).ToString
+                            Case GetType(Components.Button).ToString
 
                                 Select Case Prop.PSSelector
 
                                     Case "up"
 
-                                        CType(ctm, Button).ImageUp = CSS.GrabImage(val, loc)
+                                        CType(ctm, Components.Button).ImageUp = CSS.GrabImage(val, loc)
 
                                     Case "over"
 
-                                        CType(ctm, Button).ImageOver = CSS.GrabImage(val, loc)
+                                        CType(ctm, Components.Button).ImageOver = CSS.GrabImage(val, loc)
 
                                 End Select
 

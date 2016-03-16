@@ -359,7 +359,7 @@ no:             repchar = CChar("<")
 
                 Select Case query.GetType.ToString
 
-                    Case GetType(Button).ToString
+                    Case GetType(Components.Button).ToString
 
                         If Prop.ControlType <> "button" Then Return False
 
@@ -484,7 +484,7 @@ no:             repchar = CChar("<")
 
                 Select Case query.GetType.ToString
 
-                    Case GetType(Button).ToString
+                    Case GetType(Components.Button).ToString
 
                         If Prop.ControlType <> "button" Then Return False
 

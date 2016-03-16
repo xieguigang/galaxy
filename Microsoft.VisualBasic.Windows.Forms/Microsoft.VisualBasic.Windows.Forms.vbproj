@@ -73,6 +73,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Button.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -132,7 +135,7 @@
       <DependentUpon>TabLabel.vb</DependentUpon>
     </Compile>
     <Compile Include="TabControl\TabLabel.vb">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

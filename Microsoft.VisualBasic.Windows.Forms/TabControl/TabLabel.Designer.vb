@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class TabLabel
-    Inherits System.Windows.Forms.UserControl
+    Inherits Button
 
     'UserControl overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -26,8 +26,6 @@ Partial Class TabLabel
         '
         'TabLabel
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Name = "TabLabel"
         Me.Size = New System.Drawing.Size(119, 43)
         Me.ResumeLayout(False)
