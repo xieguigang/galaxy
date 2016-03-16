@@ -28,7 +28,7 @@ Partial Class TabIndicator
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(214, Byte), Integer))
-        Me.Panel1.Location = New System.Drawing.Point(182, 3)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(63, 10)
         Me.Panel1.TabIndex = 0
@@ -39,7 +39,7 @@ Partial Class TabIndicator
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Panel1)
         Me.Name = "TabIndicator"
-        Me.Size = New System.Drawing.Size(553, 15)
+        Me.Size = New System.Drawing.Size(553, 10)
         Me.ResumeLayout(False)
 
     End Sub

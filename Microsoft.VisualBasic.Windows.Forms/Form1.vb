@@ -26,6 +26,14 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim page = TabControl1.Add("test 1233")
-        page.TabPage.BackColor = Color.Black
+        page = TabControl1.Add("test 1233")
+        page = TabControl1.Add("test 1233 fffff")
+        page = TabControl1.Add("test 12     @33")
+        page = TabControl1.Add("test 1233")
+        page = TabControl1.Add("test 1233 fffff")
+        page = TabControl1.Add("test 12     @33")
+        page = TabControl1.Add("test 1233")
+        page = TabControl1.Add("test 1233 fffff")
+        page = TabControl1.Add("test 12     @33")
     End Sub
 End Class

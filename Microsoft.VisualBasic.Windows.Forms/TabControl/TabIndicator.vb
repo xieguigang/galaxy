@@ -7,14 +7,28 @@ Public Class TabIndicator : Implements IDisposable
     '    .Enabled = True
     '}
 
-    Public Property Speed As Integer = 30
+    Public Property Speed As Integer = 1
 
     Public Property DefaultDock As Integer
     Public Property PointerDock As Integer
 
+    Public Property LabelWidth As Integer
+        Get
+            Return Panel1.Width
+        End Get
+        Set(value As Integer)
+            Panel1.Width = value
+        End Set
+    End Property
+
     Private Sub TabIndicator_Load(sender As Object, e As EventArgs) Handles Me.Load
         ' AddHandler __animatedTimer.Tick, AddressOf __runDock
         Call RunTask(AddressOf __animatedWorker)
+    End Sub
+
+    Sub SetPage(x As Integer)
+        DefaultDock = x
+        PointerDock = x
     End Sub
 
     Private Sub __runDock(sender As Object, e As EventArgs)
@@ -37,7 +51,7 @@ Public Class TabIndicator : Implements IDisposable
                     Exit Do
                 End If
             End Try
-            Call Threading.Thread.Sleep(2)
+            Call Threading.Thread.Sleep(15)
         Loop
     End Sub
 

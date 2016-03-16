@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,22 +20,13 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.TabControl1 = New Microsoft.VisualBasic.Windows.Forms.TabControl()
         Me.Pane1 = New Microsoft.VisualBasic.Windows.Forms.Gtk.CSSEngine.Components.Pane()
         Me.DividerLabel1 = New Microsoft.VisualBasic.Windows.Forms.Gtk.CSSEngine.Components.DividerLabel()
         Me.Button1 = New Microsoft.VisualBasic.Windows.Forms.Gtk.CSSEngine.Components.Button()
-        Me.TabIndicator1 = New Microsoft.VisualBasic.Windows.Forms.TabIndicator()
+        Me.TabControl1 = New Microsoft.VisualBasic.Windows.Forms.TabControl()
         Me.SuspendLayout()
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Location = New System.Drawing.Point(41, 169)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.Size = New System.Drawing.Size(638, 339)
-        Me.TabControl1.TabIndex = 3
-        Me.TabControl1.TabLabelSkin = Nothing
         '
         'Pane1
         '
@@ -71,22 +62,20 @@ Partial Class Form1
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Button1"
         '
-        'TabIndicator1
+        'TabControl1
         '
-        Me.TabIndicator1.DefaultDock = 0
-        Me.TabIndicator1.Location = New System.Drawing.Point(41, 139)
-        Me.TabIndicator1.Name = "TabIndicator1"
-        Me.TabIndicator1.PointerDock = 0
-        Me.TabIndicator1.Size = New System.Drawing.Size(553, 15)
-        Me.TabIndicator1.Speed = 3
-        Me.TabIndicator1.TabIndex = 4
+        Me.TabControl1.Location = New System.Drawing.Point(30, 154)
+        Me.TabControl1.MaxWidth = 120
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.Size = New System.Drawing.Size(688, 458)
+        Me.TabControl1.TabIndex = 3
+        Me.TabControl1.TabLabelSkin = Nothing
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(730, 560)
-        Me.Controls.Add(Me.TabIndicator1)
+        Me.ClientSize = New System.Drawing.Size(854, 660)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Pane1)
         Me.Controls.Add(Me.DividerLabel1)
@@ -102,5 +91,4 @@ Partial Class Form1
     Friend WithEvents DividerLabel1 As Gtk.CSSEngine.Components.DividerLabel
     Friend WithEvents Pane1 As Gtk.CSSEngine.Components.Pane
     Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabIndicator1 As TabIndicator
 End Class

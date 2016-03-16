@@ -29,4 +29,9 @@
         MyBase.OnPrint(e)
         e.Graphics.DrawString(Text, Font, New SolidBrush(ForeColor), New Point(5, 5))
     End Sub
+
+    Private Sub TabLabel_MouseClick(sender As Object, e As MouseEventArgs) Handles Me.MouseClick
+        Call [Select]()
+        Call Container.TabIndicator1.SetPage(Location.X)
+    End Sub
 End Class
