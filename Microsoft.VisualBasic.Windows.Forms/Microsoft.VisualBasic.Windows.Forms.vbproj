@@ -95,6 +95,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Gtk\CSSEngine\CSSUtils.vb" />
+    <Compile Include="Gtk\CSSEngine\Models\VisualObject.vb" />
     <Compile Include="Gtk\CSSEngine\Models\GtkObject.vb" />
     <Compile Include="Gtk\CSSEngine\Models\CSSFile.vb" />
     <Compile Include="Gtk\CSSEngine\Serialization\Reflector.vb" />
@@ -127,6 +128,12 @@
     <Compile Include="TabControl\TabPage.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="TabControl\TabLabel.Designer.vb">
+      <DependentUpon>TabLabel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TabControl\TabLabel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -137,6 +144,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControl\TabControl.resx">
+      <DependentUpon>TabControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControl\TabLabel.resx">
+      <DependentUpon>TabLabel.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

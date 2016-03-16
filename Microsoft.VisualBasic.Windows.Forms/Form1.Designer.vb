@@ -25,6 +25,7 @@ Partial Class Form1
         Me.Button1 = New Microsoft.VisualBasic.Windows.Forms.Gtk.CSSEngine.Components.Button()
         Me.DividerLabel1 = New Microsoft.VisualBasic.Windows.Forms.Gtk.CSSEngine.Components.DividerLabel()
         Me.Pane1 = New Microsoft.VisualBasic.Windows.Forms.Gtk.CSSEngine.Components.Pane()
+        Me.TabControl1 = New Microsoft.VisualBasic.Windows.Forms.TabControl()
         Me.SuspendLayout()
         '
         'Button1
@@ -32,7 +33,7 @@ Partial Class Form1
         Me.Button1.BackColor = System.Drawing.Color.DimGray
         Me.Button1.ImageOver = Nothing
         Me.Button1.ImageUp = Nothing
-        Me.Button1.Location = New System.Drawing.Point(318, 349)
+        Me.Button1.Location = New System.Drawing.Point(300, 33)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 0
@@ -42,7 +43,7 @@ Partial Class Form1
         '
         Me.DividerLabel1.AutoSize = True
         Me.DividerLabel1.LineStyle = System.Windows.Forms.Border3DStyle.Etched
-        Me.DividerLabel1.Location = New System.Drawing.Point(410, 120)
+        Me.DividerLabel1.Location = New System.Drawing.Point(480, 33)
         Me.DividerLabel1.Name = "DividerLabel1"
         Me.DividerLabel1.Size = New System.Drawing.Size(72, 13)
         Me.DividerLabel1.Spacing = 0
@@ -55,17 +56,25 @@ Partial Class Form1
         Me.Pane1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid
         Me.Pane1.BorderThickness = 5
         Me.Pane1.CanStackItems = True
-        Me.Pane1.Location = New System.Drawing.Point(39, 81)
+        Me.Pane1.Location = New System.Drawing.Point(30, 33)
         Me.Pane1.Name = "Pane1"
         Me.Pane1.Padding = New System.Windows.Forms.Padding(5)
         Me.Pane1.Size = New System.Drawing.Size(200, 100)
         Me.Pane1.TabIndex = 2
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Location = New System.Drawing.Point(41, 169)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.Size = New System.Drawing.Size(638, 339)
+        Me.TabControl1.TabIndex = 3
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(730, 560)
+        Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Pane1)
         Me.Controls.Add(Me.DividerLabel1)
         Me.Controls.Add(Me.Button1)
@@ -79,4 +88,5 @@ Partial Class Form1
     Friend WithEvents Button1 As Gtk.CSSEngine.Components.Button
     Friend WithEvents DividerLabel1 As Gtk.CSSEngine.Components.DividerLabel
     Friend WithEvents Pane1 As Gtk.CSSEngine.Components.Pane
+    Friend WithEvents TabControl1 As TabControl
 End Class
