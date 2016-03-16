@@ -11,7 +11,7 @@ Namespace Gtk.CSSEngine.Serialization
         End Sub
 
         Public Overrides Function ToString() As String
-            Return Me.GetJson
+            Return String.Format("{ ""name"" = ""{0}"" }", Name)
         End Function
     End Class
 

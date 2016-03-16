@@ -1,6 +1,6 @@
 ﻿Imports Microsoft.VisualBasic.Windows.Forms.Gtk.CSSEngine.Serialization
 
-Namespace Gtk.CSSEngine.Controls
+Namespace Gtk.Controls
 
     Public Class Form : Inherits Control
 
