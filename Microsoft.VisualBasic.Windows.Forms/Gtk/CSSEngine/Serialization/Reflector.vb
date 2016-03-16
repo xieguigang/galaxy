@@ -19,11 +19,13 @@ Namespace Gtk.CSSEngine.Serialization
                 Throw New Exception("Could not known the css element is where?")
             End If
 
-            Dim cssValue As Models.GtkObject = css.FindObject(typeDef.Name)
+            Dim cssValue As Models.GtkProperty = css.FindObject(typeDef)
 
             If cssValue Is Nothing Then
                 Throw New Exception(typeDef.Name & " element is unable found in the css file!")
             End If
+
+            Dim stats As Models.StatusEnumerator = cssValue.GetSkin(typeDef.ControlType)
 
             For Each prop In props
 

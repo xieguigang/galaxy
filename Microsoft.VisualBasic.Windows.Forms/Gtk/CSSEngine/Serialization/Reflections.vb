@@ -18,6 +18,9 @@ Namespace Gtk.CSSEngine.Serialization
     <AttributeUsage(AttributeTargets.Class, AllowMultiple:=False, Inherited:=True)>
     Public Class GtkObject : Inherits Attribute
 
+        Public Property Parent As String = ""
+        Public Property ControlType As String = ""
+
         Sub New(name As String)
             Call MyBase.New(name)
         End Sub

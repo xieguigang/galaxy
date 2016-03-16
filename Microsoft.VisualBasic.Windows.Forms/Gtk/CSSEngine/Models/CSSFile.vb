@@ -14,24 +14,16 @@ Namespace Gtk.CSSEngine.Models
         Sub New(css As Gtk.CSSEngine.CSSFile)
             Dim objs = (From x As CSSProperty
                         In css.Properties
-                        Let name As String = __getName(x)
-                        Select x, name
-                        Group By name Into Group)
-            Properties = objs.ToArray(Function(x) New GtkObject(x.name, x.Group.ToArray(Function(o) o.x))).ToDictionary
+                        Select x
+                        Group x By x.ControlClass Into Group)
+            Properties = objs.ToArray(Function(x) New GtkObject(x.ControlClass, x.Group.ToArray)).ToDictionary
             Location = css.Location
             DefineColors = css.DefineColors
         End Sub
 
-        Private Shared Function __getName(x As CSSProperty) As String
-            Dim name As String = x.ControlClass.Split.FirstOrDefault
-            If name Is Nothing Then
-                Return "*"
-            Else
-                Return name
-            End If
-        End Function
+        Public Function FindObject(x As Serialization.GtkObject) As GtkProperty
+            Dim name As String = x.Name
 
-        Public Function FindObject(name As String) As GtkObject
             If Not Properties.ContainsKey(name) Then
                 If name.IndexOf("."c) = 0 Then
                     name = Mid(name, 2).Trim
@@ -41,7 +33,18 @@ Namespace Gtk.CSSEngine.Models
                 End If
             End If
 
-            Return Properties(name)
+            If x.Parent Is Nothing Then
+                x.Parent = ""
+            End If
+
+            Dim source As GtkObject = Properties(name)
+
+            If source.Properties.ContainsKey(x.Parent) Then
+                Dim props As CSSProperty() = source.Properties(x.Parent)
+                Return New GtkProperty(name, x.Parent, props)
+            End If
+
+            Return Nothing
         End Function
 
         Public Overrides Function ToString() As String
