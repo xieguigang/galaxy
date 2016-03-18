@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
     <RootNamespace>Microsoft.Windows</RootNamespace>
-    <AssemblyName>Microsoft.Windows.UserShell</AssemblyName>
+    <AssemblyName>Microsoft.Windows.FeatureAPI</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -38,7 +38,10 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <WarningsAsErrors>
     </WarningsAsErrors>
-    <DocumentationFile>Microsoft.Windows.UserShell.xml</DocumentationFile>
+    <DocumentationFile>Microsoft.Windows.FeatureAPI.xml</DocumentationFile>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <Prefer32Bit>false</Prefer32Bit>
@@ -46,7 +49,7 @@
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42030,42032,42036,42104,42108,42109</NoWarn>
     <WarningsAsErrors>
     </WarningsAsErrors>
-    <DocumentationFile>Microsoft.Windows.UserShell.xml</DocumentationFile>
+    <DocumentationFile>Microsoft.Windows.FeatureAPI.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>Full</DebugType>

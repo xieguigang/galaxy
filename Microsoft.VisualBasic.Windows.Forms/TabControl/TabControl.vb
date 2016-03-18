@@ -1,4 +1,5 @@
 ﻿Imports Microsoft.VisualBasic.Linq
+Imports Microsoft.Windows.Taskbar
 
 Public Class TabControl
 
@@ -33,6 +34,7 @@ Public Class TabControl
         page.Location = New Point
         page.Size = PanelPagesContainer.Size
         TabIndicator1.LabelWidth = label.Width
+        Call __addThumbnail(page)
 
         Return label
     End Function
@@ -50,5 +52,24 @@ Public Class TabControl
         End If
         _Current = label
         _Current.TabPage.Visible = True
+    End Sub
+
+    Private Sub __addThumbnail(newTab As TabPage)
+        ' Add thumbnail toolbar buttons
+        Call TaskbarManager.Instance.ThumbnailToolBars.AddButtons(newTab.Handle)
+
+        ' Add a new preview
+        Dim preview As New TabbedThumbnail(Me.Handle, newTab.Handle)
+
+        ' Event handlers for this preview
+        ' AddHandler preview.TabbedThumbnailActivated, AddressOf preview_TabbedThumbnailActivated
+        ' AddHandler preview.TabbedThumbnailClosed, AddressOf preview_TabbedThumbnailClosed
+        ' AddHandler preview.TabbedThumbnailMaximized, AddressOf preview_TabbedThumbnailMaximized
+        ' AddHandler preview.TabbedThumbnailMinimized, AddressOf preview_TabbedThumbnailMinimized
+
+        TaskbarManager.Instance.TabbedThumbnail.AddThumbnailPreview(preview)
+
+        ' Select the tab in the application UI as well as taskbar tabbed thumbnail list
+        TaskbarManager.Instance.TabbedThumbnail.SetActiveTab(newTab)
     End Sub
 End Class
