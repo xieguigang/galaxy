@@ -111,6 +111,18 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\API.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\API\Dwm\Dwm.vb" />
+    <Compile Include="Form\API\Dwm\DwmAPI.vb" />
+    <Compile Include="Form\API\WinApi.vb" />
+    <Compile Include="Form\Form.designer.vb">
+      <DependentUpon>Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Gtk\CSSEngine\LegacyEngine.vb" />
     <Compile Include="Gtk\Controls\Controls.vb" />
     <Compile Include="Gtk\Controls\Form.vb" />
@@ -210,7 +222,6 @@
       <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

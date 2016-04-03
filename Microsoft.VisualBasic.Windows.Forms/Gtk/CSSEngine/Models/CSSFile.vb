@@ -5,7 +5,7 @@ Namespace Gtk.CSSEngine.Models
 
     Public Class CSSFile : Implements ICSSEngine
 
-        Public Property Properties As New Dictionary(Of String, GtkObject)
+        Public Property Properties As New Dictionary(Of GtkObject)
         Public Property Location As String
         Public Property DefineColors As Dictionary(Of String, String)
 
