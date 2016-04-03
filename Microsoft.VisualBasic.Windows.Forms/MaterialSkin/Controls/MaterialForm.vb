@@ -5,6 +5,7 @@ Imports System.Drawing.Text
 Imports System.Linq
 Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
+Imports System.Runtime.InteropServices.Marshal
 Imports Microsoft.VisualBasic.Windows.Forms
 
 Namespace Controls
@@ -126,8 +127,8 @@ Namespace Controls
 
 		<StructLayout(LayoutKind.Sequential, CharSet := CharSet.Auto, Pack := 4)> _
 		Public Class MONITORINFOEX
-			Public cbSize As Integer = Marshal.SizeOf(GetType(MONITORINFOEX))
-			Public rcMonitor As New RECT()
+            Public cbSize As Integer = SizeOf(GetType(MONITORINFOEX))
+            Public rcMonitor As New RECT()
 			Public rcWork As New RECT()
 			Public dwFlags As Integer = 0
 			<MarshalAs(UnmanagedType.ByValArray, SizeConst := 32)> _

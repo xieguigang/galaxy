@@ -4,7 +4,8 @@ Imports System.Drawing.Text
 Imports System.Linq
 Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
-Imports MaterialSkin.Controls
+Imports System.Runtime.InteropServices.Marshal
+Imports Microsoft.VisualBasic.Windows.Forms.Controls
 
 Public Class MaterialSkinManager
     'Singleton instance
@@ -20,7 +21,7 @@ Public Class MaterialSkinManager
             Return m_theme
         End Get
         Set
-            m_theme = value
+            m_theme = Value
             UpdateBackgrounds()
         End Set
     End Property
@@ -31,7 +32,7 @@ Public Class MaterialSkinManager
             Return m_colorScheme
         End Get
         Set
-            m_colorScheme = value
+            m_colorScheme = Value
             UpdateBackgrounds()
         End Set
     End Property
@@ -242,8 +243,8 @@ Public Class MaterialSkinManager
 
     Private Function LoadFont(fontResource As Byte()) As FontFamily
         Dim dataLength As Integer = fontResource.Length
-        Dim fontPtr As IntPtr = Marshal.AllocCoTaskMem(dataLength)
-        Marshal.Copy(fontResource, 0, fontPtr, dataLength)
+        Dim fontPtr As IntPtr = AllocCoTaskMem(dataLength)
+        Copy(fontResource, 0, fontPtr, dataLength)
 
         Dim cFonts As UInteger = 0
         AddFontMemResourceEx(fontPtr, CUInt(fontResource.Length), IntPtr.Zero, cFonts)
@@ -286,7 +287,7 @@ Public Class MaterialSkinManager
         End If
         Dim tabControl As MaterialTabControl = TryCast(controlToUpdate, MaterialTabControl)
         If tabControl IsNot Nothing Then
-            For Each tabPage As TabPage In tabControl.TabPages
+            For Each tabPage As System.Windows.Forms.TabPage In tabControl.TabPages
                 tabPage.BackColor = newBackColor
             Next
         End If

@@ -1,7 +1,7 @@
 Imports System.Drawing
 Imports System.Windows.Forms
-Imports MaterialSkin
-Imports MaterialSkin.Controls
+Imports Microsoft.VisualBasic.Windows.Forms
+Imports Microsoft.VisualBasic.Windows.Forms.Controls
 
 Partial Class MainForm
 	''' <summary>
@@ -28,55 +28,55 @@ Partial Class MainForm
 	''' </summary>
 	Private Sub InitializeComponent()
 		Dim resources As New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
-		Me.materialFlatButton2 = New MaterialSkin.Controls.MaterialFlatButton()
-		Me.materialFlatButton3 = New MaterialSkin.Controls.MaterialFlatButton()
-		Me.materialFlatButton1 = New MaterialSkin.Controls.MaterialFlatButton()
-		Me.materialDivider1 = New MaterialSkin.Controls.MaterialDivider()
-		Me.materialRadioButton4 = New MaterialSkin.Controls.MaterialRadioButton()
-		Me.materialLabel1 = New MaterialSkin.Controls.MaterialLabel()
-		Me.materialRadioButton3 = New MaterialSkin.Controls.MaterialRadioButton()
-		Me.materialRadioButton2 = New MaterialSkin.Controls.MaterialRadioButton()
-		Me.materialCheckbox4 = New MaterialSkin.Controls.MaterialCheckBox()
-		Me.materialCheckbox3 = New MaterialSkin.Controls.MaterialCheckBox()
-		Me.materialCheckbox2 = New MaterialSkin.Controls.MaterialCheckBox()
-		Me.materialCheckbox1 = New MaterialSkin.Controls.MaterialCheckBox()
-		Me.materialSingleLineTextField2 = New MaterialSkin.Controls.MaterialSingleLineTextField()
-		Me.materialSingleLineTextField1 = New MaterialSkin.Controls.MaterialSingleLineTextField()
-		Me.materialButton1 = New MaterialSkin.Controls.MaterialRaisedButton()
-		Me.materialRadioButton1 = New MaterialSkin.Controls.MaterialRadioButton()
-		Me.materialTabSelector1 = New MaterialSkin.Controls.MaterialTabSelector()
-		Me.materialTabControl1 = New MaterialSkin.Controls.MaterialTabControl()
-		Me.tabPage1 = New System.Windows.Forms.TabPage()
-		Me.materialSingleLineTextField3 = New MaterialSkin.Controls.MaterialSingleLineTextField()
-		Me.materialRaisedButton1 = New MaterialSkin.Controls.MaterialRaisedButton()
-		Me.tabPage2 = New System.Windows.Forms.TabPage()
-		Me.materialCheckBox6 = New MaterialSkin.Controls.MaterialCheckBox()
-		Me.materialCheckBox5 = New MaterialSkin.Controls.MaterialCheckBox()
-		Me.tabPage3 = New System.Windows.Forms.TabPage()
-		Me.tabPage4 = New System.Windows.Forms.TabPage()
-		Me.materialListView1 = New MaterialSkin.Controls.MaterialListView()
-		Me.columnHeader1 = DirectCast(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.columnHeader2 = DirectCast(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.columnHeader3 = DirectCast(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.columnHeader4 = DirectCast(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.tabPage5 = New System.Windows.Forms.TabPage()
-		Me.materialContextMenuStrip1 = New MaterialSkin.Controls.MaterialContextMenuStrip()
-		Me.item1ToolStripMenuItem = New MaterialSkin.Controls.MaterialToolStripMenuItem()
-		Me.subItem1ToolStripMenuItem = New MaterialSkin.Controls.MaterialToolStripMenuItem()
-		Me.subItem2ToolStripMenuItem = New MaterialSkin.Controls.MaterialToolStripMenuItem()
-		Me.disabledItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-		Me.item2ToolStripMenuItem = New MaterialSkin.Controls.MaterialToolStripMenuItem()
-		Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-		Me.item3ToolStripMenuItem = New MaterialSkin.Controls.MaterialToolStripMenuItem()
-		Me.materialProgressBar1 = New MaterialSkin.Controls.MaterialProgressBar()
-		Me.materialTabControl1.SuspendLayout()
-		Me.tabPage1.SuspendLayout()
-		Me.tabPage2.SuspendLayout()
-		Me.tabPage3.SuspendLayout()
-		Me.tabPage4.SuspendLayout()
-		Me.tabPage5.SuspendLayout()
-		Me.materialContextMenuStrip1.SuspendLayout()
-		Me.SuspendLayout()
+        Me.materialFlatButton2 = New Controls.MaterialFlatButton()
+        Me.materialFlatButton3 = New Controls.MaterialFlatButton()
+        Me.materialFlatButton1 = New Controls.MaterialFlatButton()
+        Me.materialDivider1 = New Controls.MaterialDivider()
+        Me.materialRadioButton4 = New Controls.MaterialRadioButton()
+        Me.materialLabel1 = New Controls.MaterialLabel()
+        Me.materialRadioButton3 = New Controls.MaterialRadioButton()
+        Me.materialRadioButton2 = New Controls.MaterialRadioButton()
+        Me.materialCheckbox4 = New Controls.MaterialCheckBox()
+        Me.materialCheckbox3 = New Controls.MaterialCheckBox()
+        Me.materialCheckbox2 = New Controls.MaterialCheckBox()
+        Me.materialCheckbox1 = New Controls.MaterialCheckBox()
+        Me.materialSingleLineTextField2 = New Controls.MaterialSingleLineTextField()
+        Me.materialSingleLineTextField1 = New Controls.MaterialSingleLineTextField()
+        Me.materialButton1 = New Controls.MaterialRaisedButton()
+        Me.materialRadioButton1 = New Controls.MaterialRadioButton()
+        Me.materialTabSelector1 = New Controls.MaterialTabSelector()
+        Me.materialTabControl1 = New Controls.MaterialTabControl()
+        Me.tabPage1 = New System.Windows.Forms.TabPage()
+        Me.materialSingleLineTextField3 = New Controls.MaterialSingleLineTextField()
+        Me.materialRaisedButton1 = New Controls.MaterialRaisedButton()
+        Me.tabPage2 = New System.Windows.Forms.TabPage()
+        Me.materialCheckBox6 = New Controls.MaterialCheckBox()
+        Me.materialCheckBox5 = New Controls.MaterialCheckBox()
+        Me.tabPage3 = New System.Windows.Forms.TabPage()
+        Me.tabPage4 = New System.Windows.Forms.TabPage()
+        Me.materialListView1 = New Controls.MaterialListView()
+        Me.columnHeader1 = DirectCast(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.columnHeader2 = DirectCast(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.columnHeader3 = DirectCast(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.columnHeader4 = DirectCast(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.tabPage5 = New System.Windows.Forms.TabPage()
+        Me.materialContextMenuStrip1 = New Controls.MaterialContextMenuStrip()
+        Me.item1ToolStripMenuItem = New Controls.MaterialToolStripMenuItem()
+        Me.subItem1ToolStripMenuItem = New Controls.MaterialToolStripMenuItem()
+        Me.subItem2ToolStripMenuItem = New Controls.MaterialToolStripMenuItem()
+        Me.disabledItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.item2ToolStripMenuItem = New Controls.MaterialToolStripMenuItem()
+        Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.item3ToolStripMenuItem = New Controls.MaterialToolStripMenuItem()
+        Me.materialProgressBar1 = New Controls.MaterialProgressBar()
+        Me.materialTabControl1.SuspendLayout()
+        Me.tabPage1.SuspendLayout()
+        Me.tabPage2.SuspendLayout()
+        Me.tabPage3.SuspendLayout()
+        Me.tabPage4.SuspendLayout()
+        Me.tabPage5.SuspendLayout()
+        Me.materialContextMenuStrip1.SuspendLayout()
+        Me.SuspendLayout()
         '
         ' materialFlatButton2
         '
@@ -86,7 +86,7 @@ Partial Class MainForm
         Me.materialFlatButton2.Depth = 0
         Me.materialFlatButton2.Location = New System.Drawing.Point(417, 386)
         Me.materialFlatButton2.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialFlatButton2.MouseState = MouseState.HOVER
         Me.materialFlatButton2.Name = "materialFlatButton2"
         Me.materialFlatButton2.Primary = False
         Me.materialFlatButton2.Size = New System.Drawing.Size(91, 36)
@@ -103,7 +103,7 @@ Partial Class MainForm
         Me.materialFlatButton3.Enabled = False
         Me.materialFlatButton3.Location = New System.Drawing.Point(334, 386)
         Me.materialFlatButton3.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialFlatButton3.MouseState = MouseState.HOVER
         Me.materialFlatButton3.Name = "materialFlatButton3"
         Me.materialFlatButton3.Primary = False
         Me.materialFlatButton3.Size = New System.Drawing.Size(75, 36)
@@ -119,7 +119,7 @@ Partial Class MainForm
         Me.materialFlatButton1.Depth = 0
         Me.materialFlatButton1.Location = New System.Drawing.Point(516, 386)
         Me.materialFlatButton1.Margin = New System.Windows.Forms.Padding(4, 6, 4, 6)
-        Me.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialFlatButton1.MouseState = MouseState.HOVER
         Me.materialFlatButton1.Name = "materialFlatButton1"
         Me.materialFlatButton1.Primary = True
         Me.materialFlatButton1.Size = New System.Drawing.Size(71, 36)
@@ -134,7 +134,7 @@ Partial Class MainForm
         Me.materialDivider1.Depth = 0
         Me.materialDivider1.Location = New System.Drawing.Point(0, 379)
         Me.materialDivider1.Margin = New System.Windows.Forms.Padding(0)
-        Me.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialDivider1.MouseState = MouseState.HOVER
         Me.materialDivider1.Name = "materialDivider1"
         Me.materialDivider1.Size = New System.Drawing.Size(618, 1)
         Me.materialDivider1.TabIndex = 16
@@ -151,7 +151,7 @@ Partial Class MainForm
         Me.materialRadioButton4.Location = New System.Drawing.Point(0, 98)
         Me.materialRadioButton4.Margin = New System.Windows.Forms.Padding(0)
         Me.materialRadioButton4.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.materialRadioButton4.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialRadioButton4.MouseState = MouseState.HOVER
         Me.materialRadioButton4.Name = "materialRadioButton4"
         Me.materialRadioButton4.Ripple = True
         Me.materialRadioButton4.Size = New System.Drawing.Size(163, 30)
@@ -167,7 +167,7 @@ Partial Class MainForm
         Me.materialLabel1.Font = New System.Drawing.Font("Roboto", 11.0F)
         Me.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(CInt(CByte(222)), CInt(CByte(0)), CInt(CByte(0)), CInt(CByte(0)))
         Me.materialLabel1.Location = New System.Drawing.Point(-4, 117)
-        Me.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialLabel1.MouseState = MouseState.HOVER
         Me.materialLabel1.Name = "materialLabel1"
         Me.materialLabel1.Size = New System.Drawing.Size(573, 64)
         Me.materialLabel1.TabIndex = 14
@@ -182,7 +182,7 @@ Partial Class MainForm
         Me.materialRadioButton3.Location = New System.Drawing.Point(0, 68)
         Me.materialRadioButton3.Margin = New System.Windows.Forms.Padding(0)
         Me.materialRadioButton3.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.materialRadioButton3.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialRadioButton3.MouseState = MouseState.HOVER
         Me.materialRadioButton3.Name = "materialRadioButton3"
         Me.materialRadioButton3.Ripple = True
         Me.materialRadioButton3.Size = New System.Drawing.Size(163, 30)
@@ -199,7 +199,7 @@ Partial Class MainForm
         Me.materialRadioButton2.Location = New System.Drawing.Point(0, 38)
         Me.materialRadioButton2.Margin = New System.Windows.Forms.Padding(0)
         Me.materialRadioButton2.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialRadioButton2.MouseState = MouseState.HOVER
         Me.materialRadioButton2.Name = "materialRadioButton2"
         Me.materialRadioButton2.Ripple = True
         Me.materialRadioButton2.Size = New System.Drawing.Size(163, 30)
@@ -215,7 +215,7 @@ Partial Class MainForm
         Me.materialCheckbox4.Location = New System.Drawing.Point(0, 98)
         Me.materialCheckbox4.Margin = New System.Windows.Forms.Padding(0)
         Me.materialCheckbox4.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.materialCheckbox4.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialCheckbox4.MouseState = MouseState.HOVER
         Me.materialCheckbox4.Name = "materialCheckbox4"
         Me.materialCheckbox4.Ripple = True
         Me.materialCheckbox4.Size = New System.Drawing.Size(149, 30)
@@ -232,7 +232,7 @@ Partial Class MainForm
         Me.materialCheckbox3.Location = New System.Drawing.Point(0, 68)
         Me.materialCheckbox3.Margin = New System.Windows.Forms.Padding(0)
         Me.materialCheckbox3.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.materialCheckbox3.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialCheckbox3.MouseState = MouseState.HOVER
         Me.materialCheckbox3.Name = "materialCheckbox3"
         Me.materialCheckbox3.Ripple = True
         Me.materialCheckbox3.Size = New System.Drawing.Size(149, 30)
@@ -250,7 +250,7 @@ Partial Class MainForm
         Me.materialCheckbox2.Location = New System.Drawing.Point(0, 38)
         Me.materialCheckbox2.Margin = New System.Windows.Forms.Padding(0)
         Me.materialCheckbox2.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.materialCheckbox2.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialCheckbox2.MouseState = MouseState.HOVER
         Me.materialCheckbox2.Name = "materialCheckbox2"
         Me.materialCheckbox2.Ripple = True
         Me.materialCheckbox2.Size = New System.Drawing.Size(149, 30)
@@ -269,7 +269,7 @@ Partial Class MainForm
         Me.materialCheckbox1.Location = New System.Drawing.Point(0, 8)
         Me.materialCheckbox1.Margin = New System.Windows.Forms.Padding(0)
         Me.materialCheckbox1.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.materialCheckbox1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialCheckbox1.MouseState = MouseState.HOVER
         Me.materialCheckbox1.Name = "materialCheckbox1"
         Me.materialCheckbox1.Ripple = True
         Me.materialCheckbox1.Size = New System.Drawing.Size(149, 30)
@@ -284,7 +284,7 @@ Partial Class MainForm
         Me.materialSingleLineTextField2.Hint = "Another example hint"
         Me.materialSingleLineTextField2.Location = New System.Drawing.Point(0, 51)
         Me.materialSingleLineTextField2.MaxLength = 32767
-        Me.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialSingleLineTextField2.MouseState = MouseState.HOVER
         Me.materialSingleLineTextField2.Name = "materialSingleLineTextField2"
         Me.materialSingleLineTextField2.PasswordChar = ControlChars.NullChar
         Me.materialSingleLineTextField2.SelectedText = ""
@@ -302,7 +302,7 @@ Partial Class MainForm
         Me.materialSingleLineTextField1.Hint = "This is a hint"
         Me.materialSingleLineTextField1.Location = New System.Drawing.Point(0, 14)
         Me.materialSingleLineTextField1.MaxLength = 32767
-        Me.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialSingleLineTextField1.MouseState = MouseState.HOVER
         Me.materialSingleLineTextField1.Name = "materialSingleLineTextField1"
         Me.materialSingleLineTextField1.PasswordChar = ControlChars.NullChar
         Me.materialSingleLineTextField1.SelectedText = ""
@@ -318,7 +318,7 @@ Partial Class MainForm
         Me.materialButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.materialButton1.Depth = 0
         Me.materialButton1.Location = New System.Drawing.Point(249, 187)
-        Me.materialButton1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialButton1.MouseState = MouseState.HOVER
         Me.materialButton1.Name = "materialButton1"
         Me.materialButton1.Primary = True
         Me.materialButton1.Size = New System.Drawing.Size(135, 36)
@@ -336,7 +336,7 @@ Partial Class MainForm
         Me.materialRadioButton1.Location = New System.Drawing.Point(0, 8)
         Me.materialRadioButton1.Margin = New System.Windows.Forms.Padding(0)
         Me.materialRadioButton1.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.materialRadioButton1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialRadioButton1.MouseState = MouseState.HOVER
         Me.materialRadioButton1.Name = "materialRadioButton1"
         Me.materialRadioButton1.Ripple = True
         Me.materialRadioButton1.Size = New System.Drawing.Size(163, 30)
@@ -350,7 +350,7 @@ Partial Class MainForm
         Me.materialTabSelector1.BaseTabControl = Me.materialTabControl1
         Me.materialTabSelector1.Depth = 0
         Me.materialTabSelector1.Location = New System.Drawing.Point(0, 64)
-        Me.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialTabSelector1.MouseState = MouseState.HOVER
         Me.materialTabSelector1.Name = "materialTabSelector1"
         Me.materialTabSelector1.Size = New System.Drawing.Size(618, 48)
         Me.materialTabSelector1.TabIndex = 17
@@ -366,7 +366,7 @@ Partial Class MainForm
         Me.materialTabControl1.Controls.Add(Me.tabPage5)
         Me.materialTabControl1.Depth = 0
         Me.materialTabControl1.Location = New System.Drawing.Point(14, 111)
-        Me.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialTabControl1.MouseState = MouseState.HOVER
         Me.materialTabControl1.Name = "materialTabControl1"
         Me.materialTabControl1.SelectedIndex = 0
         Me.materialTabControl1.Size = New System.Drawing.Size(577, 256)
@@ -395,7 +395,7 @@ Partial Class MainForm
         Me.materialSingleLineTextField3.Hint = "This is a password"
         Me.materialSingleLineTextField3.Location = New System.Drawing.Point(0, 88)
         Me.materialSingleLineTextField3.MaxLength = 32767
-        Me.materialSingleLineTextField3.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialSingleLineTextField3.MouseState = MouseState.HOVER
         Me.materialSingleLineTextField3.Name = "materialSingleLineTextField3"
         Me.materialSingleLineTextField3.PasswordChar = ControlChars.NullChar
         Me.materialSingleLineTextField3.SelectedText = ""
@@ -411,7 +411,7 @@ Partial Class MainForm
         Me.materialRaisedButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.materialRaisedButton1.Depth = 0
         Me.materialRaisedButton1.Location = New System.Drawing.Point(390, 187)
-        Me.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialRaisedButton1.MouseState = MouseState.HOVER
         Me.materialRaisedButton1.Name = "materialRaisedButton1"
         Me.materialRaisedButton1.Primary = True
         Me.materialRaisedButton1.Size = New System.Drawing.Size(179, 36)
@@ -446,7 +446,7 @@ Partial Class MainForm
         Me.materialCheckBox6.Location = New System.Drawing.Point(0, 158)
         Me.materialCheckBox6.Margin = New System.Windows.Forms.Padding(0)
         Me.materialCheckBox6.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.materialCheckBox6.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialCheckBox6.MouseState = MouseState.HOVER
         Me.materialCheckBox6.Name = "materialCheckBox6"
         Me.materialCheckBox6.Ripple = True
         Me.materialCheckBox6.Size = New System.Drawing.Size(150, 30)
@@ -466,7 +466,7 @@ Partial Class MainForm
         Me.materialCheckBox5.Location = New System.Drawing.Point(0, 128)
         Me.materialCheckBox5.Margin = New System.Windows.Forms.Padding(0)
         Me.materialCheckBox5.MouseLocation = New System.Drawing.Point(-1, -1)
-        Me.materialCheckBox5.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialCheckBox5.MouseState = MouseState.HOVER
         Me.materialCheckBox5.Name = "materialCheckBox5"
         Me.materialCheckBox5.Ripple = True
         Me.materialCheckBox5.Size = New System.Drawing.Size(150, 30)
@@ -510,7 +510,7 @@ Partial Class MainForm
         Me.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.materialListView1.Location = New System.Drawing.Point(3, 3)
         Me.materialListView1.MouseLocation = New System.Drawing.Point(0, 0)
-        Me.materialListView1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialListView1.MouseState = MouseState.HOVER
         Me.materialListView1.Name = "materialListView1"
         Me.materialListView1.OwnerDraw = True
         Me.materialListView1.Size = New System.Drawing.Size(563, 224)
@@ -556,7 +556,7 @@ Partial Class MainForm
         Me.materialContextMenuStrip1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0F)
         Me.materialContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.item1ToolStripMenuItem, Me.disabledItemToolStripMenuItem, Me.item2ToolStripMenuItem, Me.toolStripSeparator1, Me.item3ToolStripMenuItem})
         Me.materialContextMenuStrip1.Margin = New System.Windows.Forms.Padding(16, 8, 16, 8)
-        Me.materialContextMenuStrip1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialContextMenuStrip1.MouseState = MouseState.HOVER
         Me.materialContextMenuStrip1.Name = "materialContextMenuStrip1"
         Me.materialContextMenuStrip1.Size = New System.Drawing.Size(166, 130)
         '
@@ -613,7 +613,7 @@ Partial Class MainForm
         '
         Me.materialProgressBar1.Depth = 0
         Me.materialProgressBar1.Location = New System.Drawing.Point(16, 208)
-        Me.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER
+        Me.materialProgressBar1.MouseState = MouseState.HOVER
         Me.materialProgressBar1.Name = "materialProgressBar1"
         Me.materialProgressBar1.Size = New System.Drawing.Size(534, 5)
         Me.materialProgressBar1.TabIndex = 0
@@ -621,74 +621,74 @@ Partial Class MainForm
         '
         ' MainForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6F, 13F)
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.BackColor = System.Drawing.Color.White
-		Me.ClientSize = New System.Drawing.Size(610, 429)
-		Me.ContextMenuStrip = Me.materialContextMenuStrip1
-		Me.Controls.Add(Me.materialFlatButton3)
-		Me.Controls.Add(Me.materialFlatButton2)
-		Me.Controls.Add(Me.materialTabSelector1)
-		Me.Controls.Add(Me.materialTabControl1)
-		Me.Controls.Add(Me.materialDivider1)
-		Me.Controls.Add(Me.materialFlatButton1)
-		Me.Name = "MainForm"
-		Me.Text = "MaterialSkin Demo"
-		Me.materialTabControl1.ResumeLayout(False)
-		Me.tabPage1.ResumeLayout(False)
-		Me.tabPage2.ResumeLayout(False)
-		Me.tabPage2.PerformLayout()
-		Me.tabPage3.ResumeLayout(False)
-		Me.tabPage3.PerformLayout()
-		Me.tabPage4.ResumeLayout(False)
-		Me.tabPage5.ResumeLayout(False)
-		Me.materialContextMenuStrip1.ResumeLayout(False)
-		Me.ResumeLayout(False)
-		Me.PerformLayout()
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0F, 13.0F)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(610, 429)
+        Me.ContextMenuStrip = Me.materialContextMenuStrip1
+        Me.Controls.Add(Me.materialFlatButton3)
+        Me.Controls.Add(Me.materialFlatButton2)
+        Me.Controls.Add(Me.materialTabSelector1)
+        Me.Controls.Add(Me.materialTabControl1)
+        Me.Controls.Add(Me.materialDivider1)
+        Me.Controls.Add(Me.materialFlatButton1)
+        Me.Name = "MainForm"
+        Me.Text = "MaterialSkin Demo"
+        Me.materialTabControl1.ResumeLayout(False)
+        Me.tabPage1.ResumeLayout(False)
+        Me.tabPage2.ResumeLayout(False)
+        Me.tabPage2.PerformLayout()
+        Me.tabPage3.ResumeLayout(False)
+        Me.tabPage3.PerformLayout()
+        Me.tabPage4.ResumeLayout(False)
+        Me.tabPage5.ResumeLayout(False)
+        Me.materialContextMenuStrip1.ResumeLayout(False)
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-	End Sub
+    End Sub
 
-	#End Region
+#End Region
 
-	Private materialButton1 As MaterialSkin.Controls.MaterialRaisedButton
-	Private materialFlatButton1 As MaterialSkin.Controls.MaterialFlatButton
-	Private materialSingleLineTextField1 As MaterialSkin.Controls.MaterialSingleLineTextField
-	Private materialSingleLineTextField2 As MaterialSkin.Controls.MaterialSingleLineTextField
-	Private materialCheckbox1 As MaterialSkin.Controls.MaterialCheckBox
-	Private materialCheckbox2 As MaterialSkin.Controls.MaterialCheckBox
-	Private materialCheckbox3 As MaterialSkin.Controls.MaterialCheckBox
-	Private materialCheckbox4 As MaterialSkin.Controls.MaterialCheckBox
-	Private materialRadioButton1 As MaterialSkin.Controls.MaterialRadioButton
-	Private materialRadioButton2 As MaterialRadioButton
-	Private materialRadioButton3 As MaterialRadioButton
-	Private materialFlatButton2 As MaterialFlatButton
-	Private materialLabel1 As MaterialLabel
-	Private materialRadioButton4 As MaterialRadioButton
-	Private materialDivider1 As MaterialDivider
-	Private materialTabSelector1 As MaterialTabSelector
-	Private materialTabControl1 As MaterialTabControl
-	Private tabPage1 As System.Windows.Forms.TabPage
-	Private tabPage2 As System.Windows.Forms.TabPage
-	Private tabPage3 As System.Windows.Forms.TabPage
-	Private materialCheckBox5 As MaterialCheckBox
-	Private materialContextMenuStrip1 As MaterialContextMenuStrip
-	Private item1ToolStripMenuItem As MaterialSkin.Controls.MaterialToolStripMenuItem
-	Private subItem1ToolStripMenuItem As MaterialSkin.Controls.MaterialToolStripMenuItem
-	Private subItem2ToolStripMenuItem As MaterialSkin.Controls.MaterialToolStripMenuItem
-	Private item2ToolStripMenuItem As MaterialSkin.Controls.MaterialToolStripMenuItem
-	Private item3ToolStripMenuItem As MaterialSkin.Controls.MaterialToolStripMenuItem
-	Private toolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Private materialButton1 As Controls.MaterialRaisedButton
+    Private materialFlatButton1 As Controls.MaterialFlatButton
+    Private materialSingleLineTextField1 As Controls.MaterialSingleLineTextField
+    Private materialSingleLineTextField2 As Controls.MaterialSingleLineTextField
+    Private materialCheckbox1 As Controls.MaterialCheckBox
+    Private materialCheckbox2 As Controls.MaterialCheckBox
+    Private materialCheckbox3 As Controls.MaterialCheckBox
+    Private materialCheckbox4 As Controls.MaterialCheckBox
+    Private materialRadioButton1 As Controls.MaterialRadioButton
+    Private materialRadioButton2 As MaterialRadioButton
+    Private materialRadioButton3 As MaterialRadioButton
+    Private materialFlatButton2 As MaterialFlatButton
+    Private materialLabel1 As MaterialLabel
+    Private materialRadioButton4 As MaterialRadioButton
+    Private materialDivider1 As MaterialDivider
+    Private materialTabSelector1 As MaterialTabSelector
+    Private materialTabControl1 As MaterialTabControl
+    Private tabPage1 As System.Windows.Forms.TabPage
+    Private tabPage2 As System.Windows.Forms.TabPage
+    Private tabPage3 As System.Windows.Forms.TabPage
+    Private materialCheckBox5 As MaterialCheckBox
+    Private materialContextMenuStrip1 As MaterialContextMenuStrip
+    Private item1ToolStripMenuItem As Controls.MaterialToolStripMenuItem
+    Private subItem1ToolStripMenuItem As Controls.MaterialToolStripMenuItem
+    Private subItem2ToolStripMenuItem As Controls.MaterialToolStripMenuItem
+    Private item2ToolStripMenuItem As Controls.MaterialToolStripMenuItem
+    Private item3ToolStripMenuItem As Controls.MaterialToolStripMenuItem
+    Private toolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
 	Private disabledItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 	Private materialCheckBox6 As MaterialCheckBox
 	Private materialRaisedButton1 As MaterialRaisedButton
 	Private materialFlatButton3 As MaterialFlatButton
 	Private materialSingleLineTextField3 As MaterialSingleLineTextField
-	Private tabPage4 As TabPage
-	Private materialListView1 As MaterialListView
+    Private tabPage4 As System.Windows.Forms.TabPage
+    Private materialListView1 As MaterialListView
 	Private columnHeader1 As ColumnHeader
 	Private columnHeader2 As ColumnHeader
 	Private columnHeader3 As ColumnHeader
 	Private columnHeader4 As ColumnHeader
-	Private tabPage5 As TabPage
-	Private materialProgressBar1 As MaterialProgressBar
+    Private tabPage5 As System.Windows.Forms.TabPage
+    Private materialProgressBar1 As MaterialProgressBar
 End Class

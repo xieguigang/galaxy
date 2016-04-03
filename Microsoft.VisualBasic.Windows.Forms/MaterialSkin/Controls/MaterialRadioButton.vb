@@ -3,83 +3,64 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Drawing.Text
 Imports System.Windows.Forms
-Imports MaterialSkin.Animations
+Imports Microsoft.VisualBasic.Windows.Forms.Animations
 
 Namespace Controls
-	Public Class MaterialRadioButton
-		Inherits RadioButton
-		Implements IMaterialControl
-		<Browsable(False)> _
-		Public Property Depth() As Integer Implements IMaterialControl.Depth
-			Get
-				Return m_Depth
-			End Get
-			Set
-				m_Depth = Value
-			End Set
-		End Property
-		Private m_Depth As Integer
-		<Browsable(False)> _
-		Public ReadOnly Property SkinManager() As MaterialSkinManager Implements IMaterialControl.SkinManager
-			Get
-				Return MaterialSkinManager.Instance
-			End Get
-		End Property
-		<Browsable(False)> _
-		Public Property MouseState() As MouseState Implements IMaterialControl.MouseState
-			Get
-				Return m_MouseState
-			End Get
-			Set
-				m_MouseState = Value
-			End Set
-		End Property
-		Private m_MouseState As MouseState
-		<Browsable(False)> _
-		Public Property MouseLocation() As Point
-			Get
-				Return m_MouseLocation
-			End Get
-			Set
-				m_MouseLocation = Value
-			End Set
-		End Property
-		Private m_MouseLocation As Point
+    Public Class MaterialRadioButton
+        Inherits RadioButton
+        Implements IMaterialControl
 
-		Private m_ripple As Boolean
-		<Category("Behavior")> _
-		Public Property Ripple() As Boolean
-			Get
-				Return m_ripple
-			End Get
-			Set
-				m_ripple = value
-				AutoSize = AutoSize
-				'Make AutoSize directly set the bounds.
-				If value Then
-					Margin = New Padding(0)
-				End If
+        <Browsable(False)>
+        Public Property Depth() As Integer Implements IMaterialControl.Depth
 
-				Invalidate()
-			End Set
-		End Property
+        <Browsable(False)>
+        Public ReadOnly Property SkinManager() As MaterialSkinManager Implements IMaterialControl.SkinManager
+            Get
+                Return MaterialSkinManager.Instance
+            End Get
+        End Property
 
-		' animation managers
-		Private ReadOnly animationManager As AnimationManager
-		Private ReadOnly rippleAnimationManager As AnimationManager
+        <Browsable(False)>
+        Public Property MouseState() As MouseState Implements IMaterialControl.MouseState
 
-		' size related variables which should be recalculated onsizechanged
-		Private radioButtonBounds As Rectangle
-		Private boxOffset As Integer
+        <Browsable(False)>
+        Public Property MouseLocation() As Point
 
-		' size constants
-		Private Const RADIOBUTTON_SIZE As Integer = 19
-		Private Const RADIOBUTTON_SIZE_HALF As Integer = RADIOBUTTON_SIZE \ 2
-		Private Const RADIOBUTTON_OUTER_CIRCLE_WIDTH As Integer = 2
-		Private Const RADIOBUTTON_INNER_CIRCLE_SIZE As Integer = RADIOBUTTON_SIZE - (2 * RADIOBUTTON_OUTER_CIRCLE_WIDTH)
+        Private m_ripple As Boolean
 
-		Public Sub New()
-			SetStyle(ControlStyles.DoubleBuffer Or ControlStyles.OptimizedDoubleBuffer, True)
+        <Category("Behavior")>
+        Public Property Ripple() As Boolean
+            Get
+                Return m_ripple
+            End Get
+            Set
+                m_ripple = Value
+                AutoSize = AutoSize
+                'Make AutoSize directly set the bounds.
+                If Value Then
+                    Margin = New Padding(0)
+                End If
+
+                Invalidate()
+            End Set
+        End Property
+
+        ' animation managers
+        Private ReadOnly animationManager As AnimationManager
+        Private ReadOnly rippleAnimationManager As AnimationManager
+
+        ' size related variables which should be recalculated onsizechanged
+        Private radioButtonBounds As Rectangle
+        Private boxOffset As Integer
+
+        ' size constants
+        Private Const RADIOBUTTON_SIZE As Integer = 19
+        Private Const RADIOBUTTON_SIZE_HALF As Integer = RADIOBUTTON_SIZE \ 2
+        Private Const RADIOBUTTON_OUTER_CIRCLE_WIDTH As Integer = 2
+        Private Const RADIOBUTTON_INNER_CIRCLE_SIZE As Integer = RADIOBUTTON_SIZE - (2 * RADIOBUTTON_OUTER_CIRCLE_WIDTH)
+
+        Public Sub New()
+            SetStyle(ControlStyles.DoubleBuffer Or ControlStyles.OptimizedDoubleBuffer, True)
 
             animationManager = New AnimationManager() With {
              .AnimationType = AnimationType.EaseInOut,
@@ -185,14 +166,10 @@ Namespace Controls
             End If
 
             MouseState = MouseState.OUT
-            AddHandler MouseEnter, Sub(sender, args)
-                                       MouseState = MouseState.HOVER
-
-                                   End Sub
+            AddHandler MouseEnter, Sub(sender, args) MouseState = MouseState.HOVER
             AddHandler MouseLeave, Sub(sender, args)
                                        MouseLocation = New Point(-1, -1)
                                        MouseState = MouseState.OUT
-
                                    End Sub
             AddHandler MouseDown, Sub(sender, args)
                                       MouseState = MouseState.DOWN
@@ -201,17 +178,14 @@ Namespace Controls
                                           rippleAnimationManager.SecondaryIncrement = 0
                                           rippleAnimationManager.StartNewAnimation(AnimationDirection.InOutIn, New Object() {Checked})
                                       End If
-
                                   End Sub
             AddHandler MouseUp, Sub(sender, args)
                                     MouseState = MouseState.HOVER
                                     rippleAnimationManager.SecondaryIncrement = 0.08
-
                                 End Sub
             AddHandler MouseMove, Sub(sender, args)
                                       MouseLocation = args.Location
                                       Cursor = If(IsMouseInCheckArea(), Cursors.Hand, Cursors.[Default])
-
                                   End Sub
         End Sub
     End Class

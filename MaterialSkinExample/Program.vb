@@ -3,7 +3,6 @@ Imports System.Drawing
 Imports System.Linq
 Imports System.Threading.Tasks
 Imports System.Windows.Forms
-Imports MaterialSkin
 
 NotInheritable Class Program
 	Private Sub New()

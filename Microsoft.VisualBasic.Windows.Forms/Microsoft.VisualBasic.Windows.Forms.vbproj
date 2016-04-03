@@ -5,12 +5,13 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{21D7FD22-6AED-4E65-B2EF-F9F5565CF80E}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <StartupObject>Microsoft.VisualBasic.Windows.Forms.My.MyApplication</StartupObject>
+    <OutputType>Library</OutputType>
+    <StartupObject>
+    </StartupObject>
     <RootNamespace>Microsoft.VisualBasic.Windows.Forms</RootNamespace>
     <AssemblyName>Microsoft.VisualBasic.Windows.Forms</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
+    <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -104,13 +105,6 @@
     <Compile Include="Button.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Form\API.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +137,56 @@
     <Compile Include="Gtk\CSSEngine\Models\CSSFile.vb" />
     <Compile Include="Gtk\CSSEngine\Serialization\Reflector.vb" />
     <Compile Include="Gtk\CSSEngine\Serialization\Reflections.vb" />
+    <Compile Include="MaterialSkin\Animations\AnimationDirection.vb" />
+    <Compile Include="MaterialSkin\Animations\AnimationManager.vb" />
+    <Compile Include="MaterialSkin\Animations\Animations.vb" />
+    <Compile Include="MaterialSkin\Colors\ColorExtension.vb" />
+    <Compile Include="MaterialSkin\Colors\ColorScheme.vb" />
+    <Compile Include="MaterialSkin\Colors\Colors\Accent.vb" />
+    <Compile Include="MaterialSkin\Colors\Colors\Colors.vb" />
+    <Compile Include="MaterialSkin\Colors\Colors\TextShade.vb" />
+    <Compile Include="MaterialSkin\Controls\MaterialCheckBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialContextMenuStrip.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialDivider.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialFlatButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialLabel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialListView.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialProgressBar.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialRadioButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialRaisedButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialSingleLineTextField.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialTabControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\Controls\MaterialTabSelector.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\DrawHelper.vb" />
+    <Compile Include="MaterialSkin\IMaterialControl.vb" />
+    <Compile Include="MaterialSkin\MaterialSkinManager.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -185,9 +229,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -205,6 +246,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="MaterialSkin\LICENSE" />
+    <None Include="MaterialSkin\Resources\Roboto-Medium.ttf" />
+    <None Include="MaterialSkin\Resources\Roboto-Regular.ttf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -222,6 +266,7 @@
       <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
