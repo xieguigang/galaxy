@@ -98,7 +98,11 @@
     <Compile Include="Animations\AnimationDirection.vb" />
     <Compile Include="Animations\AnimationManager.vb" />
     <Compile Include="Animations\Animations.vb" />
-    <Compile Include="ColorScheme.vb" />
+    <Compile Include="Colors\ColorScheme.vb" />
+    <Compile Include="Colors\ColorExtension.vb" />
+    <Compile Include="Colors\Colors\Accent.vb" />
+    <Compile Include="Colors\Colors\TextShade.vb" />
+    <Compile Include="Colors\Colors\Colors.vb" />
     <Compile Include="Controls\MaterialCheckBox.vb">
       <SubType>Component</SubType>
     </Compile>
