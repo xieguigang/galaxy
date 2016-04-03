@@ -58,32 +58,34 @@ Namespace Animations
         End Sub
 
         Private Sub AnimationTimerOnTick(sender As Object, eventArgs As EventArgs)
-            For i As Integer = 0 To animationProgresses.Count - 1
-                UpdateProgress(i)
+            SyncLock animationProgresses
+                For i As Integer = 0 To animationProgresses.Count - 1
+                    UpdateProgress(i)
 
-                If Not Singular Then
-                    If (animationDirections(i) = AnimationDirection.InOutIn AndAlso animationProgresses(i) = MAX_VALUE) Then
-                        animationDirections(i) = AnimationDirection.InOutOut
-                    ElseIf (animationDirections(i) = AnimationDirection.InOutRepeatingIn AndAlso animationProgresses(i) = MIN_VALUE) Then
-                        animationDirections(i) = AnimationDirection.InOutRepeatingOut
-                    ElseIf (animationDirections(i) = AnimationDirection.InOutRepeatingOut AndAlso animationProgresses(i) = MIN_VALUE) Then
-                        animationDirections(i) = AnimationDirection.InOutRepeatingIn
-                    ElseIf (animationDirections(i) = AnimationDirection.[In] AndAlso animationProgresses(i) = MAX_VALUE) OrElse (animationDirections(i) = AnimationDirection.Out AndAlso animationProgresses(i) = MIN_VALUE) OrElse (animationDirections(i) = AnimationDirection.InOutOut AndAlso animationProgresses(i) = MIN_VALUE) Then
-                        animationProgresses.RemoveAt(i)
-                        animationSources.RemoveAt(i)
-                        animationDirections.RemoveAt(i)
-                        animationDatas.RemoveAt(i)
+                    If Not Singular Then
+                        If (animationDirections(i) = AnimationDirection.InOutIn AndAlso animationProgresses(i) = MAX_VALUE) Then
+                            animationDirections(i) = AnimationDirection.InOutOut
+                        ElseIf (animationDirections(i) = AnimationDirection.InOutRepeatingIn AndAlso animationProgresses(i) = MIN_VALUE) Then
+                            animationDirections(i) = AnimationDirection.InOutRepeatingOut
+                        ElseIf (animationDirections(i) = AnimationDirection.InOutRepeatingOut AndAlso animationProgresses(i) = MIN_VALUE) Then
+                            animationDirections(i) = AnimationDirection.InOutRepeatingIn
+                        ElseIf (animationDirections(i) = AnimationDirection.[In] AndAlso animationProgresses(i) = MAX_VALUE) OrElse (animationDirections(i) = AnimationDirection.Out AndAlso animationProgresses(i) = MIN_VALUE) OrElse (animationDirections(i) = AnimationDirection.InOutOut AndAlso animationProgresses(i) = MIN_VALUE) Then
+                            animationProgresses.RemoveAt(i)
+                            animationSources.RemoveAt(i)
+                            animationDirections.RemoveAt(i)
+                            animationDatas.RemoveAt(i)
+                        End If
+                    Else
+                        If (animationDirections(i) = AnimationDirection.InOutIn AndAlso animationProgresses(i) = MAX_VALUE) Then
+                            animationDirections(i) = AnimationDirection.InOutOut
+                        ElseIf (animationDirections(i) = AnimationDirection.InOutRepeatingIn AndAlso animationProgresses(i) = MAX_VALUE) Then
+                            animationDirections(i) = AnimationDirection.InOutRepeatingOut
+                        ElseIf (animationDirections(i) = AnimationDirection.InOutRepeatingOut AndAlso animationProgresses(i) = MIN_VALUE) Then
+                            animationDirections(i) = AnimationDirection.InOutRepeatingIn
+                        End If
                     End If
-                Else
-                    If (animationDirections(i) = AnimationDirection.InOutIn AndAlso animationProgresses(i) = MAX_VALUE) Then
-                        animationDirections(i) = AnimationDirection.InOutOut
-                    ElseIf (animationDirections(i) = AnimationDirection.InOutRepeatingIn AndAlso animationProgresses(i) = MAX_VALUE) Then
-                        animationDirections(i) = AnimationDirection.InOutRepeatingOut
-                    ElseIf (animationDirections(i) = AnimationDirection.InOutRepeatingOut AndAlso animationProgresses(i) = MIN_VALUE) Then
-                        animationDirections(i) = AnimationDirection.InOutRepeatingIn
-                    End If
-                End If
-            Next
+                Next
+            End SyncLock
 
             RaiseEvent OnAnimationProgress(Me)
         End Sub
@@ -135,16 +137,22 @@ Namespace Animations
         End Sub
 
         Public Sub UpdateProgress(index As Integer)
-            Select Case animationDirections(index)
-                Case AnimationDirection.InOutRepeatingIn, AnimationDirection.InOutIn, AnimationDirection.[In]
-                    IncrementProgress(index)
-                    Exit Select
-                Case AnimationDirection.InOutRepeatingOut, AnimationDirection.InOutOut, AnimationDirection.Out
-                    DecrementProgress(index)
-                    Exit Select
-                Case Else
-                    Throw New Exception("No AnimationDirection has been set")
-            End Select
+            SyncLock animationDirections
+                If index >= animationDirections.Count Then
+                    Return
+                End If
+
+                Select Case animationDirections(index)
+                    Case AnimationDirection.InOutRepeatingIn, AnimationDirection.InOutIn, AnimationDirection.[In]
+                        IncrementProgress(index)
+                        Exit Select
+                    Case AnimationDirection.InOutRepeatingOut, AnimationDirection.InOutOut, AnimationDirection.Out
+                        DecrementProgress(index)
+                        Exit Select
+                    Case Else
+                        Throw New Exception("No AnimationDirection has been set")
+                End Select
+            End SyncLock
         End Sub
 
         Private Sub IncrementProgress(index As Integer)

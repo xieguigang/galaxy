@@ -31,6 +31,10 @@ Public Partial Class MainForm
             Dim item = New ListViewItem(version)
             materialListView1.Items.Add(item)
         Next
+        For Each version As String() In data.RowIterator
+            Dim item = New ListViewItem(version)
+            materialListView1.Items.Add(item)
+        Next
     End Sub
 
 	Private Sub materialButton1_Click(sender As Object, e As EventArgs)
