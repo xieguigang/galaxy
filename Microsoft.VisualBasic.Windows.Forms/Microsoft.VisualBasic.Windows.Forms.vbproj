@@ -226,6 +226,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Gtk\CSSEngine\CSSFile.vb" />
+    <Compile Include="PlugIns\MenuAPI.vb" />
     <Compile Include="PlugIns\ReflectionAPI.vb" />
     <Compile Include="PlugIns\PlugInCommand.vb" />
     <Compile Include="PlugIns\PlugInEntry.vb" />

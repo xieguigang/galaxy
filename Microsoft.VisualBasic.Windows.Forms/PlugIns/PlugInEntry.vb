@@ -14,14 +14,30 @@ Namespace PlugIns
     <AttributeUsage(AttributeTargets.Class, AllowMultiple:=False, Inherited:=True)>
     Public Class PlugInEntry
 
-        Protected Friend IconImage As Image
-        Protected Friend MainModule As Type
-        Protected Friend EntryList As EntryFlag()
-        Protected Friend AssemblyPath As String
-        Protected Friend Assembly As Assembly
+        Public ReadOnly Property IconImage As Image
+        Public ReadOnly Property MainModule As Type
+        Public ReadOnly Property EntryList As EntryFlag()
+        Public ReadOnly Property AssemblyPath As String
+            Get
+                Return Assembly.Location
+            End Get
+        End Property
+        Public ReadOnly Property Assembly As Assembly
 
-        Public ReadOnly Property ShowOnMenu As Boolean = True
         Public ReadOnly Property base As Attributes.PlugInEntry
+
+        Sub New(base As Attributes.PlugInEntry, type As Type, assm As Assembly)
+            Me.base = base
+            Me.MainModule = type
+            Me.Assembly = assm
+            Me.EntryList = LinqAPI.Exec(Of EntryFlag) <=
+                From method As MethodInfo
+                In type.GetMethods
+                Let attrs As Object() = method.GetCustomAttributes(Attributes.EntryFlag.TypeId, False)
+                Where 1 = attrs.Length
+                Let attr As Attributes.EntryFlag = DirectCast(attrs(0), Attributes.EntryFlag)
+                Select New EntryFlag(attr, method)
+        End Sub
 
         Public Function GetEntry(EntryType As EntryTypes) As EntryFlag
             Return LinqAPI.DefaultFirst(Of EntryFlag) <=
@@ -29,11 +45,6 @@ Namespace PlugIns
                 In EntryList
                 Where entry.EntryType = EntryType
                 Select entry
-        End Function
-
-        Friend Function Initialize([Module] As Type) As PlugInEntry
-            MainModule = [Module]
-            Return Me
         End Function
 
         Public Overrides Function ToString() As String

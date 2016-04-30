@@ -24,7 +24,7 @@ Namespace PlugIns
                                 Select Path).ToArray 'Get the load plugin file list, ignore the plugin file which is in disabled plugin list.
 
             Call PluginManager.PlugInList.AddRange((From PlugInAssembly As String In LoadFileList Select PlugIns.LoadPlugIn(Menu, PlugInAssembly)).ToArray)
-            Call PluginManager.PlugInList.AddRange((From PlugInAssembly As String In PluginManager.DisabledPlugIns Select PlugInLoader.LoadMainModule(PlugInAssembly)).ToArray)
+            Call PluginManager.PlugInList.AddRange((From PlugInAssembly As String In PluginManager.DisabledPlugIns Select PlugInLoader.LoadMainModules(PlugInAssembly)).ToArray)
             Call PluginManager.PlugInList.RemoveAll(Function(PlugInEntry) PlugInEntry Is Nothing)
 
             Return PluginManager

@@ -1,12 +1,20 @@
 ﻿Imports System.Windows.Forms
 Imports System.ComponentModel
 Imports System.Reflection
+Imports Microsoft.VisualBasic.Windows.Forms.PlugIns.Attributes
+Imports Microsoft.VisualBasic.Language
 
 Namespace PlugIns
 
     Public NotInheritable Class PlugInLoader
 
-        Public Menu As MenuStrip, AssemblyPath As String
+        Public ReadOnly Property Menu As MenuStrip
+        Public ReadOnly Property DLL As String
+
+        Sub New(menu As MenuStrip, dll As String)
+            Me.Menu = menu
+            Me.DLL = dll
+        End Sub
 
         ''' <summary>
         ''' 加载插件命令
@@ -14,8 +22,11 @@ Namespace PlugIns
         ''' <returns>返回成功加载的命令的数目</returns>
         ''' <remarks></remarks>
         Public Function Load() As PlugInEntry
-            Dim PlugInEntry = LoadMainModule(AssemblyPath)  'Get the plugin entry module.(获取插件主模块)
-            If PlugInEntry Is Nothing Then Return Nothing
+            Dim PlugInEntry = LoadMainModules(DLL)  'Get the plugin entry module.(获取插件主模块)
+
+            If PlugInEntry Is Nothing Then
+                Return Nothing
+            End If
 
             Dim Initialize As EntryFlag = PlugInEntry.GetEntry(EntryTypes.Initialize)
             Dim Target As System.Windows.Forms.Form = Menu.FindForm
@@ -83,61 +94,23 @@ Namespace PlugIns
             End If
         End Function
 
-        Protected Friend Shared Function LoadMainModule(dll As String) As PlugInEntry
+        Protected Friend Shared Function LoadMainModules(dll As String) As PlugInEntry()
             If Not dll.FileExists Then
                 Return Nothing
             Else
                 dll = FileIO.FileSystem.GetFileInfo(dll).FullName
             End If
 
-            Dim Assembly As Assembly = Assembly.LoadFile(dll)
+            Dim assembly As Assembly = Assembly.LoadFile(dll)
             Dim EntryType As Type = GetType(PlugInEntry)
-            Dim EntryFlag = GetType(EntryFlag)
-            Dim FindModule = From [Module] As Type In Assembly.DefinedTypes
-                             Let attributes As Object() = [Module].GetCustomAttributes(EntryType, False)
-                             Where attributes.Count = 1
-                             Select DirectCast(attributes(0), PlugInEntry).Initialize([Module]) '
-            FindModule = FindModule.ToArray
-            If FindModule.Count = 0 Then
-                Return Nothing
-            Else
-                Dim MainModule = FindModule.First
-                Dim EntryFlags = From Method As MethodInfo In MainModule.MainModule.GetMethods
-                                 Let attributes = Method.GetCustomAttributes(EntryFlag, False)
-                                 Where 1 = attributes.Count
-                                 Select DirectCast(attributes(0), EntryFlag).Initialize(Target:=Method) '
-                MainModule.AssemblyPath = dll
-                MainModule.EntryList = EntryFlags.ToArray
-                MainModule.Assembly = Assembly
-                Return MainModule
-            End If
-        End Function
-
-        ''' <summary>
-        ''' Recursive function for create the menu item for each plugin command.(递归的添加菜单项)
-        ''' </summary>
-        ''' <param name="MenuRoot"></param>
-        ''' <param name="Path"></param>
-        ''' <param name="Name"></param>
-        ''' <param name="p"></param>
-        ''' <returns></returns>
-        ''' <remarks></remarks>
-        Public Shared Function AddCommand(MenuRoot As ToolStripMenuItem, Path As String(), Name As String, p As Integer) As ToolStripMenuItem
-            Dim NewItem As System.Func(Of String, ToolStripMenuItem) =
-            Function(sName As String) As ToolStripMenuItem
-                Dim MenuItem = New ToolStripMenuItem() With {.Text = sName}
-                Call MenuRoot.DropDownItems.Add(MenuItem)
-                Return MenuItem
-            End Function
-
-            If p = Path.Count Then
-                Return NewItem(Name)
-            Else
-                Dim LQuery = From menuItem As ToolStripMenuItem In MenuRoot.DropDownItems Where String.Equals(menuItem.Text, Path(p)) Select menuItem '
-                Dim Items = LQuery.ToArray, Item As ToolStripMenuItem
-                If Items.Count = 0 Then Item = NewItem(Path(p)) Else Item = Items.First
-                Return AddCommand(Item, Path, Name, p + 1)
-            End If
+            Dim FindModule As PlugInEntry() =
+                LinqAPI.Exec(Of PlugInEntry) <= From type As Type
+                                                In assembly.DefinedTypes
+                                                Let attrs As Object() = type.GetCustomAttributes(EntryType, False)
+                                                Where attrs.Length = 1
+                                                Let attr As Attributes.PlugInEntry = DirectCast(attrs(Scan0), Attributes.PlugInEntry)
+                                                Select New PlugInEntry(attr, type, assembly) '
+            Return FindModule
         End Function
     End Class
 End Namespace

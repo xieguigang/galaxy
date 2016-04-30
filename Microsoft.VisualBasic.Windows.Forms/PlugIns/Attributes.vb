@@ -61,6 +61,8 @@ Namespace PlugIns.Attributes
         Public Overrides Function ToString() As String
             Return Type.ToString
         End Function
+
+        Public Overloads Shared ReadOnly Property TypeId As Type = GetType(EntryFlag)
     End Class
 
     ''' <summary>

@@ -14,13 +14,10 @@ Namespace PlugIns
         ''' <returns>返回成功加载的命令的数目</returns>
         ''' <remarks></remarks>
         Public Function LoadPlugIn(menu As MenuStrip, assem As String) As PlugInEntry
-            If Not FileIO.FileSystem.FileExists(assem) Then 'When the filesystem object can not find the assembly file, then this loading operation was abort.
+            If Not FileIO.FileSystem.FileExists(assem) Then ' When the filesystem object can not find the assembly file, then this loading operation was abort.
                 Return Nothing
             Else
-                Return New PlugInLoader() With {
-                    .Menu = menu,
-                    .AssemblyPath = IO.Path.GetFullPath(assem)  ' Assembly.LoadFile required full path of a program assembly file.
-                }.Load
+                Return New PlugInLoader(menu, IO.Path.GetFullPath(assem)).Load ' Assembly.LoadFile required full path of a program assembly file.
             End If
         End Function
 
