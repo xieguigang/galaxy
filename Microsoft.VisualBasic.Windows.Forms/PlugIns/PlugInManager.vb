@@ -4,6 +4,7 @@ Imports System.Drawing
 Imports System.Xml.Serialization
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.ComponentModel
+Imports Microsoft.VisualBasic.Language.UnixBash
 
 Namespace PlugIns
 
@@ -15,23 +16,29 @@ Namespace PlugIns
         ''' <remarks></remarks>
         <XmlElement> Public Property DisabledPlugIns As List(Of String)
 
-        Protected Friend PlugInList As List(Of PlugInEntry) = New List(Of PlugInEntry)
+        Protected PlugInList As New List(Of PlugInEntry)
 
         Public Shared Function LoadPlugins(Menu As MenuStrip, pluginDIR As String, ProfileXml As String) As PlugInManager
             Dim PluginManager As PlugInManager = PlugInManager.Load(ProfileXml)
-            Dim LoadFileList = (From Path As String In FileIO.FileSystem.GetFiles(pluginDIR, FileIO.SearchOption.SearchTopLevelOnly, "*.dll", "*.exe")
-                                Where PluginManager.DisabledPlugIns.IndexOf(Path) = -1
-                                Select Path).ToArray 'Get the load plugin file list, ignore the plugin file which is in disabled plugin list.
+            Dim LoadFileList As String() =
+                LinqAPI.Exec(Of String) <= From path As String
+                                           In ls - l - wildcards("*.dll", "*.exe") <= pluginDIR
+                                           Where PluginManager.DisabledPlugIns.IndexOf(path) = -1
+                                           Select path ' Get the load plugin file list, ignore the plugin file which is in disabled plugin list.
 
-            Call PluginManager.PlugInList.AddRange((From PlugInAssembly As String In LoadFileList Select PlugIns.LoadPlugIn(Menu, PlugInAssembly)).ToArray)
-            Call PluginManager.PlugInList.AddRange((From PlugInAssembly As String In PluginManager.DisabledPlugIns Select PlugInLoader.LoadMainModules(PlugInAssembly)).ToArray)
-            Call PluginManager.PlugInList.RemoveAll(Function(PlugInEntry) PlugInEntry Is Nothing)
+            PluginManager.PlugInList += From PlugInAssembly As String
+                                        In LoadFileList
+                                        Select PlugIns.LoadPlugIn(Menu, PlugInAssembly)
+            PluginManager.PlugInList += From PlugInAssembly As String
+                                        In PluginManager.DisabledPlugIns
+                                        Select PlugInLoader.LoadMainModules(PlugInAssembly)
+            PluginManager.PlugInList -= Function(PlugInEntry) PlugInEntry Is Nothing
 
             Return PluginManager
         End Function
 
-        Public Function IsDisabled(AssemblyPath As String) As Boolean
-            Return DisabledPlugIns.IndexOf(AssemblyPath) > -1
+        Public Function IsDisabled(path As String) As Boolean
+            Return DisabledPlugIns.IndexOf(path) > -1
         End Function
 
         Public Sub ShowDialog(Optional ShowWarnDialog As Boolean = True)
@@ -71,12 +78,13 @@ Namespace PlugIns
 
         Public Sub LoadPlugIns(ListView As ListView, ImageList As ImageList)
             Dim Index As Integer
+
             ListView.LargeImageList = ImageList
             ListView.SmallImageList = ImageList
 
             For Each PlugIn As PlugInEntry In PlugInList
                 Dim Icon = CType(PlugIn.IconImage, Bitmap)
-                Dim Item As ListViewItem = New ListViewItem({PlugIn.Name, PlugIn.Description, PlugIn.AssemblyPath})
+                Dim Item As ListViewItem = New ListViewItem({PlugIn.base.Name, PlugIn.base.Description, PlugIn.AssemblyPath})
                 Item.Checked = Not IsDisabled(PlugIn.AssemblyPath)
 
                 Call ListView.Items.Add(Item)
