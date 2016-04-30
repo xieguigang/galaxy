@@ -83,12 +83,14 @@ Namespace PlugIns
             End If
         End Function
 
-        Protected Friend Shared Function LoadMainModule(AssemblyPath As String) As PlugInEntry
-            If Not FileIO.FileSystem.FileExists(AssemblyPath) Then
+        Protected Friend Shared Function LoadMainModule(dll As String) As PlugInEntry
+            If Not dll.FileExists Then
                 Return Nothing
+            Else
+                dll = FileIO.FileSystem.GetFileInfo(dll).FullName
             End If
 
-            Dim Assembly As Assembly = Assembly.LoadFile(FileIO.FileSystem.GetFileInfo(AssemblyPath).FullName)
+            Dim Assembly As Assembly = Assembly.LoadFile(dll)
             Dim EntryType As Type = GetType(PlugInEntry)
             Dim EntryFlag = GetType(EntryFlag)
             Dim FindModule = From [Module] As Type In Assembly.DefinedTypes
@@ -104,7 +106,7 @@ Namespace PlugIns
                                  Let attributes = Method.GetCustomAttributes(EntryFlag, False)
                                  Where 1 = attributes.Count
                                  Select DirectCast(attributes(0), EntryFlag).Initialize(Target:=Method) '
-                MainModule.AssemblyPath = AssemblyPath
+                MainModule.AssemblyPath = dll
                 MainModule.EntryList = EntryFlags.ToArray
                 MainModule.Assembly = Assembly
                 Return MainModule

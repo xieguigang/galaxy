@@ -8,33 +8,22 @@ Namespace PlugIns
     ''' </summary>
     ''' <remarks></remarks>
     <AttributeUsage(AttributeTargets.Method, AllowMultiple:=False, Inherited:=True)>
-    Public Class PlugInCommand : Inherits CommandBase
+    Public Class PlugInCommand
 
-        ''' <summary>
-        ''' The menu path for this plugin command.(这个插件命令的菜单路径)
-        ''' </summary>
-        ''' <value></value>
-        ''' <returns></returns>
-        ''' <remarks></remarks>
-        Public Property Path As String = "\"
+        Public ReadOnly Property base As Attributes.PlugInCommand
+        Public ReadOnly Property Method As MethodInfo
 
-        Dim Method As MethodInfo
+        Sub New(base As Attributes.PlugInCommand, method As MethodInfo)
+            Me.base = base
+            Me.Method = method
+        End Sub
 
         Public Overrides Function ToString() As String
-            If String.IsNullOrEmpty(Path) OrElse String.Equals("\", Path) Then
-                Return String.Format("Name:={0}; Path:\\Root", Name)
-            Else
-                Return String.Format("Name:={0}; Path:\\{1}", Name, Path)
-            End If
+            Return base.ToString
         End Function
 
         Public Function Invoke(Target As Form) As Object
-            Return Reflectionapi.Invoke({Target}, Method)
-        End Function
-
-        Friend Function Initialize(Method As MethodInfo) As PlugInCommand
-            Me.Method = Method
-            Return Me
+            Return ReflectionAPI.Invoke({Target}, Method)
         End Function
     End Class
 End Namespace

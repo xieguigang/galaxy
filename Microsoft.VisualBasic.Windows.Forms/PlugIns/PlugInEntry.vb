@@ -3,6 +3,7 @@ Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Reflection
 Imports Microsoft.VisualBasic.Language
+Imports Microsoft.VisualBasic.Windows.Forms.PlugIns.Attributes
 
 Namespace PlugIns
 
@@ -11,7 +12,7 @@ Namespace PlugIns
     ''' </summary>
     ''' <remarks></remarks>
     <AttributeUsage(AttributeTargets.Class, AllowMultiple:=False, Inherited:=True)>
-    Public Class PlugInEntry : Inherits CommandBase
+    Public Class PlugInEntry
 
         Protected Friend IconImage As Image
         Protected Friend MainModule As Type
@@ -19,7 +20,8 @@ Namespace PlugIns
         Protected Friend AssemblyPath As String
         Protected Friend Assembly As Assembly
 
-        Public Property ShowOnMenu As Boolean = True
+        Public ReadOnly Property ShowOnMenu As Boolean = True
+        Public ReadOnly Property base As Attributes.PlugInEntry
 
         Public Function GetEntry(EntryType As EntryTypes) As EntryFlag
             Return LinqAPI.DefaultFirst(Of EntryFlag) <=
@@ -35,7 +37,7 @@ Namespace PlugIns
         End Function
 
         Public Overrides Function ToString() As String
-            Return String.Format("PlugInEntry: {0}, //{1}", Name, AssemblyPath)
+            Return String.Format("PlugInEntry: {0}, //{1}", base.Name, AssemblyPath)
         End Function
     End Class
 End Namespace
