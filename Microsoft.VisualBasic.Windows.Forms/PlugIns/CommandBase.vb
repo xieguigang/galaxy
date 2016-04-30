@@ -55,10 +55,10 @@ Public Class EntryFlag : Inherits Attribute
     Friend Target As MethodInfo
     Friend GetIconInvoke As Func(Of String, Object)
 
-    Friend ReadOnly Property GetIcon(Name As String) As System.Drawing.Image
+    Friend ReadOnly Property GetIcon(Name As String) As Image
         Get
             If Not Target Is Nothing Then
-                Return PlugIn.PlugInEntry.Invoke(New Object() {Name}, Target)
+                Return PlugInEntry.Invoke(New Object() {Name}, Target)
             Else
                 If GetIconInvoke Is Nothing Then
                     Return Nothing
