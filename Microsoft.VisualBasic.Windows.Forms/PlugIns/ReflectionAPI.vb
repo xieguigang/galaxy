@@ -13,7 +13,7 @@ Namespace PlugIns
         ''' <param name="assem">Target DLL assembly file.(目标程序集模块的文件名)</param>
         ''' <returns>返回成功加载的命令的数目</returns>
         ''' <remarks></remarks>
-        Public Function LoadPlugIn(menu As MenuStrip, assem As String) As PlugInEntry
+        Public Function LoadPlugIn(menu As MenuStrip, assem As String) As PlugInEntry()
             If Not FileIO.FileSystem.FileExists(assem) Then ' When the filesystem object can not find the assembly file, then this loading operation was abort.
                 Return Nothing
             Else

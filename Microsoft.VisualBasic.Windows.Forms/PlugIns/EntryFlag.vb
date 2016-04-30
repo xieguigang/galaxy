@@ -2,6 +2,7 @@
 Imports System.Xml.Serialization
 Imports Microsoft.VisualBasic.Serialization
 Imports Microsoft.VisualBasic.Windows.Forms.PlugIns.Attributes
+Imports Microsoft.VisualBasic.SoftwareToolkits
 
 Namespace PlugIns
 
@@ -13,12 +14,17 @@ Namespace PlugIns
 
         <XmlAttribute> Public ReadOnly Property EntryType As EntryTypes
 
-        Friend Target As MethodInfo
-        Friend GetIconInvoke As Func(Of String, Object)
+        Public ReadOnly Property Target As MethodInfo
+        Public ReadOnly Property resMgr As Resources
 
         Sub New(attr As Attributes.EntryFlag, method As MethodInfo)
             EntryType = attr.Type
             Target = method
+        End Sub
+
+        Sub New(attr As EntryFlag, resMgr As Resources)
+            Me.EntryType = attr.EntryType
+            Me.resMgr = resMgr
         End Sub
 
         Public ReadOnly Property GetIcon(Name As String) As Image
@@ -26,10 +32,10 @@ Namespace PlugIns
                 If Not Target Is Nothing Then
                     Return ReflectionAPI.Invoke(New Object() {Name}, Target)
                 Else
-                    If GetIconInvoke Is Nothing Then
+                    If resMgr Is Nothing Then
                         Return Nothing
                     Else
-                        Return GetIconInvoke(Name)
+                        Return DirectCast(resMgr.GetObject(Name), Image)
                     End If
                 End If
             End Get

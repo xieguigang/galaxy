@@ -6,8 +6,13 @@ Namespace PlugIns
     Public Module MenuAPI
 
         <Extension>
-        Public Function AddCommand(menu As ToolStripMenuItem, menuPath As String(), Name As String) As ToolStripMenuItem
-            Return AddCommand(New __addMenuHelper With {.menu = menu}, menuPath, Name, Scan0)
+        Public Function AddCommand(menu As ToolStripMenuItem, menuPath As String, Name As String) As ToolStripMenuItem
+            Dim pathValue As String() =
+                LinqAPI.Exec(Of String) <= From s As String
+                                           In menuPath.Split("\"c)
+                                           Where Not String.IsNullOrEmpty(s)
+                                           Select s
+            Return AddCommand(New __addMenuHelper With {.menu = menu}, pathValue, Name, Scan0)
         End Function
 
         ''' <summary>

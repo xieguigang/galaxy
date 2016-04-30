@@ -1,8 +1,7 @@
-﻿Imports System.Windows.Forms
-Imports System.ComponentModel
-Imports System.Reflection
+﻿Imports System.Reflection
 Imports Microsoft.VisualBasic.Windows.Forms.PlugIns.Attributes
 Imports Microsoft.VisualBasic.Language
+Imports Microsoft.VisualBasic.SoftwareToolkits
 
 Namespace PlugIns
 
@@ -21,78 +20,67 @@ Namespace PlugIns
         ''' </summary>
         ''' <returns>返回成功加载的命令的数目</returns>
         ''' <remarks></remarks>
-        Public Function Load() As PlugInEntry
-            Dim PlugInEntry = LoadMainModules(DLL)  'Get the plugin entry module.(获取插件主模块)
+        Public Function Load() As PlugInEntry()
+            Dim lstPlugIns As PlugInEntry() = LoadMainModules(DLL)  'Get the plugin entry module.(获取插件主模块)
 
-            If PlugInEntry Is Nothing Then
+            If lstPlugIns Is Nothing Then
                 Return Nothing
             End If
 
-            Dim Initialize As EntryFlag = PlugInEntry.GetEntry(EntryTypes.Initialize)
-            Dim Target As System.Windows.Forms.Form = Menu.FindForm
+            For Each plugin As PlugInEntry In lstPlugIns
+                Call __init(plugin)
+            Next
 
-            If Not PlugInEntry.ShowOnMenu Then 'When the showonmenu property of this plugin entry is false, then this plugin will not load on the form menu but a initialize method is required.
-                If Not Initialize Is Nothing Then
-                    Call ReflectionAPI.Invoke(New Object() {Target}, Initialize.Target)
+            Return lstPlugIns
+        End Function
 
-                    Return PlugInEntry
+        Private Sub __init(ByRef plugin As PlugInEntry)
+            Dim initFlag As EntryFlag = plugin.GetEntry(EntryTypes.Initialize)
+            Dim host As System.Windows.Forms.Form = Menu.FindForm
+
+            If Not plugin.base.ShowOnMenu Then ' When the showonmenu property of this plugin entry is false, then this plugin will not load on the form menu but a initialize method is required.
+                If Not initFlag Is Nothing Then
+                    Call ReflectionAPI.Invoke(New Object() {host}, initFlag.Target)
+                    Return
                 Else
-                    Return Nothing 'This plugin assembly have no initialize method nor name property, i really don't know how to processing it, so i treat is as nothing.
+                    Return  ' This plugin assembly have no initialize method nor name property, i really don't know how to processing it, so i treat is as nothing.
                 End If
             Else
-                If Not Initialize Is Nothing Then Call ReflectionAPI.Invoke(New Object() {Target}, Initialize.Target)
+                If Not initFlag Is Nothing Then
+                    Call ReflectionAPI.Invoke(New Object() {host}, initFlag.Target)
+                End If
             End If
 
-            Dim IconLoader As EntryFlag = PlugInEntry.GetEntry(EntryTypes.IconLoader)
-            Dim MainModule = PlugInEntry.MainModule
-            Dim PluginCommandType = GetType(PlugInCommand)
-            Dim LQuery = From Method As MethodInfo In MainModule.GetMethods
-                         Let attributes = Method.GetCustomAttributes(PluginCommandType, False)
-                         Where attributes.Count = 1
-                         Let command = DirectCast(attributes(0), PlugInCommand).Initialize(Method)
-                         Select command Order By command.Path Descending  'Load the available plugin commands.(加载插件模块中可用的命令)
+            Dim IconLoader As EntryFlag = plugin.GetEntry(EntryTypes.IconLoader)
+            Dim PluginCommandType As Type = GetType(PlugInCommand)
+            Dim LQuery = From Method As MethodInfo
+                         In plugin.MainModule.GetMethods
+                         Let attrs As Object() = Method.GetCustomAttributes(PluginCommandType, False)
+                         Where attrs.Length = 1
+                         Let attr As Attributes.PlugInCommand = DirectCast(attrs(0), Attributes.PlugInCommand)
+                         Let command As PlugInCommand = New PlugInCommand(attr, Method)
+                         Select command
+                         Order By command.base.Path Descending  'Load the available plugin commands.(加载插件模块中可用的命令)
 
-            Dim MenuEntry = New System.Windows.Forms.ToolStripMenuItem() With {.Text = PlugInEntry.Name}   '生成入口点，并加载于UI之上
+            Dim MenuEntry = New ToolStripMenuItem() With {.Text = plugin.base.Name}   '生成入口点，并加载于UI之上
+
             Call Menu.Items.Add(MenuEntry)
 
             If IconLoader Is Nothing Then
-                Dim Instance = GetIconLoader(PlugInEntry.Assembly)
-                Dim Method As MethodInfo = Instance.Last
-                Dim Invoke As Func(Of String, Object) = Function(Name As String) Method.Invoke(Instance.First, New Object() {Name})
-                IconLoader = New EntryFlag With {.GetIconInvoke = Invoke}
+                Dim resMgr As Resources = Resources.DirectLoadFrom(plugin.Assembly)  ' 由于都是从同一个dll文件之中加在出来的，所以都公用同一个资源管理器了
+                IconLoader = New EntryFlag(IconLoader, resMgr)
             End If
 
-            MenuEntry.Image = IconLoader.GetIcon(PlugInEntry.Icon)
-            PlugInEntry.IconImage = MenuEntry.Image
+            MenuEntry.Image = IconLoader.GetIcon(plugin.base.Icon)
+            plugin.IconImage = MenuEntry.Image
 
-            For Each Command As PlugInCommand In LQuery.ToArray  '生成子菜单命令
-                Dim Item As ToolStripMenuItem = AddCommand(MenuEntry, (From s As String In Command.Path.Split("\"c) Where Not String.IsNullOrEmpty(s) Select s).ToArray, Command.Name, p:=0)
-                Item.Image = IconLoader.GetIcon(Command.Icon)
-                AddHandler Item.Click, Sub() Command.Invoke(Target)      '关联命令
+            For Each Command As PlugInCommand In LQuery  '生成子菜单命令
+                Dim Item As ToolStripMenuItem =
+                    MenuAPI.AddCommand(MenuEntry, Command.base.Path, Command.base.Name)
+                Item.Image = IconLoader.GetIcon(Command.base.Icon)
+                AddHandler Item.Click, Sub() Command.Invoke(host)      '关联命令
             Next
-
-            Return PlugInEntry
-        End Function
-
-        ''' <summary>
-        ''' 
-        ''' </summary>
-        ''' <param name="Assembly"></param>
-        ''' <returns>{Resource Manager Instanc, GetObject MethodInfo}</returns>
-        ''' <remarks></remarks>
-        Private Shared Function GetIconLoader(Assembly As Assembly) As Object()
-            Dim LQuery = From Type In Assembly.DefinedTypes Where String.Equals(Type.Name, "Resources") Select Type '
-            LQuery = LQuery.ToArray
-            If LQuery.Count > 0 Then
-                Dim Resources = LQuery.First
-                Dim ResourceManager As Object = (From Method In Resources.DeclaredMethods Where String.Equals("get_ResourceManager", Method.Name) Select Method).First.Invoke(Nothing, New Object() {})
-                Dim ResourceManagerType As System.Type = ResourceManager.GetType
-                Dim GetObject = (From Method In ResourceManagerType.GetMethods Where String.Equals("GetObject", Method.Name) Select Method).First
-                Return New Object() {ResourceManager, GetObject}
-            Else
-                Return Nothing
-            End If
-        End Function
+        End Sub
 
         Protected Friend Shared Function LoadMainModules(dll As String) As PlugInEntry()
             If Not dll.FileExists Then

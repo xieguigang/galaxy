@@ -14,7 +14,7 @@ Namespace PlugIns
     <AttributeUsage(AttributeTargets.Class, AllowMultiple:=False, Inherited:=True)>
     Public Class PlugInEntry
 
-        Public ReadOnly Property IconImage As Image
+        Public Property IconImage As Image
         Public ReadOnly Property MainModule As Type
         Public ReadOnly Property EntryList As EntryFlag()
         Public ReadOnly Property AssemblyPath As String
