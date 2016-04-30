@@ -126,6 +126,7 @@
     <Compile Include="Button.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PlugIns\CommandBase.vb" />
     <Compile Include="Form\API.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +225,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Gtk\CSSEngine\CSSFile.vb" />
+    <Compile Include="PlugIns\PlugInCommand.vb" />
+    <Compile Include="PlugIns\PlugInEntry.vb" />
+    <Compile Include="PlugIns\PlugInLoader.vb" />
+    <Compile Include="PlugIns\PlugInManager.vb" />
+    <Compile Include="PlugIns\PlugInManagerGUI.designer.vb">
+      <DependentUpon>PlugInManagerGUI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PlugIns\PlugInManagerGUI.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TabControl\TabControl.Designer.vb">
       <DependentUpon>TabControl.vb</DependentUpon>
     </Compile>
@@ -256,6 +267,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlugIns\PlugInManagerGUI.resx">
+      <DependentUpon>PlugInManagerGUI.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TabControl\TabControl.resx">
       <DependentUpon>TabControl.vb</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +301,7 @@
       <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
