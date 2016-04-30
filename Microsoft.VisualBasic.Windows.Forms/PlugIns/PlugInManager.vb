@@ -2,102 +2,103 @@
 Imports System.Text
 Imports System.Drawing
 Imports System.Xml.Serialization
+Imports Microsoft.VisualBasic.Language
+Imports Microsoft.VisualBasic.ComponentModel
 
-Public Class PlugInManager
+Namespace PlugIns
 
-    ''' <summary>
-    ''' The file path for the disabled plugin assembly module.
-    ''' </summary>
-    ''' <remarks></remarks>
-    <XmlElement> Public DisabledPlugIns As List(Of String)
+    Public Class PlugInManager : Inherits ITextFile
 
-    Dim XmlPath As String
-    Protected Friend PlugInList As List(Of PlugInEntry) = New List(Of PlugInEntry)
+        ''' <summary>
+        ''' The file path for the disabled plugin assembly module.
+        ''' </summary>
+        ''' <remarks></remarks>
+        <XmlElement> Public Property DisabledPlugIns As List(Of String)
 
-    Public Shared Function LoadPlugins(Menu As MenuStrip, PluginDir As String, ProfileXml As String) As PlugInManager
-        Dim PluginManager As PlugInManager = PlugIn.PlugInManager.Load(ProfileXml)
-        Dim LoadFileList = (From Path As String In FileIO.FileSystem.GetFiles(PluginDir, FileIO.SearchOption.SearchTopLevelOnly, "*.dll", "*.exe")
-                            Where PluginManager.DisabledPlugIns.IndexOf(Path) = -1
-                            Select Path).ToArray 'Get the load plugin file list, ignore the plugin file which is in disabled plugin list.
+        Protected Friend PlugInList As List(Of PlugInEntry) = New List(Of PlugInEntry)
 
-        Call PluginManager.PlugInList.AddRange((From PlugInAssembly As String In LoadFileList Select PlugIn.PlugInEntry.LoadPlugIn(Menu, PlugInAssembly)).ToArray)
-        Call PluginManager.PlugInList.AddRange((From PlugInAssembly As String In PluginManager.DisabledPlugIns Select PlugIn.PlugInLoader.LoadMainModule(PlugInAssembly)).ToArray)
-        Call PluginManager.PlugInList.RemoveAll(Function(PlugInEntry As PlugIn.PlugInEntry) PlugInEntry Is Nothing)
+        Public Shared Function LoadPlugins(Menu As MenuStrip, pluginDIR As String, ProfileXml As String) As PlugInManager
+            Dim PluginManager As PlugInManager = PlugInManager.Load(ProfileXml)
+            Dim LoadFileList = (From Path As String In FileIO.FileSystem.GetFiles(pluginDIR, FileIO.SearchOption.SearchTopLevelOnly, "*.dll", "*.exe")
+                                Where PluginManager.DisabledPlugIns.IndexOf(Path) = -1
+                                Select Path).ToArray 'Get the load plugin file list, ignore the plugin file which is in disabled plugin list.
 
-        Return PluginManager
-    End Function
+            Call PluginManager.PlugInList.AddRange((From PlugInAssembly As String In LoadFileList Select PlugIns.LoadPlugIn(Menu, PlugInAssembly)).ToArray)
+            Call PluginManager.PlugInList.AddRange((From PlugInAssembly As String In PluginManager.DisabledPlugIns Select PlugInLoader.LoadMainModule(PlugInAssembly)).ToArray)
+            Call PluginManager.PlugInList.RemoveAll(Function(PlugInEntry) PlugInEntry Is Nothing)
 
-    Public Function IsDisabled(AssemblyPath As String) As Boolean
-        Return DisabledPlugIns.IndexOf(AssemblyPath) > -1
-    End Function
+            Return PluginManager
+        End Function
 
-    Public Sub ShowDialog(Optional ShowWarnDialog As Boolean = True)
-        Call New PlugInManagerGUI() With {.PlugInManager = Me}.ShowDialog()
-        Call Save()
-        If ShowWarnDialog Then
-            MsgBox("You should restart this program to makes the changes take effect.", MsgBoxStyle.Information)
-        End If
-    End Sub
+        Public Function IsDisabled(AssemblyPath As String) As Boolean
+            Return DisabledPlugIns.IndexOf(AssemblyPath) > -1
+        End Function
 
-    Public Overrides Function ToString() As String
-        Return String.Format("{0}, {1} plugins is disabled by user.", XmlPath, DisabledPlugIns.Count)
-    End Function
-
-    Public Sub Save(Optional Path As String = "")
-        Dim sBuilder As StringBuilder = New StringBuilder(1024)
-        If String.IsNullOrEmpty(Path) Then
-            Path = Me.XmlPath
-        End If
-        Call FileIO.FileSystem.CreateDirectory(FileIO.FileSystem.GetParentPath(Path))
-        Using Stream As New System.IO.StringWriter(sb:=sBuilder)
-            Call (New System.Xml.Serialization.XmlSerializer(GetType(PlugInManager))).Serialize(Stream, Me)
-            Call FileIO.FileSystem.WriteAllText(Path, sBuilder.ToString, append:=False)
-        End Using
-    End Sub
-
-    ''' <summary>
-    ''' 
-    ''' </summary>
-    ''' <param name="Xml">XML文件的文件路径</param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Friend Shared Function Load(Xml As String) As PlugIn.PlugInManager
-        Dim PlugInManager As PlugIn.PlugInManager
-        If FileIO.FileSystem.FileExists(Xml) Then
-            Dim FileContent As String = FileIO.FileSystem.ReadAllText(file:=Xml)
-            Using Stream As New System.IO.StringReader(s:=FileContent)
-                PlugInManager = DirectCast(New System.Xml.Serialization.XmlSerializer(GetType(PlugInManager)).Deserialize(Stream), PlugInManager)
-            End Using
-        Else
-            PlugInManager = New PlugInManager
-        End If
-        If PlugInManager.DisabledPlugIns Is Nothing Then PlugInManager.DisabledPlugIns = New List(Of String)
-        PlugInManager.XmlPath = Xml
-        Return PlugInManager
-    End Function
-
-    Public Sub LoadPlugIns(ListView As System.Windows.Forms.ListView, ImageList As ImageList)
-        Dim Index As Integer
-        ListView.LargeImageList = ImageList
-        ListView.SmallImageList = ImageList
-
-        For Each PlugIn As PlugIn.PlugInEntry In PlugInList
-            Dim Icon = CType(PlugIn.IconImage, Bitmap)
-            Dim Item As ListViewItem = New ListViewItem({PlugIn.Name, PlugIn.Description, PlugIn.AssemblyPath})
-            Item.Checked = Not IsDisabled(PlugIn.AssemblyPath)
-
-            Call ListView.Items.Add(Item)
-
-            If Not Icon Is Nothing Then
-                Call ImageList.Images.Add(Icon)
-                Item.ImageIndex = Index
-                Index += 1
+        Public Sub ShowDialog(Optional ShowWarnDialog As Boolean = True)
+            Call New PlugInManagerGUI() With {.PlugInManager = Me}.ShowDialog()
+            Call Save()
+            If ShowWarnDialog Then
+                MsgBox("You should restart this program to makes the changes take effect.", MsgBoxStyle.Information)
             End If
-        Next
-    End Sub
+        End Sub
 
-    Public Shared Function GetDisabledPlugIns(ListView As ListView, PlugInManager As PlugInManager) As List(Of String)
-        Dim LQuery = From item As ListViewItem In ListView.Items Where Not item.Checked Select PlugInManager.PlugInList(item.Index).AssemblyPath '
-        Return LQuery.ToList
-    End Function
-End Class
+        Public Overrides Function ToString() As String
+            Return $"{FilePath.ToFileURL}, {DisabledPlugIns.Count} plugins is disabled by user."
+        End Function
+
+        ''' <summary>
+        ''' 
+        ''' </summary>
+        ''' <param name="Xml">XML文件的文件路径</param>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public Shared Function Load(Xml As String) As PlugInManager
+            Dim PlugInManager As PlugInManager =
+                Xml.LoadTextDoc(Of PlugInManager)(ThrowEx:=False)
+
+            If PlugInManager Is Nothing Then
+                PlugInManager = New PlugInManager With {
+                    .FilePath = Xml
+                }
+            End If
+
+            If PlugInManager.DisabledPlugIns Is Nothing Then
+                PlugInManager.DisabledPlugIns = New List(Of String)
+            End If
+
+            Return PlugInManager
+        End Function
+
+        Public Sub LoadPlugIns(ListView As ListView, ImageList As ImageList)
+            Dim Index As Integer
+            ListView.LargeImageList = ImageList
+            ListView.SmallImageList = ImageList
+
+            For Each PlugIn As PlugInEntry In PlugInList
+                Dim Icon = CType(PlugIn.IconImage, Bitmap)
+                Dim Item As ListViewItem = New ListViewItem({PlugIn.Name, PlugIn.Description, PlugIn.AssemblyPath})
+                Item.Checked = Not IsDisabled(PlugIn.AssemblyPath)
+
+                Call ListView.Items.Add(Item)
+
+                If Not Icon Is Nothing Then
+                    Call ImageList.Images.Add(Icon)
+                    Item.ImageIndex = Index
+                    Index += 1
+                End If
+            Next
+        End Sub
+
+        Public Shared Function GetDisabledPlugIns(ListView As ListView, PlugInManager As PlugInManager) As List(Of String)
+            Return LinqAPI.MakeList(Of String) <=
+                From item As ListViewItem
+                In ListView.Items
+                Where Not item.Checked
+                Select PlugInManager.PlugInList(item.Index).AssemblyPath '
+        End Function
+
+        Public Overrides Function Save(Optional FilePath As String = "", Optional Encoding As Encoding = Nothing) As Boolean
+            Return Me.GetXml.SaveTo(getPath(FilePath), Encoding)
+        End Function
+    End Class
+End Namespace

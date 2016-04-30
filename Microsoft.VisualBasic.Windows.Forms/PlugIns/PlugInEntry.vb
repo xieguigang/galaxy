@@ -23,10 +23,10 @@ Namespace PlugIns
 
         Public Function GetEntry(EntryType As EntryTypes) As EntryFlag
             Return LinqAPI.DefaultFirst(Of EntryFlag) <=
-            From entry As EntryFlag
-            In EntryList
-            Where entry.EntryType = EntryType
-            Select entry
+                From entry As EntryFlag
+                In EntryList
+                Where entry.EntryType = EntryType
+                Select entry
         End Function
 
         Friend Function Initialize([Module] As Type) As PlugInEntry
