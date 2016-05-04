@@ -25,6 +25,9 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Runtime.InteropServices
 
+Imports Microsoft.Windows.Dialogs
+Imports Microsoft.Windows.Taskbar
+
 Namespace ChromeTabControl
 
     ''' <summary>
@@ -152,7 +155,7 @@ Namespace ChromeTabControl
         ''' <summary>
         ''' Gets called when a new instance of this tab page is attempted to be opened.
         ''' </summary>
-        Friend Overridable Function NewInstanceAttempted(newInstance As TabPage) As Boolean
+        Protected Overridable Function NewInstanceAttempted(newInstance As TabPage) As Boolean
             Return False
         End Function
 
@@ -758,17 +761,34 @@ Namespace ChromeTabControl
             ''' <summary>
             ''' Adds a page to the list and animates it in.
             ''' </summary>
-            ''' <param name="item">The item to open.</param>
-            Public Sub Add(item As TabPage) Implements IList(Of TabPage).Add
-                If CheckInstance(item) Then
+            ''' <param name="newTab">The item to open.</param>
+            Public Sub Add(newTab As TabPage) Implements IList(Of TabPage).Add
+                If CheckInstance(newTab) Then
                     Return
                 End If
-                item.SetOwnerTabControl(_tabControl)
-                item.TabWidth = 0
-                _list.Add(item)
+                newTab.SetOwnerTabControl(_tabControl)
+                newTab.TabWidth = 0
+                _list.Add(newTab)
                 Changed()
-                item.Animator.Enable(TabPage.TabAnimator.AnimationType.ToFull)
+                newTab.Animator.Enable(TabPage.TabAnimator.AnimationType.ToFull)
                 SelectedIndex = _list.Count - 1
+
+                ' Add thumbnail toolbar buttons
+                '   TaskbarManager.Instance.ThumbnailToolBars.AddButtons(newTab.Handle)
+
+                ' Add a new preview
+                '  Dim preview As New TabbedThumbnail(_tabControl.Handle, newTab.Handle)
+
+                ' Event handlers for this preview
+                '  AddHandler preview.TabbedThumbnailActivated, AddressOf preview_TabbedThumbnailActivated
+                '  AddHandler preview.TabbedThumbnailClosed, AddressOf preview_TabbedThumbnailClosed
+                '   AddHandler preview.TabbedThumbnailMaximized, AddressOf preview_TabbedThumbnailMaximized
+                '  AddHandler preview.TabbedThumbnailMinimized, AddressOf preview_TabbedThumbnailMinimized
+
+                '  TaskbarManager.Instance.TabbedThumbnail.AddThumbnailPreview(preview)
+
+                ' Select the tab in the application UI as well as taskbar tabbed thumbnail list
+                '   TaskbarManager.Instance.TabbedThumbnail.SetActiveTab(newTab)
             End Sub
 
             ''' <summary>

@@ -93,7 +93,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Windows.FeatureAPI">
+    <Reference Include="Microsoft.Windows.FeatureAPI, Version=10.0.5921.32136, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Microsoft.Windows.FeatureAPI\bin\Release\Microsoft.Windows.FeatureAPI.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
