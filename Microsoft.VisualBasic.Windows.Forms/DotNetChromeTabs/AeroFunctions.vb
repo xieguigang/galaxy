@@ -97,7 +97,7 @@ Namespace ChromeTabControl
         ''' as fill.
         ''' </summary>
         ''' <param name="form">The form to prepare.</param>
-        ''' <returns>True if successful</returns>
+        ''' <return>True if successful</return>
         Public Sub ChromifyWindow(form As Form, tabcontrol As ChromeTabControl)
             If MakeWindowGlass(form.Handle, 5, 5, 40, 5) Then
                 tabcontrol.BackColor = Color.Transparent

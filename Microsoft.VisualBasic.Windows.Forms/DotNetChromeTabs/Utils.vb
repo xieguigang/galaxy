@@ -145,7 +145,6 @@ Namespace ChromeTabControl
         ''' <summary>
         ''' Returns a rounded rectangle graphics path according to a base rectangle and radius.
         ''' </summary>
-        ''' <param name="g">Graphics to use. For extension purposes.</param>
         ''' <param name="baseRect">The rectangle to copy from.</param>
         ''' <param name="radius">The radius of the rounded corners.</param>
         ''' <returns>A rounded rectangle as a graphics path.</returns>
@@ -194,7 +193,6 @@ Namespace ChromeTabControl
         ''' <summary>
         ''' Returns a capsule according to a base rectangle.
         ''' </summary>
-        ''' <param name="g">Graphics to use. For extension purposes.</param>
         ''' <param name="baseRect">The base rectangle to copy from.</param>
         ''' <returns>A capsule as a graphics path.</returns>
         Public Function GetCapsulePath(baseRect As RectangleF) As GraphicsPath

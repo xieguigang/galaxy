@@ -127,6 +127,15 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ChromeUIRender.vb" />
+    <Compile Include="DotNetChromeTabs\AeroFunctions.vb" />
+    <Compile Include="DotNetChromeTabs\ChromeTabControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DotNetChromeTabs\TabPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DotNetChromeTabs\TrayItem.vb" />
+    <Compile Include="DotNetChromeTabs\Utils.vb" />
     <Compile Include="PlugIns\Attributes.vb" />
     <Compile Include="PlugIns\EntryFlag.vb" />
     <Compile Include="Form\API.vb">
@@ -285,6 +294,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DotNetChromeTabs\LICENCE" />
+    <None Include="DotNetChromeTabs\README.md" />
     <None Include="MaterialSkin\LICENSE" />
     <None Include="MaterialSkin\Resources\Roboto-Medium.ttf" />
     <None Include="MaterialSkin\Resources\Roboto-Regular.ttf" />
