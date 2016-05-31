@@ -2,6 +2,7 @@ Imports System.IO
 Imports Microsoft.Windows.Shell
 
 Namespace ShellExtensions
+
     ''' <summary>
     ''' This interface exposes the <see cref="Load"/> function for initializing the 
     ''' Preview Handler with a <see cref="Stream"/>.

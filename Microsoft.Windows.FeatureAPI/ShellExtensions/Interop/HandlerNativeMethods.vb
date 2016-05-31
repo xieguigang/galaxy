@@ -1,35 +1,38 @@
 Imports System.Runtime.InteropServices
 Imports System.Runtime.InteropServices.ComTypes
+Imports Microsoft.VisualBasic.Serialization
 Imports Microsoft.Windows.Internal
 Imports Microsoft.Windows.Shell
 Imports Microsoft.Windows.Shell.Interop
 
 Namespace ShellExtensions.Interop
-    Friend NotInheritable Class HandlerNativeMethods
-        Private Sub New()
-        End Sub
+
+    Friend Module HandlerNativeMethods
+
         <DllImport("user32.dll")>
-        Friend Shared Function SetParent(hWndChild As IntPtr, hWndNewParent As IntPtr) As IntPtr
+        Public Function SetParent(hWndChild As IntPtr, hWndNewParent As IntPtr) As IntPtr
         End Function
 
         <DllImport("user32.dll")>
-        Friend Shared Function GetFocus() As IntPtr
+        Public Function GetFocus() As IntPtr
         End Function
 
         <DllImport("user32.dll")>
-        Friend Shared Sub SetWindowPos(hWnd As IntPtr, hWndInsertAfter As IntPtr, x As Integer, y As Integer, cx As Integer, cy As Integer,
-            flags As SetWindowPositionOptions)
+        Public Sub SetWindowPos(hWnd As IntPtr,
+                                hWndInsertAfter As IntPtr,
+                                x As Integer, y As Integer, cx As Integer, cy As Integer,
+                                flags As SetWindowPositionOptions)
         End Sub
 
-        Friend Shared ReadOnly IPreviewHandlerGuid As New Guid("8895b1c6-b41f-4c1c-a562-0d564250836f")
-        Friend Shared ReadOnly IThumbnailProviderGuid As New Guid("e357fccd-a995-4576-b01f-234630154e96")
+        Friend ReadOnly IPreviewHandlerGuid As New Guid("8895b1c6-b41f-4c1c-a562-0d564250836f")
+        Friend ReadOnly IThumbnailProviderGuid As New Guid("e357fccd-a995-4576-b01f-234630154e96")
 
-        Friend Shared ReadOnly IInitializeWithFileGuid As New Guid("b7d14566-0509-4cce-a71f-0a554233bd9b")
-        Friend Shared ReadOnly IInitializeWithStreamGuid As New Guid("b824b49d-22ac-4161-ac8a-9916e8fa3f7f")
-        Friend Shared ReadOnly IInitializeWithItemGuid As New Guid("7f73be3f-fb79-493c-a6c7-7ee14e245841")
+        Friend ReadOnly IInitializeWithFileGuid As New Guid("b7d14566-0509-4cce-a71f-0a554233bd9b")
+        Friend ReadOnly IInitializeWithStreamGuid As New Guid("b824b49d-22ac-4161-ac8a-9916e8fa3f7f")
+        Friend ReadOnly IInitializeWithItemGuid As New Guid("7f73be3f-fb79-493c-a6c7-7ee14e245841")
 
-        Friend Shared ReadOnly IMarshalGuid As New Guid("00000003-0000-0000-C000-000000000046")
-    End Class
+        Friend ReadOnly IMarshalGuid As New Guid("00000003-0000-0000-C000-000000000046")
+    End Module
 
 #Region "Interfaces"
 
@@ -152,174 +155,71 @@ Namespace ShellExtensions.Interop
     ''' </summary>
     <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Auto)>
     Public Class LogFont
+
         ''' <summary>
         ''' Font height
         ''' </summary>
         Public Property Height() As Integer
-            Get
-                Return m_Height
-            End Get
-            Set
-                m_Height = Value
-            End Set
-        End Property
-        Private m_Height As Integer
 
         ''' <summary>
         ''' Font width
         ''' </summary>
         Public Property Width() As Integer
-            Get
-                Return m_Width
-            End Get
-            Set
-                m_Width = Value
-            End Set
-        End Property
-        Private m_Width As Integer
 
         ''' <summary>
         ''' Font escapement
         ''' </summary>
         Public Property Escapement() As Integer
-            Get
-                Return m_Escapement
-            End Get
-            Set
-                m_Escapement = Value
-            End Set
-        End Property
-        Private m_Escapement As Integer
 
         ''' <summary>
         ''' Font orientation
         ''' </summary>
         Public Property Orientation() As Integer
-            Get
-                Return m_Orientation
-            End Get
-            Set
-                m_Orientation = Value
-            End Set
-        End Property
-        Private m_Orientation As Integer
 
         ''' <summary>
         ''' Font weight
         ''' </summary>
         Public Property Weight() As Integer
-            Get
-                Return m_Weight
-            End Get
-            Set
-                m_Weight = Value
-            End Set
-        End Property
-        Private m_Weight As Integer
 
         ''' <summary>
         ''' Font italic
         ''' </summary>
         Public Property Italic() As Byte
-            Get
-                Return m_Italic
-            End Get
-            Set
-                m_Italic = Value
-            End Set
-        End Property
-        Private m_Italic As Byte
 
         ''' <summary>
         ''' Font underline
         ''' </summary>
         Public Property Underline() As Byte
-            Get
-                Return m_Underline
-            End Get
-            Set
-                m_Underline = Value
-            End Set
-        End Property
-        Private m_Underline As Byte
 
         ''' <summary>
         ''' Font strikeout
         ''' </summary>
         Public Property Strikeout() As Byte
-            Get
-                Return m_Strikeout
-            End Get
-            Set
-                m_Strikeout = Value
-            End Set
-        End Property
-        Private m_Strikeout As Byte
 
         ''' <summary>
         ''' Font character set
         ''' </summary>
         Public Property CharacterSet() As Byte
-            Get
-                Return m_CharacterSet
-            End Get
-            Set
-                m_CharacterSet = Value
-            End Set
-        End Property
-        Private m_CharacterSet As Byte
 
         ''' <summary>
         ''' Font out precision
         ''' </summary>
         Public Property OutPrecision() As Byte
-            Get
-                Return m_OutPrecision
-            End Get
-            Set
-                m_OutPrecision = Value
-            End Set
-        End Property
-        Private m_OutPrecision As Byte
 
         ''' <summary>
         ''' Font clip precision
         ''' </summary>
         Public Property ClipPrecision() As Byte
-            Get
-                Return m_ClipPrecision
-            End Get
-            Set
-                m_ClipPrecision = Value
-            End Set
-        End Property
-        Private m_ClipPrecision As Byte
 
         ''' <summary>
         ''' Font quality
         ''' </summary>
         Public Property Quality() As Byte
-            Get
-                Return m_Quality
-            End Get
-            Set
-                m_Quality = Value
-            End Set
-        End Property
-        Private m_Quality As Byte
 
         ''' <summary>
         ''' Font pitch and family
         ''' </summary>
         Public Property PitchAndFamily() As Byte
-            Get
-                Return m_PitchAndFamily
-            End Get
-            Set
-                m_PitchAndFamily = Value
-            End Set
-        End Property
-        Private m_PitchAndFamily As Byte
 
         <MarshalAs(UnmanagedType.ByValTStr, SizeConst:=32)>
         Private m_faceName As String = String.Empty
@@ -335,19 +235,19 @@ Namespace ShellExtensions.Interop
                 m_faceName = Value
             End Set
         End Property
+
+        Public Overrides Function ToString() As String
+            Return Me.GetJson
+        End Function
     End Class
 
     <StructLayout(LayoutKind.Sequential)>
     Friend Structure NativeColorRef
         Public Property Dword() As UInteger
-            Get
-                Return m_Dword
-            End Get
-            Set
-                m_Dword = Value
-            End Set
-        End Property
-        Private m_Dword As UInteger
+
+        Public Overrides Function ToString() As String
+            Return Me.GetJson
+        End Function
     End Structure
 
 #End Region

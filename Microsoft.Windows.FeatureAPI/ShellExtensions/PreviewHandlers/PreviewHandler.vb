@@ -10,6 +10,7 @@ Imports Microsoft.Windows.Shell.Interop
 Imports Microsoft.Windows.ShellExtensions.Interop
 
 Namespace ShellExtensions
+
     ''' <summary>
     ''' This is the base class for all preview handlers and provides their basic functionality.
     ''' To create a custom preview handler a class must derive from this, use the <see cref="PreviewHandlerAttribute"/>,
@@ -27,7 +28,7 @@ Namespace ShellExtensions
         Implements ShellExtensions.Interop.IInitializeWithStream
         Implements ShellExtensions.Interop.IInitializeWithItem
         Implements ShellExtensions.Interop.IInitializeWithFile
-        Private _isPreviewShowing As Boolean
+
         Private _parentHwnd As IntPtr
         Private _frame As ShellExtensions.Interop.IPreviewHandlerFrame
 
@@ -35,10 +36,6 @@ Namespace ShellExtensions
         ''' Gets whether the preview is currently showing
         ''' </summary>
         Public ReadOnly Property IsPreviewShowing() As Boolean
-            Get
-                Return _isPreviewShowing
-            End Get
-        End Property
 
         ''' <summary>
         ''' Called immediately before the preview is to be shown.        
@@ -112,7 +109,7 @@ Namespace ShellExtensions
         End Sub
 
         Private Sub Microsoft_WindowsAPICodePack_ShellExtensions_Interop_IPreviewHandler_DoPreview() Implements ShellExtensions.Interop.IPreviewHandler.DoPreview
-            _isPreviewShowing = True
+            _IsPreviewShowing = True
             Try
                 Initialize()
             Catch exc As Exception
@@ -122,7 +119,7 @@ Namespace ShellExtensions
 
         Private Sub Microsoft_WindowsAPICodePack_ShellExtensions_Interop_IPreviewHandler_Unload() Implements ShellExtensions.Interop.IPreviewHandler.Unload
             Uninitialize()
-            _isPreviewShowing = False
+            _IsPreviewShowing = False
         End Sub
 
         Private Sub Microsoft_WindowsAPICodePack_ShellExtensions_Interop_IPreviewHandler_SetFocus() Implements ShellExtensions.Interop.IPreviewHandler.SetFocus

@@ -3,6 +3,7 @@ Imports System.IO
 Imports Microsoft.Windows.Shell
 
 Namespace ShellExtensions
+
     ''' <summary>
     ''' This interface exposes the ConsructBitmap function for initializing the 
     ''' Thumbnail Provider with a <see cref="Stream"/> 
@@ -25,7 +26,7 @@ Namespace ShellExtensions
         ''' <param name="sideSize">Square side dimension in which the thumbnail should fit; the thumbnail will be scaled otherwise.</param>
         ''' <returns></returns>
         Function ConstructBitmap(stream As Stream, sideSize As Integer) As Bitmap
-	End Interface
+    End Interface
 
     ''' <summary>
     ''' This interface exposes the ConsructBitmap function for initializing the 
@@ -48,7 +49,7 @@ Namespace ShellExtensions
         ''' <param name="sideSize">Square side dimension in which the thumbnail should fit; the thumbnail will be scaled otherwise.</param>
         ''' <returns>Generated thumbnail</returns>
         Function ConstructBitmap(shellObject As ShellObject, sideSize As Integer) As Bitmap
-	End Interface
+    End Interface
 
     ''' <summary>
     ''' This interface exposes the ConsructBitmap function for initializing the 
@@ -71,5 +72,5 @@ Namespace ShellExtensions
         ''' <param name="sideSize">Square side dimension in which the thumbnail should fit; the thumbnail will be scaled otherwise.</param>
         ''' <returns>Generated thumbnail</returns>
         Function ConstructBitmap(info As FileInfo, sideSize As Integer) As Bitmap
-	End Interface
+    End Interface
 End Namespace

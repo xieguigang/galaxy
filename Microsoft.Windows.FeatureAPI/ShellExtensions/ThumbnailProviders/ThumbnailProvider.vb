@@ -9,6 +9,7 @@ Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Taskbar
 
 Namespace ShellExtensions
+
     ''' <summary>
     ''' This is the base class for all thumbnail providers and provides their basic functionality.
     ''' To create a custom thumbnail provider a class must derive from this, use the <see cref="ThumbnailProviderAttribute"/>,
@@ -22,6 +23,7 @@ Namespace ShellExtensions
         Implements IInitializeWithStream
         Implements IInitializeWithItem
         Implements IInitializeWithFile
+
         ' Determines which interface should be called to return a bitmap
         Private Function GetBitmap(sideLength As Integer) As Bitmap
             Dim stream As IThumbnailFromStream
