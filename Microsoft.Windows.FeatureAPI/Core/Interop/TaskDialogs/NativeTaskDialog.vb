@@ -7,6 +7,7 @@ Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
 
 Namespace Dialogs
+
     ''' <summary>
     ''' Encapsulates the native logic required to create, 
     ''' configure, and show a TaskDialog, 
@@ -19,6 +20,7 @@ Namespace Dialogs
     ''' </remarks>
     Public Class NativeTaskDialog
         Implements IDisposable
+
         Private nativeDialogConfig As TaskDialogNativeMethods.TaskDialogConfiguration
         Private settings As NativeTaskDialogSettings
         Private hWndDialog As IntPtr

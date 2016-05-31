@@ -4,6 +4,7 @@ Imports System.Runtime.InteropServices
 Imports System.Text
 
 Namespace Internal
+
     ''' <summary>
     ''' Wrappers for Native Methods and Structs.
     ''' This type is intended for internal use only

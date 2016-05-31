@@ -3,6 +3,7 @@
 Imports System.Runtime.InteropServices
 
 Namespace ApplicationServices
+
     Public Module PowerManagementNativeMethods
 
 #Region "Power Management"

@@ -6,6 +6,7 @@ Namespace Internal
     ''' HRESULT Wrapper    
     ''' </summary>    
     Public Enum HResult
+
         ''' <summary>     
         ''' S_OK          
         ''' </summary>    
