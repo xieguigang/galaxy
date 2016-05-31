@@ -4,6 +4,7 @@ Imports System.Runtime.InteropServices.ComTypes
 Imports Microsoft.Windows.Resources
 
 Namespace ShellExtensions
+
     ''' <summary>
     ''' A wrapper for the native IStream object.
     ''' </summary>
