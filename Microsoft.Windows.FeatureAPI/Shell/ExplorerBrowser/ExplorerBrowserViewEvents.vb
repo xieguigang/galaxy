@@ -5,6 +5,7 @@ Imports Microsoft.Windows.Controls
 Imports Microsoft.Windows.Controls.WindowsForms
 
 Namespace Internal
+
     ''' <summary>
     ''' This provides a connection point container compatible dispatch interface for
     ''' hooking into the ExplorerBrowser view.
@@ -13,6 +14,7 @@ Namespace Internal
     <ClassInterface(ClassInterfaceType.AutoDual)>
     Public Class ExplorerBrowserViewEvents
         Implements IDisposable
+
 #Region "implementation"
         Private viewConnectionPointCookie As UInteger
         Private viewDispatch As Object

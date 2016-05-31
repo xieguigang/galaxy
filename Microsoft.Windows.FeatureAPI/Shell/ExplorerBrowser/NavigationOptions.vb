@@ -7,6 +7,7 @@ Namespace Controls
     ''' These options control the results subsequent navigations of the ExplorerBrowser
     ''' </summary>
     Public Class ExplorerBrowserNavigationOptions
+
 #Region "construction"
         Private eb As ExplorerBrowser
         Friend Sub New(eb As ExplorerBrowser)
@@ -76,19 +77,11 @@ Namespace Controls
 #End Region
 
 #Region "ExplorerBrowser pane visibility"
+
         ''' <summary>
         ''' Controls the visibility of the various ExplorerBrowser panes on subsequent navigation
         ''' </summary>
         Public Property PaneVisibility() As ExplorerBrowserPaneVisibility
-            Get
-                Return m_PaneVisibility
-            End Get
-            Private Set
-                m_PaneVisibility = Value
-            End Set
-        End Property
-        Private m_PaneVisibility As ExplorerBrowserPaneVisibility
-
 #End Region
     End Class
 End Namespace

@@ -1,6 +1,7 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Imports System.Collections.Generic
+Imports Microsoft.VisualBasic.Serialization
 Imports Microsoft.Windows.Controls.WindowsForms
 Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Shell
@@ -222,28 +223,18 @@ Namespace Controls
     ''' A navigation traversal request
     ''' </summary>
     Friend Class PendingNavigation
+
         Friend Sub New(location__1 As ShellObject, index__2 As Integer)
             Location = location__1
             Index = index__2
         End Sub
 
         Friend Property Location() As ShellObject
-            Get
-                Return m_Location
-            End Get
-            Set
-                m_Location = Value
-            End Set
-        End Property
-        Private m_Location As ShellObject
+
         Friend Property Index() As Integer
-            Get
-                Return m_Index
-            End Get
-            Set
-                m_Index = Value
-            End Set
-        End Property
-        Private m_Index As Integer
+
+        Public Overrides Function ToString() As String
+            Return Me.GetJson
+        End Function
     End Class
 End Namespace

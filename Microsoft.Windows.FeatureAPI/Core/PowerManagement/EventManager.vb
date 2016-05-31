@@ -3,81 +3,81 @@
 Imports System.Threading
 
 Namespace ApplicationServices
-	''' <summary>
-	''' This class keeps track of the current state of each type of event.  
-	''' The MessageManager class tracks event handlers.  
-	''' This class only deals with each event type (i.e.
-	''' BatteryLifePercentChanged) as a whole.
-	''' </summary>
-	Friend NotInheritable Class EventManager
-		Private Sub New()
-		End Sub
-		' Prevents reading from PowerManager members while they are still null.
-		' MessageManager notifies the PowerManager that the member 
-		' has been set and can be used.        
-		Friend Shared monitorOnReset As New AutoResetEvent(False)
 
-		#Region "Hardcoded GUIDS for each event"
+    ''' <summary>
+    ''' This class keeps track of the current state of each type of event.  
+    ''' The MessageManager class tracks event handlers.  
+    ''' This class only deals with each event type (i.e.
+    ''' BatteryLifePercentChanged) as a whole.
+    ''' </summary>
+    Module EventManager
 
-		Friend Shared ReadOnly PowerPersonalityChange As New Guid(&H245d8541, &H3943, &H4422, &Hb0, &H25, &H13, _
-			&Ha7, &H84, &Hf6, &H79, &Hb7)
-		Friend Shared ReadOnly PowerSourceChange As New Guid(&H5d3e9a59, &He9d5, &H4b00, &Ha6, &Hbd, &Hff, _
-			&H34, &Hff, &H51, &H65, &H48)
-		Friend Shared ReadOnly BatteryCapacityChange As New Guid(&Ha7ad8041UI, &Hb45a, &H4cae, &H87, &Ha3, &Hee, _
-			&Hcb, &Hb4, &H68, &Ha9, &He1)
-		Friend Shared ReadOnly BackgroundTaskNotification As New Guid(&H515c31d8, &Hf734, &H163d, &Ha0, &Hfd, &H11, _
-			&Ha0, &H8c, &H91, &He8, &Hf1)
-		Friend Shared ReadOnly MonitorPowerStatus As New Guid(&H2731015, &H4510, &H4526, &H99, &He6, &He5, _
-			&Ha1, &H7e, &Hbd, &H1a, &Hea)
+        ' Prevents reading from PowerManager members while they are still null.
+        ' MessageManager notifies the PowerManager that the member 
+        ' has been set and can be used.        
+        Friend monitorOnReset As New AutoResetEvent(False)
 
-		#End Region
+#Region "Hardcoded GUIDS for each event"
 
-		#Region "private static members"
+        Friend ReadOnly PowerPersonalityChange As New Guid(&H245D8541, &H3943, &H4422, &HB0, &H25, &H13,
+            &HA7, &H84, &HF6, &H79, &HB7)
+        Friend ReadOnly PowerSourceChange As New Guid(&H5D3E9A59, &HE9D5, &H4B00, &HA6, &HBD, &HFF,
+            &H34, &HFF, &H51, &H65, &H48)
+        Friend ReadOnly BatteryCapacityChange As New Guid(&HA7AD8041UI, &HB45A, &H4CAE, &H87, &HA3, &HEE,
+            &HCB, &HB4, &H68, &HA9, &HE1)
+        Friend ReadOnly BackgroundTaskNotification As New Guid(&H515C31D8, &HF734, &H163D, &HA0, &HFD, &H11,
+            &HA0, &H8C, &H91, &HE8, &HF1)
+        Friend ReadOnly MonitorPowerStatus As New Guid(&H2731015, &H4510, &H4526, &H99, &HE6, &HE5,
+            &HA1, &H7E, &HBD, &H1A, &HEA)
 
-		' Used to catch the initial message Windows sends when 
-		' you first register for a power notification.
-		' We do not want to fire any event handlers when this happens.
-		Private Shared personalityCaught As Boolean
-		Private Shared powerSrcCaught As Boolean
-		Private Shared batteryLifeCaught As Boolean
-		Private Shared monitorOnCaught As Boolean
+#End Region
 
-		#End Region
+#Region "private static members"
 
-		''' <summary>
-		''' Determines if a message should be caught, preventing
-		''' the event handler from executing. 
-		''' This is needed when an event is initially registered.
-		''' </summary>
-		''' <param name="eventGuid">The event to check.</param>
-		''' <returns>A boolean value. Returns true if the 
-		''' message should be caught.</returns>
-		Friend Shared Function IsMessageCaught(eventGuid As Guid) As Boolean
-			Dim isMessageCaught__1 As Boolean = False
+        ' Used to catch the initial message Windows sends when 
+        ' you first register for a power notification.
+        ' We do not want to fire any event handlers when this happens.
+        Private personalityCaught As Boolean
+        Private powerSrcCaught As Boolean
+        Private batteryLifeCaught As Boolean
+        Private monitorOnCaught As Boolean
 
-			If eventGuid = EventManager.BatteryCapacityChange Then
-				If Not batteryLifeCaught Then
-					batteryLifeCaught = True
-					isMessageCaught__1 = True
-				End If
-			ElseIf eventGuid = EventManager.MonitorPowerStatus Then
-				If Not monitorOnCaught Then
-					monitorOnCaught = True
-					isMessageCaught__1 = True
-				End If
-			ElseIf eventGuid = EventManager.PowerPersonalityChange Then
-				If Not personalityCaught Then
-					personalityCaught = True
-					isMessageCaught__1 = True
-				End If
-			ElseIf eventGuid = EventManager.PowerSourceChange Then
-				If Not powerSrcCaught Then
-					powerSrcCaught = True
-					isMessageCaught__1 = True
-				End If
-			End If
+#End Region
 
-			Return isMessageCaught__1
-		End Function
-	End Class
+        ''' <summary>
+        ''' Determines if a message should be caught, preventing
+        ''' the event handler from executing. 
+        ''' This is needed when an event is initially registered.
+        ''' </summary>
+        ''' <param name="eventGuid">The event to check.</param>
+        ''' <returns>A boolean value. Returns true if the 
+        ''' message should be caught.</returns>
+        Friend Function IsMessageCaught(eventGuid As Guid) As Boolean
+            Dim isMessageCaught__1 As Boolean = False
+
+            If eventGuid = EventManager.BatteryCapacityChange Then
+                If Not batteryLifeCaught Then
+                    batteryLifeCaught = True
+                    isMessageCaught__1 = True
+                End If
+            ElseIf eventGuid = EventManager.MonitorPowerStatus Then
+                If Not monitorOnCaught Then
+                    monitorOnCaught = True
+                    isMessageCaught__1 = True
+                End If
+            ElseIf eventGuid = EventManager.PowerPersonalityChange Then
+                If Not personalityCaught Then
+                    personalityCaught = True
+                    isMessageCaught__1 = True
+                End If
+            ElseIf eventGuid = EventManager.PowerSourceChange Then
+                If Not powerSrcCaught Then
+                    powerSrcCaught = True
+                    isMessageCaught__1 = True
+                End If
+            End If
+
+            Return isMessageCaught__1
+        End Function
+    End Module
 End Namespace

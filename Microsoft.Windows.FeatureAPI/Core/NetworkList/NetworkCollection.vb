@@ -7,20 +7,22 @@ Imports System.Runtime.CompilerServices
 Imports System.Runtime.InteropServices
 
 Namespace Net
-	''' <summary>
-	''' An enumerable collection of <see cref="Network"/> objects.
-	''' </summary>
-	Public Class NetworkCollection
-		Implements IEnumerable(Of Network)
-		#Region "Private Fields"
 
-		Private networkEnumerable As IEnumerable
+    ''' <summary>
+    ''' An enumerable collection of <see cref="Network"/> objects.
+    ''' </summary>
+    Public Class NetworkCollection
+        Implements IEnumerable(Of Network)
 
-		#End Region
+#Region "Private Fields"
 
-		Friend Sub New(networkEnumerable As IEnumerable)
-			Me.networkEnumerable = networkEnumerable
-		End Sub
+        Private networkEnumerable As IEnumerable
+
+#End Region
+
+        Friend Sub New(networkEnumerable As IEnumerable)
+            Me.networkEnumerable = networkEnumerable
+        End Sub
 
 #Region "IEnumerable<Network> Members"
 

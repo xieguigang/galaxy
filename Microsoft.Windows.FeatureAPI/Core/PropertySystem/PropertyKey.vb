@@ -4,61 +4,48 @@ Imports System.Runtime.InteropServices
 Imports Microsoft.Windows.Resources
 
 Namespace Shell.PropertySystem
-	''' <summary>
-	''' Defines a unique key for a Shell Property
-	''' </summary>
-	<StructLayout(LayoutKind.Sequential, Pack := 4)> _
-	Public Structure PropertyKey
-		Implements IEquatable(Of PropertyKey)
-		#Region "Private Fields"
 
-		Private m_formatId As Guid
-		Private m_propertyId As Int32
+    ''' <summary>
+    ''' Defines a unique key for a Shell Property
+    ''' </summary>
+    <StructLayout(LayoutKind.Sequential, Pack:=4)>
+    Public Structure PropertyKey
+        Implements IEquatable(Of PropertyKey)
 
-		#End Region
+#Region "Public Properties"
 
-		#Region "Public Properties"
-		''' <summary>
-		''' A unique GUID for the property
-		''' </summary>
-		Public ReadOnly Property FormatId() As Guid
-			Get
-				Return m_formatId
-			End Get
-		End Property
+        ''' <summary>
+        ''' A unique GUID for the property
+        ''' </summary>
+        Public ReadOnly Property FormatId() As Guid
 
-		''' <summary>
-		'''  Property identifier (PID)
-		''' </summary>
-		Public ReadOnly Property PropertyId() As Int32
-			Get
-				Return m_propertyId
-			End Get
-		End Property
+        ''' <summary>
+        '''  Property identifier (PID)
+        ''' </summary>
+        Public ReadOnly Property PropertyId() As Int32
+#End Region
 
-		#End Region
+#Region "Public Construction"
 
-		#Region "Public Construction"
+        ''' <summary>
+        ''' PropertyKey Constructor
+        ''' </summary>
+        ''' <param name="formatId">A unique GUID for the property</param>
+        ''' <param name="propertyId">Property identifier (PID)</param>
+        Public Sub New(formatId As Guid, propertyId As Int32)
+            _FormatId = formatId
+            _PropertyId = propertyId
+        End Sub
 
-		''' <summary>
-		''' PropertyKey Constructor
-		''' </summary>
-		''' <param name="formatId">A unique GUID for the property</param>
-		''' <param name="propertyId">Property identifier (PID)</param>
-		Public Sub New(formatId As Guid, propertyId As Int32)
-			Me.m_formatId = formatId
-			Me.m_propertyId = propertyId
-		End Sub
-
-		''' <summary>
-		''' PropertyKey Constructor
-		''' </summary>
-		''' <param name="formatId">A string represenstion of a GUID for the property</param>
-		''' <param name="propertyId">Property identifier (PID)</param>
-		Public Sub New(formatId As String, propertyId As Int32)
-			Me.m_formatId = New Guid(formatId)
-			Me.m_propertyId = propertyId
-		End Sub
+        ''' <summary>
+        ''' PropertyKey Constructor
+        ''' </summary>
+        ''' <param name="formatId">A string represenstion of a GUID for the property</param>
+        ''' <param name="propertyId">Property identifier (PID)</param>
+        Public Sub New(formatId As String, propertyId As Int32)
+            _FormatId = New Guid(formatId)
+            _PropertyId = propertyId
+        End Sub
 
 #End Region
 
@@ -82,55 +69,55 @@ Namespace Shell.PropertySystem
         ''' </summary>
         ''' <returns></returns>
         Public Overrides Function GetHashCode() As Integer
-			Return m_formatId.GetHashCode() Xor m_propertyId
-		End Function
+            Return _FormatId.GetHashCode() Xor _PropertyId
+        End Function
 
-		''' <summary>
-		''' Returns whether this object is equal to another. This is vital for performance of value types.
-		''' </summary>
-		''' <param name="obj">The object to compare against.</param>
-		''' <returns>Equality result.</returns>
-		Public Overrides Function Equals(obj As Object) As Boolean
-			If obj Is Nothing Then
-				Return False
-			End If
+        ''' <summary>
+        ''' Returns whether this object is equal to another. This is vital for performance of value types.
+        ''' </summary>
+        ''' <param name="obj">The object to compare against.</param>
+        ''' <returns>Equality result.</returns>
+        Public Overrides Function Equals(obj As Object) As Boolean
+            If obj Is Nothing Then
+                Return False
+            End If
 
-			If Not (TypeOf obj Is PropertyKey) Then
-				Return False
-			End If
+            If Not (TypeOf obj Is PropertyKey) Then
+                Return False
+            End If
 
-			Dim other As PropertyKey = CType(obj, PropertyKey)
-			Return other.formatId.Equals(m_formatId) AndAlso (other.propertyId = m_propertyId)
-		End Function
+            Dim other As PropertyKey = CType(obj, PropertyKey)
+            Return other.FormatId.Equals(_FormatId) AndAlso (other.PropertyId = _PropertyId)
+        End Function
 
-		''' <summary>
-		''' Implements the == (equality) operator.
-		''' </summary>
-		''' <param name="propKey1">First property key to compare.</param>
-		''' <param name="propKey2">Second property key to compare.</param>
-		''' <returns>true if object a equals object b. false otherwise.</returns>        
-		Public Shared Operator =(propKey1 As PropertyKey, propKey2 As PropertyKey) As Boolean
-			Return propKey1.Equals(propKey2)
-		End Operator
+        ''' <summary>
+        ''' Implements the == (equality) operator.
+        ''' </summary>
+        ''' <param name="propKey1">First property key to compare.</param>
+        ''' <param name="propKey2">Second property key to compare.</param>
+        ''' <returns>true if object a equals object b. false otherwise.</returns>        
+        Public Shared Operator =(propKey1 As PropertyKey, propKey2 As PropertyKey) As Boolean
+            Return propKey1.Equals(propKey2)
+        End Operator
 
-		''' <summary>
-		''' Implements the != (inequality) operator.
-		''' </summary>
-		''' <param name="propKey1">First property key to compare</param>
-		''' <param name="propKey2">Second property key to compare.</param>
-		''' <returns>true if object a does not equal object b. false otherwise.</returns>
-		Public Shared Operator <>(propKey1 As PropertyKey, propKey2 As PropertyKey) As Boolean
-			Return Not propKey1.Equals(propKey2)
-		End Operator
+        ''' <summary>
+        ''' Implements the != (inequality) operator.
+        ''' </summary>
+        ''' <param name="propKey1">First property key to compare</param>
+        ''' <param name="propKey2">Second property key to compare.</param>
+        ''' <returns>true if object a does not equal object b. false otherwise.</returns>
+        Public Shared Operator <>(propKey1 As PropertyKey, propKey2 As PropertyKey) As Boolean
+            Return Not propKey1.Equals(propKey2)
+        End Operator
 
-		''' <summary>
-		''' Override ToString() to provide a user friendly string representation
-		''' </summary>
-		''' <returns>String representing the property key</returns>        
-		Public Overrides Function ToString() As String
-			Return String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.PropertyKeyFormatString, m_formatId.ToString("B"), m_propertyId)
-		End Function
+        ''' <summary>
+        ''' Override ToString() to provide a user friendly string representation
+        ''' </summary>
+        ''' <returns>String representing the property key</returns>        
+        Public Overrides Function ToString() As String
+            Return String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.PropertyKeyFormatString, _FormatId.ToString("B"), _PropertyId)
+        End Function
 
-		#End Region
-	End Structure
+#End Region
+    End Structure
 End Namespace
