@@ -124,13 +124,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic.Architecture.Framework_v3.0_22.0.76.201__8da45dcd8060cc9a, Version=3.0.32.4495, Culture=neutral, processorArchitecture=AMD64">
+    <Reference Include="Microsoft.VisualBasic.Architecture.Framework_v3.0_22.0.76.201__8da45dcd8060cc9a, Version=3.0.32.42618, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\VB_AppFramework.1.0.26\x86\Microsoft.VisualBasic.Architecture.Framework_v3.0_22.0.76.201__8da45dcd8060cc9a.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Windows.FeatureAPI, Version=10.0.5921.32136, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Microsoft.Windows.FeatureAPI\bin\Release\Microsoft.Windows.FeatureAPI.dll</HintPath>
+      <HintPath>..\packages\VB_AppFramework.1.0.30\x86\Microsoft.VisualBasic.Architecture.Framework_v3.0_22.0.76.201__8da45dcd8060cc9a.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
@@ -347,6 +343,12 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj">
+      <Project>{3d61f3a9-a8e0-4195-9133-6fd8e4b82d54}</Project>
+      <Name>Microsoft.Windows.FeatureAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

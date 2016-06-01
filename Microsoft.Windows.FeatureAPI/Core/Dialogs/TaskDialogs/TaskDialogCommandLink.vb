@@ -46,7 +46,7 @@ Namespace Dialogs
         ''' </summary>
         ''' <returns>A <see cref="System.String"/></returns>
         Public Overrides Function ToString() As String
-            Return String.Format(CultureInfo.CurrentCulture, "{0}{1}{2}", If(Text, String.Empty), If((Not String.IsNullOrEmpty(Text) AndAlso Not String.IsNullOrEmpty(m_instruction)), Environment.NewLine, String.Empty), If(m_instruction, String.Empty))
+            Return String.Format(CultureInfo.CurrentCulture, "{0}{1}{2}", If(Text, String.Empty), If((Not String.IsNullOrEmpty(Text) AndAlso Not String.IsNullOrEmpty(_Instruction)), Environment.NewLine, String.Empty), If(_Instruction, String.Empty))
         End Function
     End Class
 End Namespace
