@@ -166,6 +166,12 @@
     <Compile Include="Controls\ImageButton.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\Caption.Designer.vb">
+      <DependentUpon>Caption.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Caption.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="DotNetChromeTabs\AeroFunctions.vb" />
     <Compile Include="DotNetChromeTabs\ChromeTabControl.vb">
       <SubType>Component</SubType>
@@ -314,6 +320,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\Caption.resx">
+      <DependentUpon>Caption.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ImageButton.resx">
       <DependentUpon>ImageButton.vb</DependentUpon>
     </EmbeddedResource>

@@ -52,7 +52,11 @@ Namespace Controls
                     Throw New NotSupportedException(_status.ToString)
             End Select
 
-            Call e.Graphics.DrawImageUnscaled(res, New Point)
+            Call e.Graphics.DrawImage(res, New Rectangle(New Point, Size))
+        End Sub
+
+        Public Sub SetSize(size As Size) Implements IImageButton.SetSize
+            Me.Size = size
         End Sub
     End Class
 End Namespace

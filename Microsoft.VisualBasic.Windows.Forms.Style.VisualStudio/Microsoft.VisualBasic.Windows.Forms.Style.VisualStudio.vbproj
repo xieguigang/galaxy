@@ -147,6 +147,16 @@
   <ItemGroup>
     <None Include="Resources\RestorePress.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\VisualBasic_AppFramework\Microsoft.VisualBasic.Architecture.Framework\+Microsoft.VisualBasic.Architecture.Framework.vbproj">
+      <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
+      <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.VisualBasic.Windows.Forms\Microsoft.VisualBasic.Windows.Forms.vbproj">
+      <Project>{21d7fd22-6aed-4e65-b2ef-f9f5565cf80e}</Project>
+      <Name>Microsoft.VisualBasic.Windows.Forms</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -120,6 +120,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Microsoft.VisualBasic.Windows.Forms.Style.VisualStudio.vbproj">
+      <Project>{538c1c6c-6d1c-4520-8f0a-cdfab75c2d8e}</Project>
+      <Name>Microsoft.VisualBasic.Windows.Forms.Style.VisualStudio</Name>
+    </ProjectReference>
     <ProjectReference Include="G:\Microsoft.VisualBasic.Windows.Forms\Microsoft.VisualBasic.Windows.Forms\Microsoft.VisualBasic.Windows.Forms.vbproj">
       <Project>{21d7fd22-6aed-4e65-b2ef-f9f5565cf80e}</Project>
       <Name>Microsoft.VisualBasic.Windows.Forms</Name>
