@@ -1,5 +1,9 @@
 ﻿Namespace Controls.UI
 
+    Public Interface IImageButton
+        Property UI As ImageButton
+    End Interface
+
     Public Class ImageButton
 
         Public Property Normal As Image
