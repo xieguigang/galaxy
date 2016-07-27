@@ -12,7 +12,9 @@ Public Module StyleFactory
             .Highlight = My.Resources.MaxHighlight,
             .Normal = My.Resources.MaxNormal,
             .Press = My.Resources.MaxPress,
-            .Checked = My.Resources.RestoreNormal
+            .Checked = My.Resources.RestoreNormal,
+            .CheckedHighlight = My.Resources.RestoreHighlight,
+            .CheckedPress = My.Resources.RestorePress
         }
         Dim close As New UI.ImageButton With {
             .Highlight = My.Resources.CloseHighlight,

@@ -19,22 +19,22 @@ Namespace Controls
 
         Public Event DoClick(sender As ImageButton)
 
-        Private Sub ImageButton_MouseEnter(sender As Object, e As EventArgs) Handles Me.MouseEnter
+        Protected Overridable Sub ImageButton_MouseEnter(sender As Object, e As EventArgs) Handles Me.MouseEnter
             _status = ButtonState.Flat
             Call Me.Invalidate()
         End Sub
 
-        Private Sub ImageButton_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
+        Protected Overridable Sub ImageButton_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
             _status = ButtonState.Normal
             Call Me.Invalidate()
         End Sub
 
-        Private Sub ImageButton_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown
+        Protected Overridable Sub ImageButton_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown
             _status = ButtonState.Pushed
             Call Me.Invalidate()
         End Sub
 
-        Private Sub ImageButton_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        Protected Overridable Sub ImageButton_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
             _status = ButtonState.Normal
             Call Invalidate()
             Call __fireClick()

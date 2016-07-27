@@ -24,7 +24,7 @@ Namespace Controls
             End Get
             Set(value As CheckButton)
                 _uiRes = value
-                Call Me.Invalidate()
+                UI = value
             End Set
         End Property
 
@@ -35,34 +35,29 @@ Namespace Controls
         End Sub
 
         Protected Overrides Sub ImageButton_Paint(sender As Object, e As PaintEventArgs)
-            Dim res As Image
-
             If Checked Then
-                If _status.HasFlag(ButtonState.Normal) Then
-                    res = _uiRes.Checked
-                ElseIf _status.HasFlag(ButtonState.Pushed) Then
+                Dim res As Image
+
+                If _status.HasFlag(ButtonState.Pushed) Then
                     res = _uiRes.CheckedPress
+                    Call Debug.WriteLine("Checked + Pressed")
                 ElseIf _status.HasFlag(ButtonState.Flat) Then
                     res = _uiRes.CheckedHighlight
+                    Call Debug.WriteLine("Checked + Highlight")
+                ElseIf _status.HasFlag(ButtonState.Normal) Then
+                    res = _uiRes.Checked
+                    Call Debug.WriteLine("Checked + Normal")
                 Else
                     Throw New NotSupportedException(_status.ToString)
                 End If
-            Else
-                If _status.HasFlag(ButtonState.Normal) Then
-                    res = _uiRes.Normal
-                ElseIf _status.HasFlag(ButtonState.Pushed) Then
-                    res = _uiRes.Press
-                ElseIf _status.HasFlag(ButtonState.Flat) Then
-                    res = _uiRes.Highlight
-                Else
-                    Throw New NotSupportedException(_status.ToString)
-                End If
-            End If
 
-            Call e.Graphics.DrawImage(res, New Rectangle(New Point, Size))
+                Call e.Graphics.DrawImage(res, New Rectangle(New Point, Size))
+            Else
+                Call MyBase.ImageButton_Paint(sender, e)
+            End If
         End Sub
 
-        Private Sub CheckedButton_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown
+        Protected Overrides Sub ImageButton_MouseDown(sender As Object, e As MouseEventArgs)
             If Checked Then
                 _status = ButtonState.Checked Or ButtonState.Pushed
             Else
@@ -71,7 +66,7 @@ Namespace Controls
             Call Me.Invalidate()
         End Sub
 
-        Private Sub CheckedButton_MouseEnter(sender As Object, e As EventArgs) Handles Me.MouseEnter
+        Protected Overrides Sub ImageButton_MouseEnter(sender As Object, e As EventArgs)
             If Checked Then
                 _status = ButtonState.Checked Or ButtonState.Flat
             Else
@@ -80,7 +75,7 @@ Namespace Controls
             Call Me.Invalidate()
         End Sub
 
-        Private Sub CheckedButton_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        Protected Overrides Sub ImageButton_MouseUp(sender As Object, e As MouseEventArgs)
             If Checked Then
                 _status = ButtonState.Normal
             Else
@@ -91,7 +86,7 @@ Namespace Controls
             Call __fireClick()
         End Sub
 
-        Private Sub CheckedButton_MouseLeave(sender As Object, e As EventArgs) Handles Me.MouseLeave
+        Protected Overrides Sub ImageButton_MouseLeave(sender As Object, e As EventArgs)
             If Checked Then
                 _status = ButtonState.Checked Or ButtonState.Normal
             Else
