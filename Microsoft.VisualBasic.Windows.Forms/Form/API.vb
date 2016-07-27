@@ -43,8 +43,13 @@ Partial Class Form
         End Set
     End Property
 
+    ''' <summary>
+    ''' Draw a solid color border on your form?
+    ''' </summary>
+    ''' <returns></returns>
     Public Property DrawBorderFrame As Boolean = False
 #End Region
+
 #Region "Methods"
     Public Shared Function LoWord(dwValue As Integer) As Integer
         Return dwValue And &HFFFF
@@ -116,8 +121,10 @@ Partial Class Form
         End If
     End Sub
 
-    Private Function HitTestNCA(hwnd As IntPtr, wparam _
-                                  As IntPtr, lparam As IntPtr) As IntPtr
+    Private Function HitTestNCA(hwnd As IntPtr,
+                                wparam As IntPtr,
+                                lparam As IntPtr) As IntPtr
+
         Dim HTNOWHERE As Integer = 0
         Dim HTCLIENT As Integer = 1
         Dim HTCAPTION As Integer = 2
@@ -374,6 +381,7 @@ Partial Class Form
 
     Dim _FormWindowState As FormWindowState
     Dim _BorderWidth As Integer = 1
+
     Protected _BorderPen As System.Drawing.Pen = Pens.Gray
 
     Public Property BorderWidth As Integer
@@ -411,6 +419,8 @@ Partial Class Form
         End If
 
         Call graph.DrawRectangle(_BorderPen, rect)
+        Call graph.DrawLine(_BorderPen, New Point(0, Height - 2), New Point(Width, Height - 2))
+        Call graph.DrawLine(_BorderPen, New Point(0, Height - 3), New Point(Width, Height - 3))
     End Sub
 
     Public Shared Sub PaintBorder(graph As Graphics, Pen As Pen, ClientSize As Size, Optional Left As Boolean = True, Optional Right As Boolean = True, Optional Top As Boolean = True, Optional Bottom As Boolean = True)

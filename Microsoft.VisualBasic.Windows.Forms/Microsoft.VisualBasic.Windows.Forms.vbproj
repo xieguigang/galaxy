@@ -159,6 +159,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ChromeUIRender.vb" />
+    <Compile Include="Controls\UI.vb" />
+    <Compile Include="Controls\ImageButton.Designer.vb">
+      <DependentUpon>ImageButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageButton.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="DotNetChromeTabs\AeroFunctions.vb" />
     <Compile Include="DotNetChromeTabs\ChromeTabControl.vb">
       <SubType>Component</SubType>
@@ -168,6 +175,7 @@
     </Compile>
     <Compile Include="DotNetChromeTabs\TrayItem.vb" />
     <Compile Include="DotNetChromeTabs\Utils.vb" />
+    <Compile Include="Form\Decorate\Helpers.vb" />
     <Compile Include="PlugIns\Attributes.vb" />
     <Compile Include="PlugIns\EntryFlag.vb" />
     <Compile Include="Form\API.vb">
@@ -306,6 +314,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\ImageButton.resx">
+      <DependentUpon>ImageButton.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -348,6 +359,9 @@
       <Project>{3d61f3a9-a8e0-4195-9133-6fd8e4b82d54}</Project>
       <Name>Microsoft.Windows.FeatureAPI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
