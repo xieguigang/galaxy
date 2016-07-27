@@ -3,7 +3,7 @@
     Public Class Caption
 
         Dim WithEvents Minimize As ImageButton
-        Dim WithEvents Maximize As ImageButton
+        Dim WithEvents Maximize As CheckedButton
         Dim WithEvents Closebtn As ImageButton
 
         Public Event OnClickMinimize()
@@ -14,8 +14,8 @@
         Public Sub ApplyUI(min As UI.ImageButton, max As UI.CheckButton, close As UI.ImageButton)
             Minimize = New ImageButton
             Call min.SetValue(Minimize)
-            Maximize = New ImageButton
-            Call max.SetValue(Maximize)
+            Maximize = New CheckedButton
+            Call max.SetValue(chkbtn:=Maximize)
             Closebtn = New ImageButton
             Call close.SetValue(Closebtn)
 
@@ -38,7 +38,11 @@
         End Sub
 
         Private Sub Maximize_DoClick(sender As ImageButton) Handles Maximize.DoClick
-            RaiseEvent OnClickMaximize()
+            If Maximize.Checked Then
+                RaiseEvent OnClickMaximize()
+            Else
+                RaiseEvent OnClickRestore()
+            End If
         End Sub
 
         Private Sub Minimize_DoClick(sender As ImageButton) Handles Minimize.DoClick

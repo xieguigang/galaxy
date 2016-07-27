@@ -31,6 +31,9 @@
         Public Property CheckedPress As Image
         Public Property CheckedHighlight As Image
 
-
+        Public Overloads Sub SetValue(chkbtn As IImageButton(Of CheckButton))
+            Call chkbtn.SetSize(Normal.Size)
+            chkbtn.UI = Me
+        End Sub
     End Class
 End Namespace

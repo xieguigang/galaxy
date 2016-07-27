@@ -15,7 +15,7 @@ Namespace Controls
         End Property
 
         Dim _uiRes As UI.ImageButton
-        Dim _status As ButtonState = ButtonState.Normal
+        Protected _status As ButtonState = ButtonState.Normal
 
         Public Event DoClick(sender As ImageButton)
 
@@ -36,11 +36,15 @@ Namespace Controls
 
         Private Sub ImageButton_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
             _status = ButtonState.Normal
-            Call Me.Invalidate()
+            Call Invalidate()
+            Call __fireClick()
+        End Sub
+
+        Protected Sub __fireClick()
             RaiseEvent DoClick(Me)
         End Sub
 
-        Private Sub ImageButton_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
+        Protected Overridable Sub ImageButton_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
             Dim res As Image
 
             Select Case _status

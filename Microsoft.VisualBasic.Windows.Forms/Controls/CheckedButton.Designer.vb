@@ -2,7 +2,7 @@
 
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class CheckedButton
-        Inherits System.Windows.Forms.UserControl
+        Inherits ImageButton
 
         'UserControl overrides dispose to clean up the component list.
         <System.Diagnostics.DebuggerNonUserCode()>
