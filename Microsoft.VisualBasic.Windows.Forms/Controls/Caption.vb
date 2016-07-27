@@ -1,4 +1,6 @@
-﻿Namespace Controls
+﻿Imports Microsoft.VisualBasic.Windows.Forms.Helpers
+
+Namespace Controls
 
     Public Class Caption
 
@@ -47,6 +49,12 @@
 
         Private Sub Minimize_DoClick(sender As ImageButton) Handles Minimize.DoClick
             RaiseEvent OnClickMinimize()
+        End Sub
+
+        Dim moveScreen As MoveScreen
+
+        Private Sub Caption_ParentChanged(sender As Object, e As EventArgs) Handles Me.ParentChanged
+            moveScreen = New MoveScreen(Me, ParentForm)
         End Sub
     End Class
 End Namespace

@@ -36,4 +36,13 @@
             chkbtn.UI = Me
         End Sub
     End Class
+
+    Public Class Caption
+        Public Property Minimize As ImageButton
+        Public Property Maximize As CheckButton
+        Public Property Close As ImageButton
+        Public Property Icon As Image
+        Public Property IconRectangle As Rectangle
+        Public Property CaptionPosition As Point
+    End Class
 End Namespace

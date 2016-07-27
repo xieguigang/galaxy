@@ -185,6 +185,7 @@
     <Compile Include="DotNetChromeTabs\TrayItem.vb" />
     <Compile Include="DotNetChromeTabs\Utils.vb" />
     <Compile Include="Form\Decorate\Helpers.vb" />
+    <Compile Include="Form\Decorate\MoveScreen.vb" />
     <Compile Include="PlugIns\Attributes.vb" />
     <Compile Include="PlugIns\EntryFlag.vb" />
     <Compile Include="Form\API.vb">
