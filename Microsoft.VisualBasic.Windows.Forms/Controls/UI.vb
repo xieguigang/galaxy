@@ -1,7 +1,7 @@
 ﻿Namespace Controls.UI
 
-    Public Interface IImageButton
-        Property UI As ImageButton
+    Public Interface IImageButton(Of TUI As ImageButton)
+        Property UI As TUI
         Sub SetSize(size As Size)
     End Interface
 
@@ -19,7 +19,7 @@
 
         End Sub
 
-        Public Sub SetValue(btn As IImageButton)
+        Public Sub SetValue(btn As IImageButton(Of ImageButton))
             Call btn.SetSize(Normal.Size)
             btn.UI = Me
         End Sub
@@ -28,5 +28,9 @@
     Public Class CheckButton : Inherits ImageButton
 
         Public Property Checked As Image
+        Public Property CheckedPress As Image
+        Public Property CheckedHighlight As Image
+
+
     End Class
 End Namespace

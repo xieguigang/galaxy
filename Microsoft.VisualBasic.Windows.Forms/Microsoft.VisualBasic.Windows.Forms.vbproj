@@ -172,6 +172,12 @@
     <Compile Include="Controls\Caption.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\CheckedButton.Designer.vb">
+      <DependentUpon>CheckedButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CheckedButton.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="DotNetChromeTabs\AeroFunctions.vb" />
     <Compile Include="DotNetChromeTabs\ChromeTabControl.vb">
       <SubType>Component</SubType>

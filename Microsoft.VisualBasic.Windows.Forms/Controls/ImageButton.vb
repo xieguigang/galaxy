@@ -2,10 +2,9 @@
 
 Namespace Controls
 
-    Public Class ImageButton
-        Implements UI.IImageButton
+    Public Class ImageButton : Implements UI.IImageButton(Of UI.ImageButton)
 
-        Public Property UI As UI.ImageButton Implements IImageButton.UI
+        Public Property UI As UI.ImageButton Implements IImageButton(Of UI.ImageButton).UI
             Get
                 Return _uiRes
             End Get
@@ -55,7 +54,7 @@ Namespace Controls
             Call e.Graphics.DrawImage(res, New Rectangle(New Point, Size))
         End Sub
 
-        Public Sub SetSize(size As Size) Implements IImageButton.SetSize
+        Public Sub SetSize(size As Size) Implements IImageButton(Of UI.ImageButton).SetSize
             Me.Size = size
         End Sub
     End Class

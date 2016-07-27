@@ -9,6 +9,7 @@
         Public Event OnClickMinimize()
         Public Event OnClickMaximize()
         Public Event OnClickClose()
+        Public Event OnClickRestore()
 
         Public Sub ApplyUI(min As UI.ImageButton, max As UI.CheckButton, close As UI.ImageButton)
             Minimize = New ImageButton

@@ -35,9 +35,9 @@ Partial Class Form1
         Me.LinkLabel1.DisabledLinkColor = System.Drawing.Color.Silver
         Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft YaHei", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel1.Location = New System.Drawing.Point(-1, 502)
+        Me.LinkLabel1.Location = New System.Drawing.Point(-1, 541)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(1011, 19)
+        Me.LinkLabel1.Size = New System.Drawing.Size(1027, 19)
         Me.LinkLabel1.TabIndex = 0
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "LinkLabel1"
@@ -48,14 +48,14 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Caption1.Location = New System.Drawing.Point(1, 1)
         Me.Caption1.Name = "Caption1"
-        Me.Caption1.Size = New System.Drawing.Size(1006, 45)
+        Me.Caption1.Size = New System.Drawing.Size(1022, 45)
         Me.Caption1.TabIndex = 1
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1008, 524)
+        Me.ClientSize = New System.Drawing.Size(1024, 563)
         Me.Controls.Add(Me.Caption1)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Name = "Form1"
