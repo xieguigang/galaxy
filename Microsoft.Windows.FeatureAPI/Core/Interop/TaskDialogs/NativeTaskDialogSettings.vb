@@ -2,7 +2,7 @@
 
 Imports System.Collections.Generic
 Imports System.Runtime.InteropServices
-Imports Microsoft.VisualBasic.Serialization
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace Dialogs
 

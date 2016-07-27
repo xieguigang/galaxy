@@ -1,6 +1,7 @@
 Imports System.Runtime.InteropServices
 Imports System.Runtime.InteropServices.ComTypes
 Imports Microsoft.VisualBasic.Serialization
+Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.Windows.Internal
 Imports Microsoft.Windows.Shell
 Imports Microsoft.Windows.Shell.Interop

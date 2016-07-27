@@ -4,6 +4,7 @@ Imports System.Collections
 Imports System.Runtime.CompilerServices
 Imports System.Runtime.InteropServices
 Imports Microsoft.VisualBasic.Serialization
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace Net
 

@@ -1,6 +1,7 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Imports Microsoft.VisualBasic.Serialization
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace Controls
 

@@ -3,6 +3,7 @@
 Imports System.Runtime.InteropServices
 Imports System.Security.Permissions
 Imports Microsoft.VisualBasic.Serialization
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace Internal
 

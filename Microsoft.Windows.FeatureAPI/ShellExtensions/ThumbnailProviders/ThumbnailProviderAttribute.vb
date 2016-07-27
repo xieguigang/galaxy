@@ -1,5 +1,6 @@
 
 Imports Microsoft.VisualBasic.Serialization
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace ShellExtensions
 

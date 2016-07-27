@@ -124,9 +124,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic.Architecture.Framework_v3.0_22.0.76.201__8da45dcd8060cc9a">
-      <HintPath>..\packages\VB_AppFramework.1.0.35\x86\Microsoft.VisualBasic.Architecture.Framework_v3.0_22.0.76.201__8da45dcd8060cc9a.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -370,6 +367,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\VisualBasic_AppFramework\Microsoft.VisualBasic.Architecture.Framework\+Microsoft.VisualBasic.Architecture.Framework.vbproj">
+      <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
+      <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj">
       <Project>{3d61f3a9-a8e0-4195-9133-6fd8e4b82d54}</Project>
       <Name>Microsoft.Windows.FeatureAPI</Name>

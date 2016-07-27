@@ -2,6 +2,7 @@
 
 Imports System.Collections.Generic
 Imports Microsoft.VisualBasic.Serialization
+Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.Windows.Controls.WindowsForms
 Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Shell
