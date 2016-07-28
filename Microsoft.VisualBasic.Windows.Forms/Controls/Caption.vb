@@ -13,6 +13,10 @@ Namespace Controls
         Public Event OnClickClose()
         Public Event OnClickRestore()
 
+        Public Property Icon As Image
+        Public Property IconRect As Rectangle
+        Public Property TitlePosition As Point
+
         Public Sub ApplyUI(min As UI.ImageButton, max As UI.CheckButton, close As UI.ImageButton)
             Minimize = New ImageButton
             Call min.SetValue(Minimize)
