@@ -24,6 +24,7 @@ Imports System.Windows.Forms
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Runtime.InteropServices
+Imports sys = System.Math
 
 Namespace ChromeTabControl
 
@@ -233,8 +234,8 @@ Namespace ChromeTabControl
                         End If
                     End If
                 End If
-                _TabWidth = Math.Min(_TabWidth, 175)
-                _TabWidth = Math.Max(_TabWidth, 50)
+                _TabWidth = sys.Min(_TabWidth, 175)
+                _TabWidth = sys.Max(_TabWidth, 50)
             End If
 
             ' Redraw the control

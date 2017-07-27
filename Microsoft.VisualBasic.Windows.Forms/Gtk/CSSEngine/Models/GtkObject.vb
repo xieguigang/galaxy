@@ -1,12 +1,13 @@
 ﻿Imports Microsoft.VisualBasic.ComponentModel.Collection.Generic
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository
 Imports Microsoft.VisualBasic.Serialization
 Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace Gtk.CSSEngine.Models
 
-    Public Class GtkObject : Implements sIdEnumerable
+    Public Class GtkObject : Implements INamedValue
 
-        Public Property Identifier As String Implements sIdEnumerable.Identifier
+        Public Property Identifier As String Implements IKeyedEntity(Of String).Key
         Public Property Properties As Dictionary(Of String, CSSProperty())
 
         Sub New(name As String, data As CSSProperty())
@@ -24,9 +25,9 @@ Namespace Gtk.CSSEngine.Models
         End Function
     End Class
 
-    Public Class GtkProperty : Implements sIdEnumerable
+    Public Class GtkProperty : Implements INamedValue
 
-        Public Property Identifier As String Implements sIdEnumerable.Identifier
+        Public Property Identifier As String Implements IKeyedEntity(Of String).Key
         Public Property Parent As String
         Public Property Controls As Dictionary(Of String, CSSProperty())
 

@@ -1,5 +1,6 @@
 ﻿Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.Windows.Taskbar
+Imports sys = System.Math
 
 Public Class TabControl
 
@@ -20,7 +21,7 @@ Public Class TabControl
         Dim label As New TabLabel(page, container:=Me) With {
             .Text = Name,
             .Height = FlowLayoutPanelLabelsContainer.Height - 2,
-            .Width = Math.Min(MaxWidth, avgWidth)
+            .Width = sys.Min(MaxWidth, avgWidth)
         }
 
         For Each xlb As TabLabel In __labels

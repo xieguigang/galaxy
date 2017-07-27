@@ -155,7 +155,6 @@
     <Compile Include="Button.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ChromeUIRender.vb" />
     <Compile Include="Controls\UI.vb" />
     <Compile Include="Controls\ImageButton.Designer.vb">
       <DependentUpon>ImageButton.vb</DependentUpon>
@@ -368,7 +367,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\VisualBasic_AppFramework\Microsoft.VisualBasic.Architecture.Framework\+Microsoft.VisualBasic.Architecture.Framework.vbproj">
+    <ProjectReference Include="..\..\..\..\repo\sciBASIC\Microsoft.VisualBasic.Architecture.Framework\+Microsoft.VisualBasic.Architecture.Framework.vbproj">
       <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
       <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
     </ProjectReference>

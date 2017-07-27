@@ -24,6 +24,7 @@ Imports System.Windows.Forms
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Runtime.InteropServices
+Imports sys = System.Math
 
 Namespace ChromeTabControl
 
@@ -160,7 +161,7 @@ Namespace ChromeTabControl
             End If
 
             ' Return a capsule if needed
-            If radius >= (Math.Min(baseRect.Width, baseRect.Height) / 2.0F) Then
+            If radius >= (sys.Min(baseRect.Width, baseRect.Height) / 2.0F) Then
                 Return GetCapsulePath(baseRect)
             End If
 

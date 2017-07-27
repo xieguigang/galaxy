@@ -42,7 +42,7 @@ Namespace Gtk.CSSEngine
             Dim regx As New Regex("/\*[\d\D]*?\*/")
 
             Query = regx.Replace(Query, "") 'Removes comments
-            Query = Query.TrimVBCrLf
+            Query = Query.TrimNewLine
 
             Dim source As String() = Query.Split(CChar("}"))
 
