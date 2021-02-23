@@ -99,7 +99,7 @@ Namespace Dialogs
 				Return ownerWindow
 			End Get
 			Set
-				ThrowIfDialogShowing(LocalizedMessages.OwnerCannotBeChanged)
+				ThrowIfDialogShowing("LocalizedMessages.OwnerCannotBeChanged")
 				ownerWindow = value
 			End Set
 		End Property
@@ -148,7 +148,7 @@ Namespace Dialogs
 				Return m_caption
 			End Get
 			Set
-				ThrowIfDialogShowing(LocalizedMessages.CaptionCannotBeChanged)
+				ThrowIfDialogShowing("LocalizedMessages.CaptionCannotBeChanged")
 				m_caption = value
 			End Set
 		End Property
