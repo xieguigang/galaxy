@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic
 Imports System.Diagnostics
 Imports Microsoft.WindowsAPICodePack.Dialogs
 Imports System.ComponentModel
+Imports Microsoft.Windows.Dialogs
 
 Namespace TaskbarDemo
     ''' <summary>

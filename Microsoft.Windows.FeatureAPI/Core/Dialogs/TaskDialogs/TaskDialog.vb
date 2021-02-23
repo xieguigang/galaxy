@@ -252,7 +252,7 @@ Namespace Dialogs
 				Return m_cancelable
 			End Get
 			Set
-				ThrowIfDialogShowing(LocalizedMessages.CancelableCannotBeChanged)
+				ThrowIfDialogShowing("LocalizedMessages.CancelableCannotBeChanged")
 				m_cancelable = value
 			End Set
 		End Property

@@ -8,17 +8,17 @@ Namespace Dialogs
 		End Sub
 		Public Shared ReadOnly Property Caption() As String
 			Get
-				Return LocalizedMessages.TaskDialogDefaultCaption
+				Return "LocalizedMessages.TaskDialogDefaultCaption"
 			End Get
 		End Property
 		Public Shared ReadOnly Property MainInstruction() As String
 			Get
-				Return LocalizedMessages.TaskDialogDefaultMainInstruction
+				Return "LocalizedMessages.TaskDialogDefaultMainInstruction"
 			End Get
 		End Property
 		Public Shared ReadOnly Property Content() As String
 			Get
-				Return LocalizedMessages.TaskDialogDefaultContent
+				Return "LocalizedMessages.TaskDialogDefaultContent"
 			End Get
 		End Property
 
