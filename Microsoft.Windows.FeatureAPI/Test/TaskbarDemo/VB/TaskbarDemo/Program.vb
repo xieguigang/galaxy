@@ -1,11 +1,8 @@
 ﻿'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 
-Imports Microsoft.VisualBasic
 Imports System
 Imports System.Windows.Forms
-Imports Microsoft.WindowsAPICodePack
-Imports Microsoft.WindowsAPICodePack.Taskbar
 Imports Microsoft.Windows.Taskbar
 
 Namespace TaskbarDemo

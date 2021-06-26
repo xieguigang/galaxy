@@ -1,20 +1,14 @@
 ﻿'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 
-Imports Microsoft.VisualBasic
 Imports System
-Imports System.IO
-Imports System.Reflection
-Imports System.Windows.Forms
-Imports Microsoft.WindowsAPICodePack.Shell
-Imports Microsoft.WindowsAPICodePack.Taskbar
-Imports Microsoft.Win32
-Imports Microsoft.WindowsAPICodePack
 Imports System.Diagnostics
-Imports Microsoft.WindowsAPICodePack.Dialogs
-Imports Microsoft.Windows.Taskbar
+Imports System.IO
+Imports System.Windows.Forms
+Imports Microsoft.Win32
 Imports Microsoft.Windows.Dialogs
 Imports Microsoft.Windows.Shell
+Imports Microsoft.Windows.Taskbar
 
 Namespace TaskbarDemo
     ''' <summary>
@@ -137,9 +131,8 @@ Namespace TaskbarDemo
                     ' Show UAC shield as this task requires elevation
                     button1.UseElevationIcon = True
 
-                    td.Controls.Add(button1)
-
-                    Dim tdr As TaskDialogResult = td.Show()
+                    Call td.Controls.Add(button1)
+                    ' Call td.Show()
                 End If
             End Try
         End Sub

@@ -1,15 +1,11 @@
 ' Copyright (c) Microsoft Corporation.  All rights reserved.
 
 
-Imports Microsoft.VisualBasic
 Imports System
 Imports System.IO
 Imports System.Windows.Forms
-Imports Microsoft.WindowsAPICodePack.Shell
-Imports Microsoft.WindowsAPICodePack.Taskbar
-Imports System.Reflection
-Imports Microsoft.Windows.Taskbar
 Imports Microsoft.Windows.Shell
+Imports Microsoft.Windows.Taskbar
 
 Namespace TaskbarDemo
     Partial Public Class ChildDocument
