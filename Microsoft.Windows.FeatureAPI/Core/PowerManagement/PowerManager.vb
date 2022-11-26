@@ -30,12 +30,12 @@ Namespace ApplicationServices
         ''' <exception cref="InvalidOperationException">The event handler specified for removal was not registered.</exception>
         ''' <exception cref="System.PlatformNotSupportedException">Requires Vista/Windows Server 2008.</exception>
         Public Shared Custom Event PowerPersonalityChanged As EventHandler
-            AddHandler(ByVal value As EventHandler)
+            AddHandler(value As EventHandler)
 
 
                 MessageManager.RegisterPowerEvent(EventManager.PowerPersonalityChange, value)
             End AddHandler
-            RemoveHandler(ByVal value As EventHandler)
+            RemoveHandler(value As EventHandler)
 
                 CoreHelpers.ThrowIfNotVista()
 
@@ -52,12 +52,12 @@ Namespace ApplicationServices
         ''' <exception cref="InvalidOperationException">The event handler specified for removal was not registered.</exception>
         ''' <exception cref="System.PlatformNotSupportedException">Requires Vista/Windows Server 2008.</exception>
         Public Shared Custom Event PowerSourceChanged As EventHandler
-            AddHandler(ByVal value As EventHandler)
+            AddHandler(value As EventHandler)
                 CoreHelpers.ThrowIfNotVista()
 
                 MessageManager.RegisterPowerEvent(EventManager.PowerSourceChange, value)
             End AddHandler
-            RemoveHandler(ByVal value As EventHandler)
+            RemoveHandler(value As EventHandler)
 
                 CoreHelpers.ThrowIfNotVista()
 
@@ -74,12 +74,12 @@ Namespace ApplicationServices
         ''' <exception cref="InvalidOperationException">The event handler specified for removal was not registered.</exception>
         ''' <exception cref="System.PlatformNotSupportedException">Requires Vista/Windows Server 2008.</exception>
         Public Shared Custom Event BatteryLifePercentChanged As EventHandler
-            AddHandler(ByVal value As EventHandler)
+            AddHandler(value As EventHandler)
                 CoreHelpers.ThrowIfNotVista()
 
                 MessageManager.RegisterPowerEvent(EventManager.BatteryCapacityChange, value)
             End AddHandler
-            RemoveHandler(ByVal value As EventHandler)
+            RemoveHandler(value As EventHandler)
                 CoreHelpers.ThrowIfNotVista()
 
                 MessageManager.UnregisterPowerEvent(EventManager.BatteryCapacityChange, value)
@@ -95,12 +95,12 @@ Namespace ApplicationServices
         ''' <exception cref="InvalidOperationException">The event handler specified for removal was not registered.</exception>
         ''' <exception cref="System.PlatformNotSupportedException">Requires Vista/Windows Server 2008.</exception>
         Public Shared Custom Event IsMonitorOnChanged As EventHandler
-            AddHandler(ByVal value As EventHandler)
+            AddHandler(value As EventHandler)
                 CoreHelpers.ThrowIfNotVista()
 
                 MessageManager.RegisterPowerEvent(EventManager.MonitorPowerStatus, value)
             End AddHandler
-            RemoveHandler(ByVal value As EventHandler)
+            RemoveHandler(value As EventHandler)
                 CoreHelpers.ThrowIfNotVista()
 
                 MessageManager.UnregisterPowerEvent(EventManager.MonitorPowerStatus, value)
@@ -119,12 +119,12 @@ Namespace ApplicationServices
         ''' <exception cref="InvalidOperationException">The event handler specified for removal was not registered.</exception>
         ''' <exception cref="System.PlatformNotSupportedException">Requires Vista/Windows Server 2008.</exception>
         Public Shared Custom Event SystemBusyChanged As EventHandler
-            AddHandler(ByVal value As EventHandler)
+            AddHandler(value As EventHandler)
                 CoreHelpers.ThrowIfNotVista()
 
                 MessageManager.RegisterPowerEvent(EventManager.BackgroundTaskNotification, value)
             End AddHandler
-            RemoveHandler(ByVal value As EventHandler)
+            RemoveHandler(value As EventHandler)
                 CoreHelpers.ThrowIfNotVista()
 
                 MessageManager.UnregisterPowerEvent(EventManager.BackgroundTaskNotification, value)
