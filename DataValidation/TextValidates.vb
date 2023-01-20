@@ -19,7 +19,7 @@ Public Module TextValidates
         If txt.Text.StringEmpty Then
             MessageBox.Show($"A required{prompt} text input should not be empty!", title, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return Nothing
-        ElseIf txt.Text.IsNumeric(includesInteger:=True) Then
+        ElseIf Not txt.Text.IsNumeric(includesInteger:=True) Then
             MessageBox.Show($"A required{prompt} text input should be a number!", title, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return Nothing
         Else
@@ -41,7 +41,7 @@ Public Module TextValidates
         If txt.Text.StringEmpty Then
             MessageBox.Show($"A required{prompt} text input should not be empty!", title, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return Nothing
-        ElseIf txt.Text.IsInteger Then
+        ElseIf Not txt.Text.IsInteger Then
             MessageBox.Show($"A required{prompt} text input should be an integer!", title, MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return Nothing
         Else
