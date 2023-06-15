@@ -134,9 +134,9 @@
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\47-dotnet_Microsoft.VisualBasic.vbproj">
-      <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
-      <Name>47-dotnet_Microsoft.VisualBasic</Name>
+    <ProjectReference Include="..\..\..\..\..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
+      <Project>{a7b0c803-7675-4fd4-9a97-0371aab82134}</Project>
+      <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\Microsoft.Windows.FeatureAPI.vbproj">
       <Project>{3d61f3a9-a8e0-4195-9133-6fd8e4b82d54}</Project>
