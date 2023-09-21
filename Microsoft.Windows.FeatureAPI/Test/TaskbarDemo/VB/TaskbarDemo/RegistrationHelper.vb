@@ -1,10 +1,9 @@
 ﻿'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 
-Imports Microsoft.VisualBasic
-Imports System.Diagnostics
-Imports Microsoft.WindowsAPICodePack.Dialogs
 Imports System.ComponentModel
+Imports System.Diagnostics
+Imports Microsoft.Windows.Dialogs
 
 Namespace TaskbarDemo
     ''' <summary>

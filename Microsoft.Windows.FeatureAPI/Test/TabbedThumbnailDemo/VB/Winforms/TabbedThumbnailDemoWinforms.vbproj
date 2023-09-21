@@ -10,7 +10,7 @@
     <RootNamespace>
     </RootNamespace>
     <AssemblyName>TabbedThumbnailDemoWinforms</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>

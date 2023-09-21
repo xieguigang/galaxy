@@ -1,9 +1,10 @@
 Imports System.Windows.Controls
 Imports System.Windows.Interop
 Imports System.Windows.Media
-Imports Microsoft.Windows.ShellExtensions.Interop
 Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Shell
+Imports Microsoft.Windows.ShellExtensions.Interop
+Imports std = System.Math
 
 Namespace ShellExtensions
 
@@ -44,7 +45,7 @@ Namespace ShellExtensions
             If _source IsNot Nothing Then
                 HandlerNativeMethods.SetParent(_source.Handle, _parentHandle)
 
-                HandlerNativeMethods.SetWindowPos(_source.Handle, New IntPtr(CInt(SetWindowPositionInsertAfter.Top)), 0, 0, Math.Abs(_bounds.Left - _bounds.Right), Math.Abs(_bounds.Top - _bounds.Bottom),
+                HandlerNativeMethods.SetWindowPos(_source.Handle, New IntPtr(CInt(SetWindowPositionInsertAfter.Top)), 0, 0, std.Abs(_bounds.Left - _bounds.Right), std.Abs(_bounds.Top - _bounds.Bottom),
                     SetWindowPositionOptions.ShowWindow)
             End If
         End Sub
@@ -61,8 +62,8 @@ Namespace ShellExtensions
                 Dim p As New HwndSourceParameters()
                 p.WindowStyle = CInt(WindowStyles.Child Or WindowStyles.Visible Or WindowStyles.ClipSiblings)
                 p.ParentWindow = _parentHandle
-                p.Width = Math.Abs(_bounds.Left - _bounds.Right)
-                p.Height = Math.Abs(_bounds.Top - _bounds.Bottom)
+                p.Width = std.Abs(_bounds.Left - _bounds.Right)
+                p.Height = std.Abs(_bounds.Top - _bounds.Bottom)
 
                 _source = New HwndSource(p)
                 _source.CompositionTarget.BackgroundColor = Brushes.WhiteSmoke.Color

@@ -93,11 +93,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <RemoveIntegerChecks>true</RemoveIntegerChecks>
     <DocumentationFile>Microsoft.Windows.FeatureAPI.xml</DocumentationFile>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42030,42032,42036,42104,42108,42109</NoWarn>
     <DebugType>Full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineTrace>true</DefineTrace>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -436,7 +437,6 @@
   <ItemGroup>
     <None Include="Core\CustomDictionary.xml" />
     <None Include="ExtendedLinguisticServices\CustomDictionary.xml" />
-    <None Include="packages.config" />
     <None Include="Sensors\CustomDictionary.xml" />
     <None Include="ShellExtensions\CustomDictionary.xml" />
     <None Include="Shell\CustomDictionary.xml" />
@@ -452,9 +452,9 @@
     <Page Include="Shell\ExplorerBrowser\ExplorerBrowser.WPF.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\repo\sciBASIC\Microsoft.VisualBasic.Architecture.Framework\+Microsoft.VisualBasic.Architecture.Framework.vbproj">
-      <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
-      <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
+      <Project>{dee82853-4241-4f24-a096-12923c664369}</Project>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

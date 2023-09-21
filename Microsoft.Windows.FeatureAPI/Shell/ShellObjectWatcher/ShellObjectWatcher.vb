@@ -152,11 +152,11 @@ Namespace Shell
         ''' Raised when any event occurs.
         ''' </summary>
         Public Custom Event AllEvents As EventHandler(Of ShellObjectNotificationEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectNotificationEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectNotificationEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.AllEventsMask, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectNotificationEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectNotificationEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.AllEventsMask, value)
             End RemoveHandler
@@ -169,11 +169,11 @@ Namespace Shell
 		''' Raised when global events occur.
 		''' </summary>
 		Public Custom Event GlobalEvents As EventHandler(Of ShellObjectNotificationEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectNotificationEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectNotificationEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.GlobalEventsMask, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectNotificationEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectNotificationEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.GlobalEventsMask, value)
             End RemoveHandler
@@ -186,11 +186,11 @@ Namespace Shell
 		''' Raised when disk events occur.
 		''' </summary>
 		Public Custom Event DiskEvents As EventHandler(Of ShellObjectNotificationEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectNotificationEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectNotificationEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.DiskEventsMask, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectNotificationEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectNotificationEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.DiskEventsMask, value)
             End RemoveHandler
@@ -205,11 +205,11 @@ Namespace Shell
 		''' Raised when an item is renamed.
 		''' </summary>
 		Public Custom Event ItemRenamed As EventHandler(Of ShellObjectRenamedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectRenamedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectRenamedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.ItemRename, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectRenamedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectRenamedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.ItemRename, value)
             End RemoveHandler
@@ -222,11 +222,11 @@ Namespace Shell
 		''' Raised when an item is created.
 		''' </summary>
 		Public Custom Event ItemCreated As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.ItemCreate, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.ItemCreate, value)
             End RemoveHandler
@@ -239,11 +239,11 @@ Namespace Shell
 		''' Raised when an item is deleted.
 		''' </summary>
 		Public Custom Event ItemDeleted As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.ItemDelete, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.ItemDelete, value)
             End RemoveHandler
@@ -256,11 +256,11 @@ Namespace Shell
 		''' Raised when an item is updated.
 		''' </summary>
 		Public Custom Event Updated As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.Update, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.Update, value)
             End RemoveHandler
@@ -273,11 +273,11 @@ Namespace Shell
 		''' Raised when a directory is updated.
 		''' </summary>
 		Public Custom Event DirectoryUpdated As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.DirectoryContentsUpdate, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.DirectoryContentsUpdate, value)
             End RemoveHandler
@@ -290,11 +290,11 @@ Namespace Shell
 		''' Raised when a directory is renamed.
 		''' </summary>
 		Public Custom Event DirectoryRenamed As EventHandler(Of ShellObjectRenamedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectRenamedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectRenamedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.DirectoryRename, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectRenamedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectRenamedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.DirectoryRename, value)
             End RemoveHandler
@@ -307,11 +307,11 @@ Namespace Shell
 		''' Raised when a directory is created.
 		''' </summary>
 		Public Custom Event DirectoryCreated As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.DirectoryCreate, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.DirectoryCreate, value)
             End RemoveHandler
@@ -324,11 +324,11 @@ Namespace Shell
         ''' Raised when a directory is deleted.
         ''' </summary>
         Public Custom Event DirectoryDeleted As EventHandler(Of ShellObjectChangedEventArgs)
-            AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Register(ShellObjectChangeTypes.DirectoryDelete, value)
             End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.DirectoryDelete, value)
             End RemoveHandler
@@ -341,11 +341,11 @@ Namespace Shell
 		''' Raised when media is inserted.
 		''' </summary>
 		Public Custom Event MediaInserted As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.MediaInsert, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.MediaInsert, value)
             End RemoveHandler
@@ -358,11 +358,11 @@ Namespace Shell
 		''' Raised when media is removed.
 		''' </summary>
 		Public Custom Event MediaRemoved As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.MediaRemove, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.MediaRemove, value)
             End RemoveHandler
@@ -375,11 +375,11 @@ Namespace Shell
 		''' Raised when a drive is added.
 		''' </summary>
 		Public Custom Event DriveAdded As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.DriveAdd, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.DriveAdd, value)
             End RemoveHandler
@@ -392,11 +392,11 @@ Namespace Shell
 		''' Raised when a drive is removed.
 		''' </summary>
 		Public Custom Event DriveRemoved As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.DriveRemove, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.DriveRemove, value)
             End RemoveHandler
@@ -409,11 +409,11 @@ Namespace Shell
 		''' Raised when a folder is shared on a network.
 		''' </summary>
 		Public Custom Event FolderNetworkShared As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.NetShare, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.NetShare, value)
             End RemoveHandler
@@ -426,11 +426,11 @@ Namespace Shell
 		''' Raised when a folder is unshared from the network.
 		''' </summary>
 		Public Custom Event FolderNetworkUnshared As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.NetUnshare, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.NetUnshare, value)
             End RemoveHandler
@@ -443,11 +443,11 @@ Namespace Shell
 		''' Raised when a server is disconnected.
 		''' </summary>
 		Public Custom Event ServerDisconnected As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.ServerDisconnect, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.ServerDisconnect, value)
             End RemoveHandler
@@ -460,11 +460,11 @@ Namespace Shell
 		''' Raised when a system image is changed.
 		''' </summary>
 		Public Custom Event SystemImageChanged As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.SystemImageUpdate, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.SystemImageUpdate, value)
             End RemoveHandler
@@ -477,11 +477,11 @@ Namespace Shell
 		''' Raised when free space changes.
 		''' </summary>
 		Public Custom Event FreeSpaceChanged As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.FreeSpace, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.FreeSpace, value)
             End RemoveHandler
@@ -494,11 +494,11 @@ Namespace Shell
 		''' Raised when a file type association changes.
 		''' </summary>
 		Public Custom Event FileTypeAssociationChanged As EventHandler(Of ShellObjectChangedEventArgs)
-			AddHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+			AddHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
 				ThrowIfRunning()
 				_manager.Register(ShellObjectChangeTypes.AssociationChange, value)
 			End AddHandler
-            RemoveHandler(ByVal value As EventHandler(Of ShellObjectChangedEventArgs))
+            RemoveHandler(value As EventHandler(Of ShellObjectChangedEventArgs))
                 ThrowIfRunning()
                 _manager.Unregister(ShellObjectChangeTypes.AssociationChange, value)
             End RemoveHandler

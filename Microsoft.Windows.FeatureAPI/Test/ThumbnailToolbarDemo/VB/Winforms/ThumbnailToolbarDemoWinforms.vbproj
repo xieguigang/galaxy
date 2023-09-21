@@ -10,7 +10,7 @@
     <RootNamespace>
     </RootNamespace>
     <AssemblyName>ImageViewerDemoWinforms</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -160,6 +160,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\47-dotnet_Microsoft.VisualBasic.vbproj">
+      <Project>{fecce1fd-e1d4-49e3-a668-60bb5e7aed99}</Project>
+      <Name>47-dotnet_Microsoft.VisualBasic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\Microsoft.Windows.FeatureAPI.vbproj">
       <Project>{3d61f3a9-a8e0-4195-9133-6fd8e4b82d54}</Project>
       <Name>Microsoft.Windows.FeatureAPI</Name>
