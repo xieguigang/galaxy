@@ -100,7 +100,7 @@ Namespace Dialogs.Controls
 		''' </summary>
 		''' <param name="dialog">The target dialog</param>
 		Friend Overrides Sub Attach(dialog As IFileDialogCustomize)
-			Debug.Assert(dialog IsNot Nothing, "CommonFileDialogRadioButtonList.Attach: dialog parameter can not be null")
+			System.Diagnostics.Debug.Assert(dialog IsNot Nothing, "CommonFileDialogRadioButtonList.Attach: dialog parameter can not be null")
 
 			' Add the radio button list control
 			dialog.AddRadioButtonList(Me.Id)

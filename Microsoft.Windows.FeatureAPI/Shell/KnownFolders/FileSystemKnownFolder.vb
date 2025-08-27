@@ -25,7 +25,7 @@ Namespace Shell
 		End Sub
 
 		Friend Sub New(kf As IKnownFolderNative)
-			Debug.Assert(kf IsNot Nothing)
+			System.Diagnostics.Debug.Assert(kf IsNot Nothing)
 			knownFolderNative = kf
 
 			' Set the native shell item
@@ -55,7 +55,7 @@ Namespace Shell
 						knownFolderNative = KnownFolderHelper.FromPIDL(MyBase.PIDL)
 					End If
 
-					Debug.Assert(knownFolderNative IsNot Nothing)
+					System.Diagnostics.Debug.Assert(knownFolderNative IsNot Nothing)
 				End If
 
 				' If this is the first time this property is being called,

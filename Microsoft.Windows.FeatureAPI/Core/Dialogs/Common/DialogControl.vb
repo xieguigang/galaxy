@@ -98,7 +98,7 @@ Namespace Dialogs
 		''' </summary>
 		''' <param name="propName">The name of the property that is changing</param>
 		Protected Sub CheckPropertyChangeAllowed(propName As String)
-			Debug.Assert(Not String.IsNullOrEmpty(propName), "Property to change was not specified")
+			System.Diagnostics.Debug.Assert(Not String.IsNullOrEmpty(propName), "Property to change was not specified")
 
 			If HostingDialog IsNot Nothing Then
 				' This will throw if the property change is not allowed.
@@ -116,7 +116,7 @@ Namespace Dialogs
 		''' </summary>
 		''' <param name="propName">The name of the property that is changing.</param>
 		Protected Sub ApplyPropertyChange(propName As String)
-			Debug.Assert(Not String.IsNullOrEmpty(propName), "Property changed was not specified")
+			System.Diagnostics.Debug.Assert(Not String.IsNullOrEmpty(propName), "Property changed was not specified")
 
 			If HostingDialog IsNot Nothing Then
 				HostingDialog.ApplyControlPropertyChange(propName, Me)

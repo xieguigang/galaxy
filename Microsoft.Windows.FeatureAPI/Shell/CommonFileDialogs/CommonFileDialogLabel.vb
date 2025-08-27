@@ -36,7 +36,7 @@ Namespace Dialogs.Controls
 		''' </summary>
 		''' <param name="dialog">Target dialog</param>
 		Friend Overrides Sub Attach(dialog As IFileDialogCustomize)
-			Debug.Assert(dialog IsNot Nothing, "CommonFileDialog.Attach: dialog parameter can not be null")
+			System.Diagnostics.Debug.Assert(dialog IsNot Nothing, "CommonFileDialog.Attach: dialog parameter can not be null")
 
 			' Add a text control
 			dialog.AddText(Me.Id, Me.Text)

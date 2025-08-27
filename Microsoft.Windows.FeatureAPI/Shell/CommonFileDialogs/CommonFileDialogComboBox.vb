@@ -105,7 +105,7 @@ Namespace Dialogs.Controls
 		''' <param name="dialog">The target dialog</param>
 		<System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes")> _
 		Friend Overrides Sub Attach(dialog As IFileDialogCustomize)
-			Debug.Assert(dialog IsNot Nothing, "CommonFileDialogComboBox.Attach: dialog parameter can not be null")
+			System.Diagnostics.Debug.Assert(dialog IsNot Nothing, "CommonFileDialogComboBox.Attach: dialog parameter can not be null")
 
 			' Add the combo box control
 			dialog.AddComboBox(Me.Id)

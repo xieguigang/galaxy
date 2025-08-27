@@ -98,7 +98,7 @@ Namespace Dialogs.Controls
 		''' </summary>
 		''' <param name="dialog">the target dialog</param>
 		Friend Overrides Sub Attach(dialog As IFileDialogCustomize)
-			Debug.Assert(dialog IsNot Nothing, "CommonFileDialogCheckBox.Attach: dialog parameter can not be null")
+			System.Diagnostics.Debug.Assert(dialog IsNot Nothing, "CommonFileDialogCheckBox.Attach: dialog parameter can not be null")
 
 			' Add a check button control
 			dialog.AddCheckButton(Me.Id, Me.Text, Me.m_isChecked)

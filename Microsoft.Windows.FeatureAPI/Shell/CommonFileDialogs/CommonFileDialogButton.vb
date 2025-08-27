@@ -37,7 +37,7 @@ Namespace Dialogs.Controls
 		''' </summary>
 		''' <param name="dialog">Target dialog</param>
 		Friend Overrides Sub Attach(dialog As IFileDialogCustomize)
-			Debug.Assert(dialog IsNot Nothing, "CommonFileDialogButton.Attach: dialog parameter can not be null")
+			System.Diagnostics.Debug.Assert(dialog IsNot Nothing, "CommonFileDialogButton.Attach: dialog parameter can not be null")
 
 			' Add a push button control
 			dialog.AddPushButton(Me.Id, Me.Text)

@@ -22,7 +22,7 @@ Namespace Shell
 		''' this known folder's properties.
 		''' </summary>
 		Private Sub GetFolderProperties(knownFolderNative As IKnownFolderNative)
-			Debug.Assert(knownFolderNative IsNot Nothing)
+			System.Diagnostics.Debug.Assert(knownFolderNative IsNot Nothing)
 
 			Dim nativeFolderDefinition As KnownFoldersSafeNativeMethods.NativeFolderDefinition
 			knownFolderNative.GetFolderDefinition(nativeFolderDefinition)
@@ -81,7 +81,7 @@ Namespace Shell
 		''' A <see cref="System.String"/> containing the path, or <see cref="System.String.Empty"/> if this known folder does not exist.
 		''' </returns>
 		Private Function GetPath(ByRef fileExists As Boolean, knownFolderNative As IKnownFolderNative) As String
-			Debug.Assert(knownFolderNative IsNot Nothing)
+			System.Diagnostics.Debug.Assert(knownFolderNative IsNot Nothing)
 
 			Dim kfPath As String = String.Empty
 			fileExists = True

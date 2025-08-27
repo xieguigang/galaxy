@@ -45,7 +45,7 @@ Namespace Shell
 		''' <param name="isReadOnly">If <B>true</B> , opens the library in read-only mode.</param>
 		Private Sub New(sourceKnownFolder As IKnownFolder, isReadOnly As Boolean)
 			Me.New()
-			Debug.Assert(sourceKnownFolder IsNot Nothing)
+			System.Diagnostics.Debug.Assert(sourceKnownFolder IsNot Nothing)
 
 			' Keep a reference locally
 			knownFolder = sourceKnownFolder
