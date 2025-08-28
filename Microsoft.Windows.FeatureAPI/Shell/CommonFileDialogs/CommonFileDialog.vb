@@ -757,7 +757,7 @@ Namespace Dialogs
         End Sub
 
         Private Sub ApplyNativeSettings(dialog As IFileDialog)
-            Debug.Assert(dialog IsNot Nothing, "No dialog instance to configure")
+            System.Diagnostics.Debug.Assert(dialog IsNot Nothing, "No dialog instance to configure")
 
             If parentWindow = IntPtr.Zero Then
                 If System.Windows.Application.Current IsNot Nothing AndAlso System.Windows.Application.Current.MainWindow IsNot Nothing Then
@@ -998,7 +998,7 @@ Namespace Dialogs
                 Throw New InvalidOperationException(LocalizedMessages.CommonFileDialogCanceled)
             End If
 
-            Debug.Assert(filenames.Count <> 0, "FileNames empty - shouldn't happen unless dialog canceled or not yet shown.")
+            System.Diagnostics.Debug.Assert(filenames.Count <> 0, "FileNames empty - shouldn't happen unless dialog canceled or not yet shown.")
         End Sub
 
         ''' <summary>
@@ -1016,7 +1016,7 @@ Namespace Dialogs
                 Throw New InvalidOperationException(LocalizedMessages.CommonFileDialogCanceled)
             End If
 
-            Debug.Assert(items.Count <> 0, "Items list empty - shouldn't happen unless dialog canceled or not yet shown.")
+            System.Diagnostics.Debug.Assert(items.Count <> 0, "Items list empty - shouldn't happen unless dialog canceled or not yet shown.")
         End Sub
 
         Private ReadOnly Property NativeDialogShowing() As Boolean

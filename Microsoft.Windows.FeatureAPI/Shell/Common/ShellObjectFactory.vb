@@ -18,7 +18,7 @@ Namespace Shell
 		''' <returns>A newly constructed ShellObject object</returns>
 		Friend Shared Function Create(nativeShellItem As IShellItem) As ShellObject
 			' Sanity check
-			Debug.Assert(nativeShellItem IsNot Nothing, "nativeShellItem should not be null")
+			System.Diagnostics.Debug.Assert(nativeShellItem IsNot Nothing, "nativeShellItem should not be null")
 
 			' Need to make sure we're running on Vista or higher
 			If Not CoreHelpers.RunningOnVista Then

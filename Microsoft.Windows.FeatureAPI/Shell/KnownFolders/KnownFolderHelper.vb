@@ -68,7 +68,7 @@ Namespace Shell
 		''' <param name="knownFolderNative">Native Known Folder</param>
 		''' <returns></returns>
 		Private Shared Function GetKnownFolder(knownFolderNative As IKnownFolderNative) As IKnownFolder
-			Debug.Assert(knownFolderNative IsNot Nothing, "Native IKnownFolder should not be null.")
+			System.Diagnostics.Debug.Assert(knownFolderNative IsNot Nothing, "Native IKnownFolder should not be null.")
 
 			' Get the native IShellItem2 from the native IKnownFolder
 			Dim shellItem As IShellItem2

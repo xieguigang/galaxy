@@ -74,7 +74,7 @@ Namespace Dialogs.Controls
 		''' </summary>
 		''' <param name="dialog">Target dialog</param>
 		Friend Overrides Sub Attach(dialog As IFileDialogCustomize)
-			Debug.Assert(dialog IsNot Nothing, "CommonFileDialogTextBox.Attach: dialog parameter can not be null")
+			System.Diagnostics.Debug.Assert(dialog IsNot Nothing, "CommonFileDialogTextBox.Attach: dialog parameter can not be null")
 
 			' Add a text entry control
 			dialog.AddEditBox(Me.Id, Me.Text)

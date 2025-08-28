@@ -557,7 +557,7 @@ Namespace Dialogs
 		' Analyzes the final state of the NativeTaskDialog instance and creates the 
 		' final TaskDialogResult that will be returned from the public API
 		Private Shared Function ConstructDialogResult(native As NativeTaskDialog) As TaskDialogResult
-			Debug.Assert(native.ShowState = DialogShowState.Closed, "dialog result being constructed for unshown dialog.")
+			System.Diagnostics.Debug.Assert(native.ShowState = DialogShowState.Closed, "dialog result being constructed for unshown dialog.")
 
 			Dim result As TaskDialogResult = TaskDialogResult.Cancel
 
@@ -895,7 +895,7 @@ Namespace Dialogs
 			' If we're showing, we should never get here - 
 			' the changing notification would have thrown and the 
 			' property would not have been changed.
-			Debug.Assert(Not NativeDialogShowing, "Collection changed notification received despite show state of dialog")
+			System.Diagnostics.Debug.Assert(Not NativeDialogShowing, "Collection changed notification received despite show state of dialog")
 		End Sub
 
 		' Called when a control currently in the collection 
@@ -905,8 +905,8 @@ Namespace Dialogs
 		' because the Win32 API has no way for us to 
 		' propagate the changes until we re-invoke the Win32 call.
 		Private Function IDialogControlHost_IsControlPropertyChangeAllowed(propertyName As String, control As DialogControl) As Boolean Implements IDialogControlHost.IsControlPropertyChangeAllowed
-			Debug.Assert(TypeOf control Is TaskDialogControl, "Property changing for a control that is not a TaskDialogControl-derived type")
-			Debug.Assert(propertyName <> "Name", "Name changes at any time are not supported - public API should have blocked this")
+			System.Diagnostics.Debug.Assert(TypeOf control Is TaskDialogControl, "Property changing for a control that is not a TaskDialogControl-derived type")
+			System.Diagnostics.Debug.Assert(propertyName <> "Name", "Name changes at any time are not supported - public API should have blocked this")
 
 			Dim canChange As Boolean = False
 
@@ -935,7 +935,7 @@ Namespace Dialogs
 						canChange = True
 						Exit Select
 					Case Else
-						Debug.Assert(True, "Unknown property name coming through property changing handler")
+						System.Diagnostics.Debug.Assert(True, "Unknown property name coming through property changing handler")
 						Exit Select
 				End Select
 			End If
@@ -970,8 +970,8 @@ Namespace Dialogs
                             nativeDialog.UpdateProgressBarRange()
                             Exit Select
                         Case Else
-                            Debug.Assert(True, "Unknown property being set")
-                            Exit Select
+							System.Diagnostics.Debug.Assert(True, "Unknown property being set")
+							Exit Select
                     End Select
                 ElseIf button.DirectCopy(TryCast(control, TaskDialogButton)) IsNot Nothing Then
                     Select Case propertyName
@@ -982,8 +982,8 @@ Namespace Dialogs
                             nativeDialog.UpdateButtonEnabled(button.Id, button.Enabled)
                             Exit Select
                         Case Else
-                            Debug.Assert(True, "Unknown property being set")
-                            Exit Select
+							System.Diagnostics.Debug.Assert(True, "Unknown property being set")
+							Exit Select
                     End Select
                 ElseIf radioButton.DirectCopy(TryCast(control, TaskDialogRadioButton)) IsNot Nothing Then
                     Select Case propertyName
@@ -991,14 +991,14 @@ Namespace Dialogs
 							nativeDialog.UpdateRadioButtonEnabled(radioButton.Id, radioButton.Enabled)
 							Exit Select
 						Case Else
-							Debug.Assert(True, "Unknown property being set")
+							System.Diagnostics.Debug.Assert(True, "Unknown property being set")
 							Exit Select
 					End Select
 				Else
 					' Do nothing with property change - 
 					' note that this shouldn't ever happen, we should have
 					' either thrown on the changing event, or we handle above.
-					Debug.Assert(True, "Control property changed notification not handled properly - being ignored")
+					System.Diagnostics.Debug.Assert(True, "Control property changed notification not handled properly - being ignored")
 				End If
 			End If
 		End Sub

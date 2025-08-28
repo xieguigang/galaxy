@@ -152,7 +152,7 @@ Namespace Shell.PropertySystem
 		Public Property Value() As T
 			Get
 				' Make sure we load the correct type
-				Debug.Assert(ValueType Is ShellPropertyFactory.VarEnumToSystemType(Description.VarEnumType))
+				System.Diagnostics.Debug.Assert(ValueType Is ShellPropertyFactory.VarEnumToSystemType(Description.VarEnumType))
 
 				Using propVar As New PropVariant()
 					If ParentShellObject.NativePropertyStore IsNot Nothing Then
@@ -172,7 +172,7 @@ Namespace Shell.PropertySystem
 			End Get
 			Set
 				' Make sure we use the correct type
-				Debug.Assert(ValueType Is ShellPropertyFactory.VarEnumToSystemType(Description.VarEnumType))
+				System.Diagnostics.Debug.Assert(ValueType Is ShellPropertyFactory.VarEnumToSystemType(Description.VarEnumType))
 
 				If GetType(T) IsNot ValueType Then
 					Throw New NotSupportedException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.ShellPropertyWrongType, ValueType.Name))
@@ -351,7 +351,7 @@ Namespace Shell.PropertySystem
 		Public ReadOnly Property ValueType() As Type Implements IShellProperty.ValueType
 			Get
 				' The type for this object need to match that of the description
-				Debug.Assert(Description.ValueType Is GetType(T))
+				System.Diagnostics.Debug.Assert(Description.ValueType Is GetType(T))
 
 				Return Description.ValueType
 			End Get

@@ -398,7 +398,7 @@ Namespace Dialogs
         End Sub
 
         Friend Sub AssertCurrentlyShowing()
-            Debug.Assert(ShowState = DialogShowState.Showing, "Update*() methods should only be called while native dialog is showing")
+            System.Diagnostics.Debug.Assert(ShowState = DialogShowState.Showing, "Update*() methods should only be called while native dialog is showing")
         End Sub
 
 #End Region
@@ -408,7 +408,7 @@ Namespace Dialogs
         Private Function SendMessageHelper(message As TaskDialogNativeMethods.TaskDialogMessages, wparam As Integer, lparam As Long) As Integer
             ' Be sure to at least assert here - 
             ' messages to invalid handles often just disappear silently
-            Debug.Assert(hWndDialog <> Nothing, "HWND for dialog is null during SendMessage")
+            System.Diagnostics.Debug.Assert(hWndDialog <> Nothing, "HWND for dialog is null during SendMessage")
 
             Return CInt(CoreNativeMethods.SendMessage(hWndDialog, CUInt(message), CType(wparam, IntPtr), New IntPtr(lparam)))
         End Function

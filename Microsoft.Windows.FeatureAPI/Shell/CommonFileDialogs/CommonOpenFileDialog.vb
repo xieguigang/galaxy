@@ -118,7 +118,7 @@ Namespace Dialogs
 		#End Region
 
 		Friend Overrides Function GetNativeFileDialog() As IFileDialog
-			Debug.Assert(openDialogCoClass IsNot Nothing, "Must call Initialize() before fetching dialog interface")
+			System.Diagnostics.Debug.Assert(openDialogCoClass IsNot Nothing, "Must call Initialize() before fetching dialog interface")
 
 			Return DirectCast(openDialogCoClass, IFileDialog)
 		End Function

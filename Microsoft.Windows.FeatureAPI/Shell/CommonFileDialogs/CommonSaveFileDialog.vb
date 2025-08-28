@@ -222,7 +222,7 @@ Namespace Dialogs
 		End Sub
 
 		Friend Overrides Function GetNativeFileDialog() As IFileDialog
-			Debug.Assert(saveDialogCoClass IsNot Nothing, "Must call Initialize() before fetching dialog interface")
+			System.Diagnostics.Debug.Assert(saveDialogCoClass IsNot Nothing, "Must call Initialize() before fetching dialog interface")
 			Return DirectCast(saveDialogCoClass, IFileDialog)
 		End Function
 
