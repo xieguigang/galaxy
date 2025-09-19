@@ -9,6 +9,10 @@ Imports System.Windows.Forms
 Imports EPocalipse.Json.Viewer.Properties
 
 Namespace EPocalipse.Json.Viewer
+
+    ''' <summary>
+    ''' https://github.com/Sesshoumaru/JsonViewer
+    ''' </summary>
     Partial Public Class JsonViewer
         Inherits UserControl
         Private _json As String
@@ -180,11 +184,11 @@ Namespace EPocalipse.Json.Viewer
             End Try
         End Sub
 
-        Private Function GetSelectedTreeNode() As JsonViewerTreeNode
+        Public Function GetSelectedTreeNode() As JsonViewerTreeNode
             Return CType(tvJson.SelectedNode, JsonViewerTreeNode)
         End Function
 
-        Private Sub tvJson_BeforeExpand(sender As Object, e As TreeViewCancelEventArgs)
+        Private Sub tvJson_BeforeExpand(sender As Object, e As TreeViewCancelEventArgs) Handles tvJson.BeforeExpand
             For Each node As JsonViewerTreeNode In e.Node.Nodes
                 InitVisualizers(node)
             Next
@@ -206,7 +210,7 @@ Namespace EPocalipse.Json.Viewer
             End If
         End Sub
 
-        Private Sub expandallToolStripMenuItem_Click(sender As Object, e As EventArgs)
+        Public Sub ExpandAll()
             tvJson.BeginUpdate()
             Try
                 If tvJson.SelectedNode IsNot Nothing Then
@@ -220,7 +224,7 @@ Namespace EPocalipse.Json.Viewer
             End Try
         End Sub
 
-        Private Sub tvJson_MouseDown(sender As Object, e As MouseEventArgs)
+        Private Sub tvJson_MouseDown(sender As Object, e As MouseEventArgs) Handles tvJson.MouseDown
             If e.Button = MouseButtons.Right Then
                 Dim node = tvJson.GetNodeAt(e.Location)
                 If node IsNot Nothing Then
@@ -228,15 +232,6 @@ Namespace EPocalipse.Json.Viewer
                 End If
             End If
         End Sub
-
-        Private Sub mnuTree_Opening(sender As Object, e As CancelEventArgs)
-            mnuFind.Enabled = (GetRootNode() IsNot Nothing)
-            mnuExpandAll.Enabled = (GetSelectedTreeNode() IsNot Nothing)
-
-            mnuCopy.Enabled = mnuExpandAll.Enabled
-            mnuCopyValue.Enabled = mnuExpandAll.Enabled
-        End Sub
-
     End Class
 
     Public Structure ErrorDetails

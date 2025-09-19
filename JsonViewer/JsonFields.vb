@@ -41,7 +41,7 @@ Namespace EPocalipse.Json.Viewer
 
         Default Public ReadOnly Property Item(id As String) As JsonObject
             Get
-                Dim result As JsonObject
+                Dim result As JsonObject = Nothing
                 If _fieldsById.TryGetValue(id, result) Then Return result
                 Return Nothing
             End Get

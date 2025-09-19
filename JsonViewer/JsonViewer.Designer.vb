@@ -137,7 +137,7 @@ Namespace EPocalipse.Json.Viewer
 
 #End Region
         Private imgList As ImageList
-        Private tvJson As TreeView
+        Private WithEvents tvJson As TreeView
         Private mnuTree As ContextMenuStrip
         Private mnuFind As ToolStripMenuItem
         Private mnuExpandAll As ToolStripMenuItem
