@@ -2,7 +2,7 @@
 Imports System.Collections.Generic
 Imports System.ComponentModel
 
-Namespace EPocalipse.Json.Viewer
+Namespace Models
     Friend Class JsonTreeObjectTypeDescriptor
         Implements ICustomTypeDescriptor
         Private _jsonObject As JsonObject

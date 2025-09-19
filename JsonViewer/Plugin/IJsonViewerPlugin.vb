@@ -1,6 +1,7 @@
 ﻿Imports System.Windows.Forms
 
-Namespace EPocalipse.Json.Viewer
+Namespace Plugin
+
     Public Interface IJsonViewerPlugin
         ReadOnly Property DisplayName As String
         Function CanVisualize(jsonObject As JsonObject) As Boolean
@@ -16,4 +17,5 @@ Namespace EPocalipse.Json.Viewer
         Function GetControl(jsonObject As JsonObject) As Control
         Sub Visualize(jsonObject As JsonObject)
     End Interface
+
 End Namespace

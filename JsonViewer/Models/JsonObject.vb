@@ -1,6 +1,6 @@
 ﻿Imports System.Diagnostics
 
-Namespace EPocalipse.Json.Viewer
+Namespace Models
     <DebuggerDisplay("Text = {Text}")>
     Public Class JsonObject
         Private _id As String

@@ -9,8 +9,7 @@
     <ProjectGuid>{88C6E590-9E84-0D64-2127-041DA8627D90}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace>JsonViewer</RootNamespace>
     <AssemblyName>JsonViewer</AssemblyName>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -82,29 +81,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InternalPlugins.vb" />
+    <Compile Include="Plugin\InternalPlugins.vb" />
     <Compile Include="Properties\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewerConfiguration.vb" />
-    <Compile Include="IJsonViewerPlugin.vb" />
-    <Compile Include="JsonObjectTree.vb">
+    <Compile Include="Plugin\IJsonViewerPlugin.vb" />
+    <Compile Include="Models\JsonObjectTree.vb">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="JsonObject.vb" />
-    <Compile Include="JsonFields.vb" />
-    <Compile Include="JsonTreeObjectTypeDescriptor.vb" />
+    <Compile Include="Models\JsonObject.vb" />
+    <Compile Include="Models\JsonFields.vb" />
+    <Compile Include="Models\JsonTreeObjectTypeDescriptor.vb" />
     <Compile Include="JsonViewer.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="JsonViewer.Designer.vb">
       <DependentUpon>JsonViewer.vb</DependentUpon>
     </Compile>
-    <Compile Include="PluginsManager.vb" />
+    <Compile Include="Plugin\PluginsManager.vb" />
     <Compile Include="Properties\AssemblyInfo.vb" />
-    <Compile Include="UnbufferedStringReader.vb" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>

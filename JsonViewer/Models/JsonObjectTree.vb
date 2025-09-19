@@ -5,7 +5,7 @@ Imports Microsoft.VisualBasic.MIME.application.json
 Imports JArray = Microsoft.VisualBasic.MIME.application.json.Javascript.JsonArray
 Imports JObject = Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject
 
-Namespace EPocalipse.Json.Viewer
+Namespace Models
     Public Enum JsonType
         [Object]
         Array

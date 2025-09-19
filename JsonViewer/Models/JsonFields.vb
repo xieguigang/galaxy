@@ -1,7 +1,7 @@
 ﻿Imports System.Collections.Generic
 Imports System.Collections
 
-Namespace EPocalipse.Json.Viewer
+Namespace Models
     Public Class JsonFields
         Implements IEnumerable(Of JsonObject)
         Private _fields As List(Of JsonObject) = New List(Of JsonObject)()

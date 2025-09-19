@@ -1,8 +1,8 @@
 ﻿Imports System
 Imports System.Windows.Forms
 
-Namespace EPocalipse.Json.Viewer
-    Partial Class JsonViewer
+
+Partial Class JsonViewer
         ''' <summary>
         ''' Required designer variable.
         ''' </summary>
@@ -149,4 +149,4 @@ Namespace EPocalipse.Json.Viewer
         Private mnuCopyValue As ToolStripMenuItem
 
     End Class
-End Namespace
+

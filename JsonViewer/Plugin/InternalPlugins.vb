@@ -1,7 +1,8 @@
 ﻿Imports System
 Imports System.Windows.Forms
 
-Namespace EPocalipse.Json.Viewer
+Namespace Plugin
+
     Friend Class AjaxNetDateTime
         Implements ICustomTextProvider
         Private Shared ReadOnly epoch As Long = New DateTime(1970, 1, 1).Ticks
@@ -81,4 +82,5 @@ Namespace EPocalipse.Json.Viewer
             Return jsonObject.JsonType = JsonType.Array AndAlso jsonObject.ContainsFields("[0]")
         End Function
     End Class
+
 End Namespace
