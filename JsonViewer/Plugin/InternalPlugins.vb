@@ -1,5 +1,6 @@
 ﻿Imports System
 Imports System.Windows.Forms
+Imports JsonViewer.Models
 
 Namespace Plugin
 

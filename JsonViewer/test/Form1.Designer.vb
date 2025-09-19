@@ -22,7 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.JsonViewer1 = New EPocalipse.Json.Viewer.JsonViewer()
+        Me.JsonViewer1 = New JsonViewer.JsonViewer()
         Me.SuspendLayout()
         '
         'JsonViewer1
@@ -46,5 +46,5 @@ Partial Class Form1
 
     End Sub
 
-    Friend WithEvents JsonViewer1 As EPocalipse.Json.Viewer.JsonViewer
+    Friend WithEvents JsonViewer1 As JsonViewer.JsonViewer
 End Class

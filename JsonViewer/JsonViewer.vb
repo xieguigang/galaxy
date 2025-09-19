@@ -6,6 +6,8 @@ Imports System.Drawing.Design
 Imports System.Text
 Imports System.Threading
 Imports System.Windows.Forms
+Imports JsonViewer.Models
+Imports JsonViewer.Plugin
 
 ''' <summary>
 ''' https://github.com/Sesshoumaru/JsonViewer
@@ -18,6 +20,8 @@ Partial Public Class JsonViewer
     Private _pluginsManager As PluginsManager = New PluginsManager()
     Private _updating As Boolean
     Private _lastVisualizerControl As Control
+
+    Dim _rootTag As String = "JSON"
 
     Public Sub New()
         InitializeComponent()
@@ -51,13 +55,25 @@ Partial Public Class JsonViewer
         End Set
     End Property
 
+    Public Property RootTag As String
+        Get
+            Return _rootTag
+        End Get
+        Set(value As String)
+            If Not Equals(_rootTag, value) Then
+                _rootTag = value.Trim()
+                Redraw()
+            End If
+        End Set
+    End Property
+
     Private Sub Redraw()
         Try
             tvJson.BeginUpdate()
             Try
                 Reset()
                 If Not String.IsNullOrEmpty(_json) Then
-                    Dim tree = JsonObjectTree.Parse(_json)
+                    Dim tree = JsonObjectTree.Parse(_json, RootTag)
                     VisualizeJsonTree(tree)
                 End If
 

@@ -33,12 +33,12 @@ Namespace Models
         Private _root As JsonObject
         Private Shared dateRegex As Regex = New Regex("^/Date\(([0-9]*)([+-][0-9]{4}){0,1}\)/$")
 
-        Public Shared Function Parse(json As String) As JsonObjectTree
-            Return New JsonObjectTree(New JsonParser(json).OpenJSON)
+        Public Shared Function Parse(json As String, Optional rootText As String = "JSON") As JsonObjectTree
+            Return New JsonObjectTree(New JsonParser(json).OpenJSON, rootText)
         End Function
 
-        Public Sub New(rootObject As Object)
-            _root = ConvertToObject("JSON", rootObject)
+        Public Sub New(rootObject As Object, Optional rootText As String = "JSON")
+            _root = ConvertToObject(rootText, rootObject)
         End Sub
 
         Private Shared Function ConvertToObject(id As String, jsonObject As Object) As JsonObject
