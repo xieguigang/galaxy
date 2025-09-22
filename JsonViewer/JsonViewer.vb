@@ -16,23 +16,35 @@ Partial Public Class JsonViewer : Inherits UserControl
     <Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", GetType(UITypeEditor))>
     Public Property Json As String
         Get
+            If viewer Is Nothing Then
+                Return Nothing
+            End If
             Return viewer.ToString
         End Get
         Set(value As String)
-            Call viewer.Render(jsonstr:=value)
+            If viewer IsNot Nothing Then
+                Call viewer.Render(jsonstr:=value)
+            End If
         End Set
     End Property
 
     Public Property RootTag As String
         Get
+            If viewer Is Nothing Then
+                Return Nothing
+            End If
             Return viewer.RootTag
         End Get
         Set(value As String)
-            Call viewer.SetRootLabel(label:=value)
+            If viewer IsNot Nothing Then
+                Call viewer.SetRootLabel(label:=value)
+            End If
         End Set
     End Property
 
-    Private Sub JsonViewer_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+    Sub New()
+        Call InitializeComponent()
+
         viewer = New JsonRender(tvJson)
         viewer.Render("{}")
     End Sub
