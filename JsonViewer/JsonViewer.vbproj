@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JsonRender.vb" />
     <Compile Include="Plugin\InternalPlugins.vb" />
     <Compile Include="Properties\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
