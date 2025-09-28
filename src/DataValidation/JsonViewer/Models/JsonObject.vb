@@ -1,6 +1,7 @@
 ﻿Imports System.Diagnostics
 
-Namespace Models
+Namespace JSON.Models
+
     <DebuggerDisplay("Text = {Text}")>
     Public Class JsonObject
         Private _id As String

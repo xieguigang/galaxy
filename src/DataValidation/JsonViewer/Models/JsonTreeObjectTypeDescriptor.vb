@@ -1,8 +1,6 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
 
-Namespace Models
+Namespace JSON.Models
     Friend Class JsonTreeObjectTypeDescriptor
         Implements ICustomTypeDescriptor
         Private _jsonObject As JsonObject

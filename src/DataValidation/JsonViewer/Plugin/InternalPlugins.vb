@@ -1,8 +1,6 @@
-﻿Imports System
-Imports System.Windows.Forms
-Imports JsonViewer.Models
+﻿Imports Galaxy.Data.JSON.Models
 
-Namespace Plugin
+Namespace JSON.Plugin
 
     Friend Class AjaxNetDateTime
         Implements ICustomTextProvider

@@ -1,12 +1,15 @@
 ﻿Imports System.Configuration
 
-Public Class ViewerConfiguration : Inherits ConfigurationSection
+Namespace JSON
 
-    <ConfigurationProperty("plugins")>
-    Public ReadOnly Property Plugins As KeyValueConfigurationCollection
-        Get
-            Return CType(MyBase.Item("plugins"), KeyValueConfigurationCollection)
-        End Get
-    End Property
-End Class
+    Public Class ViewerConfiguration : Inherits ConfigurationSection
 
+        <ConfigurationProperty("plugins")>
+        Public ReadOnly Property Plugins As KeyValueConfigurationCollection
+            Get
+                Return CType(MyBase.Item("plugins"), KeyValueConfigurationCollection)
+            End Get
+        End Property
+    End Class
+
+End Namespace

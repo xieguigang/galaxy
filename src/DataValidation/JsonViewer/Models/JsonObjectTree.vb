@@ -5,24 +5,27 @@ Imports Microsoft.VisualBasic.MIME.application.json
 Imports JArray = Microsoft.VisualBasic.MIME.application.json.Javascript.JsonArray
 Imports JObject = Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject
 
-Namespace Models
+Namespace JSON.Models
     Public Enum JsonType
         [Object]
         Array
         Value
     End Enum
 
-    Friend Class JsonParseError
-        Inherits ApplicationException
+    Friend Class JsonParseError : Inherits ApplicationException
+
         Public Sub New()
             MyBase.New()
         End Sub
+
         Public Sub New(message As String)
             MyBase.New(message)
         End Sub
+
         Protected Sub New(info As SerializationInfo, context As StreamingContext)
             MyBase.New(info, context)
         End Sub
+
         Public Sub New(message As String, innerException As Exception)
             MyBase.New(message, innerException)
         End Sub

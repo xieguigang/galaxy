@@ -4,7 +4,7 @@ Imports System.Configuration
 Imports System.Reflection
 Imports System.IO
 
-Namespace Plugin
+Namespace JSON.Plugin
     Friend Class PluginsManager
         Private plugins As List(Of IJsonViewerPlugin) = New List(Of IJsonViewerPlugin)()
         Private textVisualizersField As List(Of ICustomTextProvider) = New List(Of ICustomTextProvider)()

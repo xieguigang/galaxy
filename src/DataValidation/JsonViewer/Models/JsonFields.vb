@@ -1,9 +1,10 @@
 ﻿Imports System.Collections.Generic
 Imports System.Collections
 
-Namespace Models
-    Public Class JsonFields
-        Implements IEnumerable(Of JsonObject)
+Namespace JSON.Models
+
+    Public Class JsonFields : Implements IEnumerable(Of JsonObject)
+
         Private _fields As List(Of JsonObject) = New List(Of JsonObject)()
         Private _fieldsById As Dictionary(Of String, JsonObject) = New Dictionary(Of String, JsonObject)()
         Private _parent As JsonObject

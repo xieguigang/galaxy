@@ -1,7 +1,6 @@
-﻿Imports System.Windows.Forms
-Imports JsonViewer.Models
+﻿Imports Galaxy.Data.JSON.Models
 
-Namespace Plugin
+Namespace JSON.Plugin
 
     Public Interface IJsonViewerPlugin
         ReadOnly Property DisplayName As String
