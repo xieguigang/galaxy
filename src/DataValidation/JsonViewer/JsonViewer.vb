@@ -73,27 +73,4 @@ Namespace JSON
         End Sub
     End Class
 
-    Public Structure ErrorDetails
-        Friend _err As String
-        Friend _pos As Integer
-
-        Public ReadOnly Property [Error] As String
-            Get
-                Return _err
-            End Get
-        End Property
-
-        Public ReadOnly Property Position As Integer
-            Get
-                Return _pos
-            End Get
-        End Property
-
-        Public Sub Clear()
-            _err = Nothing
-            _pos = 0
-        End Sub
-    End Structure
-
-
 End Namespace

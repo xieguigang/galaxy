@@ -50,6 +50,7 @@ Namespace JSON
             Me.tvJson.Location = New System.Drawing.Point(0, 0)
             Me.tvJson.Name = "tvJson"
             Me.tvJson.SelectedImageIndex = 0
+            Me.tvJson.ShowNodeToolTips = True
             Me.tvJson.Size = New System.Drawing.Size(792, 558)
             Me.tvJson.TabIndex = 3
             '
@@ -94,7 +95,7 @@ Namespace JSON
             Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
             Me.ImageList1.Images.SetKeyName(0, "obj.bmp")
             Me.ImageList1.Images.SetKeyName(1, "array.bmp")
-            Me.ImageList1.Images.SetKeyName(2, "obj.bmp")
+            Me.ImageList1.Images.SetKeyName(2, "Field.png")
             '
             'JsonViewer
             '

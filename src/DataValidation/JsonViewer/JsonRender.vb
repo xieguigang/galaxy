@@ -18,7 +18,8 @@ Namespace JSON
             Try
                 _pluginsManager.Initialize()
             Catch e As Exception
-                MessageBox.Show(String.Format(Resources.ConfigMessage, e.Message), "Json Viewer", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show(String.Format("There was an error during initialization. If you get this message when trying to use the Fiddler plugin or the Visual Studio Visualizer, please follow the instructions in the ReadMe.txt file. 
+The error was: {0}", e.Message), "Json Viewer", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End Try
         End Sub
 
