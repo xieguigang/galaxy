@@ -19,6 +19,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GalaxyWorkbench", "GalaxyWo
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ResourcesEditor", "ResourcesEditor\ResourcesEditor.vbproj", "{EEB52342-5955-4829-BFA7-8B4751E9D92D}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VisualStudio.NET5", "..\..\GCModeller\src\runtime\sciBASIC#\vs_solutions\dev\VisualStudio\VisualStudio.NET5.vbproj", "{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,18 @@ Global
 		{EEB52342-5955-4829-BFA7-8B4751E9D92D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EEB52342-5955-4829-BFA7-8B4751E9D92D}.Release|x64.ActiveCfg = Release|Any CPU
 		{EEB52342-5955-4829-BFA7-8B4751E9D92D}.Release|x64.Build.0 = Release|Any CPU
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Debug|x64.ActiveCfg = Debug|x64
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Debug|x64.Build.0 = Debug|x64
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.mzkit_win32|Any CPU.ActiveCfg = mzkit_win32|Any CPU
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.mzkit_win32|Any CPU.Build.0 = mzkit_win32|Any CPU
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.mzkit_win32|x64.ActiveCfg = mzkit_win32|x64
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.mzkit_win32|x64.Build.0 = mzkit_win32|x64
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Release|x64.ActiveCfg = Release|x64
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +134,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{396CCD83-4B4E-84CB-6056-022317FD64BE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{BE4A2EA0-C600-FCE9-D542-79B9A0D68583} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3958ABFB-93F0-45E4-8957-FED9918DC189}
