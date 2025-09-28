@@ -101,6 +101,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form2.Designer.vb">
+      <DependentUpon>Form2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -120,6 +126,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -148,6 +157,14 @@
     <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25json\JSON-netcore5.vbproj">
       <Project>{be4a2ea0-c600-fce9-d542-79b9a0d68583}</Project>
       <Name>JSON-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GalaxyWorkbench\GalaxyWorkbench.vbproj">
+      <Project>{ec84cbb4-8e2d-48ea-9e6c-3d7cf0bbb452}</Project>
+      <Name>GalaxyWorkbench</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj">
+      <Project>{3d61f3a9-a8e0-4195-9133-6fd8e4b82d54}</Project>
+      <Name>Microsoft.Windows.FeatureAPI</Name>
     </ProjectReference>
     <ProjectReference Include="..\GalaxyData.vbproj">
       <Project>{87d65add-fe86-4239-af7e-a37410354a0c}</Project>
