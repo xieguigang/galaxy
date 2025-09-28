@@ -24,12 +24,14 @@ Public Class DialogPromise
     Public Shared Function OpenDialog(Of T As {InputDialog, New})(data As Object) As DialogPromise
         Dim newform As New T()
         Dim mask As MaskForm = MaskForm.CreateMask(CommonRuntime.AppHost)
-        Dim result As DialogResult = mask.ShowDialogForm(newform)
+        Dim result As DialogResult
 
         ' 可选：传递数据到下一个表单
         If data IsNot Nothing Then
             SetFormData(newform, data)
         End If
+
+        result = mask.ShowDialogForm(newform)
 
         Return New DialogPromise(newform, result, data)
     End Function
