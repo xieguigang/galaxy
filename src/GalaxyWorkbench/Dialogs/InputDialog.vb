@@ -73,11 +73,11 @@ Namespace CommonDialogs
         ''' </param>
         ''' <param name="cancel"></param>
         ''' <param name="config"></param>
-        Public Shared Sub Input(Of Form As {New, InputDialog})(
+        Public Shared Function Input(Of Form As {New, InputDialog})(
             Optional setConfig As Action(Of Form) = Nothing,
             Optional cancel As Action = Nothing,
             Optional config As Form = Nothing
-        )
+        ) As Form
             If CommonRuntime.AppHost Is Nothing Then
                 Throw New NullReferenceException("the required windows main form is nothing!")
             End If
@@ -92,7 +92,9 @@ Namespace CommonDialogs
             ElseIf Not cancel Is Nothing Then
                 Call cancel()
             End If
-        End Sub
+
+            Return getConfig
+        End Function
 
         ''' <summary>
         ''' just used this method for display some information
@@ -102,7 +104,11 @@ Namespace CommonDialogs
         ''' 
         <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Public Overloads Shared Sub ShowDialog(Of Form As {New, InputDialog})(Optional config As Form = Nothing)
-            Call Input(Nothing, Nothing, config:=config)
+            Call Input(Nothing, Nothing, config:=If(config, New Form))
         End Sub
+
+        Public Shared Function OpenDialog(Of Form As {New, InputDialog})(Optional initialData As Object = Nothing, Optional config As Form = Nothing) As DialogPromise
+            Return DialogPromise.OpenDialog(Of Form)(initialData)
+        End Function
     End Class
 End Namespace
