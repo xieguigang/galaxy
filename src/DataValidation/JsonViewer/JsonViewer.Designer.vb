@@ -35,7 +35,7 @@ Namespace JSON
             Me.toolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
             Me.mnuCopy = New System.Windows.Forms.ToolStripMenuItem()
             Me.mnuCopyValue = New System.Windows.Forms.ToolStripMenuItem()
-            Me.imgList = New System.Windows.Forms.ImageList(Me.components)
+            Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
             Me.mnuTree.SuspendLayout()
             Me.SuspendLayout()
             '
@@ -46,7 +46,7 @@ Namespace JSON
             Me.tvJson.Dock = System.Windows.Forms.DockStyle.Fill
             Me.tvJson.HideSelection = False
             Me.tvJson.ImageIndex = 0
-            Me.tvJson.ImageList = Me.imgList
+            Me.tvJson.ImageList = Me.ImageList1
             Me.tvJson.Location = New System.Drawing.Point(0, 0)
             Me.tvJson.Name = "tvJson"
             Me.tvJson.SelectedImageIndex = 0
@@ -88,13 +88,13 @@ Namespace JSON
             Me.mnuCopyValue.Size = New System.Drawing.Size(133, 22)
             Me.mnuCopyValue.Text = "Copy &Value"
             '
-            'imgList
+            'ImageList1
             '
-            Me.imgList.ImageStream = CType(resources.GetObject("imgList.ImageStream"), System.Windows.Forms.ImageListStreamer)
-            Me.imgList.TransparentColor = System.Drawing.Color.White
-            Me.imgList.Images.SetKeyName(0, "obj.bmp")
-            Me.imgList.Images.SetKeyName(1, "array.bmp")
-            Me.imgList.Images.SetKeyName(2, "prop.bmp")
+            Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+            Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
+            Me.ImageList1.Images.SetKeyName(0, "obj.bmp")
+            Me.ImageList1.Images.SetKeyName(1, "array.bmp")
+            Me.ImageList1.Images.SetKeyName(2, "obj.bmp")
             '
             'JsonViewer
             '
@@ -109,7 +109,6 @@ Namespace JSON
         End Sub
 
 #End Region
-        Private imgList As ImageList
         Private WithEvents tvJson As TreeView
         Private mnuTree As ContextMenuStrip
         Private WithEvents mnuFind As ToolStripMenuItem
@@ -117,7 +116,7 @@ Namespace JSON
         Private toolStripMenuItem1 As ToolStripSeparator
         Private WithEvents mnuCopy As ToolStripMenuItem
         Private WithEvents mnuCopyValue As ToolStripMenuItem
-
+        Friend WithEvents ImageList1 As ImageList
     End Class
 
 End Namespace
