@@ -152,6 +152,10 @@
       <Project>{dee82853-4241-4f24-a096-12923c664369}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25json\JSON-netcore5.vbproj">
+      <Project>{be4a2ea0-c600-fce9-d542-79b9a0d68583}</Project>
+      <Name>JSON-netcore5</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
