@@ -1,4 +1,4 @@
-﻿Public Class Form1
+﻿Public Class FormResxEditor
 
     Dim vbproj As String
 
