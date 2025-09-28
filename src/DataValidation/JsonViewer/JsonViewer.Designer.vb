@@ -57,35 +57,35 @@ Namespace JSON
             '
             Me.mnuTree.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFind, Me.mnuExpandAll, Me.toolStripMenuItem1, Me.mnuCopy, Me.mnuCopyValue})
             Me.mnuTree.Name = "mnuTree"
-            Me.mnuTree.Size = New System.Drawing.Size(181, 120)
+            Me.mnuTree.Size = New System.Drawing.Size(134, 98)
             '
             'mnuFind
             '
             Me.mnuFind.Name = "mnuFind"
-            Me.mnuFind.Size = New System.Drawing.Size(180, 22)
+            Me.mnuFind.Size = New System.Drawing.Size(133, 22)
             Me.mnuFind.Text = "&Find"
             '
             'mnuExpandAll
             '
             Me.mnuExpandAll.Name = "mnuExpandAll"
-            Me.mnuExpandAll.Size = New System.Drawing.Size(180, 22)
+            Me.mnuExpandAll.Size = New System.Drawing.Size(133, 22)
             Me.mnuExpandAll.Text = "Expand &All"
             '
             'toolStripMenuItem1
             '
             Me.toolStripMenuItem1.Name = "toolStripMenuItem1"
-            Me.toolStripMenuItem1.Size = New System.Drawing.Size(177, 6)
+            Me.toolStripMenuItem1.Size = New System.Drawing.Size(130, 6)
             '
             'mnuCopy
             '
             Me.mnuCopy.Name = "mnuCopy"
-            Me.mnuCopy.Size = New System.Drawing.Size(180, 22)
+            Me.mnuCopy.Size = New System.Drawing.Size(133, 22)
             Me.mnuCopy.Text = "&Copy"
             '
             'mnuCopyValue
             '
             Me.mnuCopyValue.Name = "mnuCopyValue"
-            Me.mnuCopyValue.Size = New System.Drawing.Size(180, 22)
+            Me.mnuCopyValue.Size = New System.Drawing.Size(133, 22)
             Me.mnuCopyValue.Text = "Copy &Value"
             '
             'imgList
