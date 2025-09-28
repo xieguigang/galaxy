@@ -71,6 +71,17 @@ Namespace JSON
 
             End If
         End Sub
+
+        Private Sub InitializeComponent()
+            Me.SuspendLayout()
+            '
+            'JsonViewer
+            '
+            Me.Name = "JsonViewer"
+            Me.Size = New System.Drawing.Size(704, 707)
+            Me.ResumeLayout(False)
+
+        End Sub
     End Class
 
 End Namespace
