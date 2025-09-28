@@ -34,6 +34,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="JsonViewer\test\**" />
+    <Compile Remove="test\**" />
+    <EmbeddedResource Remove="JsonViewer\test\**" />
+    <EmbeddedResource Remove="test\**" />
+    <None Remove="JsonViewer\test\**" />
+    <None Remove="test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
