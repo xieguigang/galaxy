@@ -25,26 +25,27 @@ Partial Class FormResxEditor
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ResourceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ResourceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.AddImageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
-        Me.ToolStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -68,6 +69,13 @@ Partial Class FormResxEditor
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
+        '
+        'ResourceToolStripMenuItem
+        '
+        Me.ResourceToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddImageToolStripMenuItem})
+        Me.ResourceToolStripMenuItem.Name = "ResourceToolStripMenuItem"
+        Me.ResourceToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
+        Me.ResourceToolStripMenuItem.Text = "Resource"
         '
         'DataGridView1
         '
@@ -105,12 +113,6 @@ Partial Class FormResxEditor
         Me.Column4.HeaderText = "Comment"
         Me.Column4.Name = "Column4"
         '
-        'ResourceToolStripMenuItem
-        '
-        Me.ResourceToolStripMenuItem.Name = "ResourceToolStripMenuItem"
-        Me.ResourceToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
-        Me.ResourceToolStripMenuItem.Text = "Resource"
-        '
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -130,6 +132,23 @@ Partial Class FormResxEditor
         Me.SplitContainer1.SplitterDistance = 478
         Me.SplitContainer1.TabIndex = 2
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(102, 239)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(100, 149)
+        Me.PictureBox1.TabIndex = 2
+        Me.PictureBox1.TabStop = False
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(65, 79)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBox1.Size = New System.Drawing.Size(137, 139)
+        Me.TextBox1.TabIndex = 1
+        '
         'ToolStrip1
         '
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1})
@@ -145,22 +164,11 @@ Partial Class FormResxEditor
         Me.ToolStripLabel1.Size = New System.Drawing.Size(113, 22)
         Me.ToolStripLabel1.Text = "View Resource Data:"
         '
-        'TextBox1
+        'AddImageToolStripMenuItem
         '
-        Me.TextBox1.Location = New System.Drawing.Point(65, 79)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox1.Size = New System.Drawing.Size(137, 139)
-        Me.TextBox1.TabIndex = 1
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(102, 239)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(100, 149)
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
+        Me.AddImageToolStripMenuItem.Name = "AddImageToolStripMenuItem"
+        Me.AddImageToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AddImageToolStripMenuItem.Text = "Add Image"
         '
         'FormResxEditor
         '
@@ -180,9 +188,9 @@ Partial Class FormResxEditor
         Me.SplitContainer1.Panel2.PerformLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -203,4 +211,5 @@ Partial Class FormResxEditor
     Friend WithEvents ToolStripLabel1 As ToolStripLabel
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents AddImageToolStripMenuItem As ToolStripMenuItem
 End Class

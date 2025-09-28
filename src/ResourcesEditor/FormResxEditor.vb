@@ -22,4 +22,10 @@
         PictureBox1.Visible = False
         PictureBox1.Dock = DockStyle.Fill
     End Sub
+
+    Private Sub AddImageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddImageToolStripMenuItem.Click
+        Using file As New OpenFileDialog With {.Filter = "Image Files(*.png;*.bmp;*.jpg;*.jpeg)|*.png;*.bmp;*.jpg;*.jpeg"}
+
+        End Using
+    End Sub
 End Class
