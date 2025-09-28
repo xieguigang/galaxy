@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
-    <RootNamespace>Microsoft.VisualBasic.Windows.Forms.Data</RootNamespace>
-    <AssemblyName>Microsoft.VisualBasic.Windows.Forms.Data</AssemblyName>
+    <RootNamespace>Galaxy.Data</RootNamespace>
+    <AssemblyName>Galaxy.Data</AssemblyName>
     <MyType>WindowsForms</MyType>
     <StartupObject>Microsoft.VisualBasic.Windows.Forms.Data.My.MyApplication</StartupObject>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
