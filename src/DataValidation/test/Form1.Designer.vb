@@ -1,4 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿Imports Galaxy.Data.JSON
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
@@ -22,7 +24,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.JsonViewer1 = New JsonViewer.JsonViewer()
+        Me.JsonViewer1 = New JsonViewer()
         Me.SuspendLayout()
         '
         'JsonViewer1
@@ -46,5 +48,5 @@ Partial Class Form1
 
     End Sub
 
-    Friend WithEvents JsonViewer1 As JsonViewer.JsonViewer
+    Friend WithEvents JsonViewer1 As JsonViewer
 End Class

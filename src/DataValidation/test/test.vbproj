@@ -141,17 +141,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
-      <Project>{89fd7101-a0a8-5bb5-39dc-4c892b6c40d1}</Project>
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
+      <Project>{396ccd83-4b4e-84cb-6056-022317fd64be}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25json\JSON-netcore5.vbproj">
-      <Project>{bb3f7794-8ec5-f6d1-46e1-d170f55751d7}</Project>
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25json\JSON-netcore5.vbproj">
+      <Project>{be4a2ea0-c600-fce9-d542-79b9a0d68583}</Project>
       <Name>JSON-netcore5</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JsonViewer.vbproj">
-      <Project>{88c6e590-9e84-0d64-2127-041da8627d90}</Project>
-      <Name>JsonViewer</Name>
+    <ProjectReference Include="..\GalaxyData.vbproj">
+      <Project>{f4d92d37-6899-9914-0e90-79aca79555b3}</Project>
+      <Name>GalaxyData</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
