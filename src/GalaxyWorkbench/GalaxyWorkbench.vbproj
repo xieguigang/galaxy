@@ -95,12 +95,12 @@
   <ItemGroup>
     <Compile Include="AppHost.vb" />
     <Compile Include="CommonRuntime.vb" />
-    <Compile Include="Dialog\InputDialog.Designer.vb" />
-    <Compile Include="Dialog\InputDialog.vb">
+    <Compile Include="Dialogs\InputDialog.Designer.vb" />
+    <Compile Include="Dialogs\InputDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialog\MaskForm.Designer.vb" />
-    <Compile Include="Dialog\MaskForm.vb">
+    <Compile Include="Dialogs\MaskForm.Designer.vb" />
+    <Compile Include="Dialogs\MaskForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -121,11 +121,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dialog\InputDialog.resx" />
-    <EmbeddedResource Include="Dialog\InputDialog.zh-Hans.resx" />
-    <EmbeddedResource Include="Dialog\MaskForm.en-US.resx" />
-    <EmbeddedResource Include="Dialog\MaskForm.resx" />
-    <EmbeddedResource Include="Dialog\MaskForm.zh-Hans.resx" />
+    <EmbeddedResource Include="Dialogs\InputDialog.resx" />
+    <EmbeddedResource Include="Dialogs\InputDialog.zh-Hans.resx" />
+    <EmbeddedResource Include="Dialogs\MaskForm.en-US.resx" />
+    <EmbeddedResource Include="Dialogs\MaskForm.resx" />
+    <EmbeddedResource Include="Dialogs\MaskForm.zh-Hans.resx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
