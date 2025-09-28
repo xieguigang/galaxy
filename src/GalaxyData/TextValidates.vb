@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.CompilerServices
-Imports System.Windows.Forms
 
 Public Module TextValidates
 

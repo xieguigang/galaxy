@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.CompilerServices
-Imports System.Windows.Forms
 Imports Microsoft.VisualBasic.Text
 
 Public Module UIInteractive
