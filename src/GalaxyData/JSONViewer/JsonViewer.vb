@@ -92,6 +92,7 @@ Namespace JSON
             'TreeView1
             '
             Me.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.None
+            Me.TreeView1.ContextMenuStrip = Me.ContextMenuStrip1
             Me.TreeView1.Dock = System.Windows.Forms.DockStyle.Fill
             Me.TreeView1.ImageIndex = 0
             Me.TreeView1.ImageList = Me.ImageList1
