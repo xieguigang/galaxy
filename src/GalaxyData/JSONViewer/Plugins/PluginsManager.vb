@@ -1,10 +1,4 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.Configuration
-Imports System.Reflection
-Imports System.IO
-
-Namespace JSON.Plugin
+﻿Namespace JSON.Plugin
     Friend Class PluginsManager
         Private plugins As List(Of IJsonViewerPlugin) = New List(Of IJsonViewerPlugin)()
         Private textVisualizersField As List(Of ICustomTextProvider) = New List(Of ICustomTextProvider)()
@@ -15,40 +9,13 @@ Namespace JSON.Plugin
         End Sub
 
         Public Sub Initialize()
-            Try
-                Dim myDirectory As String = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
-                'AppDomain.CurrentDomain.SetupInformation.PrivateBinPath;
-
-                Dim config As Configuration = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location)
-                If config Is Nothing Then InitDefaults()
-                Dim viewerConfig = CType(config.GetSection("jsonViewer"), ViewerConfiguration)
-                InternalConfig(viewerConfig)
-            Catch
-                InitDefaults()
-            End Try
+            InitDefaults()
         End Sub
 
         Private Sub InitDefaults()
             If _defaultVisualizer Is Nothing Then
                 AddPlugin(New AjaxNetDateTime())
                 AddPlugin(New CustomDate())
-            End If
-        End Sub
-
-        Private Sub InternalConfig(viewerConfig As ViewerConfiguration)
-            If viewerConfig IsNot Nothing Then
-                For Each keyValue As KeyValueConfigurationElement In viewerConfig.Plugins
-                    Dim type = keyValue.Value
-                    Dim pluginType = System.Type.GetType(type, False)
-                    If pluginType IsNot Nothing AndAlso GetType(IJsonViewerPlugin).IsAssignableFrom(pluginType) Then
-                        Try
-                            Dim plugin = CType(Activator.CreateInstance(pluginType), IJsonViewerPlugin)
-                            AddPlugin(plugin)
-                        Catch
-                            'Silently ignore any errors in plugin creation
-                        End Try
-                    End If
-                Next
             End If
         End Sub
 
