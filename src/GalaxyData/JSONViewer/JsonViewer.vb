@@ -105,9 +105,9 @@ Namespace JSON
             '
             Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
             Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-            Me.ImageList1.Images.SetKeyName(0, "obj.bmp")
-            Me.ImageList1.Images.SetKeyName(1, "array.bmp")
-            Me.ImageList1.Images.SetKeyName(2, "field.png")
+            Me.ImageList1.Images.SetKeyName(0, "Class_256x.png")
+            Me.ImageList1.Images.SetKeyName(1, "IndexerWizard_7974.png")
+            Me.ImageList1.Images.SetKeyName(2, "FieldWizard_7973.png")
             '
             'ContextMenuStrip1
             '
