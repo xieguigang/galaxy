@@ -24,7 +24,7 @@ Public Class DialogPromise
     Public Shared Function OpenDialog(Of T As {InputDialog, New})(data As Object) As DialogPromise
         Dim form As New T()
         Dim mask As MaskForm = MaskForm.CreateMask(CommonRuntime.AppHost)
-        Dim result = mask.ShowDialog(form)
+        Dim result = mask.ShowDialogForm(form)
 
         Return New DialogPromise(form, result, data)
     End Function
@@ -62,7 +62,7 @@ Public Class DialogPromise
             SetFormData(newForm, data)
         End If
 
-        Dim result = mask.ShowDialog(newForm)
+        Dim result = mask.ShowDialogForm(newForm)
         Return New DialogPromise(newForm, result, data)
     End Function
 
