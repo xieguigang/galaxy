@@ -22,11 +22,16 @@ Public Class DialogPromise
     End Function
 
     Public Shared Function OpenDialog(Of T As {InputDialog, New})(data As Object) As DialogPromise
-        Dim form As New T()
+        Dim newform As New T()
         Dim mask As MaskForm = MaskForm.CreateMask(CommonRuntime.AppHost)
-        Dim result = mask.ShowDialogForm(form)
+        Dim result As DialogResult = mask.ShowDialogForm(newform)
 
-        Return New DialogPromise(form, result, data)
+        ' 可选：传递数据到下一个表单
+        If data IsNot Nothing Then
+            SetFormData(newform, data)
+        End If
+
+        Return New DialogPromise(newform, result, data)
     End Function
 
     ' 链式调用下一个对话框
@@ -105,7 +110,7 @@ Public Class DialogPromise
     End Sub
 
     ' 辅助方法：设置表单数据
-    Private Sub SetFormData(form As InputDialog, data As Object)
+    Private Shared Sub SetFormData(form As InputDialog, data As Object)
         ' 这里可以根据需要实现数据传递逻辑
         ' 例如通过接口、反射或特定属性设置
         If TypeOf form Is IDataContainer Then
