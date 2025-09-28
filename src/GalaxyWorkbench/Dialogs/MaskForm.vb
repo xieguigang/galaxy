@@ -57,6 +57,9 @@ Namespace CommonDialogs
 
     Public Class MaskForm
 
+        Dim dialog As Form
+        Dim result As DialogResult
+
         Private Sub New(point As Point, size As Size)
 
             ' This call is required by the designer.
@@ -82,13 +85,8 @@ Namespace CommonDialogs
         End Sub
 
         Public Function ShowDialogForm(dialog As Form) As DialogResult
-            Me.Show()
-            ' Me.TopMost = True
-            Me.Activate()
-            Me.BringToFront()
-
-            Dim result = dialog.ShowDialog
-            Me.Close()
+            Me.dialog = dialog
+            Me.ShowDialog(DirectCast(CObj(CommonRuntime.AppHost), Form))
             Return result
         End Function
 
@@ -111,5 +109,10 @@ Namespace CommonDialogs
             AddHandler host.ResizeForm, AddressOf mask.handleHostResize
             Return mask
         End Function
+
+        Private Sub MaskForm_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+            result = dialog.ShowDialog(Me)
+            Close()
+        End Sub
     End Class
 End Namespace
