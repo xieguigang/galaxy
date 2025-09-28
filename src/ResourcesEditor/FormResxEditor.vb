@@ -14,4 +14,12 @@
     Private Sub loadResourceFile()
 
     End Sub
+
+    Private Sub FormResxEditor_Load(sender As Object, e As EventArgs) Handles Me.Load
+        TextBox1.Visible = False
+        TextBox1.Dock = DockStyle.Fill
+
+        PictureBox1.Visible = False
+        PictureBox1.Dock = DockStyle.Fill
+    End Sub
 End Class
