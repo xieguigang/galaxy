@@ -123,6 +123,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TableHelper.vb" />
     <Compile Include="TextValidates.vb" />
     <Compile Include="UIInteractive.vb" />
   </ItemGroup>
@@ -150,6 +151,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj">
+      <Project>{7e80287c-223f-41d7-a1a2-8c3d8e07bf7e}</Project>
+      <Name>dataframework-netcore5</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
       <Project>{396ccd83-4b4e-84cb-6056-022317fd64be}</Project>
       <Name>Core</Name>
