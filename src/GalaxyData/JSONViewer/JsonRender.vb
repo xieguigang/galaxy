@@ -1,4 +1,5 @@
-﻿Imports Galaxy.Data.JSON.Models
+﻿Imports System.Runtime.CompilerServices
+Imports Galaxy.Data.JSON.Models
 Imports Galaxy.Data.JSON.Plugin
 
 Namespace JSON
@@ -36,9 +37,9 @@ Namespace JSON
             _RootTag = label
         End Sub
 
-        Public Sub Render(jsonstr As String)
+        Public Async Sub Render(jsonstr As String)
             _json = jsonstr
-            Call Redraw()
+            Await Redraw()
         End Sub
 
         Public Overrides Function ToString() As String
@@ -49,26 +50,30 @@ Namespace JSON
             Call Render("{}")
         End Sub
 
-        Private Sub Redraw()
+        Private Async Function Redraw() As Task
+            If Not String.IsNullOrEmpty(_json) Then
+                Call Render(Await Task.Run(Function() JsonObjectTree.Parse(_json, _RootTag)))
+            End If
+        End Function
+
+        Public Sub Render(json As JsonObjectTree)
             Try
-                tvJson.BeginUpdate()
+                Call tvJson.BeginUpdate()
                 Try
-                    Reset()
-                    If Not String.IsNullOrEmpty(_json) Then
-                        Dim tree = JsonObjectTree.Parse(_json, _RootTag)
-                        Call VisualizeJsonTree(tree)
-                    End If
-
+                    Call Reset()
+                    Call VisualizeJsonTree(json)
                 Finally
-                    tvJson.EndUpdate()
+                    Call tvJson.EndUpdate()
                 End Try
-            Catch e As JsonParseError
-
             Catch e As Exception
 
             End Try
         End Sub
 
+        ''' <summary>
+        ''' clear the json tree list view
+        ''' </summary>
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Private Sub Reset()
             tvJson.Nodes.Clear()
         End Sub
