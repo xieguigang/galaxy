@@ -117,11 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="icons8_chat_message_sent_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-chat-message-sent-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ViewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="icons8_done_144" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-done-144.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ViewToolStripMenuItem.Text" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="FindToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="FindToolStripMenuItem.Text" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="CopyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="CopyToolStripMenuItem.Text" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 6</value>
+  </data>
+  <data name="ExpandAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="ExpandAllToolStripMenuItem.Text" xml:space="preserve">
+    <value>展開所有節點</value>
+  </data>
+  <data name="ContextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 98</value>
+  </data>
+  <data name="ImageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADw
+        CQAAAk1TRnQBSQFMAgEBAwEAAUwBAAFMAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABEAMAAQEBAAEgBgABED4AA/YB/wP2Af/0AAP2Af8DQgH/A0IB/wP2Af8QAAFbAVkBWAH/AVsBWQFY
+        Af8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8DQQFwBAADQQFwAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/
+        AVsBWQFYAf8BWwFZAVgB/xwAAxoBIwMxAU2EAAP2Af8DQgH/A0IB/wNCAf8DQgH/A/YB/wwAAVsBWQFY
+        Af8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wNBAXAEAANBAXABWwFZAVgB/wFbAVkBWAH/
+        AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/FAADKAE7AV4BXQFcAfsBWwFZAVgB/wFbAVkBWAH/AV4BXAFb
+        Af4DKAE7cAAD9gH/A/YB/wP2Af8D9gH/A/YB/wNCAf8DQgH/A0IB/wNCAf8D9gH/CAABWwFZAVgB/wFb
+        AVkBWAH/AVsBWQFYAf8DKgFAAyoBQAMVARwEAAMVARwDKgFAAyoBQAFbAVkBWAH/AVsBWQFYAf8BWwFZ
+        AVgB/wwAAyoBPwFeAVwBWwH+AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFb
+        AVkBWAH/AVsBWQFYAfwDGAEhaAAD9gH/A0IB/wNCAf8DQgH/A0IB/wNCAf8DQgH/A0IB/wP2Af8MAAFb
+        AVkBWAH/AVsBWQFYAf8BWwFZAVgB/xwAAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/DAABWwFZAVgB/wFb
+        AVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFY
+        Af8BWwFZAVgB/wNcAfgDDgESYAAD9gH/A0IB/wP2Af8D9gH/A/YB/wP2Af8D9gH/A/YB/xAAAVsBWQFY
+        Af8BWwFZAVgB/wFbAVkBWAH/HAABWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8MAAFbAVkBWAH/AVsBWQFY
+        Af8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFb
+        AVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH0UAAD9gH/A/YB/wQAA/YB/wNCAf8D9gH/BAAD9gH/
+        A4YB/wP2Af8D9gH/EAABWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8cAAFbAVkBWAH/AVsBWQFYAf8BWwFZ
+        AVgB/wwAAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFY
+        Af8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf9MAAP2Af8DhgH/
+        A/YB/wP2Af8D9gH/A0IB/wP2Af8D9gH/A4YB/wNCAf8DQgH/A/YB/wP2Af8MAAFbAVkBWAH/AVsBWQFY
+        Af8BWwFZAVgB/xwAAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/DAABWwFZAVgB/wFbAVkBWAH/AVsBWQFY
+        Af8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFb
+        AVkBWAH/AVsBWQFYAf8BWwFZAVgB/0gAA/YB/wOGAf8DQgH/A0IB/wP2Af8D9gH/A0IB/wP2Af8D9gH/
+        A0IB/wNCAf8DQgH/A0IB/wP2Af8D9gH/CAABWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8cAAFbAVkBWAH/
+        AVsBWQFYAf8BWwFZAVgB/wwAAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AX0BewF6Cf8BmwGaAZkB/wFb
+        AVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/0QAA/YB/wOGAf8DQgH/
+        A0IB/wNCAf8DQgH/A0IB/wNCAf8DQgH/A0IB/wNCAf8DQgH/A0IB/wNCAf8DhgH/A/YB/wgAAVsBWQFY
+        Af8BWwFZAVgB/wFbAVkBWAH/HAABWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8MAAMuAUcBXwFdAVwB/gFg
+        AV4BXQH/A/MR/wGYAZcBlgH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf9IAAP2Af8DQgH/
+        A0IB/wNCAf8DQgH/A0IB/wP2Af8D9gH/A/YB/wP2Af8D9gH/A0IB/wOGAf8D9gH/DAABWwFZAVgB/wFb
+        AVkBWAH/AVsBWQFYAf8cAAFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/xQAAzYBVwFbAVkBWAH/AV8BXQFc
+        Af8D8hH/AVsBWQFYAf8BWwFZAVgB/wFeAV0BXAHwTAAD9gH/A0IB/wNCAf8DQgH/A0IB/wNCAf8D9gH/
+        A/YB/wgAA/YB/wP2Af8QAAFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/xwAAVsBWQFYAf8BWwFZAVgB/wFb
+        AVkBWAH/HAADRgF/AVsBWQFYAf8BXwFdAVwB/wPyAf8BkQGQAY8B/wFbAVkBWAH/AVsBWgFZAe9YAAP2
+        Af8DQgH/A0IB/wNCAf8DQgH/A4YB/wP2Af8gAAFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/
+        AVsBWQFYAf8DQQFwBAADQQFwAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/yQA
+        A08BlwFbAVkBWAH/A10B6mQAA/YB/wNCAf8DQgH/A4YB/wP2Af8kAAFbAVkBWAH/AVsBWQFYAf8BWwFZ
+        AVgB/wFbAVkBWAH/AVsBWQFYAf8DQQFwBAADQQFwAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFY
+        Af8BWwFZAVgB/5gAA/YB/wOGAf8D9gH/+AAD9gH/5AABQgFNAT4HAAE+AwABKAMAAUADAAEQAwABAQEA
+        AQEFAAGAFwAD/wEAAf8B5wT/AgAB/wHDAcABgQH8Af8CAAH/AYEBwAGBAfABPwIAAfwBAAHAAYEBwAEP
+        AgAB/AEBAccB8QHAAQMCAAH8AQMBxwHxAcABAQIAAeQBQwHHAfEBwAEBAgABwAEBAccB8QHAAQECAAGA
+        AQABxwHxAcABAQQAAccB8QHAAQECAAGAAQEBxwHxAfABAQIAAcABMwHHAfEB/AEHAgAB4AE/AcABgQH/
+        AR8CAAHwAX8BwAGBAv8CAAH4Bf8CAAH9Bf8CAAs=
+</value>
   </data>
 </root>

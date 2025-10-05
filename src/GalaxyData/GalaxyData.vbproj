@@ -131,6 +131,12 @@
     <EmbeddedResource Include="JSONViewer\JsonViewer.resx">
       <DependentUpon>JsonViewer.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JSONViewer\JsonViewer.zh-CN.resx">
+      <DependentUpon>JsonViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JSONViewer\JsonViewer.zh-HK.resx">
+      <DependentUpon>JsonViewer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

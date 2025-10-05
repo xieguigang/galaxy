@@ -117,30 +117,77 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ContextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>128, 17</value>
-  </metadata>
-  <metadata name="ImageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="&gt;&gt;ImageList1.Name" xml:space="preserve">
+    <value>ImageList1</value>
+  </data>
+  <data name="ViewToolStripMenuItem.Text" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 6</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>JsonViewer</value>
+  </data>
+  <data name="&gt;&gt;CopyToolStripMenuItem.Name" xml:space="preserve">
+    <value>CopyToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;TreeView1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TreeView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>704, 707</value>
+  </data>
+  <data name="&gt;&gt;FindToolStripMenuItem.Name" xml:space="preserve">
+    <value>FindToolStripMenuItem</value>
+  </data>
+  <data name="FindToolStripMenuItem.Text" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="FindToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 22</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TreeView1.SelectedImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ViewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 22</value>
+  </data>
+  <data name="&gt;&gt;ViewToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>704, 707</value>
+  </data>
+  <data name="&gt;&gt;ViewToolStripMenuItem.Name" xml:space="preserve">
+    <value>ViewToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ImageList1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TreeView1.Name" xml:space="preserve">
+    <value>TreeView1</value>
+  </data>
   <data name="ImageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAD2
-        CQAAAk1TRnQBSQFMAgEBAwEAATABAAEwAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAD0
+        CQAAAk1TRnQBSQFMAgEBAwEAATgBAAFQAQABEAEAARABAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABEAMAAQEBAAEgBgABED4AA/YB/wP2Af/0AAP2Af8DQgH/A0IB/wP2Af8QAAFbAVkBWAH/AVsBWQFY
         Af8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8DQQFwBAADQQFwAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/
         AVsBWQFYAf8BWwFZAVgB/xwAAxoBIwMxAU2EAAP2Af8DQgH/A0IB/wNCAf8DQgH/A/YB/wwAAVsBWQFY
         Af8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wNBAXAEAANBAXABWwFZAVgB/wFbAVkBWAH/
-        AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/FAADKAE7AV0BWwFaAfsBWwFZAVgB/wFbAVkBWAH/AVwBWgFZ
+        AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/FAADKAE7AV4BXAFbAfsBWwFZAVgB/wFbAVkBWAH/AV0BWwFa
         Af4DKAE7cAAD9gH/A/YB/wP2Af8D9gH/A/YB/wNCAf8DQgH/A0IB/wNCAf8D9gH/CAABWwFZAVgB/wFb
         AVkBWAH/AVsBWQFYAf8DKgFAAyoBQAMVARwEAAMVARwDKgFAAyoBQAFbAVkBWAH/AVsBWQFYAf8BWwFZ
-        AVgB/wwAAyoBPwFcAVoBWQH+AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFb
+        AVgB/wwAAyoBPwFdAVsBWgH+AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFb
         AVkBWAH/AVsBWQFYAfwDGAEhaAAD9gH/A0IB/wNCAf8DQgH/A0IB/wNCAf8DQgH/A0IB/wP2Af8MAAFb
         AVkBWAH/AVsBWQFYAf8BWwFZAVgB/xwAAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/DAABWwFZAVgB/wFb
         AVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFY
-        Af8BWwFZAVgB/wFcAloB+AMOARJgAAP2Af8DQgH/A/YB/wP2Af8D9gH/A/YB/wP2Af8D9gH/EAABWwFZ
+        Af8BWwFZAVgB/wFcAlsB+AMOARJgAAP2Af8DQgH/A/YB/wP2Af8D9gH/A/YB/wP2Af8D9gH/EAABWwFZ
         AVgB/wFbAVkBWAH/AVsBWQFYAf8cAAFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wwAAVsBWQFYAf8BWwFZ
         AVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/
         AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAfRQAAP2Af8D9gH/BAAD9gH/A0IB/wP2Af8EAAP2
@@ -155,22 +202,92 @@
         Af8BWwFZAVgB/wFbAVkBWAH/DAABWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BfQF7AXoJ/wGbAZoBmQH/
         AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/RAAD9gH/A4YB/wNC
         Af8DQgH/A0IB/wNCAf8DQgH/A0IB/wNCAf8DQgH/A0IB/wNCAf8DQgH/A0IB/wOGAf8D9gH/CAABWwFZ
-        AVgB/wFbAVkBWAH/AVsBWQFYAf8cAAFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wwAAy4BRwFdAVsBWgH+
+        AVgB/wFbAVkBWAH/AVsBWQFYAf8cAAFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wwAAy4BRwFeAVwBWwH+
         AWABXgFdAf8D8xH/AZgBlwGWAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/0gAA/YB/wNC
         Af8DQgH/A0IB/wNCAf8DQgH/A/YB/wP2Af8D9gH/A/YB/wP2Af8DQgH/A4YB/wP2Af8MAAFbAVkBWAH/
         AVsBWQFYAf8BWwFZAVgB/xwAAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/FAADNgFXAVsBWQFYAf8BXwFd
-        AVwB/wPyEf8BWwFZAVgB/wFbAVkBWAH/AV0BWwFaAfBMAAP2Af8DQgH/A0IB/wNCAf8DQgH/A0IB/wP2
+        AVwB/wPyEf8BWwFZAVgB/wFbAVkBWAH/AV4BXAFbAfBMAAP2Af8DQgH/A0IB/wNCAf8DQgH/A0IB/wP2
         Af8D9gH/CAAD9gH/A/YB/xAAAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/HAABWwFZAVgB/wFbAVkBWAH/
-        AVsBWQFYAf8cAAFIAkcBfwFbAVkBWAH/AV8BXQFcAf8D8gH/AZEBkAGPAf8BWwFZAVgB/wFbAVoBWQHv
+        AVsBWQFYAf8cAAFHAkYBfwFbAVkBWAH/AV8BXQFcAf8D8gH/AZEBkAGPAf8BWwFZAVgB/wFbAVoBWQHv
         WAAD9gH/A0IB/wNCAf8DQgH/A0IB/wOGAf8D9gH/IAABWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8BWwFZ
         AVgB/wFbAVkBWAH/A0EBcAQAA0EBcAFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/AVsBWQFY
-        Af8kAANQAZcBWwFZAVgB/wJdAVwB6mQAA/YB/wNCAf8DQgH/A4YB/wP2Af8kAAFbAVkBWAH/AVsBWQFY
-        Af8BWwFZAVgB/wFbAVkBWAH/AVsBWQFYAf8DQQFwBAADQQFwAVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/
-        AVsBWQFYAf8BWwFZAVgB/5gAA/YB/wOGAf8D9gH/+AAD9gH/5AABQgFNAT4HAAE+AwABKAMAAUADAAEQ
-        AwABAQEAAQEFAAGAFwAD/wEAAf8B5wT/AgAB/wHDAcABgQH8Af8CAAH/AYEBwAGBAfABPwIAAfwBAAHA
-        AYEBwAEPAgAB/AEBAccB8QHAAQMCAAH8AQMBxwHxAcABAQIAAeQBQwHHAfEBwAEBAgABwAEBAccB8QHA
-        AQECAAGAAQABxwHxAcABAQQAAccB8QHAAQECAAGAAQEBxwHxAfABAQIAAcABMwHHAfEB/AEHAgAB4AE/
-        AcABgQH/AR8CAAHwAX8BwAGBAv8CAAH4Bf8CAAH9Bf8CAAs=
+        Af8kAANPAZcBWwFZAVgB/wNdAepkAAP2Af8DQgH/A0IB/wOGAf8D9gH/JAABWwFZAVgB/wFbAVkBWAH/
+        AVsBWQFYAf8BWwFZAVgB/wFbAVkBWAH/A0EBcAQAA0EBcAFbAVkBWAH/AVsBWQFYAf8BWwFZAVgB/wFb
+        AVkBWAH/AVsBWQFYAf+YAAP2Af8DhgH/A/YB//gAA/YB/+QAAUIBTQE+BwABPgMAASgDAAFAAwABEAMA
+        AQEBAAEBBQABgBcAA/8BAAH/AecE/wIAAf8BwwHAAYEB/AH/AgAB/wGBAcABgQHwAT8CAAH8AQABwAGB
+        AcABDwIAAfwBAQHHAfEBwAEDAgAB/AEDAccB8QHAAQECAAHkAUMBxwHxAcABAQIAAcABAQHHAfEBwAEB
+        AgABgAEAAccB8QHAAQEEAAHHAfEBwAEBAgABgAEBAccB8QHwAQECAAHAATMBxwHxAfwBBwIAAeABPwHA
+        AYEB/wEfAgAB8AF/AcABgQL/AgAB+AX/AgAB/QX/GAAL
 </value>
   </data>
+  <data name="TreeView1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;ExpandAllToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ContextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 98</value>
+  </data>
+  <data name="&gt;&gt;TreeView1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem1.Name" xml:space="preserve">
+    <value>ToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;ContextMenuStrip1.Name" xml:space="preserve">
+    <value>ContextMenuStrip1</value>
+  </data>
+  <data name="&gt;&gt;ContextMenuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CopyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CopyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 22</value>
+  </data>
+  <data name="ExpandAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 22</value>
+  </data>
+  <data name="ExpandAllToolStripMenuItem.Text" xml:space="preserve">
+    <value>Expand All</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TreeView1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="TreeView1.ImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="CopyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ExpandAllToolStripMenuItem.Name" xml:space="preserve">
+    <value>ExpandAllToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;TreeView1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FindToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TreeView1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ImageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="ContextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>128, 17</value>
+  </metadata>
 </root>

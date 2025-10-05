@@ -79,28 +79,54 @@ Namespace JSON
             Me.components = New System.ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(JsonViewer))
             Me.TreeView1 = New System.Windows.Forms.TreeView()
-            Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
             Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
             Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.FindToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
             Me.ExpandAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
             Me.ContextMenuStrip1.SuspendLayout()
             Me.SuspendLayout()
             '
             'TreeView1
             '
+            resources.ApplyResources(Me.TreeView1, "TreeView1")
             Me.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.None
             Me.TreeView1.ContextMenuStrip = Me.ContextMenuStrip1
-            Me.TreeView1.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TreeView1.ImageIndex = 0
             Me.TreeView1.ImageList = Me.ImageList1
-            Me.TreeView1.Location = New System.Drawing.Point(0, 0)
             Me.TreeView1.Name = "TreeView1"
-            Me.TreeView1.SelectedImageIndex = 0
-            Me.TreeView1.Size = New System.Drawing.Size(704, 707)
-            Me.TreeView1.TabIndex = 0
+            '
+            'ContextMenuStrip1
+            '
+            resources.ApplyResources(Me.ContextMenuStrip1, "ContextMenuStrip1")
+            Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewToolStripMenuItem, Me.FindToolStripMenuItem, Me.CopyToolStripMenuItem, Me.ToolStripMenuItem1, Me.ExpandAllToolStripMenuItem})
+            Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+            '
+            'ViewToolStripMenuItem
+            '
+            resources.ApplyResources(Me.ViewToolStripMenuItem, "ViewToolStripMenuItem")
+            Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
+            '
+            'FindToolStripMenuItem
+            '
+            resources.ApplyResources(Me.FindToolStripMenuItem, "FindToolStripMenuItem")
+            Me.FindToolStripMenuItem.Name = "FindToolStripMenuItem"
+            '
+            'CopyToolStripMenuItem
+            '
+            resources.ApplyResources(Me.CopyToolStripMenuItem, "CopyToolStripMenuItem")
+            Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
+            '
+            'ToolStripMenuItem1
+            '
+            resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
+            Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+            '
+            'ExpandAllToolStripMenuItem
+            '
+            resources.ApplyResources(Me.ExpandAllToolStripMenuItem, "ExpandAllToolStripMenuItem")
+            Me.ExpandAllToolStripMenuItem.Name = "ExpandAllToolStripMenuItem"
             '
             'ImageList1
             '
@@ -110,46 +136,11 @@ Namespace JSON
             Me.ImageList1.Images.SetKeyName(1, "IndexerWizard_7974.png")
             Me.ImageList1.Images.SetKeyName(2, "FieldWizard_7973.png")
             '
-            'ContextMenuStrip1
-            '
-            Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewToolStripMenuItem, Me.FindToolStripMenuItem, Me.CopyToolStripMenuItem, Me.ToolStripMenuItem1, Me.ExpandAllToolStripMenuItem})
-            Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-            Me.ContextMenuStrip1.Size = New System.Drawing.Size(131, 98)
-            '
-            'ViewToolStripMenuItem
-            '
-            Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
-            Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
-            Me.ViewToolStripMenuItem.Text = "View"
-            '
-            'FindToolStripMenuItem
-            '
-            Me.FindToolStripMenuItem.Name = "FindToolStripMenuItem"
-            Me.FindToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
-            Me.FindToolStripMenuItem.Text = "Find"
-            '
-            'CopyToolStripMenuItem
-            '
-            Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
-            Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
-            Me.CopyToolStripMenuItem.Text = "Copy"
-            '
-            'ToolStripMenuItem1
-            '
-            Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-            Me.ToolStripMenuItem1.Size = New System.Drawing.Size(127, 6)
-            '
-            'ExpandAllToolStripMenuItem
-            '
-            Me.ExpandAllToolStripMenuItem.Name = "ExpandAllToolStripMenuItem"
-            Me.ExpandAllToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
-            Me.ExpandAllToolStripMenuItem.Text = "Expand All"
-            '
             'JsonViewer
             '
+            resources.ApplyResources(Me, "$this")
             Me.Controls.Add(Me.TreeView1)
             Me.Name = "JsonViewer"
-            Me.Size = New System.Drawing.Size(704, 707)
             Me.ContextMenuStrip1.ResumeLayout(False)
             Me.ResumeLayout(False)
 

@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppHost.vb" />
+    <Compile Include="Icons8.vb" />
     <Compile Include="CommonRuntime.vb" />
     <Compile Include="Dialogs\DialogPromise.vb" />
     <Compile Include="Dialogs\InputDialog.Designer.vb">
@@ -182,6 +183,12 @@
       <Project>{6745a33a-56a6-4fcf-87c5-02631fd5d82b}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-chat-message-sent-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-done-144.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\..\..\BlueprintCAD\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\..\..\BlueprintCAD\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets')" />
