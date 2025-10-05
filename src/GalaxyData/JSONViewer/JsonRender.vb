@@ -12,15 +12,24 @@ Namespace JSON
 
         Public ReadOnly Property RootTag As String = "JSON"
 
-        Sub New(tree As TreeView)
+        Sub New(tree As TreeView, Optional warning As Action(Of String) = Nothing)
             Me.tvJson = tree
 
             Try
                 _pluginsManager.Initialize()
             Catch e As Exception
-                MessageBox.Show(String.Format("There was an error during initialization. If you get this message when trying to use the Fiddler plugin or the Visual Studio Visualizer, please follow the instructions in the ReadMe.txt file. 
-The error was: {0}", e.Message), "Json Viewer", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Dim msg As String = {
+                    "There was an error during initialization.",
+                    "If you get this message when trying to use the Fiddler plugin or the Visual Studio Visualizer, please follow the instructions in the ReadMe.txt file.",
+                   $"The error was: {e.Message}"}.JoinBy(vbCrLf)
+
+                warning = If(warning, New Action(Of String)(AddressOf JsonRender.Warning))
+                warning(msg)
             End Try
+        End Sub
+
+        Private Shared Sub Warning(msg As String)
+            MessageBox.Show(msg, "Json Viewer", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End Sub
 
         Public Sub SetRootLabel(label As String)
@@ -168,22 +177,24 @@ The error was: {0}", e.Message), "Json Viewer", MessageBoxButtons.OK, MessageBox
         End Sub
 
         Public Sub ExpandAll()
-            tvJson.BeginUpdate()
+            Call tvJson.BeginUpdate()
+
             Try
                 If tvJson.SelectedNode IsNot Nothing Then
-                    Dim topNode = tvJson.TopNode
+                    Dim topNode As TreeNode = tvJson.TopNode
+
                     tvJson.SelectedNode.ExpandAll()
                     tvJson.TopNode = topNode
                 End If
-
             Finally
-                tvJson.EndUpdate()
+                Call tvJson.EndUpdate()
             End Try
         End Sub
 
         Private Sub tvJson_MouseDown(sender As Object, e As MouseEventArgs) Handles tvJson.MouseDown
             If e.Button = MouseButtons.Right Then
                 Dim node = tvJson.GetNodeAt(e.Location)
+
                 If node IsNot Nothing Then
                     tvJson.SelectedNode = node
                 End If
