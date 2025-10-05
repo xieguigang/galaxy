@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("GalaxyWorkbench")>
+<Assembly: AssemblyTitle("Galaxy Workbench Winform UI Framework")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("GalaxyWorkbench")>
-<Assembly: AssemblyCopyright("Copyright ©  2025")>
+<Assembly: AssemblyProduct("Galaxy Workbench")>
+<Assembly: AssemblyCopyright("Copyright © xieguigang<i@xieguigang.me> 2025")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

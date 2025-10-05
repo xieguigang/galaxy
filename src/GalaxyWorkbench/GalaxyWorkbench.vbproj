@@ -145,6 +145,9 @@
     <EmbeddedResource Include="Dialogs\InputDialog.zh-Hans.resx">
       <DependentUpon>InputDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\InputDialog.zh-HK.resx">
+      <DependentUpon>InputDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\MaskForm.en-US.resx">
       <DependentUpon>MaskForm.vb</DependentUpon>
     </EmbeddedResource>

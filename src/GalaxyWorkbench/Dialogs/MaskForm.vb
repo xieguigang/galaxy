@@ -67,7 +67,7 @@ Namespace CommonDialogs
 
             ' Add any initialization after the InitializeComponent() call.
 
-            Opacity = 0.5
+            Opacity = CommonRuntime.MaskOpacity
             BackColor = Color.LightGray
             FormBorderStyle = FormBorderStyle.None
             StartPosition = FormStartPosition.Manual
