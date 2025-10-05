@@ -119,6 +119,7 @@
     <Compile Include="Dialogs\MaskForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Dialogs\IDataContainer.vb" />
     <Compile Include="WebViewLoader.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

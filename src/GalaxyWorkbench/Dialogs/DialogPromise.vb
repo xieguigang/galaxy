@@ -16,11 +16,23 @@ Public Class DialogPromise
         _data = data
     End Sub
 
-    ' 启动链式调用的入口方法
+    ''' <summary>
+    ''' 启动链式调用的入口方法
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <returns></returns>
     Public Shared Function OpenDialog(Of T As {InputDialog, New})() As DialogPromise
         Return OpenDialog(Of T)(Nothing)
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="data">
+    ''' this parameter required the target <typeparamref name="T"/> implements of the interface <see cref="IDataContainer"/>
+    ''' </param>
+    ''' <returns></returns>
     Public Shared Function OpenDialog(Of T As {InputDialog, New})(data As Object) As DialogPromise
         Dim newform As New T()
         Dim mask As MaskForm = MaskForm.CreateMask(CommonRuntime.AppHost)
@@ -36,7 +48,11 @@ Public Class DialogPromise
         Return New DialogPromise(newform, result, data)
     End Function
 
-    ' 链式调用下一个对话框
+    ''' <summary>
+    ''' 链式调用下一个对话框
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <returns></returns>
     Public Function ThenDialog(Of T As {InputDialog, New})() As DialogPromise
         Return ThenDialog(Of T)(Function(f) True, Nothing)
     End Function
@@ -49,6 +65,15 @@ Public Class DialogPromise
         Return ThenDialog(Of T)(Function(f) True, data)
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <typeparam name="T"></typeparam>
+    ''' <param name="condition"></param>
+    ''' <param name="data">
+    ''' this parameter required the target <typeparamref name="T"/> implements of the interface <see cref="IDataContainer"/>
+    ''' </param>
+    ''' <returns></returns>
     Public Function ThenDialog(Of T As {InputDialog, New})(
         condition As Func(Of InputDialog, Boolean),
         data As Object) As DialogPromise
@@ -73,7 +98,10 @@ Public Class DialogPromise
         Return New DialogPromise(newForm, result, data)
     End Function
 
-    ' 处理最终结果
+    ''' <summary>
+    ''' 处理最终结果
+    ''' </summary>
+    ''' <param name="action"></param>
     Public Sub [Finally](action As Action(Of DialogResult, InputDialog))
         action?.Invoke(_previousResult, _previousForm)
     End Sub
@@ -91,7 +119,10 @@ Public Class DialogPromise
             End Sub)
     End Sub
 
-    ' 只有当所有对话框都成功时才执行
+    ''' <summary>
+    ''' 只有当所有对话框都成功时才执行
+    ''' </summary>
+    ''' <param name="action"></param>
     Public Sub OnSuccess(action As Action)
         If _previousResult = DialogResult.OK Then
             action?.Invoke()
@@ -104,14 +135,21 @@ Public Class DialogPromise
         End If
     End Sub
 
-    ' 当任何对话框取消时执行
+    ''' <summary>
+    ''' 当任何对话框取消时执行
+    ''' </summary>
+    ''' <param name="action"></param>
     Public Sub OnCancel(action As Action)
         If _previousResult = DialogResult.Cancel Then
             action?.Invoke()
         End If
     End Sub
 
-    ' 辅助方法：设置表单数据
+    ''' <summary>
+    ''' 辅助方法：设置表单数据
+    ''' </summary>
+    ''' <param name="form"></param>
+    ''' <param name="data"></param>
     Private Shared Sub SetFormData(form As InputDialog, data As Object)
         ' 这里可以根据需要实现数据传递逻辑
         ' 例如通过接口、反射或特定属性设置
@@ -119,12 +157,7 @@ Public Class DialogPromise
             DirectCast(form, IDataContainer).SetData(data)
         End If
     End Sub
-
 End Class
 
-' 可选的数据传递接口
-Public Interface IDataContainer
-    Sub SetData(data As Object)
-    Function GetData() As Object
-End Interface
+
 
