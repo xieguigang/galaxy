@@ -105,6 +105,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppHost.vb" />
+    <Compile Include="BuzyIndicator\ActionRunner.vb" />
+    <Compile Include="BuzyIndicator\Extensions.vb" />
+    <Compile Include="BuzyIndicator\ITaskProgress.vb" />
+    <Compile Include="BuzyIndicator\LoadDataTask.vb" />
+    <Compile Include="BuzyIndicator\ProgressSpinner.Designer.vb">
+      <DependentUpon>ProgressSpinner.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BuzyIndicator\ProgressSpinner.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuzyIndicator\TaskProgress.Designer.vb">
+      <DependentUpon>TaskProgress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BuzyIndicator\TaskProgress.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Icons8.vb" />
     <Compile Include="CommonRuntime.vb" />
     <Compile Include="Dialogs\DialogPromise.vb" />
@@ -140,6 +156,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BuzyIndicator\ProgressSpinner.resx">
+      <DependentUpon>ProgressSpinner.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuzyIndicator\TaskProgress.resx">
+      <DependentUpon>TaskProgress.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\InputDialog.resx">
       <DependentUpon>InputDialog.vb</DependentUpon>
     </EmbeddedResource>
