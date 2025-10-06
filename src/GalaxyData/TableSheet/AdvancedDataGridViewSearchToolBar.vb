@@ -37,37 +37,9 @@ Namespace TableSheet
 #Region "translations"
 
         ''' <summary>
-        ''' Available translation keys
-        ''' </summary>
-        Public Enum TranslationKey
-            ADGVSTBLabelSearch
-            ADGVSTBButtonFromBegin
-            ADGVSTBButtonCaseSensitiveToolTip
-            ADGVSTBButtonSearchToolTip
-            ADGVSTBButtonCloseToolTip
-            ADGVSTBButtonWholeWordToolTip
-            ADGVSTBComboBoxColumnsAll
-            ADGVSTBTextBoxSearchToolTip
-        End Enum
-
-        ''' <summary>
-        ''' Internationalization strings
-        ''' </summary>
-        Public Shared Translations As Dictionary(Of String, String) = New Dictionary(Of String, String)() From {
-    {TranslationKey.ADGVSTBLabelSearch.ToString(), "Search:"},
-    {TranslationKey.ADGVSTBButtonFromBegin.ToString(), "From Begin"},
-    {TranslationKey.ADGVSTBButtonCaseSensitiveToolTip.ToString(), "Case Sensitivity"},
-    {TranslationKey.ADGVSTBButtonSearchToolTip.ToString(), "Find Next"},
-    {TranslationKey.ADGVSTBButtonCloseToolTip.ToString(), "Hide"},
-    {TranslationKey.ADGVSTBButtonWholeWordToolTip.ToString(), "Search only Whole Word"},
-    {TranslationKey.ADGVSTBComboBoxColumnsAll.ToString(), "(All Columns)"},
-    {TranslationKey.ADGVSTBTextBoxSearchToolTip.ToString(), "Value for Search"}
-}
-
-        ''' <summary>
         ''' Used to check if components translations has to be updated
         ''' </summary>
-        Private _translationsRefreshComponentTranslationsCheck As Dictionary(Of String, String) = New Dictionary(Of String, String)() From {
+        Private _translationsRefreshComponentTranslationsCheck As New Dictionary(Of String, String)() From {
         }
 
 #End Region
