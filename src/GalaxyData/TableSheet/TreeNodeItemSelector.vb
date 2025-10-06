@@ -7,11 +7,11 @@
 ' Please refer to LICENSE file for licensing information.
 #End Region
 
-Imports System
-Imports System.Windows.Forms
+Imports System.ComponentModel
 
 Namespace Zuby.ADGV
-    <ComponentModel.DesignerCategory("")>
+
+    <DesignerCategory("")>
     Friend Class TreeNodeItemSelector
         Inherits TreeNode
 
@@ -92,7 +92,7 @@ Namespace Zuby.ADGV
         ''' <summary>
         ''' Get Node parent
         ''' </summary>
-        Overloads Public Property Parent As TreeNodeItemSelector
+        Public Overloads Property Parent As TreeNodeItemSelector
             Get
                 If TypeOf _parent Is TreeNodeItemSelector Then
                     Return _parent
@@ -108,7 +108,7 @@ Namespace Zuby.ADGV
         ''' <summary>
         ''' Node is Checked
         ''' </summary>
-        Overloads Public Property Checked As Boolean
+        Public Overloads Property Checked As Boolean
             Get
                 Return _checkState = CheckState.Checked
             End Get

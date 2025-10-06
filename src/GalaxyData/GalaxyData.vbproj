@@ -133,7 +133,9 @@
     <Compile Include="TableSheet\FormCustomFilter.Designer.vb">
       <DependentUpon>FormCustomFilter.vb</DependentUpon>
     </Compile>
-    <Compile Include="TableSheet\FormCustomFilter.vb" />
+    <Compile Include="TableSheet\FormCustomFilter.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TableSheet\MenuStrip.designer.vb">
       <DependentUpon>MenuStrip.vb</DependentUpon>
     </Compile>
