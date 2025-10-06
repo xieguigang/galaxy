@@ -50,17 +50,24 @@ Namespace TableSheet
             InitializeComponent()
 
             'set component translations
-            Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVFormTitle.ToString())
-            label_columnName.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVLabelColumnNameText.ToString())
-            label_and.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVLabelAnd.ToString())
-            button_ok.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVButtonOk.ToString())
-            button_cancel.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVButtonCancel.ToString())
+            Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVFormTitle.ToString())
+            label_columnName.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLabelColumnNameText.ToString())
+            label_and.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLabelAnd.ToString())
+            button_ok.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVButtonOk.ToString())
+            button_cancel.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVButtonCancel.ToString())
 
             If dataType Is GetType(Date) Then
                 _filterType = FilterType.DateTime
             ElseIf dataType Is GetType(TimeSpan) Then
                 _filterType = FilterType.TimeSpan
-            ElseIf dataType Is GetType(Integer) OrElse dataType Is GetType(Long) OrElse dataType Is GetType(Short) OrElse dataType Is GetType(UInteger) OrElse dataType Is GetType(ULong) OrElse dataType Is GetType(UShort) OrElse dataType Is GetType(Byte) OrElse dataType Is GetType(SByte) Then
+            ElseIf dataType Is GetType(Integer) OrElse
+                dataType Is GetType(Long) OrElse
+                dataType Is GetType(Short) OrElse
+                dataType Is GetType(UInteger) OrElse
+                dataType Is GetType(ULong) OrElse
+                dataType Is GetType(UShort) OrElse
+                dataType Is GetType(Byte) OrElse
+                dataType Is GetType(SByte) Then
                 _filterType = FilterType.Integer
             ElseIf dataType Is GetType(Single) OrElse dataType Is GetType(Double) OrElse dataType Is GetType(Decimal) Then
                 _filterType = FilterType.Float
@@ -88,12 +95,23 @@ Namespace TableSheet
                         TryCast(_valControl2, DateTimePicker).Format = DateTimePickerFormat.Short
                     End If
 
-                    comboBox_filterType.Items.AddRange(New String() {AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEquals.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotEqual.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEarlierThan.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEarlierThanOrEqualTo.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVLaterThan.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVLaterThanOrEqualTo.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVBetween.ToString())})
+                    comboBox_filterType.Items.AddRange(New String() {
+                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEquals.ToString()),
+                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEqual.ToString()),
+                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEarlierThan.ToString()),
+                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEarlierThanOrEqualTo.ToString()),
+                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLaterThan.ToString()),
+                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLaterThanOrEqualTo.ToString()),
+                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVBetween.ToString())
+                    })
 
                 Case FilterType.TimeSpan
                     _valControl1 = New TextBox()
                     _valControl2 = New TextBox()
-                    comboBox_filterType.Items.AddRange(New String() {AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVContains.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotContain.ToString())})
+                    comboBox_filterType.Items.AddRange(New String() {
+                            AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVContains.ToString()),
+                            AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotContain.ToString())
+                    })
 
                 Case FilterType.Integer, FilterType.Float
                     _valControl1 = New TextBox()
