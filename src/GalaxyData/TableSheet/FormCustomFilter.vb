@@ -7,16 +7,12 @@
 ' Please refer to LICENSE file for licensing information.
 #End Region
 
-Imports System
-Imports System.Drawing
 Imports System.Globalization
-Imports System.Linq
 Imports System.Threading
-Imports System.Windows.Forms
+
 
 Namespace TableSheet
-    Partial Friend Class FormCustomFilter
-        Inherits Form
+    Partial Friend Class FormCustomFilter : Inherits Form
 
 #Region "class properties"
 

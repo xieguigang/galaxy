@@ -132,7 +132,7 @@
     <Compile Include="TableSheet\ColumnHeaderCell.vb" />
     <Compile Include="TableSheet\Events\AdvancedDataGridViewSearchToolBarSearchEventArgs.vb" />
     <Compile Include="TableSheet\Events\ColumnHeaderCellEventArgs.vb" />
-    <Compile Include="TableSheet\Flags\Translation.vb" />
+    <Compile Include="TableSheet\Translations\Translation.vb" />
     <Compile Include="TableSheet\Flags\FilterBuilerMode.vb" />
     <Compile Include="TableSheet\FormCustomFilter.Designer.vb">
       <DependentUpon>FormCustomFilter.vb</DependentUpon>

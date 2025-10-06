@@ -9,6 +9,7 @@
 
 Imports System.ComponentModel
 Imports System.IO
+Imports Galaxy.Data.TableSheet.Events
 Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace TableSheet
@@ -187,11 +188,13 @@ Namespace TableSheet
                     Dim cols As DataGridViewColumn() = _columnsList.Cast(Of DataGridViewColumn)().Where(Function(col) col.Visible).ToArray()
 
                     If cols.Length = comboBox_columns.Items.Count - 1 Then
-                        If Equals(cols(comboBox_columns.SelectedIndex - 1).HeaderText, comboBox_columns.SelectedItem.ToString()) Then c = cols(comboBox_columns.SelectedIndex - 1)
+                        If Equals(cols(comboBox_columns.SelectedIndex - 1).HeaderText, comboBox_columns.SelectedItem.ToString()) Then
+                            c = cols(comboBox_columns.SelectedIndex - 1)
+                        End If
                     End If
                 End If
 
-                Dim args As AdvancedDataGridViewSearchToolBarSearchEventArgs = New AdvancedDataGridViewSearchToolBarSearchEventArgs(textBox_search.Text, c, button_casesensitive.Checked, button_wholeword.Checked, button_frombegin.Checked)
+                Dim args As New AdvancedDataGridViewSearchToolBarSearchEventArgs(textBox_search.Text, c, button_casesensitive.Checked, button_wholeword.Checked, button_frombegin.Checked)
                 RaiseEvent Search(Me, args)
             End If
         End Sub

@@ -8,6 +8,7 @@
 #End Region
 
 Imports System.ComponentModel
+Imports Galaxy.Data.TableSheet.Events
 
 Namespace TableSheet
 

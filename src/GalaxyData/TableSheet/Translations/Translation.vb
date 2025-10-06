@@ -1,9 +1,11 @@
-﻿Namespace TableSheet
+﻿Imports TranslationKey = Galaxy.Data.TableSheet.AdvancedDataGridViewTranslationKey
+
+Namespace TableSheet
 
     ''' <summary>
     ''' Available translation keys
     ''' </summary>
-    Public Enum TranslationKey
+    Public Enum AdvancedDataGridViewTranslationKey
         ADGVSortDateTimeASC
         ADGVSortDateTimeDESC
         ADGVSortBoolASC
@@ -50,7 +52,7 @@
         ADGVButtonCancel
     End Enum
 
-    Module Translations
+    Module AdvancedDataGridViewTranslations
 
         ''' <summary>
         ''' Internationalization strings
