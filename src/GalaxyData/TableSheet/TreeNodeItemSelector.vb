@@ -9,7 +9,7 @@
 
 Imports System.ComponentModel
 
-Namespace Zuby.ADGV
+Namespace TableSheet
 
     <DesignerCategory("")>
     Friend Class TreeNodeItemSelector

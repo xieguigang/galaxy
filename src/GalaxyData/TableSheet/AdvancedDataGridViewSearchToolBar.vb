@@ -11,7 +11,7 @@ Imports System.ComponentModel
 Imports System.IO
 Imports Microsoft.VisualBasic.Serialization.JSON
 
-Namespace Zuby.ADGV
+Namespace TableSheet
 
     <DesignerCategory("")>
     Partial Public Class AdvancedDataGridViewSearchToolBar

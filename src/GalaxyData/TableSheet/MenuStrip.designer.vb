@@ -2,7 +2,7 @@
 Imports System.ComponentModel
 Imports System.Windows.Forms
 
-Namespace Zuby.ADGV
+Namespace TableSheet
     Partial Class MenuStrip
         ''' <summary>
         ''' Required designer variable.

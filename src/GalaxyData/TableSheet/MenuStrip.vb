@@ -16,10 +16,10 @@ Imports System.Text
 Imports System.Windows.Forms
 Imports System.Windows.Forms.VisualStyles
 
-Namespace Zuby.ADGV
+Namespace TableSheet
 
     <ComponentModel.DesignerCategory("")>
-    Friend Partial Class MenuStrip
+    Partial Friend Class MenuStrip
         Inherits ContextMenuStrip
 
         ''' <summary>

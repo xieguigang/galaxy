@@ -11,7 +11,7 @@ Imports System
 Imports System.Drawing
 Imports System.Windows.Forms
 
-Namespace Zuby.ADGV
+Namespace TableSheet
 
     <ComponentModel.DesignerCategory("")>
     Friend Class ColumnHeaderCell
@@ -20,7 +20,7 @@ Namespace Zuby.ADGV
         ''' <summary>
         ''' Get the MenuStrip for this ColumnHeaderCell
         ''' </summary>
-        Private _MenuStrip As Zuby.ADGV.MenuStrip
+        Private _MenuStrip As MenuStrip
 
 #Region "public events"
 
@@ -213,7 +213,7 @@ Namespace Zuby.ADGV
         ''' </summary>
         ''' <returns></returns>
         Public Overrides Function Clone() As Object
-            Return New ColumnHeaderCell(dataGridView, Me, FilterAndSortEnabled)
+            Return New ColumnHeaderCell(DataGridView, Me, FilterAndSortEnabled)
         End Function
 
         ''' <summary>
@@ -667,7 +667,7 @@ Namespace Zuby.ADGV
     Friend Class ColumnHeaderCellEventArgs
         Inherits EventArgs
 
-        Private _FilterMenu As Zuby.ADGV.MenuStrip, _Column As System.Windows.Forms.DataGridViewColumn
+        Private _FilterMenu As MenuStrip, _Column As System.Windows.Forms.DataGridViewColumn
 
         Public Property FilterMenu As MenuStrip
             Get

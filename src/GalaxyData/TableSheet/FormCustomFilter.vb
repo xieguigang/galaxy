@@ -14,8 +14,8 @@ Imports System.Linq
 Imports System.Threading
 Imports System.Windows.Forms
 
-Namespace Zuby.ADGV
-    Friend Partial Class FormCustomFilter
+Namespace TableSheet
+    Partial Friend Class FormCustomFilter
         Inherits Form
 
 #Region "class properties"

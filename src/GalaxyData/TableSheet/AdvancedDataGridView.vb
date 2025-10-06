@@ -12,7 +12,7 @@ Imports System.Text
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Serialization.JSON
 
-Namespace Zuby.ADGV
+Namespace TableSheet
 
     <ComponentModel.DesignerCategory("")>
     Public Class AdvancedDataGridView
