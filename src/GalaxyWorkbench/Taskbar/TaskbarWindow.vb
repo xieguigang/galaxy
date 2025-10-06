@@ -56,23 +56,26 @@
 
 Imports Microsoft.Windows.Taskbar
 
-Module TaskBarWindow
+Public Interface IDocumentWindow
+End Interface
 
-    Private Function GetTabPages() As DocumentWindow()
-        Return CommonRuntime.AppHost.DockPanel.Documents _
-            .Where(Function(page) TypeOf page Is DocumentWindow) _
-            .Select(Function(doc) DirectCast(doc, DocumentWindow)) _
+Public Module TaskBarWindow
+
+    Private Function GetTabPages() As Form()
+        Return CommonRuntime.AppHost.GetDocuments _
+            .Where(Function(page) TypeOf page Is IDocumentWindow) _
+            .Select(Function(doc) DirectCast(doc, Form)) _
             .ToArray
     End Function
 
-    Friend Sub preview_TabbedThumbnailActivated(sender As Object, e As TabbedThumbnailEventArgs)
+    Public Sub preview_TabbedThumbnailActivated(sender As Object, e As TabbedThumbnailEventArgs)
         ' User selected a tab via the thumbnail preview
         ' Select the corresponding control in our app
-        For Each page As DocumentWindow In GetTabPages()
+        For Each page As Form In GetTabPages()
             If page.Handle = e.WindowHandle Then
                 ' Select the tab in the application UI as well as taskbar tabbed thumbnail list
-                page.Show(Workbench.AppHost.DockPanel)
-                TaskbarManager.Instance.TabbedThumbnail.SetActiveTab(page.preview)
+                page.Show(CommonRuntime.AppHost.GetDockPanel)
+                TaskbarManager.Instance.TabbedThumbnail.SetActiveTab(page)
             End If
         Next
 
@@ -82,11 +85,11 @@ Module TaskBarWindow
         End If
     End Sub
 
-    Friend Sub preview_TabbedThumbnailClosed(sender As Object, e As TabbedThumbnailClosedEventArgs)
-        Dim pageClosed As DocumentWindow = Nothing
+    Public Sub preview_TabbedThumbnailClosed(sender As Object, e As TabbedThumbnailClosedEventArgs)
+        Dim pageClosed As Form = Nothing
 
         ' Find the tabpage that was "closed" by the user (via the taskbar tabbed thumbnail)
-        For Each page As DocumentWindow In GetTabPages()
+        For Each page As Form In GetTabPages()
             If page.Handle = e.WindowHandle Then
                 pageClosed = page
                 Exit For
@@ -104,12 +107,12 @@ Module TaskBarWindow
             ' Remove the event handlers from the tab preview
             RemoveHandler tabbedThumbnail.TabbedThumbnailActivated, AddressOf preview_TabbedThumbnailActivated
             RemoveHandler tabbedThumbnail.TabbedThumbnailClosed, AddressOf preview_TabbedThumbnailClosed
-            RemoveHandler tabbedThumbnail.TabbedThumbnailMaximized, AddressOf preview_TabbedThumbnailMaximized
+            RemoveHandler tabbedThumbnail.TabbedThumbnailMaximized, AddressOf Preview_TabbedThumbnailMaximized
             RemoveHandler tabbedThumbnail.TabbedThumbnailMinimized, AddressOf preview_TabbedThumbnailMinimized
         End If
     End Sub
 
-    Friend Sub Preview_TabbedThumbnailMaximized(sender As Object, e As TabbedThumbnailEventArgs)
+    Public Sub Preview_TabbedThumbnailMaximized(sender As Object, e As TabbedThumbnailEventArgs)
         ' User clicked on the maximize button on the thumbnail's context menu
         ' Maximize the app
         CommonRuntime.AppHost.WindowState = FormWindowState.Maximized
@@ -117,12 +120,12 @@ Module TaskBarWindow
         ' If there is a selected tab, take it's screenshot
         ' invalidate the tab's thumbnail
         ' update the "preview" object with the new thumbnail
-        If CommonRuntime.AppHost.DockPanel.ActiveDocument IsNot Nothing Then
-            UpdatePreviewBitmap(Workbench.AppHost.DockPanel.ActiveDocument)
+        If CommonRuntime.AppHost.ActiveDocument IsNot Nothing Then
+            UpdatePreviewBitmap(CommonRuntime.AppHost.ActiveDocument)
         End If
     End Sub
 
-    Friend Sub preview_TabbedThumbnailMinimized(sender As Object, e As TabbedThumbnailEventArgs)
+    Public Sub preview_TabbedThumbnailMinimized(sender As Object, e As TabbedThumbnailEventArgs)
         ' User clicked on the minimize button on the thumbnail's context menu
         ' Minimize the app
         CommonRuntime.AppHost.WindowState = FormWindowState.Minimized
@@ -132,7 +135,7 @@ Module TaskBarWindow
     ''' Helper method to update the thumbnail preview for a given tab page.
     ''' </summary>
     ''' <param name="tabPage"></param>
-    Friend Sub UpdatePreviewBitmap(tabPage As DocumentWindow)
+    Public Sub UpdatePreviewBitmap(tabPage As Form)
         If tabPage IsNot Nothing Then
             Dim preview As TabbedThumbnail = TaskbarManager.Instance.TabbedThumbnail.GetThumbnailPreview(tabPage)
 

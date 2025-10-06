@@ -13,6 +13,8 @@ Public Module CommonRuntime
     ''' <returns></returns>
     Public Property MaskOpacity As Integer = 0.5
 
+    Public ReadOnly Property IsDevelopmentMode As Boolean = False
+
     ''' <summary>
     ''' set value to the <see cref="AppHost"/> in current common workbench runtime.
     ''' </summary>
@@ -43,4 +45,15 @@ Public Module CommonRuntime
                              MessageBoxButtons.OK,
                              MessageBoxIcon.Warning)
     End Sub
+
+    Public Function CenterToMain(target As Form) As Point
+        Dim sizeBack = AppHost.GetClientSize
+        Dim posBase = AppHost.GetDesktopLocation
+        Dim sizeFore = target.Size
+
+        Return New Point(
+            posBase.X + (sizeBack.Width - sizeFore.Width) / 2,
+            posBase.Y + (sizeBack.Height - sizeFore.Height) / 2
+        )
+    End Function
 End Module

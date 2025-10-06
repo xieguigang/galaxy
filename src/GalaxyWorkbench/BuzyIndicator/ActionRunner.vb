@@ -1,6 +1,5 @@
 ﻿Imports System.Threading
 Imports Microsoft.VisualBasic.ComponentModel
-Imports Mzkit_win32.BasicMDIForm.Container
 
 Friend Class ActionRunner : Implements ITaskDriver
 
@@ -35,7 +34,7 @@ Friend Class ActionRunner : Implements ITaskDriver
         Call progress.ShowProgressTitle(title)
         Call progress.ShowProgressDetails(info)
 
-        If AppEnvironment.IsDevelopmentMode AndAlso Not safeCatch Then
+        If CommonRuntime.IsDevelopmentMode AndAlso Not safeCatch Then
             Call RunImpl()
         Else
             Try

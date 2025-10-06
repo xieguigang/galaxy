@@ -120,11 +120,11 @@ Namespace TableSheet
             SetDataType(dataType)
 
             'set component translations
-            cancelSortMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVClearSort.ToString())
-            cancelFilterMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVClearFilter.ToString())
-            customFilterMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVAddCustomFilter.ToString())
-            button_filter.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVButtonFilter.ToString())
-            button_undofilter.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVButtonUndofilter.ToString())
+            cancelSortMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVClearSort.ToString())
+            cancelFilterMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVClearFilter.ToString())
+            customFilterMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVAddCustomFilter.ToString())
+            button_filter.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVButtonFilter.ToString())
+            button_undofilter.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVButtonUndofilter.ToString())
 
             'set default NOT IN logic
             IsFilterNOTINLogicEnabled = False
@@ -409,7 +409,7 @@ Namespace TableSheet
 
             If Not IsFilterChecklistEnabled Then
                 ChecklistClearNodes()
-                Dim disablednode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVFilterChecklistDisable.ToString()) & "            ", Nothing, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll)
+                Dim disablednode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVFilterChecklistDisable.ToString()) & "            ", Nothing, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll)
                 disablednode.NodeFont = New Font(checkList.Font, FontStyle.Bold)
                 ChecklistAddNode(disablednode)
                 ChecklistReloadNodes()
@@ -457,7 +457,7 @@ Namespace TableSheet
                 Next
 
                 ChecklistClearNodes()
-                Dim allnode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVNodeSelectAll.ToString()) & "            ", Nothing, CheckState.Indeterminate, TreeNodeItemSelector.CustomNodeType.SelectAll)
+                Dim allnode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVNodeSelectAll.ToString()) & "            ", Nothing, CheckState.Indeterminate, TreeNodeItemSelector.CustomNodeType.SelectAll)
                 allnode.NodeFont = New Font(checkList.Font, FontStyle.Bold)
                 ChecklistAddNode(allnode)
                 ChecklistReloadNodes()
@@ -827,7 +827,7 @@ Namespace TableSheet
 
             If vals IsNot Nothing Then
                 'add select all node
-                Dim allnode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVNodeSelectAll.ToString()) & "            ", Nothing, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll)
+                Dim allnode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVNodeSelectAll.ToString()) & "            ", Nothing, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll)
                 allnode.NodeFont = New Font(checkList.Font, FontStyle.Bold)
                 ChecklistAddNode(allnode)
 
@@ -836,7 +836,7 @@ Namespace TableSheet
 
                     'add select empty node
                     If vals.Count() <> nonulls.Count() Then
-                        Dim nullnode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVNodeSelectEmpty.ToString()) & "               ", Nothing, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty)
+                        Dim nullnode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVNodeSelectEmpty.ToString()) & "               ", Nothing, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty)
                         nullnode.NodeFont = New Font(checkList.Font, FontStyle.Bold)
                         ChecklistAddNode(nullnode)
                     End If
@@ -918,12 +918,12 @@ Namespace TableSheet
                         Dim values = nonulls.Where(Function(c) CBool(c.Value) = True)
 
                         If values.Count() <> nonulls.Count() Then
-                            Dim node As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVNodeSelectFalse.ToString()), False, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.Default)
+                            Dim node As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVNodeSelectFalse.ToString()), False, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.Default)
                             ChecklistAddNode(node)
                         End If
 
                         If values.Any() Then
-                            Dim node As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVNodeSelectTrue.ToString()), True, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.Default)
+                            Dim node As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVNodeSelectTrue.ToString()), True, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.Default)
                             ChecklistAddNode(node)
                         End If
 
@@ -1436,8 +1436,8 @@ Namespace TableSheet
         ''' </summary>
         ''' <param name="text"></param>
         Private Sub CheckTextFilterHandleTextChanged(text As String)
-            Dim allnode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVNodeSelectAll.ToString()) & "            ", Nothing, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll)
-            Dim nullnode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVNodeSelectEmpty.ToString()) & "               ", Nothing, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty)
+            Dim allnode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVNodeSelectAll.ToString()) & "            ", Nothing, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectAll)
+            Dim nullnode As TreeNodeItemSelector = TreeNodeItemSelector.CreateNode(AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVNodeSelectEmpty.ToString()) & "               ", Nothing, CheckState.Checked, TreeNodeItemSelector.CustomNodeType.SelectEmpty)
             Dim removednodesText = New String() {}
             If _checkTextFilterRemoveNodesOnSearch Then
                 removednodesText = _removedsessionNodes.Where(Function(r) Not String.IsNullOrEmpty(r.Text)).[Select](Function(r) r.Text.ToLower()).Distinct().ToArray()
@@ -1576,27 +1576,38 @@ Namespace TableSheet
 
             'set components values
             If dataType Is GetType(Date) OrElse dataType Is GetType(TimeSpan) Then
-                customFilterLastFiltersListMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVCustomFilter.ToString())
-                sortASCMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVSortDateTimeASC.ToString())
-                sortDESCMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVSortDateTimeDESC.ToString())
+                customFilterLastFiltersListMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVCustomFilter.ToString())
+                sortASCMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVSortDateTimeASC.ToString())
+                sortDESCMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVSortDateTimeDESC.ToString())
                 sortASCMenuItem.Image = My.Resources.Resources.MenuStrip_OrderASCnum
                 sortDESCMenuItem.Image = My.Resources.Resources.MenuStrip_OrderDESCnum
             ElseIf dataType Is GetType(Boolean) Then
-                customFilterLastFiltersListMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVCustomFilter.ToString())
-                sortASCMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVSortBoolASC.ToString())
-                sortDESCMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVSortBoolDESC.ToString())
+                customFilterLastFiltersListMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVCustomFilter.ToString())
+                sortASCMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVSortBoolASC.ToString())
+                sortDESCMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVSortBoolDESC.ToString())
                 sortASCMenuItem.Image = My.Resources.Resources.MenuStrip_OrderASCbool
                 sortDESCMenuItem.Image = My.Resources.Resources.MenuStrip_OrderDESCbool
-            ElseIf dataType Is GetType(Integer) OrElse dataType Is GetType(Long) OrElse dataType Is GetType(Short) OrElse dataType Is GetType(UInteger) OrElse dataType Is GetType(ULong) OrElse dataType Is GetType(UShort) OrElse dataType Is GetType(Byte) OrElse dataType Is GetType(SByte) OrElse dataType Is GetType(Decimal) OrElse dataType Is GetType(Single) OrElse dataType Is GetType(Double) Then
-                customFilterLastFiltersListMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVCustomFilter.ToString())
-                sortASCMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVSortNumASC.ToString())
-                sortDESCMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVSortNumDESC.ToString())
+            ElseIf dataType Is GetType(Integer) OrElse
+                dataType Is GetType(Long) OrElse
+                dataType Is GetType(Short) OrElse
+                dataType Is GetType(UInteger) OrElse
+                dataType Is GetType(ULong) OrElse
+                dataType Is GetType(UShort) OrElse
+                dataType Is GetType(Byte) OrElse
+                dataType Is GetType(SByte) OrElse
+                dataType Is GetType(Decimal) OrElse
+                dataType Is GetType(Single) OrElse
+                dataType Is GetType(Double) Then
+
+                customFilterLastFiltersListMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVCustomFilter.ToString())
+                sortASCMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVSortNumASC.ToString())
+                sortDESCMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVSortNumDESC.ToString())
                 sortASCMenuItem.Image = My.Resources.Resources.MenuStrip_OrderASCnum
                 sortDESCMenuItem.Image = My.Resources.Resources.MenuStrip_OrderDESCnum
             Else
-                customFilterLastFiltersListMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVCustomFilter.ToString())
-                sortASCMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVSortTextASC.ToString())
-                sortDESCMenuItem.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVSortTextDESC.ToString())
+                customFilterLastFiltersListMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVCustomFilter.ToString())
+                sortASCMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVSortTextASC.ToString())
+                sortDESCMenuItem.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVSortTextDESC.ToString())
                 sortASCMenuItem.Image = My.Resources.Resources.MenuStrip_OrderASCtxt
                 sortDESCMenuItem.Image = My.Resources.Resources.MenuStrip_OrderDESCtxt
             End If

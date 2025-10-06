@@ -117,7 +117,7 @@ Namespace TableSheet
         Private Sub RefreshComponentTranslations()
             comboBox_columns.BeginUpdate()
             comboBox_columns.Items.Clear()
-            comboBox_columns.Items.AddRange(New Object() {Translations(TranslationKey.ADGVSTBComboBoxColumnsAll.ToString())})
+            comboBox_columns.Items.AddRange(New Object() {AdvancedDataGridViewSearchToolBarTranslations.Translations(AdvancedDataGridViewSearchToolBarTranslationKey.ADGVSTBComboBoxColumnsAll.ToString())})
             If _columnsList IsNot Nothing Then
                 For Each c As DataGridViewColumn In _columnsList
                     If c.Visible Then comboBox_columns.Items.Add(c.HeaderText)
@@ -125,13 +125,13 @@ Namespace TableSheet
             End If
             comboBox_columns.SelectedIndex = 0
             comboBox_columns.EndUpdate()
-            button_close.ToolTipText = Translations(TranslationKey.ADGVSTBButtonCloseToolTip.ToString())
-            label_search.Text = Translations(TranslationKey.ADGVSTBLabelSearch.ToString())
-            textBox_search.ToolTipText = Translations(TranslationKey.ADGVSTBTextBoxSearchToolTip.ToString())
-            button_frombegin.ToolTipText = Translations(TranslationKey.ADGVSTBButtonFromBegin.ToString())
-            button_casesensitive.ToolTipText = Translations(TranslationKey.ADGVSTBButtonCaseSensitiveToolTip.ToString())
-            button_search.ToolTipText = Translations(TranslationKey.ADGVSTBButtonSearchToolTip.ToString())
-            button_wholeword.ToolTipText = Translations(TranslationKey.ADGVSTBButtonWholeWordToolTip.ToString())
+            button_close.ToolTipText = AdvancedDataGridViewSearchToolBarTranslations.Translations(AdvancedDataGridViewSearchToolBarTranslationKey.ADGVSTBButtonCloseToolTip.ToString())
+            label_search.Text = AdvancedDataGridViewSearchToolBarTranslations.Translations(AdvancedDataGridViewSearchToolBarTranslationKey.ADGVSTBLabelSearch.ToString())
+            textBox_search.ToolTipText = AdvancedDataGridViewSearchToolBarTranslations.Translations(AdvancedDataGridViewSearchToolBarTranslationKey.ADGVSTBTextBoxSearchToolTip.ToString())
+            button_frombegin.ToolTipText = AdvancedDataGridViewSearchToolBarTranslations.Translations(AdvancedDataGridViewSearchToolBarTranslationKey.ADGVSTBButtonFromBegin.ToString())
+            button_casesensitive.ToolTipText = AdvancedDataGridViewSearchToolBarTranslations.Translations(AdvancedDataGridViewSearchToolBarTranslationKey.ADGVSTBButtonCaseSensitiveToolTip.ToString())
+            button_search.ToolTipText = AdvancedDataGridViewSearchToolBarTranslations.Translations(AdvancedDataGridViewSearchToolBarTranslationKey.ADGVSTBButtonSearchToolTip.ToString())
+            button_wholeword.ToolTipText = AdvancedDataGridViewSearchToolBarTranslations.Translations(AdvancedDataGridViewSearchToolBarTranslationKey.ADGVSTBButtonWholeWordToolTip.ToString())
             textBox_search.Text = textBox_search.ToolTipText
         End Sub
 
@@ -240,7 +240,7 @@ Namespace TableSheet
             _columnsList = columns
             comboBox_columns.BeginUpdate()
             comboBox_columns.Items.Clear()
-            comboBox_columns.Items.AddRange(New Object() {Translations(TranslationKey.ADGVSTBComboBoxColumnsAll.ToString())})
+            comboBox_columns.Items.AddRange(New Object() {AdvancedDataGridViewSearchToolBarTranslations.Translations(AdvancedDataGridViewSearchToolBarTranslationKey.ADGVSTBComboBoxColumnsAll.ToString())})
             If _columnsList IsNot Nothing Then
                 For Each c As DataGridViewColumn In _columnsList
                     If c.Visible Then comboBox_columns.Items.Add(c.HeaderText)
@@ -365,8 +365,9 @@ Namespace TableSheet
         ''' <param name="e"></param>
         Protected Overrides Sub OnPaint(e As PaintEventArgs)
             'check if translations are changed and update components
-            If Not (_translationsRefreshComponentTranslationsCheck Is Translations OrElse (_translationsRefreshComponentTranslationsCheck.Count = Translations.Count AndAlso Not _translationsRefreshComponentTranslationsCheck.Except(Translations).Any())) Then
-                _translationsRefreshComponentTranslationsCheck = Translations
+            If Not (_translationsRefreshComponentTranslationsCheck Is AdvancedDataGridViewSearchToolBarTranslations.Translations OrElse
+                (_translationsRefreshComponentTranslationsCheck.Count = AdvancedDataGridViewSearchToolBarTranslations.Translations.Count AndAlso Not _translationsRefreshComponentTranslationsCheck.Except(AdvancedDataGridViewSearchToolBarTranslations.Translations).Any())) Then
+                _translationsRefreshComponentTranslationsCheck = AdvancedDataGridViewSearchToolBarTranslations.Translations
                 RefreshComponentTranslations()
             End If
 

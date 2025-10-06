@@ -99,5 +99,41 @@ Namespace My.Resources
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        '''&lt;html lang=&quot;en&quot;&gt;
+        '''
+        '''&lt;head&gt;
+        '''    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        '''    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;&gt;
+        '''    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+        '''    &lt;title&gt;Pure CSS Animated Progress Bar Example&lt;/title&gt;
+        '''
+        '''    &lt;meta name=&quot;author&quot; content=&quot;Codeconvey&quot; /&gt;
+        '''
+        '''    &lt;!-- Progress bar CSS --&gt;
+        '''    &lt;style type=&quot;text/css&quot;&gt;
+        '''        .bg {
+        '''            background-color: #fff;
+        '''            width: 400px;
+        '''            height: 30px;
+        '''            mar [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property progress_bar() As String
+            Get
+                Return ResourceManager.GetString("progress_bar", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property spinner() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("spinner", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
     End Module
 End Namespace

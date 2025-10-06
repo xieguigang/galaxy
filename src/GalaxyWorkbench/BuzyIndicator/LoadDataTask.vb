@@ -1,6 +1,5 @@
 ﻿Imports System.Threading
 Imports Microsoft.VisualBasic.ComponentModel
-Imports Mzkit_win32.BasicMDIForm.Container
 
 Public Class LoadDataTask(Of T) : Implements ITaskDriver
 
@@ -42,7 +41,7 @@ Public Class LoadDataTask(Of T) : Implements ITaskDriver
         Call progress.ShowProgressTitle(title)
         Call progress.ShowProgressDetails(info)
 
-        If AppEnvironment.IsDevelopmentMode Then
+        If CommonRuntime.IsDevelopmentMode Then
             Call loadData()
         Else
             Try

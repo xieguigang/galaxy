@@ -96,21 +96,21 @@ Namespace TableSheet
                     End If
 
                     comboBox_filterType.Items.AddRange(New String() {
-                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEquals.ToString()),
-                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEqual.ToString()),
-                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEarlierThan.ToString()),
-                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEarlierThanOrEqualTo.ToString()),
-                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLaterThan.ToString()),
-                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLaterThanOrEqualTo.ToString()),
-                            AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVBetween.ToString())
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEquals.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEqual.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEarlierThan.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEarlierThanOrEqualTo.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLaterThan.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLaterThanOrEqualTo.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVBetween.ToString())
                     })
 
                 Case FilterType.TimeSpan
                     _valControl1 = New TextBox()
                     _valControl2 = New TextBox()
                     comboBox_filterType.Items.AddRange(New String() {
-                            AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVContains.ToString()),
-                            AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotContain.ToString())
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVContains.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotContain.ToString())
                     })
 
                 Case FilterType.Integer, FilterType.Float
@@ -118,16 +118,33 @@ Namespace TableSheet
                     _valControl2 = New TextBox()
                     AddHandler _valControl1.TextChanged, AddressOf valControl_TextChanged
                     AddHandler _valControl2.TextChanged, AddressOf valControl_TextChanged
-                    comboBox_filterType.Items.AddRange(New String() {AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEquals.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotEqual.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVGreaterThan.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVGreaterThanOrEqualTo.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVLessThan.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVLessThanOrEqualTo.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVBetween.ToString())})
+                    comboBox_filterType.Items.AddRange(New String() {
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEquals.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEqual.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVGreaterThan.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVGreaterThanOrEqualTo.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLessThan.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLessThanOrEqualTo.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVBetween.ToString())
+                    })
                     _valControl1.Tag = True
                     _valControl2.Tag = True
                     button_ok.Enabled = False
                 Case Else
                     _valControl1 = New TextBox()
                     Dim includeNullCheckBox As CheckBox = New CheckBox()
-                    includeNullCheckBox.Text = AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVIncludeNullValues.ToString())
+                    includeNullCheckBox.Text = AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVIncludeNullValues.ToString())
                     _valControl2 = includeNullCheckBox
-                    comboBox_filterType.Items.AddRange(New String() {AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEquals.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotEqual.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVBeginsWith.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotBeginWith.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEndsWith.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotEndWith.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVContains.ToString()), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotContain.ToString())})
+                    comboBox_filterType.Items.AddRange(New String() {
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEquals.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEqual.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVBeginsWith.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotBeginWith.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEndsWith.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEndWith.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVContains.ToString()),
+                        AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotContain.ToString())
+                    })
             End Select
             comboBox_filterType.SelectedIndex = 0
 
@@ -219,22 +236,22 @@ Namespace TableSheet
                     Dim dt = CType(control1, DateTimePicker).Value
                     dt = New DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, 0)
 
-                    If Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEquals.ToString())) Then
+                    If Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEquals.ToString())) Then
                         filterString = "Convert([{0}], 'System.String') LIKE '%" & Convert.ToString(If(filterDateAndTimeEnabled, dt, dt.Date), CultureInfo.CurrentCulture) & "%'"
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEarlierThan.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEarlierThan.ToString())) Then
                         filterString += "< '" & Convert.ToString(If(filterDateAndTimeEnabled, dt, dt.Date), CultureInfo.CurrentCulture) & "'"
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEarlierThanOrEqualTo.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEarlierThanOrEqualTo.ToString())) Then
                         filterString += "<= '" & Convert.ToString(If(filterDateAndTimeEnabled, dt, dt.Date), CultureInfo.CurrentCulture) & "'"
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVLaterThan.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLaterThan.ToString())) Then
                         filterString += "> '" & Convert.ToString(If(filterDateAndTimeEnabled, dt, dt.Date), CultureInfo.CurrentCulture) & "'"
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVLaterThanOrEqualTo.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLaterThanOrEqualTo.ToString())) Then
                         filterString += ">= '" & Convert.ToString(If(filterDateAndTimeEnabled, dt, dt.Date), CultureInfo.CurrentCulture) & "'"
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVBetween.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVBetween.ToString())) Then
                         Dim dt1 = CType(control2, DateTimePicker).Value
                         dt1 = New DateTime(dt1.Year, dt1.Month, dt1.Day, dt1.Hour, dt1.Minute, 0)
                         filterString += ">= '" & Convert.ToString(If(filterDateAndTimeEnabled, dt, dt.Date), CultureInfo.CurrentCulture) & "'"
                         filterString += " AND " & column & "<= '" & Convert.ToString(If(filterDateAndTimeEnabled, dt1, dt1.Date), CultureInfo.CurrentCulture) & "'"
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotEqual.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEqual.ToString())) Then
                         filterString = "Convert([{0}], 'System.String') NOT LIKE '%" & Convert.ToString(If(filterDateAndTimeEnabled, dt, dt.Date), CultureInfo.CurrentCulture) & "%'"
                     End If
 
@@ -242,9 +259,9 @@ Namespace TableSheet
                     Try
                         Dim ts = TimeSpan.Parse(control1.Text)
 
-                        If Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVContains.ToString())) Then
+                        If Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVContains.ToString())) Then
                             filterString = "(Convert([{0}], 'System.String') LIKE '%P" & (If(ts.Days > 0, ts.Days.ToString() & "D", "")) & If(ts.TotalHours > 0, "T", "") & (If(ts.Hours > 0, ts.Hours.ToString() & "H", "")) & (If(ts.Minutes > 0, ts.Minutes.ToString() & "M", "")) & (If(ts.Seconds > 0, ts.Seconds.ToString() & "S", "")) & "%')"
-                        ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotContain.ToString())) Then
+                        ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotContain.ToString())) Then
                             filterString = "(Convert([{0}], 'System.String') NOT LIKE '%P" & (If(ts.Days > 0, ts.Days.ToString() & "D", "")) & If(ts.TotalHours > 0, "T", "") & (If(ts.Hours > 0, ts.Hours.ToString() & "H", "")) & (If(ts.Minutes > 0, ts.Minutes.ToString() & "M", "")) & (If(ts.Seconds > 0, ts.Seconds.ToString() & "S", "")) & "%')"
                         End If
                     Catch __unusedFormatException1__ As FormatException
@@ -257,39 +274,39 @@ Namespace TableSheet
 
                     If filterType = FilterType.Float Then num = num.Replace(",", ".")
 
-                    If Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEquals.ToString())) Then
+                    If Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEquals.ToString())) Then
                         filterString += "= " & num
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVBetween.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVBetween.ToString())) Then
                         filterString += ">= " & num & " AND " & column & "<= " & If(filterType = FilterType.Float, control2.Text.Replace(",", "."), control2.Text)
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotEqual.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEqual.ToString())) Then
                         filterString += "<> " & num
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVGreaterThan.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVGreaterThan.ToString())) Then
                         filterString += "> " & num
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVGreaterThanOrEqualTo.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVGreaterThanOrEqualTo.ToString())) Then
                         filterString += ">= " & num
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVLessThan.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLessThan.ToString())) Then
                         filterString += "< " & num
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVLessThanOrEqualTo.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVLessThanOrEqualTo.ToString())) Then
                         filterString += "<= " & num
                     End If
 
                 Case Else
                     Dim txt = FormatFilterString(control1.Text)
-                    If Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEquals.ToString())) Then
+                    If Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEquals.ToString())) Then
                         filterString += "LIKE '" & txt & "'"
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotEqual.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEqual.ToString())) Then
                         filterString += "NOT LIKE '" & txt & "'" & (If(TryCast(_valControl2, CheckBox).Checked, " OR " & column & "IS NULL", ""))
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVBeginsWith.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVBeginsWith.ToString())) Then
                         filterString += "LIKE '" & txt & "%'"
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVEndsWith.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVEndsWith.ToString())) Then
                         filterString += "LIKE '%" & txt & "'"
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotBeginWith.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotBeginWith.ToString())) Then
                         filterString += "NOT LIKE '" & txt & "%'" & (If(TryCast(_valControl2, CheckBox).Checked, " OR " & column & "IS NULL", ""))
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotEndWith.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEndWith.ToString())) Then
                         filterString += "NOT LIKE '%" & txt & "'" & (If(TryCast(_valControl2, CheckBox).Checked, " OR " & column & "IS NULL", ""))
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVContains.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVContains.ToString())) Then
                         filterString += "LIKE '%" & txt & "%'"
-                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotContain.ToString())) Then
+                    ElseIf Equals(filterTypeConditionText, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotContain.ToString())) Then
                         filterString += "NOT LIKE '%" & txt & "%'" & (If(TryCast(_valControl2, CheckBox).Checked, " OR " & column & "IS NULL", ""))
                     End If
             End Select
@@ -351,7 +368,7 @@ Namespace TableSheet
 
             If Not String.IsNullOrEmpty(filterString) Then
                 _filterString = filterString
-                _filterStringDescription = String.Format(AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVFilterStringDescription.ToString()), comboBox_filterType.Text, _valControl1.Text)
+                _filterStringDescription = String.Format(AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVFilterStringDescription.ToString()), comboBox_filterType.Text, _valControl1.Text)
                 If _valControl2.Visible Then _filterStringDescription += " " & label_and.Text & " """ & _valControl2.Text & """"
                 DialogResult = DialogResult.OK
             Else
@@ -374,11 +391,14 @@ Namespace TableSheet
         ''' <param name="sender"></param>
         ''' <param name="e"></param>
         Private Sub comboBox_filterType_SelectedIndexChanged(sender As Object, e As EventArgs)
-            If _filterType = FilterType.String AndAlso (Equals(comboBox_filterType.Text, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotEqual.ToString())) OrElse Equals(comboBox_filterType.Text, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotBeginWith.ToString())) OrElse Equals(comboBox_filterType.Text, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotEndWith.ToString())) OrElse Equals(comboBox_filterType.Text, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVDoesNotContain.ToString()))) Then
+            If _filterType = FilterType.String AndAlso (Equals(comboBox_filterType.Text, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEqual.ToString())) OrElse
+                Equals(comboBox_filterType.Text, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotBeginWith.ToString())) OrElse
+                Equals(comboBox_filterType.Text, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotEndWith.ToString())) OrElse
+                Equals(comboBox_filterType.Text, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVDoesNotContain.ToString()))) Then
                 _valControl2.Visible = True
                 TryCast(_valControl2, CheckBox).Checked = False
                 label_and.Visible = False
-            ElseIf Equals(comboBox_filterType.Text, AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVBetween.ToString())) Then
+            ElseIf Equals(comboBox_filterType.Text, AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVBetween.ToString())) Then
                 _valControl2.Visible = True
                 label_and.Visible = True
             Else
@@ -408,7 +428,7 @@ Namespace TableSheet
             TryCast(sender, Control).Tag = hasErrors OrElse TryCast(sender, TextBox).Text.Length = 0
 
             If hasErrors AndAlso TryCast(sender, TextBox).Text.Length > 0 Then
-                errorProvider.SetError(TryCast(sender, Control), AdvancedDataGridView.Translations(AdvancedDataGridView.TranslationKey.ADGVInvalidValue.ToString()))
+                errorProvider.SetError(TryCast(sender, Control), AdvancedDataGridViewTranslations.Translations(AdvancedDataGridViewTranslationKey.ADGVInvalidValue.ToString()))
             Else
                 errorProvider.SetError(TryCast(sender, Control), "")
             End If

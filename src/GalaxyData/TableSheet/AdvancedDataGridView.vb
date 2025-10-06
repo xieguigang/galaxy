@@ -138,7 +138,9 @@ Namespace TableSheet
             'set localization strings
             If translations IsNot Nothing Then
                 For Each translation In translations
-                    If AdvancedDataGridView.Translations.ContainsKey(translation.Key) Then AdvancedDataGridView.Translations(translation.Key) = translation.Value
+                    If AdvancedDataGridViewTranslations.Translations.ContainsKey(translation.Key) Then
+                        AdvancedDataGridViewTranslations.Translations(translation.Key) = translation.Value
+                    End If
                 Next
             End If
         End Sub
@@ -148,7 +150,7 @@ Namespace TableSheet
         ''' </summary>
         ''' <returns></returns>
         Public Shared Function GetTranslations() As IDictionary(Of String, String)
-            Return Translations
+            Return AdvancedDataGridViewTranslations.Translations
         End Function
 
         ''' <summary>
@@ -166,7 +168,7 @@ Namespace TableSheet
                     Dim translations As Dictionary(Of String, String) = jsontext.LoadJSON(Of Dictionary(Of String, String))
 
                     For Each translation In translations
-                        If Not ret.ContainsKey(translation.Key) AndAlso AdvancedDataGridView.Translations.ContainsKey(translation.Key) Then ret.Add(translation.Key, translation.Value)
+                        If Not ret.ContainsKey(translation.Key) AndAlso AdvancedDataGridViewTranslations.Translations.ContainsKey(translation.Key) Then ret.Add(translation.Key, translation.Value)
                     Next
 
                 Catch

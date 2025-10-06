@@ -58,9 +58,9 @@
 Imports System.ComponentModel
 Imports System.Runtime.CompilerServices
 Imports System.Threading
+Imports Galaxy.Workbench.CommonDialogs
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports Microsoft.Web.WebView2.Core
-Imports Mzkit_win32.BasicMDIForm.CommonDialogs
 
 Public Class TaskProgress : Implements ITaskProgress
 
@@ -148,7 +148,7 @@ document.querySelector('#info').innerHTML = JSON.parse('{message}');
         End If
 
         Call Application.DoEvents()
-        Call Workbench.StatusMessage(message)
+        Call CommonRuntime.LogText(message)
     End Sub
 
     Private Sub frmTaskProgress_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown, WebView21.KeyDown
@@ -169,12 +169,12 @@ document.querySelector('#info').innerHTML = JSON.parse('{message}');
     Private Sub WebView21_CoreWebView2InitializationCompleted(sender As Object, e As CoreWebView2InitializationCompletedEventArgs) Handles WebView21.CoreWebView2InitializationCompleted
         ' WebView21.CoreWebView2.OpenDevToolsWindow()
         Call WebView21.CoreWebView2.NavigateToString(My.Resources.progress_bar)
-        Call WebKit.DeveloperOptions(WebView21, enable:=False)
+        Call WebViewLoader.DeveloperOptions(WebView21, enable:=False)
     End Sub
 
     Private Sub frmTaskProgress_Load(sender As Object, e As EventArgs) Handles Me.Load
         DoubleBuffered = True
-        WebKit.Init(WebView21)
+        WebViewLoader.Init(WebView21)
         TaskbarStatus.SetLoopStatus()
     End Sub
 
@@ -243,7 +243,7 @@ document.querySelector('#info').innerHTML = JSON.parse('{message}');
                                           Optional host As Control = Nothing) As T
 
         Dim progress As New TaskProgress
-        Dim mask As MaskForm = MaskForm.CreateMask(Workbench.AppHost)
+        Dim mask As MaskForm = MaskForm.CreateMask(CommonRuntime.AppHost)
         Dim task As New LoadDataTask(Of T)(streamLoad, progress, host) With {.title = title, .info = info}
 
         If progress.ParentForm Is Nothing Then
@@ -303,7 +303,7 @@ document.querySelector('#info').innerHTML = JSON.parse('{message}');
                                          ' do nothing
                                      End Sub)
         }
-        Dim mask As MaskForm = MaskForm.CreateMask(Workbench.AppHost)
+        Dim mask As MaskForm = MaskForm.CreateMask(CommonRuntime.AppHost)
 
         If progress.ParentForm Is Nothing Then
             progress.StartPosition = FormStartPosition.Manual
