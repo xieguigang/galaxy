@@ -21,4 +21,26 @@ Public Module CommonRuntime
         _AppHost = apphost
     End Sub
 
+    Public Sub LogText(msg As String)
+        If AppHost Is Nothing Then
+            NoWorkbenchHostForm()
+        Else
+            Call AppHost.StatusMessage(msg, Icons8.Information)
+        End If
+    End Sub
+
+    Public Sub Warning(msg As String)
+        If AppHost Is Nothing Then
+            NoWorkbenchHostForm()
+        Else
+            Call AppHost.StatusMessage(msg, Icons8.Warning)
+        End If
+    End Sub
+
+    Private Sub NoWorkbenchHostForm()
+        Call MessageBox.Show("Unable to display the message content because no associated workstation host module could be found in the current runtime environment. Please link a host instance via a Hook function during the program's initialization phase.",
+                             "Missing Host Configuration",
+                             MessageBoxButtons.OK,
+                             MessageBoxIcon.Warning)
+    End Sub
 End Module
