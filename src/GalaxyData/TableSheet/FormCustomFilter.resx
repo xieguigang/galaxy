@@ -117,65 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AdvancedDataGridView_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AdvancedDataGridView_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ColumnHeader_Filtered" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColumnHeader_Filtered.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ColumnHeader_FilteredAndOrderedASC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColumnHeader_FilteredAndOrderedASC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ColumnHeader_FilteredAndOrderedDESC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColumnHeader_FilteredAndOrderedDESC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ColumnHeader_OrderedASC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColumnHeader_OrderedASC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ColumnHeader_OrderedDESC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColumnHeader_OrderedDESC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ColumnHeader_SavedFilters" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColumnHeader_SavedFilters.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ColumnHeader_UnFiltered" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColumnHeader_UnFiltered.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuStrip_OrderASCbool" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuStrip_OrderASCbool.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuStrip_OrderASCnum" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuStrip_OrderASCnum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuStrip_OrderASCtxt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuStrip_OrderASCtxt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuStrip_OrderDESCbool" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuStrip_OrderDESCbool.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuStrip_OrderDESCnum" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuStrip_OrderDESCnum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuStrip_OrderDESCtxt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuStrip_OrderDESCtxt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuStrip_ResizeGrip" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuStrip_ResizeGrip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SearchToolBar_ButtonCaseSensitive" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SearchToolBar_ButtonCaseSensitive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SearchToolBar_ButtonClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SearchToolBar_ButtonClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SearchToolBar_ButtonFromBegin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SearchToolBar_ButtonFromBegin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SearchToolBar_ButtonSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SearchToolBar_ButtonSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SearchToolBar_ButtonWholeWord" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SearchToolBar_ButtonWholeWord.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <metadata name="errorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

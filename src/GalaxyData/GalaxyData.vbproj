@@ -124,6 +124,21 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="TableHelper.vb" />
+    <Compile Include="TableSheet\AdvancedDataGridView.vb" />
+    <Compile Include="TableSheet\AdvancedDataGridViewSearchToolBar.designer.vb">
+      <DependentUpon>AdvancedDataGridViewSearchToolBar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TableSheet\AdvancedDataGridViewSearchToolBar.vb" />
+    <Compile Include="TableSheet\ColumnHeaderCell.vb" />
+    <Compile Include="TableSheet\FormCustomFilter.Designer.vb">
+      <DependentUpon>FormCustomFilter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TableSheet\FormCustomFilter.vb" />
+    <Compile Include="TableSheet\MenuStrip.designer.vb">
+      <DependentUpon>MenuStrip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TableSheet\MenuStrip.vb" />
+    <Compile Include="TableSheet\TreeNodeItemSelector.vb" />
     <Compile Include="TextValidates.vb" />
     <Compile Include="UIInteractive.vb" />
   </ItemGroup>
@@ -142,6 +157,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableSheet\AdvancedDataGridViewSearchToolBar.resx">
+      <DependentUpon>AdvancedDataGridViewSearchToolBar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableSheet\FormCustomFilter.resx">
+      <DependentUpon>FormCustomFilter.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -170,8 +191,66 @@
       <Name>JSON-netcore5</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="TableSheet\" />
+    <None Include="Resources\AdvancedDataGridView_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColumnHeader_Filtered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColumnHeader_FilteredAndOrderedASC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColumnHeader_FilteredAndOrderedDESC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColumnHeader_OrderedASC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColumnHeader_OrderedDESC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColumnHeader_SavedFilters.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColumnHeader_UnFiltered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuStrip_OrderASCbool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuStrip_OrderASCnum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuStrip_OrderASCtxt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuStrip_OrderDESCbool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuStrip_OrderDESCnum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuStrip_OrderDESCtxt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuStrip_ResizeGrip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchToolBar_ButtonCaseSensitive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchToolBar_ButtonClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchToolBar_ButtonFromBegin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchToolBar_ButtonSearch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SearchToolBar_ButtonWholeWord.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

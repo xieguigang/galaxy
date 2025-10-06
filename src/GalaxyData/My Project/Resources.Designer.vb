@@ -59,5 +59,205 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property AdvancedDataGridView_logo() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("AdvancedDataGridView_logo", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ColumnHeader_Filtered() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ColumnHeader_Filtered", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ColumnHeader_FilteredAndOrderedASC() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ColumnHeader_FilteredAndOrderedASC", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ColumnHeader_FilteredAndOrderedDESC() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ColumnHeader_FilteredAndOrderedDESC", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ColumnHeader_OrderedASC() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ColumnHeader_OrderedASC", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ColumnHeader_OrderedDESC() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ColumnHeader_OrderedDESC", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ColumnHeader_SavedFilters() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ColumnHeader_SavedFilters", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property ColumnHeader_UnFiltered() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ColumnHeader_UnFiltered", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MenuStrip_OrderASCbool() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MenuStrip_OrderASCbool", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MenuStrip_OrderASCnum() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MenuStrip_OrderASCnum", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MenuStrip_OrderASCtxt() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MenuStrip_OrderASCtxt", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MenuStrip_OrderDESCbool() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MenuStrip_OrderDESCbool", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MenuStrip_OrderDESCnum() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MenuStrip_OrderDESCnum", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MenuStrip_OrderDESCtxt() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MenuStrip_OrderDESCtxt", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MenuStrip_ResizeGrip() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MenuStrip_ResizeGrip", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property SearchToolBar_ButtonCaseSensitive() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SearchToolBar_ButtonCaseSensitive", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property SearchToolBar_ButtonClose() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SearchToolBar_ButtonClose", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property SearchToolBar_ButtonFromBegin() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SearchToolBar_ButtonFromBegin", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property SearchToolBar_ButtonSearch() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SearchToolBar_ButtonSearch", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property SearchToolBar_ButtonWholeWord() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SearchToolBar_ButtonWholeWord", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
     End Module
 End Namespace
