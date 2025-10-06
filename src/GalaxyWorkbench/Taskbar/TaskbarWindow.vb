@@ -59,7 +59,7 @@ Imports Microsoft.Windows.Taskbar
 Module TaskBarWindow
 
     Private Function GetTabPages() As DocumentWindow()
-        Return Workbench.AppHost.DockPanel.Documents _
+        Return CommonRuntime.AppHost.DockPanel.Documents _
             .Where(Function(page) TypeOf page Is DocumentWindow) _
             .Select(Function(doc) DirectCast(doc, DocumentWindow)) _
             .ToArray
@@ -77,8 +77,8 @@ Module TaskBarWindow
         Next
 
         ' Also activate our parent form (incase we are minimized, this will restore it)
-        If Workbench.AppHost.WindowState = FormWindowState.Minimized Then
-            Workbench.AppHost.WindowState = FormWindowState.Normal
+        If CommonRuntime.AppHost.WindowState = FormWindowState.Minimized Then
+            CommonRuntime.AppHost.WindowState = FormWindowState.Normal
         End If
     End Sub
 
@@ -109,15 +109,15 @@ Module TaskBarWindow
         End If
     End Sub
 
-    Friend Sub preview_TabbedThumbnailMaximized(sender As Object, e As TabbedThumbnailEventArgs)
+    Friend Sub Preview_TabbedThumbnailMaximized(sender As Object, e As TabbedThumbnailEventArgs)
         ' User clicked on the maximize button on the thumbnail's context menu
         ' Maximize the app
-        Workbench.AppHost.WindowState = FormWindowState.Maximized
+        CommonRuntime.AppHost.WindowState = FormWindowState.Maximized
 
         ' If there is a selected tab, take it's screenshot
         ' invalidate the tab's thumbnail
         ' update the "preview" object with the new thumbnail
-        If Workbench.AppHost.DockPanel.ActiveDocument IsNot Nothing Then
+        If CommonRuntime.AppHost.DockPanel.ActiveDocument IsNot Nothing Then
             UpdatePreviewBitmap(Workbench.AppHost.DockPanel.ActiveDocument)
         End If
     End Sub
@@ -125,7 +125,7 @@ Module TaskBarWindow
     Friend Sub preview_TabbedThumbnailMinimized(sender As Object, e As TabbedThumbnailEventArgs)
         ' User clicked on the minimize button on the thumbnail's context menu
         ' Minimize the app
-        Workbench.AppHost.WindowState = FormWindowState.Minimized
+        CommonRuntime.AppHost.WindowState = FormWindowState.Minimized
     End Sub
 
     ''' <summary>
