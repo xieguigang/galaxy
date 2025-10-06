@@ -124,4 +124,10 @@
   <data name="icons8_done_144" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-done-144.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8_information_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-information-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_warning_96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-warning-96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

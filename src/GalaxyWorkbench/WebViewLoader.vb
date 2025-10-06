@@ -9,7 +9,7 @@ Public Module WebViewLoader
         WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = enable
 
         If enable AndAlso CommonRuntime.AppHost IsNot Nothing Then
-            Call CommonRuntime.AppHost.StatusMessage($"[{TabText}] WebView2 developer tools has been enable!")
+            Call CommonRuntime.AppHost.StatusMessage($"[{TabText}] WebView2 developer tools has been enable!", Icons8.JobDone)
         End If
     End Sub
 

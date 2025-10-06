@@ -190,6 +190,12 @@
   <ItemGroup>
     <None Include="Resources\icons8-done-144.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-warning-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-information-96.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\..\..\BlueprintCAD\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\..\..\BlueprintCAD\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
