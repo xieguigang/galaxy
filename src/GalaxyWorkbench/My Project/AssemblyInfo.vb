@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("Galaxy Workbench Winform UI Framework")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyCompany("https://github.com/xieguigang/galaxy")>
 <Assembly: AssemblyProduct("Galaxy Workbench")>
 <Assembly: AssemblyCopyright("Copyright © xieguigang<i@xieguigang.me> 2025")>
 <Assembly: AssemblyTrademark("")>
