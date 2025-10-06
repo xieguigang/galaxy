@@ -76,18 +76,10 @@ Namespace TableSheet
             'set localization strings
             If translations IsNot Nothing Then
                 For Each translation In translations
-                    If AdvancedDataGridViewSearchToolBar.Translations.ContainsKey(translation.Key) Then AdvancedDataGridViewSearchToolBar.Translations(translation.Key) = translation.Value
+                    If AdvancedDataGridViewSearchToolBarTranslations.Translations.ContainsKey(translation.Key) Then AdvancedDataGridViewSearchToolBarTranslations.Translations(translation.Key) = translation.Value
                 Next
             End If
         End Sub
-
-        ''' <summary>
-        ''' Get translation dictionary
-        ''' </summary>
-        ''' <returns></returns>
-        Public Shared Function GetTranslations() As IDictionary(Of String, String)
-            Return Translations
-        End Function
 
         ''' <summary>
         ''' Load translations from file
@@ -104,7 +96,7 @@ Namespace TableSheet
                     Dim translations As Dictionary(Of String, String) = jsontext.LoadJSON(Of Dictionary(Of String, String))
 
                     For Each translation In translations
-                        If Not ret.ContainsKey(translation.Key) AndAlso AdvancedDataGridViewSearchToolBar.Translations.ContainsKey(translation.Key) Then ret.Add(translation.Key, translation.Value)
+                        If Not ret.ContainsKey(translation.Key) AndAlso AdvancedDataGridViewSearchToolBarTranslations.Translations.ContainsKey(translation.Key) Then ret.Add(translation.Key, translation.Value)
                     Next
 
                 Catch
@@ -112,7 +104,7 @@ Namespace TableSheet
             End If
 
             'add default translations if not in files
-            For Each translation In GetTranslations()
+            For Each translation In AdvancedDataGridViewSearchToolBarTranslations.Translations
                 If Not ret.ContainsKey(translation.Key) Then ret.Add(translation.Key, translation.Value)
             Next
 
@@ -166,8 +158,7 @@ Namespace TableSheet
                     End If
                 End If
 
-                Dim args As New AdvancedDataGridViewSearchToolBarSearchEventArgs(textBox_search.Text, c, button_casesensitive.Checked, button_wholeword.Checked, button_frombegin.Checked)
-                RaiseEvent Search(Me, args)
+                RaiseEvent Search(Me, New AdvancedDataGridViewSearchToolBarSearchEventArgs(textBox_search.Text, c, button_casesensitive.Checked, button_wholeword.Checked, button_frombegin.Checked))
             End If
         End Sub
 
