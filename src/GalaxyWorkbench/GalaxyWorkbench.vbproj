@@ -137,6 +137,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\IDataContainer.vb" />
+    <Compile Include="Taskbar\TaskbarStatus.vb" />
+    <Compile Include="Taskbar\TaskbarWindow.vb" />
     <Compile Include="WebViewLoader.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -204,6 +206,10 @@
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
       <Project>{6745a33a-56a6-4fcf-87c5-02631fd5d82b}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj">
+      <Project>{3d61f3a9-a8e0-4195-9133-6fd8e4b82d54}</Project>
+      <Name>Microsoft.Windows.FeatureAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
