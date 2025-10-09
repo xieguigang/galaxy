@@ -21,6 +21,10 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ResourcesEditor", "Resource
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VisualStudio.NET5", "..\..\GCModeller\src\runtime\sciBASIC#\vs_solutions\dev\VisualStudio\VisualStudio.NET5.vbproj", "{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GalaxyForm", "GalaxyForm\GalaxyForm.vbproj", "{A984CD4B-B40D-4389-961F-C9136D13C50F}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "dataframework-netcore5", "..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj", "{F5171153-AEE8-69B3-0273-1D621019EC9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +131,30 @@ Global
 		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Release|x64.ActiveCfg = Release|x64
 		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C}.Release|x64.Build.0 = Release|x64
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.Debug|x64.Build.0 = Debug|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.mzkit_win32|Any CPU.ActiveCfg = Release|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.mzkit_win32|Any CPU.Build.0 = Release|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.mzkit_win32|x64.ActiveCfg = Release|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.mzkit_win32|x64.Build.0 = Release|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.Release|x64.ActiveCfg = Release|Any CPU
+		{A984CD4B-B40D-4389-961F-C9136D13C50F}.Release|x64.Build.0 = Release|Any CPU
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.Debug|x64.ActiveCfg = Debug|x64
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.Debug|x64.Build.0 = Debug|x64
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.mzkit_win32|Any CPU.ActiveCfg = mzkit_win32|Any CPU
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.mzkit_win32|Any CPU.Build.0 = mzkit_win32|Any CPU
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.mzkit_win32|x64.ActiveCfg = mzkit_win32|x64
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.mzkit_win32|x64.Build.0 = mzkit_win32|x64
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.Release|x64.ActiveCfg = Release|x64
+		{F5171153-AEE8-69B3-0273-1D621019EC9B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -135,6 +163,7 @@ Global
 		{396CCD83-4B4E-84CB-6056-022317FD64BE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{BE4A2EA0-C600-FCE9-D542-79B9A0D68583} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{D98C3F2E-4A2C-F032-CECB-51BCFCC6A97C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{F5171153-AEE8-69B3-0273-1D621019EC9B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3958ABFB-93F0-45E4-8957-FED9918DC189}
