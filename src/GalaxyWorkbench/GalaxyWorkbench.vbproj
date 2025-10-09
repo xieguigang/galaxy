@@ -106,6 +106,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\ActionBase.vb" />
+    <Compile Include="Actions\ActionRegistry.vb" />
     <Compile Include="AppHost.vb" />
     <Compile Include="BuzyIndicator\ActionRunner.vb" />
     <Compile Include="BuzyIndicator\Extensions.vb" />
