@@ -248,6 +248,7 @@
     <Compile Include="Core\PropertySystem\PropVariant.vb" />
     <Compile Include="Core\PropertySystem\PropVariantNativeMethods.vb" />
     <Compile Include="InlineExtensions.vb" />
+    <Compile Include="ShadowForm.vb" />
     <Compile Include="Resources\LocalizedMessages.Designer.vb" />
     <Compile Include="Core\SafeHandles\SafeIconHandle.vb" />
     <Compile Include="Core\SafeHandles\SafeRegionHandle.vb" />
