@@ -1,8 +1,9 @@
 ﻿Imports System.Windows.Forms
 
-Partial Public Class CommandLinkButton
-    Inherits Button
+Partial Public Class CommandLinkButton : Inherits Button
+
     Private Const BS_COMMANDLINK As Integer = &HE
+
     Protected Overrides ReadOnly Property CreateParams As CreateParams
         Get
             Dim cParams = MyBase.CreateParams
@@ -10,6 +11,7 @@ Partial Public Class CommandLinkButton
             Return cParams
         End Get
     End Property
+
     Public Sub New()
         InitializeComponent()
         FlatStyle = FlatStyle.System

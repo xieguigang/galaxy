@@ -7,7 +7,6 @@ Public Class ColorComboBox : Inherits ComboBox
 
         DrawMode = DrawMode.OwnerDrawFixed
         DropDownStyle = ComboBoxStyle.DropDownList
-
     End Sub
 
     Public ReadOnly Iterator Property Colors As IEnumerable(Of Color)

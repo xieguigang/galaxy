@@ -1,88 +1,84 @@
 ﻿#Region "Microsoft.VisualBasic::524821fccfaf988f5410d3baa22f5edf, mzkit\src\mzkit\ControlLibrary\ToggleSlider.vb"
 
-    ' Author:
-    ' 
-    '       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
-    ' 
-    ' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
-    ' 
-    ' 
-    ' MIT License
-    ' 
-    ' 
-    ' Permission is hereby granted, free of charge, to any person obtaining a copy
-    ' of this software and associated documentation files (the "Software"), to deal
-    ' in the Software without restriction, including without limitation the rights
-    ' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    ' copies of the Software, and to permit persons to whom the Software is
-    ' furnished to do so, subject to the following conditions:
-    ' 
-    ' The above copyright notice and this permission notice shall be included in all
-    ' copies or substantial portions of the Software.
-    ' 
-    ' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    ' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    ' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    ' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    ' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    ' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    ' SOFTWARE.
+' Author:
+' 
+'       xieguigang (gg.xie@bionovogene.com, BioNovoGene Co., LTD.)
+' 
+' Copyright (c) 2018 gg.xie@bionovogene.com, BioNovoGene Co., LTD.
+' 
+' 
+' MIT License
+' 
+' 
+' Permission is hereby granted, free of charge, to any person obtaining a copy
+' of this software and associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+' copies of the Software, and to permit persons to whom the Software is
+' furnished to do so, subject to the following conditions:
+' 
+' The above copyright notice and this permission notice shall be included in all
+' copies or substantial portions of the Software.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+' IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+' OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+' SOFTWARE.
 
 
 
-    ' /********************************************************************************/
+' /********************************************************************************/
 
-    ' Summaries:
-
-
-    ' Code Statistics:
-
-    '   Total Lines: 162
-    '    Code Lines: 132
-    ' Comment Lines: 4
-    '   Blank Lines: 26
-    '     File Size: 5.31 KB
+' Summaries:
 
 
-    ' Class ToggleSlider
-    ' 
-    '     Properties: Checked, Text, ToggleCircleColor, ToggleColorBar
-    ' 
-    '     Constructor: (+1 Overloads) Sub New
-    ' 
-    '     Function: RoundedRect
-    ' 
-    '     Sub: Animate, OnPaint, Timer1_Tick, ToggleSlider_Click
-    ' 
-    ' /********************************************************************************/
+' Code Statistics:
+
+'   Total Lines: 162
+'    Code Lines: 132
+' Comment Lines: 4
+'   Blank Lines: 26
+'     File Size: 5.31 KB
+
+
+' Class ToggleSlider
+' 
+'     Properties: Checked, Text, ToggleCircleColor, ToggleColorBar
+' 
+'     Constructor: (+1 Overloads) Sub New
+' 
+'     Function: RoundedRect
+' 
+'     Sub: Animate, OnPaint, Timer1_Tick, ToggleSlider_Click
+' 
+' /********************************************************************************/
 
 #End Region
 
-Imports System
-Imports System.Drawing
-Imports System.Windows.Forms
 Imports System.Drawing.Drawing2D
 
-Partial Public Class ToggleSlider
-    Inherits UserControl
+Partial Public Class ToggleSlider : Inherits UserControl
 
     Public Sub New()
         InitializeComponent()
+
         DoubleBuffered = True
-        AddHandler Click, AddressOf ToggleSlider_Click
-        AddHandler timer1.Tick, AddressOf Timer1_Tick
         AutoSize = True
     End Sub
 
     Public Event CheckChanged As EventHandler
-    Private Checked_bool As Boolean
+
+    Dim m_checked As Boolean
 
     Public Property Checked As Boolean
         Get
-            Return Checked_bool
+            Return m_checked
         End Get
         Set(value As Boolean)
-            Checked_bool = value
+            m_checked = value
             Invalidate()
         End Set
     End Property
@@ -124,7 +120,7 @@ Partial Public Class ToggleSlider
     Private posx As Integer = 0
     Private posy As Integer = 0
     Private init_ As Boolean = True
-    Private circlecolor_ As Color = New Color()
+    Private circlecolor_ As Color
     Private animating_ As Boolean = False
 
     Protected Overrides Sub OnPaint(pevent As PaintEventArgs)
@@ -138,7 +134,7 @@ Partial Public Class ToggleSlider
         Dim brush_gradient As LinearGradientBrush = New LinearGradientBrush(New Point(circle_size.Width / 4, circle_size.Height / 5 / 2), New Point(circle_size.Width / 2, circle_size.Height / 2), ToggleColorDisabled_Color, ToggleColorDisabled_Color)
 
         If animating_ = False Then
-            If Not Checked_bool Then
+            If Not m_checked Then
                 posx = 0
             Else
                 posx = circle_size.Width / 2
@@ -150,11 +146,7 @@ Partial Public Class ToggleSlider
         SetStyle(ControlStyles.SupportsTransparentBackColor, True)
     End Sub
 
-    Private Sub ToggleSlider_Click(sender As Object, e As EventArgs)
-        Animate()
-    End Sub
-
-    Private timer1 As Timer = New Timer()
+    Dim WithEvents timer1 As New Timer()
 
     Private Sub Animate()
         timer1.Interval = 1
@@ -162,15 +154,15 @@ Partial Public Class ToggleSlider
         animating_ = True
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs)
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles timer1.Tick
         Dim circle_size As Size = New Size(Convert.ToInt32(MyBase.Font.SizeInPoints * 5), Convert.ToInt32(MyBase.Font.SizeInPoints * 5))
 
-        If Checked_bool = True Then
+        If m_checked = True Then
             If Not posx <= 0 Then
                 posx -= 3
                 Invalidate()
             Else
-                Checked_bool = False
+                m_checked = False
                 animating_ = False
                 RaiseEvent CheckChanged(Me, e)
                 timer1.Stop()
@@ -182,7 +174,7 @@ Partial Public Class ToggleSlider
                 posx += 3
                 Invalidate()
             Else
-                Checked_bool = True
+                m_checked = True
                 animating_ = False
                 RaiseEvent CheckChanged(Me, e)
                 timer1.Stop()
@@ -219,4 +211,8 @@ Partial Public Class ToggleSlider
         path.CloseFigure()
         Return path
     End Function
+
+    Private Sub ToggleSlider_Click(sender As Object, e As EventArgs) Handles Me.Click
+        Call Animate()
+    End Sub
 End Class

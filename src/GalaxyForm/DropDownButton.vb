@@ -1,11 +1,8 @@
-﻿Imports System
-Imports System.ComponentModel
-Imports System.Drawing
-Imports System.Windows.Forms
+﻿Imports System.ComponentModel
 Imports System.Windows.Forms.VisualStyles
 
-Public Class DropDownButton
-    Inherits Control
+Public Class DropDownButton : Inherits Control
+
     Public Enum Renderers
         [Default]
         Native
@@ -27,9 +24,9 @@ Public Class DropDownButton
 
     Public Sub New()
         SetStyle(ControlStyles.ResizeRedraw, True)
+
         DoubleBuffered = True
         Size = New Size(142, 23)
-        AddHandler TextChanged, AddressOf DropDownButton_TextChanged
     End Sub
 
 #Region "Events"
@@ -53,7 +50,7 @@ Public Class DropDownButton
         End If
     End Sub
 
-    Private Sub DropDownButton_TextChanged(sender As Object, e As EventArgs)
+    Private Sub DropDownButton_TextChanged(sender As Object, e As EventArgs) Handles Me.TextChanged
         Invalidate()
     End Sub
 
