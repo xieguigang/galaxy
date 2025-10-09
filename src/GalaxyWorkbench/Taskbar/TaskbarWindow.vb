@@ -68,7 +68,7 @@ Public Module TaskBarWindow
             .ToArray
     End Function
 
-    Public Sub preview_TabbedThumbnailActivated(sender As Object, e As TabbedThumbnailEventArgs)
+    Public Sub Preview_TabbedThumbnailActivated(sender As Object, e As TabbedThumbnailEventArgs)
         ' User selected a tab via the thumbnail preview
         ' Select the corresponding control in our app
         For Each page As Form In GetTabPages()
@@ -80,12 +80,12 @@ Public Module TaskBarWindow
         Next
 
         ' Also activate our parent form (incase we are minimized, this will restore it)
-        If CommonRuntime.AppHost.WindowState = FormWindowState.Minimized Then
-            CommonRuntime.AppHost.WindowState = FormWindowState.Normal
+        If CommonRuntime.AppHost.GetWindowState = FormWindowState.Minimized Then
+            CommonRuntime.AppHost.SetWindowState(FormWindowState.Normal)
         End If
     End Sub
 
-    Public Sub preview_TabbedThumbnailClosed(sender As Object, e As TabbedThumbnailClosedEventArgs)
+    Public Sub Preview_TabbedThumbnailClosed(sender As Object, e As TabbedThumbnailClosedEventArgs)
         Dim pageClosed As Form = Nothing
 
         ' Find the tabpage that was "closed" by the user (via the taskbar tabbed thumbnail)
@@ -105,30 +105,30 @@ Public Module TaskBarWindow
         Dim tabbedThumbnail As TabbedThumbnail = TryCast(sender, TabbedThumbnail)
         If tabbedThumbnail IsNot Nothing Then
             ' Remove the event handlers from the tab preview
-            RemoveHandler tabbedThumbnail.TabbedThumbnailActivated, AddressOf preview_TabbedThumbnailActivated
-            RemoveHandler tabbedThumbnail.TabbedThumbnailClosed, AddressOf preview_TabbedThumbnailClosed
+            RemoveHandler tabbedThumbnail.TabbedThumbnailActivated, AddressOf Preview_TabbedThumbnailActivated
+            RemoveHandler tabbedThumbnail.TabbedThumbnailClosed, AddressOf Preview_TabbedThumbnailClosed
             RemoveHandler tabbedThumbnail.TabbedThumbnailMaximized, AddressOf Preview_TabbedThumbnailMaximized
-            RemoveHandler tabbedThumbnail.TabbedThumbnailMinimized, AddressOf preview_TabbedThumbnailMinimized
+            RemoveHandler tabbedThumbnail.TabbedThumbnailMinimized, AddressOf Preview_TabbedThumbnailMinimized
         End If
     End Sub
 
     Public Sub Preview_TabbedThumbnailMaximized(sender As Object, e As TabbedThumbnailEventArgs)
         ' User clicked on the maximize button on the thumbnail's context menu
         ' Maximize the app
-        CommonRuntime.AppHost.WindowState = FormWindowState.Maximized
+        Call CommonRuntime.AppHost.SetWindowState(FormWindowState.Maximized)
 
         ' If there is a selected tab, take it's screenshot
         ' invalidate the tab's thumbnail
         ' update the "preview" object with the new thumbnail
         If CommonRuntime.AppHost.ActiveDocument IsNot Nothing Then
-            UpdatePreviewBitmap(CommonRuntime.AppHost.ActiveDocument)
+            Call UpdatePreviewBitmap(CommonRuntime.AppHost.ActiveDocument)
         End If
     End Sub
 
-    Public Sub preview_TabbedThumbnailMinimized(sender As Object, e As TabbedThumbnailEventArgs)
+    Public Sub Preview_TabbedThumbnailMinimized(sender As Object, e As TabbedThumbnailEventArgs)
         ' User clicked on the minimize button on the thumbnail's context menu
         ' Minimize the app
-        CommonRuntime.AppHost.WindowState = FormWindowState.Minimized
+        Call CommonRuntime.AppHost.SetWindowState(FormWindowState.Minimized)
     End Sub
 
     ''' <summary>
