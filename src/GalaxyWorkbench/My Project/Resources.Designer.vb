@@ -101,6 +101,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Missing the action command &apos;{0}&apos;!.
+        '''</summary>
+        Friend ReadOnly Property missing_action() As String
+            Get
+                Return ResourceManager.GetString("missing_action", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 没有找到目标操作命令 &apos;{0}&apos;！.
+        '''</summary>
+        Friend ReadOnly Property missing_action_zh() As String
+            Get
+                Return ResourceManager.GetString("missing_action_zh", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to &lt;!DOCTYPE html&gt;
         '''&lt;html lang=&quot;en&quot;&gt;
         '''
