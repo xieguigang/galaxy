@@ -45,6 +45,27 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>_MYFORMS=True</DefineConstants>
+    <DocumentationFile>Galaxy.CommonControls.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>_MYFORMS=True</DefineConstants>
+    <DocumentationFile>Galaxy.CommonControls.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -70,6 +91,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorComboBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommandLinkButton.Designer.vb">
+      <DependentUpon>CommandLinkButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CommandLinkButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DropDownButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
@@ -86,7 +119,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="NativeToolStripRenderer.vb" />
     <Compile Include="RoundedShadowPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToggleSlider.Designer.vb">
+      <DependentUpon>ToggleSlider.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ToggleSlider.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Win7StyleTreeView.Designer.vb">
+      <DependentUpon>Win7StyleTreeView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Win7StyleTreeView.vb">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -96,6 +142,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToggleSlider.resx">
+      <DependentUpon>ToggleSlider.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +160,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
+      <Project>{396ccd83-4b4e-84cb-6056-022317fd64be}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
