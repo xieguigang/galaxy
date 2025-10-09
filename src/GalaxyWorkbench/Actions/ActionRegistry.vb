@@ -89,7 +89,7 @@ Namespace Actions
             If actions.ContainsKey(name) Then
                 Call actions(name).RunAction(fieldName, data, table)
             Else
-                Call Workbench.Warning($"missing action '{name}'!")
+                Call Workbench.Warning(CommonStrings.GetString("missing_action", name))
             End If
         End Sub
     End Class

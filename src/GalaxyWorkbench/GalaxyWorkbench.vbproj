@@ -141,6 +141,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dialogs\IDataContainer.vb" />
+    <Compile Include="CommonStrings.vb" />
     <Compile Include="Taskbar\TaskbarStatus.vb" />
     <Compile Include="Taskbar\TaskbarWindow.vb" />
     <Compile Include="WebViewLoader.vb" />
