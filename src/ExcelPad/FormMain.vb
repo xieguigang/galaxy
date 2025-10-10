@@ -2,6 +2,7 @@
 Imports System.Windows.Forms
 Imports ExcelPad.RibbonLib.Controls
 Imports Microsoft.VisualBasic.Data.Framework.IO
+Imports Microsoft.VisualBasic.MIME.Office.Excel
 Imports Microsoft.VisualStudio.WinForms.Docking
 Imports RibbonLib
 Imports ThemeVS2015
@@ -60,17 +61,26 @@ Public Class FormMain
     End Sub
 
     Private Sub OpenFile()
-        Using file As New OpenFileDialog With {.Filter = "Excel Data Table(*.csv;*.xlsx)"}
+        Using file As New OpenFileDialog With {.Filter = "Excel Data Table(*.csv;*.xlsx)|*.csv;*.xlsx"}
             If file.ShowDialog = DialogResult.OK Then
                 If file.FileName.ExtensionSuffix("csv") Then
                     Dim data As DataFrameResolver = DataFrameResolver.Load(file.FileName)
-                    Dim page As New FormDataSheet With {.TabText = file.FileName}
+                    Dim page As New FormDataSheet With {.TabText = file.FileName.FileName}
 
                     page.Show(m_dockPanel)
                     page.DockState = DockState.Document
                     page.LoadData(data)
                 Else
+                    Dim pkg = XLSX.File.Open(file.FileName)
 
+                    For Each name As String In pkg.SheetNames
+                        Dim data As DataFrameResolver = DataFrameResolver.CreateObject(pkg.GetTable(name))
+                        Dim page As New FormDataSheet With {.TabText = file.FileName.FileName & $" [{name}]"}
+
+                        page.Show(m_dockPanel)
+                        page.DockState = DockState.Document
+                        page.LoadData(data)
+                    Next
                 End If
             End If
         End Using
