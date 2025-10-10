@@ -1,23 +1,25 @@
-﻿Imports System
-Imports System.Windows.Forms
-Imports System.Drawing
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
 Imports System.Diagnostics.CodeAnalysis
+Imports System.Drawing
+Imports System.Windows.Forms
+Imports Microsoft.VisualStudio.WinForms.Win32
 
 Namespace Docking
+
     Public Delegate Function GetPersistStringCallback() As String
 
     Public Class DockContentHandler
         Implements IDisposable, IDockDragSource
 
+        Private _PreviousActive As IDockContent,
+            _NextActive As IDockContent
 
-        Private _PreviousActive As WeifenLuo.WinFormsUI.Docking.IDockContent, _NextActive As WeifenLuo.WinFormsUI.Docking.IDockContent
         Public Sub New(form As Form)
             Me.New(form, Nothing)
         End Sub
 
         Public Sub New(form As Form, getPersistStringCallback As GetPersistStringCallback)
-            If Not (TypeOf form Is IDockContent) Then Throw New ArgumentException(Strings.DockContent_Constructor_InvalidForm, NameOf(form))
+            If Not (TypeOf form Is IDockContent) Then Throw New ArgumentException(ResourceHelper.DockContent_Constructor_InvalidForm, NameOf(form))
 
             m_form = form
             Me.GetPersistStringCallback = getPersistStringCallback
@@ -88,7 +90,7 @@ Namespace Docking
             End Get
 
             Set(value As Double)
-                If value <= 0 Then Throw (New ArgumentOutOfRangeException(Strings.DockContentHandler_AutoHidePortion_OutOfRange))
+                If value <= 0 Then Throw (New ArgumentOutOfRangeException(ResourceHelper.DockContentHandler_AutoHidePortion_OutOfRange))
 
                 If SuspendAutoHidePortionUpdates Then Return
 
@@ -176,7 +178,7 @@ Namespace Docking
             Set(value As DockAreas)
                 If m_allowedAreas = value Then Return
 
-                If Not DockHelper.IsDockStateValid(DockState, value) Then Throw (New InvalidOperationException(Strings.DockContentHandler_DockAreas_InvalidValue))
+                If Not DockHelper.IsDockStateValid(DockState, value) Then Throw (New InvalidOperationException(ResourceHelper.DockContentHandler_DockAreas_InvalidValue))
 
                 m_allowedAreas = value
 
@@ -321,7 +323,7 @@ Namespace Docking
 
                 Dim visibleState = CheckDockState(value)
 
-                If visibleState = DockState.Unknown Then Throw New InvalidOperationException(Strings.DockContentHandler_IsFloat_InvalidValue)
+                If visibleState = DockState.Unknown Then Throw New InvalidOperationException(ResourceHelper.DockContentHandler_IsFloat_InvalidValue)
 
                 SetDockState(IsHidden, visibleState, Pane)
                 If EnableFloatSplitterFix = True Then
@@ -360,7 +362,7 @@ Namespace Docking
                 If m_panelPane Is value Then Return
 
                 If value IsNot Nothing Then
-                    If value.IsFloat OrElse value.DockPanel IsNot DockPanel Then Throw New InvalidOperationException(Strings.DockContentHandler_DockPane_InvalidValue)
+                    If value.IsFloat OrElse value.DockPanel IsNot DockPanel Then Throw New InvalidOperationException(ResourceHelper.DockContentHandler_DockPane_InvalidValue)
                 End If
 
                 Dim oldPane = Pane
@@ -392,7 +394,7 @@ Namespace Docking
                 If m_floatPane Is value Then Return
 
                 If value IsNot Nothing Then
-                    If Not value.IsFloat OrElse value.DockPanel IsNot DockPanel Then Throw New InvalidOperationException(Strings.DockContentHandler_FloatPane_InvalidValue)
+                    If Not value.IsFloat OrElse value.DockPanel IsNot DockPanel Then Throw New InvalidOperationException(ResourceHelper.DockContentHandler_FloatPane_InvalidValue)
                 End If
 
                 Dim oldPane = Pane
@@ -432,9 +434,9 @@ Namespace Docking
         Friend Sub SetDockState(isHidden As Boolean, visibleState As DockState, oldPane As DockPane)
             If IsSuspendSetDockState Then Return
 
-            If Me.DockPanel Is Nothing AndAlso visibleState <> DockState.Unknown Then Throw New InvalidOperationException(Strings.DockContentHandler_SetDockState_NullPanel)
+            If Me.DockPanel Is Nothing AndAlso visibleState <> DockState.Unknown Then Throw New InvalidOperationException(ResourceHelper.DockContentHandler_SetDockState_NullPanel)
 
-            If visibleState = DockState.Hidden OrElse visibleState <> DockState.Unknown AndAlso Not IsDockStateValid(visibleState) Then Throw New InvalidOperationException(Strings.DockContentHandler_SetDockState_InvalidState)
+            If visibleState = DockState.Hidden OrElse visibleState <> DockState.Unknown AndAlso Not IsDockStateValid(visibleState) Then Throw New InvalidOperationException(ResourceHelper.DockContentHandler_SetDockState_InvalidState)
 
             Dim dockPanel = Me.DockPanel
             If dockPanel IsNot Nothing Then dockPanel.SuspendLayout(True)
@@ -556,7 +558,7 @@ Namespace Docking
             End Get
 
             Set(value As DockState)
-                If Not DockHelper.IsDockStateValid(value, DockAreas) Then Throw (New InvalidOperationException(Strings.DockContentHandler_ShowHint_InvalidValue))
+                If Not DockHelper.IsDockStateValid(value, DockAreas) Then Throw (New InvalidOperationException(ResourceHelper.DockContentHandler_ShowHint_InvalidValue))
 
                 If m_showHint = value Then Return
 
@@ -584,7 +586,7 @@ Namespace Docking
                 Return DockHelper.IsDockStateValid(dockState, DockAreas)
             End If
         End Function
-#If NET35 Or NET40
+#If NET35 Or NET40 Then
         public ContextMenu TabPageContextMenu { get; set; }
 #End If
         Public Property ToolTipText As String
@@ -727,7 +729,7 @@ Namespace Docking
         End Sub
 
         Public Sub Show(dockPanel As DockPanel)
-            If dockPanel Is Nothing Then Throw (New ArgumentNullException(Strings.DockContentHandler_Show_NullDockPanel))
+            If dockPanel Is Nothing Then Throw (New ArgumentNullException(ResourceHelper.DockContentHandler_Show_NullDockPanel))
 
             If DockState = DockState.Unknown Then
                 Show(dockPanel, DefaultShowState)
@@ -739,11 +741,11 @@ Namespace Docking
         End Sub
 
         Public Sub Show(dockPanel As DockPanel, dockState As DockState)
-            If dockPanel Is Nothing Then Throw (New ArgumentNullException(Strings.DockContentHandler_Show_NullDockPanel))
+            If dockPanel Is Nothing Then Throw (New ArgumentNullException(ResourceHelper.DockContentHandler_Show_NullDockPanel))
 
-            If dockState = DockState.Unknown OrElse dockState = DockState.Hidden Then Throw (New ArgumentException(Strings.DockContentHandler_Show_InvalidDockState))
+            If dockState = DockState.Unknown OrElse dockState = DockState.Hidden Then Throw (New ArgumentException(ResourceHelper.DockContentHandler_Show_InvalidDockState))
 
-            If dockPanel.Theme.GetType() Is GetType(DefaultTheme) Then Throw New ArgumentException(Strings.Theme_NoTheme)
+            If dockPanel.Theme.GetType() Is GetType(DefaultTheme) Then Throw New ArgumentException(ResourceHelper.Theme_NoTheme)
 
             dockPanel.SuspendLayout(True)
 
@@ -775,7 +777,7 @@ Namespace Docking
 
         <SuppressMessage("Microsoft.Naming", "CA1720:AvoidTypeNamesInParameters")>
         Public Sub Show(dockPanel As DockPanel, floatWindowBounds As Rectangle)
-            If dockPanel Is Nothing Then Throw (New ArgumentNullException(Strings.DockContentHandler_Show_NullDockPanel))
+            If dockPanel Is Nothing Then Throw (New ArgumentNullException(ResourceHelper.DockContentHandler_Show_NullDockPanel))
 
             dockPanel.SuspendLayout(True)
 
@@ -795,9 +797,9 @@ Namespace Docking
         End Sub
 
         Public Sub Show(pane As DockPane, beforeContent As IDockContent)
-            If pane Is Nothing Then Throw (New ArgumentNullException(Strings.DockContentHandler_Show_NullPane))
+            If pane Is Nothing Then Throw (New ArgumentNullException(ResourceHelper.DockContentHandler_Show_NullPane))
 
-            If beforeContent IsNot Nothing AndAlso pane.Contents.IndexOf(beforeContent) = -1 Then Throw (New ArgumentException(Strings.DockContentHandler_Show_InvalidBeforeContent))
+            If beforeContent IsNot Nothing AndAlso pane.Contents.IndexOf(beforeContent) = -1 Then Throw (New ArgumentException(ResourceHelper.DockContentHandler_Show_InvalidBeforeContent))
 
             pane.DockPanel.SuspendLayout(True)
 
@@ -810,9 +812,9 @@ Namespace Docking
         End Sub
 
         Public Sub Show(previousPane As DockPane, alignment As DockAlignment, proportion As Double)
-            If previousPane Is Nothing Then Throw (New ArgumentException(Strings.DockContentHandler_Show_InvalidPrevPane))
+            If previousPane Is Nothing Then Throw (New ArgumentException(ResourceHelper.DockContentHandler_Show_InvalidPrevPane))
 
-            If IsDockStateAutoHide(previousPane.DockState) Then Throw (New ArgumentException(Strings.DockContentHandler_Show_InvalidPrevPane))
+            If IsDockStateAutoHide(previousPane.DockState) Then Throw (New ArgumentException(ResourceHelper.DockContentHandler_Show_InvalidPrevPane))
 
             previousPane.DockPanel.SuspendLayout(True)
 
@@ -1015,7 +1017,7 @@ Namespace Docking
         End Sub
 
         Public Sub DockTo(panel As DockPanel, dockStyle As DockStyle) Implements IDockDragSource.DockTo
-            If panel IsNot DockPanel Then Throw New ArgumentException(Strings.IDockDragSource_DockTo_InvalidPanel, NameOf(panel))
+            If panel IsNot DockPanel Then Throw New ArgumentException(ResourceHelper.IDockDragSource_DockTo_InvalidPanel, NameOf(panel))
 
             Dim pane As DockPane
 

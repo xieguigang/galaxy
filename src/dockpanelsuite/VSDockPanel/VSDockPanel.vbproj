@@ -97,6 +97,11 @@ Visual Studio 2015 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS
     <Compile Include="DockPanelSkin.vb"></Compile>
     <Compile Include="IPaintingService.vb" />
     <Compile Include="LayoutUtils.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="PatchController.vb" />
     <Compile Include="ThemeBase.vb">
       <SubType>Component</SubType>
@@ -168,19 +173,24 @@ Visual Studio 2015 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS
       <DependentUpon>VisualStudioToolStripExtender.vb</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.vb" />
-    <Compile Include="Strings.Designer.vb">
+    <Compile Include="ResourceHelper.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.resx</DependentUpon>
+      <DependentUpon>ResourceHelper.resx</DependentUpon>
     </Compile>
     <Compile Include="Win32\Enums.vb" />
     <Compile Include="Win32\NativeMethods.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Strings.resx">
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourceHelper.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.vb</LastGenOutput>
+      <LastGenOutput>ResourceHelper.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

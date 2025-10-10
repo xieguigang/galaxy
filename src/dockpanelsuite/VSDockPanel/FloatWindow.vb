@@ -20,7 +20,7 @@ Namespace Docking
         End Sub
 
         Private Sub InternalConstruct(dockPanel As DockPanel, pane As DockPane, boundsSpecified As Boolean, bounds As Rectangle)
-            If dockPanel Is Nothing Then Throw (New ArgumentNullException(Strings.FloatWindow_Constructor_NullDockPanel))
+            If dockPanel Is Nothing Then Throw (New ArgumentNullException(ResourceHelper.FloatWindow_Constructor_NullDockPanel))
 
             m_nestedPanes = New NestedPaneCollection(Me)
 
@@ -365,7 +365,7 @@ Namespace Docking
         End Sub
 
         Public Sub DockTo(panel As DockPanel, dockStyle As DockStyle) Implements IDockDragSource.DockTo
-            If panel IsNot DockPanel Then Throw New ArgumentException(Strings.IDockDragSource_DockTo_InvalidPanel, "panel")
+            If panel IsNot DockPanel Then Throw New ArgumentException(ResourceHelper.IDockDragSource_DockTo_InvalidPanel, "panel")
 
             Dim nestedPanesTo As NestedPaneCollection = Nothing
 

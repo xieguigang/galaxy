@@ -295,8 +295,8 @@ Namespace Docking
 })
 
                 ' Always begin file with identification and warning
-                xmlOut.WriteComment(Strings.DockPanel_Persistor_XmlFileComment1)
-                xmlOut.WriteComment(Strings.DockPanel_Persistor_XmlFileComment2)
+                xmlOut.WriteComment(ResourceHelper.DockPanel_Persistor_XmlFileComment1)
+                xmlOut.WriteComment(ResourceHelper.DockPanel_Persistor_XmlFileComment2)
 
                 ' Associate a version number with the root element so that future version of the code
                 ' will be able to be backwards compatible or at least recognise out of date versions
@@ -425,7 +425,7 @@ Namespace Docking
                 MoveToNextElement(xmlIn)
                 For i = 0 To countOfContents - 1
                     Dim id = Convert.ToInt32(xmlIn.GetAttribute("ID"), CultureInfo.InvariantCulture)
-                    If Not Equals(xmlIn.Name, "Content") OrElse id <> i Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "Content") OrElse id <> i Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
 
                     contents(i).PersistString = xmlIn.GetAttribute("PersistString")
                     contents(i).AutoHidePortion = Convert.ToDouble(xmlIn.GetAttribute("AutoHidePortion"), CultureInfo.InvariantCulture)
@@ -444,20 +444,20 @@ Namespace Docking
                 MoveToNextElement(xmlIn)
                 For i = 0 To countOfPanes - 1
                     Dim id = Convert.ToInt32(xmlIn.GetAttribute("ID"), CultureInfo.InvariantCulture)
-                    If Not Equals(xmlIn.Name, "Pane") OrElse id <> i Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "Pane") OrElse id <> i Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
 
                     panes(i).DockState = CType(dockStateConverter.ConvertFrom(xmlIn.GetAttribute("DockState")), DockState)
                     panes(i).IndexActiveContent = Convert.ToInt32(xmlIn.GetAttribute("ActiveContent"), CultureInfo.InvariantCulture)
                     panes(i).ZOrderIndex = -1
 
                     MoveToNextElement(xmlIn)
-                    If Not Equals(xmlIn.Name, "Contents") Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "Contents") Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
                     Dim countOfPaneContents = Convert.ToInt32(xmlIn.GetAttribute("Count"), CultureInfo.InvariantCulture)
                     panes(i).IndexContents = New Integer(countOfPaneContents - 1) {}
                     MoveToNextElement(xmlIn)
                     For j = 0 To countOfPaneContents - 1
                         Dim id2 = Convert.ToInt32(xmlIn.GetAttribute("ID"), CultureInfo.InvariantCulture)
-                        If Not Equals(xmlIn.Name, "Content") OrElse id2 <> j Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                        If Not Equals(xmlIn.Name, "Content") OrElse id2 <> j Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
 
                         panes(i).IndexContents(j) = Convert.ToInt32(xmlIn.GetAttribute("RefID"), CultureInfo.InvariantCulture)
                         MoveToNextElement(xmlIn)
@@ -475,18 +475,18 @@ Namespace Docking
                 MoveToNextElement(xmlIn)
                 For i = 0 To countOfDockWindows - 1
                     Dim id = Convert.ToInt32(xmlIn.GetAttribute("ID"), CultureInfo.InvariantCulture)
-                    If Not Equals(xmlIn.Name, "DockWindow") OrElse id <> i Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "DockWindow") OrElse id <> i Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
 
                     dockWindows(i).DockState = CType(dockStateConverter.ConvertFrom(xmlIn.GetAttribute("DockState")), DockState)
                     dockWindows(i).ZOrderIndex = Convert.ToInt32(xmlIn.GetAttribute("ZOrderIndex"), CultureInfo.InvariantCulture)
                     MoveToNextElement(xmlIn)
-                    If Not Equals(xmlIn.Name, "DockList") AndAlso Not Equals(xmlIn.Name, "NestedPanes") Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "DockList") AndAlso Not Equals(xmlIn.Name, "NestedPanes") Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
                     Dim countOfNestedPanes = Convert.ToInt32(xmlIn.GetAttribute("Count"), CultureInfo.InvariantCulture)
                     dockWindows(i).NestedPanes = New NestedPane(countOfNestedPanes - 1) {}
                     MoveToNextElement(xmlIn)
                     For j = 0 To countOfNestedPanes - 1
                         Dim id2 = Convert.ToInt32(xmlIn.GetAttribute("ID"), CultureInfo.InvariantCulture)
-                        If Not Equals(xmlIn.Name, "Pane") OrElse id2 <> j Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                        If Not Equals(xmlIn.Name, "Pane") OrElse id2 <> j Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
                         dockWindows(i).NestedPanes(j).IndexPane = Convert.ToInt32(xmlIn.GetAttribute("RefID"), CultureInfo.InvariantCulture)
                         dockWindows(i).NestedPanes(j).IndexPrevPane = Convert.ToInt32(xmlIn.GetAttribute("PrevPane"), CultureInfo.InvariantCulture)
                         dockWindows(i).NestedPanes(j).Alignment = CType(dockAlignmentConverter.ConvertFrom(xmlIn.GetAttribute("Alignment")), DockAlignment)
@@ -506,18 +506,18 @@ Namespace Docking
                 MoveToNextElement(xmlIn)
                 For i = 0 To countOfFloatWindows - 1
                     Dim id = Convert.ToInt32(xmlIn.GetAttribute("ID"), CultureInfo.InvariantCulture)
-                    If Not Equals(xmlIn.Name, "FloatWindow") OrElse id <> i Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "FloatWindow") OrElse id <> i Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
 
                     floatWindows(i).Bounds = CType(rectConverter.ConvertFromInvariantString(xmlIn.GetAttribute("Bounds")), Rectangle)
                     floatWindows(i).ZOrderIndex = Convert.ToInt32(xmlIn.GetAttribute("ZOrderIndex"), CultureInfo.InvariantCulture)
                     MoveToNextElement(xmlIn)
-                    If Not Equals(xmlIn.Name, "DockList") AndAlso Not Equals(xmlIn.Name, "NestedPanes") Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "DockList") AndAlso Not Equals(xmlIn.Name, "NestedPanes") Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
                     Dim countOfNestedPanes = Convert.ToInt32(xmlIn.GetAttribute("Count"), CultureInfo.InvariantCulture)
                     floatWindows(i).NestedPanes = New NestedPane(countOfNestedPanes - 1) {}
                     MoveToNextElement(xmlIn)
                     For j = 0 To countOfNestedPanes - 1
                         Dim id2 = Convert.ToInt32(xmlIn.GetAttribute("ID"), CultureInfo.InvariantCulture)
-                        If Not Equals(xmlIn.Name, "Pane") OrElse id2 <> j Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                        If Not Equals(xmlIn.Name, "Pane") OrElse id2 <> j Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
                         floatWindows(i).NestedPanes(j).IndexPane = Convert.ToInt32(xmlIn.GetAttribute("RefID"), CultureInfo.InvariantCulture)
                         floatWindows(i).NestedPanes(j).IndexPrevPane = Convert.ToInt32(xmlIn.GetAttribute("PrevPane"), CultureInfo.InvariantCulture)
                         floatWindows(i).NestedPanes(j).Alignment = CType(dockAlignmentConverter.ConvertFrom(xmlIn.GetAttribute("Alignment")), DockAlignment)
@@ -530,7 +530,7 @@ Namespace Docking
             End Function
 
             Public Shared Sub LoadFromXml(dockPanel As DockPanel, stream As Stream, deserializeContent As DeserializeDockContent, closeStream As Boolean)
-                If dockPanel.Contents.Count <> 0 Then Throw New InvalidOperationException(Strings.DockPanel_LoadFromXml_AlreadyInitialized)
+                If dockPanel.Contents.Count <> 0 Then Throw New InvalidOperationException(ResourceHelper.DockPanel_LoadFromXml_AlreadyInitialized)
 
                 Dim dockPanelStruct As DockPanelStruct
                 Dim contents As ContentStruct()
@@ -543,11 +543,11 @@ Namespace Docking
                     xmlIn.MoveToContent()
 
                     While Not xmlIn.Name.Equals("DockPanel")
-                        If Not MoveToNextElement(xmlIn) Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                        If Not MoveToNextElement(xmlIn) Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
                     End While
 
                     Dim formatVersion = xmlIn.GetAttribute("FormatVersion")
-                    If Not IsFormatVersionValid(formatVersion) Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidFormatVersion)
+                    If Not IsFormatVersionValid(formatVersion) Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidFormatVersion)
 
                     dockPanelStruct = New DockPanelStruct()
                     dockPanelStruct.DockLeftPortion = Convert.ToDouble(xmlIn.GetAttribute("DockLeftPortion"), CultureInfo.InvariantCulture)
@@ -559,19 +559,19 @@ Namespace Docking
 
                     ' Load Contents
                     MoveToNextElement(xmlIn)
-                    If Not Equals(xmlIn.Name, "Contents") Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "Contents") Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
                     contents = LoadContents(xmlIn)
 
                     ' Load Panes
-                    If Not Equals(xmlIn.Name, "Panes") Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "Panes") Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
                     panes = LoadPanes(xmlIn)
 
                     ' Load DockWindows
-                    If Not Equals(xmlIn.Name, "DockWindows") Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "DockWindows") Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
                     dockWindows = LoadDockWindows(xmlIn, dockPanel)
 
                     ' Load FloatWindows
-                    If Not Equals(xmlIn.Name, "FloatWindows") Then Throw New ArgumentException(Strings.DockPanel_LoadFromXml_InvalidXmlFormat)
+                    If Not Equals(xmlIn.Name, "FloatWindows") Then Throw New ArgumentException(ResourceHelper.DockPanel_LoadFromXml_InvalidXmlFormat)
                     floatWindows = LoadFloatWindows(xmlIn)
 
                     If closeStream Then xmlIn.Close()

@@ -85,7 +85,11 @@ Namespace Docking
         ''' Alternatively both properties may be used (BackColor to draw and define the color of the borders and DockBackColor to define the color of the client rectangle). 
         ''' For Backgroundimages: Set your prefered Image, then set the DockBackColor and the BackColor to the same Color (Control)
         ''' </summary>
-        <ComponentModel.DescriptionAttribute("Determines the color with which the client rectangle will be drawn." & Microsoft.VisualBasic.Constants.vbCrLf & "If this property is used instead of the BackColor it will not have any influence on the borders to the surrounding controls (DockPane)." & Microsoft.VisualBasic.Constants.vbCrLf & "The BackColor property changes the borders of surrounding controls (DockPane)." & Microsoft.VisualBasic.Constants.vbCrLf & "Alternatively both properties may be used (BackColor to draw and define the color of the borders and DockBackColor to define the color of the client rectangle)." & Microsoft.VisualBasic.Constants.vbCrLf & "For Backgroundimages: Set your prefered Image, then set the DockBackColor and the BackColor to the same Color (Control).")>
+        <DescriptionAttribute("Determines the color with which the client rectangle will be drawn." & vbCrLf &
+                              "If this property is used instead of the BackColor it will not have any influence on the borders to the surrounding controls (DockPane)." & vbCrLf &
+                              "The BackColor property changes the borders of surrounding controls (DockPane)." & vbCrLf &
+                              "Alternatively both properties may be used (BackColor to draw and define the color of the borders and DockBackColor to define the color of the client rectangle)." & vbCrLf &
+                              "For Backgroundimages: Set your prefered Image, then set the DockBackColor and the BackColor to the same Color (Control).")>
         Public Property DockBackColor As Color
             Get
                 Return If(Not m_BackColor.IsEmpty, m_BackColor, MyBase.BackColor)
@@ -708,10 +712,10 @@ Namespace Docking
 
         Public Sub SetPaneIndex(pane As DockPane, index As Integer)
             Dim oldIndex = Panes.IndexOf(pane)
-            If oldIndex = -1 Then Throw (New ArgumentException(Strings.DockPanel_SetPaneIndex_InvalidPane))
+            If oldIndex = -1 Then Throw (New ArgumentException(ResourceHelper.DockPanel_SetPaneIndex_InvalidPane))
 
             If index < 0 OrElse index > Panes.Count - 1 Then
-                If index <> -1 Then Throw (New ArgumentOutOfRangeException(Strings.DockPanel_SetPaneIndex_InvalidIndex))
+                If index <> -1 Then Throw (New ArgumentOutOfRangeException(ResourceHelper.DockPanel_SetPaneIndex_InvalidIndex))
             End If
 
             If oldIndex = index Then Return
@@ -741,7 +745,7 @@ Namespace Docking
 
         Friend ReadOnly Property ParentForm As Form
             Get
-                If Not IsParentFormValid() Then Throw New InvalidOperationException(Strings.DockPanel_ParentForm_Invalid)
+                If Not IsParentFormValid() Then Throw New InvalidOperationException(ResourceHelper.DockPanel_ParentForm_Invalid)
 
                 Return GetMdiClientController().ParentForm
             End Get

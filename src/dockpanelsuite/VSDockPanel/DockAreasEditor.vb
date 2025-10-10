@@ -49,7 +49,7 @@ Namespace Docking
                 checkBoxFloat.Appearance = Appearance.Button
                 checkBoxFloat.Dock = DockStyle.Top
                 checkBoxFloat.Height = 24
-                checkBoxFloat.Text = Strings.DockAreaEditor_FloatCheckBoxText
+                checkBoxFloat.Text = ResourceHelper.DockAreaEditor_FloatCheckBoxText
                 checkBoxFloat.TextAlign = ContentAlignment.MiddleCenter
                 checkBoxFloat.FlatStyle = FlatStyle.System
 

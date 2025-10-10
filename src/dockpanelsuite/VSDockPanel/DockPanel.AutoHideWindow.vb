@@ -1,7 +1,6 @@
-﻿Imports System
-Imports System.Windows.Forms
+﻿Imports System.ComponentModel
 Imports System.Drawing
-Imports System.ComponentModel
+Imports System.Windows.Forms
 
 Namespace Docking
     Partial Class DockPanel
@@ -9,7 +8,7 @@ Namespace Docking
         Public Class AutoHideWindowControl
             Inherits Panel
             Implements ISplitterHost
-            Private _m_splitter As WeifenLuo.WinFormsUI.Docking.SplitterBase
+            Private _m_splitter As SplitterBase
             Protected Class SplitterControl
                 Inherits SplitterBase
                 Public Sub New(autoHideWindow As AutoHideWindowControl)
@@ -121,7 +120,7 @@ Namespace Docking
                     If value Is m_activeContent Then Return
 
                     If value IsNot Nothing Then
-                        If Not IsDockStateAutoHide(value.DockHandler.DockState) OrElse value.DockHandler.DockPanel IsNot DockPanel Then Throw (New InvalidOperationException(Strings.DockPanel_ActiveAutoHideContent_InvalidValue))
+                        If Not IsDockStateAutoHide(value.DockHandler.DockState) OrElse value.DockHandler.DockPanel IsNot DockPanel Then Throw (New InvalidOperationException(ResourceHelper.DockPanel_ActiveAutoHideContent_InvalidValue))
                     End If
 
                     DockPanel.SuspendLayout(True)

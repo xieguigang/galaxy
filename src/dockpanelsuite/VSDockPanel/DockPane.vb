@@ -69,11 +69,11 @@ Namespace Docking
         End Sub
 
         Private Sub InternalConstruct(content As IDockContent, dockState As DockState, flagBounds As Boolean, floatWindowBounds As Rectangle, prevPane As DockPane, alignment As DockAlignment, proportion As Double, show As Boolean)
-            If dockState = DockState.Hidden OrElse dockState = DockState.Unknown Then Throw New ArgumentException(Strings.DockPane_SetDockState_InvalidState)
+            If dockState = DockState.Hidden OrElse dockState = DockState.Unknown Then Throw New ArgumentException(ResourceHelper.DockPane_SetDockState_InvalidState)
 
-            If content Is Nothing Then Throw New ArgumentNullException(Strings.DockPane_Constructor_NullContent)
+            If content Is Nothing Then Throw New ArgumentNullException(ResourceHelper.DockPane_Constructor_NullContent)
 
-            If content.DockHandler.DockPanel Is Nothing Then Throw New ArgumentException(Strings.DockPane_Constructor_NullDockPanel)
+            If content.DockHandler.DockPanel Is Nothing Then Throw New ArgumentException(ResourceHelper.DockPane_Constructor_NullDockPanel)
 
             SuspendLayout()
             SetStyle(ControlStyles.Selectable, False)
@@ -149,9 +149,9 @@ Namespace Docking
                 If ActiveContent Is value Then Return
 
                 If value IsNot Nothing Then
-                    If Not DisplayingContents.Contains(value) Then Throw (New InvalidOperationException(Strings.DockPane_ActiveContent_InvalidValue))
+                    If Not DisplayingContents.Contains(value) Then Throw (New InvalidOperationException(ResourceHelper.DockPane_ActiveContent_InvalidValue))
                 Else
-                    If DisplayingContents.Count <> 0 Then Throw (New InvalidOperationException(Strings.DockPane_ActiveContent_InvalidValue))
+                    If DisplayingContents.Count <> 0 Then Throw (New InvalidOperationException(ResourceHelper.DockPane_ActiveContent_InvalidValue))
                 End If
 
                 Dim oldValue = m_activeContent
@@ -573,10 +573,10 @@ Namespace Docking
 
         Public Sub SetContentIndex(content As IDockContent, index As Integer)
             Dim oldIndex = Contents.IndexOf(content)
-            If oldIndex = -1 Then Throw (New ArgumentException(Strings.DockPane_SetContentIndex_InvalidContent))
+            If oldIndex = -1 Then Throw (New ArgumentException(ResourceHelper.DockPane_SetContentIndex_InvalidContent))
 
             If index < 0 OrElse index > Contents.Count - 1 Then
-                If index <> -1 Then Throw (New ArgumentOutOfRangeException(Strings.DockPane_SetContentIndex_InvalidIndex))
+                If index <> -1 Then Throw (New ArgumentOutOfRangeException(ResourceHelper.DockPane_SetContentIndex_InvalidIndex))
             End If
 
             If oldIndex = index Then Return
@@ -791,7 +791,7 @@ Namespace Docking
         End Property
 
         Public Function SetDockState(value As DockState) As DockPane
-            If value = DockState.Unknown OrElse value = DockState.Hidden Then Throw New InvalidOperationException(Strings.DockPane_SetDockState_InvalidState)
+            If value = DockState.Unknown OrElse value = DockState.Hidden Then Throw New InvalidOperationException(ResourceHelper.DockPane_SetDockState_InvalidState)
 
             If value = DockState.Float = IsFloat Then
                 InternalSetDockState(value)
@@ -924,7 +924,7 @@ Namespace Docking
         End Function
 
         Public Function DockTo(container As INestedPanesContainer) As DockPane
-            If container Is Nothing Then Throw New InvalidOperationException(Strings.DockPane_DockTo_NullContainer)
+            If container Is Nothing Then Throw New InvalidOperationException(ResourceHelper.DockPane_DockTo_NullContainer)
 
             Dim alignment As DockAlignment
             If container.DockState = DockState.DockLeft OrElse container.DockState = DockState.DockRight Then
@@ -937,7 +937,7 @@ Namespace Docking
         End Function
 
         Public Function DockTo(container As INestedPanesContainer, previousPane As DockPane, alignment As DockAlignment, proportion As Double) As DockPane
-            If container Is Nothing Then Throw New InvalidOperationException(Strings.DockPane_DockTo_NullContainer)
+            If container Is Nothing Then Throw New InvalidOperationException(ResourceHelper.DockPane_DockTo_NullContainer)
 
             If container.IsFloat = IsFloat Then
                 InternalAddToDockList(container, previousPane, alignment, proportion)
@@ -982,15 +982,15 @@ Namespace Docking
         End Sub
 
         Private Sub InternalAddToDockList(container As INestedPanesContainer, prevPane As DockPane, alignment As DockAlignment, proportion As Double)
-            If container.DockState = DockState.Float <> IsFloat Then Throw New InvalidOperationException(Strings.DockPane_DockTo_InvalidContainer)
+            If container.DockState = DockState.Float <> IsFloat Then Throw New InvalidOperationException(ResourceHelper.DockPane_DockTo_InvalidContainer)
 
             Dim count = container.NestedPanes.Count
             If container.NestedPanes.Contains(Me) Then count -= 1
-            If prevPane Is Nothing AndAlso count > 0 Then Throw New InvalidOperationException(Strings.DockPane_DockTo_NullPrevPane)
+            If prevPane Is Nothing AndAlso count > 0 Then Throw New InvalidOperationException(ResourceHelper.DockPane_DockTo_NullPrevPane)
 
-            If prevPane IsNot Nothing AndAlso Not container.NestedPanes.Contains(prevPane) Then Throw New InvalidOperationException(Strings.DockPane_DockTo_NoPrevPane)
+            If prevPane IsNot Nothing AndAlso Not container.NestedPanes.Contains(prevPane) Then Throw New InvalidOperationException(ResourceHelper.DockPane_DockTo_NoPrevPane)
 
-            If prevPane Is Me Then Throw New InvalidOperationException(Strings.DockPane_DockTo_SelfPrevPane)
+            If prevPane Is Me Then Throw New InvalidOperationException(ResourceHelper.DockPane_DockTo_SelfPrevPane)
 
             Dim oldContainer = NestedPanesContainer
             Dim oldDockState = DockState
@@ -1162,7 +1162,7 @@ Namespace Docking
         End Sub
 
         Public Sub DockTo(panel As DockPanel, dockStyle As DockStyle) Implements IDockDragSource.DockTo
-            If panel IsNot DockPanel Then Throw New ArgumentException(Strings.IDockDragSource_DockTo_InvalidPanel, NameOf(panel))
+            If panel IsNot DockPanel Then Throw New ArgumentException(ResourceHelper.IDockDragSource_DockTo_InvalidPanel, NameOf(panel))
 
             If dockStyle = DockStyle.Top Then
                 DockState = DockState.DockTop

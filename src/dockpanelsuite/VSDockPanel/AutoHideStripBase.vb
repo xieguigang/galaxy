@@ -1,17 +1,18 @@
-﻿Imports System
-Imports System.Collections
-Imports System.Windows.Forms
+﻿Imports System.Diagnostics.CodeAnalysis
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
-Imports System.Collections.Generic
-Imports System.Diagnostics.CodeAnalysis
+Imports System.Windows.Forms
 
 Namespace Docking
-    Public MustInherit Class AutoHideStripBase
-        Inherits Control
 
+    Public MustInherit Class AutoHideStripBase : Inherits Control
 
-        Private _DockPanel As WeifenLuo.WinFormsUI.Docking.DockPanel, _PanesTop As WeifenLuo.WinFormsUI.Docking.AutoHideStripBase.PaneCollection, _PanesBottom As WeifenLuo.WinFormsUI.Docking.AutoHideStripBase.PaneCollection, _PanesLeft As WeifenLuo.WinFormsUI.Docking.AutoHideStripBase.PaneCollection, _PanesRight As WeifenLuo.WinFormsUI.Docking.AutoHideStripBase.PaneCollection
+        Private _DockPanel As DockPanel,
+            _PanesTop As AutoHideStripBase.PaneCollection,
+            _PanesBottom As AutoHideStripBase.PaneCollection,
+            _PanesLeft As AutoHideStripBase.PaneCollection,
+            _PanesRight As AutoHideStripBase.PaneCollection
+
         <SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")>
         Protected Class Tab
             Implements IDisposable
@@ -199,10 +200,10 @@ Namespace Docking
             Friend Sub New(panel As DockPanel, dockState As DockState)
                 m_dockPanel = panel
                 m_states = New AutoHideStateCollection()
-                States(dockState.DockTopAutoHide).Selected = dockState = dockState.DockTopAutoHide
-                States(dockState.DockBottomAutoHide).Selected = dockState = dockState.DockBottomAutoHide
-                States(dockState.DockLeftAutoHide).Selected = dockState = dockState.DockLeftAutoHide
-                States(dockState.DockRightAutoHide).Selected = dockState = dockState.DockRightAutoHide
+                States(DockState.DockTopAutoHide).Selected = dockState = DockState.DockTopAutoHide
+                States(DockState.DockBottomAutoHide).Selected = dockState = DockState.DockBottomAutoHide
+                States(DockState.DockLeftAutoHide).Selected = dockState = DockState.DockLeftAutoHide
+                States(DockState.DockRightAutoHide).Selected = dockState = DockState.DockRightAutoHide
             End Sub
 
             Private m_dockPanel As DockPanel
@@ -339,13 +340,13 @@ Namespace Docking
         End Property
 
         Protected Function GetPanes(dockState As DockState) As PaneCollection
-            If dockState = dockState.DockTopAutoHide Then
+            If dockState = DockState.DockTopAutoHide Then
                 Return PanesTop
-            ElseIf dockState = dockState.DockBottomAutoHide Then
+            ElseIf dockState = DockState.DockBottomAutoHide Then
                 Return PanesBottom
-            ElseIf dockState = dockState.DockLeftAutoHide Then
+            ElseIf dockState = DockState.DockLeftAutoHide Then
                 Return PanesLeft
-            ElseIf dockState = dockState.DockRightAutoHide Then
+            ElseIf dockState = DockState.DockRightAutoHide Then
                 Return PanesRight
             Else
                 Throw New ArgumentOutOfRangeException(NameOf(dockState))
@@ -418,13 +419,13 @@ Namespace Docking
         ''' the four strips can be easily calculated out as the borders.
         ''' </remarks>
         Protected Friend Function GetTabStripRectangle(dockState As DockState) As Rectangle
-            If dockState = dockState.DockTopAutoHide Then Return New Rectangle(RectangleTopLeft.Width, 0, Width - RectangleTopLeft.Width - RectangleTopRight.Width, RectangleTopLeft.Height)
+            If dockState = DockState.DockTopAutoHide Then Return New Rectangle(RectangleTopLeft.Width, 0, Width - RectangleTopLeft.Width - RectangleTopRight.Width, RectangleTopLeft.Height)
 
-            If dockState = dockState.DockBottomAutoHide Then Return New Rectangle(RectangleBottomLeft.Width, Height - RectangleBottomLeft.Height, Width - RectangleBottomLeft.Width - RectangleBottomRight.Width, RectangleBottomLeft.Height)
+            If dockState = DockState.DockBottomAutoHide Then Return New Rectangle(RectangleBottomLeft.Width, Height - RectangleBottomLeft.Height, Width - RectangleBottomLeft.Width - RectangleBottomRight.Width, RectangleBottomLeft.Height)
 
-            If dockState = dockState.DockLeftAutoHide Then Return New Rectangle(0, RectangleTopLeft.Height, RectangleTopLeft.Width, Height - RectangleTopLeft.Height - RectangleBottomLeft.Height)
+            If dockState = DockState.DockLeftAutoHide Then Return New Rectangle(0, RectangleTopLeft.Height, RectangleTopLeft.Width, Height - RectangleTopLeft.Height - RectangleBottomLeft.Height)
 
-            If dockState = dockState.DockRightAutoHide Then Return New Rectangle(Width - RectangleTopRight.Width, RectangleTopRight.Height, RectangleTopRight.Width, Height - RectangleTopRight.Height - RectangleBottomRight.Height)
+            If dockState = DockState.DockRightAutoHide Then Return New Rectangle(Width - RectangleTopRight.Width, RectangleTopRight.Height, RectangleTopRight.Width, Height - RectangleTopRight.Height - RectangleBottomRight.Height)
 
             Return Rectangle.Empty
         End Function

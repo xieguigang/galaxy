@@ -1,8 +1,8 @@
-﻿Imports System.Drawing
-Imports System.Diagnostics.CodeAnalysis
+﻿Imports System.Diagnostics.CodeAnalysis
+Imports System.Drawing
 Imports System.Windows.Forms
-Imports WeifenLuo.WinFormsUI.Docking.DockPanel
-Imports WeifenLuo.WinFormsUI.Docking.DockPanel.DockDragHandler
+Imports Microsoft.VisualStudio.WinForms.Docking.DockPanel
+Imports Microsoft.VisualStudio.WinForms.Docking.DockPanel.DockDragHandler
 
 Namespace Docking
     Public NotInheritable Class DockPanelExtender

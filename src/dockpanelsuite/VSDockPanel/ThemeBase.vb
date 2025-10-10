@@ -1,24 +1,19 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
 Imports System.Drawing
 Imports System.IO
 Imports System.IO.Compression
-Imports System.Linq
 Imports System.Windows.Forms
 Imports Microsoft.VisualBasic.Language
 
 Namespace Docking
-    Public MustInherit Class ThemeBase
-        Inherits Component
 
+    Public MustInherit Class ThemeBase : Inherits Component
 
-
-
-
-
-        Private _Skin As WeifenLuo.WinFormsUI.Docking.DockPanelSkin, _ColorPalette As WeifenLuo.WinFormsUI.Docking.DockPanelColorPalette, _ImageService As WeifenLuo.WinFormsUI.Docking.IImageService, _PaintingService As WeifenLuo.WinFormsUI.Docking.IPaintingService
-        Dim _Extender As WeifenLuo.WinFormsUI.Docking.DockPanelExtender
+        Private _Skin As DockPanelSkin,
+            _ColorPalette As DockPanelColorPalette,
+            _ImageService As IImageService,
+            _PaintingService As IPaintingService
+        Dim _Extender As DockPanelExtender
         Private _dockBackColor As Color
         Private _showAutoHideContentOnHover As Boolean = True
 
@@ -108,14 +103,14 @@ Namespace Docking
 
         Public Sub ApplyTo(dockPanel As DockPanel)
             If Extender.AutoHideStripFactory Is Nothing OrElse Extender.AutoHideWindowFactory Is Nothing OrElse Extender.DockIndicatorFactory Is Nothing OrElse Extender.DockOutlineFactory Is Nothing OrElse Extender.DockPaneCaptionFactory Is Nothing OrElse Extender.DockPaneFactory Is Nothing OrElse Extender.DockPaneSplitterControlFactory Is Nothing OrElse Extender.DockPaneStripFactory Is Nothing OrElse Extender.DockWindowFactory Is Nothing OrElse Extender.FloatWindowFactory Is Nothing OrElse Extender.PaneIndicatorFactory Is Nothing OrElse Extender.PanelIndicatorFactory Is Nothing OrElse Extender.WindowSplitterControlFactory Is Nothing Then
-                Throw New InvalidOperationException(Strings.Theme_MissingFactory)
+                Throw New InvalidOperationException(ResourceHelper.Theme_MissingFactory)
             End If
 
-            If dockPanel.Panes.Count > 0 Then Throw New InvalidOperationException(Strings.Theme_PaneNotClosed)
+            If dockPanel.Panes.Count > 0 Then Throw New InvalidOperationException(ResourceHelper.Theme_PaneNotClosed)
 
-            If dockPanel.FloatWindows.Count > 0 Then Throw New InvalidOperationException(Strings.Theme_FloatWindowNotClosed)
+            If dockPanel.FloatWindows.Count > 0 Then Throw New InvalidOperationException(ResourceHelper.Theme_FloatWindowNotClosed)
 
-            If dockPanel.Contents.Count > 0 Then Throw New InvalidOperationException(Strings.Theme_DockContentNotClosed)
+            If dockPanel.Contents.Count > 0 Then Throw New InvalidOperationException(ResourceHelper.Theme_DockContentNotClosed)
 
             If ColorPalette Is Nothing Then
                 dockPanel.ResetDummy()

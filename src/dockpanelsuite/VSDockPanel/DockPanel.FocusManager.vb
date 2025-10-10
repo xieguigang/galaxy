@@ -1,9 +1,8 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
+Imports System.Diagnostics.CodeAnalysis
 Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
-Imports System.Diagnostics.CodeAnalysis
+Imports Microsoft.VisualStudio.WinForms.Win32.NativeMethods
 
 Namespace Docking
     Friend Interface IContentFocusManager
