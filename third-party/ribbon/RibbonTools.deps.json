@@ -1,0 +1,52 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "RibbonTools/1.0.0": {
+        "dependencies": {
+          "WindowsRibbon": "2.16.2",
+          "Microsoft.Windows.Ribbon": "4.0.0.0"
+        },
+        "runtime": {
+          "RibbonTools.dll": {}
+        }
+      },
+      "WindowsRibbon/2.16.2": {
+        "runtime": {
+          "Microsoft.Windows.Ribbon.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.Windows.Ribbon/4.0.0.0": {
+        "runtime": {
+          "Microsoft.Windows.Ribbon.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "2.16.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RibbonTools/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WindowsRibbon/2.16.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Windows.Ribbon/4.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
