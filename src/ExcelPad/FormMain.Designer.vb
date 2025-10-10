@@ -22,34 +22,39 @@ Partial Class FormMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Me.VisualStudioToolStripExtender1 = New Microsoft.VisualStudio.WinForms.Docking.VisualStudioToolStripExtender(Me.components)
-        Me.DockPanel1 = New Microsoft.VisualStudio.WinForms.Docking.DockPanel()
+        Me.m_dockPanel = New Microsoft.VisualStudio.WinForms.Docking.DockPanel()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.SuspendLayout()
-        '
-        'VisualStudioToolStripExtender1
-        '
-        Me.VisualStudioToolStripExtender1.DefaultRenderer = Nothing
         '
         'DockPanel1
         '
-        Me.DockPanel1.Location = New System.Drawing.Point(155, 144)
-        Me.DockPanel1.Name = "DockPanel1"
-        Me.DockPanel1.Size = New System.Drawing.Size(200, 100)
-        Me.DockPanel1.TabIndex = 0
+        Me.m_dockPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.m_dockPanel.Location = New System.Drawing.Point(0, 0)
+        Me.m_dockPanel.Name = "DockPanel1"
+        Me.m_dockPanel.Size = New System.Drawing.Size(800, 428)
+        Me.m_dockPanel.TabIndex = 0
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 428)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(800, 22)
+        Me.StatusStrip1.TabIndex = 1
+        Me.StatusStrip1.Text = "StatusStrip1"
         '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.DockPanel1)
+        Me.Controls.Add(Me.m_dockPanel)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Name = "FormMain"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents VisualStudioToolStripExtender1 As Microsoft.VisualStudio.WinForms.Docking.VisualStudioToolStripExtender
-    Friend WithEvents DockPanel1 As Microsoft.VisualStudio.WinForms.Docking.DockPanel
+    Friend WithEvents m_dockPanel As Microsoft.VisualStudio.WinForms.Docking.DockPanel
+    Friend WithEvents StatusStrip1 As StatusStrip
 End Class
