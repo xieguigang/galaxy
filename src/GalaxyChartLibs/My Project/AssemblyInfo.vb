@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Galaxy Data Controls")>
+<Assembly: AssemblyTitle("GalaxyChartLibs")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("GalaxyData")>
-<Assembly: AssemblyCopyright("Copyright © i@xieguigang.me 2025")>
+<Assembly: AssemblyProduct("GalaxyChartLibs")>
+<Assembly: AssemblyCopyright("Copyright ©  2025")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("42aa912c-2a00-4daa-9e50-667cf2bf216d")>
+<Assembly: Guid("53712094-54f0-4b9e-86ad-fe0e79851d1d")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -27,6 +27,8 @@ Imports System.Runtime.InteropServices
 '      Build Number
 '      Revision
 '
+' You can specify all the values or you can default the Build and Revision Numbers
+' by using the '*' as shown below:
 
 <Assembly: AssemblyVersion("1.0.0.0")>
 <Assembly: AssemblyFileVersion("1.0.0.0")>
