@@ -1,12 +1,17 @@
 ﻿Imports System.Drawing
 Imports System.Windows.Forms
+Imports ExcelPad.RibbonLib.Controls
+Imports Microsoft.VisualBasic.Data.Framework.IO
 Imports Microsoft.VisualStudio.WinForms.Docking
+Imports RibbonLib
 Imports ThemeVS2015
 
 Public Class FormMain
 
     Dim vS2015LightTheme1 As New VS2015LightTheme
     Dim vsToolStripExtender1 As New VisualStudioToolStripExtender
+    Dim ribbon As New Ribbon
+    Dim ribbonItem As RibbonItems
 
     ReadOnly _toolStripProfessionalRenderer As New ToolStripProfessionalRenderer()
 
@@ -44,6 +49,30 @@ Public Class FormMain
     End Sub
 
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+        ribbon.Dock = DockStyle.Top
+        ribbon.ResourceName = "ExcelPad.RibbonMarkup.ribbon"
+        ribbonItem = New RibbonItems(ribbon)
+
+        Call Controls.Add(ribbon)
         Call initializeVSPanel()
+
+        AddHandler ribbonItem.ButtonOpen.ExecuteEvent, AddressOf OpenFile
+    End Sub
+
+    Private Sub OpenFile()
+        Using file As New OpenFileDialog With {.Filter = "Excel Data Table(*.csv;*.xlsx)"}
+            If file.ShowDialog = DialogResult.OK Then
+                If file.FileName.ExtensionSuffix("csv") Then
+                    Dim data As DataFrameResolver = DataFrameResolver.Load(file.FileName)
+                    Dim page As New FormDataSheet With {.TabText = file.FileName}
+
+                    page.Show(m_dockPanel)
+                    page.DockState = DockState.Document
+                    page.LoadData(data)
+                Else
+
+                End If
+            End If
+        End Using
     End Sub
 End Class

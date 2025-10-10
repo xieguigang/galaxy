@@ -73,8 +73,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RibbonItems.Designer.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormDataSheet.resx" />
+    <EmbeddedResource Include="FormMain.resx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -84,6 +87,9 @@
   <ItemGroup>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp" />
+    <EmbeddedResource Include="RibbonMarkup.ribbon">
+      <CustomToolNamespace>ExcelPad.RibbonMarkup.ribbon</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net40' OR '$(TargetFramework)' == 'net35'">
     <Reference Include="System.Configuration" />
@@ -101,5 +107,10 @@
     <ProjectReference Include="..\GalaxyWorkbench\GalaxyWorkbench.vbproj" />
     <ProjectReference Include="..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj" />
     <ProjectReference Include="..\ResourcesEditor\ResourcesEditor.vbproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Windows.Ribbon">
+      <HintPath>..\..\third-party\ribbon\Microsoft.Windows.Ribbon.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

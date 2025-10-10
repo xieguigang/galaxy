@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://schemas.microsoft.com/windows/2009/Ribbon">
+  <Application.Commands>
+    <Command Name="cmdButtonOpen" Id="2" LabelTitle="Open" LabelDescription="Open an excel table file and load the selected data file into this application" />
+  </Application.Commands>
+  <Application.Views>
+    <Ribbon>
+      <Ribbon.ApplicationMenu>
+        <ApplicationMenu />
+      </Ribbon.ApplicationMenu>
+      <Ribbon.QuickAccessToolbar>
+        <QuickAccessToolbar />
+      </Ribbon.QuickAccessToolbar>
+      <Ribbon.Tabs>
+        <Tab>
+          <Group SizeDefinition="OneButton">
+            <Button CommandName="cmdButtonOpen" />
+          </Group>
+        </Tab>
+      </Ribbon.Tabs>
+    </Ribbon>
+    <ContextPopup />
+  </Application.Views>
+</Application>
+<!--ResourceName Value="APPLICATION"-->
