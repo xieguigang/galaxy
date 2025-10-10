@@ -17,8 +17,8 @@ Public Class FormDataSheet
         Controls.Add(table)
         Controls.Add(toolbar)
 
-        table.Dock = System.Windows.Forms.DockStyle.Fill
-        toolbar.Dock = System.Windows.Forms.DockStyle.Top
+        table.Dock = DockStyle.Fill
+        toolbar.Dock = DockStyle.Top
         loader = New GridLoaderHandler(table, toolbar, source)
         search = New GridSearchHandler(table)
     End Sub
