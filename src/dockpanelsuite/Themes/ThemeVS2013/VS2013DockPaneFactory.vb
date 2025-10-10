@@ -1,8 +1,7 @@
 ﻿Imports System.Diagnostics.CodeAnalysis
-Imports System.Drawing
-Imports WeifenLuo.WinFormsUI.Docking
+Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2013
+Namespace ThemeVS2013
     Public Class VS2013DockPaneFactory
         Implements DockPanelExtender.IDockPaneFactory
         Public Function CreateDockPane(content As IDockContent, visibleState As DockState, show As Boolean) As DockPane Implements DockPanelExtender.IDockPaneFactory.CreateDockPane

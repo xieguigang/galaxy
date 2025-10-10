@@ -6,7 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <ProjectGuid>{900306BB-63BA-4F02-A09A-B8D5929255E0}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>ThemeVS2015</RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>ThemeVS2015</AssemblyName>
     <RuntimeIdentifiers>win</RuntimeIdentifiers>
     <FileAlignment>512</FileAlignment>
@@ -253,13 +254,13 @@
     <None Include="ThemeVS2012\Resources\MaskWindowTop.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
-      <Project>{896a1df9-bf52-17c7-d41c-f7730e5b1968}</Project>
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
+      <Project>{b19d68f6-6eca-7f7d-3121-9c6cbe0a796a}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\1\WinFormsUI.vbproj">
-      <Project>{725a9a6d-2ef5-2e31-a4d3-a7fad8f83bc8}</Project>
-      <Name>WinFormsUI</Name>
+    <ProjectReference Include="..\VSDockPanel\VSDockPanel.vbproj">
+      <Project>{5f7ad2de-2405-2da2-056b-4bcb780b671f}</Project>
+      <Name>VSDockPanel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

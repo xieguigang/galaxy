@@ -1,6 +1,6 @@
-﻿Imports WeifenLuo.WinFormsUI.Docking
+﻿Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2012
+Namespace ThemeVS2012
     Friend Class VS2012DockIndicatorFactory
         Implements DockPanelExtender.IDockIndicatorFactory
         Public Function CreateDockIndicator(dockDragHandler As DockPanel.DockDragHandler) As DockPanel.DockDragHandler.DockIndicator Implements DockPanelExtender.IDockIndicatorFactory.CreateDockIndicator

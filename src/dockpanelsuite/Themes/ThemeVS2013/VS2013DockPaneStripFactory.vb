@@ -1,6 +1,6 @@
-﻿Imports WeifenLuo.WinFormsUI.Docking
+﻿Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2013
+Namespace ThemeVS2013
     Public Class VS2013DockPaneStripFactory
         Implements DockPanelExtender.IDockPaneStripFactory
         Public Function CreateDockPaneStrip(pane As DockPane) As DockPaneStripBase Implements DockPanelExtender.IDockPaneStripFactory.CreateDockPaneStrip

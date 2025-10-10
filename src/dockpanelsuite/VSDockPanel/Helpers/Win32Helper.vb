@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports System.Windows.Forms
+Imports Microsoft.VisualStudio.WinForms.Win32
 
 Namespace Docking
     Public Module Win32Helper

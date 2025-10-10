@@ -1,6 +1,6 @@
-﻿Imports System.Collections.Generic
-Imports System.Collections.ObjectModel
+﻿Imports System.Collections.ObjectModel
 Imports System.Drawing
+Imports Microsoft.VisualStudio.WinForms.Win32
 
 Namespace Docking
     Public NotInheritable Class NestedPaneCollection

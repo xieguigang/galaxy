@@ -1,10 +1,7 @@
-﻿Imports System.Drawing
-Imports System.IO
-Imports System.Linq
-Imports System.Xml.Linq
-Imports WeifenLuo.WinFormsUI.Docking
+﻿Imports System.IO
+Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2012
+Namespace ThemeVS2012
     Public Class VS2012PaletteFactory
         Implements IPaletteFactory
         Private Const Env As String = "Environment"

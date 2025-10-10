@@ -1,6 +1,4 @@
-﻿Imports ThemeVS2015.WeifenLuo.WinFormsUI.ThemeVS2015
-
-Namespace WeifenLuo.WinFormsUI.Docking
+﻿Namespace ThemeVS2015
 
     ''' <summary>
     ''' Visual Studio 2015 Dark theme.

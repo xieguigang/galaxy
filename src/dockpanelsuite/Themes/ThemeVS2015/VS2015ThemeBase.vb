@@ -1,8 +1,8 @@
-﻿Imports ThemeVS2015.WeifenLuo.WinFormsUI.ThemeVS2012
-Imports ThemeVS2015.WeifenLuo.WinFormsUI.ThemeVS2013
-Imports WeifenLuo.WinFormsUI.Docking
+﻿Imports Microsoft.VisualStudio.WinForms.Docking
+Imports ThemeVS2012
+Imports ThemeVS2013
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2015
+Namespace ThemeVS2015
 
     ''' <summary>
     ''' Visual Studio 2015 theme base.

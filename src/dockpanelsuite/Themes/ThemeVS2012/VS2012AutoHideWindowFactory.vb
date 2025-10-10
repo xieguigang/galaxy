@@ -1,6 +1,6 @@
-﻿Imports WeifenLuo.WinFormsUI.Docking
+﻿Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2012
+Namespace ThemeVS2012
     Friend Class VS2012AutoHideWindowFactory
         Implements DockPanelExtender.IAutoHideWindowFactory
         Public Function CreateAutoHideWindow(panel As DockPanel) As DockPanel.AutoHideWindowControl Implements DockPanelExtender.IAutoHideWindowFactory.CreateAutoHideWindow

@@ -1,8 +1,7 @@
 ﻿Imports System.ComponentModel
-Imports System.Drawing
-Imports WeifenLuo.WinFormsUI.Docking
+Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace ThemeVS2012
     ''' <summary>
     ''' Dock window of Visual Studio 2012 Light theme.
     ''' </summary>

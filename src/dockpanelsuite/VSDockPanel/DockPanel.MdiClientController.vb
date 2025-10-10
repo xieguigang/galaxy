@@ -1,8 +1,8 @@
-﻿Imports System
+﻿Imports System.ComponentModel
+Imports System.ComponentModel.Design
 Imports System.Drawing
 Imports System.Windows.Forms
-Imports System.ComponentModel
-Imports System.ComponentModel.Design
+Imports Microsoft.VisualStudio.WinForms.Win32
 
 Namespace Docking
     Partial Class DockPanel

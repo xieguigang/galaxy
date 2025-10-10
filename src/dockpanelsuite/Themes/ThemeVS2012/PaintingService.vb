@@ -1,8 +1,6 @@
-﻿Imports System.Collections.Generic
-Imports System.Drawing
-Imports WeifenLuo.WinFormsUI.Docking
+﻿Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2012
+Namespace ThemeVS2012
     Public Class PaintingService
         Implements IPaintingService
 

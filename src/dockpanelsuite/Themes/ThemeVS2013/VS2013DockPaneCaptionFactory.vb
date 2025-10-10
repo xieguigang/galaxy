@@ -1,7 +1,6 @@
-﻿Imports ThemeVS2015.WeifenLuo.WinFormsUI.Docking
-Imports WeifenLuo.WinFormsUI.Docking
+﻿Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2013
+Namespace ThemeVS2013
     Friend Class VS2013DockPaneCaptionFactory
         Implements DockPanelExtender.IDockPaneCaptionFactory
         Public Function CreateDockPaneCaption(pane As DockPane) As DockPaneCaptionBase Implements DockPanelExtender.IDockPaneCaptionFactory.CreateDockPaneCaption

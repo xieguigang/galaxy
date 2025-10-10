@@ -1,9 +1,9 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing.Drawing2D
-Imports ThemeVS2015.WeifenLuo.WinFormsUI.Docking
-Imports WeifenLuo.WinFormsUI.Docking
+Imports Microsoft.VisualStudio.WinForms.Docking
+Imports ThemeVS2012
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2013
+Namespace ThemeVS2013
     <ToolboxItem(False)>
     Friend Class VS2013DockPaneStrip
         Inherits DockPaneStripBase
@@ -379,7 +379,7 @@ Namespace WeifenLuo.WinFormsUI.ThemeVS2013
 
         Private Shared ReadOnly Property ToolTipSelect As String
             Get
-                If Equals(m_toolTipSelect, Nothing) Then m_toolTipSelect =  My.Resources.DockPaneStrip_ToolTipWindowList
+                If Equals(m_toolTipSelect, Nothing) Then m_toolTipSelect = My.Resources.DockPaneStrip_ToolTipWindowList
                 Return m_toolTipSelect
             End Get
         End Property

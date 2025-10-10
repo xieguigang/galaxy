@@ -1,10 +1,8 @@
 ﻿Imports System.ComponentModel
 Imports System.Diagnostics.CodeAnalysis
-Imports System.Drawing
-Imports System.Windows.Forms
-Imports WeifenLuo.WinFormsUI.Docking
+Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2013
+Namespace ThemeVS2013
     <ToolboxItem(False)>
     Public Class VS2013DockPane
         Inherits DockPane

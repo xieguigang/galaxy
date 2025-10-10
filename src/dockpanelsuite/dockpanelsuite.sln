@@ -7,6 +7,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VSDockPanel", "VSDockPanel\
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Core", "..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj", "{B19D68F6-6ECA-7F7D-3121-9C6CBE0A796A}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ThemeVS2015", "Themes\ThemeVS2015.vbproj", "{900306BB-63BA-4F02-A09A-B8D5929255E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{B19D68F6-6ECA-7F7D-3121-9C6CBE0A796A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B19D68F6-6ECA-7F7D-3121-9C6CBE0A796A}.Release|x64.ActiveCfg = Release|x64
 		{B19D68F6-6ECA-7F7D-3121-9C6CBE0A796A}.Release|x64.Build.0 = Release|x64
+		{900306BB-63BA-4F02-A09A-B8D5929255E0}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{900306BB-63BA-4F02-A09A-B8D5929255E0}.Debug|Any CPU.Build.0 = Debug|x64
+		{900306BB-63BA-4F02-A09A-B8D5929255E0}.Debug|x64.ActiveCfg = Debug|x64
+		{900306BB-63BA-4F02-A09A-B8D5929255E0}.Debug|x64.Build.0 = Debug|x64
+		{900306BB-63BA-4F02-A09A-B8D5929255E0}.Release|Any CPU.ActiveCfg = Release|x64
+		{900306BB-63BA-4F02-A09A-B8D5929255E0}.Release|Any CPU.Build.0 = Release|x64
+		{900306BB-63BA-4F02-A09A-B8D5929255E0}.Release|x64.ActiveCfg = Release|x64
+		{900306BB-63BA-4F02-A09A-B8D5929255E0}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

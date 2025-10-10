@@ -1,9 +1,7 @@
-﻿Imports System.Drawing
-Imports System.Windows.Forms
-Imports WeifenLuo.WinFormsUI.Docking
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
+Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2012
+Namespace ThemeVS2012
 
     <ToolboxItem(False)>
     Friend Class VS2012AutoHideWindowControl

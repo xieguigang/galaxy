@@ -1,9 +1,7 @@
-﻿Imports System.Drawing
-Imports System.Drawing.Drawing2D
-Imports System.Windows.Forms
-Imports WeifenLuo.WinFormsUI.Docking
+﻿Imports System.Drawing.Drawing2D
+Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2012
+Namespace ThemeVS2012
     Friend Class VS2012DockOutlineFactory
         Implements DockPanelExtender.IDockOutlineFactory
         Public Function CreateDockOutline() As DockOutlineBase Implements DockPanelExtender.IDockOutlineFactory.CreateDockOutline

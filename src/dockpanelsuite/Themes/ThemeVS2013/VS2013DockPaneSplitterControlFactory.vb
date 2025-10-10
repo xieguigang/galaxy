@@ -1,6 +1,6 @@
-﻿Imports WeifenLuo.WinFormsUI.Docking
+﻿Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2013
+Namespace ThemeVS2013
     Friend Class VS2013DockPaneSplitterControlFactory
         Implements DockPanelExtender.IDockPaneSplitterControlFactory
         Public Function CreateSplitterControl(pane As DockPane) As DockPane.SplitterControlBase Implements DockPanelExtender.IDockPaneSplitterControlFactory.CreateSplitterControl

@@ -1,8 +1,7 @@
 ﻿Imports System.ComponentModel
-Imports System.Drawing
-Imports WeifenLuo.WinFormsUI.Docking
+Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2012
+Namespace ThemeVS2012
     <ToolboxItem(False)>
     Public Class VS2012DockPaneCaptionInertButton
         Inherits InertButtonBase

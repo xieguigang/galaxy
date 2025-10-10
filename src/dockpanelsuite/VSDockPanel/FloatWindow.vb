@@ -1,8 +1,8 @@
-﻿Imports System
+﻿Imports System.Diagnostics.CodeAnalysis
 Imports System.Drawing
-Imports System.Windows.Forms
 Imports System.Security.Permissions
-Imports System.Diagnostics.CodeAnalysis
+Imports System.Windows.Forms
+Imports Microsoft.VisualStudio.WinForms.Win32
 
 Namespace Docking
     Public Class FloatWindow

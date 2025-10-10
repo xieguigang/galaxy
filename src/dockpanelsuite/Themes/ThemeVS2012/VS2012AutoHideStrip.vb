@@ -1,8 +1,8 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing.Drawing2D
-Imports WeifenLuo.WinFormsUI.Docking
+Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace ThemeVS2012
     <ToolboxItem(False)>
     Friend Class VS2012AutoHideStrip
         Inherits AutoHideStripBase

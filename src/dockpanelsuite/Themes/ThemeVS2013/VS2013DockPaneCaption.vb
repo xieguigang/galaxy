@@ -1,9 +1,9 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing.Drawing2D
-Imports ThemeVS2015.WeifenLuo.WinFormsUI.ThemeVS2012
-Imports WeifenLuo.WinFormsUI.Docking
+Imports Microsoft.VisualStudio.WinForms.Docking
+Imports ThemeVS2012
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace ThemeVS2013
 
     <ToolboxItem(False)>
     Friend Class VS2013DockPaneCaption

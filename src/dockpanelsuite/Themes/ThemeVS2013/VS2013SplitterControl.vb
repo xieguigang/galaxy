@@ -1,9 +1,7 @@
 ﻿Imports System.ComponentModel
-Imports System.Drawing
-Imports System.Windows.Forms
-Imports WeifenLuo.WinFormsUI.Docking
+Imports Microsoft.VisualStudio.WinForms.Docking
 
-Namespace WeifenLuo.WinFormsUI.ThemeVS2013
+Namespace ThemeVS2013
     <ToolboxItem(False)>
     Friend Class VS2013SplitterControl
         Inherits DockPane.SplitterControlBase
