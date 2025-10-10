@@ -11,7 +11,7 @@ Public Module CommonRuntime
     ''' set the opacity of the <see cref="MaskForm"/> when show the input dialog via <see cref="InputDialog.Input(Action(Of InputDialog), Action)"/>
     ''' </summary>
     ''' <returns></returns>
-    Public Property MaskOpacity As Integer = 0.5
+    Public Property MaskOpacity As Double = 0.5
 
     Public ReadOnly Property IsDevelopmentMode As Boolean = False
 
