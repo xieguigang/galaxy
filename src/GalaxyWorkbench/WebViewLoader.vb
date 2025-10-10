@@ -18,8 +18,7 @@ Public Module WebViewLoader
     ''' </summary>
     ''' <param name="WebView21"></param>
     ''' <param name="enableDevTool"></param>
-    ''' <param name="tabText"></param>
-    Public Async Sub Init(WebView21 As WebView2, Optional enableDevTool As Boolean = False, Optional tabText As String = "WebKit")
+    Public Async Function Init(WebView21 As WebView2, Optional enableDevTool As Boolean = False) As Task
         Dim userDataFolder = (App.ProductProgramData & "/.webView2_cache/").GetDirectoryFullPath
         Dim env = Await CoreWebView2Environment.CreateAsync(Nothing, userDataFolder)
 
@@ -28,9 +27,7 @@ Public Module WebViewLoader
         End If
 
         Await WebView21.EnsureCoreWebView2Async(env)
-
-        Call DeveloperOptions(WebView21, enableDevTool, tabText)
-    End Sub
+    End Function
 
     Private Sub Wait()
 
