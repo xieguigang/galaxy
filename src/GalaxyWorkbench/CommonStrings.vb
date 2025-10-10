@@ -1,10 +1,11 @@
 ﻿Imports System.Globalization
+Imports System.Resources
 Imports System.Runtime.CompilerServices
 
 ''' <summary>
 ''' Common string resource in different culture and language
 ''' </summary>
-Module CommonStrings
+Public Module CommonStrings
 
     ReadOnly languages As String() = {"zh", "en"}
 
@@ -27,16 +28,21 @@ Module CommonStrings
     ''' </summary>
     ''' <param name="key"></param>
     ''' <returns></returns>
-    Public Function GetString(key As String) As String
+    Public Function GetString(key As String, Optional res As ResourceManager = Nothing) As String
         Dim lang As String = language
         Dim key_lang As String = If(lang Is Nothing, key, $"{key}_{lang}")
-        Dim str As String = My.Resources.ResourceManager.GetString(key_lang)
+        Dim str As String = If(res, My.Resources.ResourceManager).GetString(key_lang)
 
         If str Is Nothing Then
-            str = My.Resources.ResourceManager.GetString(key)
+            str = If(res, My.Resources.ResourceManager).GetString(key)
         End If
 
         Return str
+    End Function
+
+    <Extension>
+    Public Function GetStringValue(res As ResourceManager, key As String, ParamArray args As Object()) As String
+        Return String.Format(GetString(key, res), args)
     End Function
 
     ''' <summary>
