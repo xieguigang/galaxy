@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{663F95BF-9552-4F3C-A7FE-6074A774BAF4}</ProjectGuid>
+    <ProjectGuid>{9DB933F4-CDBB-45AE-BEF9-69BA6E96A555}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>test.My.MyApplication</StartupObject>
-    <RootNamespace>test</RootNamespace>
-    <AssemblyName>test</AssemblyName>
+    <StartupObject>ExcelPad.My.MyApplication</StartupObject>
+    <RootNamespace>ExcelPad</RootNamespace>
+    <AssemblyName>ExcelPad</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -22,7 +22,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>test.xml</DocumentationFile>
+    <DocumentationFile>ExcelPad.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -32,7 +32,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>test.xml</DocumentationFile>
+    <DocumentationFile>ExcelPad.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -52,7 +52,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x64\Debug\</OutputPath>
-    <DocumentationFile>test.xml</DocumentationFile>
+    <DocumentationFile>ExcelPad.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -61,7 +61,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x64\Release\</OutputPath>
-    <DocumentationFile>test.xml</DocumentationFile>
+    <DocumentationFile>ExcelPad.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <DebugType>pdbonly</DebugType>
@@ -94,23 +94,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="FormMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.vb">
-      <DependentUpon>Form2.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form2.vb">
+    <Compile Include="FormMain.Designer.vb">
+      <DependentUpon>FormMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -124,11 +119,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.vb</DependentUpon>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -150,25 +142,49 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj">
+      <Project>{f5171153-aee8-69b3-0273-1d621019ec9b}</Project>
+      <Name>dataframework-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
       <Project>{396ccd83-4b4e-84cb-6056-022317fd64be}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25json\JSON-netcore5.vbproj">
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25json\JSON-netcore5.vbproj">
       <Project>{be4a2ea0-c600-fce9-d542-79b9a0d68583}</Project>
       <Name>JSON-netcore5</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\GalaxyWorkbench\GalaxyWorkbench.vbproj">
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25vnd.openxmlformats-officedocument.spreadsheetml.sheet\Excel\xlsx-netcore5.vbproj">
+      <Project>{24b4fa10-e11e-681b-fd20-1997ab445229}</Project>
+      <Name>xlsx-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\vs_solutions\dev\VisualStudio\VisualStudio.NET5.vbproj">
+      <Project>{d98c3f2e-4a2c-f032-cecb-51bcfcc6a97c}</Project>
+      <Name>VisualStudio.NET5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dockpanelsuite\Themes\ThemeVS2015.vbproj">
+      <Project>{900306bb-63ba-4f02-a09a-b8d5929255e0}</Project>
+      <Name>ThemeVS2015</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dockpanelsuite\VSDockPanel\VSDockPanel.vbproj">
+      <Project>{e995b23d-c752-21cb-575b-0b812fc3727a}</Project>
+      <Name>VSDockPanel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GalaxyData\GalaxyData.vbproj">
+      <Project>{87d65add-fe86-4239-af7e-a37410354a0c}</Project>
+      <Name>GalaxyData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GalaxyForm\GalaxyForm.vbproj">
+      <Project>{a984cd4b-b40d-4389-961f-c9136d13c50f}</Project>
+      <Name>GalaxyForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GalaxyWorkbench\GalaxyWorkbench.vbproj">
       <Project>{ec84cbb4-8e2d-48ea-9e6c-3d7cf0bbb452}</Project>
       <Name>GalaxyWorkbench</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj">
+    <ProjectReference Include="..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj">
       <Project>{3d61f3a9-a8e0-4195-9133-6fd8e4b82d54}</Project>
       <Name>Microsoft.Windows.FeatureAPI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GalaxyData.vbproj">
-      <Project>{87d65add-fe86-4239-af7e-a37410354a0c}</Project>
-      <Name>GalaxyData</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
