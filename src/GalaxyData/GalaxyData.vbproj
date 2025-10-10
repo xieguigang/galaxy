@@ -187,16 +187,20 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj">
-      <Project>{7e80287c-223f-41d7-a1a2-8c3d8e07bf7e}</Project>
+      <Project>{02e9ba6a-35e1-431f-bb47-0553757af6b9}</Project>
       <Name>dataframework-netcore5</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
-      <Project>{396ccd83-4b4e-84cb-6056-022317fd64be}</Project>
+      <Project>{dee82853-4241-4f24-a096-12923c664369}</Project>
       <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25json\JSON-netcore5.vbproj">
-      <Project>{be4a2ea0-c600-fce9-d542-79b9a0d68583}</Project>
+      <Project>{e907b484-44f0-41f6-97c7-297451fa05ee}</Project>
       <Name>JSON-netcore5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%25vnd.openxmlformats-officedocument.spreadsheetml.sheet\Excel\xlsx-netcore5.vbproj">
+      <Project>{bc2399de-b852-4ee0-9596-d27e5afb827b}</Project>
+      <Name>xlsx-netcore5</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

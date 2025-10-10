@@ -142,6 +142,12 @@
   <data name="ColumnHeader_UnFiltered" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ColumnHeader_UnFiltered.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="export_table" xml:space="preserve">
+    <value>Export Table Data</value>
+  </data>
+  <data name="export_table_zh" xml:space="preserve">
+    <value>导出表格数据</value>
+  </data>
   <data name="MenuStrip_OrderASCbool" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MenuStrip_OrderASCbool.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

@@ -141,6 +141,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Export Table Data.
+        '''</summary>
+        Friend ReadOnly Property export_table() As String
+            Get
+                Return ResourceManager.GetString("export_table", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 导出表格数据.
+        '''</summary>
+        Friend ReadOnly Property export_table_zh() As String
+            Get
+                Return ResourceManager.GetString("export_table_zh", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property MenuStrip_OrderASCbool() As System.Drawing.Bitmap
