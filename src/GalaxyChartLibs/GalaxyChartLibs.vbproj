@@ -91,6 +91,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorScaler.Designer.vb">
+      <DependentUpon>ColorScaler.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ColorScaler.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="CommonDialogs\InputSelectColorMap.Designer.vb">
       <DependentUpon>InputSelectColorMap.vb</DependentUpon>
     </Compile>
@@ -115,6 +121,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ColorScaler.resx">
+      <DependentUpon>ColorScaler.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorScaler.zh-CN.resx">
+      <DependentUpon>ColorScaler.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CommonDialogs\InputSelectColorMap.resx">
       <DependentUpon>InputSelectColorMap.vb</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +155,10 @@
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj">
       <Project>{eb3dd1ee-71a4-4d85-b494-ef075ad99098}</Project>
       <Name>Math.NET5</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Visualization\Plots\plots-netcore5.vbproj">
+      <Project>{5886614d-8d70-41e7-9795-afd0effb4e38}</Project>
+      <Name>plots-netcore5</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Drawing-net4.8\Drawing-net4.8.vbproj">
       <Project>{7dbc1001-4490-46ec-b405-3b9230f99507}</Project>
