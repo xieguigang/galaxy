@@ -96,9 +96,14 @@ Namespace Docking
             'mask.UnlockBits(bitsMask);
             'input.UnlockBits(bitsInput);
             'output.UnlockBits(bitsOutput);
-            bitsMask.Dispose()
-            bitsInput.Dispose()
-            bitsOutput.Dispose()
+            bitsMask.Write()
+            bitsInput.Write()
+            bitsOutput.Write()
+
+            mask.UnlockBits(DirectCast(bitsMask.GetHandleObject, BitmapData))
+            input.UnlockBits(DirectCast(bitsInput.GetHandleObject, BitmapData))
+            output.UnlockBits(DirectCast(bitsOutput.GetHandleObject, BitmapData))
+
             input.Dispose()
 
             If border Is Nothing Then
