@@ -1,4 +1,6 @@
-﻿Imports Microsoft.VisualStudio.WinForms.Docking
+﻿Imports System.Drawing
+Imports System.Windows.Forms
+Imports Microsoft.VisualStudio.WinForms.Docking
 Imports ThemeVS2015
 
 Public Class FormMain
