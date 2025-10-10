@@ -303,6 +303,10 @@ Namespace Docking
             DockHandler.Show(dockPanel)
         End Sub
 
+        Public Overloads Sub Show(handle As Control)
+            DockHandler.Show(DirectCast(handle, DockPanel))
+        End Sub
+
         Public Overloads Sub Show(dockPanel As DockPanel, dockState As DockState)
             DockHandler.Show(dockPanel, dockState)
         End Sub
