@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{900306BB-63BA-4F02-A09A-B8D5929255E0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ThemeVS2015</RootNamespace>
+    <AssemblyName>ThemeVS2015</AssemblyName>
+    <RuntimeIdentifiers>win</RuntimeIdentifiers>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ThemeVS2015.xml</DocumentationFile>
+    <DefineConstants>_MYFORMS=True</DefineConstants>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ThemeVS2015.xml</DocumentationFile>
+    <DefineConstants>_MYFORMS=True</DefineConstants>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ThemeVS2012\ImageService.vb" />
+    <Compile Include="ThemeVS2012\PaintingService.vb" />
+    <Compile Include="ThemeVS2012\VS2012AutoHideStrip.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2012\VS2012AutoHideStripFactory.vb" />
+    <Compile Include="ThemeVS2012\VS2012AutoHideWindowControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2012\VS2012AutoHideWindowFactory.vb" />
+    <Compile Include="ThemeVS2012\VS2012DockIndicatorFactory.vb" />
+    <Compile Include="ThemeVS2012\VS2012DockOutlineFactory.vb" />
+    <Compile Include="ThemeVS2012\VS2012DockPaneCaptionInertButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2012\VS2012DockWindow.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2012\VS2012DockWindowFactory.vb" />
+    <Compile Include="ThemeVS2012\VS2012PaletteFactory.vb" />
+    <Compile Include="ThemeVS2012\VS2012PaneIndicatorFactory.vb" />
+    <Compile Include="ThemeVS2012\VS2012PanelIndicatorFactory.vb" />
+    <Compile Include="ThemeVS2012\VS2012WindowSplitterControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2013\VS2013DockPane.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2013\VS2013DockPaneCaption.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2013\VS2013DockPaneCaptionFactory.vb" />
+    <Compile Include="ThemeVS2013\VS2013DockPaneFactory.vb" />
+    <Compile Include="ThemeVS2013\VS2013DockPaneSplitterControlFactory.vb" />
+    <Compile Include="ThemeVS2013\VS2013DockPaneStrip.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2013\VS2013DockPaneStripFactory.vb" />
+    <Compile Include="ThemeVS2013\VS2013SplitterControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2013\VS2013WindowSplitterControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2013\VS2013WindowSplitterControlFactory.vb" />
+    <Compile Include="ThemeVS2015\VS2015BlueTheme.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2015\VS2015DarkTheme.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2015\VS2015LightTheme.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2015\VS2015ThemeBase.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ThemeVS2015\Resources\vs2015blue.vstheme.gz" />
+    <None Include="ThemeVS2015\Resources\vs2015dark.vstheme.gz" />
+    <None Include="ThemeVS2015\Resources\vs2015light.vstheme.gz" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\Dockindicator_PaneDiamond_Hotspot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\DockIndicator_PaneDiamond_HotspotIndex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskArrowBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskArrowLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskArrowRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskArrowTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskCoreBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskCoreCenter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskCoreLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskCoreRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskCoreTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskDock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskDockFive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskTabClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskTabList.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskTabOverflow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskToolWindowAutoHide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskToolWindowClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskToolWindowDock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskToolWindowOption.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskWindowBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskWindowCenter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskWindowLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskWindowRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThemeVS2012\Resources\MaskWindowTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
+      <Project>{896a1df9-bf52-17c7-d41c-f7730e5b1968}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\1\WinFormsUI.vbproj">
+      <Project>{725a9a6d-2ef5-2e31-a4d3-a7fad8f83bc8}</Project>
+      <Name>WinFormsUI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

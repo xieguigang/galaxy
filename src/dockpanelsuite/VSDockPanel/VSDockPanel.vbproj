@@ -1,0 +1,205 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+    <PackageId>DockPanelSuite</PackageId>
+    <PackageVersion>3.1.1</PackageVersion>
+    <FileVersion>3.1.1.0</FileVersion>
+    <Authors>Weifen Luo and other contributors</Authors>
+    <Description>The docking library for .Net Windows Forms development which mimics Visual Studio .Net.</Description>
+    <Copyright>(C) 2007-2020 Weifen Luo and other contributors</Copyright>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>http://dockpanelsuite.com</PackageProjectUrl>
+    <PackageReleaseNotes>Release notes can be found at GitHub: https://github.com/dockpanelsuite/dockpanelsuite/releases
+
+Visual Studio 2003 Theme: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2003/
+Visual Studio 2005 Theme: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2005/
+Visual Studio 2012 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2012/
+Visual Studio 2013 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2013/
+Visual Studio 2015 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2015/</PackageReleaseNotes>
+    <TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>.My.MyApplication</StartupObject>
+    <RootNamespace>Microsoft.VisualStudio.WinForms</RootNamespace>
+    <AssemblyName>Microsoft.VisualStudio.Windows.Form</AssemblyName>
+    <SignAssembly>False</SignAssembly>
+    <AssemblyOriginatorKeyFile>dockpanelsuite.snk</AssemblyOriginatorKeyFile>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+    <Platforms>AnyCPU;x64</Platforms>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(ProjectDir)**\*.cs</DefaultItemExcludes>
+    <MyType>WindowsForms</MyType>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <OptionStrict>Off</OptionStrict>
+    <IncludeSymbols>True</IncludeSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows|AnyCPU'">
+    <DebugType>full</DebugType>
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows|x64'">
+    <DebugType>full</DebugType>
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
+    <DebugType>full</DebugType>
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|x64'">
+    <DebugType>full</DebugType>
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows|AnyCPU'">
+    <DebugType>full</DebugType>
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows|x64'">
+    <DebugType>full</DebugType>
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net48|AnyCPU'">
+    <DebugType>full</DebugType>
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net48|x64'">
+    <DebugType>full</DebugType>
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DefaultTheme.vb" />
+    <Compile Include="DockPanel.SplitterDragHandler.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DockPanel.DragHandler.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DockPanelColorPalette.vb" />
+    <Compile Include="DragForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockPanel.MdiClientController.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AutoHideStripBase.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DrawingRoutines.vb" />
+    <Compile Include="IImageService.vb" />
+    <Compile Include="InertButtonBase.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DockPanelSkin.vb"></Compile>
+    <Compile Include="IPaintingService.vb" />
+    <Compile Include="LayoutUtils.vb" />
+    <Compile Include="PatchController.vb" />
+    <Compile Include="ThemeBase.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VisualStudioColorTable.vb" />
+    <Compile Include="DockPanel.AutoHideWindow.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VisibleNestedPaneCollection.vb" />
+    <Compile Include="DockAreasEditor.vb" />
+    <Compile Include="DockContent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockContentCollection.vb" />
+    <Compile Include="DockContentHandler.vb" />
+    <Compile Include="DockPanel.DockDragHandler.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helpers\DockHelper.vb" />
+    <Compile Include="NestedPaneCollection.vb" />
+    <Compile Include="DockOutlineBase.vb" />
+    <Compile Include="DockPane.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DockPaneCaptionBase.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DockPaneCollection.vb" />
+    <Compile Include="DockPanel.vb" />
+    <Compile Include="DockPanelExtender.vb" />
+    <Compile Include="DockPanel.Persistor.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DockPane.SplitterControl.vb" />
+    <Compile Include="DockPaneStripBase.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DockWindow.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DockWindowCollection.vb" />
+    <Compile Include="DummyControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Enums.vb" />
+    <Compile Include="DockContentEventArgs.vb" />
+    <Compile Include="FloatWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FloatWindowCollection.vb" />
+    <Compile Include="DockPanel.FocusManager.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Interfaces.vb" />
+    <Compile Include="Measures.vb" />
+    <Compile Include="NestedDockingStatus.vb" />
+    <Compile Include="SplitterBase.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helpers\DrawHelper.vb" />
+    <Compile Include="Localization.vb" />
+    <Compile Include="Helpers\ResourceHelper.vb" />
+    <Compile Include="Helpers\Win32Helper.vb" />
+    <Compile Include="VisualStudioToolStripRenderer.vb" />
+    <Compile Include="VisualStudioToolStripExtender.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VisualStudioToolStripExtender.Designer.vb">
+      <DependentUpon>VisualStudioToolStripExtender.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.vb" />
+    <Compile Include="Strings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Win32\Enums.vb" />
+    <Compile Include="Win32\NativeMethods.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Strings.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DockPanel.Appearance.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dockpanelsuite.snk" />
+    <None Include="license.txt" />
+    <None Include="My Project\Application.myapp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DockPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net40' OR '$(TargetFramework)' == 'net35'">
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+  </ItemGroup>
+</Project>
