@@ -2,6 +2,7 @@
 Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports Microsoft.VisualBasic.Data.Framework.IO
+Imports Microsoft.VisualBasic.MIME.Office.Excel.XLSX.Writer
 Imports Microsoft.VisualBasic.Text
 Imports any = Microsoft.VisualBasic.Scripting
 
@@ -121,5 +122,49 @@ Public Module TableHelper
         End If
 
         Call writeTsv.Flush()
+    End Sub
+
+    ''' <summary>
+    ''' save data grid as excel table file
+    ''' </summary>
+    ''' <param name="table"></param>
+    ''' <param name="title">
+    ''' ``%s`` is the place holder for file name
+    ''' </param>
+    <Extension>
+    Public Sub SaveDataGrid(table As DataGridView, title$)
+        Using file As New SaveFileDialog With {
+            .Filter = "Microsoft Excel Table(*.xls;*.xlsx)|*.xls;*.xlsx|Comma data sheet(*.csv)|*.csv",
+            .Title = $"Save Table File({title})"
+        }
+            If file.ShowDialog = DialogResult.OK Then
+                If file.FileName.ExtensionSuffix("xlsx") Then
+                    Dim df As DataFrameResolver = table.GetDataFrame()
+                    Dim book As New Workbook("Sheet1")
+                    Dim sheet = book.CurrentWorksheet
+
+                    For Each col As String In df.HeadTitles
+                        Call sheet.AddNextCell(col)
+                    Next
+
+                    Call sheet.GoToNextRow()
+
+                    For Each row As RowObject In df.Rows
+                        For Each cell As String In row
+                            Call sheet.AddNextCell(cell)
+                        Next
+
+                        Call sheet.GoToNextRow()
+                    Next
+
+                    Call book.SaveAs(file.FileName)
+                Else
+                    Using writeTsv As StreamWriter = file.FileName.OpenWriter(encoding:=Encodings.GB2312)
+                        Call table.WriteTableToFile(writeTsv, sep:=If(file.FileName.ExtensionSuffix("csv"), ","c, ASCII.TAB))
+                        Call MessageBox.Show(title.Replace("%s", file.FileName), "Export Table", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End Using
+                End If
+            End If
+        End Using
     End Sub
 End Module
