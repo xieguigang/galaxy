@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public NotInheritable Class NestedDockingStatus
         Friend Sub New(pane As DockPane)
             m_dockPane = pane

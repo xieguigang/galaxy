@@ -2,7 +2,7 @@
 Imports System.Drawing
 Imports System.ComponentModel
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     ''' <summary>
     ''' Dock window base class.
     ''' </summary>

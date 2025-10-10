@@ -4,7 +4,7 @@ Imports System.Windows.Forms
 Imports System.ComponentModel
 Imports System.ComponentModel.Design
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Partial Class DockPanel
         '  This class comes from Jacob Slusser's MdiClientController class:
         '  http://www.codeproject.com/cs/miscctrl/mdiclientcontroller.asp

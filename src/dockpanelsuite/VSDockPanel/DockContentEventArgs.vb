@@ -1,6 +1,6 @@
 ﻿Imports System
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Class DockContentEventArgs
         Inherits EventArgs
         Private m_content As IDockContent

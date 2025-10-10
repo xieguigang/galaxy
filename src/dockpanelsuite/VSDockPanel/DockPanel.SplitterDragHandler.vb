@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Partial Class DockPanel
         Private NotInheritable Class SplitterDragHandler
             Inherits DragHandler

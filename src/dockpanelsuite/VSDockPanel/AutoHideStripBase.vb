@@ -6,7 +6,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Collections.Generic
 Imports System.Diagnostics.CodeAnalysis
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public MustInherit Class AutoHideStripBase
         Inherits Control
 
@@ -199,10 +199,10 @@ Namespace WeifenLuo.WinFormsUI.Docking
             Friend Sub New(panel As DockPanel, dockState As DockState)
                 m_dockPanel = panel
                 m_states = New AutoHideStateCollection()
-                States(DockState.DockTopAutoHide).Selected = dockState = DockState.DockTopAutoHide
-                States(DockState.DockBottomAutoHide).Selected = dockState = DockState.DockBottomAutoHide
-                States(DockState.DockLeftAutoHide).Selected = dockState = DockState.DockLeftAutoHide
-                States(DockState.DockRightAutoHide).Selected = dockState = DockState.DockRightAutoHide
+                States(dockState.DockTopAutoHide).Selected = dockState = dockState.DockTopAutoHide
+                States(dockState.DockBottomAutoHide).Selected = dockState = dockState.DockBottomAutoHide
+                States(dockState.DockLeftAutoHide).Selected = dockState = dockState.DockLeftAutoHide
+                States(dockState.DockRightAutoHide).Selected = dockState = dockState.DockRightAutoHide
             End Sub
 
             Private m_dockPanel As DockPanel
@@ -339,13 +339,13 @@ Namespace WeifenLuo.WinFormsUI.Docking
         End Property
 
         Protected Function GetPanes(dockState As DockState) As PaneCollection
-            If dockState = DockState.DockTopAutoHide Then
+            If dockState = dockState.DockTopAutoHide Then
                 Return PanesTop
-            ElseIf dockState = DockState.DockBottomAutoHide Then
+            ElseIf dockState = dockState.DockBottomAutoHide Then
                 Return PanesBottom
-            ElseIf dockState = DockState.DockLeftAutoHide Then
+            ElseIf dockState = dockState.DockLeftAutoHide Then
                 Return PanesLeft
-            ElseIf dockState = DockState.DockRightAutoHide Then
+            ElseIf dockState = dockState.DockRightAutoHide Then
                 Return PanesRight
             Else
                 Throw New ArgumentOutOfRangeException(NameOf(dockState))
@@ -418,13 +418,13 @@ Namespace WeifenLuo.WinFormsUI.Docking
         ''' the four strips can be easily calculated out as the borders.
         ''' </remarks>
         Protected Friend Function GetTabStripRectangle(dockState As DockState) As Rectangle
-            If dockState = DockState.DockTopAutoHide Then Return New Rectangle(RectangleTopLeft.Width, 0, Width - RectangleTopLeft.Width - RectangleTopRight.Width, RectangleTopLeft.Height)
+            If dockState = dockState.DockTopAutoHide Then Return New Rectangle(RectangleTopLeft.Width, 0, Width - RectangleTopLeft.Width - RectangleTopRight.Width, RectangleTopLeft.Height)
 
-            If dockState = DockState.DockBottomAutoHide Then Return New Rectangle(RectangleBottomLeft.Width, Height - RectangleBottomLeft.Height, Width - RectangleBottomLeft.Width - RectangleBottomRight.Width, RectangleBottomLeft.Height)
+            If dockState = dockState.DockBottomAutoHide Then Return New Rectangle(RectangleBottomLeft.Width, Height - RectangleBottomLeft.Height, Width - RectangleBottomLeft.Width - RectangleBottomRight.Width, RectangleBottomLeft.Height)
 
-            If dockState = DockState.DockLeftAutoHide Then Return New Rectangle(0, RectangleTopLeft.Height, RectangleTopLeft.Width, Height - RectangleTopLeft.Height - RectangleBottomLeft.Height)
+            If dockState = dockState.DockLeftAutoHide Then Return New Rectangle(0, RectangleTopLeft.Height, RectangleTopLeft.Width, Height - RectangleTopLeft.Height - RectangleBottomLeft.Height)
 
-            If dockState = DockState.DockRightAutoHide Then Return New Rectangle(Width - RectangleTopRight.Width, RectangleTopRight.Height, RectangleTopRight.Width, Height - RectangleTopRight.Height - RectangleBottomRight.Height)
+            If dockState = dockState.DockRightAutoHide Then Return New Rectangle(Width - RectangleTopRight.Width, RectangleTopRight.Height, RectangleTopRight.Width, Height - RectangleTopRight.Height - RectangleBottomRight.Height)
 
             Return Rectangle.Empty
         End Function

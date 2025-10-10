@@ -2,7 +2,7 @@
 Imports System.Drawing.Drawing2D
 Imports System.Runtime.CompilerServices
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Module DrawingRoutines
         <Extension()>
         Public Sub SafelyDrawLinearGradient(rectangle As Rectangle, startColor As Color, endColor As Color, mode As LinearGradientMode, graphics As Graphics, Optional blend As Blend = Nothing)

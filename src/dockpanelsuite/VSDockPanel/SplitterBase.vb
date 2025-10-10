@@ -2,7 +2,7 @@
 Imports System.Drawing
 Imports System.Windows.Forms
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     <ToolboxItem(False)>
     Public Class SplitterBase
         Inherits Control

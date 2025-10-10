@@ -1,7 +1,7 @@
 ﻿Imports System.Drawing
 Imports System.Windows.Forms
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Class VisualStudioColorTable
         Inherits ProfessionalColorTable
         Private _palette As DockPanelColorPalette

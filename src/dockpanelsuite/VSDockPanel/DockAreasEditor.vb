@@ -5,7 +5,7 @@ Imports System.Drawing.Design
 Imports System.Windows.Forms
 Imports System.Windows.Forms.Design
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Friend Class DockAreasEditor
         Inherits UITypeEditor
         Private Class DockAreasEditorControl

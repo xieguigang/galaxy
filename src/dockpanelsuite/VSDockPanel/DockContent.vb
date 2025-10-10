@@ -4,7 +4,7 @@ Imports System.Drawing
 Imports System.Windows.Forms
 Imports System.Diagnostics.CodeAnalysis
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Class DockContent
         Inherits Form
         Implements IDockContent

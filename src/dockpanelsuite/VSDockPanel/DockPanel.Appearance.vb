@@ -1,7 +1,7 @@
 ﻿Imports System
 Imports System.ComponentModel
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
 
     Public Partial Class DockPanel
         <LocalizedCategory("Category_Docking")>

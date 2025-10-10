@@ -2,7 +2,7 @@
 Imports System.Drawing
 Imports System.Windows.Forms
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Interface IDockContent
         Inherits IContextMenuStripHost
         ReadOnly Property DockHandler As DockContentHandler

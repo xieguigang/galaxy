@@ -1,4 +1,4 @@
-﻿Namespace WeifenLuo.WinFormsUI.Docking
+﻿Namespace Docking
     Public Class Measures
         Public SplitterSize As Integer = 4
         Public AutoHideSplitterSize As Integer = 4

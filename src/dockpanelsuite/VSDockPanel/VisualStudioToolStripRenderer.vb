@@ -4,7 +4,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.Windows.Forms
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Class VisualStudioToolStripRenderer
         Inherits ToolStripProfessionalRenderer
         Private Shared baseSizeGripRectangles As Rectangle() = {New Rectangle(6, 0, 1, 1), New Rectangle(6, 2, 1, 1), New Rectangle(6, 4, 1, 1), New Rectangle(6, 6, 1, 1), New Rectangle(4, 2, 1, 1), New Rectangle(4, 4, 1, 1), New Rectangle(4, 6, 1, 1), New Rectangle(2, 4, 1, 1), New Rectangle(2, 6, 1, 1), New Rectangle(0, 6, 1, 1)}

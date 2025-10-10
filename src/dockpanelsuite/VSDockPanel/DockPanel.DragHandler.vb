@@ -1,7 +1,7 @@
 ﻿Imports System.Windows.Forms
 Imports System.Drawing
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Partial Class DockPanel
         ''' <summary>
         ''' DragHandlerBase is the base class for drag handlers. The derived class should:

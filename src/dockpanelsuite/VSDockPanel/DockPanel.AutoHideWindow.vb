@@ -3,7 +3,7 @@ Imports System.Windows.Forms
 Imports System.Drawing
 Imports System.ComponentModel
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Partial Class DockPanel
         <ToolboxItem(False)>
         Public Class AutoHideWindowControl

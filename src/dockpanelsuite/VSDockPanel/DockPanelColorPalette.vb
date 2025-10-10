@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Class DockPanelColorPalette
         Public Sub New(factory As IPaletteFactory)
             factory.Initialize(Me)

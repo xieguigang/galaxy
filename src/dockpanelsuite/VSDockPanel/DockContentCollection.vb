@@ -2,7 +2,7 @@
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Class DockContentCollection
         Inherits ReadOnlyCollection(Of IDockContent)
         Private Shared _emptyList As List(Of IDockContent) = New List(Of IDockContent)(0)

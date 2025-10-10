@@ -7,7 +7,7 @@ Imports System.Collections.Generic
 Imports System.Security.Permissions
 Imports System.Diagnostics.CodeAnalysis
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public MustInherit Class DockPaneStripBase
         Inherits Control
         <SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")>

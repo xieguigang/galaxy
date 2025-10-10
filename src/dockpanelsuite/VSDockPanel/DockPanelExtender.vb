@@ -4,7 +4,7 @@ Imports System.Windows.Forms
 Imports WeifenLuo.WinFormsUI.Docking.DockPanel
 Imports WeifenLuo.WinFormsUI.Docking.DockPanel.DockDragHandler
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public NotInheritable Class DockPanelExtender
         <SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")>
         Public Interface IDockPaneFactory

@@ -4,7 +4,7 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Globalization
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
 #Region "DockPanelSkin classes"
     ''' <summary>
     ''' The skin to use when displaying the DockPanel.

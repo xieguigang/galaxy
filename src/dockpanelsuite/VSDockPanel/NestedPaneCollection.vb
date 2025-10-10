@@ -2,7 +2,7 @@
 Imports System.Collections.ObjectModel
 Imports System.Drawing
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public NotInheritable Class NestedPaneCollection
         Inherits ReadOnlyCollection(Of DockPane)
         Private m_container As INestedPanesContainer

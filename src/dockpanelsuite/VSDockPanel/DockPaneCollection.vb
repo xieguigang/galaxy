@@ -1,7 +1,7 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.Collections.Generic
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Class DockPaneCollection
         Inherits ReadOnlyCollection(Of DockPane)
         Friend Sub New()

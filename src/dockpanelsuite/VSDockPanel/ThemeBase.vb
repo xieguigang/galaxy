@@ -8,7 +8,7 @@ Imports System.Linq
 Imports System.Windows.Forms
 Imports Microsoft.VisualBasic.Language
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public MustInherit Class ThemeBase
         Inherits Component
 

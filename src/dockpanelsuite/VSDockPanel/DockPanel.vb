@@ -13,7 +13,7 @@ Imports System.Collections.Generic
 Friend Class resfinder
 End Class
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     ''' <summary>
     ''' Deserialization handler of layout file/stream.
     ''' </summary>

@@ -1,7 +1,7 @@
 ﻿Imports System
 Imports System.ComponentModel
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     <Flags>
     <Serializable>
     <Editor(GetType(DockAreasEditor), GetType(Drawing.Design.UITypeEditor))>

@@ -3,7 +3,7 @@ Imports System.Windows.Forms
 Imports System.ComponentModel
 Imports System.Collections.Generic
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     <ProvideProperty("EnableVSStyle", GetType(ToolStrip))>
     Public Partial Class VisualStudioToolStripExtender
         Inherits Component

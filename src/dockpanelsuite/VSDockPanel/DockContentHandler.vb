@@ -4,7 +4,7 @@ Imports System.Drawing
 Imports System.ComponentModel
 Imports System.Diagnostics.CodeAnalysis
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Delegate Function GetPersistStringCallback() As String
 
     Public Class DockContentHandler

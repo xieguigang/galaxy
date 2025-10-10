@@ -7,7 +7,7 @@ Imports System.Xml
 Imports System.Globalization
 Imports System.Windows.Forms
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Partial Class DockPanel
         Private NotInheritable Class Persistor
             Private Const ConfigFileVersion As String = "1.0"

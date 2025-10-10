@@ -2,7 +2,7 @@
 Imports System.Drawing.Drawing2D
 Imports System.Windows.Forms
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Friend Class DefaultTheme
         Inherits ThemeBase
         Friend Sub New()

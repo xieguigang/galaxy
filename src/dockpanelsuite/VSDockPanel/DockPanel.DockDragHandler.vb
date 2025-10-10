@@ -2,7 +2,7 @@
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Partial Class DockPanel
 #Region "IHitTest"
         Public Interface IHitTest

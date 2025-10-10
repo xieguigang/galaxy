@@ -1,7 +1,7 @@
 ﻿Imports Microsoft.Win32
 Imports System
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Module PatchController
         Private _EnableAll As Boolean?
 

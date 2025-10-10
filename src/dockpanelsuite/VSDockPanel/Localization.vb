@@ -1,7 +1,7 @@
 ﻿Imports System
 Imports System.ComponentModel
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     <AttributeUsage(AttributeTargets.All)>
     Friend NotInheritable Class LocalizedDescriptionAttribute
         Inherits DescriptionAttribute

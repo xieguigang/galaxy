@@ -3,7 +3,7 @@ Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports System.Drawing
 Imports System.Drawing.Imaging
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public Interface IImageService
         ReadOnly Property Dockindicator_PaneDiamond As Bitmap
         ReadOnly Property Dockindicator_PaneDiamond_Fill As Bitmap

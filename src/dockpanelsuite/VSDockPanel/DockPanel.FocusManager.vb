@@ -5,7 +5,7 @@ Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
 Imports System.Diagnostics.CodeAnalysis
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Friend Interface IContentFocusManager
         Sub Activate(content As IDockContent)
         Sub GiveUpFocus(content As IDockContent)

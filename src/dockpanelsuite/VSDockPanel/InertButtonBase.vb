@@ -3,7 +3,7 @@ Imports System.Windows.Forms
 Imports System.Drawing
 Imports System.Drawing.Imaging
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public MustInherit Class InertButtonBase
         Inherits Control
         Protected Sub New()

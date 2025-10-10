@@ -2,7 +2,7 @@
 Imports System.Security.Permissions
 Imports System.Windows.Forms
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     Public MustInherit Class DockPaneCaptionBase
         Inherits Control
         Protected Friend Sub New(pane As DockPane)

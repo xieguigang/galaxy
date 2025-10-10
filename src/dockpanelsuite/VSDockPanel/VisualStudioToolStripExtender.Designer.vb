@@ -1,4 +1,4 @@
-﻿Namespace WeifenLuo.WinFormsUI.Docking
+﻿Namespace Docking
     Partial Class VisualStudioToolStripExtender
         ''' <summary>
         ''' Required designer variable.

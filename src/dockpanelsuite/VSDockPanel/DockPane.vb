@@ -5,7 +5,7 @@ Imports System.Windows.Forms
 Imports System.Security.Permissions
 Imports System.Diagnostics.CodeAnalysis
 
-Namespace WeifenLuo.WinFormsUI.Docking
+Namespace Docking
     <ToolboxItem(False)>
     Public Partial Class DockPane
         Inherits UserControl
