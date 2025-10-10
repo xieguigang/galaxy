@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.Emit.Marshal
+﻿Imports Microsoft.VisualBasic.Drawing
+Imports Microsoft.VisualBasic.Emit.Marshal
 Imports Microsoft.VisualBasic.Imaging.BitmapImage
 Imports System.Drawing
 Imports System.Drawing.Imaging
@@ -69,9 +70,9 @@ Namespace Docking
 
             Dim output As Bitmap = New Bitmap(input.Width, input.Height, PixelFormat.Format32bppArgb)
             Dim rect = New Rectangle(0, 0, input.Width, input.Height)
-            Dim bitsMask = BitmapBuffer.FromBitmap(bitmap32bit(mask))
-            Dim bitsInput = BitmapBuffer.FromImage(bitmap32bit(input))
-            Dim bitsOutput = BitmapBuffer.FromBitmap(output)
+            Dim bitsMask = bitmap32bit(mask).CreateBuffer
+            Dim bitsInput = bitmap32bit(input).CreateBuffer
+            Dim bitsOutput = output.CreateBuffer
             Dim maskBuf = bitsMask.RawBuffer
             Dim inputBuf = bitsInput.RawBuffer
             Dim outputBuf = bitsOutput.RawBuffer
@@ -201,9 +202,9 @@ Namespace Docking
             Dim height = input.Height
             Dim rect = New Rectangle(0, 0, width, height)
             Dim arrowOut = New Bitmap(width, height, PixelFormat.Format32bppArgb)
-            Dim bitsMask = BitmapBuffer.FromBitmap(bitmap32bit(maskArrow))
-            Dim bitsInput = BitmapBuffer.FromBitmap(bitmap32bit(input))
-            Dim bitsOutput = BitmapBuffer.FromBitmap(arrowOut)
+            Dim bitsMask As BitmapBuffer = bitmap32bit(maskArrow).CreateBuffer
+            Dim bitsInput As BitmapBuffer = bitmap32bit(input).CreateBuffer
+            Dim bitsOutput As BitmapBuffer = arrowOut.CreateBuffer
             Dim maskBuf = bitsMask.RawBuffer
             Dim inputBuf = bitsInput.RawBuffer
             Dim outputBuf = bitsOutput.RawBuffer
@@ -224,19 +225,25 @@ Namespace Docking
                 Next
             Next
 
-            bitsMask.Dispose()
-            bitsInput.Dispose()
-            bitsOutput.Dispose()
+            bitsMask.Write()
+            bitsInput.Write()
+            bitsOutput.Write()
+
+            maskArrow.UnlockBits(DirectCast(bitsMask.GetHandleObject, BitmapData))
+            input.UnlockBits(DirectCast(bitsInput.GetHandleObject, BitmapData))
+            arrowOut.UnlockBits(DirectCast(bitsOutput.GetHandleObject, BitmapData))
 
             Return arrowOut
         End Function
 
-        Private Function bitmap32bit(x As Bitmap) As Bitmap
+        Private Function bitmap32bit(ByRef x As Bitmap) As Bitmap
             Dim b32 = New Bitmap(x.Width, x.Height, PixelFormat.Format32bppArgb)
 
             Using gfx = Graphics.FromImage(b32)
                 gfx.DrawImage(x, New Point())
             End Using
+
+            x = b32
 
             Return b32
         End Function

@@ -8,7 +8,6 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
-    
     <RootNamespace>ExcelPad</RootNamespace>
     <AssemblyName>ExcelPad</AssemblyName>
     <SignAssembly>False</SignAssembly>
@@ -18,15 +17,15 @@
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
     <Platforms>AnyCPU;x64</Platforms>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(ProjectDir)**\*.cs</DefaultItemExcludes>
-    <MyType>WindowsForms</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <OptionStrict>Off</OptionStrict>
     <IncludeSymbols>True</IncludeSymbols>
     <Description>A UI Framework DEMO Project</Description>
     <OutputType>WinExe</OutputType>
-    <UseWPF>True</UseWPF>
+    <UseWPF>False</UseWPF>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
-    <StartupObject>ExcelPad.My.MyApplication</StartupObject>
+    <StartupObject>ExcelPad.FormMain</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows|AnyCPU'">
     <DebugType>full</DebugType>

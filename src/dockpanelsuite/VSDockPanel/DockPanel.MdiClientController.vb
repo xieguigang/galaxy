@@ -12,7 +12,7 @@ Namespace Docking
             Inherits NativeWindow
             Implements IComponent, IDisposable
             Private m_autoScroll As Boolean = True
-            Private m_borderStyle As BorderStyle = Windows.Forms.BorderStyle.Fixed3D
+            Private m_borderStyle As BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
             Private m_mdiClient As MdiClient = Nothing
             Private m_parentForm As Form = Nothing
             Private m_site As ISite = Nothing
@@ -74,15 +74,15 @@ Namespace Docking
 
                         ' Add or remove style flags as necessary.
                         Select Case m_borderStyle
-                            Case Windows.Forms.BorderStyle.Fixed3D
+                            Case System.Windows.Forms.BorderStyle.Fixed3D
                                 exStyle = exStyle Or Win32.WindowExStyles.WS_EX_CLIENTEDGE
                                 style = style And Not CInt(Win32.WindowStyles.WS_BORDER)
 
-                            Case Windows.Forms.BorderStyle.FixedSingle
+                            Case System.Windows.Forms.BorderStyle.FixedSingle
                                 exStyle = exStyle And Not Win32.WindowExStyles.WS_EX_CLIENTEDGE
                                 style = style Or CInt(Win32.WindowStyles.WS_BORDER)
 
-                            Case Windows.Forms.BorderStyle.None
+                            Case System.Windows.Forms.BorderStyle.None
                                 style = style And Not CInt(Win32.WindowStyles.WS_BORDER)
                                 exStyle = exStyle And Not Win32.WindowExStyles.WS_EX_CLIENTEDGE
                         End Select

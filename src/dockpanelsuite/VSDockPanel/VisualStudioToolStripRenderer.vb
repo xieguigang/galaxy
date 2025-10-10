@@ -155,7 +155,7 @@ Namespace Docking
             Dim bounds = e.GripBounds
             Dim toolStrip = e.ToolStrip
 
-            Dim rightToLeft = e.ToolStrip.RightToLeft = Windows.Forms.RightToLeft.Yes
+            Dim rightToLeft = e.ToolStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes
 
             Dim height = If(toolStrip.Orientation = Orientation.Horizontal, bounds.Height, bounds.Width)
             Dim width = If(toolStrip.Orientation = Orientation.Horizontal, bounds.Width, bounds.Height)
