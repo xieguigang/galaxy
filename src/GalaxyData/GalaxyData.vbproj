@@ -131,6 +131,8 @@
     </Compile>
     <Compile Include="TableSheet\AdvancedDataGridViewSearchToolBar.vb" />
     <Compile Include="TableSheet\ColumnHeaderCell.vb" />
+    <Compile Include="TableSheet\DataGrid\GridLoaderHandler.vb" />
+    <Compile Include="TableSheet\DataGrid\GridSearchHandler.vb" />
     <Compile Include="TableSheet\Events\AdvancedDataGridViewSearchToolBarSearchEventArgs.vb" />
     <Compile Include="TableSheet\Events\ColumnHeaderCellEventArgs.vb" />
     <Compile Include="TableSheet\Translations\AdvancedDataGridViewTranslations.vb" />
