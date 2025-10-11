@@ -210,8 +210,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj">
-      <Project>{6745a33a-56a6-4fcf-87c5-02631fd5d82b}</Project>
+      <Project>{396ccd83-4b4e-84cb-6056-022317fd64be}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dockpanelsuite\Themes\ThemeVS2015.vbproj">
+      <Project>{900306bb-63ba-4f02-a09a-b8d5929255e0}</Project>
+      <Name>ThemeVS2015</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dockpanelsuite\VSDockPanel\VSDockPanel.vbproj">
+      <Project>{17c4e8f2-94fb-9cbe-99e2-8dd3cfa197e0}</Project>
+      <Name>VSDockPanel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj">
       <Project>{3d61f3a9-a8e0-4195-9133-6fd8e4b82d54}</Project>
