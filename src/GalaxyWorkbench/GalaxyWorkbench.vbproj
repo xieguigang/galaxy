@@ -133,6 +133,7 @@
     <Compile Include="DockDocument\DocumentWindow.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DockDocument\Pages.vb" />
     <Compile Include="DockDocument\ToolStripWindow.Designer.vb">
       <DependentUpon>ToolStripWindow.vb</DependentUpon>
     </Compile>

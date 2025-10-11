@@ -172,9 +172,9 @@ document.querySelector('#info').innerHTML = JSON.parse('{message}');
         Call WebViewLoader.DeveloperOptions(WebView21, enable:=False)
     End Sub
 
-    Private Sub frmTaskProgress_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Async Sub frmTaskProgress_Load(sender As Object, e As EventArgs) Handles Me.Load
         DoubleBuffered = True
-        WebViewLoader.Init(WebView21)
+        Await WebViewLoader.Init(WebView21)
         TaskbarStatus.SetLoopStatus()
     End Sub
 
