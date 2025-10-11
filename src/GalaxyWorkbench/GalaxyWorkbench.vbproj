@@ -127,6 +127,24 @@
     <Compile Include="BuzyIndicator\TaskProgress.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DockDocument\DocumentWindow.Designer.vb">
+      <DependentUpon>DocumentWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockDocument\DocumentWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockDocument\ToolStripWindow.Designer.vb">
+      <DependentUpon>ToolStripWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockDocument\ToolStripWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockDocument\ToolWindow.Designer.vb">
+      <DependentUpon>ToolWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockDocument\ToolWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Icons8.vb" />
     <Compile Include="CommonRuntime.vb" />
     <Compile Include="Dialogs\DialogPromise.vb" />
@@ -189,6 +207,15 @@
     <EmbeddedResource Include="Dialogs\MaskForm.zh-Hans.resx">
       <DependentUpon>MaskForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DockDocument\DocumentWindow.resx">
+      <DependentUpon>DocumentWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockDocument\ToolStripWindow.resx">
+      <DependentUpon>ToolStripWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockDocument\ToolWindow.resx">
+      <DependentUpon>ToolWindow.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -245,9 +272,7 @@
   <ItemGroup>
     <None Include="Resources\progress-bar.html" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DockDocument\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\..\..\BlueprintCAD\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\..\..\BlueprintCAD\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
