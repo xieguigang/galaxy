@@ -245,6 +245,9 @@
   <ItemGroup>
     <None Include="Resources\progress-bar.html" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DockDocument\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\..\..\BlueprintCAD\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\..\..\BlueprintCAD\packages\Microsoft.Web.WebView2.1.0.3485.44\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
