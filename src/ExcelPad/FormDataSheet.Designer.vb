@@ -1,8 +1,8 @@
-﻿Imports Microsoft.VisualStudio.WinForms.Docking
+﻿Imports Galaxy.Workbench.DockDocument
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormDataSheet
-    Inherits DockContent
+    Inherits DocumentWindow
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
