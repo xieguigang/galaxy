@@ -2,6 +2,7 @@
 Imports System.Windows.Forms
 Imports ExcelPad.RibbonLib.Controls
 Imports Microsoft.VisualBasic.Data.Framework.IO
+Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.MIME.Office.Excel
 Imports Microsoft.VisualStudio.WinForms.Docking
 Imports RibbonLib
@@ -15,6 +16,10 @@ Public Class FormMain
     Dim ribbonItem As RibbonItems
 
     ReadOnly _toolStripProfessionalRenderer As New ToolStripProfessionalRenderer()
+
+    Shared Sub New()
+        Call SkiaDriver.Register()
+    End Sub
 
     Private Sub initializeVSPanel()
         m_dockPanel.ShowDocumentIcon = True
