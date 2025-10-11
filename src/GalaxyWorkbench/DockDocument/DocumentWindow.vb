@@ -57,108 +57,111 @@ Imports Microsoft.VisualStudio.WinForms.Docking
 Imports Microsoft.Windows.Taskbar
 Imports ThemeVS2015
 
-Public Class DocumentWindow
+Namespace DockDocument
 
-    Protected Friend WithEvents VS2015LightTheme1 As New VS2015LightTheme
-    Protected Friend WithEvents VisualStudioToolStripExtender1 As VisualStudioToolStripExtender
+    Public Class DocumentWindow
 
-    Public Event CloseDocument()
+        Protected Friend WithEvents VS2015LightTheme1 As New VS2015LightTheme
+        Protected Friend WithEvents VisualStudioToolStripExtender1 As VisualStudioToolStripExtender
 
-    Public HookOpen As Action
+        Public Event CloseDocument()
 
-    Public Function GetVS2015LightTheme1() As VS2015LightTheme
-        Return VS2015LightTheme1
-    End Function
+        Public HookOpen As Action
 
-    Public Function GetVisualStudioToolStripExtender1() As VisualStudioToolStripExtender
-        Return VisualStudioToolStripExtender1
-    End Function
+        Public Function GetVS2015LightTheme1() As VS2015LightTheme
+            Return VS2015LightTheme1
+        End Function
 
-    Protected Sub ApplyVsTheme(ParamArray items As ToolStrip())
-        For Each item In items
-            If item Is Nothing Then
-                Continue For
-            End If
+        Public Function GetVisualStudioToolStripExtender1() As VisualStudioToolStripExtender
+            Return VisualStudioToolStripExtender1
+        End Function
 
-            Call VisualStudioToolStripExtender1.SetStyle(item, VisualStudioToolStripExtender.VsVersion.Vs2015, VS2015LightTheme1)
-        Next
-    End Sub
+        Protected Sub ApplyVsTheme(ParamArray items As ToolStrip())
+            For Each item In items
+                If item Is Nothing Then
+                    Continue For
+                End If
 
-    Friend preview As TabbedThumbnail
+                Call VisualStudioToolStripExtender1.SetStyle(item, VisualStudioToolStripExtender.VsVersion.Vs2015, VS2015LightTheme1)
+            Next
+        End Sub
 
-    Private Sub ToolWindow_Load(sender As Object, e As EventArgs) Handles Me.Load
-        TabPageContextMenuStrip = DockContextMenuStrip1
+        Friend preview As TabbedThumbnail
 
-        AutoScaleMode = AutoScaleMode.Dpi
-        DoubleBuffered = True
-        VisualStudioToolStripExtender1 = New VisualStudioToolStripExtender(components)
+        Private Sub ToolWindow_Load(sender As Object, e As EventArgs) Handles Me.Load
+            TabPageContextMenuStrip = DockContextMenuStrip1
 
-        Call ApplyVsTheme(DockContextMenuStrip1)
-        ' Call HandleTaskbar()
-    End Sub
+            AutoScaleMode = AutoScaleMode.Dpi
+            DoubleBuffered = True
+            VisualStudioToolStripExtender1 = New VisualStudioToolStripExtender(components)
 
-    Private Sub HandleTaskbar()
-        ' Add a new preview
-        preview = New TabbedThumbnail(ParentForm.Handle, Me.Handle) With {
+            Call ApplyVsTheme(DockContextMenuStrip1)
+            ' Call HandleTaskbar()
+        End Sub
+
+        Private Sub HandleTaskbar()
+            ' Add a new preview
+            preview = New TabbedThumbnail(ParentForm.Handle, Me.Handle) With {
             .ClippingRectangle = New Rectangle(New Point, Size)
         }
 
-        TaskbarManager.Instance.TabbedThumbnail.AddThumbnailPreview(preview)
+            TaskbarManager.Instance.TabbedThumbnail.AddThumbnailPreview(preview)
 
-        ' Event handlers for this preview
-        AddHandler preview.TabbedThumbnailActivated, AddressOf Galaxy.Workbench.TaskBarWindow.Preview_TabbedThumbnailActivated
-        AddHandler preview.TabbedThumbnailClosed, AddressOf Galaxy.Workbench.TaskBarWindow.Preview_TabbedThumbnailClosed
-        AddHandler preview.TabbedThumbnailMaximized, AddressOf Galaxy.Workbench.TaskBarWindow.Preview_TabbedThumbnailMaximized
-        AddHandler preview.TabbedThumbnailMinimized, AddressOf Galaxy.Workbench.TaskBarWindow.Preview_TabbedThumbnailMinimized
+            ' Event handlers for this preview
+            AddHandler preview.TabbedThumbnailActivated, AddressOf Galaxy.Workbench.TaskBarWindow.Preview_TabbedThumbnailActivated
+            AddHandler preview.TabbedThumbnailClosed, AddressOf Galaxy.Workbench.TaskBarWindow.Preview_TabbedThumbnailClosed
+            AddHandler preview.TabbedThumbnailMaximized, AddressOf Galaxy.Workbench.TaskBarWindow.Preview_TabbedThumbnailMaximized
+            AddHandler preview.TabbedThumbnailMinimized, AddressOf Galaxy.Workbench.TaskBarWindow.Preview_TabbedThumbnailMinimized
 
-        Galaxy.Workbench.TaskBarWindow.UpdatePreviewBitmap(Me)
-    End Sub
+            Galaxy.Workbench.TaskBarWindow.UpdatePreviewBitmap(Me)
+        End Sub
 
-    Private Sub FloatToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FloatToolStripMenuItem.Click
-        DockState = DockState.Float
-    End Sub
+        Private Sub FloatToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FloatToolStripMenuItem.Click
+            DockState = DockState.Float
+        End Sub
 
-    Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
-        RaiseEvent CloseDocument()
+        Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
+            RaiseEvent CloseDocument()
 
-        Call Me.Close()
-    End Sub
+            Call Me.Close()
+        End Sub
 
-    Private Sub CloseAllButThisToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseAllButThisToolStripMenuItem.Click
-        For Each tab As Form In CommonRuntime.AppHost.GetDocuments
-            If Not TypeOf tab Is ToolWindow Then
-                If Not tab Is Me Then
+        Private Sub CloseAllButThisToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseAllButThisToolStripMenuItem.Click
+            For Each tab As Form In CommonRuntime.AppHost.GetDocuments
+                If Not TypeOf tab Is ToolWindow Then
+                    If Not tab Is Me Then
+                        Call DirectCast(tab, Form).Close()
+                    End If
+                End If
+            Next
+        End Sub
+
+        Private Sub CloseAllDocumentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseAllDocumentsToolStripMenuItem.Click
+            For Each tab As Form In CommonRuntime.AppHost.GetDocuments
+                If Not TypeOf tab Is ToolWindow Then
                     Call DirectCast(tab, Form).Close()
                 End If
-            End If
-        Next
-    End Sub
+            Next
+        End Sub
 
-    Private Sub CloseAllDocumentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseAllDocumentsToolStripMenuItem.Click
-        For Each tab As Form In CommonRuntime.AppHost.GetDocuments
-            If Not TypeOf tab Is ToolWindow Then
-                Call DirectCast(tab, Form).Close()
-            End If
-        Next
-    End Sub
+        Protected Overridable Sub CopyFullPath() Handles CopyFullPathToolStripMenuItem.Click
 
-    Protected Overridable Sub CopyFullPath() Handles CopyFullPathToolStripMenuItem.Click
+        End Sub
 
-    End Sub
+        Protected Overridable Sub OpenContainingFolder() Handles OpenContainingFolderToolStripMenuItem.Click
 
-    Protected Overridable Sub OpenContainingFolder() Handles OpenContainingFolderToolStripMenuItem.Click
+        End Sub
 
-    End Sub
+        Protected Overridable Sub SaveDocument() Handles SaveDocumentToolStripMenuItem.Click
 
-    Protected Overridable Sub SaveDocument() Handles SaveDocumentToolStripMenuItem.Click
+        End Sub
 
-    End Sub
-
-    'Private Sub DocumentWindow_DockStateChanged(sender As Object, e As EventArgs) Handles Me.DockStateChanged
-    '    If DockState = DockState.Float Then
-    '        Me.FormBorderStyle = FormBorderStyle.Sizable
-    '    Else
-    '        Me.FormBorderStyle = FormBorderStyle.None
-    '    End If
-    'End Sub
-End Class
+        'Private Sub DocumentWindow_DockStateChanged(sender As Object, e As EventArgs) Handles Me.DockStateChanged
+        '    If DockState = DockState.Float Then
+        '        Me.FormBorderStyle = FormBorderStyle.Sizable
+        '    Else
+        '        Me.FormBorderStyle = FormBorderStyle.None
+        '    End If
+        'End Sub
+    End Class
+End Namespace
