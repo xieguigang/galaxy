@@ -125,6 +125,18 @@
     <Compile Include="RoundedShadowPanel.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ThemeColorPicker\ColorSelectedArg.vb" />
+    <Compile Include="ThemeColorPicker\ThemeColorPicker.Designer.vb" />
+    <Compile Include="ThemeColorPicker\ThemeColorPicker.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThemeColorPicker\ThemeColorPickerToolStripSplitButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeColorPicker\ThemeColorPickerWindow.Designer.vb" />
+    <Compile Include="ThemeColorPicker\ThemeColorPickerWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ToggleSlider.Designer.vb">
       <DependentUpon>ToggleSlider.vb</DependentUpon>
     </Compile>
@@ -148,6 +160,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ThemeColorPicker\ThemeColorPicker.resx" />
+    <EmbeddedResource Include="ThemeColorPicker\ThemeColorPickerWindow.resx" />
     <EmbeddedResource Include="ToggleSlider.resx">
       <DependentUpon>ToggleSlider.vb</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +185,9 @@
       <Project>{396ccd83-4b4e-84cb-6056-022317fd64be}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\theme.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
