@@ -37,6 +37,11 @@ Public Module CommonRuntime
             Dim form As Form = DirectCast(apphost, Form)
 
             If UISettings.rememberLocation Then
+                If UISettings.left <= 0 Then UISettings.left = 100
+                If UISettings.top <= 0 Then UISettings.top = 100
+                If UISettings.width <= 0 Then UISettings.width = 1000
+                If UISettings.height <= 0 Then UISettings.height = 800
+
                 form.Location = New Point(UISettings.left, UISettings.top)
                 form.Size = New Size(UISettings.width, UISettings.height)
             End If
