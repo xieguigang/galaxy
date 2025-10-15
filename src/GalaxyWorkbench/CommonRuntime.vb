@@ -39,6 +39,10 @@ Public Module CommonRuntime
     ''' set value to the <see cref="AppHost"/> in current common workbench runtime.
     ''' </summary>
     ''' <param name="apphost"></param>
+    ''' <remarks>
+    ''' this method andalso apply of the <see cref="UISettings"/> to the <see cref="AppHost"/> object 
+    ''' if the given <paramref name="apphost"/> is a winform object.
+    ''' </remarks>
     Public Sub Hook(apphost As AppHost)
         _AppHost = apphost
 
