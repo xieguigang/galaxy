@@ -24,6 +24,16 @@ Public Module CommonRuntime
     End Property
 
     Public ReadOnly Property UISettings As UISettings
+        Get
+            Static ui As UISettings = Nothing
+
+            If ui Is Nothing Then
+                ui = UISettings.LoadSettings
+            End If
+
+            Return ui
+        End Get
+    End Property
 
     ''' <summary>
     ''' set value to the <see cref="AppHost"/> in current common workbench runtime.
@@ -31,7 +41,6 @@ Public Module CommonRuntime
     ''' <param name="apphost"></param>
     Public Sub Hook(apphost As AppHost)
         _AppHost = apphost
-        _UISettings = UISettings.LoadSettings
 
         If apphost IsNot Nothing AndAlso apphost.GetType.IsInheritsFrom(GetType(Form), strict:=False) Then
             Dim form As Form = DirectCast(apphost, Form)
