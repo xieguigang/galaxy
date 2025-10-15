@@ -153,6 +153,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DockDocument\Pages.vb" />
+    <Compile Include="DockDocument\Presets\PropertyWindow.designer.vb">
+      <DependentUpon>PropertyWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockDocument\Presets\PropertyWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockDocument\ToolStripWindow.Designer.vb">
       <DependentUpon>ToolStripWindow.vb</DependentUpon>
     </Compile>
@@ -229,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DockDocument\DocumentWindow.resx">
       <DependentUpon>DocumentWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockDocument\Presets\PropertyWindow.resx">
+      <DependentUpon>PropertyWindow.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockDocument\ToolStripWindow.resx">
       <DependentUpon>ToolStripWindow.vb</DependentUpon>
