@@ -1,5 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports Galaxy.Workbench.CommonDialogs
+Imports Galaxy.Workbench.Container
 Imports Galaxy.Workbench.DockDocument
 Imports Microsoft.VisualStudio.WinForms.Docking
 
@@ -16,7 +17,13 @@ Public Module CommonRuntime
     ''' <returns></returns>
     Public Property MaskOpacity As Double = 0.5
 
-    Public ReadOnly Property IsDevelopmentMode As Boolean = False
+    Public ReadOnly Property IsDevelopmentMode As Boolean
+        Get
+            Return Container.AppEnvironment.IsDevelopmentMode
+        End Get
+    End Property
+
+    Public ReadOnly Property UISettings As UISettings
 
     ''' <summary>
     ''' set value to the <see cref="AppHost"/> in current common workbench runtime.
@@ -24,6 +31,29 @@ Public Module CommonRuntime
     ''' <param name="apphost"></param>
     Public Sub Hook(apphost As AppHost)
         _AppHost = apphost
+        _UISettings = UISettings.LoadSettings
+
+        If apphost IsNot Nothing AndAlso apphost.GetType.IsInheritsFrom(GetType(Form), strict:=False) Then
+            Dim form As Form = DirectCast(apphost, Form)
+
+            If UISettings.rememberLocation Then
+                form.Location = New Point(UISettings.left, UISettings.top)
+                form.Size = New Size(UISettings.width, UISettings.height)
+            End If
+        End If
+    End Sub
+
+    Public Sub SaveUISettings()
+        If AppHost IsNot Nothing AndAlso UISettings IsNot Nothing Then
+            Dim size As Size = AppHost.GetClientSize
+            Dim position As Point = AppHost.GetDesktopLocation
+
+            UISettings.width = size.Width
+            UISettings.height = size.Height
+            UISettings.left = position.X
+            UISettings.top = position.Y
+            UISettings.Save()
+        End If
     End Sub
 
     Public Sub LogText(msg As String)
