@@ -145,6 +145,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to View Object Properties Metadata.
+        '''</summary>
+        Friend ReadOnly Property property_window() As String
+            Get
+                Return ResourceManager.GetString("property_window", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 查看目标属性元数据.
+        '''</summary>
+        Friend ReadOnly Property property_window_zh() As String
+            Get
+                Return ResourceManager.GetString("property_window_zh", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property spinner() As System.Drawing.Bitmap

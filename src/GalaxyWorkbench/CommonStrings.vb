@@ -9,19 +9,29 @@ Public Module CommonStrings
 
     ReadOnly languages As String() = {"zh", "en"}
 
+    Dim lang As Languages = Workbench.Languages.Default
+
     Public ReadOnly Property language As String
         Get
-            Dim currentCulture As CultureInfo = CultureInfo.CurrentCulture
+            If lang = Workbench.Languages.Default Then
+                Dim currentCulture As CultureInfo = CultureInfo.CurrentCulture
 
-            For Each flag As String In languages
-                If currentCulture.Name.StartsWith(flag) Then
-                    Return flag
-                End If
-            Next
+                For Each flag As String In languages
+                    If currentCulture.Name.StartsWith(flag) Then
+                        Return flag
+                    End If
+                Next
 
-            Return Nothing
+                Return Nothing
+            Else
+                Return lang.Description
+            End If
         End Get
     End Property
+
+    Public Sub SetLanguage(lang As Languages)
+        CommonStrings.lang = lang
+    End Sub
 
     ''' <summary>
     ''' get string from resource data with culture and language configuration.
