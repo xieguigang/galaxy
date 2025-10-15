@@ -201,6 +201,7 @@
     <Compile Include="Plugin\PluginPkg.vb" />
     <Compile Include="Plugin\Repository\PluginMetadata.vb" />
     <Compile Include="Plugin\Repository\RegistryFile.vb" />
+    <Compile Include="Container\Settings\UISettings.vb" />
     <Compile Include="Taskbar\TaskbarStatus.vb" />
     <Compile Include="Taskbar\TaskbarWindow.vb" />
     <Compile Include="WebViewLoader.vb" />
