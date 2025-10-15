@@ -4,6 +4,8 @@ Imports Galaxy.Workbench.Plugin.Repository
 
 Namespace Plugin
 
+    ' <Assembly: MZKitPlugin>
+
     ''' <summary>
     ''' this dll assembly file is a mzkit plugin 
     ''' package, sevral plugin module may be 
