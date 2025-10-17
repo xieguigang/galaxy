@@ -57,6 +57,10 @@ Public Module CommonRuntime
 
                 form.Location = New Point(UISettings.left, UISettings.top)
                 form.Size = New Size(UISettings.width, UISettings.height)
+
+                If UISettings.windowState <> FormWindowState.Normal Then
+                    form.WindowState = UISettings.windowState
+                End If
             End If
         End If
     End Sub
@@ -66,6 +70,7 @@ Public Module CommonRuntime
             Dim size As Size = AppHost.GetClientSize
             Dim position As Point = AppHost.GetDesktopLocation
 
+            UISettings.windowState = AppHost.GetWindowState
             UISettings.width = size.Width
             UISettings.height = size.Height
             UISettings.left = position.X
