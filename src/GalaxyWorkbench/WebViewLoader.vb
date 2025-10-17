@@ -1,9 +1,11 @@
-﻿Imports Microsoft.Web.WebView2.Core
+﻿Imports System.IO
+Imports System.Text
+Imports Microsoft.Web.WebView2.Core
 Imports Microsoft.Web.WebView2.WinForms
 
-Public Module WebViewLoader
+Public Class WebViewLoader
 
-    Public Sub DeveloperOptions(WebView21 As WebView2, enable As Boolean, Optional TabText As String = "WebKit")
+    Public Shared Sub DeveloperOptions(WebView21 As WebView2, enable As Boolean, Optional TabText As String = "WebKit")
         WebView21.CoreWebView2.Settings.AreDevToolsEnabled = enable
         WebView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = enable
         WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = enable
@@ -18,7 +20,7 @@ Public Module WebViewLoader
     ''' </summary>
     ''' <param name="WebView21"></param>
     ''' <param name="enableDevTool"></param>
-    Public Async Function Init(WebView21 As WebView2, Optional enableDevTool As Boolean = False) As Task
+    Public Shared Async Function Init(WebView21 As WebView2, Optional enableDevTool As Boolean = False) As Task
         Dim userDataFolder = (App.ProductProgramData & "/.webView2_cache/").GetDirectoryFullPath
         Dim env = Await CoreWebView2Environment.CreateAsync(Nothing, userDataFolder)
 
@@ -29,7 +31,50 @@ Public Module WebViewLoader
         Await WebView21.EnsureCoreWebView2Async(env)
     End Function
 
-    Private Sub Wait()
+    ReadOnly hostname As String
+    ReadOnly url As String
+    ReadOnly filter As String
+    ReadOnly loadDocument As String
 
+    Dim WithEvents webView As WebView2
+    Dim WithEvents core As CoreWebView2
+
+    Sub New(webView2 As WebView2, document As String)
+        webView = webView2
+        core = webView.CoreWebView2
+        loadDocument = document
+        hostname = $"{Guid.NewGuid()}.net"
+        url = $"https://{hostname}/"
+        filter = $"*://{hostname}/*"
     End Sub
-End Module
+
+    Public Shared Sub NavigateToLargeString(webView As WebView2, value As String)
+        Dim loader As New WebViewLoader(webView, value)
+
+        Call webView.CoreWebView2.AddWebResourceRequestedFilter(loader.filter, CoreWebView2WebResourceContext.Document)
+        Call webView.CoreWebView2.Navigate(loader.url)
+    End Sub
+
+    Private Sub navigationStartingEvent(sender As Object, e As CoreWebView2NavigationStartingEventArgs) Handles core.NavigationStarting
+        If (Not e.Uri.Equals(url, StringComparison.OrdinalIgnoreCase)) Then
+            webView.CoreWebView2.RemoveWebResourceRequestedFilter(filter, CoreWebView2WebResourceContext.Document)
+        End If
+    End Sub
+
+    Private Sub webResourceRequestedHandler(sender As Object, e As CoreWebView2WebResourceRequestedEventArgs) Handles core.WebResourceRequested
+        If (Not e.Request.Uri.Equals(url, StringComparison.OrdinalIgnoreCase)) Then
+            Return
+        End If
+
+        Dim def = e.GetDeferral
+        Dim s As New MemoryStream(Encoding.UTF8.GetBytes(loadDocument))
+
+        Try
+            e.Response = webView.CoreWebView2.Environment.CreateWebResourceResponse(s, 200, "OK", "Content-Type: text/html; charset=utf-8")
+        Catch ex As Exception
+            e.Response = webView.CoreWebView2.Environment.CreateWebResourceResponse(Nothing, 404, "Not found", "Content-Type: text/html; charset=utf-8")
+        Finally
+            def.Complete()
+        End Try
+    End Sub
+End Class
