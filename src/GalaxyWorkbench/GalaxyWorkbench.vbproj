@@ -159,6 +159,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DockDocument\Pages.vb" />
+    <Compile Include="DockDocument\Presets\AdjustParameters.Designer.vb">
+      <DependentUpon>AdjustParameters.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockDocument\Presets\AdjustParameters.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockDocument\Presets\PropertyWindow.designer.vb">
       <DependentUpon>PropertyWindow.vb</DependentUpon>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DockDocument\DocumentWindow.resx">
       <DependentUpon>DocumentWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockDocument\Presets\AdjustParameters.resx">
+      <DependentUpon>AdjustParameters.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockDocument\Presets\PropertyWindow.resx">
       <DependentUpon>PropertyWindow.vb</DependentUpon>
