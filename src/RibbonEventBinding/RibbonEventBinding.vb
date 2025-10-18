@@ -1,4 +1,5 @@
-﻿Imports RibbonLib.Controls
+﻿Imports Galaxy.Workbench
+Imports RibbonLib.Controls
 
 Public Class RibbonEventBinding : Implements IDisposable
 
@@ -29,13 +30,13 @@ Public Class RibbonEventBinding : Implements IDisposable
             Try
                 Call evt()
             Catch ex As Exception
-                Call Workbench.LogText($"[ribbon menu] error during exec for: {ribbon.Label}")
-                Call Workbench.Warning($"[ribbon menu] error during exec for: {ribbon.Label} ({ex.Message})")
-                Call Workbench.LogText(ex.ToString)
+                Call CommonRuntime.LogText($"[ribbon menu] error during exec for: {ribbon.Label}")
+                Call CommonRuntime.Warning($"[ribbon menu] error during exec for: {ribbon.Label} ({ex.Message})")
+                Call CommonRuntime.LogText(ex.ToString)
                 Call App.LogException(ex)
             End Try
         Else
-            Call Workbench.LogText($"[ribbon menu] no event handler was attached: {ribbon.Label}")
+            Call CommonRuntime.LogText($"[ribbon menu] no event handler was attached: {ribbon.Label}")
         End If
     End Sub
 
