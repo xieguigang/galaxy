@@ -1,7 +1,8 @@
 ﻿Imports Galaxy.Data.TableSheet.Events
 
 Namespace TableSheet
-    Public Class GridSearchHandler
+
+    Friend Class GridSearchHandler
 
         ReadOnly AdvancedDataGridView1 As AdvancedDataGridView
 

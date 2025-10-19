@@ -1,16 +1,22 @@
-﻿Namespace TableSheet
+﻿Imports System.Runtime.CompilerServices
+Imports Galaxy.Data.TableSheet.Events
+
+Namespace TableSheet
 
     Public Class GridLoaderHandler
 
         Dim memoryData As New DataSet
         Dim AdvancedDataGridView1 As AdvancedDataGridView
         Dim BindingSource1 As BindingSource
-        Dim AdvancedDataGridViewSearchToolBar1 As AdvancedDataGridViewSearchToolBar
+        Dim dataSearch As GridSearchHandler
 
-        Sub New(grid As AdvancedDataGridView, toolbar As AdvancedDataGridViewSearchToolBar, bind As BindingSource)
-            Me.BindingSource1 = bind
+        Dim WithEvents AdvancedDataGridViewSearchToolBar1 As AdvancedDataGridViewSearchToolBar
+
+        Sub New(grid As AdvancedDataGridView, toolbar As AdvancedDataGridViewSearchToolBar)
+            Me.BindingSource1 = New BindingSource
             Me.AdvancedDataGridViewSearchToolBar1 = toolbar
             Me.AdvancedDataGridView1 = grid
+            Me.dataSearch = New GridSearchHandler(grid)
         End Sub
 
         Public Sub LoadTable(apply As Action(Of DataTable))
@@ -48,5 +54,9 @@
             AdvancedDataGridViewSearchToolBar1.SetColumns(AdvancedDataGridView1.Columns)
         End Sub
 
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Private Sub AdvancedDataGridViewSearchToolBar1_Search(sender As Object, e As AdvancedDataGridViewSearchToolBarSearchEventArgs) Handles AdvancedDataGridViewSearchToolBar1.Search
+            Call dataSearch.AdvancedDataGridViewSearchToolBar1_Search(sender, e)
+        End Sub
     End Class
 End Namespace
