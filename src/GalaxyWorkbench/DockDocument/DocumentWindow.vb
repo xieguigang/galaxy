@@ -152,16 +152,8 @@ Namespace DockDocument
 
         End Sub
 
-        Protected Overridable Sub SaveDocument() Handles SaveDocumentToolStripMenuItem.Click
+        Protected Friend Overridable Sub SaveDocument() Handles SaveDocumentToolStripMenuItem.Click
 
         End Sub
-
-        'Private Sub DocumentWindow_DockStateChanged(sender As Object, e As EventArgs) Handles Me.DockStateChanged
-        '    If DockState = DockState.Float Then
-        '        Me.FormBorderStyle = FormBorderStyle.Sizable
-        '    Else
-        '        Me.FormBorderStyle = FormBorderStyle.None
-        '    End If
-        'End Sub
     End Class
 End Namespace

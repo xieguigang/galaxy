@@ -122,6 +122,22 @@ Public Module CommonRuntime
     End Function
 
     ''' <summary>
+    ''' Save current active document as file if it supported to be saved
+    ''' </summary>
+    Public Sub SaveCurrentDocument()
+        Dim doc As DocumentWindow = TryCast(AppHost.ActiveDocument, DocumentWindow)
+
+        If Not doc Is Nothing Then
+            Try
+                Call doc.SaveDocument()
+            Catch ex As Exception
+                Call Warning(ex.Message)
+                Call App.LogException(ex)
+            End Try
+        End If
+    End Sub
+
+    ''' <summary>
     ''' 
     ''' </summary>
     ''' <typeparam name="T"></typeparam>
