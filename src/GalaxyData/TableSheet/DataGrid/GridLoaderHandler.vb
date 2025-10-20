@@ -58,5 +58,10 @@ Namespace TableSheet
         Private Sub AdvancedDataGridViewSearchToolBar1_Search(sender As Object, e As AdvancedDataGridViewSearchToolBarSearchEventArgs) Handles AdvancedDataGridViewSearchToolBar1.Search
             Call dataSearch.AdvancedDataGridViewSearchToolBar1_Search(sender, e)
         End Sub
+
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Shared Function Search(table As AdvancedDataGridView) As AdvancedDataGridViewSearchToolBarSearchEventHandler
+            Return AddressOf New GridSearchHandler(table).AdvancedDataGridViewSearchToolBar1_Search
+        End Function
     End Class
 End Namespace
