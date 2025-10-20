@@ -6,6 +6,8 @@ Namespace TableSheet
     Public Class GridLoaderHandler
 
         Dim memoryData As New DataSet
+        Dim table As DataTable
+
         Dim AdvancedDataGridView1 As AdvancedDataGridView
         Dim BindingSource1 As BindingSource
         Dim dataSearch As GridSearchHandler
@@ -19,10 +21,25 @@ Namespace TableSheet
             Me.dataSearch = New GridSearchHandler(grid)
         End Sub
 
+        Public Sub ClearData()
+            If Not table Is Nothing Then
+                Dim copy = table
+
+                Call LoadTable(
+                    Sub(tbl)
+                        For Each col As DataColumn In copy.Columns
+                            Call tbl.Columns.Add(col.ColumnName, col.DataType)
+                        Next
+                    End Sub)
+            Else
+                AdvancedDataGridView1.DataSource = Nothing
+                AdvancedDataGridView1.Rows.Clear()
+            End If
+        End Sub
+
         Public Sub LoadTable(apply As Action(Of DataTable))
             memoryData = New DataSet
-
-            Dim table As DataTable = memoryData.Tables.Add("memoryData")
+            table = memoryData.Tables.Add("memoryData")
 
             Try
                 Call Me.AdvancedDataGridView1.Columns.Clear()
