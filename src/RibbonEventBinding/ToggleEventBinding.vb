@@ -1,7 +1,7 @@
 ﻿Imports Galaxy.Workbench
 Imports RibbonLib.Controls
 
-Public Class ToggleEventBinding : Implements IDisposable
+Public Class ToggleEventBinding : Implements IDisposable, IBindingAction
 
     Dim disposedValue As Boolean
     Dim WithEvents ribbon As RibbonToggleButton
@@ -24,7 +24,7 @@ Public Class ToggleEventBinding : Implements IDisposable
         ribbon = btn
     End Sub
 
-    Public Sub ClearHook()
+    Public Sub ClearHook() Implements IBindingAction.ClearHook
         evt = Nothing
     End Sub
 

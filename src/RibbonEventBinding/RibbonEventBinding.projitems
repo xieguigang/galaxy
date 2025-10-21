@@ -9,6 +9,7 @@
     <Import_RootNamespace>RibbonEventBinding</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BindingAction.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)ToggleEventBinding.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)RibbonEventBinding.vb" />
   </ItemGroup>
