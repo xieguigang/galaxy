@@ -56,8 +56,10 @@ Public Class WebViewLoader
     End Sub
 
     Private Sub navigationStartingEvent(sender As Object, e As CoreWebView2NavigationStartingEventArgs) Handles core.NavigationStarting
+        On Error Resume Next
+
         If (Not e.Uri.Equals(url, StringComparison.OrdinalIgnoreCase)) Then
-            webView.CoreWebView2.RemoveWebResourceRequestedFilter(filter, CoreWebView2WebResourceContext.Document)
+            Call webView.CoreWebView2.RemoveWebResourceRequestedFilter(filter, CoreWebView2WebResourceContext.Document)
         End If
     End Sub
 
