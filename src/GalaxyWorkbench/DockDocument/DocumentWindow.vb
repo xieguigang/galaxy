@@ -155,5 +155,9 @@ Namespace DockDocument
         Protected Friend Overridable Sub SaveDocument() Handles SaveDocumentToolStripMenuItem.Click
 
         End Sub
+
+        Public Shared Sub SaveDocument(page As DocumentWindow)
+            Call page.SaveDocument()
+        End Sub
     End Class
 End Namespace
