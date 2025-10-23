@@ -1,9 +1,8 @@
-﻿Imports System
-Imports System.ComponentModel
-Imports System.Drawing
-Imports System.Windows.Forms
-Imports System.Security.Permissions
+﻿Imports System.ComponentModel
 Imports System.Diagnostics.CodeAnalysis
+Imports System.Drawing
+Imports System.Security.Permissions
+Imports System.Windows.Forms
 
 Namespace Docking
     <ToolboxItem(False)>
