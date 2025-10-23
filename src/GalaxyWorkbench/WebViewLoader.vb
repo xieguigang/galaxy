@@ -79,4 +79,26 @@ Public Class WebViewLoader
             def.Complete()
         End Try
     End Sub
+
+    Public Shared Async Sub GotoPageLocation(webView21 As WebView2, scrollX As Integer, scrollY As Integer)
+        ' 使用JavaScript设置滚动位置
+        Await webView21.CoreWebView2.ExecuteScriptAsync($"window.scrollTo({scrollX}, {scrollY});")
+        ' 添加平滑滚动效果
+        Await webView21.CoreWebView2.ExecuteScriptAsync($"
+            window.scrollTo({{
+                top: {scrollY},
+                left: {scrollX},
+                behavior: 'auto'
+            }});")
+    End Sub
+
+    Public Shared Async Function GetPageLocation(webView21 As WebView2) As Task(Of Point)
+        Dim scrollXJson = Await webView21.CoreWebView2.ExecuteScriptAsync("window.scrollX;")
+        Dim scrollYJson = Await webView21.CoreWebView2.ExecuteScriptAsync("window.scrollY;")
+        ' 解析返回的JSON字符串，去除引号并转换为整数
+        Dim scrollX = Integer.Parse(scrollXJson.Trim(""""c))
+        Dim scrollY = Integer.Parse(scrollYJson.Trim(""""c))
+
+        Return New Point(scrollX, scrollY)
+    End Function
 End Class
