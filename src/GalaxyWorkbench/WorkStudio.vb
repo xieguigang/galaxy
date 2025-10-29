@@ -55,10 +55,14 @@
 Imports System.Text
 Imports Microsoft.VisualBasic.ApplicationServices
 Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Logging
+Imports Microsoft.VisualBasic.Text
 
-Public Class WorkStudio
+Public NotInheritable Class WorkStudio
 
     Shared ReadOnly logfile As String = $"{App.ProductProgramData}/pipeline_calls_{Now.ToString("yyyy-MM")}.txt"
+
+    Private Sub New()
+    End Sub
 
     Private Shared Function CreateLogger() As LogFile
         Return New LogFile(path:=logfile, autoFlush:=True, append:=True, appendHeader:=False)
@@ -90,6 +94,42 @@ Public Class WorkStudio
         Using log As LogFile = CreateLogger()
             Call log.log(MSG_TYPES.DEBUG, logText)
         End Using
+    End Sub
+
+    Public Shared Function TryParse(log As String) As (cd As String, cmd As String)
+        Dim lines As String() = Strings.Trim(log) _
+            .LineTokens _
+            .Where(Function(si) Not si.StartsWith("//")) _
+            .Where(Function(si) Not Strings.Trim(si).StringEmpty(, True)) _
+            .ToArray
+        Dim cd As String = lines(lines.Length - 2)
+        Dim cmd As String = lines(lines.Length - 1)
+
+        cd = cd.GetTagValue(" ").Value.Trim(""""c)
+
+        Return (cd, cmd)
+    End Function
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="cmdlog">
+    ''' log value parsed from the <see cref="LogReader.Parse"/>
+    ''' </param>
+    Public Shared Sub launch_cmd(cmdlog As LogEntry)
+        Dim run = TryParse(cmdlog.message)
+        Dim batch As New StringBuilder($"{run.Item1.Split(":"c).First}:" & vbCrLf & vbCrLf)
+        batch.AppendLine("CD " & run.Item1.CLIPath)
+        batch.AppendLine(run.Item2)
+
+        Dim batch_file As String = App.GetTempFile & ".cmd"
+        Dim cmd As New Process
+        cmd.StartInfo.FileName = "cmd.exe"
+        cmd.StartInfo.Arguments = "/k " & batch_file.CLIPath
+        cmd.StartInfo.CreateNoWindow = False
+
+        Call batch.ToString.SaveTo(batch_file, Encodings.UTF8WithoutBOM.CodePage)
+        Call cmd.Start()
     End Sub
 End Class
 
