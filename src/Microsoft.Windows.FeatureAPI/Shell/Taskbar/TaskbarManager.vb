@@ -184,12 +184,17 @@ Namespace Taskbar
 			Get
 				If _ownerHandle = IntPtr.Zero Then
 					Dim currentProcess As Process = Process.GetCurrentProcess()
+					Dim mainHandle As IntPtr = currentProcess.MainWindowHandle
 
-					If currentProcess Is Nothing OrElse currentProcess.MainWindowHandle = IntPtr.Zero Then
+					If mainHandle = IntPtr.Zero AndAlso Not MainWindow Is Nothing Then
+						mainHandle = MainWindow.Handle
+					End If
+
+					If currentProcess Is Nothing OrElse mainHandle = IntPtr.Zero Then
 						Throw New InvalidOperationException(LocalizedMessages.TaskbarManagerValidWindowRequired)
 					End If
 
-					_ownerHandle = currentProcess.MainWindowHandle
+					_ownerHandle = mainHandle
 				End If
 
 				Return _ownerHandle
