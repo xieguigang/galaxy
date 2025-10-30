@@ -283,6 +283,11 @@
     <Compile Include="Core\PropertySystem\PropVariant.vb" />
     <Compile Include="Core\PropertySystem\PropVariantNativeMethods.vb" />
     <Compile Include="InlineExtensions.vb" />
+    <Compile Include="Resources\LocalizedMessages.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedMessages.resx</DependentUpon>
+    </Compile>
     <Compile Include="ShadowForm.vb" />
     <Compile Include="Core\SafeHandles\SafeIconHandle.vb" />
     <Compile Include="Core\SafeHandles\SafeRegionHandle.vb" />
@@ -531,7 +536,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\LocalizedMessages.resx" />
+    <EmbeddedResource Include="Resources\LocalizedMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizedMessages.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
