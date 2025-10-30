@@ -284,7 +284,6 @@
     <Compile Include="Core\PropertySystem\PropVariantNativeMethods.vb" />
     <Compile Include="InlineExtensions.vb" />
     <Compile Include="ShadowForm.vb" />
-    <Compile Include="Resources\LocalizedMessages.Designer.vb" />
     <Compile Include="Core\SafeHandles\SafeIconHandle.vb" />
     <Compile Include="Core\SafeHandles\SafeRegionHandle.vb" />
     <Compile Include="Core\SafeHandles\SafeWindowHandle.vb" />
@@ -522,9 +521,6 @@
     <None Include="Shell\ExplorerBrowser\ExplorerBrowserDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\LocalizedMessages.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="Shell\Controls\CommandLinkWPF.xaml" />
     <Page Include="Shell\ExplorerBrowser\ExplorerBrowser.WPF.xaml" />
   </ItemGroup>
@@ -533,6 +529,9 @@
       <Project>{dee82853-4241-4f24-a096-12923c664369}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\LocalizedMessages.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
