@@ -183,14 +183,9 @@ Namespace Taskbar
 		Friend ReadOnly Property OwnerHandle() As IntPtr
 			Get
 				If _ownerHandle = IntPtr.Zero Then
-					Dim currentProcess As Process = Process.GetCurrentProcess()
-					Dim mainHandle As IntPtr = currentProcess.MainWindowHandle
+					Dim mainHandle As IntPtr = Microsoft.Windows.MainWindowHandle
 
-					If mainHandle = IntPtr.Zero AndAlso Not MainWindow Is Nothing Then
-						mainHandle = MainWindow.Handle
-					End If
-
-					If currentProcess Is Nothing OrElse mainHandle = IntPtr.Zero Then
+					If mainHandle = IntPtr.Zero Then
 						Throw New InvalidOperationException(LocalizedMessages.TaskbarManagerValidWindowRequired)
 					End If
 

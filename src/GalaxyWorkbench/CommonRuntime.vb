@@ -38,7 +38,7 @@ Public Module CommonRuntime
     ''' <summary>
     ''' set value to the <see cref="AppHost"/> in current common workbench runtime.
     ''' </summary>
-    ''' <param name="apphost"></param>
+    ''' <param name="apphost">should be the main window of the current process application</param>
     ''' <remarks>
     ''' this method andalso apply of the <see cref="UISettings"/> to the <see cref="AppHost"/> object 
     ''' if the given <paramref name="apphost"/> is a winform object.
@@ -62,6 +62,8 @@ Public Module CommonRuntime
                     form.WindowState = UISettings.windowState
                 End If
             End If
+
+            Call Microsoft.Windows.Hook(form)
         End If
     End Sub
 
