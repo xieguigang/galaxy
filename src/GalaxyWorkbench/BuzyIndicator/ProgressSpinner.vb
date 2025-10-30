@@ -120,29 +120,33 @@ Public Class ProgressSpinner
     End Sub
 
     Private Shared Function getLoadingTask(loading As Action, host As Form, spinner As ProgressSpinner) As Tasks.Task
-        Dim run As Action =
-            Sub()
-                Call Thread.Sleep(500)
-
-                Try
-                    If host Is Nothing Then
-                        Call loading()
-                    Else
-                        Call host.Invoke(loading)
-                    End If
-                Catch ex As Exception
-                    Call App.LogException(ex)
-                    Call Workbench.Warning(ex.ToString)
-                    Call Thread.Sleep(1000)
-
-                    spinner._ex = ex
-                End Try
-
-                Call spinner.CloseWindow()
-            End Sub
-
-        Return New Task(run)
+        Return New Task(AddressOf New InternalTask With {.loading = loading, .host = host, .spinner = spinner}.Run)
     End Function
+
+    Private Class InternalTask
+
+        Public loading As Action, host As Form, spinner As ProgressSpinner
+
+        Public Sub Run()
+            Call Thread.Sleep(500)
+
+            Try
+                If host Is Nothing Then
+                    Call loading()
+                Else
+                    Call host.Invoke(loading)
+                End If
+            Catch ex As Exception
+                Call App.LogException(ex)
+                Call Workbench.Warning(ex.ToString)
+                Call Thread.Sleep(1000)
+
+                spinner._ex = ex
+            End Try
+
+            Call spinner.CloseWindow()
+        End Sub
+    End Class
 
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Friend Sub CloseWindow()
