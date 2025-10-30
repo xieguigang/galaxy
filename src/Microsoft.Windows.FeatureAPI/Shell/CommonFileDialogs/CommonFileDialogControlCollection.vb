@@ -3,7 +3,6 @@
 Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 Imports System.Linq
-Imports Microsoft.Windows.Resources
 
 Namespace Dialogs.Controls
 	''' <summary>

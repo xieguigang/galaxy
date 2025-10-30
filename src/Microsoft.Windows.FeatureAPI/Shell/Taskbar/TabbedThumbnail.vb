@@ -7,9 +7,8 @@ Imports System.Windows
 Imports System.Windows.Forms
 Imports System.Windows.Interop
 Imports System.Windows.Media.Imaging
-Imports Microsoft.Windows.Shell
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
+Imports Microsoft.Windows.Shell
 
 Namespace Taskbar
 	''' <summary>

@@ -1,12 +1,10 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
-Imports System.Diagnostics
 Imports System.Runtime.InteropServices
+Imports System.Text
+Imports Microsoft.Windows.Internal
 Imports Microsoft.Windows.Shell
 Imports Microsoft.Windows.Shell.PropertySystem
-Imports Microsoft.Windows.Resources
-Imports Microsoft.Windows.Internal
-Imports System.Text
 
 Namespace Dialogs
 	''' <summary>

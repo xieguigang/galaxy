@@ -1,9 +1,5 @@
 Imports System.Collections.Generic
 Imports System.Linq
-Imports System.Text
-Imports Microsoft.Windows.Internal
-Imports System.Threading
-Imports Microsoft.Windows.Resources
 
 Namespace Shell
 	Friend NotInheritable Class MessageListenerFilter

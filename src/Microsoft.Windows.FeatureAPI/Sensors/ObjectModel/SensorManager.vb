@@ -3,7 +3,6 @@
 Imports System.Collections.Generic
 Imports System.Reflection
 Imports System.Threading
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
 
 Namespace Sensors

@@ -1,7 +1,6 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Imports System.Windows
-Imports Microsoft.Windows.Resources
 
 Namespace Taskbar
 	''' <summary>

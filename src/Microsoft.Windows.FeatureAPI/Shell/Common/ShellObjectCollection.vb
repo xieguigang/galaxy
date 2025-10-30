@@ -4,7 +4,6 @@ Imports System.Collections
 Imports System.Collections.Generic
 Imports System.IO
 Imports System.Runtime.InteropServices
-Imports Microsoft.Windows.Resources
 
 Namespace Shell
 	''' <summary>

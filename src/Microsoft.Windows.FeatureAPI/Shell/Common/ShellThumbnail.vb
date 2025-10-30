@@ -4,7 +4,6 @@ Imports System.Drawing
 Imports System.Runtime.InteropServices
 Imports System.Windows.Interop
 Imports System.Windows.Media.Imaging
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
 
 Namespace Shell

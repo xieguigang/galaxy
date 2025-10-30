@@ -1,8 +1,6 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Imports System.Runtime.InteropServices
-Imports System.Runtime.InteropServices.ComTypes
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
 
 Namespace Shell.PropertySystem

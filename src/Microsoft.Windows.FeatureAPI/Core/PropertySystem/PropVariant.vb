@@ -5,7 +5,6 @@ Imports System.Diagnostics.CodeAnalysis
 Imports System.Linq.Expressions
 Imports System.Reflection
 Imports System.Runtime.InteropServices
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Shell.PropertySystem
 
 Namespace Internal

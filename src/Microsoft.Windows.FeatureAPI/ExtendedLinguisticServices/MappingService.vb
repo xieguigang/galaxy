@@ -3,7 +3,6 @@
 Imports System.Collections.Generic
 Imports System.Runtime.InteropServices
 Imports System.Threading
-Imports Microsoft.Windows.Resources
 
 Namespace ExtendedLinguisticServices
 

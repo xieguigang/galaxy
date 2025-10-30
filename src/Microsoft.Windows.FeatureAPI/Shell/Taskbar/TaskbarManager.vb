@@ -3,7 +3,6 @@
 Imports System.Diagnostics
 Imports System.Windows.Interop
 Imports Microsoft.Windows.Internal
-Imports Microsoft.Windows.Resources
 
 Namespace Taskbar
 	''' <summary>

@@ -4,7 +4,6 @@ Imports System.Linq
 Imports System.Runtime.InteropServices
 Imports Microsoft.Win32
 Imports Microsoft.Windows.Internal
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Shell
 Imports Microsoft.Windows.Shell.Interop
 Imports Microsoft.Windows.ShellExtensions.Interop

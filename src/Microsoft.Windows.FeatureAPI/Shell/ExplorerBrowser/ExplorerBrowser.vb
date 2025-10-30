@@ -3,11 +3,10 @@
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Runtime.InteropServices
-Imports System.Windows.Forms
 Imports System.Text
-Imports Microsoft.Windows.Shell
+Imports System.Windows.Forms
 Imports Microsoft.Windows.Internal
-Imports Microsoft.Windows.Resources
+Imports Microsoft.Windows.Shell
 
 Namespace Controls.WindowsForms
     ''' <summary>

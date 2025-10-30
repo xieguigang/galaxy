@@ -2,13 +2,9 @@
 
 Imports System.Collections.Generic
 Imports System.Drawing
-Imports System.Linq
 Imports System.Runtime.InteropServices
 Imports System.Windows
 Imports System.Windows.Forms
-Imports Microsoft.Windows.Internal
-Imports Microsoft.Windows.Shell.Interop
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Shell
 
 Namespace Taskbar

@@ -3,11 +3,9 @@
 Imports System.Collections.Generic
 Imports System.Drawing
 Imports System.Linq
-Imports System.Windows.Forms
 Imports System.Windows.Media
-Imports Microsoft.Windows.Shell
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
+Imports Microsoft.Windows.Shell
 
 Namespace Taskbar
 	Friend NotInheritable Class TaskbarWindowManager

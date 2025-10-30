@@ -3,9 +3,8 @@
 Imports System.Collections.Generic
 Imports System.Globalization
 Imports System.Runtime.InteropServices
-Imports Microsoft.Windows.Shell.PropertySystem
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
+Imports Microsoft.Windows.Shell.PropertySystem
 
 Namespace Shell
     ''' <summary>

@@ -3,7 +3,6 @@ Imports System.Runtime.InteropServices
 Imports System.Threading
 Imports Microsoft.Windows.Internal
 Imports Microsoft.Windows.Shell.Interop
-Imports Microsoft.Windows.Resources
 
 Namespace Shell
 	Friend Class MessageListener

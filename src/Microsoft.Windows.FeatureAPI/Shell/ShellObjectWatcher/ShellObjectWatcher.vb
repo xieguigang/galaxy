@@ -2,7 +2,6 @@
 
 Imports System.ComponentModel
 Imports System.Threading
-Imports Microsoft.Windows.Resources
 
 Namespace Shell
 	''' <summary>

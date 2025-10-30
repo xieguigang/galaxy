@@ -2,7 +2,6 @@
 
 Imports System.Globalization
 Imports System.Text
-Imports Microsoft.Windows.Resources
 
 Namespace Internal
 

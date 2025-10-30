@@ -1,7 +1,6 @@
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Runtime.InteropServices.ComTypes
-Imports Microsoft.Windows.Resources
 
 Namespace ShellExtensions
 

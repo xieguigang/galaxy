@@ -1,7 +1,6 @@
 Imports System.Windows.Controls
 Imports System.Windows.Interop
 Imports System.Windows.Media
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Shell
 Imports Microsoft.Windows.ShellExtensions.Interop
 Imports std = System.Math

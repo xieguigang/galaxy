@@ -1,18 +1,16 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
+Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 Imports System.ComponentModel
-Imports System.Diagnostics
 Imports System.Runtime.InteropServices
 Imports System.Windows
 Imports System.Windows.Interop
 Imports System.Windows.Markup
-Imports System.Collections.Generic
-Imports Microsoft.Windows.Internal
-Imports Microsoft.Windows.Resources
-Imports Microsoft.Windows.Shell
-Imports Microsoft.Windows.Dialogs.Controls
 Imports Microsoft.Windows.Controls
+Imports Microsoft.Windows.Dialogs.Controls
+Imports Microsoft.Windows.Internal
+Imports Microsoft.Windows.Shell
 
 Namespace Dialogs
     ''' <summary>

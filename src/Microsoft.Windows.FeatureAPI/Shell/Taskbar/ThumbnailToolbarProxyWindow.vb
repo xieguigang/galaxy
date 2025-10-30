@@ -1,7 +1,6 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Imports System.Windows.Forms
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
 
 Namespace Taskbar

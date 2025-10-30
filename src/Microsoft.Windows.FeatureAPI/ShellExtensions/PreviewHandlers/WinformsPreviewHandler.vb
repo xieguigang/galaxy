@@ -1,8 +1,7 @@
 Imports System.Drawing
 Imports System.Windows.Forms
-Imports Microsoft.Windows.ShellExtensions.Interop
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Shell
+Imports Microsoft.Windows.ShellExtensions.Interop
 
 Namespace ShellExtensions
 

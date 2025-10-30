@@ -1,8 +1,5 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
-Imports System.Diagnostics
-Imports Microsoft.Windows.Resources
-
 Namespace Dialogs
 	''' <summary>
 	''' Abstract base class for all dialog controls
@@ -24,11 +21,11 @@ Namespace Dialogs
 			End If
 		End Sub
 
-        ''' <summary>
-        ''' Creates a new instance of a dialog control with the specified name.
-        ''' </summary>
-        ''' <param name="name__1">The name for this dialog.</param>
-        Protected Sub New(name__1 As String)
+		''' <summary>
+		''' Creates a new instance of a dialog control with the specified name.
+		''' </summary>
+		''' <param name="name__1">The name for this dialog.</param>
+		Protected Sub New(name__1 As String)
 			Me.New()
 			Name = name__1
 		End Sub
@@ -60,7 +57,7 @@ Namespace Dialogs
 				' Names for controls need to be quite stable, 
 				' as we are going to maintain a mapping between 
 				' the names and the underlying Win32/COM control IDs.
-				If String.IsNullOrEmpty(value) Then
+				If String.IsNullOrEmpty(Value) Then
 					Throw New ArgumentException(LocalizedMessages.DialogControlNameCannotBeEmpty)
 				End If
 
@@ -71,7 +68,7 @@ Namespace Dialogs
 				' Note that we don't notify the hosting dialog of 
 				' the change, as the initial set of name is (must be)
 				' always legal, and renames are always illegal.
-				Me.m_name = value
+				Me.m_name = Value
 			End Set
 		End Property
 

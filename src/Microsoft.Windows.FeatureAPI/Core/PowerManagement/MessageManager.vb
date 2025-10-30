@@ -4,7 +4,6 @@ Imports System.Collections
 Imports System.Runtime.InteropServices
 Imports System.Threading
 Imports System.Windows.Forms
-Imports Microsoft.Windows.Resources
 
 Namespace ApplicationServices
 

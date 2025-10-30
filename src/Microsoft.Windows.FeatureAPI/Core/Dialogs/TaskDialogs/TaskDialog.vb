@@ -1,8 +1,6 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Imports System.Collections.Generic
-Imports System.Diagnostics
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
 
 Namespace Dialogs

@@ -1,7 +1,5 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
-Imports Microsoft.Windows.Resources
-
 Namespace Dialogs
 	''' <summary>
 	''' Provides a visual representation of the progress of a long running operation.
@@ -23,14 +21,14 @@ Namespace Dialogs
 			MyBase.New(name)
 		End Sub
 
-        ''' <summary>
-        ''' Creates a new instance of this class with the specified 
-        ''' minimum, maximum and current values.
-        ''' </summary>
-        ''' <param name="minimum__1">The minimum value for this control.</param>
-        ''' <param name="maximum__2">The maximum value for this control.</param>
-        ''' <param name="value__3">The current value for this control.</param>        
-        Public Sub New(minimum__1 As Integer, maximum__2 As Integer, value__3 As Integer)
+		''' <summary>
+		''' Creates a new instance of this class with the specified 
+		''' minimum, maximum and current values.
+		''' </summary>
+		''' <param name="minimum__1">The minimum value for this control.</param>
+		''' <param name="maximum__2">The maximum value for this control.</param>
+		''' <param name="value__3">The current value for this control.</param>        
+		Public Sub New(minimum__1 As Integer, maximum__2 As Integer, value__3 As Integer)
 			Minimum = minimum__1
 			Maximum = maximum__2
 			Value = value__3
@@ -51,16 +49,16 @@ Namespace Dialogs
 				CheckPropertyChangeAllowed("Minimum")
 
 				' Check for positive numbers
-				If value < 0 Then
+				If Value < 0 Then
 					Throw New System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMinValueGreaterThanZero, "value")
 				End If
 
 				' Check if min / max differ
-				If value >= Maximum Then
+				If Value >= Maximum Then
 					Throw New System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMinValueLessThanMax, "value")
 				End If
 
-				_minimum = value
+				_minimum = Value
 				ApplyPropertyChange("Minimum")
 			End Set
 		End Property
@@ -75,10 +73,10 @@ Namespace Dialogs
 				CheckPropertyChangeAllowed("Maximum")
 
 				' Check if min / max differ
-				If value < Minimum Then
+				If Value < Minimum Then
 					Throw New System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMaxValueGreaterThanMin, "value")
 				End If
-				_maximum = value
+				_maximum = Value
 				ApplyPropertyChange("Maximum")
 			End Set
 		End Property
@@ -92,10 +90,10 @@ Namespace Dialogs
 			Set
 				CheckPropertyChangeAllowed("Value")
 				' Check for positive numbers
-				If value < Minimum OrElse value > Maximum Then
+				If Value < Minimum OrElse Value > Maximum Then
 					Throw New System.ArgumentException(LocalizedMessages.TaskDialogProgressBarValueInRange, "value")
 				End If
-				Me._value = value
+				Me._value = Value
 				ApplyPropertyChange("Value")
 			End Set
 		End Property

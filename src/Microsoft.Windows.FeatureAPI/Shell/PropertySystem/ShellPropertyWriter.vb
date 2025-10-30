@@ -2,7 +2,6 @@
 
 Imports System.Runtime.InteropServices
 Imports Microsoft.Windows.Internal
-Imports Microsoft.Windows.Resources
 
 Namespace Shell.PropertySystem
 	''' <summary>

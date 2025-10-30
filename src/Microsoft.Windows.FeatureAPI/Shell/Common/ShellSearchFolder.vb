@@ -1,11 +1,10 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Imports System.Collections.Generic
-Imports System.Runtime.InteropServices
 Imports System.Linq
+Imports System.Runtime.InteropServices
 Imports Microsoft.Windows.Internal
 Imports Microsoft.Windows.Shell.PropertySystem
-Imports Microsoft.Windows.Resources
 
 Namespace Shell
     ''' <summary>

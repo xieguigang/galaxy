@@ -4,7 +4,6 @@ Imports System.Linq.Expressions
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 Imports System.Runtime.InteropServices.ComTypes
-Imports Microsoft.Windows.Resources
 
 Namespace Shell.PropertySystem
 

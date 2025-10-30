@@ -1,7 +1,5 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
-Imports Microsoft.Windows.Resources
-
 Namespace ApplicationServices
 	''' <summary>
 	''' Defines methods and properties for recovery settings, and specifies options for an application that attempts

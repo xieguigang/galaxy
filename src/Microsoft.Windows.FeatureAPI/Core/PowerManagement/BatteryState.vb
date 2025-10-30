@@ -1,7 +1,5 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
-Imports Microsoft.Windows.Resources
-
 Namespace ApplicationServices
 
     ''' <summary>

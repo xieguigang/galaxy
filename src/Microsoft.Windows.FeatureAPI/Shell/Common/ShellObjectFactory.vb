@@ -1,11 +1,8 @@
 ' Copyright (c) Microsoft Corporation.  All rights reserved.
 
-Imports System.Diagnostics
 Imports System.Runtime.InteropServices
-Imports Microsoft.Windows.Resources
-Imports Microsoft.Windows.Internal
-Imports System.Linq
 Imports System.Threading
+Imports Microsoft.Windows.Internal
 
 Namespace Shell
 	Friend NotInheritable Class ShellObjectFactory

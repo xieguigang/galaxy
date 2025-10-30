@@ -2,7 +2,6 @@
 
 Imports System.Collections.ObjectModel
 Imports System.Linq
-Imports Microsoft.Windows.Resources
 
 Namespace Dialogs
 	''' <summary>

@@ -2,7 +2,6 @@
 
 Imports System.Diagnostics.CodeAnalysis
 Imports System.Runtime.InteropServices
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
 
 Namespace Shell.PropertySystem

@@ -1,10 +1,7 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
-Imports System.ComponentModel
-Imports System.Diagnostics.CodeAnalysis
 Imports System.Runtime.InteropServices
 Imports Microsoft.Windows.Internal
-Imports Microsoft.Windows.Resources
 
 Namespace ApplicationServices
 

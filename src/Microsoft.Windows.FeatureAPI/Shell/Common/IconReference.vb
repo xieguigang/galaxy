@@ -1,26 +1,24 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
-Imports Microsoft.Windows.Resources
-
 Namespace Shell
 	''' <summary>
 	''' A refence to an icon resource 
 	''' </summary>    
 	Public Structure IconReference
-		#Region "Private members"
+#Region "Private members"
 
 		Private m_moduleName As String
 		Private m_referencePath As String
-		Private Shared commaSeparator As Char() = New Char() {","C}
+		Private Shared commaSeparator As Char() = New Char() {","c}
 
 #End Region
 
-        ''' <summary>
-        ''' Overloaded constructor takes in the module name and resource id for the icon reference.
-        ''' </summary>
-        ''' <param name="moduleName">String specifying the name of an executable file, DLL, or icon file</param>
-        ''' <param name="resourceId__1">Zero-based index of the icon</param>
-        Public Sub New(moduleName As String, resourceId__1 As Integer)
+		''' <summary>
+		''' Overloaded constructor takes in the module name and resource id for the icon reference.
+		''' </summary>
+		''' <param name="moduleName">String specifying the name of an executable file, DLL, or icon file</param>
+		''' <param name="resourceId__1">Zero-based index of the icon</param>
+		Public Sub New(moduleName As String, resourceId__1 As Integer)
 			Me.New()
 			If String.IsNullOrEmpty(moduleName) Then
 				Throw New ArgumentNullException("moduleName")
@@ -61,10 +59,10 @@ Namespace Shell
 				Return m_moduleName
 			End Get
 			Set
-				If String.IsNullOrEmpty(value) Then
+				If String.IsNullOrEmpty(Value) Then
 					Throw New ArgumentNullException("value")
 				End If
-				m_moduleName = value
+				m_moduleName = Value
 			End Set
 		End Property
 
@@ -89,11 +87,11 @@ Namespace Shell
 				Return m_referencePath
 			End Get
 			Set
-				If String.IsNullOrEmpty(value) Then
+				If String.IsNullOrEmpty(Value) Then
 					Throw New ArgumentNullException("value")
 				End If
 
-				Dim refParams As String() = value.Split(commaSeparator)
+				Dim refParams As String() = Value.Split(commaSeparator)
 
 				If refParams.Length <> 2 OrElse String.IsNullOrEmpty(refParams(0)) OrElse String.IsNullOrEmpty(refParams(1)) Then
 					Throw New ArgumentException(LocalizedMessages.InvalidReferencePath, "value")
@@ -102,7 +100,7 @@ Namespace Shell
 				ModuleName = refParams(0)
 				ResourceId = Integer.Parse(refParams(1), System.Globalization.CultureInfo.InvariantCulture)
 
-				m_referencePath = value
+				m_referencePath = Value
 			End Set
 		End Property
 
@@ -113,7 +111,7 @@ Namespace Shell
 		''' <param name="icon2">Second object to compare.</param>
 		''' <returns>True if icon1 equals icon1; false otherwise.</returns>
 		Public Shared Operator =(icon1 As IconReference, icon2 As IconReference) As Boolean
-			Return (icon1.moduleName = icon2.moduleName) AndAlso (icon1.referencePath = icon2.referencePath) AndAlso (icon1.ResourceId = icon2.ResourceId)
+			Return (icon1.ModuleName = icon2.ModuleName) AndAlso (icon1.ReferencePath = icon2.ReferencePath) AndAlso (icon1.ResourceId = icon2.ResourceId)
 		End Operator
 
 		''' <summary>

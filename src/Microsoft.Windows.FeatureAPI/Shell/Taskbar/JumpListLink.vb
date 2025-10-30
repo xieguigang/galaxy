@@ -1,10 +1,9 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Imports System.Runtime.InteropServices
+Imports Microsoft.Windows.Internal
 Imports Microsoft.Windows.Shell
 Imports Microsoft.Windows.Shell.PropertySystem
-Imports Microsoft.Windows.Resources
-Imports Microsoft.Windows.Internal
 
 Namespace Taskbar
 	''' <summary>

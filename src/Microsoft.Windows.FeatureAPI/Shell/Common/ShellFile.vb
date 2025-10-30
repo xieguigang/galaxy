@@ -1,7 +1,6 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Imports System.IO
-Imports Microsoft.Windows.Resources
 
 Namespace Shell
 	''' <summary>

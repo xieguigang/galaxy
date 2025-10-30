@@ -4,9 +4,8 @@ Imports System.Collections
 Imports System.Collections.Generic
 Imports System.Runtime.InteropServices
 Imports System.Text
-Imports Microsoft.Windows.Shell
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
+Imports Microsoft.Windows.Shell
 
 Namespace Taskbar
 	''' <summary>

@@ -1,9 +1,7 @@
 'Copyright (c) Microsoft Corporation.  All rights reserved.
 
 Imports System.Collections.ObjectModel
-Imports System.Diagnostics
 Imports System.Windows.Markup
-Imports Microsoft.Windows.Resources
 
 Namespace Dialogs.Controls
 	''' <summary>

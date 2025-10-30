@@ -2,10 +2,9 @@
 
 Imports System.IO
 Imports System.Runtime.InteropServices
-Imports System.Security.Cryptography
 Imports System.Runtime.InteropServices.ComTypes
+Imports System.Security.Cryptography
 Imports Microsoft.Windows.Internal
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Shell.PropertySystem
 
 Namespace Shell

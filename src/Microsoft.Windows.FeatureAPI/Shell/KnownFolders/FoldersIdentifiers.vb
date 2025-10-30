@@ -2,7 +2,6 @@
 
 Imports System.Collections.Generic
 Imports System.Reflection
-Imports Microsoft.Windows.Resources
 
 Namespace Shell
 	''' <summary>

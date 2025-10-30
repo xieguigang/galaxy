@@ -4,8 +4,6 @@ Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 Imports System.Linq
 Imports System.Runtime.InteropServices
-Imports System.Runtime.InteropServices.ComTypes
-Imports Microsoft.Windows.Resources
 Imports Microsoft.Windows.Internal
 
 Namespace Shell.PropertySystem

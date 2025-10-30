@@ -1,9 +1,5 @@
-Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Text
 Imports System.Runtime.InteropServices
 Imports Microsoft.Windows.Internal
-Imports Microsoft.Windows.Resources
 
 Namespace Shell
 
