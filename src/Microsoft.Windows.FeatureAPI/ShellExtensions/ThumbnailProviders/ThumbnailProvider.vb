@@ -29,13 +29,13 @@ Namespace ShellExtensions
             Dim shellObject As IThumbnailFromShellObject
             Dim file As IThumbnailFromFile
 
-            If _stream IsNot Nothing AndAlso stream.DirectCopy(TryCast(Me, IThumbnailFromStream)) IsNot Nothing Then
+            If _stream IsNot Nothing AndAlso stream.InlineCopy(TryCast(Me, IThumbnailFromStream)) IsNot Nothing Then
                 Return stream.ConstructBitmap(_stream, sideLength)
             End If
-            If _shellObject IsNot Nothing AndAlso shellObject.DirectCopy(TryCast(Me, IThumbnailFromShellObject)) IsNot Nothing Then
+            If _shellObject IsNot Nothing AndAlso shellObject.InlineCopy(TryCast(Me, IThumbnailFromShellObject)) IsNot Nothing Then
                 Return shellObject.ConstructBitmap(_shellObject, sideLength)
             End If
-            If _info IsNot Nothing AndAlso file.DirectCopy(TryCast(Me, IThumbnailFromFile)) IsNot Nothing Then
+            If _info IsNot Nothing AndAlso file.InlineCopy(TryCast(Me, IThumbnailFromFile)) IsNot Nothing Then
                 Return file.ConstructBitmap(_info, sideLength)
             End If
 

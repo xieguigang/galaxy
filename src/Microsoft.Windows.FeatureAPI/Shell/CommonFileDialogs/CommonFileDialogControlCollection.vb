@@ -78,12 +78,12 @@ Namespace Dialogs.Controls
 
                 For Each control As T In MyBase.Items
                     Dim groupBox As CommonFileDialogGroupBox
-                    ' NOTE: we don't ToLower() the strings - casing effects 
-                    ' hash codes, so we are case-sensitive.
-                    If control.Name = name Then
-                        Return control
-                    ElseIf groupBox.DirectCopy(TryCast(control, CommonFileDialogGroupBox)) IsNot Nothing Then
-                        For Each subControl As T In groupBox.Items
+					' NOTE: we don't ToLower() the strings - casing effects 
+					' hash codes, so we are case-sensitive.
+					If control.Name = name Then
+						Return control
+					ElseIf groupBox.InlineCopy(TryCast(control, CommonFileDialogGroupBox)) IsNot Nothing Then
+						For Each subControl As T In groupBox.Items
                             If subControl.Name = name Then
                                 Return subControl
                             End If

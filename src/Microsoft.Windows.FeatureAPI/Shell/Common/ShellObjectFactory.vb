@@ -52,14 +52,14 @@ Namespace Shell
 				Return New ShellLink(nativeShellItem2)
 			' 2. Check if this is a container or a single item (entity)
 			ElseIf isFolder Then
-                ' 3. If this is a folder, check for types: Shell Library, Shell Folder or Search Container
-                If itemType = ".library-ms" AndAlso shellLibrary__1.DirectCopy(ShellLibrary.FromShellItem(nativeShellItem2, True)) IsNot Nothing Then
-                    ' we already created this above while checking for Library
-                    Return shellLibrary__1
-                ElseIf itemType = ".searchconnector-ms" Then
-                    Return New ShellSearchConnector(nativeShellItem2)
-                ElseIf itemType = ".search-ms" Then
-                    Return New ShellSavedSearchCollection(nativeShellItem2)
+				' 3. If this is a folder, check for types: Shell Library, Shell Folder or Search Container
+				If itemType = ".library-ms" AndAlso shellLibrary__1.InlineCopy(ShellLibrary.FromShellItem(nativeShellItem2, True)) IsNot Nothing Then
+					' we already created this above while checking for Library
+					Return shellLibrary__1
+				ElseIf itemType = ".searchconnector-ms" Then
+					Return New ShellSearchConnector(nativeShellItem2)
+				ElseIf itemType = ".search-ms" Then
+					Return New ShellSavedSearchCollection(nativeShellItem2)
 				End If
 
 				' 4. It's a ShellFolder

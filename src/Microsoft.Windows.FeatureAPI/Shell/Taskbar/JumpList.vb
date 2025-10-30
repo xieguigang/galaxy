@@ -354,11 +354,11 @@ Namespace Taskbar
 
                 Dim shellItem As IShellItem = TryCast(item, IShellItem)
                 Dim shellLink As IShellLinkW
-                ' Process item
-                If shellItem IsNot Nothing Then
-                    removedItemsArray.Add(RemoveCustomCategoryItem(shellItem))
-                ElseIf shellLink.DirectCopy(TryCast(item, IShellLinkW)) IsNot Nothing Then
-                    removedItemsArray.Add(RemoveCustomCategoryLink(shellLink))
+				' Process item
+				If shellItem IsNot Nothing Then
+					removedItemsArray.Add(RemoveCustomCategoryItem(shellItem))
+				ElseIf shellLink.InlineCopy(TryCast(item, IShellLinkW)) IsNot Nothing Then
+					removedItemsArray.Add(RemoveCustomCategoryLink(shellLink))
                 End If
             Next
             Return removedItemsArray
@@ -484,10 +484,10 @@ Namespace Taskbar
 			For Each task As JumpListTask In userTasks
 				Dim seperator As JumpListSeparator
 				Dim link As JumpListLink = TryCast(task, JumpListLink)
-                If link IsNot Nothing Then
-                    taskContent.AddObject(link.NativeShellLink)
-                ElseIf seperator.DirectCopy(TryCast(task, JumpListSeparator)) IsNot Nothing Then
-                    taskContent.AddObject(seperator.NativeShellLink)
+				If link IsNot Nothing Then
+					taskContent.AddObject(link.NativeShellLink)
+				ElseIf seperator.InlineCopy(TryCast(task, JumpListSeparator)) IsNot Nothing Then
+					taskContent.AddObject(seperator.NativeShellLink)
 				End If
 			Next
 

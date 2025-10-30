@@ -84,8 +84,8 @@ Namespace Shell
                         End If
 
                         If Not Callbacks.ContainsKey(i) Then
-                            _lastMessage = message.DirectCopy(i)
-                            Callbacks.Add(i, callback)
+							_lastMessage = message.InlineCopy(i)
+							Callbacks.Add(i, callback)
                             Return True
                         End If
                         i += 1UI

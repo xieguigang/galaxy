@@ -357,7 +357,6 @@
     <Compile Include="Sensors\Sensors\Light\AmbientLightSensor.vb" />
     <Compile Include="Sensors\Sensors\Motion\Accelerometer3D.vb" />
     <Compile Include="Sensors\Sensors\UnknownSensor.vb" />
-    <Compile Include="ShellExtensions\GlobalSuppressions.vb" />
     <Compile Include="ShellExtensions\Interop\HandlerNativeMethods.vb" />
     <Compile Include="ShellExtensions\PreviewHandlers\ManagedInitializationInterfaces.vb" />
     <Compile Include="ShellExtensions\PreviewHandlers\PreviewHandler.vb" />

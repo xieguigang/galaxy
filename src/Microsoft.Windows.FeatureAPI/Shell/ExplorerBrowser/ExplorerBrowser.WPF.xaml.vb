@@ -47,9 +47,9 @@ Namespace Controls.WindowsPresentationFoundation
             ExplorerBrowserControl = New Controls.WindowsForms.ExplorerBrowser()
 
             ' back the dependency collection properties with instances
-            SelectedItems = m_selectedItems.DirectCopy(New ObservableCollection(Of ShellObject)())
-            Items = m_items.DirectCopy(New ObservableCollection(Of ShellObject)())
-            NavigationLog = m_navigationLog.DirectCopy(New ObservableCollection(Of ShellObject)())
+            SelectedItems = m_selectedItems.InlineCopy(New ObservableCollection(Of ShellObject)())
+            Items = m_items.InlineCopy(New ObservableCollection(Of ShellObject)())
+            NavigationLog = m_navigationLog.InlineCopy(New ObservableCollection(Of ShellObject)())
 
             ' hook up events for collection synchronization
             AddHandler ExplorerBrowserControl.ItemsChanged, New EventHandler(AddressOf ItemsChanged)

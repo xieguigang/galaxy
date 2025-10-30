@@ -20,8 +20,8 @@ Namespace Taskbar
 			Dim taskbarWindow As TaskbarWindow = GetTaskbarWindow(userWindowHandle, TaskbarProxyWindowType.ThumbnailToolbar)
 			Dim temp As TaskbarWindow = Nothing
 			Try
-                AddThumbnailButtons(If(taskbarWindow, temp.DirectCopy(New TaskbarWindow(userWindowHandle, buttons))), taskbarWindow Is Nothing, buttons)
-            Catch
+				AddThumbnailButtons(If(taskbarWindow, temp.InlineCopy(New TaskbarWindow(userWindowHandle, buttons))), taskbarWindow Is Nothing, buttons)
+			Catch
 				If temp IsNot Nothing Then
 					temp.Dispose()
 				End If
@@ -34,8 +34,8 @@ Namespace Taskbar
 			Dim taskbarWindow As TaskbarWindow = GetTaskbarWindow(control, TaskbarProxyWindowType.ThumbnailToolbar)
 			Dim temp As TaskbarWindow = Nothing
 			Try
-                AddThumbnailButtons(If(taskbarWindow, temp.DirectCopy(New TaskbarWindow(control, buttons))), taskbarWindow Is Nothing, buttons)
-            Catch
+				AddThumbnailButtons(If(taskbarWindow, temp.InlineCopy(New TaskbarWindow(control, buttons))), taskbarWindow Is Nothing, buttons)
+			Catch
 				If temp IsNot Nothing Then
 					temp.Dispose()
 				End If
@@ -196,8 +196,8 @@ End Function)
 				End If
 
 				If realWindowSize.Height = -1 AndAlso realWindowSize.Width = -1 Then
-                    realWindowSize.Width = realWindowSize.Height.DirectCopy(199)
-                End If
+					realWindowSize.Width = realWindowSize.Height.InlineCopy(199)
+				End If
 
 				' capture the bitmap for the given control
 				' If the user has already specified us a bitmap to use, use that.

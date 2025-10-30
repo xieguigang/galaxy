@@ -23,7 +23,7 @@ Namespace Internal
         Public BottomHeight As Integer
         ' height of bottom border that retains its size
         Public Sub New(fullWindow As Boolean)
-            LeftWidth = RightWidth.DirectCopy(TopHeight.DirectCopy(BottomHeight.DirectCopy(If(fullWindow, -1, 0))))
+            LeftWidth = RightWidth.InlineCopy(TopHeight.InlineCopy(BottomHeight.InlineCopy(If(fullWindow, -1, 0))))
         End Sub
     End Structure
 

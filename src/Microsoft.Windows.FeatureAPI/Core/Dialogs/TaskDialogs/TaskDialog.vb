@@ -798,7 +798,7 @@ Namespace Dialogs
                 ' and sort the controls based on type.
                 If commandLink IsNot Nothing Then
                     commandLinks.Add(commandLink)
-                ElseIf radButton.DirectCopy(TryCast(control, TaskDialogRadioButton)) IsNot Nothing Then
+                ElseIf radButton.InlineCopy(TryCast(control, TaskDialogRadioButton)) IsNot Nothing Then
                     If radioButtons Is Nothing Then
                         radioButtons = New List(Of TaskDialogButtonBase)()
                     End If
@@ -808,7 +808,7 @@ Namespace Dialogs
                         buttons = New List(Of TaskDialogButtonBase)()
                     End If
                     buttons.Add(buttonBase)
-                ElseIf progBar.DirectCopy(TryCast(control, TaskDialogProgressBar)) IsNot Nothing Then
+                ElseIf progBar.InlineCopy(TryCast(control, TaskDialogProgressBar)) IsNot Nothing Then
                     m_progressBar = progBar
                 Else
                     Throw New InvalidOperationException(LocalizedMessages.TaskDialogUnkownControl)
@@ -963,9 +963,9 @@ Namespace Dialogs
                             Exit Select
                         Case Else
                             System.Diagnostics.Debug.Assert(True, "Unknown property being set")
-                            
+
                     End Select
-                ElseIf button.DirectCopy(TryCast(control, TaskDialogButton)) IsNot Nothing Then
+                ElseIf button.InlineCopy(TryCast(control, TaskDialogButton)) IsNot Nothing Then
                     Select Case propertyName
                         Case "ShowElevationIcon"
                             nativeDialog.UpdateElevationIcon(button.Id, button.UseElevationIcon)
@@ -974,10 +974,10 @@ Namespace Dialogs
                             nativeDialog.UpdateButtonEnabled(button.Id, button.Enabled)
                             Exit Select
                         Case Else
-							System.Diagnostics.Debug.Assert(True, "Unknown property being set")
-							Exit Select
+                            System.Diagnostics.Debug.Assert(True, "Unknown property being set")
+                            Exit Select
                     End Select
-                ElseIf radioButton.DirectCopy(TryCast(control, TaskDialogRadioButton)) IsNot Nothing Then
+                ElseIf radioButton.InlineCopy(TryCast(control, TaskDialogRadioButton)) IsNot Nothing Then
                     Select Case propertyName
 						Case "Enabled"
 							nativeDialog.UpdateRadioButtonEnabled(radioButton.Id, radioButton.Enabled)

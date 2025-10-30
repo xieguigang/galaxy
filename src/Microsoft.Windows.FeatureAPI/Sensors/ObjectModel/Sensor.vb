@@ -500,7 +500,7 @@ Namespace Sensors
                     If TypeOf value Is Guid Then
                         Dim guid As Guid = CType(value, Guid)
                         pdv.SetGuidValue(propKey, guid)
-                    ElseIf buffer.DirectCopy(TryCast(value, Byte())) IsNot Nothing Then
+                    ElseIf buffer.InlineCopy(TryCast(value, Byte())) IsNot Nothing Then
                         pdv.SetBufferValue(propKey, buffer, CUInt(buffer.Length))
                     Else
                         pdv.SetIUnknownValue(propKey, value)

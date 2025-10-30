@@ -938,7 +938,7 @@ Namespace Dialogs
                 Else
                     customize.SetControlLabel(control.Id, textBox.Text)
                 End If
-            ElseIf propertyName = "Visible" AndAlso dialogControl.DirectCopy(TryCast(control, CommonFileDialogControl)) IsNot Nothing Then
+            ElseIf propertyName = "Visible" AndAlso dialogControl.InlineCopy(TryCast(control, CommonFileDialogControl)) IsNot Nothing Then
                 Dim state As ShellNativeMethods.ControlState
                 customize.GetControlState(control.Id, state)
 
@@ -964,9 +964,9 @@ Namespace Dialogs
                 Dim list As CommonFileDialogRadioButtonList
                 Dim box As CommonFileDialogComboBox
 
-                If list.DirectCopy(TryCast(control, CommonFileDialogRadioButtonList)) IsNot Nothing Then
+                If list.InlineCopy(TryCast(control, CommonFileDialogRadioButtonList)) IsNot Nothing Then
                     customize.SetSelectedControlItem(list.Id, list.SelectedIndex)
-                ElseIf box.DirectCopy(TryCast(control, CommonFileDialogComboBox)) IsNot Nothing Then
+                ElseIf box.InlineCopy(TryCast(control, CommonFileDialogComboBox)) IsNot Nothing Then
                     customize.SetSelectedControlItem(box.Id, box.SelectedIndex)
                 End If
             ElseIf propertyName = "IsChecked" Then
@@ -1147,11 +1147,11 @@ Namespace Dialogs
                             Dim textBox__1 As CommonFileDialogTextBox
                             Dim groupBox As CommonFileDialogGroupBox
 
-                            If textBox__1.DirectCopy(TryCast(control, CommonFileDialogTextBox)) IsNot Nothing Then
+                            If textBox__1.InlineCopy(TryCast(control, CommonFileDialogTextBox)) IsNot Nothing Then
                                 textBox__1.SyncValue()
                                 textBox__1.Closed = True
                                 ' Also check subcontrols
-                            ElseIf groupBox.DirectCopy(TryCast(control, CommonFileDialogGroupBox)) IsNot Nothing Then
+                            ElseIf groupBox.InlineCopy(TryCast(control, CommonFileDialogGroupBox)) IsNot Nothing Then
                                 For Each subcontrol As CommonFileDialogControl In groupBox.Items
                                     Dim textbox__2 As CommonFileDialogTextBox = TryCast(subcontrol, CommonFileDialogTextBox)
                                     If textbox__2 IsNot Nothing Then
@@ -1214,12 +1214,12 @@ Namespace Dialogs
                 Dim menu As CommonFileDialogMenu
 
                 ' Process ComboBox and/or RadioButtonList                
-                If controlInterface.DirectCopy(TryCast(control, ICommonFileDialogIndexedControls)) IsNot Nothing Then
+                If controlInterface.InlineCopy(TryCast(control, ICommonFileDialogIndexedControls)) IsNot Nothing Then
                     ' Update selected item and raise SelectedIndexChanged event                    
                     controlInterface.SelectedIndex = dwIDItem
                     controlInterface.RaiseSelectedIndexChangedEvent()
                     ' Process Menu
-                ElseIf menu.DirectCopy(TryCast(control, CommonFileDialogMenu)) IsNot Nothing Then
+                ElseIf menu.InlineCopy(TryCast(control, CommonFileDialogMenu)) IsNot Nothing Then
                     ' Find the menu item that was clicked and invoke it's click event
                     For Each item As CommonFileDialogMenuItem In menu.Items
                         If item.Id = dwIDItem Then
