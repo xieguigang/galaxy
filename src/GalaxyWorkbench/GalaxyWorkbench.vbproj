@@ -210,6 +210,7 @@
     <Compile Include="Container\Settings\UISettings.vb" />
     <Compile Include="Taskbar\TaskbarStatus.vb" />
     <Compile Include="Taskbar\TaskbarWindow.vb" />
+    <Compile Include="Tools.vb" />
     <Compile Include="WebViewLoader.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
