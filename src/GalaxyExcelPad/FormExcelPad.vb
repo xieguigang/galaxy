@@ -69,6 +69,7 @@ Imports Galaxy.Workbench.Actions
 Imports Galaxy.Workbench.CommonDialogs
 Imports Microsoft.VisualBasic.ComponentModel
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.Data.Framework.IO
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Net.Protocols.ContentTypes
 Imports Microsoft.VisualBasic.Text
@@ -97,6 +98,10 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
 
     Public Property AppSource As Type Implements IDataTraceback.AppSource
 
+    ''' <summary>
+    ''' get data of the selected table row
+    ''' </summary>
+    ''' <returns></returns>
     Public ReadOnly Property GetSelectedRow As Dictionary(Of String, Object)
         Get
             If AdvancedDataGridView1.SelectedRows.Count <= 0 Then
@@ -201,7 +206,7 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
         Call InputDialog.Input(
             Sub(creator)
                 Dim binding As BindingSource = AdvancedDataGridView1.DataSource
-                Dim tableSet As DataSet = binding.DataSource
+                Dim tableSet As System.Data.DataSet = binding.DataSource
                 Dim table As DataTable = tableSet.Tables.Item(Scan0)
 
                 Call creator.DoPlot(
@@ -224,7 +229,7 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
                 Dim action As String = input.getActionName
                 Dim data As Array = AdvancedDataGridView1.getFieldVector(name)
                 Dim source As BindingSource = AdvancedDataGridView1.DataSource
-                Dim dataset As DataSet = source.DataSource
+                Dim dataset As System.Data.DataSet = source.DataSource
                 Dim table As DataTable = dataset.Tables.Item(Scan0)
 
                 table.Namespace = SourceName
@@ -237,9 +242,13 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
             End Sub, config:=takeActions)
     End Sub
 
-    Private Sub AdvancedDataGridView1_FilterStringChanged(sender As Object, e As AdvancedDataGridView.FilterEventArgs) Handles AdvancedDataGridView1.FilterStringChanged
+    Public Function GetFieldVector(name As String) As Array
+        Return AdvancedDataGridView1.getFieldVector(name)
+    End Function
 
-    End Sub
+    Public Function GetDataFrame() As DataFrameResolver
+        Return AdvancedDataGridView1.GetDataFrame
+    End Function
 
     Private Sub frmTableViewer_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
 
