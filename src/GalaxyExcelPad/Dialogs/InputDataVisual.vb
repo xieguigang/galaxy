@@ -61,6 +61,7 @@ Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Data
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts.SpringForce
+Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Math2D
@@ -297,7 +298,7 @@ SingleS:    For Each name As String In GetY()
 
         ' nothing will be returns if user cancel
         If Not plot Is Nothing Then
-            canvas.BackgroundImage = plot
+            canvas.BackgroundImage = plot.CTypeGdiImage
         End If
     End Sub
 

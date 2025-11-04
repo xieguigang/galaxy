@@ -56,6 +56,7 @@ Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot
 Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Data
+Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Linq
@@ -102,7 +103,7 @@ Public Class ShowColumnStat
                 }}
             }
 
-            PictureBox1.BackgroundImage = bar.Plot(size:=New Size(2700, 2100), dpi:=300).AsGDIImage
+            PictureBox1.BackgroundImage = bar.Plot(size:=New Size(2700, 2100), dpi:=300).AsGDIImage.CTypeGdiImage
 
         ElseIf TypeOf vec Is Boolean() Then
             Dim flags As Boolean() = vec.AsObjectEnumerator.Select(Function(b) CBool(b)).ToArray
@@ -124,7 +125,7 @@ Public Class ShowColumnStat
                 }}
             }
 
-            PictureBox1.BackgroundImage = bar.Plot(size:=New Size(2700, 2100), dpi:=300).AsGDIImage
+            PictureBox1.BackgroundImage = bar.Plot(size:=New Size(2700, 2100), dpi:=300).AsGDIImage.CTypeGdiImage
 
         ElseIf TypeOf vec Is Date() Then
             ' do nothing?
@@ -165,7 +166,7 @@ IS_NUMERIC:    ' is numeric
                 ppi:=300,
                 showStats:=False,
                 removesOutliers:=False
-            ).AsGDIImage
+            ).AsGDIImage.CTypeGdiImage
         End If
     End Sub
 End Class
