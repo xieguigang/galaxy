@@ -135,15 +135,10 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
         loader = New GridLoaderHandler(AdvancedDataGridView1, AdvancedDataGridViewSearchToolBar1)
         TabText = "Table View"
 
-        AddHandler ribbonItems.ButtonColumnStats.ExecuteEvent,
-            Sub()
-                Call DoTableSampleStats()
-            End Sub
-
         ApplyVsTheme(ContextMenuStrip1, AdvancedDataGridViewSearchToolBar1)
     End Sub
 
-    Private Sub DoTableSampleStats()
+    Public Sub DoTableSampleStats()
         Dim stats As New ShowColumnStat
         Dim mask As MaskForm = MaskForm.CreateMask(frm:=MyApplication.host)
 
