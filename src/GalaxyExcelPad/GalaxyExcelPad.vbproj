@@ -67,10 +67,10 @@
     <Compile Update="FormNetworkViewer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="InputAction.vb">
+    <Compile Update="Dialogs\InputAction.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="InputDataVisual.vb">
+    <Compile Update="Dialogs\InputDataVisual.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="My Project\Application.Designer.vb">
@@ -78,7 +78,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
-    <Compile Update="ShowColumnStat.vb">
+    <Compile Update="Dialogs\ShowColumnStat.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
