@@ -118,6 +118,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataControlHandler.vb" />
     <Compile Include="JSONViewer\JsonRender.vb" />
     <Compile Include="JSONViewer\JsonViewer.vb">
       <SubType>UserControl</SubType>
