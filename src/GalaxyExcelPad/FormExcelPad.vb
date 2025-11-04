@@ -65,6 +65,7 @@ Imports System.Text
 Imports BioNovoGene.mzkit_win32.My
 Imports Galaxy.Data
 Imports Galaxy.Data.TableSheet
+Imports Galaxy.Workbench
 Imports Galaxy.Workbench.Actions
 Imports Galaxy.Workbench.CommonDialogs
 Imports Microsoft.VisualBasic.ComponentModel
@@ -264,8 +265,8 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
     End Sub
 
     Public Shared Function GetCurrentTable() As FormExcelPad
-        If TypeOf MyApplication.host.m_dockPanel.ActiveDocument Is FormExcelPad Then
-            Return MyApplication.host.m_dockPanel.ActiveDocument
+        If TypeOf CommonRuntime.AppHost.ActiveDocument Is FormExcelPad Then
+            Return CommonRuntime.AppHost.ActiveDocument
         Else
             Return Nothing
         End If
