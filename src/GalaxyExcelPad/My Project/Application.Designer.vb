@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.GalaxyExcelPad.FormExcelPad
+            Me.MainForm = Global.Galaxy.ExcelPad.FormExcelPad
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _

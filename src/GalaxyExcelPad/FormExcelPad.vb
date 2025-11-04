@@ -251,35 +251,6 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
 
     End Sub
 
-    Shared Sub New()
-        AddHandler ribbonItems.ButtonResetTableFilter.ExecuteEvent,
-            Sub()
-                Dim table = getCurrentTable()
-
-                If Not table Is Nothing Then
-                    Call table.resetFilter()
-                End If
-            End Sub
-
-        AddHandler ribbonItems.ButtonColumnStats.ExecuteEvent,
-            Sub()
-                Dim table = getCurrentTable()
-
-                If Not table Is Nothing Then
-                    Call table.columnVectorStat()
-                End If
-            End Sub
-
-        AddHandler ribbonItems.ButtonSaveTableCDF.ExecuteEvent,
-            Sub()
-                Dim table = getCurrentTable()
-
-                If Not table Is Nothing Then
-                    Call table.exportTableCDF()
-                End If
-            End Sub
-    End Sub
-
     Private Sub exportTableCDF()
 
     End Sub
@@ -292,7 +263,7 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
         Call AdvancedDataGridView1.CleanFilterAndSort()
     End Sub
 
-    Private Shared Function getCurrentTable() As FormExcelPad
+    Public Shared Function GetCurrentTable() As FormExcelPad
         If TypeOf MyApplication.host.m_dockPanel.ActiveDocument Is FormExcelPad Then
             Return MyApplication.host.m_dockPanel.ActiveDocument
         Else
@@ -370,9 +341,5 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
 
     Public Sub AddSendToMenu(menuItem As ToolStripMenuItem)
         Call SendToToolStripMenuItem.DropDownItems.Add(menuItem)
-    End Sub
-
-    Private Sub SendToREnvironmentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SendToREnvironmentToolStripMenuItem.Click
-
     End Sub
 End Class
