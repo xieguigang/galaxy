@@ -80,7 +80,6 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
 
     Public Property FilePath As String Implements IFileReference.FilePath
     Public Property ViewRow As Action(Of Dictionary(Of String, Object))
-    Public Property ParseMsSet As Func(Of Dictionary(Of String, Object), IEnumerable(Of NamedValue(Of Double)))
     Public Property SourceName As String Implements IDataTraceback.SourceName
     ''' <summary>
     ''' for raw data traceback
@@ -122,6 +121,12 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
     Public ReadOnly Property DataSource As BindingSource
         Get
             Return AdvancedDataGridView1.DataSource
+        End Get
+    End Property
+
+    Public ReadOnly Property Table As DataGridView
+        Get
+            Return AdvancedDataGridView1
         End Get
     End Property
 
@@ -262,15 +267,15 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
 
     End Sub
 
-    Private Sub exportTableCDF()
+    Public Sub exportTableCDF()
 
     End Sub
 
-    Private Sub columnVectorStat()
+    Public Sub columnVectorStat()
 
     End Sub
 
-    Private Sub resetFilter()
+    Public Sub resetFilter()
         Call AdvancedDataGridView1.CleanFilterAndSort()
     End Sub
 
