@@ -53,12 +53,17 @@
 #End Region
 
 Imports System.Runtime.CompilerServices
-Imports BioNovoGene.mzkit_win32.My
 Imports Microsoft.VisualBasic.Language
-Imports REnv = SMRUCC.Rsharp.Runtime
+Imports Microsoft.VisualBasic.Scripting.Runtime
 
 Module DataControlHandler
 
+    ''' <summary>
+    ''' Get the field column data vector from the given data table by field name reference
+    ''' </summary>
+    ''' <param name="table"></param>
+    ''' <param name="fieldRef"></param>
+    ''' <returns></returns>
     <Extension>
     Public Function getFieldVector(table As DataTable, fieldRef As String) As Array
         Dim fieldNames As New List(Of String)
@@ -70,29 +75,40 @@ Module DataControlHandler
         Next
 
         Dim ordinal As Integer = fieldNames.IndexOf(fieldRef)
-        Dim vec = table.getFieldVector(ordinal)
+        Dim vec As Array = table.getFieldVector(ordinal)
 
         Return vec
     End Function
 
+    ''' <summary>
+    ''' Get the field column data vector from the given data table by field ordinal index reference
+    ''' </summary>
+    ''' <param name="table"></param>
+    ''' <param name="fieldRef"></param>
+    ''' <returns></returns>
     <Extension>
     Public Function getFieldVector(table As DataTable, fieldRef As Integer) As Array
-        Dim array As New List(Of Object)
+        Dim list As New List(Of Object)
         Dim row As DataRow
         Dim val As Object
+        Dim col As DataColumn = table.Columns(fieldRef)
 
         For index As Integer = 0 To table.Rows.Count - 2
             row = table.Rows.Item(index)
             val = row.Item(fieldRef)
 
             If Convert.IsDBNull(val) Then
-                Call array.Add(Nothing)
+                Call list.Add(Nothing)
             Else
-                Call array.Add(val)
+                Call list.Add(val)
             End If
         Next
 
-        Return REnv.TryCastGenericArray(array.ToArray, MyApplication.REngine.globalEnvir)
+        If col.DataType Is Nothing OrElse col.DataType Is GetType(Object) Then
+            Return list.ToArray
+        Else
+            Return ClrConversion.CreateArray(list, col.DataType)
+        End If
     End Function
 
     ''' <summary>
@@ -119,6 +135,7 @@ Module DataControlHandler
     Public Function getFieldVector(AdvancedDataGridView1 As DataGridView, i As Integer) As Array
         Dim array As New List(Of Object)
         Dim val As Object
+        Dim col As DataGridViewColumn = AdvancedDataGridView1.Columns(i)
 
         For Each row As DataGridViewRow In AdvancedDataGridView1.Rows
             val = row.Cells(i).Value
@@ -130,6 +147,10 @@ Module DataControlHandler
             End If
         Next
 
-        Return REnv.TryCastGenericArray(array.ToArray, MyApplication.REngine.globalEnvir)
+        If col.ValueType Is Nothing OrElse col.ValueType Is GetType(Object) Then
+            Return array.ToArray
+        Else
+            Return ClrConversion.CreateArray(list, col.ValueType)
+        End If
     End Function
 End Module
