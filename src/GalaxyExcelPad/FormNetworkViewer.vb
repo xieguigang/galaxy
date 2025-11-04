@@ -55,8 +55,8 @@
 
 Imports System.ComponentModel
 Imports System.Text
-Imports BioNovoGene.mzkit_win32.My
 Imports Galaxy.CommonControls
+Imports Galaxy.Workbench
 Imports Galaxy.Workbench.CommonDialogs
 Imports Microsoft.VisualBasic.ApplicationServices
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
@@ -114,11 +114,11 @@ Public Class FormNetworkViewer
             settings.TrackBar1.Value = Canvas1.ViewDistance
         End If
 
-        MyApplication.LogText($"view distance: {Canvas1.ViewDistance}")
+        CommonRuntime.LogText($"view distance: {Canvas1.ViewDistance}")
 
         Call InputDialog.Input(Of InputNetworkLayout)(
             Sub(config)
-                Canvas1.SetFDGParams(Globals.Settings.network.layout)
+                Canvas1.SetFDGParams(config.GraphLayout)
                 Canvas1.ViewDistance = config.TrackBar1.Value
             End Sub, config:=settings)
     End Sub
@@ -223,7 +223,7 @@ Public Class FormNetworkViewer
             ' edge table
             Dim edges = Canvas1.Graph.CreateGraphTable({"*"}, DToolStripMenuItem.Checked).ToArray
 
-            Call WindowModules.ShowTable(edges, "Network Graph")
+            Call ExcelPad.ShowTable(edges, "Network Graph")
         End If
     End Sub
 
@@ -232,7 +232,7 @@ Public Class FormNetworkViewer
             ' nodes table
             Dim nodes = Canvas1.WriteLayout.CreateNodesMetaData({"*"}, DToolStripMenuItem.Checked).ToArray
 
-            Call WindowModules.ShowTable(nodes, "Node Metadata")
+            Call ExcelPad.ShowTable(nodes, "Node Metadata")
         End If
     End Sub
 

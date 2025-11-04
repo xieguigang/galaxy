@@ -54,12 +54,13 @@
 
 #End Region
 
-Imports BioNovoGene.mzkit_win32.My
+Imports Galaxy.Workbench
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
 Imports Microsoft.VisualBasic.Data.ChartPlots
 Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Data
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
+Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts.SpringForce
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Math2D
@@ -272,6 +273,8 @@ SingleS:    For Each name As String In GetY()
         canvas.DataGridView1.DataSource = canvas.BindingSource1
     End Function
 
+    Public Property GraphLayout As New ForceDirectedArgs
+
     Public Sub DoPlot(x As Array, table As DataTable, getVector As Func(Of String, Array))
         Dim plot As Image
 
@@ -279,12 +282,11 @@ SingleS:    For Each name As String In GetY()
             Dim Rplot = doSummaryPlot(table)
 
             If TypeOf Rplot Is NetworkGraph Then
-                Dim g As NetworkGraph = Rplot
-                Dim viewer As FormNetworkViewer = VisualStudio.ShowDocument(Of FormNetworkViewer)(title:=ComboBox2.SelectedItem.ToString)
-
-                viewer.SetGraph(g, layout:=Globals.Settings.network.layout)
-                viewer.Show(MyApplication.host.m_dockPanel)
-
+                Call CommonRuntime _
+                    .ShowDocument(Of FormNetworkViewer)(title:=ComboBox2.SelectedItem.ToString) _
+                    .SetGraph(g:=DirectCast(Rplot, NetworkGraph),
+                              layout:=GraphLayout
+                    )
                 Return
             Else
                 plot = Rplot
