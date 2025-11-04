@@ -72,6 +72,7 @@ Public Class InputDataVisual
 
     Dim fields As Dictionary(Of String, Type)
     Dim colorSet As String()
+    Dim canvas As ChartPad
 
     ''' <summary>
     ''' set field names
@@ -97,7 +98,8 @@ Public Class InputDataVisual
         Next
     End Sub
 
-    Public Sub SetColorSet(colors As IEnumerable(Of String))
+    Public Sub SetCanvas(pad As ChartPad, colors As IEnumerable(Of String))
+        canvas = pad
         colorSet = colors.SafeQuery.ToArray
     End Sub
 
@@ -113,7 +115,7 @@ Public Class InputDataVisual
 
     Private Function getCategorySerials(x As String(), getVector As Func(Of String, Array)) As BarDataGroup
         Dim idx As i32 = Scan0
-        Dim grid = MyApplication.host.mzkitTool.DataGridView1
+        Dim grid As DataGridView = canvas.DataGridView1
         Dim getXName As String = GetX()
         Dim yList As New List(Of Array)
         Dim samples As New List(Of BarDataSample)
@@ -171,7 +173,7 @@ Public Class InputDataVisual
 
     Private Iterator Function getSerials(x As Array, getVector As Func(Of String, Array)) As IEnumerable(Of SerialData)
         Dim idx As i32 = Scan0
-        Dim grid = MyApplication.host.mzkitTool.DataGridView1
+        Dim grid As DataGridView = canvas.DataGridView1
         Dim getXName As String = GetX()
         Dim yList As New List(Of Array)
 
@@ -242,7 +244,7 @@ SingleS:    For Each name As String In GetY()
                     .Select(Function(xi, i) New PointF(xi, y(i))) _
                     .OrderByDescending(Function(p) p.X) _
                     .ToArray
-                Dim s = Scatter.FromPoints(points, lineColor:=colors(++idx))
+                Dim s = Scatter.FromPoints(points, lineColor:=colorSet(++idx))
 
                 Call table.Columns.Add(name, GetType(Double))
                 Call yList.Add(y)
@@ -265,9 +267,9 @@ SingleS:    For Each name As String In GetY()
 #Enable Warning
         End If
 
-        MyApplication.host.mzkitTool.BindingSource1.DataSource = memoryData
-        MyApplication.host.mzkitTool.BindingSource1.DataMember = table.TableName
-        MyApplication.host.mzkitTool.DataGridView1.DataSource = MyApplication.host.mzkitTool.BindingSource1
+        canvas.BindingSource1.DataSource = memoryData
+        canvas.BindingSource1.DataMember = table.TableName
+        canvas.DataGridView1.DataSource = canvas.BindingSource1
     End Function
 
     Public Sub DoPlot(x As Array, table As DataTable, getVector As Func(Of String, Array))
@@ -306,8 +308,7 @@ SingleS:    For Each name As String In GetY()
     End Function
 
     Private Function doGeneralPlot(x As Array, getVector As Func(Of String, Array)) As Image
-        Dim size As String = MyApplication.host.mzkitTool.PictureBox1 _
-            .Size _
+        Dim size As String = canvas.CanvasSize _
             .Scale(1.75) _
             .ToArray(reverse:=True) _
             .JoinBy(",")
