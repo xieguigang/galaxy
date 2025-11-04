@@ -38,6 +38,10 @@ Public MustInherit Class SummaryPlot
         PlotApps(plot.appName) = plot
     End Sub
 
+    Public Shared Function EnumeratePlots() As IEnumerable(Of SummaryPlot)
+        Return PlotApps.Values
+    End Function
+
     Public MustOverride Function Plot(table As DataTable) As Object
 
     Protected Function getFieldVector(table As DataTable, aliasNames As String()) As Array

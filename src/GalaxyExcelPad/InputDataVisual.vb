@@ -89,7 +89,7 @@ Public Class InputDataVisual
         Me.ComboBox1.SelectedIndex = 0
         Me.fields = fields
 
-        For Each app As SummaryPlot In SummaryPlot.PlotApps
+        For Each app As SummaryPlot In SummaryPlot.EnumeratePlots
             If app.Test(fields.Keys) Then
                 Call ComboBox2.Items.Add(app.appName)
             End If
