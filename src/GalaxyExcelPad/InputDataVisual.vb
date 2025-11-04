@@ -71,6 +71,7 @@ Imports any = Microsoft.VisualBasic.Scripting
 Public Class InputDataVisual
 
     Dim fields As Dictionary(Of String, Type)
+    Dim colorSet As String()
 
     ''' <summary>
     ''' set field names
@@ -96,6 +97,10 @@ Public Class InputDataVisual
         Next
     End Sub
 
+    Public Sub SetColorSet(colors As IEnumerable(Of String))
+        colorSet = colors.SafeQuery.ToArray
+    End Sub
+
     Public Function GetX() As String
         Return ListBox1.SelectedItem.ToString
     End Function
@@ -107,21 +112,20 @@ Public Class InputDataVisual
     End Function
 
     Private Function getCategorySerials(x As String(), getVector As Func(Of String, Array)) As BarDataGroup
-        Dim colors As String() = Globals.Settings.viewer.colorSet
         Dim idx As i32 = Scan0
         Dim grid = MyApplication.host.mzkitTool.DataGridView1
         Dim getXName As String = GetX()
         Dim yList As New List(Of Array)
         Dim samples As New List(Of BarDataSample)
 
-        If colors.IsNullOrEmpty Then
-            colors = Designer.GetColors("paper", 12) _
+        If colorSet.IsNullOrEmpty Then
+            colorSet = Designer.GetColors("paper", 12) _
                 .Select(Function(c) c.ToHtmlColor) _
                 .ToArray
         End If
 
         Dim colorList As NamedValue(Of Color)() = Designer _
-            .CubicSpline(colors.Select(Function(c) c.TranslateColor), n:=x.Length) _
+            .CubicSpline(colorSet.Select(Function(c) c.TranslateColor), n:=x.Length) _
             .Take(x.Length) _
             .Select(Function(c, i)
                         Return New NamedValue(Of Color) With {
@@ -166,14 +170,13 @@ Public Class InputDataVisual
     End Function
 
     Private Iterator Function getSerials(x As Array, getVector As Func(Of String, Array)) As IEnumerable(Of SerialData)
-        Dim colors As String() = Globals.Settings.viewer.colorSet
         Dim idx As i32 = Scan0
         Dim grid = MyApplication.host.mzkitTool.DataGridView1
         Dim getXName As String = GetX()
         Dim yList As New List(Of Array)
 
-        If colors.IsNullOrEmpty Then
-            colors = Designer.GetColors("paper", 12) _
+        If colorSet.IsNullOrEmpty Then
+            colorSet = Designer.GetColors("paper", 12) _
                 .Select(Function(c) c.ToHtmlColor) _
                 .ToArray
         End If
@@ -198,7 +201,7 @@ Public Class InputDataVisual
             If cbColorGroups.SelectedIndex <> -1 Then
                 Dim tags As Array = getVector(any.ToString(cbColorGroups.SelectedItem))
                 Dim tag As String
-                Dim colorLoop As LoopArray(Of String) = colors
+                Dim colorLoop As LoopArray(Of String) = colorSet
                 Dim y As Array = getVector(yNames(0))
                 Dim points = x _
                     .AsObjectEnumerator _
