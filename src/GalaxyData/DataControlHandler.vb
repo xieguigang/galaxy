@@ -56,7 +56,7 @@ Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Scripting.Runtime
 
-Module DataControlHandler
+Public Module DataControlHandler
 
     ''' <summary>
     ''' Get the field column data vector from the given data table by field name reference

@@ -280,7 +280,7 @@ SingleS:    For Each name As String In GetY()
 
             If TypeOf Rplot Is NetworkGraph Then
                 Dim g As NetworkGraph = Rplot
-                Dim viewer As frmNetworkViewer = VisualStudio.ShowDocument(Of frmNetworkViewer)(title:=ComboBox2.SelectedItem.ToString)
+                Dim viewer As FormNetworkViewer = VisualStudio.ShowDocument(Of FormNetworkViewer)(title:=ComboBox2.SelectedItem.ToString)
 
                 viewer.SetGraph(g, layout:=Globals.Settings.network.layout)
                 viewer.Show(MyApplication.host.m_dockPanel)
@@ -295,8 +295,7 @@ SingleS:    For Each name As String In GetY()
 
         ' nothing will be returns if user cancel
         If Not plot Is Nothing Then
-            MyApplication.host.mzkitTool.ShowPlotImage(plot, ImageLayout.Zoom)
-            MyApplication.host.ShowMzkitToolkit()
+            canvas.BackgroundImage = plot
         End If
     End Sub
 

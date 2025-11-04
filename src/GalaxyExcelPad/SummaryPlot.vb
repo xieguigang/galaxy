@@ -1,4 +1,5 @@
 ﻿Imports System.Text
+Imports Galaxy.Data
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualBasic.Serialization.JSON
 
