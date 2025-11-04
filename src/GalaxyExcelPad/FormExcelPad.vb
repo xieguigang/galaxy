@@ -114,6 +114,12 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
         End Get
     End Property
 
+    Public ReadOnly Property DataSource As BindingSource
+        Get
+            Return AdvancedDataGridView1.DataSource
+        End Get
+    End Property
+
     Dim loader As GridLoaderHandler
 
     Public Sub LoadTable(apply As Action(Of DataTable)) Implements IDataTableViewer.LoadTable
