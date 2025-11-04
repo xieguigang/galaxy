@@ -89,7 +89,6 @@ Partial Class FormExcelPad
         ActionsToolStripMenuItem = New ToolStripMenuItem()
         SendToToolStripMenuItem = New ToolStripMenuItem()
 
-        SendToREnvironmentToolStripMenuItem = New ToolStripMenuItem()
         ToolStripMenuItem2 = New ToolStripSeparator()
         TransposeToolStripMenuItem = New ToolStripMenuItem()
         CopyToolStripMenuItem = New ToolStripMenuItem()
@@ -134,20 +133,14 @@ Partial Class FormExcelPad
         ' 
         ' SendToToolStripMenuItem
         ' 
-        SendToToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {SendToREnvironmentToolStripMenuItem})
+
         SendToToolStripMenuItem.Name = "SendToToolStripMenuItem"
         SendToToolStripMenuItem.Size = New Size(180, 22)
         SendToToolStripMenuItem.Text = "Send To"
         ' 
-        ' MSImagingIonListToolStripMenuItem
-        ' 
-
-        ' 
         ' SendToREnvironmentToolStripMenuItem
         ' 
-        SendToREnvironmentToolStripMenuItem.Name = "SendToREnvironmentToolStripMenuItem"
-        SendToREnvironmentToolStripMenuItem.Size = New Size(181, 22)
-        SendToREnvironmentToolStripMenuItem.Text = "R# Environment"
+
         ' 
         ' ToolStripMenuItem2
         ' 
@@ -226,7 +219,7 @@ Partial Class FormExcelPad
     Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
     Friend WithEvents VisualizeToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SendToREnvironmentToolStripMenuItem As ToolStripMenuItem
+
     Friend WithEvents ActionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AdvancedDataGridView1 As AdvancedDataGridView
     Friend WithEvents AdvancedDataGridViewSearchToolBar1 As AdvancedDataGridViewSearchToolBar

@@ -140,7 +140,6 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
 
     Public Sub DoTableSampleStats()
         Dim stats As New ShowColumnStat
-        Dim mask As MaskForm = MaskForm.CreateMask(frm:=MyApplication.host)
 
         For Each column As DataGridViewColumn In AdvancedDataGridView1.Columns
             Dim key As String = column.Name
@@ -150,9 +149,7 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
             Call stats.vectors.Add(key, vec)
         Next
 
-        If mask.ShowDialogForm(stats) = DialogResult.OK Then
-            'do nothing
-        End If
+        Call InputDialog.ShowDialog(stats)
     End Sub
 
     Public Function Save(path As String, encoding As Encoding) As Boolean Implements ISaveHandle.Save
@@ -183,36 +180,6 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
         ElseIf Not ViewRow Is Nothing Then
             Call _ViewRow(row)
         End If
-    End Sub
-
-    Private Sub SendToREnvironmentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SendToREnvironmentToolStripMenuItem.Click
-        Dim form As New InputRSymbol
-        Dim fieldNames As New List(Of String)
-
-        For Each col As DataGridViewColumn In AdvancedDataGridView1.Columns
-            Call fieldNames.Add(col.Name)
-        Next
-
-        Call form.LoadFields(fieldNames)
-
-        Call InputDialog.Input(Of InputRSymbol)(
-            Sub(config)
-                Dim name As String = config.ComboBox1.Text.Trim
-                Dim fields As String() = config.GetNames.ToArray
-                Dim table As New dataframe With {
-                    .columns = New Dictionary(Of String, Array)
-                }
-
-                For Each fieldRef As String In fields
-                    Dim i As Integer = fieldNames.IndexOf(fieldRef)
-                    Dim array As Array = AdvancedDataGridView1.getFieldVector(i)
-
-                    Call table.add(fieldRef, array)
-                Next
-
-                Call MyApplication.REngine.Add(name, table)
-                Call VisualStudio.ShowRTerm()
-            End Sub, config:=form)
     End Sub
 
     Public Function GetSchema() As Dictionary(Of String, Type)
@@ -403,5 +370,9 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
 
     Public Sub AddSendToMenu(menuItem As ToolStripMenuItem)
         Call SendToToolStripMenuItem.DropDownItems.Add(menuItem)
+    End Sub
+
+    Private Sub SendToREnvironmentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SendToREnvironmentToolStripMenuItem.Click
+
     End Sub
 End Class
