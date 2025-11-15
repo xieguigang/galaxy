@@ -2,6 +2,7 @@
 Imports Galaxy.Workbench.CommonDialogs
 Imports Galaxy.Workbench.Container
 Imports Galaxy.Workbench.DockDocument
+Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualStudio.WinForms.Docking
 
 ''' <summary>
@@ -16,6 +17,8 @@ Public Module CommonRuntime
     ''' </summary>
     ''' <returns></returns>
     Public Property MaskOpacity As Double = 0.5
+
+    ReadOnly toolWindows As New Dictionary(Of String, ToolWindow)
 
     Public ReadOnly Property IsDevelopmentMode As Boolean
         Get
@@ -67,11 +70,24 @@ Public Module CommonRuntime
         End If
     End Sub
 
+    Public Sub RegisterToolWindow(tool As ToolWindow)
+        If Not tool.Name.StringEmpty(, True) Then
+            toolWindows(tool.Name) = tool
+
+            Dim setting As DockSettings = UISettings.windows.KeyItem(tool.Name)
+
+            If Not setting Is Nothing Then
+                Call setting.ApplySettings(tool)
+            End If
+        End If
+    End Sub
+
     Public Sub SaveUISettings()
         If AppHost IsNot Nothing AndAlso UISettings IsNot Nothing Then
             Dim size As Size = AppHost.GetClientSize
             Dim position As Point = AppHost.GetDesktopLocation
 
+            UISettings.windows = DockSettings.GetSettings(toolWindows.Values).ToArray
             UISettings.windowState = AppHost.GetWindowState
             UISettings.width = size.Width
             UISettings.height = size.Height

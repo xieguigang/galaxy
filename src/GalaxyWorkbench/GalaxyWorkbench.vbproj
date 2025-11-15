@@ -152,6 +152,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Container\AppEnvironment.vb" />
+    <Compile Include="Container\Settings\DockSettings.vb" />
     <Compile Include="DockDocument\DocumentWindow.Designer.vb">
       <DependentUpon>DocumentWindow.vb</DependentUpon>
     </Compile>
