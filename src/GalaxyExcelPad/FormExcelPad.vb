@@ -61,6 +61,7 @@
 #End Region
 
 Imports System.IO
+Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports Galaxy.Data
 Imports Galaxy.Data.TableSheet
@@ -132,8 +133,13 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
 
     Dim loader As GridLoaderHandler
 
+    ''' <summary>
+    ''' thread safe invoke for load data table
+    ''' </summary>
+    ''' <param name="apply"></param>
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Public Sub LoadTable(apply As Action(Of DataTable)) Implements IDataTableViewer.LoadTable
-        Call loader.LoadTable(apply)
+        Call Me.Invoke(Sub() loader.LoadTable(apply))
     End Sub
 
     Protected Overrides Sub SaveDocument()
