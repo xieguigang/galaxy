@@ -74,7 +74,7 @@ Public Class InputDataVisual
 
     Dim fields As Dictionary(Of String, Type)
     Dim colorSet As String()
-    Dim canvas As ChartPad
+    Dim canvas As IChartPad
 
     ''' <summary>
     ''' set field names
@@ -100,7 +100,7 @@ Public Class InputDataVisual
         Next
     End Sub
 
-    Public Sub SetCanvas(pad As ChartPad, colors As IEnumerable(Of String))
+    Public Sub SetCanvas(pad As IChartPad, colors As IEnumerable(Of String))
         canvas = pad
         colorSet = colors.SafeQuery.ToArray
     End Sub
@@ -117,7 +117,7 @@ Public Class InputDataVisual
 
     Private Function getCategorySerials(x As String(), getVector As Func(Of String, Array)) As BarDataGroup
         Dim idx As i32 = Scan0
-        Dim grid As DataGridView = canvas.DataGridView1
+        Dim grid As DataGridView = canvas.GetChartPadCanvas.DataGridView1
         Dim getXName As String = GetX()
         Dim yList As New List(Of Array)
         Dim samples As New List(Of BarDataSample)
@@ -175,7 +175,7 @@ Public Class InputDataVisual
 
     Private Iterator Function getSerials(x As Array, getVector As Func(Of String, Array)) As IEnumerable(Of SerialData)
         Dim idx As i32 = Scan0
-        Dim grid As DataGridView = canvas.DataGridView1
+        Dim grid As DataGridView = Me.canvas.GetChartPadCanvas.DataGridView1
         Dim getXName As String = GetX()
         Dim yList As New List(Of Array)
 
@@ -269,6 +269,8 @@ SingleS:    For Each name As String In GetY()
 #Enable Warning
         End If
 
+        Dim canvas As ChartPad = Me.canvas.GetChartPadCanvas
+
         canvas.BindingSource1.DataSource = memoryData
         canvas.BindingSource1.DataMember = table.TableName
         canvas.DataGridView1.DataSource = canvas.BindingSource1
@@ -298,7 +300,8 @@ SingleS:    For Each name As String In GetY()
 
         ' nothing will be returns if user cancel
         If Not plot Is Nothing Then
-            canvas.BackgroundImage = plot.CTypeGdiImage
+            canvas.GetChartPadCanvas.BackgroundImage = plot.CTypeGdiImage
+            canvas.ShowPage()
         End If
     End Sub
 
@@ -310,7 +313,7 @@ SingleS:    For Each name As String In GetY()
     End Function
 
     Private Function doGeneralPlot(x As Array, getVector As Func(Of String, Array)) As Image
-        Dim size As String = canvas.CanvasSize _
+        Dim size As String = canvas.GetChartPadCanvas.CanvasSize _
             .Scale(1.75) _
             .ToArray(reverse:=True) _
             .JoinBy(",")

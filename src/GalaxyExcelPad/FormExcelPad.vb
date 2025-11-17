@@ -132,6 +132,8 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
     End Property
 
     Dim loader As GridLoaderHandler
+    Dim colorSet As String()
+    Dim canvas As IChartPad
 
     ''' <summary>
     ''' thread safe invoke for load data table
@@ -210,10 +212,16 @@ Public Class FormExcelPad : Implements ISaveHandle, IFileReference, IDataTraceba
         Return schema
     End Function
 
+    Public Sub SetCanvas(pad As IChartPad, colors As IEnumerable(Of String))
+        canvas = pad
+        colorSet = colors.SafeQuery.ToArray
+    End Sub
+
     Private Sub VisualizeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VisualizeToolStripMenuItem.Click
         Dim load As New InputDataVisual
 
         Call load.SetAxis(GetSchema)
+        Call load.SetCanvas(canvas, colorSet)
         Call InputDialog.Input(
             Sub(creator)
                 Dim binding As BindingSource = AdvancedDataGridView1.DataSource
