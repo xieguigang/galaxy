@@ -48,7 +48,7 @@ Namespace JSON
             End Set
         End Property
 
-        Public Event FindAction(node As JsonViewerTreeNode)
+        Public Event FindAction(node As JsonViewerTreeNode, text As String)
 
         Sub New()
             Call InitializeComponent()
@@ -65,16 +65,21 @@ Namespace JSON
 
         Private Sub mnuFind_Click(sender As Object, e As System.EventArgs) Handles FindToolStripMenuItem.Click
             If Not viewer Is Nothing Then
-                RaiseEvent FindAction(viewer.GetSelectedTreeNode)
+                RaiseEvent FindAction(viewer.GetSelectedTreeNode, GetSelectedNodeText)
             End If
         End Sub
 
+        Private Function GetSelectedNodeText() As String
+            Dim text As String = viewer.GetSelectedTreeNode.Text
+            text = text.GetTagValue(":", failureNoName:=True).Value
+            text = Strings.Trim(text)
+
+            Return text
+        End Function
+
         Private Sub mnuCopyValue_Click(sender As Object, e As System.EventArgs) Handles CopyToolStripMenuItem.Click
             If Not viewer Is Nothing Then
-                Dim text As String = viewer.GetSelectedTreeNode.Text
-                text = text.GetTagValue(":", failureNoName:=True).Value
-
-                Call Clipboard.SetText(text)
+                Call Clipboard.SetText(GetSelectedNodeText)
             End If
         End Sub
 
