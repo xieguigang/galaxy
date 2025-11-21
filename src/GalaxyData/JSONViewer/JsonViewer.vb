@@ -71,7 +71,10 @@ Namespace JSON
 
         Private Sub mnuCopyValue_Click(sender As Object, e As System.EventArgs) Handles CopyToolStripMenuItem.Click
             If Not viewer Is Nothing Then
-                Call Clipboard.SetText(viewer.GetSelectedTreeNode.Text)
+                Dim text As String = viewer.GetSelectedTreeNode.Text
+                text = text.GetTagValue(":", failureNoName:=True).Value
+
+                Call Clipboard.SetText(text)
             End If
         End Sub
 
