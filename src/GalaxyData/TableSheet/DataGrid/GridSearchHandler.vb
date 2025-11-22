@@ -1,4 +1,7 @@
-﻿Imports Galaxy.Data.TableSheet.Events
+﻿Imports System.Runtime.CompilerServices
+Imports Galaxy.Data.TableSheet.Events
+
+<Assembly: InternalsVisibleTo("ExcelPad")>
 
 Namespace TableSheet
 

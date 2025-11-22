@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11217.181 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "framework", "framework", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -62,6 +62,8 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "imaging.NET5", "..\..\GCModeller\src\runtime\sciBASIC#\gr\Microsoft.VisualBasic.Imaging\imaging.NET5.vbproj", "{2DC55B9F-2122-5938-595D-BDAE1BCEDA1B}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Microsoft.VisualBasic.Drawing", "..\..\Microsoft.VisualBasic.Drawing\src\Microsoft.VisualBasic.Drawing\Microsoft.VisualBasic.Drawing.vbproj", "{DDAC6099-3440-973D-0B26-6E14064D4C4A}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "plots-netcore5", "..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Visualization\Plots\plots-netcore5.vbproj", "{2E03FA62-D5D9-50DE-1029-CF59608DF671}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -349,6 +351,18 @@ Global
 		{DDAC6099-3440-973D-0B26-6E14064D4C4A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DDAC6099-3440-973D-0B26-6E14064D4C4A}.Release|x64.ActiveCfg = Release|x64
 		{DDAC6099-3440-973D-0B26-6E14064D4C4A}.Release|x64.Build.0 = Release|x64
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Debug|x64.ActiveCfg = Debug|x64
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Debug|x64.Build.0 = Debug|x64
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.mzkit_win32|Any CPU.ActiveCfg = Rsharp_app_release|Any CPU
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.mzkit_win32|Any CPU.Build.0 = Rsharp_app_release|Any CPU
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.mzkit_win32|x64.ActiveCfg = Rsharp_app_release|x64
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.mzkit_win32|x64.Build.0 = Rsharp_app_release|x64
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Release|x64.ActiveCfg = Release|x64
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -379,6 +393,7 @@ Global
 		{1AE6C39C-DD2B-5D64-2E80-B95C3A0EF554} = {C4C021B6-4183-43DF-AED0-51C9864EEDAE}
 		{2DC55B9F-2122-5938-595D-BDAE1BCEDA1B} = {1708D61E-3B48-4E16-83B8-D3128307AEDD}
 		{DDAC6099-3440-973D-0B26-6E14064D4C4A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{2E03FA62-D5D9-50DE-1029-CF59608DF671} = {1708D61E-3B48-4E16-83B8-D3128307AEDD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3958ABFB-93F0-45E4-8957-FED9918DC189}

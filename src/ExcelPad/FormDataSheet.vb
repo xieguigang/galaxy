@@ -11,7 +11,6 @@ Public Class FormDataSheet
 
     Dim loader As GridLoaderHandler
     Dim search As GridSearchHandler
-    Dim source As New BindingSource
 
     Private Sub FormDataSheet_Load(sender As Object, e As EventArgs) Handles Me.Load
         Controls.Add(table)
@@ -19,7 +18,7 @@ Public Class FormDataSheet
 
         table.Dock = DockStyle.Fill
         toolbar.Dock = DockStyle.Top
-        loader = New GridLoaderHandler(table, toolbar, source)
+        loader = New GridLoaderHandler(table, toolbar)
         search = New GridSearchHandler(table)
     End Sub
 
