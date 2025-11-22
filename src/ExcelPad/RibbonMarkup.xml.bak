@@ -1,7 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://schemas.microsoft.com/windows/2009/Ribbon">
   <Application.Commands>
-    <Command Name="cmdButtonOpen" Id="2" LabelTitle="Open" LabelDescription="Open an excel table file and load the selected data file into this application" />
+    <Command Name="cmdButtonOpen" Id="2" LabelTitle="Open" LabelDescription="Open an excel table file and load the selected data file into this application">
+      <Command.SmallImages>
+        <Image MinDPI="192">Resources/icons8-file-explorer-new-96.png</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image MinDPI="192">Resources/icons8-file-explorer-new-96.png</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdButtonImportsData" Id="3" LabelTitle="Imports Data">
+      <Command.SmallImages>
+        <Image MinDPI="192">Resources/icons8-microsoft-excel-2019-96.png</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image MinDPI="192">Resources/icons8-microsoft-excel-2019-96.png</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdGroupExcelPad" Id="4" LabelTitle="Excel Pad" LabelDescription="Excel Pad" />
   </Application.Commands>
   <Application.Views>
     <Ribbon>
@@ -13,8 +29,9 @@
       </Ribbon.QuickAccessToolbar>
       <Ribbon.Tabs>
         <Tab>
-          <Group SizeDefinition="OneButton">
+          <Group CommandName="cmdGroupExcelPad" SizeDefinition="TwoButtons">
             <Button CommandName="cmdButtonOpen" />
+            <Button CommandName="cmdButtonImportsData" />
           </Group>
         </Tab>
       </Ribbon.Tabs>

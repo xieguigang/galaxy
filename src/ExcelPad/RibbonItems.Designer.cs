@@ -18,20 +18,29 @@ namespace RibbonLib.Controls
     {
         private static class Cmd
         {
+            public const uint cmdMenuMain = 5;
+            public const uint cmdGroupExcelPad = 4;
             public const uint cmdButtonOpen = 2;
+            public const uint cmdButtonImportsData = 3;
         }
 
         // ContextPopup CommandName
 
         public Ribbon Ribbon { get; private set; }
+        public RibbonTab MenuMain { get; private set; }
+        public RibbonGroup GroupExcelPad { get; private set; }
         public RibbonButton ButtonOpen { get; private set; }
+        public RibbonButton ButtonImportsData { get; private set; }
 
         public RibbonItems(Ribbon ribbon)
         {
             if (ribbon == null)
                 throw new ArgumentNullException(nameof(ribbon), "Parameter is null");
             this.Ribbon = ribbon;
+            MenuMain = new RibbonTab(ribbon, Cmd.cmdMenuMain);
+            GroupExcelPad = new RibbonGroup(ribbon, Cmd.cmdGroupExcelPad);
             ButtonOpen = new RibbonButton(ribbon, Cmd.cmdButtonOpen);
+            ButtonImportsData = new RibbonButton(ribbon, Cmd.cmdButtonImportsData);
         }
 
     }

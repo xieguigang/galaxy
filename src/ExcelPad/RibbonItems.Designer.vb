@@ -15,7 +15,10 @@ Imports RibbonLib.Controls
 Namespace RibbonLib.Controls
     Partial Class RibbonItems
         Private Class Cmd
+            Public Const cmdMenuMain As UInteger = 5
+            Public Const cmdGroupExcelPad As UInteger = 4
             Public Const cmdButtonOpen As UInteger = 2
+            Public Const cmdButtonImportsData As UInteger = 3
         End Class
 
         ' ContextPopup CommandName
@@ -26,10 +29,28 @@ Namespace RibbonLib.Controls
                 Return _ribbon
             End Get
         End Property
+        Private _MenuMain As RibbonTab
+        Public ReadOnly Property MenuMain As RibbonTab
+            Get
+                Return _MenuMain
+            End Get
+        End Property
+        Private _GroupExcelPad As RibbonGroup
+        Public ReadOnly Property GroupExcelPad As RibbonGroup
+            Get
+                Return _GroupExcelPad
+            End Get
+        End Property
         Private _ButtonOpen As RibbonButton
         Public ReadOnly Property ButtonOpen As RibbonButton
             Get
                 Return _ButtonOpen
+            End Get
+        End Property
+        Private _ButtonImportsData As RibbonButton
+        Public ReadOnly Property ButtonImportsData As RibbonButton
+            Get
+                Return _ButtonImportsData
             End Get
         End Property
 
@@ -38,7 +59,10 @@ Namespace RibbonLib.Controls
                 Throw New ArgumentNullException(NameOf(ribbon), "Parameter is Nothing")
             End If
             _ribbon = ribbon
+            _MenuMain = New RibbonTab(_ribbon, Cmd.cmdMenuMain)
+            _GroupExcelPad = New RibbonGroup(_ribbon, Cmd.cmdGroupExcelPad)
             _ButtonOpen = New RibbonButton(_ribbon, Cmd.cmdButtonOpen)
+            _ButtonImportsData = New RibbonButton(_ribbon, Cmd.cmdButtonImportsData)
         End Sub
 
     End Class

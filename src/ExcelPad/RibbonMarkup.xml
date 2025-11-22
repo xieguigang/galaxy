@@ -9,6 +9,16 @@
         <Image MinDPI="192">Resources/icons8-file-explorer-new-96.png</Image>
       </Command.LargeImages>
     </Command>
+    <Command Name="cmdButtonImportsData" Id="3" LabelTitle="Imports Data">
+      <Command.SmallImages>
+        <Image MinDPI="192">Resources/icons8-microsoft-excel-2019-96.png</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image MinDPI="192">Resources/icons8-microsoft-excel-2019-96.png</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdGroupExcelPad" Id="4" LabelTitle="Excel Pad" LabelDescription="Excel Pad" />
+    <Command Name="cmdMenuMain" Id="5" LabelTitle="Main" />
   </Application.Commands>
   <Application.Views>
     <Ribbon>
@@ -19,9 +29,10 @@
         <QuickAccessToolbar />
       </Ribbon.QuickAccessToolbar>
       <Ribbon.Tabs>
-        <Tab>
-          <Group SizeDefinition="OneButton">
+        <Tab CommandName="cmdMenuMain">
+          <Group CommandName="cmdGroupExcelPad" SizeDefinition="TwoButtons">
             <Button CommandName="cmdButtonOpen" />
+            <Button CommandName="cmdButtonImportsData" />
           </Group>
         </Tab>
       </Ribbon.Tabs>

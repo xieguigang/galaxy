@@ -79,9 +79,14 @@ Public Class FormMain : Implements AppHost
         Call initializeVSPanel()
 
         AddHandler ribbonItem.ButtonOpen.ExecuteEvent, AddressOf OpenFile
+        AddHandler ribbonItem.ButtonImportsData.ExecuteEvent, AddressOf ImportsFile
 
         Call CommonRuntime.Hook(Me)
         Call CommonRuntime.RegisterOutputWindow()
+    End Sub
+
+    Private Sub ImportsFile()
+        Call TaskWizard.ShowWizard()
     End Sub
 
     Private Sub OpenFile()

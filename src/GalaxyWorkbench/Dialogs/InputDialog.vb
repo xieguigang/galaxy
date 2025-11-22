@@ -78,8 +78,9 @@ Namespace CommonDialogs
             Optional cancel As Action = Nothing,
             Optional config As Form = Nothing
         ) As Form
+
             If CommonRuntime.AppHost Is Nothing Then
-                Throw New NullReferenceException("the required windows main form is nothing!")
+                Throw New NullReferenceException("the required workbench windows main form is nothing!")
             End If
 
             Dim getConfig As Form = If(config, New Form)

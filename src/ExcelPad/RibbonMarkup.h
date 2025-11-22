@@ -10,6 +10,13 @@
 #define cmdButtonOpen_LabelDescription_RESID 60002
 #define cmdButtonOpen_SmallImages_192__RESID 60003
 #define cmdButtonOpen_LargeImages_192__RESID 60004
-#define InternalCmd2_LabelTitle_RESID 60005
-#define InternalCmd6_LabelTitle_RESID 60006
-#define InternalCmd8_LabelTitle_RESID 60007
+#define cmdButtonImportsData 3 
+#define cmdButtonImportsData_LabelTitle_RESID 60005
+#define cmdButtonImportsData_SmallImages_192__RESID 60006
+#define cmdButtonImportsData_LargeImages_192__RESID 60007
+#define cmdGroupExcelPad 4 
+#define cmdGroupExcelPad_LabelTitle_RESID 60008
+#define cmdGroupExcelPad_LabelDescription_RESID 60009
+#define cmdMenuMain 5 
+#define cmdMenuMain_LabelTitle_RESID 60010
+#define InternalCmd2_LabelTitle_RESID 60011
