@@ -48,12 +48,40 @@ Namespace DockDocument.Presets
             Clipboard.SetText(msg)
         End Sub
 
+        ''' <summary>
+        ''' thread-safe append log text
+        ''' </summary>
+        ''' <param name="text"></param>
         Public Sub AppendLine(text As String)
             Call Invoke(Sub() TextBox1.AppendText(text & vbCrLf))
         End Sub
 
+        ''' <summary>
+        ''' thread-safe add log entry
+        ''' </summary>
+        ''' <param name="time"></param>
+        ''' <param name="action"></param>
+        ''' <param name="message"></param>
+        ''' <param name="level"></param>
         Public Sub AddLog(time As Date, action As String, message As String, Optional level As MSG_TYPES = MSG_TYPES.INF)
-            Call Invoke(Sub() DataGridView1.Rows.Add(time.ToString("HH:mm:ss"), action, message))
+            Dim icon As Image = Nothing
+
+            Select Case level
+                Case MSG_TYPES.DEBUG : icon = My.Resources.Icons8.icons8_debug_96
+                Case MSG_TYPES.ERR : icon = My.Resources.Icons8.icons8_error_96
+                Case MSG_TYPES.INF : icon = My.Resources.Icons8.icons8_information_96
+                Case MSG_TYPES.WRN : icon = My.Resources.Icons8.icons8_warning_96
+                Case Else
+                    icon = My.Resources.Icons8.icons8_done_144
+            End Select
+
+            Call Invoke(Sub()
+                            Dim offset As Integer = DataGridView1.Rows.Add(icon, time.ToString("HH:mm:ss"), action, message)
+                            Dim row As DataGridViewRow = DataGridView1.Rows(offset)
+
+                            row.Tag = level.Description
+                            DataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit)
+                        End Sub)
         End Sub
     End Class
 End Namespace
