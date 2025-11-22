@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.Serialization.JSON
+﻿Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Logging
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace DockDocument.Presets
 
@@ -27,9 +28,10 @@ Namespace DockDocument.Presets
 
             Dim target As DataGridViewRow = DataGridView1.SelectedRows(0)
             Dim json As New Dictionary(Of String, String) From {
-                {"time", CStr(target.Cells(0).Value)},
-                {"action", CStr(target.Cells(1).Value)},
-                {"message", CStr(target.Cells(2).Value)}
+                {"level", CStr(target.Tag)},
+                {"time", CStr(target.Cells(1).Value)},
+                {"action", CStr(target.Cells(2).Value)},
+                {"message", CStr(target.Cells(3).Value)}
             }
 
             Clipboard.SetText(json.GetJson)
@@ -41,7 +43,7 @@ Namespace DockDocument.Presets
             End If
 
             Dim target As DataGridViewRow = DataGridView1.SelectedRows(0)
-            Dim msg As String = CStr(target.Cells(2).Value)
+            Dim msg As String = CStr(target.Cells(3).Value)
 
             Clipboard.SetText(msg)
         End Sub
@@ -50,7 +52,7 @@ Namespace DockDocument.Presets
             Call Invoke(Sub() TextBox1.AppendText(text & vbCrLf))
         End Sub
 
-        Public Sub AddLog(time As Date, action As String, message As String)
+        Public Sub AddLog(time As Date, action As String, message As String, Optional level As MSG_TYPES = MSG_TYPES.INF)
             Call Invoke(Sub() DataGridView1.Rows.Add(time.ToString("HH:mm:ss"), action, message))
         End Sub
     End Class

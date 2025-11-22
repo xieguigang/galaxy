@@ -32,13 +32,14 @@
             Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripComboBox()
             Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
             Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-            Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-            Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-            Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
             Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
             Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.CopyMessageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
             Me.TextBox1 = New System.Windows.Forms.TextBox()
+            Me.Column4 = New System.Windows.Forms.DataGridViewImageColumn()
+            Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+            Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+            Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
             Me.ToolStrip1.SuspendLayout()
             CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.ContextMenuStrip1.SuspendLayout()
@@ -79,7 +80,7 @@
             '
             Me.DataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke
             Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-            Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3})
+            Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.Column1, Me.Column2, Me.Column3})
             Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
             DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
             DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
@@ -94,6 +95,43 @@
             Me.DataGridView1.RowTemplate.Height = 23
             Me.DataGridView1.Size = New System.Drawing.Size(590, 275)
             Me.DataGridView1.TabIndex = 1
+            '
+            'ContextMenuStrip1
+            '
+            Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CopyToolStripMenuItem, Me.CopyMessageToolStripMenuItem})
+            Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+            Me.ContextMenuStrip1.Size = New System.Drawing.Size(152, 48)
+            '
+            'CopyToolStripMenuItem
+            '
+            Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
+            Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
+            Me.CopyToolStripMenuItem.Text = "Copy"
+            '
+            'CopyMessageToolStripMenuItem
+            '
+            Me.CopyMessageToolStripMenuItem.Name = "CopyMessageToolStripMenuItem"
+            Me.CopyMessageToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
+            Me.CopyMessageToolStripMenuItem.Text = "Copy Message"
+            '
+            'TextBox1
+            '
+            Me.TextBox1.BackColor = System.Drawing.Color.White
+            Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+            Me.TextBox1.Location = New System.Drawing.Point(716, 147)
+            Me.TextBox1.Multiline = True
+            Me.TextBox1.Name = "TextBox1"
+            Me.TextBox1.ReadOnly = True
+            Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
+            Me.TextBox1.Size = New System.Drawing.Size(303, 307)
+            Me.TextBox1.TabIndex = 2
+            '
+            'Column4
+            '
+            Me.Column4.HeaderText = ""
+            Me.Column4.Name = "Column4"
+            Me.Column4.ReadOnly = True
+            Me.Column4.Width = 32
             '
             'Column1
             '
@@ -113,36 +151,6 @@
             Me.Column3.HeaderText = "Message"
             Me.Column3.Name = "Column3"
             Me.Column3.ReadOnly = True
-            '
-            'ContextMenuStrip1
-            '
-            Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CopyToolStripMenuItem, Me.CopyMessageToolStripMenuItem})
-            Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-            Me.ContextMenuStrip1.Size = New System.Drawing.Size(181, 70)
-            '
-            'CopyToolStripMenuItem
-            '
-            Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
-            Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-            Me.CopyToolStripMenuItem.Text = "Copy"
-            '
-            'CopyMessageToolStripMenuItem
-            '
-            Me.CopyMessageToolStripMenuItem.Name = "CopyMessageToolStripMenuItem"
-            Me.CopyMessageToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-            Me.CopyMessageToolStripMenuItem.Text = "Copy Message"
-            '
-            'TextBox1
-            '
-            Me.TextBox1.BackColor = System.Drawing.Color.White
-            Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-            Me.TextBox1.Location = New System.Drawing.Point(716, 147)
-            Me.TextBox1.Multiline = True
-            Me.TextBox1.Name = "TextBox1"
-            Me.TextBox1.ReadOnly = True
-            Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
-            Me.TextBox1.Size = New System.Drawing.Size(303, 307)
-            Me.TextBox1.TabIndex = 2
             '
             'OutputWindow
             '
@@ -175,12 +183,13 @@
         Friend WithEvents ToolStripComboBox1 As ToolStripComboBox
         Friend WithEvents ToolStripButton1 As ToolStripButton
         Friend WithEvents DataGridView1 As DataGridView
-        Friend WithEvents Column1 As DataGridViewTextBoxColumn
-        Friend WithEvents Column2 As DataGridViewTextBoxColumn
-        Friend WithEvents Column3 As DataGridViewTextBoxColumn
         Friend WithEvents TextBox1 As TextBox
         Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
         Friend WithEvents CopyToolStripMenuItem As ToolStripMenuItem
         Friend WithEvents CopyMessageToolStripMenuItem As ToolStripMenuItem
+        Friend WithEvents Column4 As DataGridViewImageColumn
+        Friend WithEvents Column1 As DataGridViewTextBoxColumn
+        Friend WithEvents Column2 As DataGridViewTextBoxColumn
+        Friend WithEvents Column3 As DataGridViewTextBoxColumn
     End Class
 End Namespace
