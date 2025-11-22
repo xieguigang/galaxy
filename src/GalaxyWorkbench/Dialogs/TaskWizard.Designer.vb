@@ -37,7 +37,7 @@ Partial Class TaskWizard
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Left
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(214, 580)
         Me.PictureBox1.TabIndex = 0
@@ -46,9 +46,9 @@ Partial Class TaskWizard
         'GroupBox1
         '
         Me.GroupBox1.Location = New System.Drawing.Point(222, 39)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(718, 502)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
@@ -57,7 +57,7 @@ Partial Class TaskWizard
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(855, 549)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 24)
         Me.Button1.TabIndex = 2
@@ -67,7 +67,7 @@ Partial Class TaskWizard
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(768, 549)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(79, 24)
         Me.Button2.TabIndex = 3
@@ -99,7 +99,7 @@ Partial Class TaskWizard
         Me.Controls.Add(Me.PictureBox1)
         Me.Font = New System.Drawing.Font("Microsoft YaHei UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "TaskWizard"
