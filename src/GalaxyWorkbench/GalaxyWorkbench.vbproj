@@ -153,6 +153,12 @@
     </Compile>
     <Compile Include="Container\AppEnvironment.vb" />
     <Compile Include="Container\Settings\DockSettings.vb" />
+    <Compile Include="Dialogs\TaskWizard.Designer.vb">
+      <DependentUpon>TaskWizard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\TaskWizard.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockDocument\DocumentWindow.Designer.vb">
       <DependentUpon>DocumentWindow.vb</DependentUpon>
     </Compile>
@@ -164,6 +170,12 @@
       <DependentUpon>AdjustParameters.vb</DependentUpon>
     </Compile>
     <Compile Include="DockDocument\Presets\AdjustParameters.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DockDocument\Presets\OutputWindow.Designer.vb">
+      <DependentUpon>OutputWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DockDocument\Presets\OutputWindow.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DockDocument\Presets\PropertyWindow.designer.vb">
@@ -258,11 +270,17 @@
     <EmbeddedResource Include="Dialogs\MaskForm.zh-Hans.resx">
       <DependentUpon>MaskForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\TaskWizard.resx">
+      <DependentUpon>TaskWizard.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DockDocument\DocumentWindow.resx">
       <DependentUpon>DocumentWindow.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockDocument\Presets\AdjustParameters.resx">
       <DependentUpon>AdjustParameters.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockDocument\Presets\OutputWindow.resx">
+      <DependentUpon>OutputWindow.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DockDocument\Presets\PropertyWindow.resx">
       <DependentUpon>PropertyWindow.vb</DependentUpon>
