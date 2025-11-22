@@ -222,6 +222,11 @@
     <Compile Include="Plugin\Repository\PluginMetadata.vb" />
     <Compile Include="Plugin\Repository\RegistryFile.vb" />
     <Compile Include="Container\Settings\UISettings.vb" />
+    <Compile Include="Resources\Icons8.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icons8.resx</DependentUpon>
+    </Compile>
     <Compile Include="TableValueCopy.vb" />
     <Compile Include="Taskbar\TaskbarStatus.vb" />
     <Compile Include="Taskbar\TaskbarWindow.vb" />
@@ -297,6 +302,11 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icons8.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icons8.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -347,7 +357,11 @@
   <ItemGroup>
     <None Include="Resources\progress-bar.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\icons8-debug-96.png" />
+    <Content Include="Resources\icons8-error-96.png" />
+    <Content Include="Resources\icons8-information-message-96.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\..\..\mzkit\src\mzkit\packages\Microsoft.Web.WebView2.1.0.3537.50\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\..\..\mzkit\src\mzkit\packages\Microsoft.Web.WebView2.1.0.3537.50\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
