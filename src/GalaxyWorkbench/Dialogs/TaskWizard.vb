@@ -50,6 +50,8 @@ Public Class TaskWizard
 
             old.Visible = False
             old.Dock = DockStyle.None
+
+            current.SetData(steps(offset - 1).GetData)
         End If
 
         ctl.Visible = True
@@ -97,7 +99,7 @@ Public Class TaskWizard
     End Sub
 End Class
 
-Public Interface IWizardUI
+Public Interface IWizardUI : Inherits IDataContainer
 
     ReadOnly Property Title As String
 
