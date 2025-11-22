@@ -1,4 +1,5 @@
 ﻿Imports Galaxy.Workbench.CommonDialogs
+Imports Microsoft.VisualBasic.Imaging
 
 Public Class TaskWizard
 
@@ -104,19 +105,22 @@ Public Class TaskWizard
             Dim ctl As Control = DirectCast(CObj([step]), Control)
             Dim label As New Label
 
+            Controls.Add(label)
+
             label.Text = [step].Title
-            label.BackColor = Color.Transparent
+            label.BackColor = "#4270a5".TranslateColor
             label.ForeColor = Color.Black
-            label.Location = New Point(20, 20 + offset * 15)
+            label.Location = New Point(10, 10 + offset * 20)
+            label.AutoSize = True
 
             titles(offset) = label
-
             offset += 1
 
-            Controls.Add(label)
             GroupBox1.Controls.Add(ctl)
             ctl.Visible = False
             ctl.Dock = DockStyle.Fill
+
+            label.BringToFront()
         Next
 
         Call ShowStep()
