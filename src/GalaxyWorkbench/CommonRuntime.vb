@@ -40,6 +40,22 @@ Public Module CommonRuntime
     End Property
 
     Dim outputWindow As OutputWindow
+    Dim propertyWindow As PropertyWindow
+
+    Public Function GetPropertyWindow() As PropertyWindow
+        If AppHost Is Nothing Then
+            Call NoWorkbenchHostForm()
+        End If
+
+        If propertyWindow Is Nothing OrElse propertyWindow.IsDisposed Then
+            propertyWindow = New PropertyWindow
+            propertyWindow.TabText = "property_win"
+            propertyWindow.Show(AppHost, DockState.DockRight)
+            Call RegisterToolWindow(propertyWindow)
+        End If
+
+        Return propertyWindow
+    End Function
 
     Public Function GetOutputWindow() As OutputWindow
         If AppHost Is Nothing Then
@@ -56,6 +72,14 @@ Public Module CommonRuntime
 
         Return outputWindow
     End Function
+
+    Public Sub RegisterOutputWindow()
+        Call GetOutputWindow()
+    End Sub
+
+    Public Sub RegisterPropertyWindow()
+        Call GetPropertyWindow()
+    End Sub
 
     ''' <summary>
     ''' set value to the <see cref="AppHost"/> in current common workbench runtime.

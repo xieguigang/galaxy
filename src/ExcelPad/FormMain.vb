@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing
 Imports System.Windows.Forms
 Imports ExcelPad.RibbonLib.Controls
+Imports Galaxy.Workbench
 Imports Microsoft.VisualBasic.Data.Framework.IO
 Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.MIME.Office.Excel
@@ -8,7 +9,7 @@ Imports Microsoft.VisualStudio.WinForms.Docking
 Imports RibbonLib
 Imports ThemeVS2015
 
-Public Class FormMain
+Public Class FormMain : Implements AppHost
 
     Dim vS2015LightTheme1 As New VS2015LightTheme
     Dim vsToolStripExtender1 As New VisualStudioToolStripExtender
@@ -16,6 +17,21 @@ Public Class FormMain
     Dim ribbonItem As RibbonItems
 
     ReadOnly _toolStripProfessionalRenderer As New ToolStripProfessionalRenderer()
+
+    Public Event ResizeForm As AppHost.ResizeFormEventHandler Implements AppHost.ResizeForm
+    Public Event CloseWorkbench As AppHost.CloseWorkbenchEventHandler Implements AppHost.CloseWorkbench
+
+    Private ReadOnly Property AppHost_ClientRectangle As Rectangle Implements AppHost.ClientRectangle
+        Get
+            Return Me.ClientRectangle
+        End Get
+    End Property
+
+    Public ReadOnly Property ActiveDocument As Form Implements AppHost.ActiveDocument
+        Get
+            Return m_dockPanel.ActiveDocument
+        End Get
+    End Property
 
     Shared Sub New()
         Call SkiaDriver.Register()
@@ -63,6 +79,9 @@ Public Class FormMain
         Call initializeVSPanel()
 
         AddHandler ribbonItem.ButtonOpen.ExecuteEvent, AddressOf OpenFile
+
+        Call CommonRuntime.Hook(Me)
+        Call CommonRuntime.RegisterOutputWindow()
     End Sub
 
     Private Sub OpenFile()
@@ -89,5 +108,54 @@ Public Class FormMain
                 End If
             End If
         End Using
+    End Sub
+
+    Public Sub SetWorkbenchVisible(visible As Boolean) Implements AppHost.SetWorkbenchVisible
+        Me.Visible = visible
+    End Sub
+
+    Public Sub SetWindowState(stat As FormWindowState) Implements AppHost.SetWindowState
+        Me.WindowState = stat
+    End Sub
+
+    Public Function GetDesktopLocation() As Point Implements AppHost.GetDesktopLocation
+        Return Location
+    End Function
+
+    Public Function GetClientSize() As Size Implements AppHost.GetClientSize
+        Return Size
+    End Function
+
+    Public Function GetDocuments() As IEnumerable(Of Form) Implements AppHost.GetDocuments
+        Return m_dockPanel.Documents.OfType(Of Form)()
+    End Function
+
+    Public Function GetDockPanel() As Control Implements AppHost.GetDockPanel
+        Return m_dockPanel
+    End Function
+
+    Public Function GetWindowState() As FormWindowState Implements AppHost.GetWindowState
+        Return WindowState
+    End Function
+
+    Public Sub SetTitle(title As String) Implements AppHost.SetTitle
+        Text = title
+    End Sub
+
+    Public Sub StatusMessage(msg As String, Optional icon As Image = Nothing) Implements AppHost.StatusMessage
+        ToolStripStatusLabel1.Text = msg
+        ToolStripStatusLabel1.Image = icon
+    End Sub
+
+    Public Sub Warning(msg As String) Implements AppHost.Warning
+        Call StatusMessage(msg, Icons8.Warning)
+    End Sub
+
+    Public Sub LogText(text As String) Implements AppHost.LogText
+        Call CommonRuntime.GetOutputWindow.AppendLine(text)
+    End Sub
+
+    Public Sub ShowProperties(obj As Object) Implements AppHost.ShowProperties
+        Call CommonRuntime.GetPropertyWindow.SetObject(obj)
     End Sub
 End Class
