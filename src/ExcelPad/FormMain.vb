@@ -158,4 +158,14 @@ Public Class FormMain : Implements AppHost
     Public Sub ShowProperties(obj As Object) Implements AppHost.ShowProperties
         Call CommonRuntime.GetPropertyWindow.SetObject(obj)
     End Sub
+
+    Private Sub FormMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Call CommonRuntime.SaveUISettings()
+
+        RaiseEvent CloseWorkbench(e)
+    End Sub
+
+    Private Sub FormMain_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        RaiseEvent ResizeForm(Location, Size)
+    End Sub
 End Class

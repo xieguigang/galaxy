@@ -34,7 +34,7 @@ Partial Class FormMain
         ' 
         m_dockPanel.Dock = DockStyle.Fill
         m_dockPanel.Location = New System.Drawing.Point(0, 0)
-        m_dockPanel.Margin = New Padding(4, 4, 4, 4)
+        m_dockPanel.Margin = New Padding(4)
         m_dockPanel.Name = "m_dockPanel"
         m_dockPanel.Size = New System.Drawing.Size(933, 540)
         m_dockPanel.TabIndex = 0
@@ -62,9 +62,9 @@ Partial Class FormMain
         ClientSize = New System.Drawing.Size(933, 562)
         Controls.Add(m_dockPanel)
         Controls.Add(StatusStrip1)
-        Margin = New Padding(4, 4, 4, 4)
+        Margin = New Padding(4)
         Name = "FormMain"
-        Text = "Form1"
+        Text = "Excel Pad"
         StatusStrip1.ResumeLayout(False)
         StatusStrip1.PerformLayout()
         ResumeLayout(False)

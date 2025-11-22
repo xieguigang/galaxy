@@ -51,7 +51,7 @@ Public Module CommonRuntime
             propertyWindow = New PropertyWindow
             propertyWindow.Name = "property_win"
             propertyWindow.TabText = "Property Window"
-            propertyWindow.Show(AppHost.GetDockPanel, DockState.DockRight)
+            propertyWindow.Show(AppHost.GetDockPanel, DockState.DockRightAutoHide)
 
             Call RegisterToolWindow(propertyWindow)
         End If
@@ -68,7 +68,7 @@ Public Module CommonRuntime
             outputWindow = New OutputWindow
             outputWindow.Name = "output_win"
             outputWindow.TabText = "Output Window"
-            outputWindow.Show(AppHost.GetDockPanel, DockState.DockBottom)
+            outputWindow.Show(AppHost.GetDockPanel, DockState.DockBottomAutoHide)
 
             Call RegisterToolWindow(outputWindow)
         End If
