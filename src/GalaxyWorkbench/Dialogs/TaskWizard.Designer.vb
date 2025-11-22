@@ -39,17 +39,17 @@ Partial Class TaskWizard
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(214, 580)
+        Me.PictureBox1.Size = New System.Drawing.Size(185, 580)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'GroupBox1
         '
-        Me.GroupBox1.Location = New System.Drawing.Point(222, 39)
+        Me.GroupBox1.Location = New System.Drawing.Point(192, 39)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(718, 502)
+        Me.GroupBox1.Size = New System.Drawing.Size(747, 502)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Task Wizard"
@@ -78,7 +78,7 @@ Partial Class TaskWizard
         '
         Me.LinkLabel1.AutoSize = True
         Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.LinkLabel1.Location = New System.Drawing.Point(217, 9)
+        Me.LinkLabel1.Location = New System.Drawing.Point(188, 9)
         Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(114, 26)
