@@ -11,6 +11,10 @@ Public Class TaskWizard
         End Set
     End Property
 
+    Private Sub TaskWizard_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+    End Sub
+
     Public Shared Function ShowWizard() As TaskWizard
         If CommonRuntime.AppHost Is Nothing Then
             Throw New NullReferenceException("the required workbench windows main form is nothing!")
