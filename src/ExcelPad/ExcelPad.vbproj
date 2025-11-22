@@ -17,15 +17,15 @@
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
     <Platforms>AnyCPU;x64</Platforms>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(ProjectDir)**\*.cs</DefaultItemExcludes>
-    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <MyType>WindowsForms</MyType>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <OptionStrict>Off</OptionStrict>
     <IncludeSymbols>True</IncludeSymbols>
     <Description>A UI Framework DEMO Project</Description>
     <OutputType>WinExe</OutputType>
-    <UseWPF>False</UseWPF>
+    <UseWPF>True</UseWPF>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
-    <StartupObject>ExcelPad.FormMain</StartupObject>
+    <StartupObject>ExcelPad.My.MyApplication</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows|AnyCPU'">
     <DebugType>full</DebugType>
