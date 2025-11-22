@@ -14,6 +14,7 @@ Public Class TaskWizard
     Dim steps As IWizardUI()
     Dim offset As Integer = 0
     Dim yes As Boolean = False
+    Dim titles As Label()
 
     Public Shared Function ShowWizard(taskName As String, ParamArray steps As IWizardUI()) As TaskWizard
         If CommonRuntime.AppHost Is Nothing Then
@@ -44,6 +45,14 @@ Public Class TaskWizard
     Public Sub ShowStep()
         Dim current = steps(offset)
         Dim ctl As Control = DirectCast(CObj(current), Control)
+
+        For i As Integer = 0 To titles.Length - 1
+            If i = offset Then
+                titles(i).ForeColor = Color.White
+            Else
+                titles(i).ForeColor = Color.Black
+            End If
+        Next
 
         If offset > 0 Then
             Dim old = DirectCast(CObj(steps(offset - 1)), Control)
@@ -87,9 +96,24 @@ Public Class TaskWizard
     End Sub
 
     Private Sub TaskWizard_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim offset As Integer = 0
+
+        titles = New Label(steps.Length - 1) {}
+
         For Each [step] As IWizardUI In steps
             Dim ctl As Control = DirectCast(CObj([step]), Control)
+            Dim label As New Label
 
+            label.Text = [step].Title
+            label.BackColor = Color.Transparent
+            label.ForeColor = Color.Black
+            label.Location = New Point(20, 20 + offset * 15)
+
+            titles(offset) = label
+
+            offset += 1
+
+            Controls.Add(label)
             GroupBox1.Controls.Add(ctl)
             ctl.Visible = False
             ctl.Dock = DockStyle.Fill
