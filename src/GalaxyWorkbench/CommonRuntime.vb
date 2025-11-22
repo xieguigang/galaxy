@@ -2,6 +2,7 @@
 Imports Galaxy.Workbench.CommonDialogs
 Imports Galaxy.Workbench.Container
 Imports Galaxy.Workbench.DockDocument
+Imports Galaxy.Workbench.DockDocument.Presets
 Imports Microsoft.VisualBasic.ComponentModel.Collection
 Imports Microsoft.VisualStudio.WinForms.Docking
 
@@ -37,6 +38,24 @@ Public Module CommonRuntime
             Return ui
         End Get
     End Property
+
+    Dim outputWindow As OutputWindow
+
+    Public Function GetOutputWindow() As OutputWindow
+        If AppHost Is Nothing Then
+            Call NoWorkbenchHostForm()
+        End If
+
+        If outputWindow Is Nothing OrElse outputWindow.IsDisposed Then
+            outputWindow = New OutputWindow
+            outputWindow.TabText = "output_win"
+            outputWindow.Show(AppHost, DockState.DockBottom)
+
+            Call RegisterToolWindow(outputWindow)
+        End If
+
+        Return outputWindow
+    End Function
 
     ''' <summary>
     ''' set value to the <see cref="AppHost"/> in current common workbench runtime.
@@ -102,6 +121,10 @@ Public Module CommonRuntime
             NoWorkbenchHostForm()
         Else
             Call AppHost.StatusMessage(msg, Icons8.Information)
+
+            If Not outputWindow Is Nothing Then
+                Call outputWindow.AppendLine(msg)
+            End If
         End If
     End Sub
 
@@ -110,6 +133,10 @@ Public Module CommonRuntime
             NoWorkbenchHostForm()
         Else
             Call AppHost.StatusMessage(msg, Icons8.Warning)
+
+            If Not outputWindow Is Nothing Then
+                Call outputWindow.AppendLine(msg)
+            End If
         End If
     End Sub
 
@@ -118,6 +145,10 @@ Public Module CommonRuntime
             NoWorkbenchHostForm()
         Else
             Call AppHost.StatusMessage(msg, icon)
+
+            If Not outputWindow Is Nothing Then
+                Call outputWindow.AppendLine(msg)
+            End If
         End If
     End Sub
 
