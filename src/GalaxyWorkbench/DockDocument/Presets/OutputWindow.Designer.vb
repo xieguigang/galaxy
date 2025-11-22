@@ -26,20 +26,20 @@
         Private Sub InitializeComponent()
             Me.components = New System.ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OutputWindow))
-            Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+            Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
             Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
             Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
             Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripComboBox()
             Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
             Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-            Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-            Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.CopyMessageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.TextBox1 = New System.Windows.Forms.TextBox()
             Me.Column4 = New System.Windows.Forms.DataGridViewImageColumn()
             Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
             Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
             Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+            Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+            Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.CopyMessageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+            Me.TextBox1 = New System.Windows.Forms.TextBox()
             Me.ToolStrip1.SuspendLayout()
             CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.ContextMenuStrip1.SuspendLayout()
@@ -63,6 +63,7 @@
             '
             'ToolStripComboBox1
             '
+            Me.ToolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
             Me.ToolStripComboBox1.Items.AddRange(New Object() {"Action Output", "Log Text"})
             Me.ToolStripComboBox1.Name = "ToolStripComboBox1"
             Me.ToolStripComboBox1.Size = New System.Drawing.Size(150, 25)
@@ -82,19 +83,45 @@
             Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
             Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.Column1, Me.Column2, Me.Column3})
             Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1
-            DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-            DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-            DataGridViewCellStyle1.Font = New System.Drawing.Font("Cambria", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-            DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-            DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-            DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-            Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle1
+            DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+            DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+            DataGridViewCellStyle2.Font = New System.Drawing.Font("Cambria", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+            DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+            DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+            DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+            Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
             Me.DataGridView1.Location = New System.Drawing.Point(85, 179)
             Me.DataGridView1.Name = "DataGridView1"
             Me.DataGridView1.RowTemplate.Height = 23
             Me.DataGridView1.Size = New System.Drawing.Size(590, 275)
             Me.DataGridView1.TabIndex = 1
+            '
+            'Column4
+            '
+            Me.Column4.HeaderText = ""
+            Me.Column4.Name = "Column4"
+            Me.Column4.ReadOnly = True
+            Me.Column4.Width = 32
+            '
+            'Column1
+            '
+            Me.Column1.HeaderText = "Time"
+            Me.Column1.Name = "Column1"
+            Me.Column1.ReadOnly = True
+            '
+            'Column2
+            '
+            Me.Column2.HeaderText = "Action"
+            Me.Column2.Name = "Column2"
+            Me.Column2.ReadOnly = True
+            '
+            'Column3
+            '
+            Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+            Me.Column3.HeaderText = "Message"
+            Me.Column3.Name = "Column3"
+            Me.Column3.ReadOnly = True
             '
             'ContextMenuStrip1
             '
@@ -125,32 +152,6 @@
             Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
             Me.TextBox1.Size = New System.Drawing.Size(303, 307)
             Me.TextBox1.TabIndex = 2
-            '
-            'Column4
-            '
-            Me.Column4.HeaderText = ""
-            Me.Column4.Name = "Column4"
-            Me.Column4.ReadOnly = True
-            Me.Column4.Width = 32
-            '
-            'Column1
-            '
-            Me.Column1.HeaderText = "Time"
-            Me.Column1.Name = "Column1"
-            Me.Column1.ReadOnly = True
-            '
-            'Column2
-            '
-            Me.Column2.HeaderText = "Action"
-            Me.Column2.Name = "Column2"
-            Me.Column2.ReadOnly = True
-            '
-            'Column3
-            '
-            Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-            Me.Column3.HeaderText = "Message"
-            Me.Column3.Name = "Column3"
-            Me.Column3.ReadOnly = True
             '
             'OutputWindow
             '

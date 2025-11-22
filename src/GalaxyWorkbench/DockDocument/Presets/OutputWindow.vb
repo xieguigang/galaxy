@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Logging
+﻿Imports System.IO
+Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Logging
 Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace DockDocument.Presets
@@ -14,10 +15,14 @@ Namespace DockDocument.Presets
         Private Sub ToolStripComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ToolStripComboBox1.SelectedIndexChanged
             If ToolStripComboBox1.SelectedIndex = 0 Then
                 TextBox1.Visible = False
+                TextBox1.Dock = DockStyle.None
                 DataGridView1.Visible = True
+                DataGridView1.Dock = DockStyle.Fill
             Else
-                TextBox1.Visible = True
                 DataGridView1.Visible = False
+                DataGridView1.Dock = DockStyle.None
+                TextBox1.Visible = True
+                TextBox1.Dock = DockStyle.Fill
             End If
         End Sub
 
@@ -82,6 +87,37 @@ Namespace DockDocument.Presets
                             row.Tag = level.Description
                             DataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit)
                         End Sub)
+        End Sub
+
+        Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+            If ToolStripComboBox1.SelectedIndex = 0 Then
+                ' export table
+                Using file As New SaveFileDialog With {.Filter = "CSV file(*.csv)|*.csv"}
+                    If file.ShowDialog = DialogResult.OK Then
+                        Using s As StreamWriter = file.FileName.OpenWriter
+                            Call s.WriteLine(",level,time,action,message")
+
+                            For i As Integer = 0 To DataGridView1.Rows.Count - 1
+                                Dim level As String = CStr(DataGridView1.Rows(i).Tag)
+                                Dim time As String = CStr(DataGridView1.Rows(i).Cells(1).Value)
+                                Dim action As String = CStr(DataGridView1.Rows(i).Cells(2).Value)
+                                Dim message As String = CStr(DataGridView1.Rows(i).Cells(3).Value)
+
+                                Call s.WriteLine($"{i + 1},{level},{time},""{action}"",""{message}""")
+                            Next
+
+                            Call s.Flush()
+                        End Using
+                    End If
+                End Using
+            Else
+                ' export log text
+                Using file As New SaveFileDialog With {.Filter = "Log file(*.log;*.txt)|*.log;*.txt"}
+                    If file.ShowDialog = DialogResult.OK Then
+                        Call TextBox1.Text.SaveTo(file.FileName)
+                    End If
+                End Using
+            End If
         End Sub
     End Class
 End Namespace
