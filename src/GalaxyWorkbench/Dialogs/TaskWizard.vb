@@ -88,7 +88,7 @@ Public Class TaskWizard
         For Each [step] As IWizardUI In steps
             Dim ctl As Control = DirectCast(CObj([step]), Control)
 
-            Controls.Add(ctl)
+            GroupBox1.Controls.Add(ctl)
             ctl.Visible = False
             ctl.Dock = DockStyle.Fill
         Next
