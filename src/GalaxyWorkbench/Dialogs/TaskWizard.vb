@@ -86,7 +86,7 @@ Public Class TaskWizard
 
     Private Sub TaskWizard_Load(sender As Object, e As EventArgs) Handles Me.Load
         For Each [step] As IWizardUI In steps
-            Dim ctl As Control = DirectCast(CObj(steps), Control)
+            Dim ctl As Control = DirectCast(CObj([step]), Control)
 
             Controls.Add(ctl)
             ctl.Visible = False
