@@ -13,6 +13,7 @@ Public Class TaskWizard
 
     Dim steps As IWizardUI()
     Dim offset As Integer = 0
+    Dim yes As Boolean = False
 
     Public Shared Function ShowWizard(taskName As String, ParamArray steps As IWizardUI()) As TaskWizard
         If CommonRuntime.AppHost Is Nothing Then
@@ -26,13 +27,19 @@ Public Class TaskWizard
         wizard.steps = steps
 
         If mask.ShowDialogForm(wizard) = DialogResult.OK Then
-
+            wizard.yes = True
         Else
 
         End If
 
         Return wizard
     End Function
+
+    Public Overloads Sub [Finally](act As Action)
+        If yes AndAlso Not act Is Nothing Then
+            Call act()
+        End If
+    End Sub
 
     Public Sub ShowStep()
         Dim current = steps(offset)
