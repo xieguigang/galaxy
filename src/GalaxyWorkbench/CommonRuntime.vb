@@ -49,8 +49,10 @@ Public Module CommonRuntime
 
         If propertyWindow Is Nothing OrElse propertyWindow.IsDisposed Then
             propertyWindow = New PropertyWindow
-            propertyWindow.TabText = "property_win"
-            propertyWindow.Show(AppHost, DockState.DockRight)
+            propertyWindow.Name = "property_win"
+            propertyWindow.TabText = "Property Window"
+            propertyWindow.Show(AppHost.GetDockPanel, DockState.DockRight)
+
             Call RegisterToolWindow(propertyWindow)
         End If
 
@@ -64,8 +66,9 @@ Public Module CommonRuntime
 
         If outputWindow Is Nothing OrElse outputWindow.IsDisposed Then
             outputWindow = New OutputWindow
-            outputWindow.TabText = "output_win"
-            outputWindow.Show(AppHost, DockState.DockBottom)
+            outputWindow.Name = "output_win"
+            outputWindow.TabText = "Output Window"
+            outputWindow.Show(AppHost.GetDockPanel, DockState.DockBottom)
 
             Call RegisterToolWindow(outputWindow)
         End If
