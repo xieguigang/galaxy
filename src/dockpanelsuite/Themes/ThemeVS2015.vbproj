@@ -20,14 +20,37 @@
     <StartupObject>
     .My.MyApplication</StartupObject>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <ImportedNamespaces>System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,ThemeVS2015=True</ImportedNamespaces>
+    <ImportedNamespaces>System.Drawing=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,ThemeVS2015=True</ImportedNamespaces>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="ThemeVS2012\logs\**" />
+    <EmbeddedResource Remove="ThemeVS2012\logs\**" />
+    <None Remove="ThemeVS2012\logs\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VSDockPanel\VSDockPanel.vbproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="ThemeVS2015\Resources\vsThemePresets.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>vsThemePresets.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="ThemeVS2015\Resources\vsThemePresets.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>vsThemePresets.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   
 </Project>
