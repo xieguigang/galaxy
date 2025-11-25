@@ -17,7 +17,7 @@ Visual Studio 2005 Theme: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2
 Visual Studio 2012 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2012/
 Visual Studio 2013 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2013/
 Visual Studio 2015 Themes: https://www.nuget.org/packages/DockPanelSuite.ThemeVS2015/</PackageReleaseNotes>
-    <TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
     <StartupObject>.My.MyApplication</StartupObject>
     <RootNamespace>Microsoft.VisualStudio.WinForms</RootNamespace>
