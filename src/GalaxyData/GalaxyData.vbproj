@@ -18,6 +18,12 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <ImportedNamespaces>System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GalaxyData=True</ImportedNamespaces>
   </PropertyGroup>
+ <ItemGroup>
+   <Import Include="System.Windows.Forms" />
+ </ItemGroup>
  
 </Project>

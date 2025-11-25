@@ -7,7 +7,7 @@
     <AssemblyName>ThemeVS2015</AssemblyName>
     <RuntimeIdentifiers>win</RuntimeIdentifiers>
     <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
+    <MyType>WindowsForms</MyType>
 
     <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
@@ -17,6 +17,14 @@
 
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <StartupObject>
+    .My.MyApplication</StartupObject>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <ImportedNamespaces>System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,ThemeVS2015=True</ImportedNamespaces>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
+  <ItemGroup>
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
   
 </Project>

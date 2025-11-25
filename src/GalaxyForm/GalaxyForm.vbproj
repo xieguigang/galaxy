@@ -5,7 +5,7 @@
     <RootNamespace>Galaxy.CommonControls</RootNamespace>
     <AssemblyName>Galaxy.CommonControls</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
+    <MyType>WindowsForms</MyType>
     
            <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
@@ -29,6 +29,15 @@
 
 
     <Copyright>Copyright © i@xieguigang.me 2025</Copyright>
+
+
+    <StartupObject>Galaxy.CommonControls.My.MyApplication</StartupObject>
+
+
+    <ImportedNamespaces>System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GalaxyForm=True</ImportedNamespaces>
   </PropertyGroup>
+ <ItemGroup>
+   <Import Include="System.Windows.Forms" />
+ </ItemGroup>
  
 </Project>

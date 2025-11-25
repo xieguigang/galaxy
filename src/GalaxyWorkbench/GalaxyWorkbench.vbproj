@@ -2,12 +2,11 @@
   <PropertyGroup>
 
     <OutputType>Library</OutputType>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>Galaxy.Workbench.My.MyApplication</StartupObject>
     <RootNamespace>Galaxy.Workbench</RootNamespace>
     <AssemblyName>Galaxy.Workbench</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
+    <MyType>WindowsForms</MyType>
    
        <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
@@ -25,5 +24,10 @@
     <Title>Galaxy Workbench Winform UI Framework</Title>
     <Product>Galaxy Workbench</Product>
     <Copyright>Copyright © xieguigang&lt;i@xieguigang.me&gt; 2025</Copyright>
+    <ImportedNamespaces>System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GalaxyWorkbench=True</ImportedNamespaces>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
+  <ItemGroup>
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
   </Project>

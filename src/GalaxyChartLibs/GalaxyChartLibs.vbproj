@@ -6,7 +6,7 @@
     <RootNamespace>Galaxy.Data.Visualization</RootNamespace>
     <AssemblyName>Galaxy.Data.Visualization</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>Windows</MyType>
+    <MyType>WindowsForms</MyType>
    
    
           <TargetFrameworks>net8.0-windows</TargetFrameworks>
@@ -16,6 +16,61 @@
 
 
     <Deterministic>true</Deterministic>
+
+
+    <StartupObject>Galaxy.Data.Visualization.My.MyApplication</StartupObject>
+
+
+    <ImportedNamespaces>System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GalaxyChartLibs=True</ImportedNamespaces>
+
+
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+
+    <IncludeSymbols>True</IncludeSymbols>
   </PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Rsharp_app_release|net8.0-windows|AnyCPU'">
+  <DefineTrace>True</DefineTrace>
+  <RemoveIntegerChecks>True</RemoveIntegerChecks>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Rsharp_app_release|net8.0-windows|x64'">
+  <DefineTrace>True</DefineTrace>
+  <RemoveIntegerChecks>True</RemoveIntegerChecks>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='mzkit_win32|net8.0-windows|AnyCPU'">
+  <DefineTrace>True</DefineTrace>
+  <RemoveIntegerChecks>True</RemoveIntegerChecks>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='mzkit_win32|net8.0-windows|x64'">
+  <DefineTrace>True</DefineTrace>
+  <RemoveIntegerChecks>True</RemoveIntegerChecks>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows|AnyCPU'">
+  <RemoveIntegerChecks>True</RemoveIntegerChecks>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows|x64'">
+  <RemoveIntegerChecks>True</RemoveIntegerChecks>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows|AnyCPU'">
+  <RemoveIntegerChecks>True</RemoveIntegerChecks>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows|x64'">
+  <RemoveIntegerChecks>True</RemoveIntegerChecks>
+</PropertyGroup>
+
+<ItemGroup>
+  <Import Include="System.Windows.Forms" />
+</ItemGroup>
   
 </Project>
