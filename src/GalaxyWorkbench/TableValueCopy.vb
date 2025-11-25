@@ -1,4 +1,6 @@
-﻿Public Class TableValueCopy
+﻿Imports System.Data
+
+Public Class TableValueCopy
 
     ReadOnly matrix As DataGridView
 

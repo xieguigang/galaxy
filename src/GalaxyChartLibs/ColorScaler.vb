@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.ComponentModel.Ranges.Model
 Imports Microsoft.VisualBasic.Data.ChartPlots.Graphic.Axis
+Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Driver
@@ -97,9 +98,9 @@ Public Class ColorScaler
 
     Public Sub UpdateColors(callEvents As Boolean)
         ' 绘制坐标轴
-        BackgroundImage = DrawIntensityAxis()
+        BackgroundImage = DrawIntensityAxis().CTypeGdiImage
         ' 绘制颜色条
-        PictureBox1.BackgroundImage = DrawByColors(Designer.GetColors(colorSet.Description, mapLevels))
+        PictureBox1.BackgroundImage = DrawByColors(Designer.GetColors(colorSet.Description, mapLevels)).CTypeGdiImage
 
         If callEvents Then
             Try

@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.Imaging
+﻿Imports Microsoft.VisualBasic.Drawing
+Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Imaging.Driver
 
@@ -49,7 +50,7 @@ Namespace CommonDialogs
                     Call g.FillRectangle(colors(i), rect)
                 Next
 
-                PictureBox1.BackgroundImage = DirectCast(g, GdiRasterGraphics).ImageResource
+                PictureBox1.BackgroundImage = DirectCast(g, GdiRasterGraphics).ImageResource.CTypeGdiImage
             End Using
         End Sub
     End Class

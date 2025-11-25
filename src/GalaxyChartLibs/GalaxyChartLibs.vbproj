@@ -21,7 +21,7 @@
     <StartupObject>Galaxy.Data.Visualization.My.MyApplication</StartupObject>
 
 
-    <ImportedNamespaces>System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GalaxyChartLibs=True</ImportedNamespaces>
+    <ImportedNamespaces>System.Drawing=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GalaxyChartLibs=True</ImportedNamespaces>
 
 
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -70,6 +70,7 @@
 </PropertyGroup>
 
 <ItemGroup>
+  <Import Include="System.Drawing" />
   <Import Include="System.Windows.Forms" />
 </ItemGroup>
 
@@ -78,7 +79,12 @@
 </ItemGroup>
 
 <ItemGroup>
+  <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj" />
+  <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Visualization\Plots\plots-netcore5.vbproj" />
+  <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Drawing-net4.8\Drawing-net4.8.vbproj" />
+  <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Microsoft.VisualBasic.Imaging\imaging.NET5.vbproj" />
   <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+  <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\text%html\html_netcore5.vbproj" />
   <ProjectReference Include="..\GalaxyWorkbench\GalaxyWorkbench.vbproj" />
 </ItemGroup>
   
