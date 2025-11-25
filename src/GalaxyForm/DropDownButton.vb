@@ -274,21 +274,21 @@ Public Class DropDownButton : Inherits Control
         If Application.RenderWithVisualStyles Then
             DrawVisualStyle(e.Graphics, rect, dropDownRect)
         Else
-            Dim btnState = Windows.Forms.ButtonState.Normal
-            Dim ddbState = Windows.Forms.ButtonState.Normal
+            Dim btnState = System.Windows.Forms.ButtonState.Normal
+            Dim ddbState = System.Windows.Forms.ButtonState.Normal
 
             Select Case buttonState
                 Case PushButtonState.Hot, PushButtonState.Normal
-                    btnState = Windows.Forms.ButtonState.Normal
+                    btnState = System.Windows.Forms.ButtonState.Normal
                 Case PushButtonState.Pressed
-                    btnState = Windows.Forms.ButtonState.Pushed
+                    btnState = System.Windows.Forms.ButtonState.Pushed
             End Select
 
             Select Case dropDownState
                 Case ComboBoxState.Hot, ComboBoxState.Normal
-                    ddbState = Windows.Forms.ButtonState.Normal
+                    ddbState = System.Windows.Forms.ButtonState.Normal
                 Case ComboBoxState.Pressed
-                    ddbState = Windows.Forms.ButtonState.Pushed
+                    ddbState = System.Windows.Forms.ButtonState.Pushed
             End Select
 
             DrawPreVistaStyle(e.Graphics, rect, btnState, dropDownRect, ddbState)

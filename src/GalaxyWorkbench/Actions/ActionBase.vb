@@ -1,4 +1,6 @@
-﻿Namespace Actions
+﻿Imports System.Data
+
+Namespace Actions
 
     ''' <summary>
     ''' run a specific action on a data table

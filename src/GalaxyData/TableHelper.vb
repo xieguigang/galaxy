@@ -1,10 +1,12 @@
-﻿Imports System.IO
+﻿Imports System.Data
+Imports System.IO
 Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports Microsoft.VisualBasic.Data.Framework.IO
 Imports Microsoft.VisualBasic.MIME.Office.Excel.XLSX.Writer
 Imports Microsoft.VisualBasic.Text
 Imports any = Microsoft.VisualBasic.Scripting
+Imports ASCII = Microsoft.VisualBasic.Text.ASCII
 
 Public Module TableHelper
 

@@ -34,13 +34,17 @@
     <StartupObject>Galaxy.CommonControls.My.MyApplication</StartupObject>
 
 
-    <ImportedNamespaces>System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GalaxyForm=True</ImportedNamespaces>
+    <ImportedNamespaces>System.Drawing=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GalaxyForm=True</ImportedNamespaces>
   </PropertyGroup>
  <ItemGroup>
+   <Import Include="System.Drawing" />
    <Import Include="System.Windows.Forms" />
  </ItemGroup>
  <ItemGroup>
    <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+ </ItemGroup>
+ <ItemGroup>
+   <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
  </ItemGroup>
  
 </Project>

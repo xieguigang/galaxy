@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.CompilerServices
+﻿Imports System.Data
+Imports System.Runtime.CompilerServices
 Imports Galaxy.Data.TableSheet.Events
 
 Namespace TableSheet

@@ -52,6 +52,7 @@
 
 #End Region
 
+Imports System.Data
 Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Scripting.Runtime
@@ -150,7 +151,7 @@ Public Module DataControlHandler
         If col.ValueType Is Nothing OrElse col.ValueType Is GetType(Object) Then
             Return array.ToArray
         Else
-            Return ClrConversion.CreateArray(list, col.ValueType)
+            Return ClrConversion.CreateArray(List, col.ValueType)
         End If
     End Function
 End Module

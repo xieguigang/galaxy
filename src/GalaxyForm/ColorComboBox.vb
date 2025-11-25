@@ -47,8 +47,8 @@ Public Class ColorComboBox : Inherits ComboBox
             DirectCast(Items(e.Index), Color),
             getColor(Items(e.Index))
         )
-        Dim brush As New SolidBrush(color)
-        Dim g = e.Graphics
+        Dim brush As New System.Drawing.SolidBrush(color)
+        Dim gfx As Graphics = e.Graphics
         Dim rect = e.Bounds
 
         rect.Inflate(-2, -2)
@@ -60,8 +60,8 @@ Public Class ColorComboBox : Inherits ComboBox
             getLabel(Items(e.Index))
         )
 
-        g.DrawRectangle(New Pen(e.ForeColor), rectColor)
-        g.FillRectangle(brush, rectColor)
-        g.DrawString(label, e.Font, New SolidBrush(e.ForeColor), rect.X + 22, rect.Y)
+        gfx.DrawRectangle(New System.Drawing.Pen(e.ForeColor), rectColor)
+        gfx.FillRectangle(brush, rectColor)
+        gfx.DrawString(label, e.Font, New System.Drawing.SolidBrush(e.ForeColor), rect.X + 22, rect.Y)
     End Sub
 End Class

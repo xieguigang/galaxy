@@ -20,13 +20,21 @@
     <TargetFrameworkProfile />
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <ImportedNamespaces>System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GalaxyData=True</ImportedNamespaces>
+    <ImportedNamespaces>System.Drawing=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,GalaxyData=True</ImportedNamespaces>
+    <AssemblyTitle>Data Controls</AssemblyTitle>
   </PropertyGroup>
  <ItemGroup>
+   <Import Include="System.Drawing" />
    <Import Include="System.Windows.Forms" />
  </ItemGroup>
  <ItemGroup>
    <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+ </ItemGroup>
+ <ItemGroup>
+   <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj" />
+   <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+   <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%json\JSON-netcore5.vbproj" />
+   <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%vnd.openxmlformats-officedocument.spreadsheetml.sheet\Excel\xlsx-netcore5.vbproj" />
  </ItemGroup>
  
 </Project>
