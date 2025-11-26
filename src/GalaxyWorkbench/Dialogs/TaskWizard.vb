@@ -83,6 +83,7 @@ Public Class TaskWizard
         If offset = steps.Length Then
             DialogResult = DialogResult.OK
         Else
+            Button2.Text = "Back"
             ShowStep()
         End If
     End Sub
@@ -93,7 +94,17 @@ Public Class TaskWizard
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        DialogResult = DialogResult.Cancel
+        If offset = 0 Then
+            DialogResult = DialogResult.Cancel
+        Else
+            offset -= 1
+
+            If offset = 0 Then
+                Button2.Text = "Cancel"
+            End If
+
+            ShowStep()
+        End If
     End Sub
 
     Private Sub TaskWizard_Load(sender As Object, e As EventArgs) Handles Me.Load
