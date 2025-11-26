@@ -43,7 +43,7 @@ Public Class TaskWizard
         End If
     End Sub
 
-    Public Sub ShowStep()
+    Public Sub ShowStep(backPage As Boolean)
         Dim current = steps(offset)
         Dim ctl As Control = DirectCast(CObj(current), Control)
 
@@ -61,7 +61,9 @@ Public Class TaskWizard
             old.Visible = False
             old.Dock = DockStyle.None
 
-            current.SetData(steps(offset - 1).GetData)
+            If Not backPage Then
+                Call current.SetData(steps(offset - 1).GetData)
+            End If
         End If
 
         ctl.Visible = True
@@ -84,7 +86,7 @@ Public Class TaskWizard
             DialogResult = DialogResult.OK
         Else
             Button2.Text = "Back"
-            ShowStep()
+            ShowStep(backPage:=False)
         End If
     End Sub
 
@@ -103,7 +105,7 @@ Public Class TaskWizard
                 Button2.Text = "Cancel"
             End If
 
-            ShowStep()
+            ShowStep(backPage:=True)
         End If
     End Sub
 
@@ -134,7 +136,7 @@ Public Class TaskWizard
             label.BringToFront()
         Next
 
-        Call ShowStep()
+        Call ShowStep(backPage:=False)
     End Sub
 End Class
 
