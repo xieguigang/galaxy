@@ -16,7 +16,11 @@ Namespace JSON.Models
         Public ReadOnly Property Root As JsonObject
 
         Public Sub New(rootObject As Object, Optional rootText As String = "JSON")
-            _Root = ConvertToObject(rootText, rootObject)
+            Call Me.New(ConvertToObject(rootText, rootObject))
+        End Sub
+
+        Sub New(root As JsonObject)
+            _Root = root
         End Sub
 
         Public Shared Function Parse(json As String, Optional rootText As String = "JSON") As JsonObjectTree
@@ -24,7 +28,7 @@ Namespace JSON.Models
         End Function
 
         Private Shared Function ConvertToObject(id As String, jsonObject As Object) As JsonObject
-            Dim obj = CreateJsonObject(jsonObject)
+            Dim obj As JsonObject = CreateJsonObject(jsonObject)
             obj.Id = id
             AddChildren(jsonObject, obj)
             Return obj
