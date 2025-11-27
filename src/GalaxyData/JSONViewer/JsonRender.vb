@@ -52,7 +52,7 @@ Namespace JSON
 
         Private Async Function Redraw() As Task
             If Not String.IsNullOrEmpty(_json) Then
-                Call Render(Await Task.Run(Function() JsonObjectTree.Parse(_json, _RootTag)))
+                Call Render(json:=Await Task.Run(Function() JsonObjectTree.Parse(_json, _RootTag)))
             End If
         End Function
 

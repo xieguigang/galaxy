@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Drawing.Design
+Imports Galaxy.Data.JSON.Models
 
 Namespace JSON
 
@@ -55,6 +56,10 @@ Namespace JSON
 
             viewer = New JsonRender(TreeView1)
             viewer.Render("{}")
+        End Sub
+
+        Public Sub Render(json As JsonObjectTree)
+            Call viewer.Render(json)
         End Sub
 
         Public Function GetContextMenu() As ContextMenuStrip
