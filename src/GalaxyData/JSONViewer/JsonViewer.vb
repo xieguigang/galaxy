@@ -57,6 +57,10 @@ Namespace JSON
             viewer.Render("{}")
         End Sub
 
+        Public Function GetContextMenu() As ContextMenuStrip
+            Return ContextMenuStrip1
+        End Function
+
         Private Sub mnuExpandAll_Click(sender As Object, e As System.EventArgs) Handles ExpandAllToolStripMenuItem.Click
             If Not viewer Is Nothing Then
                 Call viewer.ExpandAll()
