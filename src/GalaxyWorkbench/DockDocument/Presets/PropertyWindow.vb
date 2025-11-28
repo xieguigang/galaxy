@@ -74,6 +74,10 @@ Namespace DockDocument.Presets
             Return propertyGrid.SelectedObject
         End Function
 
+        Public Function GetPropertyGrid() As PropertyGrid
+            Return propertyGrid
+        End Function
+
         ''' <summary>
         ''' set selected object and then refresh the <see cref="propertyGrid"/>
         ''' </summary>
