@@ -75,7 +75,11 @@ Namespace JSON
         End Sub
 
         Private Sub ClickHandler(sender As Object, e As System.EventArgs)
-            RaiseEvent MenuAction(sender, viewer.GetSelectedTreeNode.Tag)
+            Dim node = viewer.GetSelectedTreeNode
+
+            If node IsNot Nothing Then
+                RaiseEvent MenuAction(sender, node.Tag)
+            End If
         End Sub
 
         Private Sub mnuExpandAll_Click(sender As Object, e As System.EventArgs) Handles ExpandAllToolStripMenuItem.Click
