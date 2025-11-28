@@ -51,6 +51,7 @@ Namespace JSON
 
         Public Event FindAction(node As JsonViewerTreeNode, text As String)
         Public Event MenuAction(sender As ToolStripMenuItem, node As JsonObject)
+        Public Event Visit(node As JsonViewerTreeNode)
 
         Sub New()
             Call InitializeComponent()
@@ -181,6 +182,12 @@ Namespace JSON
             Me.ContextMenuStrip1.ResumeLayout(False)
             Me.ResumeLayout(False)
 
+        End Sub
+
+        Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
+            If TreeView1.SelectedNode IsNot Nothing Then
+                RaiseEvent Visit(viewer.GetSelectedTreeNode)
+            End If
         End Sub
     End Class
 
