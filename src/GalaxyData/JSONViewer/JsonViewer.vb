@@ -50,6 +50,7 @@ Namespace JSON
         End Property
 
         Public Event FindAction(node As JsonViewerTreeNode, text As String)
+        Public Event MenuAction(sender As ToolStripMenuItem, node As Object)
 
         Sub New()
             Call InitializeComponent()
@@ -65,6 +66,17 @@ Namespace JSON
         Public Function GetContextMenu() As ContextMenuStrip
             Return ContextMenuStrip1
         End Function
+
+        Public Sub AddContextMenuItem(name As String, tag As String)
+            Dim menu As New ToolStripMenuItem() With {.Text = name, .Name = tag}
+
+            Call Me.ContextMenuStrip1.Items.Add(menu)
+            AddHandler menu.Click, AddressOf ClickHandler
+        End Sub
+
+        Private Sub ClickHandler(sender As Object, e As System.EventArgs)
+            RaiseEvent MenuAction(sender, viewer.GetSelectedTreeNode.Tag)
+        End Sub
 
         Private Sub mnuExpandAll_Click(sender As Object, e As System.EventArgs) Handles ExpandAllToolStripMenuItem.Click
             If Not viewer Is Nothing Then
