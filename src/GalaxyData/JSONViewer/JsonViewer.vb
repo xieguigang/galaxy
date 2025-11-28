@@ -53,6 +53,8 @@ Namespace JSON
         Public Event MenuAction(sender As ToolStripMenuItem, node As JsonObject)
         Public Event Visit(node As JsonViewerTreeNode)
 
+        Dim addedCustomMenu As Boolean = False
+
         Sub New()
             Call InitializeComponent()
 
@@ -70,6 +72,11 @@ Namespace JSON
 
         Public Sub AddContextMenuItem(name As String, tag As String)
             Dim menu As New ToolStripMenuItem() With {.Text = name, .Name = tag}
+
+            If Not addedCustomMenu Then
+                addedCustomMenu = True
+                ContextMenuStrip1.Items.Add(New ToolStripSeparator)
+            End If
 
             Call Me.ContextMenuStrip1.Items.Add(menu)
             AddHandler menu.Click, AddressOf ClickHandler
