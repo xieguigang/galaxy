@@ -122,6 +122,7 @@ Namespace DockDocument.Presets
         Private Shared Sub ExpandPropertyInGridInternal(grid As PropertyGrid, propertyName As String)
             ' 1. 获取 PropertyGrid 的内部 PropertyGridView 对象
             ' 这个内部对象是真正负责绘制和管理的类
+            Dim fields = GetType(PropertyGrid).GetFields(BindingFlags.Public Or BindingFlags.Instance Or BindingFlags.NonPublic)
             Dim gridViewField = GetType(PropertyGrid).GetField("gridView", BindingFlags.NonPublic Or BindingFlags.Instance)
             If gridViewField Is Nothing Then Return ' 兼容性检查
             Dim gridView = gridViewField.GetValue(grid)
