@@ -121,73 +121,74 @@ Namespace JSON
         End Sub
 
         Private Sub InitializeComponent()
-            Me.components = New System.ComponentModel.Container()
-            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(JsonViewer))
-            Me.TreeView1 = New System.Windows.Forms.TreeView()
-            Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-            Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.FindToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-            Me.ExpandAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-            Me.ContextMenuStrip1.SuspendLayout()
-            Me.SuspendLayout()
-            '
-            'TreeView1
-            '
-            resources.ApplyResources(Me.TreeView1, "TreeView1")
-            Me.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-            Me.TreeView1.ContextMenuStrip = Me.ContextMenuStrip1
-            Me.TreeView1.ImageList = Me.ImageList1
-            Me.TreeView1.Name = "TreeView1"
-            '
-            'ContextMenuStrip1
-            '
-            resources.ApplyResources(Me.ContextMenuStrip1, "ContextMenuStrip1")
-            Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewToolStripMenuItem, Me.FindToolStripMenuItem, Me.CopyToolStripMenuItem, Me.ToolStripMenuItem1, Me.ExpandAllToolStripMenuItem})
-            Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-            '
-            'ViewToolStripMenuItem
-            '
-            resources.ApplyResources(Me.ViewToolStripMenuItem, "ViewToolStripMenuItem")
-            Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
-            '
-            'FindToolStripMenuItem
-            '
-            resources.ApplyResources(Me.FindToolStripMenuItem, "FindToolStripMenuItem")
-            Me.FindToolStripMenuItem.Name = "FindToolStripMenuItem"
-            '
-            'CopyToolStripMenuItem
-            '
-            resources.ApplyResources(Me.CopyToolStripMenuItem, "CopyToolStripMenuItem")
-            Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
-            '
-            'ToolStripMenuItem1
-            '
-            resources.ApplyResources(Me.ToolStripMenuItem1, "ToolStripMenuItem1")
-            Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-            '
-            'ExpandAllToolStripMenuItem
-            '
-            resources.ApplyResources(Me.ExpandAllToolStripMenuItem, "ExpandAllToolStripMenuItem")
-            Me.ExpandAllToolStripMenuItem.Name = "ExpandAllToolStripMenuItem"
-            '
-            'ImageList1
-            '
-            Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
-            Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-            Me.ImageList1.Images.SetKeyName(0, "Class_256x.png")
-            Me.ImageList1.Images.SetKeyName(1, "IndexerWizard_7974.png")
-            Me.ImageList1.Images.SetKeyName(2, "FieldWizard_7973.png")
-            '
-            'JsonViewer
-            '
+            components = New Container()
+            Dim resources As ComponentResourceManager = New ComponentResourceManager(GetType(JsonViewer))
+            TreeView1 = New TreeView()
+            ContextMenuStrip1 = New ContextMenuStrip(components)
+            ViewToolStripMenuItem = New ToolStripMenuItem()
+            FindToolStripMenuItem = New ToolStripMenuItem()
+            CopyToolStripMenuItem = New ToolStripMenuItem()
+            ToolStripMenuItem1 = New ToolStripSeparator()
+            ExpandAllToolStripMenuItem = New ToolStripMenuItem()
+            ImageList1 = New ImageList(components)
+            ContextMenuStrip1.SuspendLayout()
+            SuspendLayout()
+            ' 
+            ' TreeView1
+            ' 
+            TreeView1.BorderStyle = BorderStyle.None
+            TreeView1.ContextMenuStrip = ContextMenuStrip1
+            resources.ApplyResources(TreeView1, "TreeView1")
+            TreeView1.ImageList = ImageList1
+            TreeView1.Name = "TreeView1"
+            ' 
+            ' ContextMenuStrip1
+            ' 
+            ContextMenuStrip1.Items.AddRange(New ToolStripItem() {ViewToolStripMenuItem, FindToolStripMenuItem, CopyToolStripMenuItem, ToolStripMenuItem1, ExpandAllToolStripMenuItem})
+            ContextMenuStrip1.Name = "ContextMenuStrip1"
+            resources.ApplyResources(ContextMenuStrip1, "ContextMenuStrip1")
+            ' 
+            ' ViewToolStripMenuItem
+            ' 
+            resources.ApplyResources(ViewToolStripMenuItem, "ViewToolStripMenuItem")
+            ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
+            ' 
+            ' FindToolStripMenuItem
+            ' 
+            resources.ApplyResources(FindToolStripMenuItem, "FindToolStripMenuItem")
+            FindToolStripMenuItem.Name = "FindToolStripMenuItem"
+            ' 
+            ' CopyToolStripMenuItem
+            ' 
+            CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
+            resources.ApplyResources(CopyToolStripMenuItem, "CopyToolStripMenuItem")
+            ' 
+            ' ToolStripMenuItem1
+            ' 
+            ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+            resources.ApplyResources(ToolStripMenuItem1, "ToolStripMenuItem1")
+            ' 
+            ' ExpandAllToolStripMenuItem
+            ' 
+            ExpandAllToolStripMenuItem.Name = "ExpandAllToolStripMenuItem"
+            resources.ApplyResources(ExpandAllToolStripMenuItem, "ExpandAllToolStripMenuItem")
+            ' 
+            ' ImageList1
+            ' 
+            ImageList1.ColorDepth = ColorDepth.Depth32Bit
+            ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), ImageListStreamer)
+            ImageList1.TransparentColor = Color.Transparent
+            ImageList1.Images.SetKeyName(0, "Class_256x.png")
+            ImageList1.Images.SetKeyName(1, "IndexerWizard_7974.png")
+            ImageList1.Images.SetKeyName(2, "FieldWizard_7973.png")
+            ' 
+            ' JsonViewer
+            ' 
+            Controls.Add(TreeView1)
+            Name = "JsonViewer"
             resources.ApplyResources(Me, "$this")
-            Me.Controls.Add(Me.TreeView1)
-            Me.Name = "JsonViewer"
-            Me.ContextMenuStrip1.ResumeLayout(False)
-            Me.ResumeLayout(False)
+            ContextMenuStrip1.ResumeLayout(False)
+            ResumeLayout(False)
 
         End Sub
 
