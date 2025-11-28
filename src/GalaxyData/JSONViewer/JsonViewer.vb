@@ -50,7 +50,7 @@ Namespace JSON
         End Property
 
         Public Event FindAction(node As JsonViewerTreeNode, text As String)
-        Public Event MenuAction(sender As ToolStripMenuItem, node As Object)
+        Public Event MenuAction(sender As ToolStripMenuItem, node As JsonObject)
 
         Sub New()
             Call InitializeComponent()
@@ -78,7 +78,11 @@ Namespace JSON
             Dim node = viewer.GetSelectedTreeNode
 
             If node IsNot Nothing Then
-                RaiseEvent MenuAction(sender, node.Tag)
+                Dim tagObj As JsonObject = TryCast(node.Tag, JsonObject)
+
+                If tagObj IsNot Nothing Then
+                    RaiseEvent MenuAction(sender, tagObj)
+                End If
             End If
         End Sub
 
