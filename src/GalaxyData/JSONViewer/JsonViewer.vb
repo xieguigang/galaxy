@@ -52,6 +52,7 @@ Namespace JSON
         Public Event FindAction(node As JsonViewerTreeNode, text As String)
         Public Event MenuAction(sender As ToolStripMenuItem, node As JsonObject)
         Public Event Visit(node As JsonViewerTreeNode)
+        Public Event ViewAction(node As JsonViewerTreeNode)
 
         Dim addedCustomMenu As Boolean = False
 
@@ -195,6 +196,14 @@ Namespace JSON
         Private Sub TreeView1_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterSelect
             If TreeView1.SelectedNode IsNot Nothing Then
                 RaiseEvent Visit(viewer.GetSelectedTreeNode)
+            End If
+        End Sub
+
+        Private Sub ViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewToolStripMenuItem.Click
+            Dim node = viewer.GetSelectedTreeNode
+
+            If node IsNot Nothing Then
+                RaiseEvent ViewAction(node)
             End If
         End Sub
     End Class
