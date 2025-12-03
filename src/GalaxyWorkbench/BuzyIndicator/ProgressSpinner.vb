@@ -56,6 +56,7 @@
 Imports System.Runtime.CompilerServices
 Imports System.Threading
 Imports Galaxy.Workbench.CommonDialogs
+Imports Microsoft.VisualBasic.ComponentModel.Algorithm.DynamicProgramming
 
 Public Class ProgressSpinner
 
@@ -118,6 +119,12 @@ Public Class ProgressSpinner
 
         ex = spinner.ex
     End Sub
+
+    Public Shared Function LoadData(Of T)(loading As Func(Of T), Optional ByRef ex As Exception = Nothing) As T
+        Dim getResult As T = Nothing
+        Call DoLoading(Sub() getResult = loading(), ex:=ex)
+        Return getResult
+    End Function
 
     Private Shared Function getLoadingTask(loading As Action, host As Form, spinner As ProgressSpinner) As Tasks.Task
         Return New Task(AddressOf New InternalTask With {.loading = loading, .host = host, .spinner = spinner}.Run)
