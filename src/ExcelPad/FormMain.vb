@@ -86,7 +86,7 @@ Public Class FormMain : Implements AppHost
     End Sub
 
     Private Sub ImportsFile()
-        Call TaskWizard.ShowWizard()
+        Call TaskWizard.ShowWizard("Imports Data File")
     End Sub
 
     Private Sub OpenFile()
