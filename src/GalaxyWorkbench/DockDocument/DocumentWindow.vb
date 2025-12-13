@@ -102,8 +102,8 @@ Namespace DockDocument
         Private Sub HandleTaskbar()
             ' Add a new preview
             preview = New TabbedThumbnail(ParentForm.Handle, Me.Handle) With {
-            .ClippingRectangle = New Rectangle(New Point, Size)
-        }
+                .ClippingRectangle = New Rectangle(New Point, Size)
+            }
 
             TaskbarManager.Instance.TabbedThumbnail.AddThumbnailPreview(preview)
 
@@ -127,7 +127,9 @@ Namespace DockDocument
         End Sub
 
         Private Sub CloseAllButThisToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseAllButThisToolStripMenuItem.Click
-            For Each tab As Form In CommonRuntime.AppHost.GetDocuments
+            Dim openedDocs = CommonRuntime.AppHost.GetDocuments.ToArray
+
+            For Each tab As Form In openedDocs
                 If Not TypeOf tab Is ToolWindow Then
                     If Not tab Is Me Then
                         Call DirectCast(tab, Form).Close()
