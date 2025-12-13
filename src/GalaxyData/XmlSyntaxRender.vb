@@ -11,7 +11,15 @@ Public Class XmlSyntaxRender
     Sub New(richXML As RichTextBox, xmlfile As String)
         Me.doc.Load(xmlfile)
         Me.richXML = richXML
-        Me.HighlightXML(doc.OuterXml)
+    End Sub
+
+    Sub New(richXML As RichTextBox, xmlDoc As Stream)
+        Me.doc.Load(xmlDoc)
+        Me.richXML = richXML
+    End Sub
+
+    Public Sub HighlightXML()
+        Call HighlightXML(doc.OuterXml)
     End Sub
 
     ''' <summary>
