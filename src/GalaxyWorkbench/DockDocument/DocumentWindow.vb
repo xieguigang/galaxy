@@ -137,7 +137,9 @@ Namespace DockDocument
         End Sub
 
         Private Sub CloseAllDocumentsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseAllDocumentsToolStripMenuItem.Click
-            For Each tab As Form In CommonRuntime.AppHost.GetDocuments
+            Dim openedDocs = CommonRuntime.AppHost.GetDocuments.ToArray
+
+            For Each tab As Form In openedDocs
                 If Not TypeOf tab Is ToolWindow Then
                     Call DirectCast(tab, Form).Close()
                 End If
