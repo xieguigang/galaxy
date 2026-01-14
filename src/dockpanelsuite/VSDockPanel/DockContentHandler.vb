@@ -679,7 +679,13 @@ Namespace Docking
                 visible = Form.Visible
             End If
 
-            If Form.Visible <> visible Then Form.Visible = visible
+            Try
+                If Form.Visible <> visible Then
+                    Form.Visible = visible
+                End If
+            Catch ex As Exception
+                Call App.LogException(ex)
+            End Try
         End Sub
 
         Private Sub SetParent(value As Control)
