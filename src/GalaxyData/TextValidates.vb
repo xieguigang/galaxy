@@ -47,4 +47,16 @@ Public Module TextValidates
             Return Integer.Parse(txt.Text)
         End If
     End Function
+
+    <Extension>
+    Public Function StringEmpty(txt As TextBox,
+                                Optional whitespaceAsEmpty As Boolean = True,
+                                Optional testEmptyFactor As Boolean = False) As Boolean
+
+        If txt Is Nothing OrElse txt.Text.StringEmpty(whitespaceAsEmpty, testEmptyFactor) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 End Module
