@@ -183,7 +183,7 @@ Namespace Taskbar
 		Friend ReadOnly Property OwnerHandle() As IntPtr
 			Get
 				If _ownerHandle = IntPtr.Zero Then
-					Dim mainHandle As IntPtr = Microsoft.Windows.MainWindowHandle
+					Dim mainHandle As IntPtr = Global.Microsoft.Windows.MainWindowHandle
 
 					If mainHandle = IntPtr.Zero Then
 						Throw New InvalidOperationException(GlobalLocalizedMessages.TaskbarManagerValidWindowRequired)
