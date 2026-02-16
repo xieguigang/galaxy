@@ -4,11 +4,9 @@
     <Platform Name="x64" />
   </Configurations>
   <Project Path="../../../GCModeller/src/runtime/sciBASIC#/Microsoft.VisualBasic.Core/src/Core.vbproj">
-    <BuildType Solution="Debug|x64" Project="MEMI-Desktop" />
     <Platform Solution="*|x64" Project="x64" />
   </Project>
   <Project Path="Microsoft.Windows.FeatureAPI.vbproj">
-    <BuildType Solution="Debug|x64" Project="mzkit_win32" />
     <Platform Solution="*|x64" Project="x64" />
   </Project>
 </Solution>

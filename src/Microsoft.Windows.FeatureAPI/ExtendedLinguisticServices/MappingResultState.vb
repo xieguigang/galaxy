@@ -48,12 +48,12 @@ Namespace ExtendedLinguisticServices
 		''' </summary>
 		''' <param name="obj">Object to compare.</param>
 		''' <returns>True if obj is equal to this instance, false otherwise.</returns>
-		Public Overrides Function Equals(obj As [Object]) As Boolean
+		Public Overrides Function Equals(obj As Object) As Boolean
 			If obj Is Nothing Then
 				Return False
 			End If
 
-			If [Object].ReferenceEquals(obj, Me) Then
+			If obj = Me Then
 				Return True
 			End If
 
