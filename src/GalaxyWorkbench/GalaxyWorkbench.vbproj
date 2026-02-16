@@ -7,7 +7,7 @@
     <AssemblyName>Galaxy.Workbench</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-
+    <NoWarn>$(NoWarn);WFO1000</NoWarn>
     <TargetFrameworks>net10.0-windows</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
     <Platforms>AnyCPU;x64</Platforms>
