@@ -13,7 +13,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Platforms>AnyCPU;x64</Platforms>
     <Configurations>Debug;Release;Rsharp_app_release;mzkit_win32</Configurations>
-
+    <NoWarn>$(NoWarn);WFO1000</NoWarn>
 
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />

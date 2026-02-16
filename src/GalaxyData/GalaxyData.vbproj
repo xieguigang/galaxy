@@ -13,7 +13,7 @@
    <UseWindowsForms>true</UseWindowsForms>
    <Platforms>AnyCPU;x64</Platforms>
    <Configurations>Debug;Release;Rsharp_app_release;mzkit_win32</Configurations>
-
+   <NoWarn>$(NoWarn);WFO1000</NoWarn>
     
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -74,5 +74,5 @@
    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%json\JSON-netcore5.vbproj" />
    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%vnd.openxmlformats-officedocument.spreadsheetml.sheet\Excel\xlsx-netcore5.vbproj" />
  </ItemGroup>
- 
+
 </Project>
