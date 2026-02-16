@@ -16,7 +16,7 @@ Namespace Shell
 					package = New RegisteredListener()
 					If Not package.TryRegister(callback, message) Then
 						' this should never happen
-						Throw New ShellException(LocalizedMessages.MessageListenerFilterUnableToRegister)
+						Throw New ShellException(GlobalLocalizedMessages.MessageListenerFilterUnableToRegister)
 					End If
 					_packages.Add(package)
 				End If
@@ -29,7 +29,7 @@ Namespace Shell
 			SyncLock _registerLock
 				Dim package = _packages.FirstOrDefault(Function(x) x.Listener.WindowHandle = listenerHandle)
 				If package Is Nothing OrElse Not package.Callbacks.Remove(message) Then
-					Throw New ArgumentException(LocalizedMessages.MessageListenerFilterUnknownListenerHandle)
+					Throw New ArgumentException(GlobalLocalizedMessages.MessageListenerFilterUnknownListenerHandle)
 				End If
 
 				If package.Callbacks.Count = 0 Then

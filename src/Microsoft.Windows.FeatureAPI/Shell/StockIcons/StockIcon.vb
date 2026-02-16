@@ -192,7 +192,7 @@ Namespace Shell
 			' on the current system
 			If hr <> HResult.Ok Then
 				If hr = HResult.InvalidArguments Then
-					Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.StockIconInvalidGuid, m_identifier))
+					Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.StockIconInvalidGuid, m_identifier))
 				End If
 
 				Return IntPtr.Zero

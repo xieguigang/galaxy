@@ -97,7 +97,7 @@ Namespace Dialogs
             ' Applies config struct and other settings, then
             ' calls main Win32 function.
             If settings Is Nothing Then
-                Throw New InvalidOperationException(LocalizedMessages.NativeTaskDialogConfigurationError)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.NativeTaskDialogConfigurationError)
             End If
 
             ' Do a last-minute parse of the various dialog control lists,  
@@ -122,13 +122,13 @@ Namespace Dialogs
                     Dim msg As String
                     Select Case hresult__4
                         Case HResult.InvalidArguments
-                            msg = LocalizedMessages.NativeTaskDialogInternalErrorArgs
+                            msg = GlobalLocalizedMessages.NativeTaskDialogInternalErrorArgs
                             Exit Select
                         Case HResult.OutOfMemory
-                            msg = LocalizedMessages.NativeTaskDialogInternalErrorComplex
+                            msg = GlobalLocalizedMessages.NativeTaskDialogInternalErrorComplex
                             Exit Select
                         Case Else
-                            msg = String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.NativeTaskDialogInternalErrorUnexpected, hresult__4)
+                            msg = String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.NativeTaskDialogInternalErrorUnexpected, hresult__4)
                             Exit Select
                     End Select
                     Dim e As Exception = Marshal.GetExceptionForHR(CInt(hresult__4))
@@ -139,7 +139,7 @@ Namespace Dialogs
                 SelectedRadioButtonId = selectedRadioButtonId__2
                 CheckBoxChecked = checkBoxChecked__3
             Catch exc As EntryPointNotFoundException
-                Throw New NotSupportedException(LocalizedMessages.NativeTaskDialogVersionError, exc)
+                Throw New NotSupportedException(GlobalLocalizedMessages.NativeTaskDialogVersionError, exc)
             Finally
                 ShowState = DialogShowState.Closed
             End Try

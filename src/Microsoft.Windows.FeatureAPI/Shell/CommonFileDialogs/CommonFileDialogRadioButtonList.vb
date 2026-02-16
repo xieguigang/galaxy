@@ -59,7 +59,7 @@ Namespace Dialogs.Controls
 					m_selectedIndex = value
 					ApplyPropertyChange("SelectedIndex")
 				Else
-					Throw New IndexOutOfRangeException(LocalizedMessages.RadioButtonListIndexOutOfBounds)
+					Throw New IndexOutOfRangeException(GlobalLocalizedMessages.RadioButtonListIndexOutOfBounds)
 				End If
 			End Set
 		End Property
@@ -112,7 +112,7 @@ Namespace Dialogs.Controls
 			If m_selectedIndex >= 0 AndAlso m_selectedIndex < m_items.Count Then
 				dialog.SetSelectedControlItem(Me.Id, Me.m_selectedIndex)
 			ElseIf m_selectedIndex <> -1 Then
-				Throw New IndexOutOfRangeException(LocalizedMessages.RadioButtonListIndexOutOfBounds)
+				Throw New IndexOutOfRangeException(GlobalLocalizedMessages.RadioButtonListIndexOutOfBounds)
 			End If
 
 			' Sync unmanaged properties with managed properties

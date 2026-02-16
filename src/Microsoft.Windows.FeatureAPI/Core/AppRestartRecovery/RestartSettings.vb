@@ -56,7 +56,7 @@ Namespace ApplicationServices
 		''' the command line arguments 
 		''' and restrictions for restarting the application.</returns>
 		Public Overrides Function ToString() As String
-			Return String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.RestartSettingsFormatString, m_command, m_restrictions.ToString())
+			Return String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.RestartSettingsFormatString, m_command, m_restrictions.ToString())
 		End Function
 	End Class
 End Namespace

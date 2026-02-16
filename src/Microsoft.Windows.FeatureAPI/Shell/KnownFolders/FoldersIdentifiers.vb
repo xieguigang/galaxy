@@ -34,7 +34,7 @@ Namespace Shell
 		Friend Shared Function NameForGuid(folderId As Guid) As String
 			Dim folder As String
 			If Not folders.TryGetValue(folderId, folder) Then
-				Throw New ArgumentException(LocalizedMessages.FolderIdsUnknownGuid, "folderId")
+				Throw New ArgumentException(GlobalLocalizedMessages.FolderIdsUnknownGuid, "folderId")
 			End If
 			Return folder
 		End Function

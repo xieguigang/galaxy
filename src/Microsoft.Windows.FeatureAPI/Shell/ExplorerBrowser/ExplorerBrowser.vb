@@ -144,7 +144,7 @@ Namespace Controls.WindowsForms
                         args.FailedLocation = shellObject
                         RaiseEvent NavigationFailed(Me, args)
                     Else
-                        Throw New CommonControlException(LocalizedMessages.ExplorerBrowserBrowseToObjectFailed, hr)
+                        Throw New CommonControlException(GlobalLocalizedMessages.ExplorerBrowserBrowseToObjectFailed, hr)
                     End If
                 End If
             End If
@@ -714,7 +714,7 @@ Namespace Controls.WindowsForms
                         Return Nothing
                     Case Else
 
-                        Throw New CommonControlException(LocalizedMessages.ExplorerBrowserFailedToGetView, hr)
+                        Throw New CommonControlException(GlobalLocalizedMessages.ExplorerBrowserFailedToGetView, hr)
                 End Select
 
                 Return DirectCast(Marshal.GetObjectForIUnknown(view), IFolderView2)
@@ -736,7 +736,7 @@ Namespace Controls.WindowsForms
                     Dim hr As HResult = iFV2.Items(CUInt(ShellViewGetItemObject.Selection), iidShellItemArray, oArray)
                     iArray = TryCast(oArray, IShellItemArray)
                     If hr <> HResult.Ok AndAlso hr <> HResult.ElementNotFound AndAlso hr <> HResult.Fail Then
-                        Throw New CommonControlException(LocalizedMessages.ExplorerBrowserUnexpectedError, hr)
+                        Throw New CommonControlException(GlobalLocalizedMessages.ExplorerBrowserUnexpectedError, hr)
                     End If
                 Finally
                     Marshal.ReleaseComObject(iFV2)
@@ -756,7 +756,7 @@ Namespace Controls.WindowsForms
                     Dim hr As HResult = iFV2.ItemCount(CUInt(ShellViewGetItemObject.AllView), itemsCount)
 
                     If hr <> HResult.Ok AndAlso hr <> HResult.ElementNotFound AndAlso hr <> HResult.Fail Then
-                        Throw New CommonControlException(LocalizedMessages.ExplorerBrowserItemCount, hr)
+                        Throw New CommonControlException(GlobalLocalizedMessages.ExplorerBrowserItemCount, hr)
                     End If
                 Finally
                     Marshal.ReleaseComObject(iFV2)
@@ -776,7 +776,7 @@ Namespace Controls.WindowsForms
                     Dim hr As HResult = iFV2.ItemCount(CUInt(ShellViewGetItemObject.Selection), itemsCount)
 
                     If hr <> HResult.Ok AndAlso hr <> HResult.ElementNotFound AndAlso hr <> HResult.Fail Then
-                        Throw New CommonControlException(LocalizedMessages.ExplorerBrowserSelectedItemCount, hr)
+                        Throw New CommonControlException(GlobalLocalizedMessages.ExplorerBrowserSelectedItemCount, hr)
                     End If
                 Finally
                     Marshal.ReleaseComObject(iFV2)
@@ -800,7 +800,7 @@ Namespace Controls.WindowsForms
                     Dim oArray As Object = Nothing
                     Dim hr As HResult = iFV2.Items(CUInt(ShellViewGetItemObject.AllView), iidShellItemArray, oArray)
                     If hr <> HResult.Ok AndAlso hr <> HResult.Fail AndAlso hr <> HResult.ElementNotFound AndAlso hr <> HResult.InvalidArguments Then
-                        Throw New CommonControlException(LocalizedMessages.ExplorerBrowserViewItems, hr)
+                        Throw New CommonControlException(GlobalLocalizedMessages.ExplorerBrowserViewItems, hr)
                     End If
 
                     iArray = TryCast(oArray, IShellItemArray)

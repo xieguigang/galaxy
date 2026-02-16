@@ -93,7 +93,7 @@ Namespace Shell
                     Dim retCode As Integer = ShellNativeMethods.SHCreateItemFromParsingName(ParsingName, IntPtr.Zero, guid, m_nativeShellItem)
 
                     If m_nativeShellItem Is Nothing OrElse Not CoreErrorHelper.Succeeded(retCode) Then
-                        Throw New ShellException(LocalizedMessages.ShellObjectCreationFailed, Marshal.GetExceptionForHR(retCode))
+                        Throw New ShellException(GlobalLocalizedMessages.ShellObjectCreationFailed, Marshal.GetExceptionForHR(retCode))
                     End If
                 End If
                 Return m_nativeShellItem
@@ -245,7 +245,7 @@ Namespace Shell
             End If
 
             If hr <> HResult.Ok Then
-                Throw New ShellException(LocalizedMessages.ShellObjectCannotGetDisplayName, hr)
+                Throw New ShellException(GlobalLocalizedMessages.ShellObjectCannotGetDisplayName, hr)
             End If
 
             Return returnValue

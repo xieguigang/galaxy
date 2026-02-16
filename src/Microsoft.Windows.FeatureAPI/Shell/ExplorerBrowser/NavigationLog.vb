@@ -120,7 +120,7 @@ Namespace Controls
 
         Friend Sub New(parent As ExplorerBrowser)
             If parent Is Nothing Then
-                Throw New ArgumentException(LocalizedMessages.NavigationLogNullParent, "parent")
+                Throw New ArgumentException(GlobalLocalizedMessages.NavigationLogNullParent, "parent")
             End If
 
             ' Hook navigation events from the parent to distinguish between

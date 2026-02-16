@@ -30,16 +30,16 @@ Namespace Dialogs.Controls
 			' Check for duplicates, lack of host, 
 			' and during-show adds.
 			If Items.Contains(control) Then
-				Throw New InvalidOperationException(LocalizedMessages.DialogControlCollectionMoreThanOneControl)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.DialogControlCollectionMoreThanOneControl)
 			End If
 			If control.HostingDialog IsNot Nothing Then
-				Throw New InvalidOperationException(LocalizedMessages.DialogControlCollectionRemoveControlFirst)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.DialogControlCollectionRemoveControlFirst)
 			End If
 			If Not hostingDialog.IsCollectionChangeAllowed() Then
-				Throw New InvalidOperationException(LocalizedMessages.DialogControlCollectionModifyingControls)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.DialogControlCollectionModifyingControls)
 			End If
 			If TypeOf control Is CommonFileDialogMenuItem Then
-				Throw New InvalidOperationException(LocalizedMessages.DialogControlCollectionMenuItemControlsCannotBeAdded)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.DialogControlCollectionMenuItemControlsCannotBeAdded)
 			End If
 
 			' Reparent, add control.
@@ -58,7 +58,7 @@ Namespace Dialogs.Controls
 		''' The associated dialog is 
 		''' showing and cannot be modified.</permission>
 		Protected Overrides Sub RemoveItem(index As Integer)
-			Throw New NotSupportedException(LocalizedMessages.DialogControlCollectionCannotRemoveControls)
+			Throw New NotSupportedException(GlobalLocalizedMessages.DialogControlCollectionCannotRemoveControls)
 		End Sub
 
         ''' <summary>
@@ -73,7 +73,7 @@ Namespace Dialogs.Controls
         Default Public Overloads ReadOnly Property Item(name As String) As T
             Get
                 If String.IsNullOrEmpty(name) Then
-                    Throw New ArgumentException(LocalizedMessages.DialogControlCollectionEmptyName, "name")
+                    Throw New ArgumentException(GlobalLocalizedMessages.DialogControlCollectionEmptyName, "name")
                 End If
 
                 For Each control As T In MyBase.Items

@@ -287,7 +287,7 @@ Namespace ApplicationServices
                 ' as the data from the event (old way) was.
                 CoreHelpers.ThrowIfNotVista()
                 If Not Power.GetSystemBatteryState().BatteryPresent Then
-                    Throw New InvalidOperationException(LocalizedMessages.PowerManagerBatteryNotPresent)
+                    Throw New InvalidOperationException(GlobalLocalizedMessages.PowerManagerBatteryNotPresent)
                 End If
 
                 Dim state As PowerManagementNativeMethods.SystemBatteryState = Power.GetSystemBatteryState()
@@ -358,7 +358,7 @@ Namespace ApplicationServices
         Public Shared Sub SetThreadExecutionState(executionStateOptions As ExecutionStates)
             Dim ret As ExecutionStates = PowerManagementNativeMethods.SetThreadExecutionState(executionStateOptions)
             If ret = ExecutionStates.None Then
-                Throw New Win32Exception(LocalizedMessages.PowerExecutionStateFailed)
+                Throw New Win32Exception(GlobalLocalizedMessages.PowerExecutionStateFailed)
             End If
         End Sub
 

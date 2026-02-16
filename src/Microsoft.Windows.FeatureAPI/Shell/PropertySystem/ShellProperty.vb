@@ -77,25 +77,25 @@ Namespace Shell.PropertySystem
 				Dim hr As Integer = ParentShellObject.NativeShellItem2.GetPropertyStore(ShellNativeMethods.GetPropertyStoreOptions.ReadWrite, guid, writablePropStore)
 
 				If Not CoreErrorHelper.Succeeded(hr) Then
-					Throw New PropertySystemException(LocalizedMessages.ShellPropertyUnableToGetWritableProperty, Marshal.GetExceptionForHR(hr))
+					Throw New PropertySystemException(GlobalLocalizedMessages.ShellPropertyUnableToGetWritableProperty, Marshal.GetExceptionForHR(hr))
 				End If
 
 				Dim result As HResult = writablePropStore.SetValue(m_propertyKey, propVar)
 
 				If Not AllowSetTruncatedValue AndAlso CInt(result) = ShellNativeMethods.InPlaceStringTruncated Then
-					Throw New ArgumentOutOfRangeException("propVar", LocalizedMessages.ShellPropertyValueTruncated)
+					Throw New ArgumentOutOfRangeException("propVar", GlobalLocalizedMessages.ShellPropertyValueTruncated)
 				End If
 
 				If Not CoreErrorHelper.Succeeded(result) Then
-					Throw New PropertySystemException(LocalizedMessages.ShellPropertySetValue, Marshal.GetExceptionForHR(CInt(result)))
+					Throw New PropertySystemException(GlobalLocalizedMessages.ShellPropertySetValue, Marshal.GetExceptionForHR(CInt(result)))
 				End If
 
 
 				writablePropStore.Commit()
 			Catch e As InvalidComObjectException
-				Throw New PropertySystemException(LocalizedMessages.ShellPropertyUnableToGetWritableProperty, e)
+				Throw New PropertySystemException(GlobalLocalizedMessages.ShellPropertyUnableToGetWritableProperty, e)
 			Catch generatedExceptionName As InvalidCastException
-				Throw New PropertySystemException(LocalizedMessages.ShellPropertyUnableToGetWritableProperty)
+				Throw New PropertySystemException(GlobalLocalizedMessages.ShellPropertyUnableToGetWritableProperty)
 			Finally
 				If writablePropStore IsNot Nothing Then
 					Marshal.ReleaseComObject(writablePropStore)
@@ -173,7 +173,7 @@ Namespace Shell.PropertySystem
 				System.Diagnostics.Debug.Assert(ValueType Is ShellPropertyFactory.VarEnumToSystemType(Description.VarEnumType))
 
 				If GetType(T) IsNot ValueType Then
-					Throw New NotSupportedException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.ShellPropertyWrongType, ValueType.Name))
+					Throw New NotSupportedException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.ShellPropertyWrongType, ValueType.Name))
 				End If
 
 				If TypeOf value Is Nullable Then
@@ -196,7 +196,7 @@ Namespace Shell.PropertySystem
 						propertyWriter.WriteProperty(Of T)(Me, value, AllowSetTruncatedValue)
 					End Using
 				ElseIf NativePropertyStore IsNot Nothing Then
-					Throw New InvalidOperationException(LocalizedMessages.ShellPropertyCannotSetProperty)
+					Throw New InvalidOperationException(GlobalLocalizedMessages.ShellPropertyCannotSetProperty)
 				End If
 			End Set
 		End Property
@@ -361,7 +361,7 @@ Namespace Shell.PropertySystem
 		Public ReadOnly Property IconReference() As IconReference Implements IShellProperty.IconReference
 			Get
 				If Not CoreHelpers.RunningOnWin7 Then
-					Throw New PlatformNotSupportedException(LocalizedMessages.ShellPropertyWindows7)
+					Throw New PlatformNotSupportedException(GlobalLocalizedMessages.ShellPropertyWindows7)
 				End If
 
 				GetImageReference()

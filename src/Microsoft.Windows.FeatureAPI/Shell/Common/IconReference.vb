@@ -42,7 +42,7 @@ Namespace Shell
 			Dim refParams As String() = refPath.Split(commaSeparator)
 
 			If refParams.Length <> 2 OrElse String.IsNullOrEmpty(refParams(0)) OrElse String.IsNullOrEmpty(refParams(1)) Then
-				Throw New ArgumentException(LocalizedMessages.InvalidReferencePath, "refPath")
+				Throw New ArgumentException(GlobalLocalizedMessages.InvalidReferencePath, "refPath")
 			End If
 
 			m_moduleName = refParams(0)
@@ -94,7 +94,7 @@ Namespace Shell
 				Dim refParams As String() = Value.Split(commaSeparator)
 
 				If refParams.Length <> 2 OrElse String.IsNullOrEmpty(refParams(0)) OrElse String.IsNullOrEmpty(refParams(1)) Then
-					Throw New ArgumentException(LocalizedMessages.InvalidReferencePath, "value")
+					Throw New ArgumentException(GlobalLocalizedMessages.InvalidReferencePath, "value")
 				End If
 
 				ModuleName = refParams(0)

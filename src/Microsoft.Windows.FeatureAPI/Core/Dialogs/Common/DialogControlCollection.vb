@@ -29,13 +29,13 @@ Namespace Dialogs
 			' Check for duplicates, lack of host, 
 			' and during-show adds.
 			If Items.Contains(control) Then
-				Throw New InvalidOperationException(LocalizedMessages.DialogCollectionCannotHaveDuplicateNames)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.DialogCollectionCannotHaveDuplicateNames)
 			End If
 			If control.HostingDialog IsNot Nothing Then
-				Throw New InvalidOperationException(LocalizedMessages.DialogCollectionControlAlreadyHosted)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.DialogCollectionControlAlreadyHosted)
 			End If
 			If Not hostingDialog.IsCollectionChangeAllowed() Then
-				Throw New InvalidOperationException(LocalizedMessages.DialogCollectionModifyShowingDialog)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.DialogCollectionModifyShowingDialog)
 			End If
 
 			' Reparent, add control.
@@ -57,7 +57,7 @@ Namespace Dialogs
 			' Notify that we're about to remove a control.
 			' Throw if dialog showing.
 			If Not hostingDialog.IsCollectionChangeAllowed() Then
-				Throw New InvalidOperationException(LocalizedMessages.DialogCollectionModifyShowingDialog)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.DialogCollectionModifyShowingDialog)
 			End If
 
 			Dim control As DialogControl = DirectCast(Items(index), DialogControl)
@@ -81,7 +81,7 @@ Namespace Dialogs
         Default Public Overloads ReadOnly Property Item(name As String) As T
             Get
                 If String.IsNullOrEmpty(name) Then
-                    Throw New ArgumentException(LocalizedMessages.DialogCollectionControlNameNull, "name")
+                    Throw New ArgumentException(GlobalLocalizedMessages.DialogCollectionControlNameNull, "name")
                 End If
 
                 Return Items.FirstOrDefault(Function(x) x.Name = name)

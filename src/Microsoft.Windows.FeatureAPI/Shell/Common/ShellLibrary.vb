@@ -61,9 +61,9 @@ Namespace Shell
 			Try
 				nativeShellLibrary.LoadLibraryFromKnownFolder(guid, flags)
 			Catch generatedExceptionName As InvalidCastException
-				Throw New ArgumentException(LocalizedMessages.ShellLibraryInvalidLibrary, "sourceKnownFolder")
+				Throw New ArgumentException(GlobalLocalizedMessages.ShellLibraryInvalidLibrary, "sourceKnownFolder")
 			Catch generatedExceptionName As NotImplementedException
-				Throw New ArgumentException(LocalizedMessages.ShellLibraryInvalidLibrary, "sourceKnownFolder")
+				Throw New ArgumentException(GlobalLocalizedMessages.ShellLibraryInvalidLibrary, "sourceKnownFolder")
 			End Try
 		End Sub
 
@@ -80,7 +80,7 @@ Namespace Shell
 		Public Sub New(libraryName As String, overwrite As Boolean)
 			Me.New()
 			If String.IsNullOrEmpty(libraryName) Then
-				Throw New ArgumentException(LocalizedMessages.ShellLibraryEmptyName, "libraryName")
+				Throw New ArgumentException(GlobalLocalizedMessages.ShellLibraryEmptyName, "libraryName")
 			End If
 
 			Me.Name = libraryName
@@ -102,7 +102,7 @@ Namespace Shell
 		Public Sub New(libraryName As String, sourceKnownFolder As IKnownFolder, overwrite As Boolean)
 			Me.New()
 			If String.IsNullOrEmpty(libraryName) Then
-				Throw New ArgumentException(LocalizedMessages.ShellLibraryEmptyName, "libraryName")
+				Throw New ArgumentException(GlobalLocalizedMessages.ShellLibraryEmptyName, "libraryName")
 			End If
 
 			knownFolder = sourceKnownFolder
@@ -126,11 +126,11 @@ Namespace Shell
 		Public Sub New(libraryName As String, folderPath As String, overwrite As Boolean)
 			Me.New()
 			If String.IsNullOrEmpty(libraryName) Then
-				Throw New ArgumentException(LocalizedMessages.ShellLibraryEmptyName, "libraryName")
+				Throw New ArgumentException(GlobalLocalizedMessages.ShellLibraryEmptyName, "libraryName")
 			End If
 
 			If Not Directory.Exists(folderPath) Then
-				Throw New DirectoryNotFoundException(LocalizedMessages.ShellLibraryFolderNotFound)
+				Throw New DirectoryNotFoundException(GlobalLocalizedMessages.ShellLibraryFolderNotFound)
 			End If
 
 			Me.Name = libraryName
@@ -222,7 +222,7 @@ Namespace Shell
 					Return CType(i, LibraryFolderType)
 				End If
 			Next
-			Throw New ArgumentOutOfRangeException("folderTypeGuid", LocalizedMessages.ShellLibraryInvalidFolderType)
+			Throw New ArgumentOutOfRangeException("folderTypeGuid", GlobalLocalizedMessages.ShellLibraryInvalidFolderType)
 		End Function
 
 		''' <summary>
@@ -248,7 +248,7 @@ Namespace Shell
 				End If
 
 				If Not Directory.Exists(value) Then
-					Throw New DirectoryNotFoundException(LocalizedMessages.ShellLibraryDefaultSaveFolderNotFound)
+					Throw New DirectoryNotFoundException(GlobalLocalizedMessages.ShellLibraryDefaultSaveFolderNotFound)
 				End If
 
 				Dim fullPath As String = New DirectoryInfo(value).FullName
@@ -534,7 +534,7 @@ Namespace Shell
         ''' <param name="folderPath">The path to the folder to be added to the library.</param>
         Public Sub Add(folderPath As String)
 			If Not Directory.Exists(folderPath) Then
-				Throw New DirectoryNotFoundException(LocalizedMessages.ShellLibraryFolderNotFound)
+				Throw New DirectoryNotFoundException(GlobalLocalizedMessages.ShellLibraryFolderNotFound)
 			End If
 
 			Add(ShellFileSystemFolder.FromFolderPath(folderPath))

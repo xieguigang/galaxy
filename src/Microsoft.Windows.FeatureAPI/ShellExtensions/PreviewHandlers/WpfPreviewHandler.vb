@@ -33,7 +33,7 @@ Namespace ShellExtensions
         ''' </summary>
         Protected Sub ThrowIfNoControl()
             If Control Is Nothing Then
-                Throw New InvalidOperationException(LocalizedMessages.PreviewHandlerControlNotInitialized)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.PreviewHandlerControlNotInitialized)
             End If
         End Sub
 
@@ -75,7 +75,7 @@ Namespace ShellExtensions
             Get
                 If True Then
                     If _source Is Nothing Then
-                        Throw New InvalidOperationException(LocalizedMessages.WpfPreviewHandlerNoHandle)
+                        Throw New InvalidOperationException(GlobalLocalizedMessages.WpfPreviewHandlerNoHandle)
                     End If
                     Return _source.Handle
                 End If

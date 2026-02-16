@@ -174,7 +174,7 @@ Namespace ShellExtensions
         Private Sub Microsoft_WindowsAPICodePack_ShellExtensions_Interop_IInitializeWithStream_Initialize(stream As System.Runtime.InteropServices.ComTypes.IStream, fileMode As Shell.AccessModes) Implements ShellExtensions.Interop.IInitializeWithStream.Initialize
             Dim preview As IPreviewFromStream = TryCast(Me, IPreviewFromStream)
             If preview Is Nothing Then
-                Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.PreviewHandlerUnsupportedInterfaceCalled, "IPreviewFromStream"))
+                Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.PreviewHandlerUnsupportedInterfaceCalled, "IPreviewFromStream"))
             End If
             Using storageStream = New StorageStream(stream, fileMode <> Shell.AccessModes.ReadWrite)
                 preview.Load(storageStream)
@@ -188,7 +188,7 @@ Namespace ShellExtensions
         Private Sub Microsoft_WindowsAPICodePack_ShellExtensions_Interop_IInitializeWithItem_Initialize(shellItem As IShellItem, accessMode As Shell.AccessModes) Implements ShellExtensions.Interop.IInitializeWithItem.Initialize
             Dim preview As IPreviewFromShellObject = TryCast(Me, IPreviewFromShellObject)
             If preview Is Nothing Then
-                Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.PreviewHandlerUnsupportedInterfaceCalled, "IPreviewFromShellObject"))
+                Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.PreviewHandlerUnsupportedInterfaceCalled, "IPreviewFromShellObject"))
             End If
             Using shellObject = Shell.ShellObjectFactory.Create(shellItem)
                 preview.Load(shellObject)
@@ -202,7 +202,7 @@ Namespace ShellExtensions
         Private Sub Microsoft_WindowsAPICodePack_ShellExtensions_Interop_IInitializeWithFile_Initialize(filePath As String, fileMode As Shell.AccessModes) Implements ShellExtensions.Interop.IInitializeWithFile.Initialize
             Dim preview As IPreviewFromFile = TryCast(Me, IPreviewFromFile)
             If preview Is Nothing Then
-                Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.PreviewHandlerUnsupportedInterfaceCalled, "IPreviewFromFile"))
+                Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.PreviewHandlerUnsupportedInterfaceCalled, "IPreviewFromFile"))
             End If
             preview.Load(New FileInfo(filePath))
         End Sub
@@ -223,7 +223,7 @@ Namespace ShellExtensions
                     ThrowIfNotValid(registerType)
                     RegisterPreviewHandler(registerType.GUID, attr)
                 Else
-                    Throw New NotSupportedException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.PreviewHandlerInvalidAttributes, registerType.Name))
+                    Throw New NotSupportedException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.PreviewHandlerInvalidAttributes, registerType.Name))
                 End If
             End If
         End Sub
@@ -305,7 +305,7 @@ Namespace ShellExtensions
         Private Shared Sub ThrowIfNotValid(type As Type)
             Dim interfaces = type.GetInterfaces()
             If Not interfaces.Any(Function(x) x Is GetType(IPreviewFromStream) OrElse x Is GetType(IPreviewFromShellObject) OrElse x Is GetType(IPreviewFromFile)) Then
-                Throw New NotImplementedException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.PreviewHandlerInterfaceNotImplemented, type.Name))
+                Throw New NotImplementedException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.PreviewHandlerInterfaceNotImplemented, type.Name))
             End If
         End Sub
 

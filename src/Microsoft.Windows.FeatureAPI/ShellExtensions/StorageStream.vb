@@ -87,13 +87,13 @@ Namespace ShellExtensions
                 Throw New ArgumentNullException("buffer")
             End If
             If offset < 0 Then
-                Throw New ArgumentOutOfRangeException("offset", LocalizedMessages.StorageStreamOffsetLessThanZero)
+                Throw New ArgumentOutOfRangeException("offset", GlobalLocalizedMessages.StorageStreamOffsetLessThanZero)
             End If
             If count < 0 Then
-                Throw New ArgumentOutOfRangeException("count", LocalizedMessages.StorageStreamCountLessThanZero)
+                Throw New ArgumentOutOfRangeException("count", GlobalLocalizedMessages.StorageStreamCountLessThanZero)
             End If
             If offset + count > buffer.Length Then
-                Throw New ArgumentException(LocalizedMessages.StorageStreamBufferOverflow, "count")
+                Throw New ArgumentException(GlobalLocalizedMessages.StorageStreamBufferOverflow, "count")
             End If
 
             Dim bytesRead As Integer = 0
@@ -129,19 +129,19 @@ Namespace ShellExtensions
             ThrowIfDisposed()
 
             If _isReadOnly Then
-                Throw New InvalidOperationException(LocalizedMessages.StorageStreamIsReadonly)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.StorageStreamIsReadonly)
             End If
             If buffer Is Nothing Then
                 Throw New ArgumentNullException("buffer")
             End If
             If offset < 0 Then
-                Throw New ArgumentOutOfRangeException("offset", LocalizedMessages.StorageStreamOffsetLessThanZero)
+                Throw New ArgumentOutOfRangeException("offset", GlobalLocalizedMessages.StorageStreamOffsetLessThanZero)
             End If
             If count < 0 Then
-                Throw New ArgumentOutOfRangeException("count", LocalizedMessages.StorageStreamCountLessThanZero)
+                Throw New ArgumentOutOfRangeException("count", GlobalLocalizedMessages.StorageStreamCountLessThanZero)
             End If
             If offset + count > buffer.Length Then
-                Throw New ArgumentException(LocalizedMessages.StorageStreamBufferOverflow, "count")
+                Throw New ArgumentException(GlobalLocalizedMessages.StorageStreamBufferOverflow, "count")
             End If
 
             If count > 0 Then

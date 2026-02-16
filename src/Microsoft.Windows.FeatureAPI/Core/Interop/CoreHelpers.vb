@@ -24,7 +24,7 @@ Namespace Internal
         ''' </summary>
         Public Sub ThrowIfNotXP()
             If Not CoreHelpers.RunningOnXP Then
-                Throw New PlatformNotSupportedException(LocalizedMessages.CoreHelpersRunningOnXp)
+                Throw New PlatformNotSupportedException(GlobalLocalizedMessages.CoreHelpersRunningOnXp)
             End If
         End Sub
 
@@ -42,7 +42,7 @@ Namespace Internal
         ''' </summary>
         Public Sub ThrowIfNotVista()
             If Not CoreHelpers.RunningOnVista Then
-                Throw New PlatformNotSupportedException(LocalizedMessages.CoreHelpersRunningOnVista)
+                Throw New PlatformNotSupportedException(GlobalLocalizedMessages.CoreHelpersRunningOnVista)
             End If
         End Sub
 
@@ -61,7 +61,7 @@ Namespace Internal
         ''' </summary>
         Public Sub ThrowIfNotWin7()
             If Not CoreHelpers.RunningOnWin7 Then
-                Throw New PlatformNotSupportedException(LocalizedMessages.CoreHelpersRunningOn7)
+                Throw New PlatformNotSupportedException(GlobalLocalizedMessages.CoreHelpersRunningOn7)
             End If
         End Sub
 

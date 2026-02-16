@@ -177,7 +177,7 @@ Namespace Dialogs
                 Return checkBoxText
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.CheckBoxCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.CheckBoxCannotBeChanged)
                 checkBoxText = Value
             End Set
         End Property
@@ -208,7 +208,7 @@ Namespace Dialogs
                 Return m_detailsExpanded
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.ExpandingStateCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.ExpandingStateCannotBeChanged)
                 m_detailsExpanded = Value
             End Set
         End Property
@@ -222,7 +222,7 @@ Namespace Dialogs
                 Return m_detailsExpandedLabel
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.ExpandedLabelCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.ExpandedLabelCannotBeChanged)
                 m_detailsExpandedLabel = Value
             End Set
         End Property
@@ -236,7 +236,7 @@ Namespace Dialogs
                 Return m_detailsCollapsedLabel
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.CollapsedTextCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.CollapsedTextCannotBeChanged)
                 m_detailsCollapsedLabel = Value
             End Set
         End Property
@@ -298,7 +298,7 @@ Namespace Dialogs
                 Return m_standardButtons
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.StandardButtonsCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.StandardButtonsCannotBeChanged)
                 m_standardButtons = Value
             End Set
         End Property
@@ -324,7 +324,7 @@ Namespace Dialogs
                 Return m_hyperlinksEnabled
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.HyperlinksCannotBetSet)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.HyperlinksCannotBetSet)
                 m_hyperlinksEnabled = Value
             End Set
         End Property
@@ -355,7 +355,7 @@ Namespace Dialogs
                 Return m_expansionMode
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.ExpandedDetailsCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.ExpandedDetailsCannotBeChanged)
                 m_expansionMode = Value
             End Set
         End Property
@@ -369,7 +369,7 @@ Namespace Dialogs
                 Return m_startupLocation
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.StartupLocationCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.StartupLocationCannotBeChanged)
                 m_startupLocation = Value
             End Set
         End Property
@@ -384,10 +384,10 @@ Namespace Dialogs
                 Return m_progressBar
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.ProgressBarCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.ProgressBarCannotBeChanged)
                 If Value IsNot Nothing Then
                     If Value.HostingDialog IsNot Nothing Then
-                        Throw New InvalidOperationException(LocalizedMessages.ProgressBarCannotBeHostedInMultipleDialogs)
+                        Throw New InvalidOperationException(GlobalLocalizedMessages.ProgressBarCannotBeHostedInMultipleDialogs)
                     End If
 
                     Value.HostingDialog = Me
@@ -528,7 +528,7 @@ Namespace Dialogs
         ' rather than return a bool.
         Private Sub ValidateCurrentDialogSettings()
             If m_footerCheckBoxChecked.HasValue AndAlso m_footerCheckBoxChecked.Value = True AndAlso String.IsNullOrEmpty(checkBoxText) Then
-                Throw New InvalidOperationException(LocalizedMessages.TaskDialogCheckBoxTextRequiredToEnableCheckBox)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.TaskDialogCheckBoxTextRequiredToEnableCheckBox)
             End If
 
             ' Progress bar validation.
@@ -537,7 +537,7 @@ Namespace Dialogs
             ' bizarre min/max/value combinations, but we'll save
             ' it the trouble by validating.
             If m_progressBar IsNot Nothing AndAlso Not m_progressBar.HasValidValues Then
-                Throw New InvalidOperationException(LocalizedMessages.TaskDialogProgressBarValueInRange)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.TaskDialogProgressBarValueInRange)
             End If
 
             ' Validate Buttons collection.
@@ -545,10 +545,10 @@ Namespace Dialogs
             ' command-links - the Win32 API treats them as different
             ' flavors of a single button struct.
             If buttons.Count > 0 AndAlso commandLinks.Count > 0 Then
-                Throw New NotSupportedException(LocalizedMessages.TaskDialogSupportedButtonsAndLinks)
+                Throw New NotSupportedException(GlobalLocalizedMessages.TaskDialogSupportedButtonsAndLinks)
             End If
             If buttons.Count > 0 AndAlso m_standardButtons <> TaskDialogStandardButtons.None Then
-                Throw New NotSupportedException(LocalizedMessages.TaskDialogSupportedButtonsAndButtons)
+                Throw New NotSupportedException(GlobalLocalizedMessages.TaskDialogSupportedButtonsAndButtons)
             End If
         End Sub
 
@@ -577,7 +577,7 @@ Namespace Dialogs
         ''' <exception cref="InvalidOperationException">if TaskDialog is not showing.</exception>
         Public Sub Close()
             If Not NativeDialogShowing Then
-                Throw New InvalidOperationException(LocalizedMessages.TaskDialogCloseNonShowing)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.TaskDialogCloseNonShowing)
             End If
 
             nativeDialog.NativeClose(TaskDialogResult.Cancel)
@@ -592,7 +592,7 @@ Namespace Dialogs
         ''' <exception cref="InvalidOperationException">if TaskDialog is not showing.</exception>
         Public Sub Close(closingResult As TaskDialogResult)
             If Not NativeDialogShowing Then
-                Throw New InvalidOperationException(LocalizedMessages.TaskDialogCloseNonShowing)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.TaskDialogCloseNonShowing)
             End If
 
             nativeDialog.NativeClose(closingResult)
@@ -748,7 +748,7 @@ Namespace Dialogs
             If defaults.Count = 1 Then
                 Return defaults(0).Id
             ElseIf defaults.Count > 1 Then
-                Throw New InvalidOperationException(LocalizedMessages.TaskDialogOnlyOneDefaultControl)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.TaskDialogOnlyOneDefaultControl)
             End If
 
             Return TaskDialogNativeMethods.NoDefaultButtonSpecified
@@ -788,7 +788,7 @@ Namespace Dialogs
                 Dim commandLink As TaskDialogCommandLink = TryCast(control, TaskDialogCommandLink)
 
                 If buttonBase IsNot Nothing AndAlso String.IsNullOrEmpty(buttonBase.Text) AndAlso commandLink IsNot Nothing AndAlso String.IsNullOrEmpty(commandLink.Instruction) Then
-                    Throw New InvalidOperationException(LocalizedMessages.TaskDialogButtonTextEmpty)
+                    Throw New InvalidOperationException(GlobalLocalizedMessages.TaskDialogButtonTextEmpty)
                 End If
 
                 Dim radButton As TaskDialogRadioButton
@@ -811,7 +811,7 @@ Namespace Dialogs
                 ElseIf progBar.InlineCopy(TryCast(control, TaskDialogProgressBar)) IsNot Nothing Then
                     m_progressBar = progBar
                 Else
-                    Throw New InvalidOperationException(LocalizedMessages.TaskDialogUnkownControl)
+                    Throw New InvalidOperationException(GlobalLocalizedMessages.TaskDialogUnkownControl)
                 End If
             Next
         End Sub
@@ -948,7 +948,7 @@ Namespace Dialogs
                 Dim radioButton As TaskDialogRadioButton
                 If TypeOf control Is TaskDialogProgressBar Then
                     If Not m_progressBar.HasValidValues Then
-                        Throw New ArgumentException(LocalizedMessages.TaskDialogProgressBarValueInRange)
+                        Throw New ArgumentException(GlobalLocalizedMessages.TaskDialogProgressBarValueInRange)
                     End If
 
                     Select Case propertyName
@@ -1039,7 +1039,7 @@ Namespace Dialogs
 
                     ' ... or we have a problem.
                     If customButton Is Nothing Then
-                        Throw New InvalidOperationException(LocalizedMessages.TaskDialogBadButtonId)
+                        Throw New InvalidOperationException(GlobalLocalizedMessages.TaskDialogBadButtonId)
                     End If
 
                     e.CustomButton = customButton.Name

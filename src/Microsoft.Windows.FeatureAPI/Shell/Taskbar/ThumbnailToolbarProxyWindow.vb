@@ -38,10 +38,10 @@ Namespace Taskbar
 
 		Friend Sub New(windowHandle As IntPtr, buttons As ThumbnailToolBarButton())
 			If windowHandle = IntPtr.Zero Then
-				Throw New ArgumentException(LocalizedMessages.CommonFileDialogInvalidHandle, "windowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.CommonFileDialogInvalidHandle, "windowHandle")
 			End If
 			If buttons IsNot Nothing AndAlso buttons.Length = 0 Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailToolbarManagerNullEmptyArray, "buttons")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailToolbarManagerNullEmptyArray, "buttons")
 			End If
 
 			_internalWindowHandle = windowHandle
@@ -60,7 +60,7 @@ Namespace Taskbar
 				Throw New ArgumentNullException("windowsControl")
 			End If
 			If buttons IsNot Nothing AndAlso buttons.Length = 0 Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailToolbarManagerNullEmptyArray, "buttons")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailToolbarManagerNullEmptyArray, "buttons")
 			End If
 
 			_internalWindowHandle = IntPtr.Zero

@@ -14,7 +14,7 @@ Namespace Dialogs
 		Public Shared ReadOnly Property TextFiles() As CommonFileDialogFilter
 			Get
 				If textFilesFilter Is Nothing Then
-					textFilesFilter = New CommonFileDialogFilter(LocalizedMessages.CommonFiltersText, "*.txt")
+					textFilesFilter = New CommonFileDialogFilter(GlobalLocalizedMessages.CommonFiltersText, "*.txt")
 				End If
 				Return textFilesFilter
 			End Get
@@ -27,7 +27,7 @@ Namespace Dialogs
 		Public Shared ReadOnly Property PictureFiles() As CommonFileDialogFilter
 			Get
 				If pictureFilesFilter Is Nothing Then
-					pictureFilesFilter = New CommonFileDialogFilter(LocalizedMessages.CommonFiltersPicture, "*.bmp, *.jpg, *.jpeg, *.png, *.ico")
+					pictureFilesFilter = New CommonFileDialogFilter(GlobalLocalizedMessages.CommonFiltersPicture, "*.bmp, *.jpg, *.jpeg, *.png, *.ico")
 				End If
 				Return pictureFilesFilter
 			End Get
@@ -40,7 +40,7 @@ Namespace Dialogs
 		Public Shared ReadOnly Property OfficeFiles() As CommonFileDialogFilter
 			Get
 				If officeFilesFilter Is Nothing Then
-					officeFilesFilter = New CommonFileDialogFilter(LocalizedMessages.CommonFiltersOffice, "*.doc, *.docx, *.xls, *.xlsx, *.ppt, *.pptx")
+					officeFilesFilter = New CommonFileDialogFilter(GlobalLocalizedMessages.CommonFiltersOffice, "*.doc, *.docx, *.xls, *.xlsx, *.ppt, *.pptx")
 				End If
 				Return officeFilesFilter
 			End Get

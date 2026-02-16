@@ -127,7 +127,7 @@ Namespace Shell
         ''' <returns>A memory stream containing the drag/drop data.</returns>
         Public Function BuildShellIDList() As MemoryStream
 			If content.Count = 0 Then
-				Throw New InvalidOperationException(LocalizedMessages.ShellObjectCollectionEmptyCollection)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.ShellObjectCollectionEmptyCollection)
 			End If
 
 
@@ -210,7 +210,7 @@ Namespace Shell
         ''' <param name="item">The item to insert.</param>
         Public Sub Insert(index As Integer, item As ShellObject) Implements IList(Of ShellObject).Insert
             If [readOnly] Then
-                Throw New InvalidOperationException(LocalizedMessages.ShellObjectCollectionInsertReadOnly)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.ShellObjectCollectionInsertReadOnly)
             End If
 
             content.Insert(index, item)
@@ -222,7 +222,7 @@ Namespace Shell
         ''' <param name="index">The index to remove at.</param>
         Public Sub RemoveAt(index As Integer) Implements IList(Of ShellObject).RemoveAt
 			If [readOnly] Then
-				Throw New InvalidOperationException(LocalizedMessages.ShellObjectCollectionRemoveReadOnly)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.ShellObjectCollectionRemoveReadOnly)
 			End If
 
 			content.RemoveAt(index)
@@ -239,7 +239,7 @@ Namespace Shell
 			End Get
 			Set
 				If [readOnly] Then
-					Throw New InvalidOperationException(LocalizedMessages.ShellObjectCollectionInsertReadOnly)
+					Throw New InvalidOperationException(GlobalLocalizedMessages.ShellObjectCollectionInsertReadOnly)
 				End If
 
 				content(index) = value
@@ -256,7 +256,7 @@ Namespace Shell
         ''' <param name="item">The ShellObject to add.</param>
         Public Sub Add(item As ShellObject) Implements IList(Of ShellObject).Add
             If [readOnly] Then
-                Throw New InvalidOperationException(LocalizedMessages.ShellObjectCollectionInsertReadOnly)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.ShellObjectCollectionInsertReadOnly)
             End If
 
             content.Add(item)
@@ -267,7 +267,7 @@ Namespace Shell
         ''' </summary>
         Public Sub Clear() Implements ICollection(Of ShellObject).Clear
 			If [readOnly] Then
-				Throw New InvalidOperationException(LocalizedMessages.ShellObjectCollectionRemoveReadOnly)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.ShellObjectCollectionRemoveReadOnly)
 			End If
 
 			content.Clear()
@@ -292,7 +292,7 @@ Namespace Shell
                 Throw New ArgumentNullException("array")
             End If
             If array.Length < arrayIndex + content.Count Then
-                Throw New ArgumentException(LocalizedMessages.ShellObjectCollectionArrayTooSmall, "array")
+                Throw New ArgumentException(GlobalLocalizedMessages.ShellObjectCollectionArrayTooSmall, "array")
             End If
 
             For index As Integer = 0 To content.Count - 1
@@ -325,7 +325,7 @@ Namespace Shell
         ''' <returns>True if the item could be removed, false otherwise.</returns>
         Public Function Remove(item As ShellObject) As Boolean Implements IList(Of ShellObject).Remove
             If [readOnly] Then
-                Throw New InvalidOperationException(LocalizedMessages.ShellObjectCollectionRemoveReadOnly)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.ShellObjectCollectionRemoveReadOnly)
             End If
 
             Return content.Remove(item)

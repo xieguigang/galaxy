@@ -544,7 +544,7 @@ Namespace ExtendedLinguisticServices
 		''' </summary>
 		Friend Shared Sub ThrowIfNotWin7()
 			If Not RunningOnWin7 Then
-				Throw New PlatformNotSupportedException(LocalizedMessages.SupportedWindows7)
+				Throw New PlatformNotSupportedException(GlobalLocalizedMessages.SupportedWindows7)
 			End If
 		End Sub
 

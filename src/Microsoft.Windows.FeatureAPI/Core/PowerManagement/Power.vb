@@ -13,7 +13,7 @@ Namespace ApplicationServices
             Dim retval As UInteger = PowerManagementNativeMethods.CallNtPowerInformation(PowerManagementNativeMethods.PowerInformationLevel.SystemPowerCapabilities, IntPtr.Zero, 0, powerCap, CType(Marshal.SizeOf(GetType(PowerManagementNativeMethods.SystemPowerCapabilities)), UInt32))
 
             If retval = CoreNativeMethods.StatusAccessDenied Then
-                Throw New UnauthorizedAccessException(LocalizedMessages.PowerInsufficientAccessCapabilities)
+                Throw New UnauthorizedAccessException(GlobalLocalizedMessages.PowerInsufficientAccessCapabilities)
             End If
 
             Return powerCap
@@ -25,7 +25,7 @@ Namespace ApplicationServices
             Dim retval As UInteger = PowerManagementNativeMethods.CallNtPowerInformation(PowerManagementNativeMethods.PowerInformationLevel.SystemBatteryState, IntPtr.Zero, 0, batteryState, CType(Marshal.SizeOf(GetType(PowerManagementNativeMethods.SystemBatteryState)), UInt32))
 
             If retval = CoreNativeMethods.StatusAccessDenied Then
-                Throw New UnauthorizedAccessException(LocalizedMessages.PowerInsufficientAccessBatteryState)
+                Throw New UnauthorizedAccessException(GlobalLocalizedMessages.PowerInsufficientAccessBatteryState)
             End If
 
             Return batteryState

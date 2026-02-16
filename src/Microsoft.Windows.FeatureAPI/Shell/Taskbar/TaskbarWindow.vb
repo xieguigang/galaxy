@@ -72,7 +72,7 @@ Namespace Taskbar
 			End Get
 			Set
 				If _tabbedThumbnailPreview IsNot Nothing Then
-					Throw New InvalidOperationException(LocalizedMessages.TaskbarWindowValueSet)
+					Throw New InvalidOperationException(GlobalLocalizedMessages.TaskbarWindowValueSet)
 				End If
 
 				TabbedThumbnailProxyWindow = New TabbedThumbnailProxyWindow(value)
@@ -119,18 +119,18 @@ Namespace Taskbar
 
 		Friend Sub SetTitle(title As String)
 			If TabbedThumbnailProxyWindow Is Nothing Then
-				Throw New InvalidOperationException(LocalizedMessages.TasbarWindowProxyWindowSet)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.TasbarWindowProxyWindowSet)
 			End If
 			TabbedThumbnailProxyWindow.Text = title
 		End Sub
 
 		Friend Sub New(userWindowHandle__1 As IntPtr, ParamArray buttons As ThumbnailToolBarButton())
 			If userWindowHandle__1 = IntPtr.Zero Then
-				Throw New ArgumentException(LocalizedMessages.CommonFileDialogInvalidHandle, "userWindowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.CommonFileDialogInvalidHandle, "userWindowHandle")
 			End If
 
 			If buttons Is Nothing OrElse buttons.Length = 0 Then
-				Throw New ArgumentException(LocalizedMessages.TaskbarWindowEmptyButtonArray, "buttons")
+				Throw New ArgumentException(GlobalLocalizedMessages.TaskbarWindowEmptyButtonArray, "buttons")
 			End If
 
 			' Create our proxy window
@@ -153,7 +153,7 @@ Namespace Taskbar
 			End If
 
 			If buttons Is Nothing OrElse buttons.Length = 0 Then
-				Throw New ArgumentException(LocalizedMessages.TaskbarWindowEmptyButtonArray, "buttons")
+				Throw New ArgumentException(GlobalLocalizedMessages.TaskbarWindowEmptyButtonArray, "buttons")
 			End If
 
 			' Create our proxy window

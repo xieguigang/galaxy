@@ -43,13 +43,13 @@ Namespace Taskbar
 			' UI Element has a windowHandle of zero.
 			If preview.WindowHandle = IntPtr.Zero Then
 				If _tabbedThumbnailCacheWPF.ContainsKey(preview.WindowsControl) Then
-					Throw New ArgumentException(LocalizedMessages.ThumbnailManagerPreviewAdded, "preview")
+					Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerPreviewAdded, "preview")
 				End If
 				_tabbedThumbnailCacheWPF.Add(preview.WindowsControl, preview)
 			Else
 				' Regular control with a valid handle
 				If _tabbedThumbnailCache.ContainsKey(preview.WindowHandle) Then
-					Throw New ArgumentException(LocalizedMessages.ThumbnailManagerPreviewAdded, "preview")
+					Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerPreviewAdded, "preview")
 				End If
 				_tabbedThumbnailCache.Add(preview.WindowHandle, preview)
 			End If
@@ -67,7 +67,7 @@ Namespace Taskbar
 		''' <returns>TabbedThumbnail associated with the given window handle</returns>
 		Public Function GetThumbnailPreview(windowHandle As IntPtr) As TabbedThumbnail
 			If windowHandle = IntPtr.Zero Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailManagerInvalidHandle, "windowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerInvalidHandle, "windowHandle")
 			End If
 
 			Dim thumbnail As TabbedThumbnail
@@ -125,7 +125,7 @@ Namespace Taskbar
 		''' is to be removed from the taskbar</param>
 		Public Sub RemoveThumbnailPreview(windowHandle As IntPtr)
 			If Not _tabbedThumbnailCache.ContainsKey(windowHandle) Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailManagerControlNotAdded, "windowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerControlNotAdded, "windowHandle")
 			End If
 
 			TaskbarWindowManager.UnregisterTab(_tabbedThumbnailCache(windowHandle).TaskbarWindow)
@@ -169,7 +169,7 @@ Namespace Taskbar
 			End If
 
 			If Not _tabbedThumbnailCacheWPF.ContainsKey(windowsControl) Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailManagerControlNotAdded, "windowsControl")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerControlNotAdded, "windowsControl")
 			End If
 
 			TaskbarWindowManager.UnregisterTab(_tabbedThumbnailCacheWPF(windowsControl).TaskbarWindow)
@@ -201,12 +201,12 @@ Namespace Taskbar
 
 			If preview.WindowHandle <> IntPtr.Zero Then
 				If Not _tabbedThumbnailCache.ContainsKey(preview.WindowHandle) Then
-					Throw New ArgumentException(LocalizedMessages.ThumbnailManagerPreviewNotAdded, "preview")
+					Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerPreviewNotAdded, "preview")
 				End If
 				TaskbarWindowManager.SetActiveTab(_tabbedThumbnailCache(preview.WindowHandle).TaskbarWindow)
 			ElseIf preview.WindowsControl IsNot Nothing Then
 				If Not _tabbedThumbnailCacheWPF.ContainsKey(preview.WindowsControl) Then
-					Throw New ArgumentException(LocalizedMessages.ThumbnailManagerPreviewNotAdded, "preview")
+					Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerPreviewNotAdded, "preview")
 				End If
 				TaskbarWindowManager.SetActiveTab(_tabbedThumbnailCacheWPF(preview.WindowsControl).TaskbarWindow)
 			End If
@@ -221,7 +221,7 @@ Namespace Taskbar
 		''' <exception cref="System.ArgumentException">If the control/window is not yet added to the tabbed thumbnails list</exception>
 		Public Sub SetActiveTab(windowHandle As IntPtr)
 			If Not _tabbedThumbnailCache.ContainsKey(windowHandle) Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailManagerPreviewNotAdded, "windowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerPreviewNotAdded, "windowHandle")
 			End If
 			TaskbarWindowManager.SetActiveTab(_tabbedThumbnailCache(windowHandle).TaskbarWindow)
 		End Sub
@@ -253,7 +253,7 @@ Namespace Taskbar
 			End If
 
 			If Not _tabbedThumbnailCacheWPF.ContainsKey(windowsControl) Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailManagerPreviewNotAdded, "windowsControl")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerPreviewNotAdded, "windowsControl")
 			End If
 			TaskbarWindowManager.SetActiveTab(_tabbedThumbnailCacheWPF(windowsControl).TaskbarWindow)
 
@@ -285,7 +285,7 @@ Namespace Taskbar
 		''' <returns>true if the tab is already added on the taskbar; otherwise, false.</returns>
 		Public Function IsThumbnailPreviewAdded(windowHandle As IntPtr) As Boolean
 			If windowHandle = IntPtr.Zero Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailManagerInvalidHandle, "windowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerInvalidHandle, "windowHandle")
 			End If
 
 			Return _tabbedThumbnailCache.ContainsKey(windowHandle)

@@ -17,7 +17,7 @@ Namespace Shell
 
 			' Make sure this is valid
 			If Not File.Exists(absPath) Then
-				Throw New FileNotFoundException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.FilePathNotExist, path))
+				Throw New FileNotFoundException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.FilePathNotExist, path))
 			End If
 
 			ParsingName = absPath

@@ -45,7 +45,7 @@ Namespace Dialogs
 				Return m_overwritePrompt
 			End Get
 			Set
-				ThrowIfDialogShowing(LocalizedMessages.OverwritePromptCannotBeChanged)
+				ThrowIfDialogShowing(GlobalLocalizedMessages.OverwritePromptCannotBeChanged)
 				m_overwritePrompt = value
 			End Set
 		End Property
@@ -63,7 +63,7 @@ Namespace Dialogs
 				Return m_createPrompt
 			End Get
 			Set
-				ThrowIfDialogShowing(LocalizedMessages.CreatePromptCannotBeChanged)
+				ThrowIfDialogShowing(GlobalLocalizedMessages.CreatePromptCannotBeChanged)
 				m_createPrompt = value
 			End Set
 		End Property
@@ -83,7 +83,7 @@ Namespace Dialogs
 				Return m_isExpandedMode
 			End Get
 			Set
-				ThrowIfDialogShowing(LocalizedMessages.IsExpandedModeCannotBeChanged)
+				ThrowIfDialogShowing(GlobalLocalizedMessages.IsExpandedModeCannotBeChanged)
 				m_isExpandedMode = value
 			End Set
 		End Property
@@ -103,7 +103,7 @@ Namespace Dialogs
 				Return m_alwaysAppendDefaultExtension
 			End Get
 			Set
-				ThrowIfDialogShowing(LocalizedMessages.AlwaysAppendDefaultExtensionCannotBeChanged)
+				ThrowIfDialogShowing(GlobalLocalizedMessages.AlwaysAppendDefaultExtensionCannotBeChanged)
 				m_alwaysAppendDefaultExtension = value
 			End Set
 		End Property
@@ -229,7 +229,7 @@ Namespace Dialogs
 			saveDialogCoClass.GetResult(item)
 
 			If item Is Nothing Then
-				Throw New InvalidOperationException(LocalizedMessages.SaveFileNullItem)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.SaveFileNullItem)
 			End If
 			names.Clear()
 			names.Add(GetFileNameFromShellItem(item))
@@ -240,7 +240,7 @@ Namespace Dialogs
 			saveDialogCoClass.GetResult(item)
 
 			If item Is Nothing Then
-				Throw New InvalidOperationException(LocalizedMessages.SaveFileNullItem)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.SaveFileNullItem)
 			End If
 			items.Clear()
 			items.Add(item)

@@ -122,7 +122,7 @@ Namespace Shell.PropertySystem
 			Dim result As Integer = PropertySystemNativeMethods.PSGetPropertyKeyFromName(canonicalName, propKey)
 
 			If Not CoreErrorHelper.Succeeded(result) Then
-				Throw New ArgumentException(LocalizedMessages.ShellInvalidCanonicalName, Marshal.GetExceptionForHR(result))
+				Throw New ArgumentException(GlobalLocalizedMessages.ShellInvalidCanonicalName, Marshal.GetExceptionForHR(result))
 			End If
 			Return CreateTypedProperty(propKey)
 		End Function

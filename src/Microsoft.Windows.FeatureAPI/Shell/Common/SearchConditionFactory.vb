@@ -162,7 +162,7 @@ Namespace Shell
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(propertyKey, canonicalName)
 
             If String.IsNullOrEmpty(canonicalName) Then
-                Throw New ArgumentException(LocalizedMessages.SearchConditionFactoryInvalidProperty, "propertyKey")
+                Throw New ArgumentException(GlobalLocalizedMessages.SearchConditionFactoryInvalidProperty, "propertyKey")
             End If
 
             Return CreateLeafCondition(canonicalName, value, operation)
@@ -186,7 +186,7 @@ Namespace Shell
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(propertyKey, canonicalName)
 
             If String.IsNullOrEmpty(canonicalName) Then
-                Throw New ArgumentException(LocalizedMessages.SearchConditionFactoryInvalidProperty, "propertyKey")
+                Throw New ArgumentException(GlobalLocalizedMessages.SearchConditionFactoryInvalidProperty, "propertyKey")
             End If
             Return CreateLeafCondition(canonicalName, value, operation)
         End Function
@@ -209,7 +209,7 @@ Namespace Shell
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(propertyKey, canonicalName)
 
             If String.IsNullOrEmpty(canonicalName) Then
-                Throw New ArgumentException(LocalizedMessages.SearchConditionFactoryInvalidProperty, "propertyKey")
+                Throw New ArgumentException(GlobalLocalizedMessages.SearchConditionFactoryInvalidProperty, "propertyKey")
             End If
             Return CreateLeafCondition(canonicalName, value, operation)
         End Function
@@ -232,7 +232,7 @@ Namespace Shell
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(propertyKey, canonicalName)
 
             If String.IsNullOrEmpty(canonicalName) Then
-                Throw New ArgumentException(LocalizedMessages.SearchConditionFactoryInvalidProperty, "propertyKey")
+                Throw New ArgumentException(GlobalLocalizedMessages.SearchConditionFactoryInvalidProperty, "propertyKey")
             End If
             Return CreateLeafCondition(canonicalName, value, operation)
         End Function
@@ -255,7 +255,7 @@ Namespace Shell
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(propertyKey, canonicalName)
 
             If String.IsNullOrEmpty(canonicalName) Then
-                Throw New ArgumentException(LocalizedMessages.SearchConditionFactoryInvalidProperty, "propertyKey")
+                Throw New ArgumentException(GlobalLocalizedMessages.SearchConditionFactoryInvalidProperty, "propertyKey")
             End If
             Return CreateLeafCondition(canonicalName, value, operation)
         End Function

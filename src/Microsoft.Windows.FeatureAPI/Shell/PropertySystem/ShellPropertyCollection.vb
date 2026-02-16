@@ -130,7 +130,7 @@ Namespace Shell.PropertySystem
 		''' <returns><B>True</B> if available, <B>false</B> otherwise.</returns>
 		Public Overloads Function Contains(canonicalName As String) As Boolean
 			If String.IsNullOrEmpty(canonicalName) Then
-				Throw New ArgumentException(LocalizedMessages.PropertyCollectionNullCanonicalName, "canonicalName")
+				Throw New ArgumentException(GlobalLocalizedMessages.PropertyCollectionNullCanonicalName, "canonicalName")
 			End If
 
 			Return Items.Any(Function(p) p.CanonicalName = canonicalName)
@@ -158,12 +158,12 @@ Namespace Shell.PropertySystem
         Default Public Overloads ReadOnly Property Item(canonicalName As String) As IShellProperty
             Get
                 If String.IsNullOrEmpty(canonicalName) Then
-                    Throw New ArgumentException(LocalizedMessages.PropertyCollectionNullCanonicalName, "canonicalName")
+                    Throw New ArgumentException(GlobalLocalizedMessages.PropertyCollectionNullCanonicalName, "canonicalName")
                 End If
 
                 Dim prop As IShellProperty = Items.FirstOrDefault(Function(p) p.CanonicalName = canonicalName)
                 If prop Is Nothing Then
-                    Throw New IndexOutOfRangeException(LocalizedMessages.PropertyCollectionCanonicalInvalidIndex)
+                    Throw New IndexOutOfRangeException(GlobalLocalizedMessages.PropertyCollectionCanonicalInvalidIndex)
                 End If
                 Return prop
             End Get
@@ -184,7 +184,7 @@ Namespace Shell.PropertySystem
                     Return prop
                 End If
 
-                Throw New IndexOutOfRangeException(LocalizedMessages.PropertyCollectionInvalidIndex)
+                Throw New IndexOutOfRangeException(GlobalLocalizedMessages.PropertyCollectionInvalidIndex)
             End Get
         End Property
 

@@ -19,7 +19,7 @@ Namespace Shell
 
 			' Need to make sure we're running on Vista or higher
 			If Not CoreHelpers.RunningOnVista Then
-				Throw New PlatformNotSupportedException(LocalizedMessages.ShellObjectFactoryPlatformNotSupported)
+				Throw New PlatformNotSupportedException(GlobalLocalizedMessages.ShellObjectFactoryPlatformNotSupported)
 			End If
 
 			' A lot of APIs need IShellItem2, so just keep a copy of it here
@@ -151,7 +151,7 @@ Namespace Shell
 			Dim retCode As Integer = ShellNativeMethods.SHCreateItemFromParsingName(parsingName, IntPtr.Zero, guid, nativeShellItem)
 
 			If Not CoreErrorHelper.Succeeded(retCode) Then
-				Throw New ShellException(LocalizedMessages.ShellObjectFactoryUnableToCreateItem, Marshal.GetExceptionForHR(retCode))
+				Throw New ShellException(GlobalLocalizedMessages.ShellObjectFactoryUnableToCreateItem, Marshal.GetExceptionForHR(retCode))
 			End If
 			Return ShellObjectFactory.Create(nativeShellItem)
 		End Function

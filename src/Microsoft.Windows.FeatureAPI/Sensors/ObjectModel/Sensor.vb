@@ -271,7 +271,7 @@ Namespace Sensors
         Public Sub UpdateData()
             Dim hr As HResult = InternalUpdateData()
             If hr <> HResult.Ok Then
-                Throw New SensorPlatformException(LocalizedMessages.SensorsNotFound, Marshal.GetExceptionForHR(CInt(hr)))
+                Throw New SensorPlatformException(GlobalLocalizedMessages.SensorsNotFound, Marshal.GetExceptionForHR(CInt(hr)))
             End If
         End Sub
 
@@ -295,7 +295,7 @@ Namespace Sensors
         ''' </summary>
         ''' <returns>A string that represents the current object.</returns>
         Public Overrides Function ToString() As String
-            Return String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.SensorGetString, Me.SensorId, Me.TypeId, Me.CategoryId, Me.FriendlyName)
+            Return String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.SensorGetString, Me.SensorId, Me.TypeId, Me.CategoryId, Me.FriendlyName)
         End Function
 
 
@@ -310,7 +310,7 @@ Namespace Sensors
                 If hr <> HResult.Ok Then
                     Dim e As Exception = Marshal.GetExceptionForHR(CInt(hr))
                     If hr = HResult.ElementNotFound Then
-                        Throw New ArgumentOutOfRangeException(LocalizedMessages.SensorPropertyNotFound, e)
+                        Throw New ArgumentOutOfRangeException(GlobalLocalizedMessages.SensorPropertyNotFound, e)
                     Else
                         Throw e
                     End If
@@ -337,7 +337,7 @@ Namespace Sensors
         ''' <returns>A dictionary that contains the property keys and values.</returns>
         Public Function GetProperties(propKeys As PropertyKey()) As IDictionary(Of PropertyKey, Object)
             If propKeys Is Nothing OrElse propKeys.Length = 0 Then
-                Throw New ArgumentException(LocalizedMessages.SensorEmptyProperties, "propKeys")
+                Throw New ArgumentException(GlobalLocalizedMessages.SensorEmptyProperties, "propKeys")
             End If
 
             Dim keyCollection As IPortableDeviceKeyCollection = New PortableDeviceKeyCollection()
@@ -384,7 +384,7 @@ Namespace Sensors
         ''' <returns>A strongly typed list of supported properties.</returns>        
         Public Function GetSupportedProperties() As IList(Of PropertyKey)
             If nativeISensor Is Nothing Then
-                Throw New SensorPlatformException(LocalizedMessages.SensorNotInitialized)
+                Throw New SensorPlatformException(GlobalLocalizedMessages.SensorNotInitialized)
             End If
 
             Dim list As New List(Of PropertyKey)()
@@ -477,7 +477,7 @@ Namespace Sensors
         ''' <returns>A dictionary of the new values for the properties. Actual values may not match the requested values.</returns>                
         Public Function SetProperties(data As DataFieldInfo()) As IDictionary(Of PropertyKey, Object)
             If data Is Nothing OrElse data.Length = 0 Then
-                Throw New ArgumentException(LocalizedMessages.SensorEmptyData, "data")
+                Throw New ArgumentException(GlobalLocalizedMessages.SensorEmptyData, "data")
             End If
 
             Dim pdv As IPortableDeviceValues = New PortableDeviceValues()
@@ -486,7 +486,7 @@ Namespace Sensors
                 Dim propKey As PropertyKey = data(i).Key
                 Dim value As Object = data(i).Value
                 If value Is Nothing Then
-                    Throw New ArgumentException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.SensorNullValueAtIndex, i), "data")
+                    Throw New ArgumentException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.SensorNullValueAtIndex, i), "data")
                 End If
 
                 Try
@@ -583,7 +583,7 @@ Namespace Sensors
         ''' <param name="eventType">The type of event of interest.</param>        
         Protected Sub SetEventInterest(eventType As Guid)
             If Me.nativeISensor Is Nothing Then
-                Throw New SensorPlatformException(LocalizedMessages.SensorNotInitialized)
+                Throw New SensorPlatformException(GlobalLocalizedMessages.SensorNotInitialized)
             End If
 
             Dim interestingEvents As Guid() = GetInterestingEvents()
@@ -610,7 +610,7 @@ Namespace Sensors
         ''' <param name="eventType">The type of event of interest.</param>
         Protected Sub ClearEventInterest(eventType As Guid)
             If Me.nativeISensor Is Nothing Then
-                Throw New SensorPlatformException(LocalizedMessages.SensorNotInitialized)
+                Throw New SensorPlatformException(GlobalLocalizedMessages.SensorNotInitialized)
             End If
 
             If IsEventInterestSet(eventType) Then
@@ -639,7 +639,7 @@ Namespace Sensors
         ''' <returns><b>true</b> if the sensor will report interest in the specified event.</returns>
         Protected Function IsEventInterestSet(eventType As Guid) As Boolean
             If Me.nativeISensor Is Nothing Then
-                Throw New SensorPlatformException(LocalizedMessages.SensorNotInitialized)
+                Throw New SensorPlatformException(GlobalLocalizedMessages.SensorNotInitialized)
             End If
 
             Return GetInterestingEvents().Any(Function(g) g.CompareTo(eventType) = 0)
@@ -667,7 +667,7 @@ Namespace Sensors
                 p += increment
                 Return New IntPtr(p)
             Else
-                Throw New SensorPlatformException(LocalizedMessages.SensorUnexpectedPointerSize)
+                Throw New SensorPlatformException(GlobalLocalizedMessages.SensorUnexpectedPointerSize)
             End If
         End Function
 

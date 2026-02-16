@@ -112,10 +112,10 @@ Namespace Taskbar
         ''' thumbnail needs to be displayed</param>
         Public Sub New(parentWindowHandle__1 As IntPtr, windowHandle__2 As IntPtr)
 			If parentWindowHandle__1 = IntPtr.Zero Then
-				Throw New ArgumentException(LocalizedMessages.TabbedThumbnailZeroParentHandle, "parentWindowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.TabbedThumbnailZeroParentHandle, "parentWindowHandle")
 			End If
 			If windowHandle__2 = IntPtr.Zero Then
-				Throw New ArgumentException(LocalizedMessages.TabbedThumbnailZeroChildHandle, "windowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.TabbedThumbnailZeroChildHandle, "windowHandle")
 			End If
 
 			WindowHandle = windowHandle__2
@@ -133,7 +133,7 @@ Namespace Taskbar
         '''  Call this method with the main WPF Window's handle, and windowsFormHost.Child control.</remarks>
         Public Sub New(parentWindowHandle__1 As IntPtr, control As Control)
 			If parentWindowHandle__1 = IntPtr.Zero Then
-				Throw New ArgumentException(LocalizedMessages.TabbedThumbnailZeroParentHandle, "parentWindowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.TabbedThumbnailZeroParentHandle, "parentWindowHandle")
 			End If
 			If control Is Nothing Then
 				Throw New ArgumentNullException("control")

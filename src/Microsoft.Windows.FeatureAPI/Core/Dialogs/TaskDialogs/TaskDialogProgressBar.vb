@@ -50,12 +50,12 @@ Namespace Dialogs
 
 				' Check for positive numbers
 				If Value < 0 Then
-					Throw New System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMinValueGreaterThanZero, "value")
+					Throw New System.ArgumentException(GlobalLocalizedMessages.TaskDialogProgressBarMinValueGreaterThanZero, "value")
 				End If
 
 				' Check if min / max differ
 				If Value >= Maximum Then
-					Throw New System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMinValueLessThanMax, "value")
+					Throw New System.ArgumentException(GlobalLocalizedMessages.TaskDialogProgressBarMinValueLessThanMax, "value")
 				End If
 
 				_minimum = Value
@@ -74,7 +74,7 @@ Namespace Dialogs
 
 				' Check if min / max differ
 				If Value < Minimum Then
-					Throw New System.ArgumentException(LocalizedMessages.TaskDialogProgressBarMaxValueGreaterThanMin, "value")
+					Throw New System.ArgumentException(GlobalLocalizedMessages.TaskDialogProgressBarMaxValueGreaterThanMin, "value")
 				End If
 				_maximum = Value
 				ApplyPropertyChange("Maximum")
@@ -91,7 +91,7 @@ Namespace Dialogs
 				CheckPropertyChangeAllowed("Value")
 				' Check for positive numbers
 				If Value < Minimum OrElse Value > Maximum Then
-					Throw New System.ArgumentException(LocalizedMessages.TaskDialogProgressBarValueInRange, "value")
+					Throw New System.ArgumentException(GlobalLocalizedMessages.TaskDialogProgressBarValueInRange, "value")
 				End If
 				Me._value = Value
 				ApplyPropertyChange("Value")

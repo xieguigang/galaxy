@@ -22,27 +22,27 @@ Imports System
 '''  A strongly-typed resource class, for looking up localized strings, etc.
 '''</summary>
 <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0"),  _
- Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
- Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
-Friend Class LocalizedMessages
-    
+ Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+ Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>
+Friend Class GlobalLocalizedMessages
+
     Private Shared resourceMan As Global.System.Resources.ResourceManager
-    
+
     Private Shared resourceCulture As Global.System.Globalization.CultureInfo
-    
-    <Global.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")>  _
+
+    <Global.System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")>
     Friend Sub New()
         MyBase.New
     End Sub
-    
+
     '''<summary>
     '''  Returns the cached ResourceManager instance used by this class.
     '''</summary>
-    <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
+    <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>
     Friend Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
         Get
             If Object.ReferenceEquals(resourceMan, Nothing) Then
-                Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Microsoft.Windows.LocalizedMessages", GetType(LocalizedMessages).Assembly)
+                Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("Microsoft.Windows.LocalizedMessages", GetType(GlobalLocalizedMessages).Assembly)
                 resourceMan = temp
             End If
             Return resourceMan

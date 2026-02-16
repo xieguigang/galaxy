@@ -88,7 +88,7 @@ Namespace Sensors
 			Dim sensorCollection As ISensorCollection = Nothing
 			Dim hr As HResult = sensorManager.GetSensorsByCategory(category, sensorCollection)
 			If hr = HResult.ElementNotFound Then
-				Throw New SensorPlatformException(LocalizedMessages.SensorsNotFound)
+				Throw New SensorPlatformException(GlobalLocalizedMessages.SensorsNotFound)
 			End If
 
 			Return nativeSensorCollectionToSensorCollection(Of Sensor)(sensorCollection)
@@ -103,7 +103,7 @@ Namespace Sensors
 			Dim sensorCollection As ISensorCollection = Nothing
 			Dim hr As HResult = sensorManager.GetSensorsByType(typeId, sensorCollection)
 			If hr = HResult.ElementNotFound Then
-				Throw New SensorPlatformException(LocalizedMessages.SensorsNotFound)
+				Throw New SensorPlatformException(GlobalLocalizedMessages.SensorsNotFound)
 			End If
 			Return nativeSensorCollectionToSensorCollection(Of Sensor)(sensorCollection)
 		End Function
@@ -121,7 +121,7 @@ Namespace Sensors
 				Dim nativeSensorCollection As ISensorCollection = Nothing
 				Dim hr As HResult = sensorManager.GetSensorsByType(sda.SensorTypeGuid, nativeSensorCollection)
 				If hr = HResult.ElementNotFound Then
-					Throw New SensorPlatformException(LocalizedMessages.SensorsNotFound)
+					Throw New SensorPlatformException(GlobalLocalizedMessages.SensorsNotFound)
 				End If
 				Return nativeSensorCollectionToSensorCollection(Of T)(nativeSensorCollection)
 			End If
@@ -139,7 +139,7 @@ Namespace Sensors
 			Dim nativeSensor As ISensor = Nothing
 			Dim hr As HResult = sensorManager.GetSensorByID(sensorId, nativeSensor)
 			If hr = HResult.ElementNotFound Then
-				Throw New SensorPlatformException(LocalizedMessages.SensorsNotFound)
+				Throw New SensorPlatformException(GlobalLocalizedMessages.SensorsNotFound)
 			End If
 
 			If nativeSensor IsNot Nothing Then
@@ -157,7 +157,7 @@ Namespace Sensors
 		''' <param name="sensors">The sensors for which to request permission.</param>
 		Public Shared Sub RequestPermission(parentWindowHandle As IntPtr, modal As Boolean, sensors As SensorList(Of Sensor))
 			If sensors Is Nothing OrElse sensors.Count = 0 Then
-				Throw New ArgumentException(LocalizedMessages.SensorManagerEmptySensorsCollection, "sensors")
+				Throw New ArgumentException(GlobalLocalizedMessages.SensorManagerEmptySensorsCollection, "sensors")
 			End If
 
 			Dim sensorCollection As ISensorCollection = New SensorCollection()

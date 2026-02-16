@@ -40,7 +40,7 @@ Namespace Shell
 
 			Dim kf As IKnownFolder = GetKnownFolder(knownFolderNative)
 			If kf Is Nothing Then
-				Throw New ArgumentException(LocalizedMessages.KnownFolderInvalidGuid, "knownFolderId")
+				Throw New ArgumentException(GlobalLocalizedMessages.KnownFolderInvalidGuid, "knownFolderId")
 			End If
 			Return kf
 		End Function
@@ -112,7 +112,7 @@ Namespace Shell
 			Dim kf As IKnownFolder = KnownFolderHelper.GetKnownFolder(knownFolderNative)
 
 			If kf Is Nothing Then
-				Throw New ArgumentException(LocalizedMessages.ShellInvalidCanonicalName, "canonicalName")
+				Throw New ArgumentException(GlobalLocalizedMessages.ShellInvalidCanonicalName, "canonicalName")
 			End If
 			Return kf
 		End Function
@@ -146,7 +146,7 @@ Namespace Shell
 				pidl = ShellHelper.PidlFromParsingName(parsingName)
 
 				If pidl = IntPtr.Zero Then
-					Throw New ArgumentException(LocalizedMessages.KnownFolderParsingName, "parsingName")
+					Throw New ArgumentException(GlobalLocalizedMessages.KnownFolderParsingName, "parsingName")
 				End If
 
 				' It's probably a special folder, try to get it                
@@ -154,7 +154,7 @@ Namespace Shell
 				If knownFolderNative IsNot Nothing Then
 					Dim kf As IKnownFolder = KnownFolderHelper.GetKnownFolder(knownFolderNative)
 					If kf Is Nothing Then
-						Throw New ArgumentException(LocalizedMessages.KnownFolderParsingName, "parsingName")
+						Throw New ArgumentException(GlobalLocalizedMessages.KnownFolderParsingName, "parsingName")
 					End If
 					Return kf
 				End If
@@ -166,12 +166,12 @@ Namespace Shell
 				pidl2 = ShellHelper.PidlFromParsingName(parsingName.PadRight(1, ControlChars.NullChar))
 
 				If pidl2 = IntPtr.Zero Then
-					Throw New ArgumentException(LocalizedMessages.KnownFolderParsingName, "parsingName")
+					Throw New ArgumentException(GlobalLocalizedMessages.KnownFolderParsingName, "parsingName")
 				End If
 
 				Dim kf2 As IKnownFolder = KnownFolderHelper.GetKnownFolder(KnownFolderHelper.FromPIDL(pidl))
 				If kf2 Is Nothing Then
-					Throw New ArgumentException(LocalizedMessages.KnownFolderParsingName, "parsingName")
+					Throw New ArgumentException(GlobalLocalizedMessages.KnownFolderParsingName, "parsingName")
 				End If
 
 				Return kf2

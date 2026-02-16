@@ -24,7 +24,7 @@ Namespace ShellExtensions
 
         Protected Sub ThrowIfNoControl()
             If Control Is Nothing Then
-                Throw New InvalidOperationException(LocalizedMessages.PreviewHandlerControlNotInitialized)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.PreviewHandlerControlNotInitialized)
             End If
         End Sub
 

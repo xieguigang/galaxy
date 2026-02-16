@@ -232,7 +232,7 @@ Namespace Controls
                         Dim fvm As Integer = 0
                         Dim hr As HResult = iFV2.GetViewModeAndIconSize(fvm, iconSize)
                         If hr <> HResult.Ok Then
-                            Throw New CommonControlException(LocalizedMessages.ExplorerBrowserIconSize, hr)
+                            Throw New CommonControlException(GlobalLocalizedMessages.ExplorerBrowserIconSize, hr)
                         End If
                     Finally
                         Marshal.ReleaseComObject(iFV2)
@@ -250,11 +250,11 @@ Namespace Controls
                         Dim iconSize As Integer = 0
                         Dim hr As HResult = iFV2.GetViewModeAndIconSize(fvm, iconSize)
                         If hr <> HResult.Ok Then
-                            Throw New CommonControlException(LocalizedMessages.ExplorerBrowserIconSize, hr)
+                            Throw New CommonControlException(GlobalLocalizedMessages.ExplorerBrowserIconSize, hr)
                         End If
                         hr = iFV2.SetViewModeAndIconSize(fvm, Value)
                         If hr <> HResult.Ok Then
-                            Throw New CommonControlException(LocalizedMessages.ExplorerBrowserIconSize, hr)
+                            Throw New CommonControlException(GlobalLocalizedMessages.ExplorerBrowserIconSize, hr)
                         End If
                     Finally
                         Marshal.ReleaseComObject(iFV2)

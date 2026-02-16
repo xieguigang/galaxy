@@ -62,7 +62,7 @@ Namespace Dialogs.Controls
 					m_selectedIndex = value
 					ApplyPropertyChange("SelectedIndex")
 				Else
-					Throw New IndexOutOfRangeException(LocalizedMessages.ComboBoxIndexOutsideBounds)
+					Throw New IndexOutOfRangeException(GlobalLocalizedMessages.ComboBoxIndexOutsideBounds)
 				End If
 			End Set
 		End Property
@@ -117,7 +117,7 @@ Namespace Dialogs.Controls
 			If m_selectedIndex >= 0 AndAlso m_selectedIndex < m_items.Count Then
 				dialog.SetSelectedControlItem(Me.Id, Me.m_selectedIndex)
 			ElseIf m_selectedIndex <> -1 Then
-				Throw New IndexOutOfRangeException(LocalizedMessages.ComboBoxIndexOutsideBounds)
+				Throw New IndexOutOfRangeException(GlobalLocalizedMessages.ComboBoxIndexOutsideBounds)
 			End If
 
 			' Make this control prominent if needed

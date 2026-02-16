@@ -114,7 +114,7 @@ Namespace Shell.PropertySystem
         ''' </summary>
         ''' <returns>String representing the property key</returns>        
         Public Overrides Function ToString() As String
-            Return String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.PropertyKeyFormatString, _FormatId.ToString("B"), _PropertyId)
+            Return String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.PropertyKeyFormatString, _FormatId.ToString("B"), _PropertyId)
         End Function
 
 #End Region

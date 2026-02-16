@@ -159,7 +159,7 @@ Namespace Internal
 
                     If constructor Is Nothing Then
                         ' if the method was not found, throw.
-                        Throw New ArgumentException(LocalizedMessages.PropVariantTypeNotSupported)
+                        Throw New ArgumentException(GlobalLocalizedMessages.PropVariantTypeNotSupported)
                     Else
                         ' if the method was found, create an expression to call it.
                         ' create parameters to action                    
@@ -247,7 +247,7 @@ Namespace Internal
         ''' </summary>
         Public Sub New(value As String)
             If value Is Nothing Then
-                Throw New ArgumentException(LocalizedMessages.PropVariantNullString, "value")
+                Throw New ArgumentException(GlobalLocalizedMessages.PropVariantNullString, "value")
             End If
 
             _valueType = CUShort(VarEnum.VT_LPWSTR)
@@ -707,7 +707,7 @@ Namespace Internal
 
             Dim action As Action(Of PropVariant, Array, UInteger)
             If Not _vectorActions.TryGetValue(GetType(T), action) Then
-                Throw New InvalidCastException(LocalizedMessages.PropVariantUnsupportedType)
+                Throw New InvalidCastException(GlobalLocalizedMessages.PropVariantUnsupportedType)
             End If
 
             Dim array As Array = New T(count - 1) {}
@@ -723,7 +723,7 @@ Namespace Internal
         Private Shared Function CrackSingleDimSafeArray(psa As IntPtr) As Array
             Dim cDims As UInteger = PropVariantNativeMethods.SafeArrayGetDim(psa)
             If cDims <> 1 Then
-                Throw New ArgumentException(LocalizedMessages.PropVariantMultiDimArray, "psa")
+                Throw New ArgumentException(GlobalLocalizedMessages.PropVariantMultiDimArray, "psa")
             End If
 
             Dim lBound As Integer = PropVariantNativeMethods.SafeArrayGetLBound(psa, 1UI)

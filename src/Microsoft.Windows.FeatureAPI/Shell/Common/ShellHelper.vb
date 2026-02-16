@@ -23,7 +23,7 @@ Namespace Shell
 			Dim hr As HResult = shellItem.GetDisplayName(ShellNativeMethods.ShellItemDesignNameOptions.DesktopAbsoluteParsing, pszPath)
 
 			If hr <> HResult.Ok AndAlso hr <> HResult.InvalidArguments Then
-				Throw New ShellException(LocalizedMessages.ShellHelperGetParsingNameFailed, hr)
+				Throw New ShellException(GlobalLocalizedMessages.ShellHelperGetParsingNameFailed, hr)
 			End If
 
 			If pszPath <> IntPtr.Zero Then

@@ -104,7 +104,7 @@ Namespace ApplicationServices
                     Dim currList As ArrayList = DirectCast(eventList(eventId), ArrayList)
                     currList.Remove(eventToUnregister)
                 Else
-                    Throw New InvalidOperationException(LocalizedMessages.MessageManagerHandlerNotRegistered)
+                    Throw New InvalidOperationException(GlobalLocalizedMessages.MessageManagerHandlerNotRegistered)
                 End If
                 readerWriterLock.ReleaseWriterLock()
             End Sub

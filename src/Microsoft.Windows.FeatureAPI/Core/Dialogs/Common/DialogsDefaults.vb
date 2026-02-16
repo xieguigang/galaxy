@@ -6,17 +6,17 @@ Namespace Dialogs
 		End Sub
 		Friend Shared ReadOnly Property Caption() As String
 			Get
-				Return LocalizedMessages.DialogDefaultCaption
+				Return GlobalLocalizedMessages.DialogDefaultCaption
 			End Get
 		End Property
 		Friend Shared ReadOnly Property MainInstruction() As String
 			Get
-				Return LocalizedMessages.DialogDefaultMainInstruction
+				Return GlobalLocalizedMessages.DialogDefaultMainInstruction
 			End Get
 		End Property
 		Friend Shared ReadOnly Property Content() As String
 			Get
-				Return LocalizedMessages.DialogDefaultContent
+				Return GlobalLocalizedMessages.DialogDefaultContent
 			End Get
 		End Property
 

@@ -22,11 +22,11 @@ Namespace Taskbar
 		''' <param name="titleValue">The title for the JumpListLink item. The title is required for the JumpList link.</param>
 		Public Sub New(pathValue As String, titleValue As String)
 			If String.IsNullOrEmpty(pathValue) Then
-				Throw New ArgumentNullException("pathValue", LocalizedMessages.JumpListLinkPathRequired)
+				Throw New ArgumentNullException("pathValue", GlobalLocalizedMessages.JumpListLinkPathRequired)
 			End If
 
 			If String.IsNullOrEmpty(titleValue) Then
-				Throw New ArgumentNullException("titleValue", LocalizedMessages.JumpListLinkTitleRequired)
+				Throw New ArgumentNullException("titleValue", GlobalLocalizedMessages.JumpListLinkTitleRequired)
 			End If
 
 			Path = pathValue
@@ -43,7 +43,7 @@ Namespace Taskbar
 			End Get
 			Set
 				If String.IsNullOrEmpty(value) Then
-					Throw New ArgumentNullException("value", LocalizedMessages.JumpListLinkTitleRequired)
+					Throw New ArgumentNullException("value", GlobalLocalizedMessages.JumpListLinkTitleRequired)
 				End If
 
 				m_title = value
@@ -60,7 +60,7 @@ Namespace Taskbar
 			End Get
 			Set
 				If String.IsNullOrEmpty(value) Then
-					Throw New ArgumentNullException("value", LocalizedMessages.JumpListLinkTitleRequired)
+					Throw New ArgumentNullException("value", GlobalLocalizedMessages.JumpListLinkTitleRequired)
 				End If
 
 				m_path = value

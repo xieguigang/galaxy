@@ -186,7 +186,7 @@ Namespace Taskbar
 					Dim mainHandle As IntPtr = Microsoft.Windows.MainWindowHandle
 
 					If mainHandle = IntPtr.Zero Then
-						Throw New InvalidOperationException(LocalizedMessages.TaskbarManagerValidWindowRequired)
+						Throw New InvalidOperationException(GlobalLocalizedMessages.TaskbarManagerValidWindowRequired)
 					End If
 
 					_ownerHandle = mainHandle

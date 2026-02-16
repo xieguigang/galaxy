@@ -26,7 +26,7 @@ Namespace Taskbar
 		''' </remarks>
 		Public Sub AddButtons(windowHandle As IntPtr, ParamArray buttons As ThumbnailToolBarButton())
 			If windowHandle = IntPtr.Zero Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailManagerInvalidHandle, "windowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerInvalidHandle, "windowHandle")
 			End If
 			VerifyButtons(buttons)
 
@@ -58,10 +58,10 @@ Namespace Taskbar
 
 		Private Shared Sub VerifyButtons(ParamArray buttons As ThumbnailToolBarButton())
 			If buttons IsNot Nothing AndAlso buttons.Length = 0 Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailToolbarManagerNullEmptyArray, "buttons")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailToolbarManagerNullEmptyArray, "buttons")
 			End If
 			If buttons.Length > 7 Then
-				Throw New ArgumentException(LocalizedMessages.ThumbnailToolbarManagerMaxButtons, "buttons")
+				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailToolbarManagerMaxButtons, "buttons")
 			End If
 		End Sub
 	End Class

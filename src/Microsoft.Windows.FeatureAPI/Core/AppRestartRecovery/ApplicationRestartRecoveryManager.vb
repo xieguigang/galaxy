@@ -40,10 +40,10 @@ Namespace ApplicationServices
 
             If Not CoreErrorHelper.Succeeded(hr) Then
                 If hr = HResult.InvalidArguments Then
-                    Throw New ArgumentException(LocalizedMessages.ApplicationRecoveryBadParameters, "settings")
+                    Throw New ArgumentException(GlobalLocalizedMessages.ApplicationRecoveryBadParameters, "settings")
                 End If
 
-                Throw New ApplicationRecoveryException(LocalizedMessages.ApplicationRecoveryFailedToRegister)
+                Throw New ApplicationRecoveryException(GlobalLocalizedMessages.ApplicationRecoveryFailedToRegister)
             End If
         End Sub
 
@@ -58,7 +58,7 @@ Namespace ApplicationServices
             Dim hr As HResult = AppRestartRecoveryNativeMethods.UnregisterApplicationRecoveryCallback()
 
             If Not CoreErrorHelper.Succeeded(hr) Then
-                Throw New ApplicationRecoveryException(LocalizedMessages.ApplicationRecoveryFailedToUnregister)
+                Throw New ApplicationRecoveryException(GlobalLocalizedMessages.ApplicationRecoveryFailedToUnregister)
             End If
         End Sub
 
@@ -73,7 +73,7 @@ Namespace ApplicationServices
             Dim hr As HResult = AppRestartRecoveryNativeMethods.UnregisterApplicationRestart()
 
             If Not CoreErrorHelper.Succeeded(hr) Then
-                Throw New ApplicationRecoveryException(LocalizedMessages.ApplicationRecoveryFailedToUnregisterForRestart)
+                Throw New ApplicationRecoveryException(GlobalLocalizedMessages.ApplicationRecoveryFailedToUnregisterForRestart)
             End If
         End Sub
 
@@ -92,7 +92,7 @@ Namespace ApplicationServices
             Dim hr As HResult = AppRestartRecoveryNativeMethods.ApplicationRecoveryInProgress(canceled)
 
             If Not CoreErrorHelper.Succeeded(hr) Then
-                Throw New InvalidOperationException(LocalizedMessages.ApplicationRecoveryMustBeCalledFromCallback)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.ApplicationRecoveryMustBeCalledFromCallback)
             End If
 
             Return canceled
@@ -139,9 +139,9 @@ Namespace ApplicationServices
             Dim hr As HResult = AppRestartRecoveryNativeMethods.RegisterApplicationRestart(settings.Command, settings.Restrictions)
 
             If hr = HResult.Fail Then
-                Throw New InvalidOperationException(LocalizedMessages.ApplicationRecoveryFailedToRegisterForRestart)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.ApplicationRecoveryFailedToRegisterForRestart)
             ElseIf hr = HResult.InvalidArguments Then
-                Throw New ArgumentException(LocalizedMessages.ApplicationRecoverFailedToRegisterForRestartBadParameters)
+                Throw New ArgumentException(GlobalLocalizedMessages.ApplicationRecoverFailedToRegisterForRestartBadParameters)
             End If
         End Sub
     End Module

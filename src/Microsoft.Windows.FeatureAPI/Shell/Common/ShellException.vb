@@ -63,7 +63,7 @@ Namespace Shell
         ''' </summary>
         ''' <param name="errorCode">HRESULT of an operation</param>        
         Public Sub New(errorCode As Integer)
-            MyBase.New(LocalizedMessages.ShellExceptionDefaultText, errorCode)
+            MyBase.New(GlobalLocalizedMessages.ShellExceptionDefaultText, errorCode)
         End Sub
 
         ''' <summary>

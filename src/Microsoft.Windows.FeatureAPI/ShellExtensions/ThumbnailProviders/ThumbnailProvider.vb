@@ -39,7 +39,7 @@ Namespace ShellExtensions
                 Return file.ConstructBitmap(_info, sideLength)
             End If
 
-            Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.ThumbnailProviderInterfaceNotImplemented, Me.[GetType]().Name))
+            Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.ThumbnailProviderInterfaceNotImplemented, Me.[GetType]().Name))
         End Function
 
         ''' <summary>
@@ -198,13 +198,13 @@ Namespace ShellExtensions
                 ' running in the isolated process. The default behavior of the indexer opts in
                 ' to process isolation regardless of which interfaces are implemented.                
                 If Not interfaced AndAlso Not attribute.DisableProcessIsolation Then
-                    Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.ThumbnailProviderDisabledProcessIsolation, type.Name))
+                    Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.ThumbnailProviderDisabledProcessIsolation, type.Name))
                 End If
                 interfaced = True
             End If
 
             If Not interfaced Then
-                Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.ThumbnailProviderInterfaceNotImplemented, type.Name))
+                Throw New InvalidOperationException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.ThumbnailProviderInterfaceNotImplemented, type.Name))
             End If
         End Sub
 

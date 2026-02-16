@@ -50,7 +50,7 @@ Namespace Taskbar
 				taskbarWindow.ThumbnailButtons = buttons
 			Else
 				' We already have buttons assigned
-				Throw New InvalidOperationException(LocalizedMessages.TaskbarWindowManagerButtonsAlreadyAdded)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.TaskbarWindowManagerButtonsAlreadyAdded)
 			End If
 		End Sub
 
@@ -126,7 +126,7 @@ End Function)
 
 		Friend Shared Function GetTaskbarWindow(userWindowHandle As IntPtr, taskbarProxyWindowType__1 As TaskbarProxyWindowType) As TaskbarWindow
 			If userWindowHandle = IntPtr.Zero Then
-				Throw New ArgumentException(LocalizedMessages.CommonFileDialogInvalidHandle, "userWindowHandle")
+				Throw New ArgumentException(GlobalLocalizedMessages.CommonFileDialogInvalidHandle, "userWindowHandle")
 			End If
 
 			Dim toReturn As TaskbarWindow = _taskbarWindowList.FirstOrDefault(Function(window) window.UserWindowHandle = userWindowHandle)

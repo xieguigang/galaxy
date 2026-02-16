@@ -11,7 +11,7 @@ Namespace ApplicationServices
             Dim state As PowerManagementNativeMethods.SystemBatteryState = Power.GetSystemBatteryState()
 
             If Not state.BatteryPresent Then
-                Throw New InvalidOperationException(LocalizedMessages.PowerManagerBatteryNotPresent)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.PowerManagerBatteryNotPresent)
             End If
 
             ACOnline = state.AcOnLine
@@ -89,7 +89,7 @@ Namespace ApplicationServices
         ''' </summary>
         ''' <returns>A <see cref="System.String"/> representation of this object's current state.</returns>        
         Public Overrides Function ToString() As String
-            Return String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.BatteryStateStringRepresentation, Environment.NewLine, ACOnline, MaxCharge, CurrentCharge,
+            Return String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.BatteryStateStringRepresentation, Environment.NewLine, ACOnline, MaxCharge, CurrentCharge,
                 ChargeRate, EstimatedTimeRemaining, SuggestedCriticalBatteryCharge, SuggestedBatteryWarningCharge)
         End Function
     End Class

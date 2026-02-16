@@ -141,7 +141,7 @@ Namespace Shell.PropertySystem
 			Dim ctorInfo As ConstructorInfo = type.GetConstructors(BindingFlags.Instance Or BindingFlags.NonPublic Or BindingFlags.[Public]).FirstOrDefault(Function(x) typeHash = GetTypeHash(x.GetParameters().[Select](Function(a) a.ParameterType)))
 
 			If ctorInfo Is Nothing Then
-				Throw New ArgumentException(LocalizedMessages.ShellPropertyFactoryConstructorNotFound, "type")
+				Throw New ArgumentException(GlobalLocalizedMessages.ShellPropertyFactoryConstructorNotFound, "type")
 			End If
 
 			Dim key = Expression.Parameter(argTypes(0), "propKey")

@@ -61,7 +61,7 @@ Namespace ApplicationServices
 		''' </summary>
 		''' <returns>A <see cref="System.String"/> object.</returns>
 		Public Overrides Function ToString() As String
-			Return String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.RecoverySettingsFormatString, Me.m_recoveryData.Callback.Method.ToString(), Me.m_recoveryData.State.ToString(), Me.PingInterval)
+			Return String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.RecoverySettingsFormatString, Me.m_recoveryData.Callback.Method.ToString(), Me.m_recoveryData.State.ToString(), Me.PingInterval)
 		End Function
 	End Class
 End Namespace

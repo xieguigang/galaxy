@@ -25,7 +25,7 @@ Namespace Shell.PropertySystem
 				Dim hr As Integer = ParentShellObject.NativeShellItem2.GetPropertyStore(ShellNativeMethods.GetPropertyStoreOptions.ReadWrite, guid, writablePropStore)
 
 				If Not CoreErrorHelper.Succeeded(hr) Then
-					Throw New PropertySystemException(LocalizedMessages.ShellPropertyUnableToGetWritableProperty, Marshal.GetExceptionForHR(hr))
+					Throw New PropertySystemException(GlobalLocalizedMessages.ShellPropertyUnableToGetWritableProperty, Marshal.GetExceptionForHR(hr))
 				Else
 					' If we succeed in creating a valid property store for this ShellObject,
 					' then set it on the parent shell object for others to use.
@@ -36,9 +36,9 @@ Namespace Shell.PropertySystem
 
 				End If
 			Catch e As InvalidComObjectException
-				Throw New PropertySystemException(LocalizedMessages.ShellPropertyUnableToGetWritableProperty, e)
+				Throw New PropertySystemException(GlobalLocalizedMessages.ShellPropertyUnableToGetWritableProperty, e)
 			Catch generatedExceptionName As InvalidCastException
-				Throw New PropertySystemException(LocalizedMessages.ShellPropertyUnableToGetWritableProperty)
+				Throw New PropertySystemException(GlobalLocalizedMessages.ShellPropertyUnableToGetWritableProperty)
 			End Try
 		End Sub
 
@@ -90,11 +90,11 @@ Namespace Shell.PropertySystem
 					Marshal.ReleaseComObject(writablePropStore)
 					writablePropStore = Nothing
 
-					Throw New ArgumentOutOfRangeException("value", LocalizedMessages.ShellPropertyValueTruncated)
+					Throw New ArgumentOutOfRangeException("value", GlobalLocalizedMessages.ShellPropertyValueTruncated)
 				End If
 
 				If Not CoreErrorHelper.Succeeded(result) Then
-					Throw New PropertySystemException(LocalizedMessages.ShellPropertySetValue, Marshal.GetExceptionForHR(CInt(result)))
+					Throw New PropertySystemException(GlobalLocalizedMessages.ShellPropertySetValue, Marshal.GetExceptionForHR(CInt(result)))
 				End If
 			End Using
 		End Sub
@@ -123,7 +123,7 @@ Namespace Shell.PropertySystem
 			Dim result As Integer = PropertySystemNativeMethods.PSGetPropertyKeyFromName(canonicalName, propKey)
 
 			If Not CoreErrorHelper.Succeeded(result) Then
-				Throw New ArgumentException(LocalizedMessages.ShellInvalidCanonicalName, Marshal.GetExceptionForHR(result))
+				Throw New ArgumentException(GlobalLocalizedMessages.ShellInvalidCanonicalName, Marshal.GetExceptionForHR(result))
 			End If
 
 			WriteProperty(propKey, value, allowTruncatedValue)

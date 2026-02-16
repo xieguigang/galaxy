@@ -19,26 +19,26 @@ Namespace Microsoft.WindowsAPICodePack.Sensors.Resources
 	' To add or remove a member, edit your .ResX file then rerun ResGen
 	' with the /str option, or rebuild your VS project.
 	<System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")> _
-	<System.Diagnostics.DebuggerNonUserCodeAttribute> _
-	<System.Runtime.CompilerServices.CompilerGeneratedAttribute> _
-	Friend Class LocalizedMessages
+	<System.Diagnostics.DebuggerNonUserCodeAttribute>
+	<System.Runtime.CompilerServices.CompilerGeneratedAttribute>
+	Friend Class SensorsLocalizedMessages
 
 		Private Shared resourceMan As Global.System.Resources.ResourceManager
 
 		Private Shared resourceCulture As Global.System.Globalization.CultureInfo
 
-		<System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")> _
+		<System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")>
 		Friend Sub New()
 		End Sub
 
 		''' <summary>
 		'''   Returns the cached ResourceManager instance used by this class.
 		''' </summary>
-		<System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)> _
+		<System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>
 		Friend Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
 			Get
 				If Object.ReferenceEquals(resourceMan, Nothing) Then
-					Dim temp As New Global.System.Resources.ResourceManager("Microsoft.WindowsAPICodePack.Sensors.Resources.LocalizedMessages", GetType(LocalizedMessages).Assembly)
+					Dim temp As New Global.System.Resources.ResourceManager("Microsoft.WindowsAPICodePack.Sensors.Resources.LocalizedMessages", GetType(SensorsLocalizedMessages).Assembly)
 					resourceMan = temp
 				End If
 				Return resourceMan

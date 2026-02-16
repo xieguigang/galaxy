@@ -32,7 +32,7 @@ Namespace Shell
 
 			' Make sure this is valid
 			If Not Directory.Exists(absPath) Then
-				Throw New DirectoryNotFoundException(String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.FilePathNotExist, path))
+				Throw New DirectoryNotFoundException(String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.FilePathNotExist, path))
 			End If
 
 			Dim folder As New ShellFileSystemFolder()

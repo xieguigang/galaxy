@@ -58,11 +58,11 @@ Namespace Dialogs
 				' as we are going to maintain a mapping between 
 				' the names and the underlying Win32/COM control IDs.
 				If String.IsNullOrEmpty(Value) Then
-					Throw New ArgumentException(LocalizedMessages.DialogControlNameCannotBeEmpty)
+					Throw New ArgumentException(GlobalLocalizedMessages.DialogControlNameCannotBeEmpty)
 				End If
 
 				If Not String.IsNullOrEmpty(m_name) Then
-					Throw New InvalidOperationException(LocalizedMessages.DialogControlsCannotBeRenamed)
+					Throw New InvalidOperationException(GlobalLocalizedMessages.DialogControlsCannotBeRenamed)
 				End If
 
 				' Note that we don't notify the hosting dialog of 

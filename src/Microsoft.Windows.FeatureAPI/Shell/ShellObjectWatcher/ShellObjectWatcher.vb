@@ -80,7 +80,7 @@ Namespace Shell
 			_registrationId = ShellNativeMethods.SHChangeNotifyRegister(_listenerHandle, ShellNativeMethods.ShellChangeNotifyEventSource.ShellLevel Or ShellNativeMethods.ShellChangeNotifyEventSource.InterruptLevel Or ShellNativeMethods.ShellChangeNotifyEventSource.NewDelivery, _manager.RegisteredTypes, _message, 1, entry)
 
 			If _registrationId = 0 Then
-				Throw New Win32Exception(LocalizedMessages.ShellObjectWatcherRegisterFailed)
+				Throw New Win32Exception(GlobalLocalizedMessages.ShellObjectWatcherRegisterFailed)
 			End If
 			'#End Region
 
@@ -110,7 +110,7 @@ Namespace Shell
 
 		Private Sub ThrowIfRunning()
 			If Running Then
-				Throw New InvalidOperationException(LocalizedMessages.ShellObjectWatcherUnableToChangeEvents)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.ShellObjectWatcherUnableToChangeEvents)
 			End If
 		End Sub
 

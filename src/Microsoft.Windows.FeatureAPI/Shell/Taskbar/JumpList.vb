@@ -159,7 +159,7 @@ Namespace Taskbar
 			End Get
 			Set
 				If value < 0 Then
-					Throw New ArgumentOutOfRangeException("value", LocalizedMessages.JumpListNegativeOrdinalPosition)
+					Throw New ArgumentOutOfRangeException("value", GlobalLocalizedMessages.JumpListNegativeOrdinalPosition)
 				End If
 
 				m_knownCategoryOrdinalPosition = value
@@ -445,7 +445,7 @@ Namespace Taskbar
 
 					If Not CoreErrorHelper.Succeeded(hr) Then
 						If CUInt(hr) = &H80040f03UI Then
-							Throw New InvalidOperationException(LocalizedMessages.JumpListFileTypeNotRegistered)
+							Throw New InvalidOperationException(GlobalLocalizedMessages.JumpListFileTypeNotRegistered)
 						ElseIf CUInt(hr) = &H80070005UI Then
 							'E_ACCESSDENIED
 							' If the recent documents tracking is turned off by the user,
@@ -455,7 +455,7 @@ Namespace Taskbar
 							'      2. Via the user setting “Store and display recently opened items in 
 							'         the Start menu and the taskbar” in the Start menu property dialog.
 							'
-							Throw New UnauthorizedAccessException(LocalizedMessages.JumpListCustomCategoriesDisabled)
+							Throw New UnauthorizedAccessException(GlobalLocalizedMessages.JumpListCustomCategoriesDisabled)
 						End If
 
 						Throw New ShellException(hr)
@@ -496,7 +496,7 @@ Namespace Taskbar
 
 			If Not CoreErrorHelper.Succeeded(hr) Then
 				If CUInt(hr) = &H80040f03UI Then
-					Throw New InvalidOperationException(LocalizedMessages.JumpListFileTypeNotRegistered)
+					Throw New InvalidOperationException(GlobalLocalizedMessages.JumpListFileTypeNotRegistered)
 				End If
 				Throw New ShellException(hr)
 			End If

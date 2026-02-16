@@ -153,7 +153,7 @@ Namespace Shell
                 Dim result As Integer = PropertySystemNativeMethods.PSGetPropertyKeyFromName(prop, propKey)
 
                 If Not CoreErrorHelper.Succeeded(result) Then
-                    Throw New ArgumentException(LocalizedMessages.ShellInvalidCanonicalName, "canonicalNames", Marshal.GetExceptionForHR(result))
+                    Throw New ArgumentException(GlobalLocalizedMessages.ShellInvalidCanonicalName, "canonicalNames", Marshal.GetExceptionForHR(result))
                 End If
 
                 propertyKeyList.Add(propKey)
@@ -234,7 +234,7 @@ Namespace Shell
             Dim hr As HResult = NativeSearchFolderItemFactory.SetVisibleColumns(If(value Is Nothing, 0UI, CUInt(value.Length)), value)
 
             If Not CoreErrorHelper.Succeeded(hr) Then
-                Throw New ShellException(LocalizedMessages.ShellSearchFolderUnableToSetVisibleColumns, Marshal.GetExceptionForHR(CInt(hr)))
+                Throw New ShellException(GlobalLocalizedMessages.ShellSearchFolderUnableToSetVisibleColumns, Marshal.GetExceptionForHR(CInt(hr)))
             End If
         End Sub
 
@@ -246,7 +246,7 @@ Namespace Shell
             Dim hr As HResult = NativeSearchFolderItemFactory.SetSortColumns(If(value Is Nothing, 0UI, CUInt(value.Length)), value)
 
             If Not CoreErrorHelper.Succeeded(hr) Then
-                Throw New ShellException(LocalizedMessages.ShellSearchFolderUnableToSetSortColumns, Marshal.GetExceptionForHR(CInt(hr)))
+                Throw New ShellException(GlobalLocalizedMessages.ShellSearchFolderUnableToSetSortColumns, Marshal.GetExceptionForHR(CInt(hr)))
             End If
         End Sub
 

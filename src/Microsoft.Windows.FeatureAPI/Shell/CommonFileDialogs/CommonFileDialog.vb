@@ -50,7 +50,7 @@ Namespace Dialogs
         ''' </summary>
         Protected Sub New()
             If Not CoreHelpers.RunningOnVista Then
-                Throw New PlatformNotSupportedException(LocalizedMessages.CommonFileDialogRequiresVista)
+                Throw New PlatformNotSupportedException(GlobalLocalizedMessages.CommonFileDialogRequiresVista)
             End If
 
             filenames = New Collection(Of String)()
@@ -237,7 +237,7 @@ Namespace Dialogs
                 Return m_ensureFileExists
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.EnsureFileExistsCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.EnsureFileExistsCannotBeChanged)
                 m_ensureFileExists = Value
             End Set
         End Property
@@ -253,7 +253,7 @@ Namespace Dialogs
                 Return m_ensurePathExists
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.EnsurePathExistsCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.EnsurePathExistsCannotBeChanged)
                 m_ensurePathExists = Value
             End Set
         End Property
@@ -269,7 +269,7 @@ Namespace Dialogs
                 Return m_ensureValidNames
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.EnsureValidNamesCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.EnsureValidNamesCannotBeChanged)
                 m_ensureValidNames = Value
             End Set
         End Property
@@ -287,7 +287,7 @@ Namespace Dialogs
                 Return m_ensureReadOnly
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.EnsureReadonlyCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.EnsureReadonlyCannotBeChanged)
                 m_ensureReadOnly = Value
             End Set
         End Property
@@ -303,7 +303,7 @@ Namespace Dialogs
                 Return m_restoreDirectory
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.RestoreDirectoryCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.RestoreDirectoryCannotBeChanged)
                 m_restoreDirectory = Value
             End Set
         End Property
@@ -322,7 +322,7 @@ Namespace Dialogs
                 Return m_showPlacesList
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.ShowPlacesListCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.ShowPlacesListCannotBeChanged)
                 m_showPlacesList = Value
             End Set
         End Property
@@ -338,7 +338,7 @@ Namespace Dialogs
                 Return addToMruList
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.AddToMostRecentlyUsedListCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.AddToMostRecentlyUsedListCannotBeChanged)
                 addToMruList = Value
             End Set
         End Property
@@ -354,7 +354,7 @@ Namespace Dialogs
                 Return m_showHiddenItems
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.ShowHiddenItemsCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.ShowHiddenItemsCannotBeChanged)
                 m_showHiddenItems = Value
             End Set
         End Property
@@ -384,7 +384,7 @@ Namespace Dialogs
                 Return m_navigateToShortcut
             End Get
             Set
-                ThrowIfDialogShowing(LocalizedMessages.NavigateToShortcutCannotBeChanged)
+                ThrowIfDialogShowing(GlobalLocalizedMessages.NavigateToShortcutCannotBeChanged)
                 m_navigateToShortcut = Value
             End Set
         End Property
@@ -462,7 +462,7 @@ Namespace Dialogs
                 CheckFileNamesAvailable()
 
                 If filenames.Count > 1 Then
-                    Throw New InvalidOperationException(LocalizedMessages.CommonFileDialogMultipleFiles)
+                    Throw New InvalidOperationException(GlobalLocalizedMessages.CommonFileDialogMultipleFiles)
                 End If
 
                 Dim returnFilename As String = filenames(0)
@@ -493,7 +493,7 @@ Namespace Dialogs
                 CheckFileItemsAvailable()
 
                 If items.Count > 1 Then
-                    Throw New InvalidOperationException(LocalizedMessages.CommonFileDialogMultipleItems)
+                    Throw New InvalidOperationException(GlobalLocalizedMessages.CommonFileDialogMultipleItems)
                 End If
 
                 If items.Count = 0 Then
@@ -553,7 +553,7 @@ Namespace Dialogs
             Dim retCode As Integer = ShellNativeMethods.SHCreateItemFromParsingName(path, IntPtr.Zero, guid, nativeShellItem)
 
             If Not CoreErrorHelper.Succeeded(retCode) Then
-                Throw New CommonControlException(LocalizedMessages.CommonFileDialogCannotCreateShellItem, Marshal.GetExceptionForHR(retCode))
+                Throw New CommonControlException(GlobalLocalizedMessages.CommonFileDialogCannotCreateShellItem, Marshal.GetExceptionForHR(retCode))
             End If
 
             ' Add the shellitem to the places list
@@ -642,7 +642,7 @@ Namespace Dialogs
         ''' <returns>A <see cref="CommonFileDialogResult"/> object.</returns>
         Public Function ShowDialog(ownerWindowHandle As IntPtr) As CommonFileDialogResult
             If ownerWindowHandle = IntPtr.Zero Then
-                Throw New ArgumentException(LocalizedMessages.CommonFileDialogInvalidHandle, "ownerWindowHandle")
+                Throw New ArgumentException(GlobalLocalizedMessages.CommonFileDialogInvalidHandle, "ownerWindowHandle")
             End If
 
             ' Set the parent / owner window
@@ -879,7 +879,7 @@ Namespace Dialogs
 #Region "IDialogControlHost Members"
 
         Private Shared Sub GenerateNotImplementedException()
-            Throw New NotImplementedException(LocalizedMessages.NotImplementedException)
+            Throw New NotImplementedException(GlobalLocalizedMessages.NotImplementedException)
         End Sub
 
         ''' <summary>
@@ -989,11 +989,11 @@ Namespace Dialogs
         ''' </permission>
         Protected Sub CheckFileNamesAvailable()
             If showState <> DialogShowState.Closed Then
-                Throw New InvalidOperationException(LocalizedMessages.CommonFileDialogNotClosed)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.CommonFileDialogNotClosed)
             End If
 
             If canceled.GetValueOrDefault() Then
-                Throw New InvalidOperationException(LocalizedMessages.CommonFileDialogCanceled)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.CommonFileDialogCanceled)
             End If
 
             System.Diagnostics.Debug.Assert(filenames.Count <> 0, "FileNames empty - shouldn't happen unless dialog canceled or not yet shown.")
@@ -1007,11 +1007,11 @@ Namespace Dialogs
         ''' </permission>
         Protected Sub CheckFileItemsAvailable()
             If showState <> DialogShowState.Closed Then
-                Throw New InvalidOperationException(LocalizedMessages.CommonFileDialogNotClosed)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.CommonFileDialogNotClosed)
             End If
 
             If canceled.GetValueOrDefault() Then
-                Throw New InvalidOperationException(LocalizedMessages.CommonFileDialogCanceled)
+                Throw New InvalidOperationException(GlobalLocalizedMessages.CommonFileDialogCanceled)
             End If
 
             System.Diagnostics.Debug.Assert(items.Count <> 0, "Items list empty - shouldn't happen unless dialog canceled or not yet shown.")

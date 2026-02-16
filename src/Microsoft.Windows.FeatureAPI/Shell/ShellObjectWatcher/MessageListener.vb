@@ -59,7 +59,7 @@ Namespace Shell
 				End If
 
 				If WindowHandle = IntPtr.Zero Then
-					Throw New ShellException(LocalizedMessages.MessageListenerCannotCreateWindow, Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()))
+					Throw New ShellException(GlobalLocalizedMessages.MessageListenerCannotCreateWindow, Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()))
 				End If
 
 				_listeners.Add(WindowHandle, Me)
@@ -68,7 +68,7 @@ Namespace Shell
 
 		Private Sub CrossThreadCreateWindow()
 			If _firstWindowHandle = IntPtr.Zero Then
-				Throw New InvalidOperationException(LocalizedMessages.MessageListenerNoWindowHandle)
+				Throw New InvalidOperationException(GlobalLocalizedMessages.MessageListenerNoWindowHandle)
 			End If
 
 			SyncLock _crossThreadWindowLock
@@ -88,7 +88,7 @@ Namespace Shell
 
 			Dim atom = ShellObjectWatcherNativeMethods.RegisterClassEx(classEx)
 			If atom = 0 Then
-				Throw New ShellException(LocalizedMessages.MessageListenerClassNotRegistered, Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()))
+				Throw New ShellException(GlobalLocalizedMessages.MessageListenerClassNotRegistered, Marshal.GetExceptionForHR(Marshal.GetHRForLastWin32Error()))
 			End If
 			_atom = atom
 		End Sub

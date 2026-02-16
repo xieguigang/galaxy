@@ -57,13 +57,13 @@ Namespace Shell
 			Set
 				' Check for 0; negative number check not required as System.Windows.Size only allows positive numbers.
 				If value.Height = 0 OrElse value.Width = 0 Then
-					Throw New System.ArgumentOutOfRangeException("value", LocalizedMessages.ShellThumbnailSizeCannotBe0)
+					Throw New System.ArgumentOutOfRangeException("value", GlobalLocalizedMessages.ShellThumbnailSizeCannotBe0)
 				End If
 
 				Dim size As System.Windows.Size = If((FormatOption = ShellThumbnailFormatOption.IconOnly), DefaultIconSize.Maximum, DefaultThumbnailSize.Maximum)
 
 				If value.Height > size.Height OrElse value.Width > size.Width Then
-					Throw New System.ArgumentOutOfRangeException("value", String.Format(System.Globalization.CultureInfo.InvariantCulture, LocalizedMessages.ShellThumbnailCurrentSizeRange, size.ToString()))
+					Throw New System.ArgumentOutOfRangeException("value", String.Format(System.Globalization.CultureInfo.InvariantCulture, GlobalLocalizedMessages.ShellThumbnailCurrentSizeRange, size.ToString()))
 				End If
 
 				m_currentSize = value
@@ -306,10 +306,10 @@ Namespace Shell
 				Return hbitmap
 			ElseIf CUInt(hr) = &H8004b200UI AndAlso FormatOption = ShellThumbnailFormatOption.ThumbnailOnly Then
 				' Thumbnail was requested, but this ShellItem doesn't have a thumbnail.
-				Throw New InvalidOperationException(LocalizedMessages.ShellThumbnailDoesNotHaveThumbnail, Marshal.GetExceptionForHR(CInt(hr)))
+				Throw New InvalidOperationException(GlobalLocalizedMessages.ShellThumbnailDoesNotHaveThumbnail, Marshal.GetExceptionForHR(CInt(hr)))
 			ElseIf CUInt(hr) = &H80040154UI Then
 				' REGDB_E_CLASSNOTREG
-				Throw New NotSupportedException(LocalizedMessages.ShellThumbnailNoHandler, Marshal.GetExceptionForHR(CInt(hr)))
+				Throw New NotSupportedException(GlobalLocalizedMessages.ShellThumbnailNoHandler, Marshal.GetExceptionForHR(CInt(hr)))
 			End If
 
 			Throw New ShellException(hr)
