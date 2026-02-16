@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../../../GCModeller/src/runtime/sciBASIC#/Microsoft.VisualBasic.Core/src/Core.vbproj" />
+  <Project Path="Microsoft.Windows.FeatureAPI.vbproj" />
+</Solution>
