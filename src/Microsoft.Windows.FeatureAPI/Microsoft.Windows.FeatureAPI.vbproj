@@ -9,7 +9,12 @@
     <IncludeSymbols>True</IncludeSymbols>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
+    <Configurations>Debug;Release;Rsharp_app_release;mzkit_win32</Configurations>
+    <NoWarn>$(NoWarn);WFO1000</NoWarn>
     <StartupObject>Microsoft.Windows.My.MyApplication</StartupObject>
+    <ImportedNamespaces>Microsoft.CSharp=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,Microsoft.Windows.FeatureAPI=True</ImportedNamespaces>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-windows|AnyCPU'">
     <RemoveIntegerChecks>True</RemoveIntegerChecks>
@@ -22,9 +27,14 @@
     <Compile Remove="Test\**" />
     <EmbeddedResource Remove="Test\**" />
     <None Remove="Test\**" />
+    <Page Remove="Test\**" />
   </ItemGroup>
  
   <ItemGroup>
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <Import Include="Microsoft.CSharp" />
   </ItemGroup>
 </Project>
