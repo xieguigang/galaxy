@@ -1,6 +1,4 @@
-﻿Imports System.Diagnostics
-
-Namespace JSON.Models
+﻿Namespace JSON.Models
 
     <DebuggerDisplay("Text = {Text}")>
     Public Class JsonObject

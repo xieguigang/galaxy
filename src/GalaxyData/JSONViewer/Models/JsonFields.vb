@@ -1,7 +1,4 @@
-﻿Imports System.Collections.Generic
-Imports System.Collections
-
-Namespace JSON.Models
+﻿Namespace JSON.Models
 
     Public Class JsonFields : Implements IEnumerable(Of JsonObject)
 
