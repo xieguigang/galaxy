@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <ProjectGuid>{3D61F3A9-A8E0-4195-9133-6FD8E4B82D54}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -193,6 +192,11 @@
     <MyType>Windows</MyType>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
   </ItemGroup>
@@ -294,16 +298,6 @@
     <Compile Include="Core\PropertySystem\PropVariant.vb" />
     <Compile Include="Core\PropertySystem\PropVariantNativeMethods.vb" />
     <Compile Include="InlineExtensions.vb" />
-    <Compile Include="Properties\Application.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Application.myapp</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="Resources\LocalizedMessages.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -333,7 +327,6 @@
     <Compile Include="ExtendedLinguisticServices\StringFormatter.vb" />
     <Compile Include="ExtendedLinguisticServices\Win32NativeMethods.vb" />
     <Compile Include="ExtendedLinguisticServices\Win32Structs.vb" />
-    <Compile Include="Properties\AssemblyInfo.vb" />
     <Compile Include="Sensors\GlobalSuppressions.vb" />
     <Compile Include="Sensors\Interop\ISensor.vb" />
     <Compile Include="Sensors\Interop\ISensorCollection.vb" />
@@ -538,11 +531,6 @@
     <None Include="Core\CustomDictionary.xml" />
     <None Include="ExtendedLinguisticServices\CustomDictionary.xml" />
     <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <CustomToolNamespace>My</CustomToolNamespace>
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
-    </None>
     <None Include="Sensors\CustomDictionary.xml" />
     <None Include="ShellExtensions\CustomDictionary.xml" />
     <None Include="Shell\CustomDictionary.xml" />
@@ -565,12 +553,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedMessages.Designer.vb</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Application.myapp">
-      <Generator>MyApplicationCodeGenerator</Generator>
-      <LastGenOutput>Application.Designer.vb</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
