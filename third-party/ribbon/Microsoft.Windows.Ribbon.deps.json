@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Microsoft.Windows.Ribbon/2.16.2": {
+        "runtime": {
+          "Microsoft.Windows.Ribbon.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.Windows.Ribbon/2.16.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
