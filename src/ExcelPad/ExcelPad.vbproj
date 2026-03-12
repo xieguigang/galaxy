@@ -6,7 +6,7 @@
     <FileVersion>3.1.1.0</FileVersion>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <TargetFrameworks>net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net10.0-windows</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>ExcelPad</RootNamespace>
     <AssemblyName>ExcelPad</AssemblyName>
