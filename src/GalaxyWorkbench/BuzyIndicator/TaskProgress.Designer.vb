@@ -76,40 +76,41 @@ Partial Class TaskProgress
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.WebView21 = New Microsoft.Web.WebView2.WinForms.WebView2()
-        CType(Me.WebView21, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'WebView21
-        '
-        Me.WebView21.AllowExternalDrop = True
-        Me.WebView21.CreationProperties = Nothing
-        Me.WebView21.DefaultBackgroundColor = System.Drawing.Color.White
-        Me.WebView21.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.WebView21.Location = New System.Drawing.Point(0, 0)
-        Me.WebView21.Name = "WebView21"
-        Me.WebView21.Size = New System.Drawing.Size(662, 94)
-        Me.WebView21.TabIndex = 0
-        Me.WebView21.ZoomFactor = 1.0R
-        '
-        'TaskProgress
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(662, 94)
-        Me.ControlBox = False
-        Me.Controls.Add(Me.WebView21)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.Name = "TaskProgress"
-        Me.ShowIcon = False
-        Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.TopMost = True
-        CType(Me.WebView21, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
+        WebView21 = New Microsoft.Web.WebView2.WinForms.WebView2()
+        CType(WebView21, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' WebView21
+        ' 
+        WebView21.AllowExternalDrop = True
+        WebView21.CreationProperties = Nothing
+        WebView21.DefaultBackgroundColor = Color.White
+        WebView21.Dock = DockStyle.Fill
+        WebView21.Location = New Point(0, 0)
+        WebView21.Name = "WebView21"
+        WebView21.Size = New Size(772, 133)
+        WebView21.TabIndex = 0
+        WebView21.ZoomFactor = 1R
+        ' 
+        ' TaskProgress
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 17F)
+        AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.White
+        ClientSize = New Size(772, 133)
+        ControlBox = False
+        Controls.Add(WebView21)
+        FormBorderStyle = FormBorderStyle.None
+        Margin = New Padding(4)
+        MaximizeBox = False
+        MinimizeBox = False
+        Name = "TaskProgress"
+        ShowIcon = False
+        ShowInTaskbar = False
+        StartPosition = FormStartPosition.CenterParent
+        TopMost = True
+        CType(WebView21, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
 
     End Sub
 
