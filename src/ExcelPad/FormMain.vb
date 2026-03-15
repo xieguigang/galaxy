@@ -13,7 +13,6 @@ Public Class FormMain : Implements AppHost
 
     Dim vS2015LightTheme1 As New VS2015LightTheme
     Dim vsToolStripExtender1 As New VisualStudioToolStripExtender
-    Dim ribbon As New Ribbon
     Dim ribbonItem As RibbonItems
 
     ReadOnly _toolStripProfessionalRenderer As New ToolStripProfessionalRenderer()
@@ -71,11 +70,8 @@ Public Class FormMain : Implements AppHost
     End Sub
 
     Private Sub FormMain_Load(sender As Object, e As EventArgs) Handles Me.Load
-        ribbon.Dock = DockStyle.Top
-        ribbon.ResourceName = "ExcelPad.RibbonMarkup.ribbon"
-        ribbonItem = New RibbonItems(ribbon)
+        ribbonItem = New RibbonItems(Ribbon1)
 
-        Call Controls.Add(ribbon)
         Call initializeVSPanel()
 
         AddHandler ribbonItem.ButtonOpen.ExecuteEvent, AddressOf OpenFile
