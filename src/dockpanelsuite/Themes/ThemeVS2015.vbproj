@@ -12,7 +12,7 @@
     <TargetFrameworks>net10.0-windows</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
     <Platforms>AnyCPU;x64</Platforms>
-    <Configurations>Debug;Release;Rsharp_app_release;mzkit_win32</Configurations>
+    <Configurations>Debug;Release;Rsharp_app_release;mzkit_win32;CellaLAB-Desktop</Configurations>
     <NoWarn>$(NoWarn);WFO1000</NoWarn>
 
     <Deterministic>true</Deterministic>
@@ -28,7 +28,17 @@
     <DebugType>full</DebugType>
     <RemoveIntegerChecks>True</RemoveIntegerChecks>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='CellaLAB-Desktop|net8.0-windows|AnyCPU'">
+    <Optimize>False</Optimize>
+    <DebugType>full</DebugType>
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows|x64'">
+    <Optimize>False</Optimize>
+    <DebugType>full</DebugType>
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='CellaLAB-Desktop|net8.0-windows|x64'">
     <Optimize>False</Optimize>
     <DebugType>full</DebugType>
     <RemoveIntegerChecks>True</RemoveIntegerChecks>
