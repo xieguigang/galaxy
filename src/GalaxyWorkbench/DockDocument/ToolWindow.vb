@@ -59,6 +59,12 @@ Imports ThemeVS2015
 
 Namespace DockDocument
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <remarks>
+    ''' <see cref="DockPanel"/> is nothing means the user use this form type as normal winform 
+    ''' </remarks>
     Public Class ToolWindow
 
         Friend WithEvents VS2015LightTheme1 As New VS2015LightTheme
@@ -76,7 +82,9 @@ Namespace DockDocument
         ''' <param name="sender"></param>
         ''' <param name="e"></param>
         Private Sub option1ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FloatToolStripMenuItem.Click
-            DockState = DockState.Float
+            If DockPanel IsNot Nothing Then
+                DockState = DockState.Float
+            End If
 
             DockToolStripMenuItem.Enabled = True
             AutoHideToolStripMenuItem.Enabled = True
@@ -89,18 +97,20 @@ Namespace DockDocument
         ''' <param name="sender"></param>
         ''' <param name="e"></param>
         Private Sub option2ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DockToolStripMenuItem.Click
-            Select Case DockState
-                Case DockState.DockBottomAutoHide
-                    DockState = DockState.DockBottom
-                Case DockState.DockLeftAutoHide
-                    DockState = DockState.DockLeft
-                Case DockState.DockRightAutoHide
-                    DockState = DockState.DockRight
-                Case DockState.DockTopAutoHide
-                    DockState = DockState.DockTop
-                Case Else
+            If DockPanel IsNot Nothing Then
+                Select Case DockState
+                    Case DockState.DockBottomAutoHide
+                        DockState = DockState.DockBottom
+                    Case DockState.DockLeftAutoHide
+                        DockState = DockState.DockLeft
+                    Case DockState.DockRightAutoHide
+                        DockState = DockState.DockRight
+                    Case DockState.DockTopAutoHide
+                        DockState = DockState.DockTop
 
-            End Select
+                    Case Else
+                End Select
+            End If
 
             DockToolStripMenuItem.Enabled = False
             AutoHideToolStripMenuItem.Enabled = True
@@ -113,16 +123,18 @@ Namespace DockDocument
         ''' <param name="sender"></param>
         ''' <param name="e"></param>
         Private Sub option3ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutoHideToolStripMenuItem.Click
-            Select Case DockState
-                Case DockState.DockBottom
-                    DockState = DockState.DockBottomAutoHide
-                Case DockState.DockLeft
-                    DockState = DockState.DockLeftAutoHide
-                Case DockState.DockRight
-                    DockState = DockState.DockRightAutoHide
-                Case DockState.DockTop
-                    DockState = DockState.DockTopAutoHide
-            End Select
+            If DockPanel IsNot Nothing Then
+                Select Case DockState
+                    Case DockState.DockBottom
+                        DockState = DockState.DockBottomAutoHide
+                    Case DockState.DockLeft
+                        DockState = DockState.DockLeftAutoHide
+                    Case DockState.DockRight
+                        DockState = DockState.DockRightAutoHide
+                    Case DockState.DockTop
+                        DockState = DockState.DockTopAutoHide
+                End Select
+            End If
 
             DockToolStripMenuItem.Enabled = True
             AutoHideToolStripMenuItem.Enabled = False
@@ -135,11 +147,16 @@ Namespace DockDocument
         ''' <param name="sender"></param>
         ''' <param name="e"></param>
         Private Sub option4ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
-            DockState = DockState.Hidden
+            If DockPanel IsNot Nothing Then
+                DockState = DockState.Hidden
+            End If
         End Sub
 
         Private Sub ToolWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-            DockState = DockState.Hidden
+            If DockPanel IsNot Nothing Then
+                DockState = DockState.Hidden
+            End If
+
             e.Cancel = True
         End Sub
 
