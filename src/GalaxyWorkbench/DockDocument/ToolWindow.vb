@@ -155,9 +155,11 @@ Namespace DockDocument
         Private Sub ToolWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
             If DockPanel IsNot Nothing Then
                 DockState = DockState.Hidden
-            End If
 
-            e.Cancel = True
+                ' 20260405
+                ' do not cancel when winform type is used as normal winform
+                e.Cancel = True
+            End If
         End Sub
 
         Private Sub ToolWindow_Load(sender As Object, e As EventArgs) Handles Me.Load
