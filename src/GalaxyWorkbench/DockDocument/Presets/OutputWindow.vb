@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Runtime.CompilerServices
 Imports Microsoft.VisualBasic.ApplicationServices.Debugging.Logging
 Imports Microsoft.VisualBasic.Serialization.JSON
 
@@ -59,6 +60,11 @@ Namespace DockDocument.Presets
         ''' <param name="text"></param>
         Public Sub AppendLine(text As String)
             Call Invoke(Sub() TextBox1.AppendText(text & vbCrLf))
+        End Sub
+
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Sub AddLog(action$, message$, Optional time As Date? = Nothing, Optional level As MSG_TYPES = MSG_TYPES.INF)
+            Call AddLog(If(time, Now), action, message, level)
         End Sub
 
         ''' <summary>
