@@ -2,9 +2,12 @@
 Imports System.IO
 Imports System.Runtime.CompilerServices
 Imports System.Text
+Imports Microsoft.VisualBasic.ComponentModel.DataStructures
+Imports Microsoft.VisualBasic.Data.Framework
 Imports Microsoft.VisualBasic.Data.Framework.IO
 Imports Microsoft.VisualBasic.Data.Framework.StorageProvider
 Imports Microsoft.VisualBasic.MIME.Office.Excel.XLSX.Writer
+Imports Microsoft.VisualBasic.MIME.Office.Excel.XLSX.XML.xl.worksheets
 Imports Microsoft.VisualBasic.Text
 Imports any = Microsoft.VisualBasic.Scripting
 Imports ASCII = Microsoft.VisualBasic.Text.ASCII
@@ -106,25 +109,34 @@ Public Module TableHelper
 
                 Call writeTsv.WriteLine(row.PopLine(sep))
             Next
-        Else
-            Dim ds As System.Data.DataSet = src.DataSource
-            Dim table As DataTable = ds.Tables.Item(src.DataMember)
+        ElseIf TypeOf src.DataSource Is System.Data.DataSet Then
+            Call ExportDataSet(src.DataSource, src, writeTsv, sep, warning)
+        ElseIf TypeOf src.DataSource Is System.Data.DataTable Then
+            Dim tbl As System.Data.DataTable = src.DataSource
+            Dim ds = tbl.DataSet
 
-            For j As Integer = 0 To table.Rows.Count - 1
-                Dim rowObj As DataRow = table.Rows(j)
-
-                Try
-                    Call row.AddRange(rowObj.ItemArray.Select(AddressOf any.ToString))
-                    Call writeTsv.WriteLine(row.PopLine(sep))
-                Catch ex As Exception
-                    If Not warning Is Nothing Then
-                        Call warning(ex.ToString)
-                    End If
-                End Try
-            Next
+            Call ExportDataSet(ds, src, writeTsv, sep, warning)
         End If
 
         Call writeTsv.Flush()
+    End Sub
+
+    Private Sub ExportDataSet(ds As System.Data.DataSet, src As BindingSource, writeTsv As TextWriter, sep As Char, warning As Action(Of String))
+        Dim table As DataTable = ds.Tables.Item(src.DataMember)
+        Dim row As New RowObject
+
+        For j As Integer = 0 To table.Rows.Count - 1
+            Dim rowObj As DataRow = table.Rows(j)
+
+            Try
+                Call row.AddRange(rowObj.ItemArray.Select(AddressOf any.ToString))
+                Call writeTsv.WriteLine(row.PopLine(sep))
+            Catch ex As Exception
+                If Not warning Is Nothing Then
+                    Call warning(ex.ToString)
+                End If
+            End Try
+        Next
     End Sub
 
     ''' <summary>
