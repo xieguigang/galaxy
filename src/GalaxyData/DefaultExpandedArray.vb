@@ -1,5 +1,4 @@
 ﻿Imports System.ComponentModel
-Imports System.Reflection
 
 Public Class DefaultExpandedArray : Inherits ExpandableObjectConverter
 
