@@ -90,9 +90,10 @@ Public Module TableHelper
 
         Dim row As New RowObject
         Dim src As BindingSource = table2.DataSource
+        Dim ncols As Integer = table2.Columns.Count
 
         If saveHeader Then
-            For i As Integer = 0 To table2.Columns.Count - 1
+            For i As Integer = 0 To ncols - 1
                 Call row.Add(table2.Columns(i).HeaderText)
             Next
 
@@ -115,7 +116,14 @@ Public Module TableHelper
             Dim tbl As System.Data.DataTable = src.DataSource
             Dim ds = tbl.DataSet
 
-            Call ExportDataSet(ds, src, writeTsv, sep, warning)
+            If Not ds Is Nothing Then
+                Call ExportDataSet(ds, src, writeTsv, sep, warning)
+            Else
+                For Each line As DataRow In tbl.Rows
+                    Call row.AddRange(From obj As Object In line.ItemArray Let str As String = any.ToString(obj) Select str)
+                    Call writeTsv.WriteLine(row.PopLine(sep))
+                Next
+            End If
         End If
 
         Call writeTsv.Flush()
