@@ -162,9 +162,14 @@ Public Module TableHelper
 
                     Call book.SaveAs(file.FileName)
                 Else
+                    Dim sep As Char = If(file.FileName.ExtensionSuffix("csv"), ","c, ASCII.TAB)
+
                     Using writeTsv As StreamWriter = file.FileName.OpenWriter(encoding:=Encodings.GB2312)
-                        Call table.WriteTableToFile(writeTsv, sep:=If(file.FileName.ExtensionSuffix("csv"), ","c, ASCII.TAB))
-                        Call MessageBox.Show(title.Replace("%s", file.FileName), "Export Table", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Call table.WriteTableToFile(writeTsv, sep:=sep)
+                        Call MessageBox.Show(title.Replace("%s", file.FileName),
+                                             "Export Table",
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Information)
                     End Using
                 End If
             End If
