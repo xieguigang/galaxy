@@ -1,13 +1,6 @@
-'''
-''' ---------------------------------------------------------------
-''' WinForms集成示例 (MainForm.vb)
-''' 演示如何在WinForms程序中集成授权验证框架
-''' ---------------------------------------------------------------
-'''
-Imports System
 Imports System.Windows.Forms
-Imports LicenseFramework.Client
-Imports LicenseFramework.Shared
+Imports LicenseVendor.LicenseFramework.Client
+Imports LicenseVendor.LicenseFramework.Shared
 
 Namespace LicenseFramework.Demo
 
@@ -19,6 +12,12 @@ Namespace LicenseFramework.Demo
     ''' 2. 调用Validate()或ValidateWithDialog()进行授权验证
     ''' 3. 验证通过后显示主界面，验证失败则退出或限制功能
     ''' </summary>
+    '''
+    ''' ---------------------------------------------------------------
+    ''' WinForms集成示例 (MainForm.vb)
+    ''' 演示如何在WinForms程序中集成授权验证框架
+    ''' ---------------------------------------------------------------
+    '''
     Public Class MainForm
         Inherits Form
 
@@ -42,7 +41,7 @@ Namespace LicenseFramework.Demo
 
             If Not result.IsValid Then
                 ' ===== 第三步：验证失败，显示授权对话框 =====
-                Dim dialogResult As DialogResult = licenseManager.ValidateWithDialog(Nothing)
+                Dim dialogResult As LicenseValidationResult = licenseManager.ValidateWithDialog(Nothing)
 
                 If Not licenseManager.IsLicensed Then
                     ' 用户未完成授权，退出程序
