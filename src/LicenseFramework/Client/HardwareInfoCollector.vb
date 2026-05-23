@@ -1,20 +1,18 @@
-'''
-''' ---------------------------------------------------------------
-''' 硬件信息采集模块 (HardwareInfoCollector.vb)
-''' 通过WMI采集CPU、主板、网卡MAC地址等硬件信息
-''' ---------------------------------------------------------------
-'''
-Imports System
 Imports System.Management
-Imports System.Collections.Generic
 Imports System.Text
-Imports System.Linq
 
 Namespace LicenseFramework.Client
 
     ''' <summary>
     ''' 硬件信息采集器
     ''' </summary>
+    ''' 
+    '''
+    ''' ---------------------------------------------------------------
+    ''' 硬件信息采集模块 (HardwareInfoCollector.vb)
+    ''' 通过WMI采集CPU、主板、网卡MAC地址等硬件信息
+    ''' ---------------------------------------------------------------
+    '''
     Public Class HardwareInfoCollector
 
         ''' <summary>

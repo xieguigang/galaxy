@@ -1,9 +1,3 @@
-'''
-''' ---------------------------------------------------------------
-''' 指纹哈希生成与脱敏模块 (FingerprintGenerator.vb)
-''' 将硬件信息转换为不可逆的哈希摘要，实现数据脱敏
-''' ---------------------------------------------------------------
-'''
 Imports System
 Imports System.Security.Cryptography
 Imports System.Text
@@ -20,6 +14,12 @@ Namespace LicenseFramework.Client
     ''' 3. 哈希是单向的，无法从哈希反推出原始硬件信息
     ''' 4. 相同的硬件信息始终产生相同的哈希值
     ''' </summary>
+    '''
+    ''' ---------------------------------------------------------------
+    ''' 指纹哈希生成与脱敏模块 (FingerprintGenerator.vb)
+    ''' 将硬件信息转换为不可逆的哈希摘要，实现数据脱敏
+    ''' ---------------------------------------------------------------
+    '''
     Public Class FingerprintGenerator
 
         Private Const FIELD_SEPARATOR As String = "|#|"

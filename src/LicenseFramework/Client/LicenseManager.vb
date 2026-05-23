@@ -1,12 +1,5 @@
-'''
-''' ---------------------------------------------------------------
-''' 授权管理器 (LicenseManager.vb) - 客户端统一入口
-''' 协调离线授权和在线授权，实现"先离线后在线"的验证策略
-''' ---------------------------------------------------------------
-'''
-Imports System
 Imports System.Windows.Forms
-Imports LicenseFramework.Shared
+Imports LicenseVendor.LicenseFramework.Shared
 
 Namespace LicenseFramework.Client
 
@@ -18,6 +11,12 @@ Namespace LicenseFramework.Client
     ''' 2. 如果离线验证失败，则尝试在线授权
     ''' 3. 在线授权成功后自动缓存许可证
     ''' </summary>
+    '''
+    ''' ---------------------------------------------------------------
+    ''' 授权管理器 (LicenseManager.vb) - 客户端统一入口
+    ''' 协调离线授权和在线授权，实现"先离线后在线"的验证策略
+    ''' ---------------------------------------------------------------
+    '''
     Public Class LicenseManager
 
         Private _offlineProvider As OfflineLicenseProvider

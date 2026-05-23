@@ -1,14 +1,7 @@
-'''
-''' ---------------------------------------------------------------
-''' 离线授权提供程序 (OfflineLicenseProvider.vb) - 客户端
-''' 处理离线授权：导出指纹文件、导入许可证密钥、缓存管理
-''' ---------------------------------------------------------------
-'''
-Imports System
 Imports System.IO
 Imports System.Text
 Imports System.Windows.Forms
-Imports LicenseFramework.Shared
+Imports LicenseVendor.LicenseFramework.Shared
 
 Namespace LicenseFramework.Client
 
@@ -21,6 +14,12 @@ Namespace LicenseFramework.Client
     ''' 3. 厂商生成许可证文件 → 发送给客户
     ''' 4. 客户导入许可证 → 验证并缓存
     ''' </summary>
+    '''
+    ''' ---------------------------------------------------------------
+    ''' 离线授权提供程序 (OfflineLicenseProvider.vb) - 客户端
+    ''' 处理离线授权：导出指纹文件、导入许可证密钥、缓存管理
+    ''' ---------------------------------------------------------------
+    '''
     Public Class OfflineLicenseProvider
 
         Private _hwCollector As New HardwareInfoCollector()

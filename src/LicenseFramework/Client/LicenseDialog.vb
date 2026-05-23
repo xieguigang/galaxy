@@ -1,19 +1,18 @@
-'''
-''' ---------------------------------------------------------------
-''' 授权对话框 (LicenseDialog.vb) - 客户端UI组件
-''' 提供可视化的授权管理界面
-''' ---------------------------------------------------------------
-'''
-Imports System
 Imports System.Drawing
 Imports System.Windows.Forms
-Imports LicenseFramework.Shared
+Imports LicenseVendor.LicenseFramework.Shared
 
 Namespace LicenseFramework.Client
 
     ''' <summary>
     ''' 授权对话框窗体
     ''' </summary>
+    '''
+    ''' ---------------------------------------------------------------
+    ''' 授权对话框 (LicenseDialog.vb) - 客户端UI组件
+    ''' 提供可视化的授权管理界面
+    ''' ---------------------------------------------------------------
+    '''
     Public Class LicenseDialog
         Inherits Form
 
@@ -67,7 +66,7 @@ Namespace LicenseFramework.Client
                 .Text = If(_initialResult?.IsValid,
                            $"许可证类型: {_initialResult?.License?.LicenseType.ToString()}" & Environment.NewLine &
                            $"到期时间: {_initialResult?.License?.ExpiryDate}",
-                           _initialResult?.Message ?? "需要激活软件许可证"),
+                           If(_initialResult?.Message, "需要激活软件许可证")),
                 .Location = New Point(20, 60),
                 .Size = New Size(460, 50)
             }

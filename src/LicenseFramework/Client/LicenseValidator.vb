@@ -1,13 +1,6 @@
-'''
-''' ---------------------------------------------------------------
-''' 许可证验证模块 (LicenseValidator.vb) - 客户端
-''' 验证许可证的签名完整性和硬件指纹匹配性
-''' ---------------------------------------------------------------
-'''
-Imports System
 Imports System.Text
-Imports System.IO
-Imports LicenseFramework.Shared
+Imports LicenseVendor.LicenseFramework.Shared
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace LicenseFramework.Client
 
@@ -21,6 +14,12 @@ Namespace LicenseFramework.Client
     ''' 4. 比对硬件指纹
     ''' 5. 检查过期时间
     ''' </summary>
+    '''
+    ''' ---------------------------------------------------------------
+    ''' 许可证验证模块 (LicenseValidator.vb) - 客户端
+    ''' 验证许可证的签名完整性和硬件指纹匹配性
+    ''' ---------------------------------------------------------------
+    '''
     Public Class LicenseValidator
 
         Private _publicKeyXml As String
@@ -30,7 +29,7 @@ Namespace LicenseFramework.Client
                 Throw New ArgumentNullException(NameOf(publicKeyXml), "RSA公钥不能为空")
             End If
             _publicKeyXml = publicKeyXml
-        End Function
+        End Sub
 
         ''' <summary>
         ''' 验证签名许可证字符串（完整验证：签名+指纹+过期）
@@ -89,8 +88,7 @@ Namespace LicenseFramework.Client
                     Return LicenseValidationResult.Fail(LicenseStatus.InvalidSignature, "签名验证失败，许可证可能被篡改")
                 End If
 
-                Dim jsonSerializer As New System.Web.Script.Serialization.JavaScriptSerializer()
-                Dim licenseData As LicenseData = jsonSerializer.Deserialize(Of LicenseData)(jsonString)
+                Dim licenseData As LicenseData = jsonString.LoadJSON(Of LicenseData)
 
                 If licenseData Is Nothing Then
                     Return LicenseValidationResult.Fail(LicenseStatus.Malformed, "许可证数据为空")

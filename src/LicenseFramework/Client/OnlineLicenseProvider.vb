@@ -1,14 +1,8 @@
-'''
-''' ---------------------------------------------------------------
-''' 在线授权提供程序 (OnlineLicenseProvider.vb) - 客户端
-''' 处理在线授权：发送硬件指纹、接收许可证、缓存管理
-''' ---------------------------------------------------------------
-'''
-Imports System
 Imports System.IO
 Imports System.Net
 Imports System.Text
-Imports LicenseFramework.Shared
+Imports LicenseVendor.LicenseFramework.Shared
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace LicenseFramework.Client
 
@@ -23,6 +17,12 @@ Namespace LicenseFramework.Client
     ''' 5. 客户端验证返回的许可证
     ''' 6. 验证通过后缓存许可证
     ''' </summary>
+    '''
+    ''' ---------------------------------------------------------------
+    ''' 在线授权提供程序 (OnlineLicenseProvider.vb) - 客户端
+    ''' 处理在线授权：发送硬件指纹、接收许可证、缓存管理
+    ''' ---------------------------------------------------------------
+    '''
     Public Class OnlineLicenseProvider
 
         Private _hwCollector As New HardwareInfoCollector()
@@ -67,14 +67,13 @@ Namespace LicenseFramework.Client
                 request.RequestSignature = CryptoHelper.ComputeHmac(signData, _hmacKey)
 
                 ' 第四步：序列化请求为JSON
-                Dim jsonSerializer As New System.Web.Script.Serialization.JavaScriptSerializer()
-                Dim jsonPayload As String = jsonSerializer.Serialize(request)
+                Dim jsonPayload As String = request.GetJson
 
                 ' 第五步：发送HTTP POST请求
                 Dim responseJson As String = SendHttpPostRequest(_serverUrl, jsonPayload)
 
                 ' 第六步：解析响应
-                Dim response As OnlineLicenseResponse = jsonSerializer.Deserialize(Of OnlineLicenseResponse)(responseJson)
+                Dim response As OnlineLicenseResponse = responseJson.LoadJSON(Of OnlineLicenseResponse)
 
                 If response Is Nothing OrElse response.StatusCode <> 0 Then
                     Dim errMsg As String = If(response?.StatusMessage, "服务器返回无效响应")

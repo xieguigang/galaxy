@@ -18,10 +18,15 @@
     <OutputType>Library</OutputType>
     <UseWindowsForms>True</UseWindowsForms>
     <UseWPF>True</UseWPF>
-    <StartupObject>LicenseVendor.LicenseVendor.LicenseFramework.Vendor.LicenseGeneratorForm</StartupObject>
+    <StartupObject>LicenseVendor.My.MyApplication</StartupObject>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <MyType>WindowsForms</MyType>
   </PropertyGroup>
-
+  
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);WFO1000</NoWarn>
+  </PropertyGroup>
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <RemoveIntegerChecks>True</RemoveIntegerChecks>
   </PropertyGroup>
