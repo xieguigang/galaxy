@@ -9,5 +9,7 @@
     <Import_RootNamespace>LicenseShared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CryptoHelper.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)LicenseData.vb" />
   </ItemGroup>
 </Project>

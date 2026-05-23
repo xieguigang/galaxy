@@ -1,9 +1,3 @@
-'''
-''' ---------------------------------------------------------------
-''' 加密辅助工具模块 (CryptoHelper.vb)
-''' 封装RSA签名/验证、AES加解密、HMAC等系统加密函数
-''' ---------------------------------------------------------------
-'''
 Imports System
 Imports System.Security.Cryptography
 Imports System.IO
@@ -20,6 +14,12 @@ Namespace LicenseFramework.Shared
     ''' - HMAC-SHA256：请求完整性校验
     ''' - SHA-256：哈希摘要
     ''' </summary>
+    '''
+    ''' ---------------------------------------------------------------
+    ''' 加密辅助工具模块 (CryptoHelper.vb)
+    ''' 封装RSA签名/验证、AES加解密、HMAC等系统加密函数
+    ''' ---------------------------------------------------------------
+    '''
     Public Class CryptoHelper
 
         Public Const RSA_KEY_CONTAINER_NAME As String = "LicenseFramework_RSA_2048"

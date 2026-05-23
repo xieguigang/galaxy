@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>voyager_1</RootNamespace>
+    <RootNamespace>LicenseVendor</RootNamespace>
     <TargetFrameworks>net10.0-windows</TargetFrameworks>
     <Platforms>AnyCPU;x64</Platforms>
     <Configurations>Debug;Release;Rsharp_app_release;mzkit_win32</Configurations>
@@ -131,6 +131,8 @@
     <DebugType>full</DebugType>
     <DefineTrace>True</DefineTrace>
   </PropertyGroup>
+
+  <Import Project="..\Shared\LicenseShared.projitems" Label="Shared" />
 
 
 </Project>
