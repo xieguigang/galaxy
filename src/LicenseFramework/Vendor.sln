@@ -7,6 +7,10 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Vendor", "Vendor\Vendor.vbp
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LicenseShared", "Shared\LicenseShared.shproj", "{81390088-C611-4629-B785-93E1D6F0C913}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "framework", "framework", "{804D3536-26DC-4782-ACC2-547A74664828}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Core", "..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj", "{896A1DF9-BF52-17C7-D41C-F7730E5B1968}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,9 +39,28 @@ Global
 		{7126792E-C255-5790-FDFF-313015BFB881}.Rsharp_app_release|Any CPU.Build.0 = Rsharp_app_release|Any CPU
 		{7126792E-C255-5790-FDFF-313015BFB881}.Rsharp_app_release|x64.ActiveCfg = Rsharp_app_release|x64
 		{7126792E-C255-5790-FDFF-313015BFB881}.Rsharp_app_release|x64.Build.0 = Rsharp_app_release|x64
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Debug|x64.ActiveCfg = Debug|x64
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Debug|x64.Build.0 = Debug|x64
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.mzkit_win32|Any CPU.ActiveCfg = mzkit_win32|Any CPU
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.mzkit_win32|Any CPU.Build.0 = mzkit_win32|Any CPU
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.mzkit_win32|x64.ActiveCfg = mzkit_win32|x64
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.mzkit_win32|x64.Build.0 = mzkit_win32|x64
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Release|Any CPU.Build.0 = Release|Any CPU
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Release|x64.ActiveCfg = Release|x64
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Release|x64.Build.0 = Release|x64
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Rsharp_app_release|Any CPU.ActiveCfg = Rsharp_app_release|Any CPU
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Rsharp_app_release|Any CPU.Build.0 = Rsharp_app_release|Any CPU
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Rsharp_app_release|x64.ActiveCfg = Rsharp_app_release|x64
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968}.Rsharp_app_release|x64.Build.0 = Rsharp_app_release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{896A1DF9-BF52-17C7-D41C-F7730E5B1968} = {804D3536-26DC-4782-ACC2-547A74664828}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8C62369-53DD-457C-AE08-2E62E51654CD}

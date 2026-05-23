@@ -1,7 +1,7 @@
-Imports System
-Imports System.Text
 Imports System.IO
-Imports LicenseFramework.Shared
+Imports System.Text
+Imports LicenseVendor.LicenseFramework.Shared
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace LicenseFramework.Vendor
 
@@ -43,9 +43,7 @@ Namespace LicenseFramework.Vendor
         ''' </summary>
         Public Function GenerateSignedLicense(licenseData As LicenseData) As String
             ' 序列化为JSON
-            Dim jsonSerializer As New System.Web.Script.Serialization.JavaScriptSerializer()
-            Dim jsonString As String = jsonSerializer.Serialize(licenseData)
-
+            Dim jsonString As String = licenseData.GetJson
             ' 使用RSA私钥签名
             Dim signature As String = CryptoHelper.SignString(jsonString, _privateKeyXml)
 

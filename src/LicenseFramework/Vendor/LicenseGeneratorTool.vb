@@ -1,20 +1,19 @@
-'''
-''' ---------------------------------------------------------------
-''' 许可证生成工具 (LicenseGeneratorTool.vb) - 厂商端WinForms工具
-''' 提供可视化的许可证生成界面
-''' ---------------------------------------------------------------
-'''
-Imports System
 Imports System.IO
 Imports System.Text
 Imports System.Windows.Forms
-Imports LicenseFramework.Shared
+Imports LicenseVendor.LicenseFramework.Shared
 
 Namespace LicenseFramework.Vendor
 
     ''' <summary>
     ''' 许可证生成工具的WinForms界面
     ''' </summary>
+    '''
+    ''' ---------------------------------------------------------------
+    ''' 许可证生成工具 (LicenseGeneratorTool.vb) - 厂商端WinForms工具
+    ''' 提供可视化的许可证生成界面
+    ''' ---------------------------------------------------------------
+    '''
     Public Class LicenseGeneratorForm
         Inherits Form
 

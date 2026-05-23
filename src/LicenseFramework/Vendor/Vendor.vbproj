@@ -16,6 +16,9 @@
     <UseApplicationFramework>True</UseApplicationFramework>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
+    <UseWPF>True</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -133,6 +136,10 @@
   </PropertyGroup>
 
   <Import Project="..\Shared\LicenseShared.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+  </ItemGroup>
 
 
 </Project>
