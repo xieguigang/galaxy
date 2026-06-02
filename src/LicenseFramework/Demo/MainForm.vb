@@ -2,8 +2,6 @@ Imports System.Windows.Forms
 Imports LicenseVendor.LicenseFramework.Client
 Imports LicenseVendor.LicenseFramework.Shared
 
-Namespace LicenseFramework.Demo
-
     ''' <summary>
     ''' 主窗体 - 演示授权框架集成
     ''' 
@@ -145,5 +143,3 @@ Namespace LicenseFramework.Demo
         End Sub
 
     End Class
-
-End Namespace
