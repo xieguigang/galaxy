@@ -1,4 +1,3 @@
-Imports System.Windows.Forms
 Imports LicenseVendor.LicenseFramework.Client
 Imports LicenseVendor.LicenseFramework.Shared
 
@@ -16,8 +15,7 @@ Imports LicenseVendor.LicenseFramework.Shared
 ''' 演示如何在WinForms程序中集成授权验证框架
 ''' ---------------------------------------------------------------
 '''
-Public Class MainForm
-    Inherits Form
+Public Class MainForm : Inherits Form
 
     Private _licenseManager As LicenseManager
 
