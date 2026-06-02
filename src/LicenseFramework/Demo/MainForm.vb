@@ -60,7 +60,7 @@ Public Class MainForm
     Private Shared Function GetEmbeddedPublicKey() As String
         ' 此处替换为实际的RSA公钥XML
         ' 使用KeyGenerator工具生成密钥对后，将公钥内容粘贴到这里
-        Return "<RSAKeyValue><Modulus>YOUR_PUBLIC_KEY_MODULUS_HERE</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>"
+        Return "<RSAKeyValue><Modulus>qGmRjIgv7AxQqG6yr/E8hR5JzqffyKqAFepMUOlPvrvw1RmzqIT9ziLzezpUrjjPlJR4BdZVkmqRYgcJqtFFFsTgzXtGbBXplqhaye8brejJ7GmLQylr4aOIgpDDQlBAAzQ2x+M2fzl4TAgLOjZQFRhJXrKC1Xhz087yEbrcdwotd8cA8qEI1ureCOXsyC/GSacmrPGrAdI0PyB82d+301oX78bktskwgHNqraOS5dBy97hthLMKE/1dUXfSGWEVtZvGQx9I26P1UDKYRaj9K4v++DzWupcMgs1VXO3YDXj3/oJMhlDT3uKKBgmicrrBAaZxmmFejsA2Y3ZqLQ/rfQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>"
     End Function
 
     ''' <summary>
