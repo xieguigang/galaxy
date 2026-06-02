@@ -127,19 +127,21 @@ Public Class MainForm
         End If
 
         ' 授权管理按钮
-        Dim btnLicense As New Button With {
+        btnLicense = New Button With {
             .Text = "授权管理",
             .Size = New System.Drawing.Size(120, 35),
             .Location = New System.Drawing.Point(20, 200)
         }
-        AddHandler btnLicense.Click, AddressOf BtnLicense_Click
+
         mainPanel.Controls.Add(btnLicense)
 
         Me.Controls.Add(mainPanel)
     End Sub
 
-    Private Sub BtnLicense_Click(sender As Object, e As EventArgs)
-        _licenseManager.ValidateWithDialog(Me)
+    Dim WithEvents btnLicense As New Button
+
+    Private Sub BtnLicense_Click(sender As Object, e As EventArgs) Handles btnLicense.Click
+        _licenseManager.OpenLicenseDialog(Me)
     End Sub
 
 End Class

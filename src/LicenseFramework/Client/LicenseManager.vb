@@ -1,5 +1,6 @@
 Imports System.Windows.Forms
 Imports LicenseVendor.LicenseFramework.Shared
+Imports Windows.Win32.System
 
 Namespace LicenseFramework.Client
 
@@ -89,6 +90,12 @@ Namespace LicenseFramework.Client
             End If
 
             ' 验证失败，弹出授权对话框
+            Call OpenLicenseDialog(owner)
+
+            Return _lastResult
+        End Function
+
+        Public Sub OpenLicenseDialog(owner As IWin32Window)
             Using dlg As New LicenseDialog()
                 dlg.SetLicenseData(_offlineProvider, _onlineProvider,
                                             _productName, _productVersion, _lastResult)
@@ -97,9 +104,7 @@ Namespace LicenseFramework.Client
                     _lastResult = Validate()
                 End If
             End Using
-
-            Return _lastResult
-        End Function
+        End Sub
 
         ''' <summary>
         ''' 手动激活离线授权（弹出导入对话框）

@@ -20,6 +20,7 @@ Namespace LicenseFramework.Client
         Private _onlineProvider As OnlineLicenseProvider
         Private _productName As String
         Private _productVersion As String
+        Friend WithEvents mainPanel As Panel
         Private _initialResult As LicenseValidationResult
 
         Public Property IsAuthorized As Boolean = False
@@ -62,82 +63,100 @@ Namespace LicenseFramework.Client
         Dim WithEvents btnClose As New Button
 
         Private Sub InitializeComponent()
-            Me.Text = "软件授权管理"
-            Me.Size = New Size(520, 420)
-            Me.StartPosition = FormStartPosition.CenterParent
-            Me.FormBorderStyle = FormBorderStyle.FixedDialog
-            Me.MaximizeBox = False
-            Me.MinimizeBox = False
-
-            Dim mainPanel As New Panel With {
-                .Dock = DockStyle.Fill,
-                .Padding = New Padding(20)
-            }
-
-            ' 状态标签
-            lblStatus = New Label With {
-                .Text = "当前状态: 未授权",
-                .Font = New Font("Microsoft YaHei", 12, FontStyle.Bold),
-                .ForeColor = If(_initialResult?.IsValid, Color.Green, Color.Red),
-                .Location = New Point(20, 20),
-                .AutoSize = True
-            }
+            mainPanel = New Panel()
+            lblStatus = New Label()
+            lblDetail = New Label()
+            btnExport = New Button()
+            lblExportHint = New Label()
+            btnImport = New Button()
+            btnOnline = New Button()
+            btnClose = New Button()
+            mainPanel.SuspendLayout()
+            SuspendLayout()
+            ' 
+            ' mainPanel
+            ' 
             mainPanel.Controls.Add(lblStatus)
-
-            ' 详细信息
-            lblDetail = New Label With {
-                .Text = "需要激活软件许可证",
-                .Location = New Point(20, 60),
-                .Size = New Size(460, 50)
-            }
             mainPanel.Controls.Add(lblDetail)
-
-            ' 导出指纹按钮
-            btnExport = New Button With {
-                .Text = "1. 导出硬件指纹文件",
-                .Size = New Size(460, 40),
-                .Location = New Point(20, 120)
-            }
-
             mainPanel.Controls.Add(btnExport)
-
-            lblExportHint = New Label With {
-                .Text = "将指纹文件发送给软件供应商，获取许可证文件",
-                .ForeColor = Color.Gray,
-                .Location = New Point(20, 162),
-                .AutoSize = True
-            }
             mainPanel.Controls.Add(lblExportHint)
-
-            ' 导入许可证按钮
-            btnImport = New Button With {
-                .Text = "2. 导入许可证文件（离线激活）",
-                .Size = New Size(460, 40),
-                .Location = New Point(20, 190)
-            }
-
             mainPanel.Controls.Add(btnImport)
-
-            ' 在线激活按钮
-            btnOnline = New Button With {
-                .Text = "3. 在线激活",
-                .Size = New Size(460, 40),
-                .Location = New Point(20, 250),
-                .Enabled = (_onlineProvider IsNot Nothing)
-            }
-
             mainPanel.Controls.Add(btnOnline)
-
-            ' 关闭按钮
-            btnClose = New Button With {
-                .Text = "关闭",
-                .Size = New Size(100, 35),
-                .Location = New Point(380, 320)
-            }
-
             mainPanel.Controls.Add(btnClose)
-
-            Me.Controls.Add(mainPanel)
+            mainPanel.Dock = DockStyle.Fill
+            mainPanel.Location = New Point(0, 0)
+            mainPanel.Name = "mainPanel"
+            mainPanel.Size = New Size(504, 381)
+            mainPanel.TabIndex = 0
+            ' 
+            ' lblStatus
+            ' 
+            lblStatus.Location = New Point(147, 83)
+            lblStatus.Name = "lblStatus"
+            lblStatus.Text = "当前状态: 未授权"
+            lblStatus.Size = New Size(100, 23)
+            lblStatus.TabIndex = 0
+            ' 
+            ' lblDetail
+            ' 
+            lblDetail.Location = New Point(67, 185)
+            lblDetail.Name = "lblDetail"
+            lblDetail.Text = "需要激活软件许可证"
+            lblDetail.Size = New Size(100, 23)
+            lblDetail.TabIndex = 1
+            ' 
+            ' btnExport
+            ' 
+            btnExport.Location = New Point(220, 238)
+            btnExport.Name = "btnExport"
+            btnExport.Text = "1. 导出硬件指纹文件"
+            btnExport.Size = New Size(75, 23)
+            btnExport.TabIndex = 2
+            ' 
+            ' lblExportHint
+            ' 
+            lblExportHint.Location = New Point(341, 278)
+            lblExportHint.Name = "lblExportHint"
+            lblExportHint.Text = "将指纹文件发送给软件供应商，获取许可证文件"
+            lblExportHint.Size = New Size(100, 23)
+            lblExportHint.TabIndex = 3
+            ' 
+            ' btnImport
+            ' 
+            btnImport.Location = New Point(147, 325)
+            btnImport.Name = "btnImport"
+            btnImport.Text = "2. 导入许可证文件（离线激活）"
+            btnImport.Size = New Size(75, 23)
+            btnImport.TabIndex = 4
+            ' 
+            ' btnOnline
+            ' 
+            btnOnline.Location = New Point(232, 44)
+            btnOnline.Name = "btnOnline"
+            btnOnline.Text = "3. 在线激活"
+            btnOnline.Size = New Size(75, 23)
+            btnOnline.TabIndex = 5
+            ' 
+            ' btnClose
+            ' 
+            btnClose.Location = New Point(67, 56)
+            btnClose.Name = "btnClose"
+            btnClose.Text = "关闭"
+            btnClose.Size = New Size(75, 23)
+            btnClose.TabIndex = 6
+            ' 
+            ' LicenseDialog
+            ' 
+            ClientSize = New Size(504, 381)
+            Controls.Add(mainPanel)
+            FormBorderStyle = FormBorderStyle.FixedDialog
+            MaximizeBox = False
+            MinimizeBox = False
+            Name = "LicenseDialog"
+            StartPosition = FormStartPosition.CenterParent
+            Text = "软件授权管理"
+            mainPanel.ResumeLayout(False)
+            ResumeLayout(False)
         End Sub
 
         Private Sub BtnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
