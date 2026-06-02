@@ -24,19 +24,42 @@ Namespace LicenseFramework.Client
 
         Public Property IsAuthorized As Boolean = False
 
-        Public Sub New(offlineProvider As OfflineLicenseProvider,
+        Public Sub New()
+            InitializeComponent()
+            Call UpdateUI()
+        End Sub
+
+        Public Sub SetLicenseData(offlineProvider As OfflineLicenseProvider,
                         onlineProvider As OnlineLicenseProvider,
                         productName As String,
                         productVersion As String,
                         initialResult As LicenseValidationResult)
+
             _offlineProvider = offlineProvider
             _onlineProvider = onlineProvider
             _productName = productName
             _productVersion = productVersion
             _initialResult = initialResult
 
-            InitializeComponent()
+            Call UpdateUI()
         End Sub
+
+        Private Sub UpdateUI()
+            lblStatus.Text = If(_initialResult?.IsValid, "当前状态: 已授权", "当前状态: 未授权")
+            lblDetail.Text = If(_initialResult?.IsValid,
+                           $"许可证类型: {_initialResult?.License?.LicenseType.ToString()}" & Environment.NewLine &
+                           $"到期时间: {_initialResult?.License?.ExpiryDate}",
+                           If(_initialResult?.Message, "需要激活软件许可证"))
+
+        End Sub
+
+        Dim WithEvents lblStatus As Label
+        Dim WithEvents lblDetail As New Label
+        Dim WithEvents btnExport As New Button
+        Dim WithEvents lblExportHint As New Label
+        Dim WithEvents btnImport As New Button
+        Dim WithEvents btnOnline As New Button
+        Dim WithEvents btnClose As New Button
 
         Private Sub InitializeComponent()
             Me.Text = "软件授权管理"
@@ -52,8 +75,8 @@ Namespace LicenseFramework.Client
             }
 
             ' 状态标签
-            Dim lblStatus As New Label With {
-                .Text = If(_initialResult?.IsValid, "当前状态: 已授权", "当前状态: 未授权"),
+            lblStatus = New Label With {
+                .Text = "当前状态: 未授权",
                 .Font = New Font("Microsoft YaHei", 12, FontStyle.Bold),
                 .ForeColor = If(_initialResult?.IsValid, Color.Green, Color.Red),
                 .Location = New Point(20, 20),
@@ -62,26 +85,23 @@ Namespace LicenseFramework.Client
             mainPanel.Controls.Add(lblStatus)
 
             ' 详细信息
-            Dim lblDetail As New Label With {
-                .Text = If(_initialResult?.IsValid,
-                           $"许可证类型: {_initialResult?.License?.LicenseType.ToString()}" & Environment.NewLine &
-                           $"到期时间: {_initialResult?.License?.ExpiryDate}",
-                           If(_initialResult?.Message, "需要激活软件许可证")),
+            lblDetail = New Label With {
+                .Text = "需要激活软件许可证",
                 .Location = New Point(20, 60),
                 .Size = New Size(460, 50)
             }
             mainPanel.Controls.Add(lblDetail)
 
             ' 导出指纹按钮
-            Dim btnExport As New Button With {
+            btnExport = New Button With {
                 .Text = "1. 导出硬件指纹文件",
                 .Size = New Size(460, 40),
                 .Location = New Point(20, 120)
             }
-            AddHandler btnExport.Click, AddressOf BtnExport_Click
+
             mainPanel.Controls.Add(btnExport)
 
-            Dim lblExportHint As New Label With {
+            lblExportHint = New Label With {
                 .Text = "将指纹文件发送给软件供应商，获取许可证文件",
                 .ForeColor = Color.Gray,
                 .Location = New Point(20, 162),
@@ -90,41 +110,41 @@ Namespace LicenseFramework.Client
             mainPanel.Controls.Add(lblExportHint)
 
             ' 导入许可证按钮
-            Dim btnImport As New Button With {
+            btnImport = New Button With {
                 .Text = "2. 导入许可证文件（离线激活）",
                 .Size = New Size(460, 40),
                 .Location = New Point(20, 190)
             }
-            AddHandler btnImport.Click, AddressOf BtnImport_Click
+
             mainPanel.Controls.Add(btnImport)
 
             ' 在线激活按钮
-            Dim btnOnline As New Button With {
+            btnOnline = New Button With {
                 .Text = "3. 在线激活",
                 .Size = New Size(460, 40),
                 .Location = New Point(20, 250),
                 .Enabled = (_onlineProvider IsNot Nothing)
             }
-            AddHandler btnOnline.Click, AddressOf BtnOnline_Click
+
             mainPanel.Controls.Add(btnOnline)
 
             ' 关闭按钮
-            Dim btnClose As New Button With {
+            btnClose = New Button With {
                 .Text = "关闭",
                 .Size = New Size(100, 35),
                 .Location = New Point(380, 320)
             }
-            AddHandler btnClose.Click, Sub() Me.Close()
+
             mainPanel.Controls.Add(btnClose)
 
             Me.Controls.Add(mainPanel)
         End Sub
 
-        Private Sub BtnExport_Click(sender As Object, e As EventArgs)
+        Private Sub BtnExport_Click(sender As Object, e As EventArgs) Handles btnExport.Click
             _offlineProvider.ExportFingerprintWithDialog(_productName, _productVersion)
         End Sub
 
-        Private Sub BtnImport_Click(sender As Object, e As EventArgs)
+        Private Sub BtnImport_Click(sender As Object, e As EventArgs) Handles btnImport.Click
             Dim result As LicenseValidationResult = _offlineProvider.ImportLicenseWithDialog()
 
             If result.IsValid Then
@@ -138,7 +158,7 @@ Namespace LicenseFramework.Client
             End If
         End Sub
 
-        Private Sub BtnOnline_Click(sender As Object, e As EventArgs)
+        Private Sub BtnOnline_Click(sender As Object, e As EventArgs) Handles btnOnline.Click
             If _onlineProvider Is Nothing Then
                 MessageBox.Show("未配置在线授权服务", "提示",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -168,6 +188,9 @@ Namespace LicenseFramework.Client
             End Try
         End Sub
 
+        Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+            Me.Close()
+        End Sub
     End Class
 
 End Namespace

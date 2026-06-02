@@ -1,7 +1,6 @@
-Imports System
+Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Text
-Imports System.IO
 
 Namespace LicenseFramework.Client
 

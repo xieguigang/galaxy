@@ -89,7 +89,8 @@ Namespace LicenseFramework.Client
             End If
 
             ' 验证失败，弹出授权对话框
-            Using dlg As New LicenseDialog(_offlineProvider, _onlineProvider,
+            Using dlg As New LicenseDialog()
+                dlg.SetLicenseData(_offlineProvider, _onlineProvider,
                                             _productName, _productVersion, _lastResult)
                 dlg.ShowDialog(owner)
                 If dlg.IsAuthorized Then
