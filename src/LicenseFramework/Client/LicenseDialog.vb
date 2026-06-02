@@ -20,7 +20,9 @@ Namespace LicenseFramework.Client
         Private _onlineProvider As OnlineLicenseProvider
         Private _productName As String
         Private _productVersion As String
-        Friend WithEvents mainPanel As Panel
+        Friend WithEvents GroupBox1 As GroupBox
+        Friend WithEvents GroupBox2 As GroupBox
+        Friend WithEvents Label1 As Label
         Private _initialResult As LicenseValidationResult
 
         Public Property IsAuthorized As Boolean = False
@@ -63,7 +65,6 @@ Namespace LicenseFramework.Client
         Dim WithEvents btnClose As New Button
 
         Private Sub InitializeComponent()
-            mainPanel = New Panel()
             lblStatus = New Label()
             lblDetail = New Label()
             btnExport = New Button()
@@ -71,91 +72,119 @@ Namespace LicenseFramework.Client
             btnImport = New Button()
             btnOnline = New Button()
             btnClose = New Button()
-            mainPanel.SuspendLayout()
+            GroupBox1 = New GroupBox()
+            GroupBox2 = New GroupBox()
+            Label1 = New Label()
+            GroupBox1.SuspendLayout()
+            GroupBox2.SuspendLayout()
             SuspendLayout()
-            ' 
-            ' mainPanel
-            ' 
-            mainPanel.Controls.Add(lblStatus)
-            mainPanel.Controls.Add(lblDetail)
-            mainPanel.Controls.Add(btnExport)
-            mainPanel.Controls.Add(lblExportHint)
-            mainPanel.Controls.Add(btnImport)
-            mainPanel.Controls.Add(btnOnline)
-            mainPanel.Controls.Add(btnClose)
-            mainPanel.Dock = DockStyle.Fill
-            mainPanel.Location = New Point(0, 0)
-            mainPanel.Name = "mainPanel"
-            mainPanel.Size = New Size(504, 381)
-            mainPanel.TabIndex = 0
             ' 
             ' lblStatus
             ' 
-            lblStatus.Location = New Point(147, 83)
+            lblStatus.Location = New Point(18, 33)
             lblStatus.Name = "lblStatus"
-            lblStatus.Text = "当前状态: 未授权"
-            lblStatus.Size = New Size(100, 23)
+            lblStatus.Size = New Size(441, 40)
             lblStatus.TabIndex = 0
+            lblStatus.Text = "当前状态: 未授权"
             ' 
             ' lblDetail
             ' 
-            lblDetail.Location = New Point(67, 185)
+            lblDetail.Location = New Point(18, 85)
             lblDetail.Name = "lblDetail"
-            lblDetail.Text = "需要激活软件许可证"
-            lblDetail.Size = New Size(100, 23)
+            lblDetail.Size = New Size(441, 49)
             lblDetail.TabIndex = 1
+            lblDetail.Text = "需要激活软件许可证"
             ' 
             ' btnExport
             ' 
-            btnExport.Location = New Point(220, 238)
+            btnExport.Location = New Point(24, 35)
             btnExport.Name = "btnExport"
-            btnExport.Text = "1. 导出硬件指纹文件"
-            btnExport.Size = New Size(75, 23)
+            btnExport.Size = New Size(215, 32)
             btnExport.TabIndex = 2
+            btnExport.Text = "1. 导出硬件指纹文件"
             ' 
             ' lblExportHint
             ' 
-            lblExportHint.Location = New Point(341, 278)
+            lblExportHint.Location = New Point(261, 35)
             lblExportHint.Name = "lblExportHint"
-            lblExportHint.Text = "将指纹文件发送给软件供应商，获取许可证文件"
-            lblExportHint.Size = New Size(100, 23)
+            lblExportHint.Size = New Size(164, 40)
             lblExportHint.TabIndex = 3
+            lblExportHint.Text = "将指纹文件发送给软件供应商，获取许可证文件"
             ' 
             ' btnImport
             ' 
-            btnImport.Location = New Point(147, 325)
+            btnImport.Location = New Point(24, 90)
             btnImport.Name = "btnImport"
-            btnImport.Text = "2. 导入许可证文件（离线激活）"
-            btnImport.Size = New Size(75, 23)
+            btnImport.Size = New Size(215, 34)
             btnImport.TabIndex = 4
+            btnImport.Text = "2. 导入许可证文件（离线激活）"
             ' 
             ' btnOnline
             ' 
-            btnOnline.Location = New Point(232, 44)
+            btnOnline.Location = New Point(42, 325)
             btnOnline.Name = "btnOnline"
-            btnOnline.Text = "3. 在线激活"
-            btnOnline.Size = New Size(75, 23)
+            btnOnline.Size = New Size(215, 36)
             btnOnline.TabIndex = 5
+            btnOnline.Text = "3. 在线激活"
             ' 
             ' btnClose
             ' 
-            btnClose.Location = New Point(67, 56)
+            btnClose.Location = New Point(380, 392)
             btnClose.Name = "btnClose"
-            btnClose.Text = "关闭"
-            btnClose.Size = New Size(75, 23)
+            btnClose.Size = New Size(91, 31)
             btnClose.TabIndex = 6
+            btnClose.Text = "关闭"
+            ' 
+            ' GroupBox1
+            ' 
+            GroupBox1.Controls.Add(lblExportHint)
+            GroupBox1.Controls.Add(btnExport)
+            GroupBox1.Controls.Add(btnImport)
+            GroupBox1.Location = New Point(18, 150)
+            GroupBox1.Name = "GroupBox1"
+            GroupBox1.Size = New Size(441, 143)
+            GroupBox1.TabIndex = 1
+            GroupBox1.TabStop = False
+            GroupBox1.Text = "离线激活"
+            ' 
+            ' GroupBox2
+            ' 
+            GroupBox2.Controls.Add(Label1)
+            GroupBox2.Controls.Add(lblStatus)
+            GroupBox2.Controls.Add(btnOnline)
+            GroupBox2.Controls.Add(GroupBox1)
+            GroupBox2.Controls.Add(lblDetail)
+            GroupBox2.Location = New Point(12, 12)
+            GroupBox2.Name = "GroupBox2"
+            GroupBox2.Size = New Size(469, 370)
+            GroupBox2.TabIndex = 7
+            GroupBox2.TabStop = False
+            GroupBox2.Text = "软件授权激活"
+            ' 
+            ' Label1
+            ' 
+            Label1.AutoSize = True
+            Label1.Location = New Point(42, 302)
+            Label1.Name = "Label1"
+            Label1.Size = New Size(72, 15)
+            Label1.TabIndex = 6
+            Label1.Text = "或者选择："
             ' 
             ' LicenseDialog
             ' 
-            ClientSize = New Size(504, 381)
-            Controls.Add(mainPanel)
+            BackColor = Color.White
+            ClientSize = New Size(490, 434)
+            Controls.Add(GroupBox2)
+            Controls.Add(btnClose)
             FormBorderStyle = FormBorderStyle.FixedDialog
             MaximizeBox = False
             MinimizeBox = False
             Name = "LicenseDialog"
             StartPosition = FormStartPosition.CenterParent
             Text = "软件授权管理"
-            mainPanel.ResumeLayout(False)
+            GroupBox1.ResumeLayout(False)
+            GroupBox2.ResumeLayout(False)
+            GroupBox2.PerformLayout()
             ResumeLayout(False)
         End Sub
 
