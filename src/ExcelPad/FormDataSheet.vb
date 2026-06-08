@@ -3,6 +3,7 @@ Imports System.Runtime.CompilerServices
 Imports System.Windows.Forms
 Imports Galaxy.Data.TableSheet
 Imports Microsoft.VisualBasic.Data.Framework.IO
+Imports Microsoft.VisualBasic.Data.Framework.StorageProvider
 
 Public Class FormDataSheet
 

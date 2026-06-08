@@ -2,11 +2,10 @@
 Imports System.Windows.Forms
 Imports ExcelPad.RibbonLib.Controls
 Imports Galaxy.Workbench
-Imports Microsoft.VisualBasic.Data.Framework.IO
+Imports Microsoft.VisualBasic.Data.Framework.StorageProvider
 Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.MIME.Office.Excel
 Imports Microsoft.VisualStudio.WinForms.Docking
-Imports RibbonLib
 Imports ThemeVS2015
 
 Public Class FormMain : Implements AppHost
