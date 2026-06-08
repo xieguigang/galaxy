@@ -207,9 +207,9 @@ Namespace Docking
             Dim height = input.Height
             Dim rect = New Rectangle(0, 0, width, height)
             Dim arrowOut = New Bitmap(width, height, PixelFormat.Format32bppArgb)
-            Dim bitsMask As BitmapBuffer = bitmap32bit(maskArrow).CreateBuffer
-            Dim bitsInput As BitmapBuffer = bitmap32bit(input).CreateBuffer
-            Dim bitsOutput As BitmapBuffer = arrowOut.CreateBuffer
+            Dim bitsMask As VisualBasic.Imaging.BitmapImage.BitmapBuffer = bitmap32bit(maskArrow).CreateBuffer
+            Dim bitsInput As VisualBasic.Imaging.BitmapImage.BitmapBuffer = bitmap32bit(input).CreateBuffer
+            Dim bitsOutput As VisualBasic.Imaging.BitmapImage.BitmapBuffer = arrowOut.CreateBuffer
             Dim maskBuf = bitsMask.RawBuffer
             Dim inputBuf = bitsInput.RawBuffer
             Dim outputBuf = bitsOutput.RawBuffer
