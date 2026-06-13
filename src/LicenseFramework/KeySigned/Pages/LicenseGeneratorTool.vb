@@ -29,32 +29,41 @@ Public Class LicenseGeneratorForm
     Private txtCustomerName As New TextBox()
 
     Public Sub New()
+        Call InitializeComponent()
+    End Sub
+
+    Private Sub InitializeComponent()
+        SuspendLayout()
+        ' 
+        ' LicenseGeneratorForm
+        ' 
+        ClientSize = New Size(693, 392)
         Me.Text = "许可证生成工具 - 厂商端"
         Me.Size = New Drawing.Size(750, 650)
         Me.StartPosition = FormStartPosition.CenterScreen
         Me.FormBorderStyle = FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
 
-        Dim yPos As Integer = 15
+
+
 
         ' 标题
         Me.Controls.Add(New Label With {
             .Text = "许可证生成工具",
             .Font = New Drawing.Font("Microsoft YaHei", 14, Drawing.FontStyle.Bold),
-            .Location = New Drawing.Point(20, yPos),
+            .Location = New Drawing.Point(20, 15),
             .AutoSize = True
         })
-        yPos += 40
+
 
         ' 私钥
         Me.Controls.Add(New Label With {
             .Text = "RSA私钥文件:",
-            .Location = New Drawing.Point(20, yPos),
+            .Location = New Drawing.Point(20, 55),
             .AutoSize = True
         })
-        yPos += 22
 
-        txtPrivateKey.Location = New Drawing.Point(20, yPos)
+        txtPrivateKey.Location = New Drawing.Point(20, 77)
         txtPrivateKey.Size = New Drawing.Size(580, 25)
         txtPrivateKey.ReadOnly = True
         Me.Controls.Add(txtPrivateKey)
@@ -62,21 +71,21 @@ Public Class LicenseGeneratorForm
         Dim btnLoadKey As New Button With {
             .Text = "加载...",
             .Size = New Drawing.Size(100, 25),
-            .Location = New Drawing.Point(610, yPos)
+            .Location = New Drawing.Point(610, 77)
         }
         AddHandler btnLoadKey.Click, AddressOf BtnLoadKey_Click
         Me.Controls.Add(btnLoadKey)
-        yPos += 35
+
 
         ' 指纹文件
         Me.Controls.Add(New Label With {
             .Text = "客户硬件指纹文件:",
-            .Location = New Drawing.Point(20, yPos),
+            .Location = New Drawing.Point(20, 112),
             .AutoSize = True
         })
-        yPos += 22
 
-        txtFingerprint.Location = New Drawing.Point(20, yPos)
+
+        txtFingerprint.Location = New Drawing.Point(20, 135)
         txtFingerprint.Size = New Drawing.Size(580, 25)
         txtFingerprint.ReadOnly = True
         Me.Controls.Add(txtFingerprint)
@@ -84,109 +93,111 @@ Public Class LicenseGeneratorForm
         Dim btnLoadFp As New Button With {
             .Text = "加载...",
             .Size = New Drawing.Size(100, 25),
-            .Location = New Drawing.Point(610, yPos)
+            .Location = New Drawing.Point(610, 135)
         }
         AddHandler btnLoadFp.Click, AddressOf BtnLoadFingerprint_Click
         Me.Controls.Add(btnLoadFp)
-        yPos += 35
+
 
         ' 产品名称
         Me.Controls.Add(New Label With {
             .Text = "产品名称:",
-            .Location = New Drawing.Point(20, yPos),
+            .Location = New Drawing.Point(20, 170),
             .AutoSize = True
         })
-        txtProductName.Location = New Drawing.Point(120, yPos)
+        txtProductName.Location = New Drawing.Point(120, 170)
         txtProductName.Size = New Drawing.Size(250, 25)
         Me.Controls.Add(txtProductName)
-        yPos += 35
+
 
         ' 产品版本
         Me.Controls.Add(New Label With {
             .Text = "产品版本:",
-            .Location = New Drawing.Point(20, yPos),
+            .Location = New Drawing.Point(20, 205),
             .AutoSize = True
         })
-        txtProductVersion.Location = New Drawing.Point(120, yPos)
+        txtProductVersion.Location = New Drawing.Point(120, 205)
         txtProductVersion.Size = New Drawing.Size(250, 25)
         Me.Controls.Add(txtProductVersion)
-        yPos += 35
+
 
         ' 客户名称
         Me.Controls.Add(New Label With {
             .Text = "客户名称:",
-            .Location = New Drawing.Point(20, yPos),
+            .Location = New Drawing.Point(20, 240),
             .AutoSize = True
         })
-        txtCustomerName.Location = New Drawing.Point(120, yPos)
+        txtCustomerName.Location = New Drawing.Point(120, 240)
         txtCustomerName.Size = New Drawing.Size(250, 25)
         Me.Controls.Add(txtCustomerName)
-        yPos += 35
+
 
         ' 许可证类型
         Me.Controls.Add(New Label With {
             .Text = "许可证类型:",
-            .Location = New Drawing.Point(20, yPos),
+            .Location = New Drawing.Point(20, 275),
             .AutoSize = True
         })
-        cmbLicenseType.Location = New Drawing.Point(120, yPos)
+        cmbLicenseType.Location = New Drawing.Point(120, 275)
         cmbLicenseType.Size = New Drawing.Size(250, 25)
         cmbLicenseType.DropDownStyle = ComboBoxStyle.DropDownList
         cmbLicenseType.Items.AddRange({"Trial - 试用版", "Standard - 标准版",
                                         "Professional - 专业版", "Enterprise - 企业版"})
         cmbLicenseType.SelectedIndex = 1
         Me.Controls.Add(cmbLicenseType)
-        yPos += 35
+
 
         ' 有效期
         Me.Controls.Add(New Label With {
             .Text = "有效期(天,0=永久):",
-            .Location = New Drawing.Point(20, yPos),
+            .Location = New Drawing.Point(20, 310),
             .AutoSize = True
         })
-        numExpiryDays.Location = New Drawing.Point(170, yPos)
+        numExpiryDays.Location = New Drawing.Point(170, 310)
         numExpiryDays.Size = New Drawing.Size(100, 25)
         numExpiryDays.Minimum = 0
         numExpiryDays.Maximum = 3650
         numExpiryDays.Value = 365
         Me.Controls.Add(numExpiryDays)
-        yPos += 40
+
 
         ' 生成按钮
         Dim btnGenerate As New Button With {
             .Text = "生成许可证",
             .Size = New Drawing.Size(200, 40),
-            .Location = New Drawing.Point(20, yPos),
+            .Location = New Drawing.Point(20, 350),
             .Font = New Drawing.Font("Microsoft YaHei", 10, Drawing.FontStyle.Bold)
         }
         AddHandler btnGenerate.Click, AddressOf BtnGenerate_Click
         Me.Controls.Add(btnGenerate)
-        yPos += 50
+
 
         ' 输出
         Me.Controls.Add(New Label With {
             .Text = "生成的许可证:",
-            .Location = New Drawing.Point(20, yPos),
+            .Location = New Drawing.Point(20, 400),
             .AutoSize = True
         })
-        yPos += 22
 
-        txtLicenseOutput.Location = New Drawing.Point(20, yPos)
+
+        txtLicenseOutput.Location = New Drawing.Point(20, 422)
         txtLicenseOutput.Size = New Drawing.Size(690, 80)
         txtLicenseOutput.Multiline = True
         txtLicenseOutput.ReadOnly = True
         txtLicenseOutput.ScrollBars = ScrollBars.Vertical
         Me.Controls.Add(txtLicenseOutput)
-        yPos += 85
+
 
         ' 保存按钮
         Dim btnSave As New Button With {
             .Text = "保存许可证文件",
             .Size = New Drawing.Size(200, 35),
-            .Location = New Drawing.Point(20, yPos)
+            .Location = New Drawing.Point(20, 515)
         }
         AddHandler btnSave.Click, AddressOf BtnSaveLicense_Click
         Me.Controls.Add(btnSave)
+
+        ResumeLayout(False)
     End Sub
 
     Private Sub BtnLoadKey_Click(sender As Object, e As EventArgs)
