@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://schemas.microsoft.com/windows/2009/Ribbon">
+  <Application.Commands>
+    <Command Name="cmdButtonKeyGenerator" Id="2" LabelTitle="Key Generator">
+      <Command.SmallImages>
+        <Image MinDPI="192">Icons/icons8-animal-shelter-96.png</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image MinDPI="192">Icons/icons8-animal-shelter-96.png</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdButtonLicenseGenerator" Id="3" LabelTitle="License Generator">
+      <Command.SmallImages>
+        <Image MinDPI="192">Icons/icons8-registry-editor-96.png</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image MinDPI="192">Icons/icons8-registry-editor-96.png</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdPanelMain" Id="4" />
+    <Command Name="cmdGroupMain" Id="5" LabelTitle="Key Signed" />
+  </Application.Commands>
+  <Application.Views>
+    <Ribbon>
+      <Ribbon.ApplicationMenu>
+        <ApplicationMenu />
+      </Ribbon.ApplicationMenu>
+      <Ribbon.QuickAccessToolbar>
+        <QuickAccessToolbar />
+      </Ribbon.QuickAccessToolbar>
+      <Ribbon.Tabs>
+        <Tab CommandName="cmdGroupMain">
+          <Group CommandName="cmdPanelMain" SizeDefinition="TwoButtons">
+            <Button CommandName="cmdButtonKeyGenerator" />
+            <Button CommandName="cmdButtonLicenseGenerator" />
+          </Group>
+        </Tab>
+      </Ribbon.Tabs>
+    </Ribbon>
+    <ContextPopup />
+  </Application.Views>
+</Application>
+<!--ResourceName Value="APPLICATION"-->
