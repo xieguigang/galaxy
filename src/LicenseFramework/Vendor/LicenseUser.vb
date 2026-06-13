@@ -3,6 +3,7 @@
     Public Class LicenseTable
 
         Public Property user_name As String
+        Public Property organization As String
         Public Property expired As Date
         Public Property hardware_checksum As String
 
@@ -11,6 +12,7 @@
     Public Class LicenseUser
 
         Public Property user_name As String
+        Public Property organization As String
         Public Property licenses As SoftwareLicense()
 
     End Class
