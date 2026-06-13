@@ -1,13 +1,13 @@
 ﻿Imports System.IO
 Imports System.Text
 Imports System.Windows.Forms
+Imports Galaxy.Workbench.DockDocument
 Imports LicenseVendor.LicenseFramework.[Shared]
 
 ''' <summary>
 ''' 密钥生成工具的WinForms界面
 ''' </summary>
-Public Class KeyGeneratorForm
-    Inherits Form
+Public Class KeyGeneratorForm : Inherits DocumentWindow
 
     Private WithEvents txtPrivateKey As TextBox
     Private WithEvents txtPublicKey As TextBox

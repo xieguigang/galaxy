@@ -76,7 +76,7 @@ Public Class FormMain : Implements AppHost
     End Sub
 
     Private Sub KeyGeneratorToolStripMenuItem1_Click()
-        Call New KeyGeneratorForm().ShowDialog()
+        Call CommonRuntime.ShowSingleDocument(Of KeyGeneratorForm)()
     End Sub
 
     Private Sub LicenseGeneratorToolStripMenuItem_Click()
