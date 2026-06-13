@@ -43,8 +43,12 @@ Public Module Workbench
             .SaveTo(simple_dbfile)
     End Sub
 
-    ReadOnly private_key As String = App.HOME & "/data/private_key.xml"
-    ReadOnly public_key As String = App.HOME & "/data/public_key.xml"
+    ''' <summary>
+    ''' private key file
+    ''' </summary>
+    ''' <returns></returns>
+    Public ReadOnly Property private_key As String = (App.HOME & "/data/private_key.xml").GetFullPath
+    Public ReadOnly Property public_key As String = (App.HOME & "/data/public_key.xml").GetFullPath
 
     Public Function CheckPrivateKey() As Boolean
         Return private_key.FileLength > 1024
