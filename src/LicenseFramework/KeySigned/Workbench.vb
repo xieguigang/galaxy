@@ -43,4 +43,20 @@ Public Module Workbench
             .SaveTo(simple_dbfile)
     End Sub
 
+    ReadOnly private_key As String = App.HOME & "/data/private_key.xml"
+    ReadOnly public_key As String = App.HOME & "/data/public_key.xml"
+
+    Public Function CheckPrivateKey() As Boolean
+        Return private_key.FileLength > 1024
+    End Function
+
+    Public Sub WriteLicenseKeys(publicKey As String, privateKey As String)
+        Call publicKey.SaveTo(public_key)
+        Call privateKey.SaveTo(private_key)
+    End Sub
+
+    Public Function GetLicenseKey() As (publicKey$, privateKey$)
+        Return (public_key.ReadAllText(throwEx:=False), private_key.ReadAllText(throwEx:=False))
+    End Function
+
 End Module

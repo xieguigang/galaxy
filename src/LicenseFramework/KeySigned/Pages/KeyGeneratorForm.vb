@@ -1,6 +1,5 @@
 ﻿Imports System.IO
 Imports System.Text
-Imports System.Windows.Forms
 Imports Galaxy.Workbench.DockDocument
 Imports LicenseVendor.LicenseFramework.[Shared]
 
@@ -13,11 +12,12 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
     Private WithEvents txtPublicKey As TextBox
 
     Dim WithEvents lblTitle As Label
-    WithEvents btnGenerate As Button
     Dim WithEvents lblPrompt As Label
     Dim WithEvents lblPrompt2 As Label
+
     WithEvents btnSavePrivate As Button
     WithEvents btnSavePublic As Button
+    WithEvents btnGenerate As Button
 
     Public Sub New()
         Call InitializeComponent()
@@ -37,7 +37,7 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' lblTitle
         ' 
         lblTitle.AutoSize = True
-        lblTitle.Font = New Font("Microsoft YaHei", 14F, FontStyle.Bold)
+        lblTitle.Font = New Font("Microsoft YaHei", 14.0F, FontStyle.Bold)
         lblTitle.Location = New Point(20, 15)
         lblTitle.Name = "lblTitle"
         lblTitle.Size = New Size(256, 26)
@@ -125,6 +125,15 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
     End Sub
 
     Private Sub BtnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
+        If Workbench.CheckPrivateKey Then
+            If MessageBox.Show("目前已经存在有一个应用程序的私钥文件的配置结果，重新生成新的私钥文件将会让当前的软件授权配置失效，需要重新使用新的私钥文件编译后才可以被使用，确认重新生成新的私钥文件？",
+                               "确认更换新的私钥文件",
+                               MessageBoxButtons.OKCancel,
+                               MessageBoxIcon.Warning) = DialogResult.Cancel Then
+                Return
+            End If
+        End If
+
         Try
             Me.Cursor = Cursors.WaitCursor
             Dim publicKeyXml As String = String.Empty
@@ -135,6 +144,7 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
             txtPrivateKey.Text = privateKeyXml
             txtPublicKey.Text = publicKeyXml
 
+            Workbench.WriteLicenseKeys(publicKeyXml, privateKeyXml)
             Me.Cursor = Cursors.Default
             MessageBox.Show("密钥对生成成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
@@ -145,7 +155,10 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
     End Sub
 
     Private Sub BtnSavePrivate_Click(sender As Object, e As EventArgs) Handles btnSavePrivate.Click
-        If String.IsNullOrEmpty(txtPrivateKey.Text) Then Return
+        If String.IsNullOrEmpty(txtPrivateKey.Text) Then
+            Return
+        End If
+
         Using dlg As New SaveFileDialog With {
             .Filter = "XML文件|*.xml",
             .FileName = "private_key.xml",
@@ -159,7 +172,10 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
     End Sub
 
     Private Sub BtnSavePublic_Click(sender As Object, e As EventArgs) Handles btnSavePublic.Click
-        If String.IsNullOrEmpty(txtPublicKey.Text) Then Return
+        If String.IsNullOrEmpty(txtPublicKey.Text) Then
+            Return
+        End If
+
         Using dlg As New SaveFileDialog With {
             .Filter = "XML文件|*.xml",
             .FileName = "public_key.xml",
@@ -172,5 +188,11 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         End Using
     End Sub
 
+    Private Sub KeyGeneratorForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        With Workbench.GetLicenseKey
+            txtPrivateKey.Text = .privateKey
+            txtPublicKey.Text = .publicKey
+        End With
+    End Sub
 End Class
 
