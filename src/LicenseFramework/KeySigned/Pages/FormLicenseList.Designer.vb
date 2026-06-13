@@ -29,13 +29,13 @@ Partial Class FormLicenseList
         ' 
         ' FormLicenseList
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(939, 537)
         Name = "FormLicenseList"
         Text = "Form1"
 
-
+        TreeListView1 = New ModernTreeListView(Of LicenseUser)
         TreeListView1.Dock = DockStyle.Fill
 
         Controls.Add(TreeListView1)
@@ -43,5 +43,5 @@ Partial Class FormLicenseList
         ResumeLayout(False)
     End Sub
 
-    Dim WithEvents TreeListView1 As New ModernTreeListView(Of LicenseUser)
+    Dim WithEvents TreeListView1 As ModernTreeListView(Of LicenseUser)
 End Class
