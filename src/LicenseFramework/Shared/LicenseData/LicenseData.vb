@@ -36,6 +36,16 @@ Namespace LicenseFramework.Shared
                        Not IsExpired
             End Get
         End Property
+
+        Public Shared Function SimpleDescription(lic As LicenseData) As String
+            If lic Is Nothing Then
+                Return "未授权"
+            End If
+
+            Return If(lic.IsValid AndAlso Not lic.IsExpired,
+                       $"已授权 - {lic.LicenseType.ToString()} - 到期: {lic.ExpiryDate}",
+                       "未授权")
+        End Function
     End Class
 
 End Namespace

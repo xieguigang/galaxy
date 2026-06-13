@@ -1,4 +1,5 @@
 ﻿Imports System.Windows.Forms
+Imports Galaxy.Workbench
 Imports Galaxy.Workbench.LicenseFramework.Client
 Imports Galaxy.Workbench.LicenseFramework.[Shared]
 
@@ -73,5 +74,9 @@ Module Workbench
 
     Public Sub OpenLicenseDialog()
         Call licenseManager.OpenLicenseDialog()
+    End Sub
+
+    Public Sub SetLicenseStatus()
+        DirectCast(CommonRuntime.AppHost, FormMain).ToolStripStatusLabel3.Text = LicenseData.SimpleDescription(Workbench.GetCurrentLicense)
     End Sub
 End Module

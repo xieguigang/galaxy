@@ -29,6 +29,8 @@ Partial Class FormMain
         StatusStrip1 = New StatusStrip()
         ToolStripStatusLabel1 = New ToolStripStatusLabel()
         Ribbon1 = New Ribbon()
+        ToolStripStatusLabel2 = New ToolStripStatusLabel()
+        ToolStripStatusLabel3 = New ToolStripStatusLabel()
         StatusStrip1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -36,15 +38,15 @@ Partial Class FormMain
         ' 
         m_dockPanel.Dock = DockStyle.Fill
         m_dockPanel.Location = New System.Drawing.Point(0, 116)
-        m_dockPanel.Margin = New Padding(4, 5, 4, 5)
+        m_dockPanel.Margin = New Padding(4, 4, 4, 4)
         m_dockPanel.Name = "m_dockPanel"
-        m_dockPanel.Size = New System.Drawing.Size(933, 499)
+        m_dockPanel.Size = New System.Drawing.Size(933, 424)
         m_dockPanel.TabIndex = 0
         ' 
         ' StatusStrip1
         ' 
-        StatusStrip1.Items.AddRange(New ToolStripItem() {ToolStripStatusLabel1})
-        StatusStrip1.Location = New System.Drawing.Point(0, 615)
+        StatusStrip1.Items.AddRange(New ToolStripItem() {ToolStripStatusLabel1, ToolStripStatusLabel2, ToolStripStatusLabel3})
+        StatusStrip1.Location = New System.Drawing.Point(0, 540)
         StatusStrip1.Name = "StatusStrip1"
         StatusStrip1.Padding = New Padding(1, 0, 16, 0)
         StatusStrip1.Size = New System.Drawing.Size(933, 22)
@@ -54,7 +56,7 @@ Partial Class FormMain
         ' ToolStripStatusLabel1
         ' 
         ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        ToolStripStatusLabel1.Size = New System.Drawing.Size(48, 17)
+        ToolStripStatusLabel1.Size = New System.Drawing.Size(42, 17)
         ToolStripStatusLabel1.Text = "Ready!"
         ' 
         ' Ribbon1
@@ -67,15 +69,27 @@ Partial Class FormMain
         Ribbon1.Size = New System.Drawing.Size(933, 116)
         Ribbon1.TabIndex = 2
         ' 
+        ' ToolStripStatusLabel2
+        ' 
+        ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        ToolStripStatusLabel2.Size = New System.Drawing.Size(797, 17)
+        ToolStripStatusLabel2.Spring = True
+        ' 
+        ' ToolStripStatusLabel3
+        ' 
+        ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        ToolStripStatusLabel3.Size = New System.Drawing.Size(46, 17)
+        ToolStripStatusLabel3.Text = "未授权"
+        ' 
         ' FormMain
         ' 
-        AutoScaleDimensions = New System.Drawing.SizeF(7F, 17F)
+        AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New System.Drawing.Size(933, 637)
+        ClientSize = New System.Drawing.Size(933, 562)
         Controls.Add(m_dockPanel)
         Controls.Add(Ribbon1)
         Controls.Add(StatusStrip1)
-        Margin = New Padding(4, 5, 4, 5)
+        Margin = New Padding(4, 4, 4, 4)
         Name = "FormMain"
         Text = "Excel Pad"
         StatusStrip1.ResumeLayout(False)
@@ -88,4 +102,6 @@ Partial Class FormMain
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents Ribbon1 As Ribbon
+    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
 End Class

@@ -20,6 +20,8 @@ Public Class TaskWizard
     Public Shared Function ShowWizard(taskName As String, ParamArray steps As IWizardUI()) As TaskWizard
         If CommonRuntime.AppHost Is Nothing Then
             Throw New NullReferenceException("the required workbench windows main form is nothing!")
+        ElseIf steps.IsNullOrEmpty Then
+            Return New TaskWizard
         End If
 
         Dim wizard As New TaskWizard

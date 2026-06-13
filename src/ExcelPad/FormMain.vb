@@ -82,6 +82,8 @@ Public Class FormMain : Implements AppHost
 
         If Not Workbench.CheckLicense() Then
             Call App.Exit()
+        Else
+            Call Workbench.SetLicenseStatus()
         End If
     End Sub
 

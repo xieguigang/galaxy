@@ -22,9 +22,7 @@ Public Class FormLicensePage
     End Sub
 
     Private Sub FormLicensePage_Load(sender As Object, e As EventArgs) Handles Me.Load
-        lblStatus.Text = If(Workbench.IsLicensed,
-                       $"已授权 - {Workbench.GetCurrentLicense()?.LicenseType.ToString()} - 到期: {Workbench.GetCurrentLicense()?.ExpiryDate}",
-                       "未授权")
+        lblStatus.Text = LicenseData.SimpleDescription(Workbench.GetCurrentLicense)
 
         ' 授权信息
         If Workbench.IsLicensed Then
@@ -39,5 +37,9 @@ Public Class FormLicensePage
             }
             mainPanel.Controls.Add(lblInfo)
         End If
+    End Sub
+
+    Private Sub FormLicensePage_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Call Workbench.SetLicenseStatus()
     End Sub
 End Class
