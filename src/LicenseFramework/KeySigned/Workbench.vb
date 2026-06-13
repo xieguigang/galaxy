@@ -14,13 +14,13 @@ Public Module Workbench
             .Select(Function(user)
                         Return New LicenseUser With {
                             .user_name = user.Key,
-                            .organization = user.First.organization,
+                            .software_name = user.First.organization,
                             .licenses = user _
                                 .Select(Function(a)
                                             Return New LicenseUser With {
                                                 .expired = a.expired,
                                                 .hardware_checksum = a.hardware_checksum,
-                                                .organization = user.First.organization,
+                                                .software_name = user.First.organization,
                                                 .user_name = user.Key
                                             }
                                         End Function) _
