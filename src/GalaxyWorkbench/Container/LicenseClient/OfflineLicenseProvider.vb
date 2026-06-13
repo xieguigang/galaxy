@@ -1,7 +1,6 @@
 Imports System.IO
 Imports System.Text
-Imports System.Windows.Forms
-Imports LicenseVendor.LicenseFramework.Shared
+Imports Galaxy.Workbench.LicenseFramework.Shared
 
 Namespace LicenseFramework.Client
 

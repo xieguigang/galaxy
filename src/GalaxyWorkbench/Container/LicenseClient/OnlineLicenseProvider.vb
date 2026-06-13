@@ -1,7 +1,7 @@
 Imports System.IO
 Imports System.Net
 Imports System.Text
-Imports LicenseVendor.LicenseFramework.Shared
+Imports Galaxy.Workbench.LicenseFramework.Shared
 Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace LicenseFramework.Client
