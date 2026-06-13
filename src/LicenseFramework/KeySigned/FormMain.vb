@@ -33,6 +33,8 @@ Public Class FormMain : Implements AppHost
 
         AddHandler ribbon.ButtonKeyGenerator.ExecuteEvent, Sub() Call KeyGeneratorToolStripMenuItem1_Click()
         AddHandler ribbon.ButtonLicenseGenerator.ExecuteEvent, Sub() Call LicenseGeneratorToolStripMenuItem_Click()
+        AddHandler ribbon.ButtonExit.ExecuteEvent, Sub() Call Me.Close()
+        AddHandler ribbon.ButtonLicenses.ExecuteEvent, Sub() Call CommonRuntime.ShowSingleDocument(Of FormLicenseList)()
 
         Call initializeVSPanel()
         Call CommonRuntime.Hook(Me)
