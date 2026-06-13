@@ -1,6 +1,7 @@
 Imports System.IO
 Imports System.Text
 Imports Galaxy.Workbench.CommonDialogs
+Imports LicenseVendor.Database
 Imports LicenseVendor.LicenseFramework.Shared
 Imports LicenseVendor.LicenseFramework.Vendor
 
@@ -213,7 +214,7 @@ Public Class LicenseGeneratorForm : Inherits InputDialog
         ' 
         ' btnGenerate
         ' 
-        btnGenerate.Font = New Font("Microsoft YaHei", 10F, FontStyle.Bold)
+        btnGenerate.Font = New Font("Microsoft YaHei", 10.0F, FontStyle.Bold)
         btnGenerate.Location = New Point(17, 334)
         btnGenerate.Name = "btnGenerate"
         btnGenerate.Size = New Size(200, 40)
@@ -279,7 +280,7 @@ Public Class LicenseGeneratorForm : Inherits InputDialog
         ' lblPrompt1
         ' 
         lblPrompt1.AutoSize = True
-        lblPrompt1.Font = New Font("Microsoft YaHei", 14F, FontStyle.Bold)
+        lblPrompt1.Font = New Font("Microsoft YaHei", 14.0F, FontStyle.Bold)
         lblPrompt1.Location = New Point(12, 18)
         lblPrompt1.Name = "lblPrompt1"
         lblPrompt1.Size = New Size(183, 26)
@@ -288,7 +289,7 @@ Public Class LicenseGeneratorForm : Inherits InputDialog
         ' 
         ' LicenseGeneratorForm
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         ClientSize = New Size(751, 621)
         Controls.Add(lblPrompt1)
         Controls.Add(GroupBox1)
@@ -395,6 +396,15 @@ Public Class LicenseGeneratorForm : Inherits InputDialog
             If dlg.ShowDialog = DialogResult.OK Then
                 File.WriteAllText(dlg.FileName, txtLicenseOutput.Text, Encoding.UTF8)
                 MessageBox.Show("许可证文件已保存", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                Dim license As New SoftwareLicense With {
+                    .expired = Now + TimeSpan.FromDays(numExpiryDays.Value),
+                    .hardware_checksum = _currentFingerprint,
+                    .organization = txtProductName.Text,
+                    .user_name = txtCustomerName.Text
+                }
+
+                Call Workbench.addLicense(license)
             End If
         End Using
     End Sub

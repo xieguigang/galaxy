@@ -81,8 +81,14 @@ Public Class FormMain : Implements AppHost
         Call CommonRuntime.ShowSingleDocument(Of KeyGeneratorForm)()
     End Sub
 
-    Private Sub LicenseGeneratorToolStripMenuItem_Click()
+    Private Async Sub LicenseGeneratorToolStripMenuItem_Click()
+        Dim page As FormLicenseList = m_dockPanel.Documents.Where(Function(doc) TypeOf doc Is FormLicenseList).FirstOrDefault
+
         Call InputDialog.Input(Of LicenseGeneratorForm)()
+
+        If Not page Is Nothing Then
+            Await page.LoadLicenseList
+        End If
     End Sub
 
     Public Sub SetWorkbenchVisible(visible As Boolean) Implements AppHost.SetWorkbenchVisible

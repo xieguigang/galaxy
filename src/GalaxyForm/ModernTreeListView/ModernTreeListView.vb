@@ -1421,15 +1421,27 @@ Namespace ModernTreeListView
             ' Keyboard: arrows, Home, End etc. work inside the editors because we only intercept Enter/Escape/Tab.
 
             ' DateTime (non-nullable or nullable with value)
-            Dim dtVal As Date? = If(TypeOf currentValue Is Date, CDate(currentValue), Nothing)
+            Dim dtVal As Date?
+
+            If currentValue IsNot Nothing AndAlso currentValue.GetType Is GetType(Date) Then
+                dtVal = CDate(currentValue)
+            End If
 
             If dtVal IsNot Nothing Then
+                If CDate(dtVal) < DateTimePicker.MinimumDateTime Then
+                    Return New System.Windows.Forms.DateTimePicker With {
+                        .Format = System.Windows.Forms.DateTimePickerFormat.Short,
+                        .Value = Now,
+                        .CalendarMonthBackground = EditorBackColor,
+                        .CalendarForeColor = EditorForeColor
+                    }
+                End If
                 Return New System.Windows.Forms.DateTimePicker With {
-        .Format = System.Windows.Forms.DateTimePickerFormat.Short,
-        .Value = dtVal,
-        .CalendarMonthBackground = EditorBackColor,
-        .CalendarForeColor = EditorForeColor
-    }
+                    .Format = System.Windows.Forms.DateTimePickerFormat.Short,
+                    .Value = dtVal,
+                    .CalendarMonthBackground = EditorBackColor,
+                    .CalendarForeColor = EditorForeColor
+                }
             End If
 
             ' bool
@@ -1437,12 +1449,12 @@ Namespace ModernTreeListView
 
             If boolVal IsNot Nothing Then
                 Return New System.Windows.Forms.CheckBox With {
-        .Checked = boolVal,
-        .BackColor = EditorBackColor,
-        .ForeColor = EditorForeColor,
-        .Text = column.Title,
-        .AutoSize = True
-    }
+                    .Checked = boolVal,
+                    .BackColor = EditorBackColor,
+                    .ForeColor = EditorForeColor,
+                    .Text = column.Title,
+                    .AutoSize = True
+                }
             End If
 
             ' Default: TextBox (great for strings, numbers, GUIDs, etc.)
