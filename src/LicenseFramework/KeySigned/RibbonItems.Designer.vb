@@ -15,10 +15,12 @@ Imports RibbonLib.Controls
 Namespace RibbonLib.Controls
     Partial Class RibbonItems
         Private Class Cmd
-            Public Const cmdGroupMain As UInteger = 5
-            Public Const cmdPanelMain As UInteger = 4
             Public Const cmdButtonKeyGenerator As UInteger = 2
             Public Const cmdButtonLicenseGenerator As UInteger = 3
+            Public Const cmdButtonLicenses As UInteger = 6
+            Public Const cmdButtonExit As UInteger = 7
+            Public Const cmdGroupMain As UInteger = 5
+            Public Const cmdPanelMain As UInteger = 4
         End Class
 
         ' ContextPopup CommandName
@@ -27,18 +29,6 @@ Namespace RibbonLib.Controls
         Public ReadOnly Property Ribbon As Ribbon
             Get
                 Return _ribbon
-            End Get
-        End Property
-        Private _GroupMain As RibbonTab
-        Public ReadOnly Property GroupMain As RibbonTab
-            Get
-                Return _GroupMain
-            End Get
-        End Property
-        Private _PanelMain As RibbonGroup
-        Public ReadOnly Property PanelMain As RibbonGroup
-            Get
-                Return _PanelMain
             End Get
         End Property
         Private _ButtonKeyGenerator As RibbonButton
@@ -53,16 +43,42 @@ Namespace RibbonLib.Controls
                 Return _ButtonLicenseGenerator
             End Get
         End Property
+        Private _ButtonLicenses As RibbonButton
+        Public ReadOnly Property ButtonLicenses As RibbonButton
+            Get
+                Return _ButtonLicenses
+            End Get
+        End Property
+        Private _ButtonExit As RibbonButton
+        Public ReadOnly Property ButtonExit As RibbonButton
+            Get
+                Return _ButtonExit
+            End Get
+        End Property
+        Private _GroupMain As RibbonTab
+        Public ReadOnly Property GroupMain As RibbonTab
+            Get
+                Return _GroupMain
+            End Get
+        End Property
+        Private _PanelMain As RibbonGroup
+        Public ReadOnly Property PanelMain As RibbonGroup
+            Get
+                Return _PanelMain
+            End Get
+        End Property
 
         Public Sub New(ByVal ribbon As Ribbon)
             If ribbon Is Nothing Then
                 Throw New ArgumentNullException(NameOf(ribbon), "Parameter is Nothing")
             End If
             _ribbon = ribbon
-            _GroupMain = New RibbonTab(_ribbon, Cmd.cmdGroupMain)
-            _PanelMain = New RibbonGroup(_ribbon, Cmd.cmdPanelMain)
             _ButtonKeyGenerator = New RibbonButton(_ribbon, Cmd.cmdButtonKeyGenerator)
             _ButtonLicenseGenerator = New RibbonButton(_ribbon, Cmd.cmdButtonLicenseGenerator)
+            _ButtonLicenses = New RibbonButton(_ribbon, Cmd.cmdButtonLicenses)
+            _ButtonExit = New RibbonButton(_ribbon, Cmd.cmdButtonExit)
+            _GroupMain = New RibbonTab(_ribbon, Cmd.cmdGroupMain)
+            _PanelMain = New RibbonGroup(_ribbon, Cmd.cmdPanelMain)
         End Sub
 
     End Class

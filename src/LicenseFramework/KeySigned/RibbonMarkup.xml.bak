@@ -19,15 +19,40 @@
     </Command>
     <Command Name="cmdPanelMain" Id="4" />
     <Command Name="cmdGroupMain" Id="5" LabelTitle="Key Signed" />
+    <Command Name="cmdButtonLicenses" Id="6" LabelTitle="Licenses">
+      <Command.SmallImages>
+        <Image MinDPI="192">Icons/icons8-user-manual-96.png</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image MinDPI="192">Icons/icons8-user-manual-96.png</Image>
+      </Command.LargeImages>
+    </Command>
   </Application.Commands>
   <Application.Views>
     <Ribbon>
       <Ribbon.ApplicationMenu>
-        <ApplicationMenu />
+        <ApplicationMenu>
+          <MenuGroup>
+            <Button />
+            <Button />
+            <Button />
+          </MenuGroup>
+          <MenuGroup>
+            <Button />
+          </MenuGroup>
+        </ApplicationMenu>
       </Ribbon.ApplicationMenu>
       <Ribbon.QuickAccessToolbar>
         <QuickAccessToolbar />
       </Ribbon.QuickAccessToolbar>
+      <Ribbon.Tabs>
+        <Tab CommandName="cmdGroupMain">
+          <Group CommandName="cmdPanelMain" SizeDefinition="TwoButtons">
+            <Button CommandName="cmdButtonKeyGenerator" />
+            <Button CommandName="cmdButtonLicenseGenerator" />
+          </Group>
+        </Tab>
+      </Ribbon.Tabs>
     </Ribbon>
     <ContextPopup />
   </Application.Views>

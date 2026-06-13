@@ -18,29 +18,35 @@ namespace RibbonLib.Controls
     {
         private static class Cmd
         {
-            public const uint cmdGroupMain = 5;
-            public const uint cmdPanelMain = 4;
             public const uint cmdButtonKeyGenerator = 2;
             public const uint cmdButtonLicenseGenerator = 3;
+            public const uint cmdButtonLicenses = 6;
+            public const uint cmdButtonExit = 7;
+            public const uint cmdGroupMain = 5;
+            public const uint cmdPanelMain = 4;
         }
 
         // ContextPopup CommandName
 
         public Ribbon Ribbon { get; private set; }
-        public RibbonTab GroupMain { get; private set; }
-        public RibbonGroup PanelMain { get; private set; }
         public RibbonButton ButtonKeyGenerator { get; private set; }
         public RibbonButton ButtonLicenseGenerator { get; private set; }
+        public RibbonButton ButtonLicenses { get; private set; }
+        public RibbonButton ButtonExit { get; private set; }
+        public RibbonTab GroupMain { get; private set; }
+        public RibbonGroup PanelMain { get; private set; }
 
         public RibbonItems(Ribbon ribbon)
         {
             if (ribbon == null)
                 throw new ArgumentNullException(nameof(ribbon), "Parameter is null");
             this.Ribbon = ribbon;
-            GroupMain = new RibbonTab(ribbon, Cmd.cmdGroupMain);
-            PanelMain = new RibbonGroup(ribbon, Cmd.cmdPanelMain);
             ButtonKeyGenerator = new RibbonButton(ribbon, Cmd.cmdButtonKeyGenerator);
             ButtonLicenseGenerator = new RibbonButton(ribbon, Cmd.cmdButtonLicenseGenerator);
+            ButtonLicenses = new RibbonButton(ribbon, Cmd.cmdButtonLicenses);
+            ButtonExit = new RibbonButton(ribbon, Cmd.cmdButtonExit);
+            GroupMain = new RibbonTab(ribbon, Cmd.cmdGroupMain);
+            PanelMain = new RibbonGroup(ribbon, Cmd.cmdPanelMain);
         }
 
     }
