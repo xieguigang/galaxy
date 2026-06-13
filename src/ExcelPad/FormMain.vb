@@ -78,6 +78,10 @@ Public Class FormMain : Implements AppHost
 
         Call CommonRuntime.Hook(Me)
         Call CommonRuntime.RegisterOutputWindow()
+
+        If Not Workbench.CheckLicense() Then
+            Call App.Exit()
+        End If
     End Sub
 
     Private Sub ImportsFile()

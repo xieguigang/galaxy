@@ -56,7 +56,7 @@ Module Workbench
 
         If Not result.IsValid Then
             ' ===== 第三步：验证失败，显示授权对话框 =====
-            Dim dialogResult As LicenseValidationResult = licenseManager.ValidateWithDialog(Nothing)
+            Dim dialogResult As LicenseValidationResult = licenseManager.ValidateWithDialog
 
             If Not licenseManager.IsLicensed Then
                 ' 用户未完成授权，退出程序
@@ -69,7 +69,7 @@ Module Workbench
         Return True
     End Function
 
-    Public Sub OpenLicenseDialog(owner As IWin32Window)
-        Call licenseManager.OpenLicenseDialog(owner)
+    Public Sub OpenLicenseDialog()
+        Call licenseManager.OpenLicenseDialog()
     End Sub
 End Module

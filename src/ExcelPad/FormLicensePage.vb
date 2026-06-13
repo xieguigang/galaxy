@@ -18,7 +18,7 @@ Imports Galaxy.Workbench.LicenseFramework.[Shared]
 Public Class FormLicensePage
 
     Private Sub BtnLicense_Click(sender As Object, e As EventArgs) Handles btnLicense.Click
-        Workbench.OpenLicenseDialog(Me)
+        Workbench.OpenLicenseDialog()
     End Sub
 
     Private Sub FormLicensePage_Load(sender As Object, e As EventArgs) Handles Me.Load

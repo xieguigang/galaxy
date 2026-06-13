@@ -1,3 +1,4 @@
+Imports Galaxy.Workbench.CommonDialogs
 Imports Galaxy.Workbench.LicenseFramework.Shared
 Imports Windows.Win32.System
 
@@ -81,7 +82,7 @@ Namespace LicenseFramework.Client
         ''' <summary>
         ''' 执行授权验证，失败时弹出授权对话框
         ''' </summary>
-        Public Function ValidateWithDialog(owner As IWin32Window) As LicenseValidationResult
+        Public Function ValidateWithDialog() As LicenseValidationResult
             _lastResult = Validate()
 
             If _lastResult.IsValid Then
@@ -89,20 +90,20 @@ Namespace LicenseFramework.Client
             End If
 
             ' 验证失败，弹出授权对话框
-            Call OpenLicenseDialog(owner)
+            Call OpenLicenseDialog()
 
             Return _lastResult
         End Function
 
-        Public Sub OpenLicenseDialog(owner As IWin32Window)
-            Using dlg As New LicenseDialog()
-                dlg.SetLicenseData(_offlineProvider, _onlineProvider,
-                                            _productName, _productVersion, _lastResult)
-                dlg.ShowDialog(owner)
-                If dlg.IsAuthorized Then
-                    _lastResult = Validate()
-                End If
-            End Using
+        Public Sub OpenLicenseDialog()
+            Dim dlg As New LicenseDialog()
+
+            Call dlg.SetLicenseData(_offlineProvider, _onlineProvider, _productName, _productVersion, _lastResult)
+            Call InputDialog.Input(Sub(dlg2)
+                                       If DirectCast(dlg, LicenseDialog).IsAuthorized Then
+                                           _lastResult = Validate()
+                                       End If
+                                   End Sub, config:=dlg)
         End Sub
 
         ''' <summary>

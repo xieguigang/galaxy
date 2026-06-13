@@ -1,3 +1,4 @@
+Imports Galaxy.Workbench.CommonDialogs
 Imports Galaxy.Workbench.LicenseFramework.Shared
 
 Namespace LicenseFramework.Client
@@ -12,7 +13,7 @@ Namespace LicenseFramework.Client
     ''' ---------------------------------------------------------------
     '''
     Public Class LicenseDialog
-        Inherits Form
+        Inherits InputDialog
 
         Private _offlineProvider As OfflineLicenseProvider
         Private _onlineProvider As OnlineLicenseProvider
@@ -26,7 +27,7 @@ Namespace LicenseFramework.Client
         Public Property IsAuthorized As Boolean = False
 
         Public Sub New()
-            InitializeComponent()
+            Call InitializeComponent()
             Call UpdateUI()
         End Sub
 
