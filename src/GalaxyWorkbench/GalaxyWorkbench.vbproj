@@ -52,6 +52,12 @@
     <DefineTrace>True</DefineTrace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="logs\**" />
+    <Page Remove="logs\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
@@ -64,4 +70,10 @@
     <ProjectReference Include="..\dockpanelsuite\VSDockPanel\VSDockPanel.vbproj" />
     <ProjectReference Include="..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Container\LicenseClient\LicenseDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="..\LicenseFramework\Shared\LicenseShared.projitems" Label="Shared" />
   </Project>
