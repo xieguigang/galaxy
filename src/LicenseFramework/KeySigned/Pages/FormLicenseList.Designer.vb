@@ -1,6 +1,6 @@
 ﻿Imports Galaxy.CommonControls.ModernTreeListView
 Imports Galaxy.Workbench.DockDocument
-Imports LicenseVendor
+Imports LicenseVendor.Database
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormLicenseList

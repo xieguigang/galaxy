@@ -1,6 +1,6 @@
 ﻿Namespace Database
 
-    Public Class LicenseTable
+    Public Class SoftwareLicense
 
         Public Property user_name As String
         Public Property organization As String
@@ -13,14 +13,10 @@
 
         Public Property user_name As String
         Public Property organization As String
-        Public Property licenses As SoftwareLicense()
-
-    End Class
-
-    Public Class SoftwareLicense
-
         Public Property expired As Date
         Public Property hardware_checksum As String
+        Public Property licenses As LicenseUser()
 
     End Class
+
 End Namespace
