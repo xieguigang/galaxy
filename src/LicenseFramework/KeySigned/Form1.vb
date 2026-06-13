@@ -1,4 +1,4 @@
-﻿Imports LicenseVendor.LicenseFramework.Vendor
+﻿Imports KeySigned.LicenseFramework.Vendor
 
 Public Class Form1
 

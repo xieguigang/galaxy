@@ -7,6 +7,27 @@
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
     <Platforms>AnyCPU;x64</Platforms>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <DefineConstants>VENDOR_TOOL</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <DefineConstants>VENDOR_TOOL</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <DefineConstants>VENDOR_TOOL</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <DefineConstants>VENDOR_TOOL</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,23 +37,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj" />
-    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj" />
-    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Drawing-net4.8\Drawing-net4.8.vbproj" />
     <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
-    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%json\JSON-netcore5.vbproj" />
-    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%vnd.openxmlformats-officedocument.spreadsheetml.sheet\Excel\xlsx-netcore5.vbproj" />
-    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\text%html\html_netcore5.vbproj" />
-    <ProjectReference Include="..\..\dockpanelsuite\Themes\ThemeVS2015.vbproj" />
-    <ProjectReference Include="..\..\dockpanelsuite\VSDockPanel\VSDockPanel.vbproj" />
-    <ProjectReference Include="..\..\GalaxyData\GalaxyData.vbproj" />
     <ProjectReference Include="..\..\GalaxyWorkbench\GalaxyWorkbench.vbproj" />
-    <ProjectReference Include="..\..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj" />
-    <ProjectReference Include="..\Demo\DemoWinFormsApp.vbproj" />
     <ProjectReference Include="..\Vendor\Vendor.vbproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="KeyGeneratorForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LicenseGeneratorTool.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="My Project\Application.Designer.vb">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -46,5 +62,7 @@
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+
+  <Import Project="..\Shared\LicenseShared.projitems" Label="Shared" />
 
 </Project>

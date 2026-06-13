@@ -69,6 +69,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "License", "License", "{D2AB
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LicenseShared", "LicenseFramework\Shared\LicenseShared.shproj", "{81390088-C611-4629-B785-93E1D6F0C913}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KeySigned", "LicenseFramework\KeySigned\KeySigned.vbproj", "{53D80F46-2347-084F-CD99-C6A7374223E4}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Vendor", "LicenseFramework\Vendor\Vendor.vbproj", "{3A80D62D-AD41-79F1-D58F-0944178C0145}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -367,6 +371,30 @@ Global
 		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Release|x64.ActiveCfg = Release|x64
 		{2E03FA62-D5D9-50DE-1029-CF59608DF671}.Release|x64.Build.0 = Release|x64
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.Debug|x64.ActiveCfg = Debug|x64
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.Debug|x64.Build.0 = Debug|x64
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.mzkit_win32|Any CPU.ActiveCfg = Release|Any CPU
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.mzkit_win32|Any CPU.Build.0 = Release|Any CPU
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.mzkit_win32|x64.ActiveCfg = Release|x64
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.mzkit_win32|x64.Build.0 = Release|x64
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.Release|x64.ActiveCfg = Release|x64
+		{53D80F46-2347-084F-CD99-C6A7374223E4}.Release|x64.Build.0 = Release|x64
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Debug|x64.ActiveCfg = Debug|x64
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Debug|x64.Build.0 = Debug|x64
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.mzkit_win32|Any CPU.ActiveCfg = mzkit_win32|Any CPU
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.mzkit_win32|Any CPU.Build.0 = mzkit_win32|Any CPU
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.mzkit_win32|x64.ActiveCfg = mzkit_win32|x64
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.mzkit_win32|x64.Build.0 = mzkit_win32|x64
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Release|x64.ActiveCfg = Release|x64
+		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -400,11 +428,14 @@ Global
 		{2E03FA62-D5D9-50DE-1029-CF59608DF671} = {1708D61E-3B48-4E16-83B8-D3128307AEDD}
 		{D2ABC5BF-788E-41AA-A073-767F005486AB} = {8C618855-BA38-47F5-A5FD-129C0D7F7F04}
 		{81390088-C611-4629-B785-93E1D6F0C913} = {D2ABC5BF-788E-41AA-A073-767F005486AB}
+		{3A80D62D-AD41-79F1-D58F-0944178C0145} = {D2ABC5BF-788E-41AA-A073-767F005486AB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3958ABFB-93F0-45E4-8957-FED9918DC189}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		LicenseFramework\Shared\LicenseShared.projitems*{3a80d62d-ad41-79f1-d58f-0944178c0145}*SharedItemsImports = 5
+		LicenseFramework\Shared\LicenseShared.projitems*{53d80f46-2347-084f-cd99-c6a7374223e4}*SharedItemsImports = 5
 		LicenseFramework\Shared\LicenseShared.projitems*{81390088-c611-4629-b785-93e1d6f0c913}*SharedItemsImports = 13
 		..\..\GCModeller\src\R-sharp\Library\shares\dataframeHelper\dataframeHelper.projitems*{a78e4fd2-ede8-5ee4-77bd-a5084109ec70}*SharedItemsImports = 5
 		..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{a78e4fd2-ede8-5ee4-77bd-a5084109ec70}*SharedItemsImports = 5

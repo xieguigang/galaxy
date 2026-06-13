@@ -1,6 +1,12 @@
 Imports System.Text
-Imports Galaxy.Workbench.LicenseFramework.Shared
 Imports Microsoft.VisualBasic.Serialization.JSON
+
+#If WORKBENCH Then
+Imports Galaxy.Workbench.LicenseFramework.Shared
+#End If
+#If VENDOR_TOOL Then
+Imports LicenseVendor.LicenseFramework.Shared
+#End If
 
 Namespace LicenseFramework.Client
 

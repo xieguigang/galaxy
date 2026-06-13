@@ -2,6 +2,7 @@ Imports System.IO
 Imports System.Text
 Imports System.Windows.Forms
 Imports LicenseVendor.LicenseFramework.Shared
+Imports LicenseVendor.LicenseFramework.Vendor
 
 Namespace LicenseFramework.Vendor
 
