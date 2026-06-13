@@ -1,4 +1,4 @@
-﻿Imports LicenseVendor
+﻿Imports LicenseVendor.Database
 
 Public Class FormLicenseList
 
