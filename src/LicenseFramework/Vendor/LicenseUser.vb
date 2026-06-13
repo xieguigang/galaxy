@@ -15,6 +15,7 @@
         Public Property software_name As String
         Public Property expired As Date
         Public Property hardware_checksum As String
+        Public Property type As String = "user|license"
         Public Property licenses As LicenseUser()
 
     End Class

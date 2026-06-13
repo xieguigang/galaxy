@@ -14,8 +14,8 @@ Namespace ModernTreeListView
     ''' <remarks>
     ''' https://github.com/kushanp/ModernTreeListView
     ''' </remarks>
-    Public NotInheritable Class ModernTreeListView(Of TModel)
-        Inherits System.Windows.Forms.Control
+    Public NotInheritable Class ModernTreeListView(Of TModel) : Inherits System.Windows.Forms.Control
+
         ' Layout constants - modern defaults
         Private Const DefaultRowHeight As Integer = 26
         Private Const DefaultHeaderHeight As Integer = 32

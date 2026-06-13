@@ -5,7 +5,7 @@ Imports Microsoft.VisualBasic.Linq
 
 Public Module Workbench
 
-    ReadOnly simple_dbfile As String = App.ProductProgramData & "/license_db.csv"
+    ReadOnly simple_dbfile As String = App.HOME & "/data/license_db.csv"
 
     Public Function licenseDb() As IEnumerable(Of LicenseUser)
         Return simple_dbfile _
@@ -15,13 +15,15 @@ Public Module Workbench
                         Return New LicenseUser With {
                             .user_name = user.Key,
                             .software_name = user.First.organization,
+                            .type = "user",
                             .licenses = user _
                                 .Select(Function(a)
                                             Return New LicenseUser With {
                                                 .expired = a.expired,
                                                 .hardware_checksum = a.hardware_checksum,
                                                 .software_name = user.First.organization,
-                                                .user_name = user.Key
+                                                .user_name = user.Key,
+                                                .type = "license"
                                             }
                                         End Function) _
                                 .ToArray
