@@ -2388,7 +2388,7 @@ Namespace ModernTreeListView
             If start < 0 Then start = 0
 
             Dim firstColumn = _columns(0)
-            For offset = 0 To _visibleRows.Count - 1
+            For offset As Integer = 0 To _visibleRows.Count - 1
                 Dim idx = (start + offset) Mod _visibleRows.Count
                 Dim text = GetDisplayText(_visibleRows(idx).Node.Model, firstColumn)
                 If text.StartsWith(_typeAheadPrefix, StringComparison.CurrentCultureIgnoreCase) Then
