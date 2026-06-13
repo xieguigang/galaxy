@@ -1,4 +1,5 @@
 ﻿Imports Galaxy.Workbench
+Imports Galaxy.Workbench.CommonDialogs
 Imports KeySigned.RibbonLib.Controls
 Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualStudio.WinForms.Docking
@@ -81,7 +82,7 @@ Public Class FormMain : Implements AppHost
     End Sub
 
     Private Sub LicenseGeneratorToolStripMenuItem_Click()
-        Call New LicenseGeneratorForm().ShowDialog()
+        Call InputDialog.Input(Of LicenseGeneratorForm)()
     End Sub
 
     Public Sub SetWorkbenchVisible(visible As Boolean) Implements AppHost.SetWorkbenchVisible

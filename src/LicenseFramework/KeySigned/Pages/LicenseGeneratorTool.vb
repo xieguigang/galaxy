@@ -1,6 +1,6 @@
 Imports System.IO
 Imports System.Text
-Imports System.Windows.Forms
+Imports Galaxy.Workbench.CommonDialogs
 Imports LicenseVendor.LicenseFramework.Shared
 Imports LicenseVendor.LicenseFramework.Vendor
 
@@ -13,8 +13,7 @@ Imports LicenseVendor.LicenseFramework.Vendor
 ''' 提供可视化的许可证生成界面
 ''' ---------------------------------------------------------------
 '''
-Public Class LicenseGeneratorForm
-    Inherits Form
+Public Class LicenseGeneratorForm : Inherits InputDialog
 
     Private _privateKeyXml As String = String.Empty
     Private _currentFingerprint As String = String.Empty
@@ -27,8 +26,6 @@ Public Class LicenseGeneratorForm
     Private WithEvents txtProductName As TextBox
     Private WithEvents txtProductVersion As TextBox
     Private WithEvents txtCustomerName As TextBox
-
-    WithEvents lblPrompt1 As Label
     WithEvents lblPrompt2 As Label
     WithEvents lblPrompt3 As Label
     WithEvents lblPrompt4 As Label
@@ -41,6 +38,8 @@ Public Class LicenseGeneratorForm
     Dim WithEvents btnLoadKey As Button
     Dim WithEvents btnLoadFp As Button
     Dim WithEvents btnGenerate As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Private WithEvents lblPrompt1 As Label
     Dim WithEvents btnSave As Button
 
     Public Sub New()
@@ -48,7 +47,6 @@ Public Class LicenseGeneratorForm
     End Sub
 
     Private Sub InitializeComponent()
-        lblPrompt1 = New Label()
         lblPrompt2 = New Label()
         txtPrivateKey = New TextBox()
         btnLoadKey = New Button()
@@ -69,23 +67,16 @@ Public Class LicenseGeneratorForm
         lblPrompt9 = New Label()
         txtLicenseOutput = New TextBox()
         btnSave = New Button()
-        CType(numExpiryDays, System.ComponentModel.ISupportInitialize).BeginInit()
+        GroupBox1 = New GroupBox()
+        lblPrompt1 = New Label()
+        CType(numExpiryDays, ComponentModel.ISupportInitialize).BeginInit()
+        GroupBox1.SuspendLayout()
         SuspendLayout()
-        ' 
-        ' lblPrompt1
-        ' 
-        lblPrompt1.AutoSize = True
-        lblPrompt1.Font = New Font("Microsoft YaHei", 14F, FontStyle.Bold)
-        lblPrompt1.Location = New Point(20, 15)
-        lblPrompt1.Name = "lblPrompt1"
-        lblPrompt1.Size = New Size(145, 26)
-        lblPrompt1.TabIndex = 0
-        lblPrompt1.Text = "许可证生成工具"
         ' 
         ' lblPrompt2
         ' 
         lblPrompt2.AutoSize = True
-        lblPrompt2.Location = New Point(20, 55)
+        lblPrompt2.Location = New Point(17, 39)
         lblPrompt2.Name = "lblPrompt2"
         lblPrompt2.Size = New Size(83, 15)
         lblPrompt2.TabIndex = 1
@@ -93,7 +84,7 @@ Public Class LicenseGeneratorForm
         ' 
         ' txtPrivateKey
         ' 
-        txtPrivateKey.Location = New Point(20, 77)
+        txtPrivateKey.Location = New Point(17, 61)
         txtPrivateKey.Name = "txtPrivateKey"
         txtPrivateKey.ReadOnly = True
         txtPrivateKey.Size = New Size(580, 23)
@@ -101,16 +92,18 @@ Public Class LicenseGeneratorForm
         ' 
         ' btnLoadKey
         ' 
-        btnLoadKey.Location = New Point(610, 77)
+        btnLoadKey.BackColor = SystemColors.Control
+        btnLoadKey.Location = New Point(607, 61)
         btnLoadKey.Name = "btnLoadKey"
         btnLoadKey.Size = New Size(100, 25)
         btnLoadKey.TabIndex = 3
         btnLoadKey.Text = "加载..."
+        btnLoadKey.UseVisualStyleBackColor = False
         ' 
         ' lblPrompt3
         ' 
         lblPrompt3.AutoSize = True
-        lblPrompt3.Location = New Point(20, 112)
+        lblPrompt3.Location = New Point(17, 96)
         lblPrompt3.Name = "lblPrompt3"
         lblPrompt3.Size = New Size(114, 15)
         lblPrompt3.TabIndex = 4
@@ -118,7 +111,7 @@ Public Class LicenseGeneratorForm
         ' 
         ' txtFingerprint
         ' 
-        txtFingerprint.Location = New Point(20, 135)
+        txtFingerprint.Location = New Point(17, 119)
         txtFingerprint.Name = "txtFingerprint"
         txtFingerprint.ReadOnly = True
         txtFingerprint.Size = New Size(580, 23)
@@ -126,16 +119,18 @@ Public Class LicenseGeneratorForm
         ' 
         ' btnLoadFp
         ' 
-        btnLoadFp.Location = New Point(610, 135)
+        btnLoadFp.BackColor = SystemColors.Control
+        btnLoadFp.Location = New Point(607, 119)
         btnLoadFp.Name = "btnLoadFp"
         btnLoadFp.Size = New Size(100, 25)
         btnLoadFp.TabIndex = 6
         btnLoadFp.Text = "加载..."
+        btnLoadFp.UseVisualStyleBackColor = False
         ' 
         ' lblPrompt4
         ' 
         lblPrompt4.AutoSize = True
-        lblPrompt4.Location = New Point(20, 170)
+        lblPrompt4.Location = New Point(17, 154)
         lblPrompt4.Name = "lblPrompt4"
         lblPrompt4.Size = New Size(62, 15)
         lblPrompt4.TabIndex = 7
@@ -143,7 +138,7 @@ Public Class LicenseGeneratorForm
         ' 
         ' txtProductName
         ' 
-        txtProductName.Location = New Point(120, 170)
+        txtProductName.Location = New Point(117, 154)
         txtProductName.Name = "txtProductName"
         txtProductName.Size = New Size(250, 23)
         txtProductName.TabIndex = 8
@@ -151,7 +146,7 @@ Public Class LicenseGeneratorForm
         ' lblPrompt5
         ' 
         lblPrompt5.AutoSize = True
-        lblPrompt5.Location = New Point(20, 205)
+        lblPrompt5.Location = New Point(17, 189)
         lblPrompt5.Name = "lblPrompt5"
         lblPrompt5.Size = New Size(62, 15)
         lblPrompt5.TabIndex = 9
@@ -159,7 +154,7 @@ Public Class LicenseGeneratorForm
         ' 
         ' txtProductVersion
         ' 
-        txtProductVersion.Location = New Point(120, 205)
+        txtProductVersion.Location = New Point(117, 189)
         txtProductVersion.Name = "txtProductVersion"
         txtProductVersion.Size = New Size(250, 23)
         txtProductVersion.TabIndex = 10
@@ -167,7 +162,7 @@ Public Class LicenseGeneratorForm
         ' lblPrompt6
         ' 
         lblPrompt6.AutoSize = True
-        lblPrompt6.Location = New Point(20, 240)
+        lblPrompt6.Location = New Point(17, 224)
         lblPrompt6.Name = "lblPrompt6"
         lblPrompt6.Size = New Size(62, 15)
         lblPrompt6.TabIndex = 11
@@ -175,7 +170,7 @@ Public Class LicenseGeneratorForm
         ' 
         ' txtCustomerName
         ' 
-        txtCustomerName.Location = New Point(120, 240)
+        txtCustomerName.Location = New Point(117, 224)
         txtCustomerName.Name = "txtCustomerName"
         txtCustomerName.Size = New Size(250, 23)
         txtCustomerName.TabIndex = 12
@@ -183,7 +178,7 @@ Public Class LicenseGeneratorForm
         ' lblPrompt7
         ' 
         lblPrompt7.AutoSize = True
-        lblPrompt7.Location = New Point(20, 275)
+        lblPrompt7.Location = New Point(17, 259)
         lblPrompt7.Name = "lblPrompt7"
         lblPrompt7.Size = New Size(75, 15)
         lblPrompt7.TabIndex = 13
@@ -193,7 +188,7 @@ Public Class LicenseGeneratorForm
         ' 
         cmbLicenseType.DropDownStyle = ComboBoxStyle.DropDownList
         cmbLicenseType.Items.AddRange(New Object() {"Trial - 试用版", "Standard - 标准版", "Professional - 专业版", "Enterprise - 企业版"})
-        cmbLicenseType.Location = New Point(120, 275)
+        cmbLicenseType.Location = New Point(117, 259)
         cmbLicenseType.Name = "cmbLicenseType"
         cmbLicenseType.Size = New Size(250, 23)
         cmbLicenseType.TabIndex = 14
@@ -201,7 +196,7 @@ Public Class LicenseGeneratorForm
         ' lblPrompt8
         ' 
         lblPrompt8.AutoSize = True
-        lblPrompt8.Location = New Point(20, 310)
+        lblPrompt8.Location = New Point(17, 294)
         lblPrompt8.Name = "lblPrompt8"
         lblPrompt8.Size = New Size(113, 15)
         lblPrompt8.TabIndex = 15
@@ -209,7 +204,7 @@ Public Class LicenseGeneratorForm
         ' 
         ' numExpiryDays
         ' 
-        numExpiryDays.Location = New Point(170, 310)
+        numExpiryDays.Location = New Point(167, 294)
         numExpiryDays.Maximum = New Decimal(New Integer() {3650, 0, 0, 0})
         numExpiryDays.Name = "numExpiryDays"
         numExpiryDays.Size = New Size(100, 23)
@@ -219,7 +214,7 @@ Public Class LicenseGeneratorForm
         ' btnGenerate
         ' 
         btnGenerate.Font = New Font("Microsoft YaHei", 10F, FontStyle.Bold)
-        btnGenerate.Location = New Point(20, 350)
+        btnGenerate.Location = New Point(17, 334)
         btnGenerate.Name = "btnGenerate"
         btnGenerate.Size = New Size(200, 40)
         btnGenerate.TabIndex = 17
@@ -228,7 +223,7 @@ Public Class LicenseGeneratorForm
         ' lblPrompt9
         ' 
         lblPrompt9.AutoSize = True
-        lblPrompt9.Location = New Point(20, 400)
+        lblPrompt9.Location = New Point(17, 384)
         lblPrompt9.Name = "lblPrompt9"
         lblPrompt9.Size = New Size(88, 15)
         lblPrompt9.TabIndex = 18
@@ -236,7 +231,7 @@ Public Class LicenseGeneratorForm
         ' 
         ' txtLicenseOutput
         ' 
-        txtLicenseOutput.Location = New Point(20, 422)
+        txtLicenseOutput.Location = New Point(17, 406)
         txtLicenseOutput.Multiline = True
         txtLicenseOutput.Name = "txtLicenseOutput"
         txtLicenseOutput.ReadOnly = True
@@ -246,42 +241,62 @@ Public Class LicenseGeneratorForm
         ' 
         ' btnSave
         ' 
-        btnSave.Location = New Point(20, 515)
+        btnSave.Location = New Point(17, 499)
         btnSave.Name = "btnSave"
         btnSave.Size = New Size(200, 35)
         btnSave.TabIndex = 20
         btnSave.Text = "保存许可证文件"
         ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(btnSave)
+        GroupBox1.Controls.Add(lblPrompt2)
+        GroupBox1.Controls.Add(txtLicenseOutput)
+        GroupBox1.Controls.Add(txtPrivateKey)
+        GroupBox1.Controls.Add(lblPrompt9)
+        GroupBox1.Controls.Add(btnLoadKey)
+        GroupBox1.Controls.Add(btnGenerate)
+        GroupBox1.Controls.Add(lblPrompt3)
+        GroupBox1.Controls.Add(numExpiryDays)
+        GroupBox1.Controls.Add(txtFingerprint)
+        GroupBox1.Controls.Add(lblPrompt8)
+        GroupBox1.Controls.Add(btnLoadFp)
+        GroupBox1.Controls.Add(cmbLicenseType)
+        GroupBox1.Controls.Add(lblPrompt4)
+        GroupBox1.Controls.Add(lblPrompt7)
+        GroupBox1.Controls.Add(txtProductName)
+        GroupBox1.Controls.Add(txtCustomerName)
+        GroupBox1.Controls.Add(lblPrompt5)
+        GroupBox1.Controls.Add(lblPrompt6)
+        GroupBox1.Controls.Add(txtProductVersion)
+        GroupBox1.Location = New Point(12, 62)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Size = New Size(728, 549)
+        GroupBox1.TabIndex = 21
+        GroupBox1.TabStop = False
+        GroupBox1.Text = "许可证生成工具"
+        ' 
+        ' lblPrompt1
+        ' 
+        lblPrompt1.AutoSize = True
+        lblPrompt1.Font = New Font("Microsoft YaHei", 14F, FontStyle.Bold)
+        lblPrompt1.Location = New Point(12, 18)
+        lblPrompt1.Name = "lblPrompt1"
+        lblPrompt1.Size = New Size(183, 26)
+        lblPrompt1.TabIndex = 0
+        lblPrompt1.Text = "软件许可证生成工具"
+        ' 
         ' LicenseGeneratorForm
         ' 
-        ClientSize = New Size(734, 567)
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        ClientSize = New Size(751, 621)
         Controls.Add(lblPrompt1)
-        Controls.Add(lblPrompt2)
-        Controls.Add(txtPrivateKey)
-        Controls.Add(btnLoadKey)
-        Controls.Add(lblPrompt3)
-        Controls.Add(txtFingerprint)
-        Controls.Add(btnLoadFp)
-        Controls.Add(lblPrompt4)
-        Controls.Add(txtProductName)
-        Controls.Add(lblPrompt5)
-        Controls.Add(txtProductVersion)
-        Controls.Add(lblPrompt6)
-        Controls.Add(txtCustomerName)
-        Controls.Add(lblPrompt7)
-        Controls.Add(cmbLicenseType)
-        Controls.Add(lblPrompt8)
-        Controls.Add(numExpiryDays)
-        Controls.Add(btnGenerate)
-        Controls.Add(lblPrompt9)
-        Controls.Add(txtLicenseOutput)
-        Controls.Add(btnSave)
-        FormBorderStyle = FormBorderStyle.FixedSingle
-        MaximizeBox = False
+        Controls.Add(GroupBox1)
         Name = "LicenseGeneratorForm"
-        StartPosition = FormStartPosition.CenterScreen
         Text = "许可证生成工具 - 厂商端"
-        CType(numExpiryDays, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(numExpiryDays, ComponentModel.ISupportInitialize).EndInit()
+        GroupBox1.ResumeLayout(False)
+        GroupBox1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -291,7 +306,7 @@ Public Class LicenseGeneratorForm
             .Filter = "XML文件|*.xml|所有文件|*.*",
             .Title = "选择RSA私钥文件"
         }
-            If dlg.ShowDialog() = DialogResult.OK Then
+            If dlg.ShowDialog = DialogResult.OK Then
                 _privateKeyXml = File.ReadAllText(dlg.FileName, Encoding.UTF8)
                 txtPrivateKey.Text = dlg.FileName
             End If
@@ -303,22 +318,22 @@ Public Class LicenseGeneratorForm
             .Filter = "文本文件|*.txt|所有文件|*.*",
             .Title = "选择硬件指纹文件"
         }
-            If dlg.ShowDialog() = DialogResult.OK Then
+            If dlg.ShowDialog = DialogResult.OK Then
                 Try
-                    Dim content As String = File.ReadAllText(dlg.FileName, Encoding.UTF8)
+                    Dim content = File.ReadAllText(dlg.FileName, Encoding.UTF8)
                     txtFingerprint.Text = dlg.FileName
 
                     ' 尝试从文件中提取指纹哈希
-                    Dim startMarker As String = "硬件指纹哈希 (Hardware Fingerprint Hash):"
-                    Dim idx As Integer = content.IndexOf(startMarker)
+                    Dim startMarker = "硬件指纹哈希 (Hardware Fingerprint Hash):"
+                    Dim idx = content.IndexOf(startMarker)
                     If idx >= 0 Then
                         idx += startMarker.Length
-                        Dim endIdx As Integer = content.IndexOf("---", idx)
+                        Dim endIdx = content.IndexOf("---", idx)
                         If endIdx >= 0 Then
-                            _currentFingerprint = content.Substring(idx, endIdx - idx).Trim()
+                            _currentFingerprint = content.Substring(idx, endIdx - idx).Trim
                         End If
                     Else
-                        _currentFingerprint = content.Trim()
+                        _currentFingerprint = content.Trim
                     End If
                 Catch ex As Exception
                     MessageBox.Show($"读取指纹文件失败: {ex.Message}", "错误",
@@ -342,14 +357,14 @@ Public Class LicenseGeneratorForm
         End If
 
         Try
-            Me.Cursor = Cursors.WaitCursor
+            Cursor = Cursors.WaitCursor
 
             Dim generator As New LicenseGenerator(_privateKeyXml)
 
-            Dim licenseType As LicenseType = CType(cmbLicenseType.SelectedIndex, LicenseType)
-            Dim expiryDays As Integer = CInt(numExpiryDays.Value)
+            Dim licenseType As LicenseType = cmbLicenseType.SelectedIndex
+            Dim expiryDays As Integer = numExpiryDays.Value
 
-            Dim signedLicense As String = generator.GenerateLicense(
+            Dim signedLicense = generator.GenerateLicense(
                 _currentFingerprint,
                 txtProductName.Text,
                 txtProductVersion.Text,
@@ -359,11 +374,11 @@ Public Class LicenseGeneratorForm
 
             txtLicenseOutput.Text = signedLicense
 
-            Me.Cursor = Cursors.Default
+            Cursor = Cursors.Default
             MessageBox.Show("许可证生成成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Catch ex As Exception
-            Me.Cursor = Cursors.Default
+            Cursor = Cursors.Default
             MessageBox.Show($"生成许可证失败: {ex.Message}", "错误",
                             MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -374,10 +389,10 @@ Public Class LicenseGeneratorForm
 
         Using dlg As New SaveFileDialog With {
             .Filter = "许可证文件|*.lic|文本文件|*.txt|所有文件|*.*",
-            .FileName = $"license_{txtCustomerName.Text}_{DateTime.Now:yyyyMMdd}.lic",
+            .FileName = $"license_{txtCustomerName.Text}_{Date.Now:yyyyMMdd}.lic",
             .Title = "保存许可证文件"
         }
-            If dlg.ShowDialog() = DialogResult.OK Then
+            If dlg.ShowDialog = DialogResult.OK Then
                 File.WriteAllText(dlg.FileName, txtLicenseOutput.Text, Encoding.UTF8)
                 MessageBox.Show("许可证文件已保存", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
