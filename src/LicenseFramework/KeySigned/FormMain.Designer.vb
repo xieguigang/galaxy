@@ -1,4 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿Imports RibbonLib
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormMain
     Inherits System.Windows.Forms.Form
 
@@ -23,7 +25,7 @@ Partial Class FormMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         m_dockPanel = New Microsoft.VisualStudio.WinForms.Docking.DockPanel()
-        Ribbon1 = New RibbonLib.Ribbon()
+        Ribbon1 = New Ribbon()
         StatusStrip1 = New StatusStrip()
         ToolStripStatusLabel1 = New ToolStripStatusLabel()
         StatusStrip1.SuspendLayout()
@@ -43,7 +45,7 @@ Partial Class FormMain
         Ribbon1.Location = New Point(0, 0)
         Ribbon1.Name = "Ribbon1"
         Ribbon1.ResourceIdentifier = Nothing
-        Ribbon1.ResourceName = "ExcelPad.RibbonMarkup.ribbon"
+        Ribbon1.ResourceName = "KeySigned.RibbonMarkup.ribbon"
         Ribbon1.ShortcutTableResourceName = Nothing
         Ribbon1.Size = New Size(800, 116)
         Ribbon1.TabIndex = 5
@@ -81,7 +83,7 @@ Partial Class FormMain
     End Sub
 
     Friend WithEvents m_dockPanel As Microsoft.VisualStudio.WinForms.Docking.DockPanel
-    Friend WithEvents Ribbon1 As RibbonLib.Ribbon
+    Friend WithEvents Ribbon1 As Ribbon
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
 
