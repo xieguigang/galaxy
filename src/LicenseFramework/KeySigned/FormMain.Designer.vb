@@ -22,59 +22,67 @@ Partial Class FormMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        MenuStrip1 = New MenuStrip()
-        FileToolStripMenuItem = New ToolStripMenuItem()
-        ToolStripMenuItem1 = New ToolStripMenuItem()
-        LicenseGeneratorToolStripMenuItem = New ToolStripMenuItem()
-        MenuStrip1.SuspendLayout()
+        m_dockPanel = New Microsoft.VisualStudio.WinForms.Docking.DockPanel()
+        Ribbon1 = New RibbonLib.Ribbon()
+        StatusStrip1 = New StatusStrip()
+        ToolStripStatusLabel1 = New ToolStripStatusLabel()
+        StatusStrip1.SuspendLayout()
         SuspendLayout()
         ' 
-        ' MenuStrip1
+        ' m_dockPanel
         ' 
-        MenuStrip1.Items.AddRange(New ToolStripItem() {FileToolStripMenuItem})
-        MenuStrip1.Location = New Point(0, 0)
-        MenuStrip1.Name = "MenuStrip1"
-        MenuStrip1.Size = New Size(800, 24)
-        MenuStrip1.TabIndex = 0
-        MenuStrip1.Text = "MenuStrip1"
+        m_dockPanel.Dock = DockStyle.Fill
+        m_dockPanel.Location = New Point(0, 116)
+        m_dockPanel.Margin = New Padding(4)
+        m_dockPanel.Name = "m_dockPanel"
+        m_dockPanel.Size = New Size(800, 312)
+        m_dockPanel.TabIndex = 3
         ' 
-        ' FileToolStripMenuItem
+        ' Ribbon1
         ' 
-        FileToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {ToolStripMenuItem1, LicenseGeneratorToolStripMenuItem})
-        FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        FileToolStripMenuItem.Size = New Size(37, 20)
-        FileToolStripMenuItem.Text = "File"
+        Ribbon1.Location = New Point(0, 0)
+        Ribbon1.Name = "Ribbon1"
+        Ribbon1.ResourceIdentifier = Nothing
+        Ribbon1.ResourceName = "ExcelPad.RibbonMarkup.ribbon"
+        Ribbon1.ShortcutTableResourceName = Nothing
+        Ribbon1.Size = New Size(800, 116)
+        Ribbon1.TabIndex = 5
         ' 
-        ' ToolStripMenuItem1
+        ' StatusStrip1
         ' 
-        ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        ToolStripMenuItem1.Size = New Size(180, 22)
-        ToolStripMenuItem1.Text = "Key Generator"
+        StatusStrip1.Items.AddRange(New ToolStripItem() {ToolStripStatusLabel1})
+        StatusStrip1.Location = New Point(0, 428)
+        StatusStrip1.Name = "StatusStrip1"
+        StatusStrip1.Padding = New Padding(1, 0, 16, 0)
+        StatusStrip1.Size = New Size(800, 22)
+        StatusStrip1.TabIndex = 4
+        StatusStrip1.Text = "StatusStrip1"
         ' 
-        ' LicenseGeneratorToolStripMenuItem
+        ' ToolStripStatusLabel1
         ' 
-        LicenseGeneratorToolStripMenuItem.Name = "LicenseGeneratorToolStripMenuItem"
-        LicenseGeneratorToolStripMenuItem.Size = New Size(180, 22)
-        LicenseGeneratorToolStripMenuItem.Text = "License Generator"
+        ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        ToolStripStatusLabel1.Size = New Size(42, 17)
+        ToolStripStatusLabel1.Text = "Ready!"
         ' 
-        ' Form1
+        ' FormMain
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(800, 450)
-        Controls.Add(MenuStrip1)
-        MainMenuStrip = MenuStrip1
-        Name = "Form1"
+        Controls.Add(m_dockPanel)
+        Controls.Add(Ribbon1)
+        Controls.Add(StatusStrip1)
+        Name = "FormMain"
         Text = "Form1"
-        MenuStrip1.ResumeLayout(False)
-        MenuStrip1.PerformLayout()
+        StatusStrip1.ResumeLayout(False)
+        StatusStrip1.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents LicenseGeneratorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents m_dockPanel As Microsoft.VisualStudio.WinForms.Docking.DockPanel
+    Friend WithEvents Ribbon1 As RibbonLib.Ribbon
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
 
 End Class
