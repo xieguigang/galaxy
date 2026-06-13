@@ -37,16 +37,44 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\GCModeller\src\R-sharp\Library\shares\graphics.common_runtime\R_graphics.common_runtime.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\R-sharp\R#\Rsharp-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\ggplot\src\ggplot\ggplot.NET5.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\ANOVA\ANOVA.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math.Statistics\stats-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Visualization\Plots\plots-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Drawing-net4.8\Drawing-net4.8.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Microsoft.VisualBasic.Imaging\imaging.NET5.vbproj" />
     <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%json\JSON-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%vnd.openxmlformats-officedocument.spreadsheetml.sheet\Excel\xlsx-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\mime\text%html\html_netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\..\GCModeller\src\runtime\sciBASIC#\vs_solutions\dev\VisualStudio\VisualStudio.NET5.vbproj" />
+    <ProjectReference Include="..\..\..\..\ggviewer\src\ggviewer.vbproj" />
+    <ProjectReference Include="..\..\..\..\Microsoft.VisualBasic.Drawing\src\Microsoft.VisualBasic.Drawing\Microsoft.VisualBasic.Drawing.vbproj" />
+    <ProjectReference Include="..\..\dockpanelsuite\Themes\ThemeVS2015.vbproj" />
+    <ProjectReference Include="..\..\dockpanelsuite\VSDockPanel\VSDockPanel.vbproj" />
+    <ProjectReference Include="..\..\ExcelPad\ExcelPad.vbproj" />
+    <ProjectReference Include="..\..\GalaxyData\GalaxyData.vbproj" />
+    <ProjectReference Include="..\..\GalaxyForm\GalaxyForm.vbproj" />
     <ProjectReference Include="..\..\GalaxyWorkbench\GalaxyWorkbench.vbproj" />
+    <ProjectReference Include="..\..\Microsoft.Windows.FeatureAPI\Microsoft.Windows.FeatureAPI.vbproj" />
     <ProjectReference Include="..\Vendor\Vendor.vbproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="KeyGeneratorForm.vb">
+    <Reference Include="Microsoft.Windows.Ribbon">
+      <HintPath>..\..\..\third-party\ribbon\Microsoft.Windows.Ribbon.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\KeyGeneratorForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="LicenseGeneratorTool.vb">
+    <Compile Update="Pages\LicenseGeneratorTool.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="My Project\Application.Designer.vb">
