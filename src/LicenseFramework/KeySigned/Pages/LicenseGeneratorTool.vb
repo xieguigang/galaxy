@@ -48,187 +48,242 @@ Public Class LicenseGeneratorForm
     End Sub
 
     Private Sub InitializeComponent()
+        lblPrompt1 = New Label()
+        lblPrompt2 = New Label()
+        txtPrivateKey = New TextBox()
+        btnLoadKey = New Button()
+        lblPrompt3 = New Label()
+        txtFingerprint = New TextBox()
+        btnLoadFp = New Button()
+        lblPrompt4 = New Label()
+        txtProductName = New TextBox()
+        lblPrompt5 = New Label()
+        txtProductVersion = New TextBox()
+        lblPrompt6 = New Label()
+        txtCustomerName = New TextBox()
+        lblPrompt7 = New Label()
+        cmbLicenseType = New ComboBox()
+        lblPrompt8 = New Label()
+        numExpiryDays = New NumericUpDown()
+        btnGenerate = New Button()
+        lblPrompt9 = New Label()
+        txtLicenseOutput = New TextBox()
+        btnSave = New Button()
+        CType(numExpiryDays, System.ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
+        ' 
+        ' lblPrompt1
+        ' 
+        lblPrompt1.AutoSize = True
+        lblPrompt1.Font = New Font("Microsoft YaHei", 14F, FontStyle.Bold)
+        lblPrompt1.Location = New Point(20, 15)
+        lblPrompt1.Name = "lblPrompt1"
+        lblPrompt1.Size = New Size(145, 26)
+        lblPrompt1.TabIndex = 0
+        lblPrompt1.Text = "许可证生成工具"
+        ' 
+        ' lblPrompt2
+        ' 
+        lblPrompt2.AutoSize = True
+        lblPrompt2.Location = New Point(20, 55)
+        lblPrompt2.Name = "lblPrompt2"
+        lblPrompt2.Size = New Size(83, 15)
+        lblPrompt2.TabIndex = 1
+        lblPrompt2.Text = "RSA私钥文件:"
+        ' 
+        ' txtPrivateKey
+        ' 
+        txtPrivateKey.Location = New Point(20, 77)
+        txtPrivateKey.Name = "txtPrivateKey"
+        txtPrivateKey.ReadOnly = True
+        txtPrivateKey.Size = New Size(580, 23)
+        txtPrivateKey.TabIndex = 2
+        ' 
+        ' btnLoadKey
+        ' 
+        btnLoadKey.Location = New Point(610, 77)
+        btnLoadKey.Name = "btnLoadKey"
+        btnLoadKey.Size = New Size(100, 25)
+        btnLoadKey.TabIndex = 3
+        btnLoadKey.Text = "加载..."
+        ' 
+        ' lblPrompt3
+        ' 
+        lblPrompt3.AutoSize = True
+        lblPrompt3.Location = New Point(20, 112)
+        lblPrompt3.Name = "lblPrompt3"
+        lblPrompt3.Size = New Size(114, 15)
+        lblPrompt3.TabIndex = 4
+        lblPrompt3.Text = "客户硬件指纹文件:"
+        ' 
+        ' txtFingerprint
+        ' 
+        txtFingerprint.Location = New Point(20, 135)
+        txtFingerprint.Name = "txtFingerprint"
+        txtFingerprint.ReadOnly = True
+        txtFingerprint.Size = New Size(580, 23)
+        txtFingerprint.TabIndex = 5
+        ' 
+        ' btnLoadFp
+        ' 
+        btnLoadFp.Location = New Point(610, 135)
+        btnLoadFp.Name = "btnLoadFp"
+        btnLoadFp.Size = New Size(100, 25)
+        btnLoadFp.TabIndex = 6
+        btnLoadFp.Text = "加载..."
+        ' 
+        ' lblPrompt4
+        ' 
+        lblPrompt4.AutoSize = True
+        lblPrompt4.Location = New Point(20, 170)
+        lblPrompt4.Name = "lblPrompt4"
+        lblPrompt4.Size = New Size(62, 15)
+        lblPrompt4.TabIndex = 7
+        lblPrompt4.Text = "产品名称:"
+        ' 
+        ' txtProductName
+        ' 
+        txtProductName.Location = New Point(120, 170)
+        txtProductName.Name = "txtProductName"
+        txtProductName.Size = New Size(250, 23)
+        txtProductName.TabIndex = 8
+        ' 
+        ' lblPrompt5
+        ' 
+        lblPrompt5.AutoSize = True
+        lblPrompt5.Location = New Point(20, 205)
+        lblPrompt5.Name = "lblPrompt5"
+        lblPrompt5.Size = New Size(62, 15)
+        lblPrompt5.TabIndex = 9
+        lblPrompt5.Text = "产品版本:"
+        ' 
+        ' txtProductVersion
+        ' 
+        txtProductVersion.Location = New Point(120, 205)
+        txtProductVersion.Name = "txtProductVersion"
+        txtProductVersion.Size = New Size(250, 23)
+        txtProductVersion.TabIndex = 10
+        ' 
+        ' lblPrompt6
+        ' 
+        lblPrompt6.AutoSize = True
+        lblPrompt6.Location = New Point(20, 240)
+        lblPrompt6.Name = "lblPrompt6"
+        lblPrompt6.Size = New Size(62, 15)
+        lblPrompt6.TabIndex = 11
+        lblPrompt6.Text = "客户名称:"
+        ' 
+        ' txtCustomerName
+        ' 
+        txtCustomerName.Location = New Point(120, 240)
+        txtCustomerName.Name = "txtCustomerName"
+        txtCustomerName.Size = New Size(250, 23)
+        txtCustomerName.TabIndex = 12
+        ' 
+        ' lblPrompt7
+        ' 
+        lblPrompt7.AutoSize = True
+        lblPrompt7.Location = New Point(20, 275)
+        lblPrompt7.Name = "lblPrompt7"
+        lblPrompt7.Size = New Size(75, 15)
+        lblPrompt7.TabIndex = 13
+        lblPrompt7.Text = "许可证类型:"
+        ' 
+        ' cmbLicenseType
+        ' 
+        cmbLicenseType.DropDownStyle = ComboBoxStyle.DropDownList
+        cmbLicenseType.Items.AddRange(New Object() {"Trial - 试用版", "Standard - 标准版", "Professional - 专业版", "Enterprise - 企业版"})
+        cmbLicenseType.Location = New Point(120, 275)
+        cmbLicenseType.Name = "cmbLicenseType"
+        cmbLicenseType.Size = New Size(250, 23)
+        cmbLicenseType.TabIndex = 14
+        ' 
+        ' lblPrompt8
+        ' 
+        lblPrompt8.AutoSize = True
+        lblPrompt8.Location = New Point(20, 310)
+        lblPrompt8.Name = "lblPrompt8"
+        lblPrompt8.Size = New Size(113, 15)
+        lblPrompt8.TabIndex = 15
+        lblPrompt8.Text = "有效期(天,0=永久):"
+        ' 
+        ' numExpiryDays
+        ' 
+        numExpiryDays.Location = New Point(170, 310)
+        numExpiryDays.Maximum = New Decimal(New Integer() {3650, 0, 0, 0})
+        numExpiryDays.Name = "numExpiryDays"
+        numExpiryDays.Size = New Size(100, 23)
+        numExpiryDays.TabIndex = 16
+        numExpiryDays.Value = New Decimal(New Integer() {365, 0, 0, 0})
+        ' 
+        ' btnGenerate
+        ' 
+        btnGenerate.Font = New Font("Microsoft YaHei", 10F, FontStyle.Bold)
+        btnGenerate.Location = New Point(20, 350)
+        btnGenerate.Name = "btnGenerate"
+        btnGenerate.Size = New Size(200, 40)
+        btnGenerate.TabIndex = 17
+        btnGenerate.Text = "生成许可证"
+        ' 
+        ' lblPrompt9
+        ' 
+        lblPrompt9.AutoSize = True
+        lblPrompt9.Location = New Point(20, 400)
+        lblPrompt9.Name = "lblPrompt9"
+        lblPrompt9.Size = New Size(88, 15)
+        lblPrompt9.TabIndex = 18
+        lblPrompt9.Text = "生成的许可证:"
+        ' 
+        ' txtLicenseOutput
+        ' 
+        txtLicenseOutput.Location = New Point(20, 422)
+        txtLicenseOutput.Multiline = True
+        txtLicenseOutput.Name = "txtLicenseOutput"
+        txtLicenseOutput.ReadOnly = True
+        txtLicenseOutput.ScrollBars = ScrollBars.Vertical
+        txtLicenseOutput.Size = New Size(690, 80)
+        txtLicenseOutput.TabIndex = 19
+        ' 
+        ' btnSave
+        ' 
+        btnSave.Location = New Point(20, 515)
+        btnSave.Name = "btnSave"
+        btnSave.Size = New Size(200, 35)
+        btnSave.TabIndex = 20
+        btnSave.Text = "保存许可证文件"
         ' 
         ' LicenseGeneratorForm
         ' 
-        ClientSize = New Size(693, 392)
-        Me.Text = "许可证生成工具 - 厂商端"
-        Me.Size = New Drawing.Size(750, 650)
-        Me.StartPosition = FormStartPosition.CenterScreen
-        Me.FormBorderStyle = FormBorderStyle.FixedSingle
-        Me.MaximizeBox = False
-
-
-        lblPrompt1 = New Label
-        lblPrompt1.Text = "许可证生成工具"
-        lblPrompt1.Font = New Drawing.Font("Microsoft YaHei", 14, Drawing.FontStyle.Bold)
-        lblPrompt1.Location = New Drawing.Point(20, 15)
-        lblPrompt1.AutoSize = True
-        ' 标题
-        Me.Controls.Add(lblPrompt1)
-
-        lblPrompt2 = New Label
-
-        lblPrompt2.Text = "RSA私钥文件:"
-        lblPrompt2.Location = New Drawing.Point(20, 55)
-        lblPrompt2.AutoSize = True
-        ' 私钥
-        Me.Controls.Add(lblPrompt2)
-
-        txtPrivateKey = New TextBox
-
-        txtPrivateKey.Location = New Drawing.Point(20, 77)
-        txtPrivateKey.Size = New Drawing.Size(580, 25)
-        txtPrivateKey.ReadOnly = True
-        Me.Controls.Add(txtPrivateKey)
-
-        btnLoadKey = New Button
-        btnLoadKey.Text = "加载..."
-        btnLoadKey.Size = New Drawing.Size(100, 25)
-        btnLoadKey.Location = New Drawing.Point(610, 77)
-
-
-        Me.Controls.Add(btnLoadKey)
-
-        lblPrompt3 = New Label
-        lblPrompt3.Text = "客户硬件指纹文件:"
-        lblPrompt3.Location = New Drawing.Point(20, 112)
-        lblPrompt3.AutoSize = True
-
-        ' 指纹文件
-        Me.Controls.Add(lblPrompt3)
-
-
-        txtFingerprint = New TextBox
-
-        txtFingerprint.Location = New Drawing.Point(20, 135)
-        txtFingerprint.Size = New Drawing.Size(580, 25)
-        txtFingerprint.ReadOnly = True
-        Me.Controls.Add(txtFingerprint)
-
-        btnLoadFp = New Button
-        btnLoadFp.Text = "加载..."
-        btnLoadFp.Size = New Drawing.Size(100, 25)
-        btnLoadFp.Location = New Drawing.Point(610, 135)
-
-
-        Me.Controls.Add(btnLoadFp)
-
-        lblPrompt4 = New Label
-        lblPrompt4.Text = "产品名称:"
-        lblPrompt4.Location = New Drawing.Point(20, 170)
-        lblPrompt4.AutoSize = True
-        ' 产品名称
-        Me.Controls.Add(lblPrompt4)
-
-        txtProductName = New TextBox
-        txtProductName.Location = New Drawing.Point(120, 170)
-        txtProductName.Size = New Drawing.Size(250, 25)
-        Me.Controls.Add(txtProductName)
-
-        lblPrompt5 = New Label
-
-        lblPrompt5.Text = "产品版本:"
-        lblPrompt5.Location = New Drawing.Point(20, 205)
-        lblPrompt5.AutoSize = True
-        ' 产品版本
-        Me.Controls.Add(lblPrompt5)
-
-        txtProductVersion = New TextBox
-        txtProductVersion.Location = New Drawing.Point(120, 205)
-        txtProductVersion.Size = New Drawing.Size(250, 25)
-        Me.Controls.Add(txtProductVersion)
-
-        lblPrompt6 = New Label
-
-        lblPrompt6.Text = "客户名称:"
-        lblPrompt6.Location = New Drawing.Point(20, 240)
-        lblPrompt6.AutoSize = True
-
-        ' 客户名称
-        Me.Controls.Add(lblPrompt6)
-
-        txtCustomerName = New TextBox
-        txtCustomerName.Location = New Drawing.Point(120, 240)
-        txtCustomerName.Size = New Drawing.Size(250, 25)
-        Me.Controls.Add(txtCustomerName)
-
-        lblPrompt7 = New Label
-        lblPrompt7.Text = "许可证类型:"
-        lblPrompt7.Location = New Drawing.Point(20, 275)
-        lblPrompt7.AutoSize = True
-
-        ' 许可证类型
-        Me.Controls.Add(lblPrompt7)
-
-        cmbLicenseType = New ComboBox
-        cmbLicenseType.Location = New Drawing.Point(120, 275)
-        cmbLicenseType.Size = New Drawing.Size(250, 25)
-        cmbLicenseType.DropDownStyle = ComboBoxStyle.DropDownList
-        cmbLicenseType.Items.AddRange({"Trial - 试用版", "Standard - 标准版",
-                                        "Professional - 专业版", "Enterprise - 企业版"})
-        cmbLicenseType.SelectedIndex = 1
-        Me.Controls.Add(cmbLicenseType)
-
-        lblPrompt8 = New Label
-        lblPrompt8.Text = "有效期(天,0=永久):"
-        lblPrompt8.Location = New Drawing.Point(20, 310)
-        lblPrompt8.AutoSize = True
-
-        ' 有效期
-        Me.Controls.Add(lblPrompt8)
-
-        numExpiryDays = New NumericUpDown
-        numExpiryDays.Location = New Drawing.Point(170, 310)
-        numExpiryDays.Size = New Drawing.Size(100, 25)
-        numExpiryDays.Minimum = 0
-        numExpiryDays.Maximum = 3650
-        numExpiryDays.Value = 365
-        Me.Controls.Add(numExpiryDays)
-
-
-        ' 生成按钮
-        btnGenerate = New Button
-        btnGenerate.Text = "生成许可证"
-        btnGenerate.Size = New Drawing.Size(200, 40)
-        btnGenerate.Location = New Drawing.Point(20, 350)
-        btnGenerate.Font = New Drawing.Font("Microsoft YaHei", 10, Drawing.FontStyle.Bold)
-
-
-        Me.Controls.Add(btnGenerate)
-
-        lblPrompt9 = New Label
-        lblPrompt9.Text = "生成的许可证:"
-        lblPrompt9.Location = New Drawing.Point(20, 400)
-        lblPrompt9.AutoSize = True
-
-        ' 输出
-        Me.Controls.Add(lblPrompt9)
-
-
-
-
-
-        txtLicenseOutput = New TextBox
-        txtLicenseOutput.Location = New Drawing.Point(20, 422)
-        txtLicenseOutput.Size = New Drawing.Size(690, 80)
-        txtLicenseOutput.Multiline = True
-        txtLicenseOutput.ReadOnly = True
-        txtLicenseOutput.ScrollBars = ScrollBars.Vertical
-        Me.Controls.Add(txtLicenseOutput)
-
-
-        ' 保存按钮
-        btnSave = New Button
-        btnSave.Text = "保存许可证文件"
-        btnSave.Size = New Drawing.Size(200, 35)
-        btnSave.Location = New Drawing.Point(20, 515)
-
-
-        Me.Controls.Add(btnSave)
-
+        ClientSize = New Size(734, 567)
+        Controls.Add(lblPrompt1)
+        Controls.Add(lblPrompt2)
+        Controls.Add(txtPrivateKey)
+        Controls.Add(btnLoadKey)
+        Controls.Add(lblPrompt3)
+        Controls.Add(txtFingerprint)
+        Controls.Add(btnLoadFp)
+        Controls.Add(lblPrompt4)
+        Controls.Add(txtProductName)
+        Controls.Add(lblPrompt5)
+        Controls.Add(txtProductVersion)
+        Controls.Add(lblPrompt6)
+        Controls.Add(txtCustomerName)
+        Controls.Add(lblPrompt7)
+        Controls.Add(cmbLicenseType)
+        Controls.Add(lblPrompt8)
+        Controls.Add(numExpiryDays)
+        Controls.Add(btnGenerate)
+        Controls.Add(lblPrompt9)
+        Controls.Add(txtLicenseOutput)
+        Controls.Add(btnSave)
+        FormBorderStyle = FormBorderStyle.FixedSingle
+        MaximizeBox = False
+        Name = "LicenseGeneratorForm"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "许可证生成工具 - 厂商端"
+        CType(numExpiryDays, System.ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Private Sub BtnLoadKey_Click(sender As Object, e As EventArgs) Handles btnLoadKey.Click
