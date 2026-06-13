@@ -101,6 +101,10 @@ Namespace LicenseFramework.Client
             End Try
         End Function
 
+        Private Function ValidateSignatureOnlyInternal(signedLicense As String) As LicenseValidationResult
+
+        End Function
+
     End Class
 
 End Namespace

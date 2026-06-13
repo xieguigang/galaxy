@@ -16,5 +16,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)LicenseData\OnlineLicenseResponse.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)LicenseData\OnlineLicenseRequest.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)LicenseData\LicenseData.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)LicenseValidator.vb" />
   </ItemGroup>
 </Project>
