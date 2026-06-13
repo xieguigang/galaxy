@@ -17,7 +17,7 @@
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
     <Platforms>AnyCPU;x64</Platforms>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(ProjectDir)**\*.cs</DefaultItemExcludes>
-    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <MyType>WindowsForms</MyType>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <OptionStrict>Off</OptionStrict>
     <IncludeSymbols>True</IncludeSymbols>
@@ -25,7 +25,7 @@
     <OutputType>WinExe</OutputType>
     <UseWPF>True</UseWPF>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
-    <StartupObject>ExcelPad.FormMain</StartupObject>
+    <StartupObject>ExcelPad.My.MyApplication</StartupObject>
     <AssemblyTitle>A DEMO program of the framework components</AssemblyTitle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows|AnyCPU'">
@@ -65,6 +65,9 @@
     <Optimize>False</Optimize>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Workbench.vb" />
+    <Compile Include="FormLicensePage.Designer.vb" />
+    <Compile Include="FormLicensePage.vb" />
     <Compile Include="FormDataSheet.Designer.vb" />
     <Compile Include="FormDataSheet.vb" />
     <Compile Include="FormMain.Designer.vb" />
@@ -77,6 +80,7 @@
     <Compile Include="RibbonItems.Designer.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormLicensePage.resx" />
     <EmbeddedResource Include="FormDataSheet.resx" />
     <EmbeddedResource Include="FormMain.resx" />
     <EmbeddedResource Include="My Project\Resources.resx">

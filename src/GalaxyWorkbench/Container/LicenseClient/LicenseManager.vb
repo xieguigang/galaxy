@@ -1,5 +1,4 @@
-Imports System.Windows.Forms
-Imports LicenseVendor.LicenseFramework.Shared
+Imports Galaxy.Workbench.LicenseFramework.Shared
 Imports Windows.Win32.System
 
 Namespace LicenseFramework.Client
