@@ -22,6 +22,17 @@ Module Workbench
         End If
     End Function
 
+    Sub New()
+        ' ===== 第一步：初始化授权管理器 =====
+        licenseManager = New LicenseManager(
+            publicKeyXml:=GetEmbeddedPublicKey(),
+            productName:="我的商业软件",
+            productVersion:="1.0.0",
+            serverUrl:="https://license.example.com/api/activate",
+            hmacKey:=GetEmbeddedHmacKey()
+        )
+    End Sub
+
     ''' <summary>
     ''' 获取嵌入的RSA公钥
     ''' 实际项目中应将公钥硬编码或混淆后嵌入
@@ -42,15 +53,6 @@ Module Workbench
     End Function
 
     Public Function CheckLicense() As Boolean
-        ' ===== 第一步：初始化授权管理器 =====
-        Dim licenseManager As New LicenseManager(
-            publicKeyXml:=GetEmbeddedPublicKey(),
-            productName:="我的商业软件",
-            productVersion:="1.0.0",
-            serverUrl:="https://license.example.com/api/activate",
-            hmacKey:=GetEmbeddedHmacKey()
-        )
-
         ' ===== 第二步：执行授权验证 =====
         Dim result As LicenseValidationResult = licenseManager.Validate()
 

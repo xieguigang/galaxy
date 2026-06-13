@@ -401,6 +401,7 @@ Public Class LicenseGeneratorForm : Inherits InputDialog
 
     Private Sub LicenseGeneratorForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         txtPrivateKey.Text = Workbench.private_key
+        _privateKeyXml = Workbench.private_key.ReadAllText
     End Sub
 End Class
 
