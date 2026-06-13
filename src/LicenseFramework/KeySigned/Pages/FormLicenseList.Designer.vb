@@ -46,8 +46,12 @@ Partial Class FormLicenseList
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(939, 537)
         Controls.Add(TreeListView1)
+        DockAreas = Microsoft.VisualStudio.WinForms.Docking.DockAreas.Float Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockLeft Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockRight Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockTop Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockBottom Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.Document
+        DoubleBuffered = True
         Name = "FormLicenseList"
-        Text = "客户列表"
+        ShowHint = Microsoft.VisualStudio.WinForms.Docking.DockState.Unknown
+        TabPageContextMenuStrip = DockContextMenuStrip1
+        Text = "软件许可证列表"
         ResumeLayout(False)
     End Sub
 
