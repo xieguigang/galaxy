@@ -75,6 +75,7 @@ Public Class FormMain : Implements AppHost
 
         AddHandler ribbonItem.ButtonOpen.ExecuteEvent, AddressOf OpenFile
         AddHandler ribbonItem.ButtonImportsData.ExecuteEvent, AddressOf ImportsFile
+        AddHandler ribbonItem.ButtonLicense.ExecuteEvent, AddressOf OpenLicensePage
 
         Call CommonRuntime.Hook(Me)
         Call CommonRuntime.RegisterOutputWindow()
@@ -82,6 +83,10 @@ Public Class FormMain : Implements AppHost
         If Not Workbench.CheckLicense() Then
             Call App.Exit()
         End If
+    End Sub
+
+    Private Sub OpenLicensePage()
+        CommonRuntime.ShowSingleDocument(Of FormLicensePage)()
     End Sub
 
     Private Sub ImportsFile()
