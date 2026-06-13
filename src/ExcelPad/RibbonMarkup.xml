@@ -19,6 +19,14 @@
     </Command>
     <Command Name="cmdGroupExcelPad" Id="4" LabelTitle="Excel Pad" LabelDescription="Excel Pad" />
     <Command Name="cmdMenuMain" Id="5" LabelTitle="Main" />
+    <Command Name="cmdButtonLicense" Id="6" LabelTitle="License">
+      <Command.SmallImages>
+        <Image MinDPI="192">Resources/icons8-registry-editor-96.png</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image MinDPI="192">Resources/icons8-registry-editor-96.png</Image>
+      </Command.LargeImages>
+    </Command>
   </Application.Commands>
   <Application.Views>
     <Ribbon>
@@ -30,9 +38,10 @@
       </Ribbon.QuickAccessToolbar>
       <Ribbon.Tabs>
         <Tab CommandName="cmdMenuMain">
-          <Group CommandName="cmdGroupExcelPad" SizeDefinition="TwoButtons">
+          <Group CommandName="cmdGroupExcelPad" SizeDefinition="ThreeButtons">
             <Button CommandName="cmdButtonOpen" />
             <Button CommandName="cmdButtonImportsData" />
+            <Button CommandName="cmdButtonLicense" />
           </Group>
         </Tab>
       </Ribbon.Tabs>

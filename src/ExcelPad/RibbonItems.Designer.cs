@@ -22,6 +22,7 @@ namespace RibbonLib.Controls
             public const uint cmdGroupExcelPad = 4;
             public const uint cmdButtonOpen = 2;
             public const uint cmdButtonImportsData = 3;
+            public const uint cmdButtonLicense = 6;
         }
 
         // ContextPopup CommandName
@@ -31,6 +32,7 @@ namespace RibbonLib.Controls
         public RibbonGroup GroupExcelPad { get; private set; }
         public RibbonButton ButtonOpen { get; private set; }
         public RibbonButton ButtonImportsData { get; private set; }
+        public RibbonButton ButtonLicense { get; private set; }
 
         public RibbonItems(Ribbon ribbon)
         {
@@ -41,6 +43,7 @@ namespace RibbonLib.Controls
             GroupExcelPad = new RibbonGroup(ribbon, Cmd.cmdGroupExcelPad);
             ButtonOpen = new RibbonButton(ribbon, Cmd.cmdButtonOpen);
             ButtonImportsData = new RibbonButton(ribbon, Cmd.cmdButtonImportsData);
+            ButtonLicense = new RibbonButton(ribbon, Cmd.cmdButtonLicense);
         }
 
     }

@@ -19,6 +19,7 @@ Namespace RibbonLib.Controls
             Public Const cmdGroupExcelPad As UInteger = 4
             Public Const cmdButtonOpen As UInteger = 2
             Public Const cmdButtonImportsData As UInteger = 3
+            Public Const cmdButtonLicense As UInteger = 6
         End Class
 
         ' ContextPopup CommandName
@@ -53,6 +54,12 @@ Namespace RibbonLib.Controls
                 Return _ButtonImportsData
             End Get
         End Property
+        Private _ButtonLicense As RibbonButton
+        Public ReadOnly Property ButtonLicense As RibbonButton
+            Get
+                Return _ButtonLicense
+            End Get
+        End Property
 
         Public Sub New(ByVal ribbon As Ribbon)
             If ribbon Is Nothing Then
@@ -63,6 +70,7 @@ Namespace RibbonLib.Controls
             _GroupExcelPad = New RibbonGroup(_ribbon, Cmd.cmdGroupExcelPad)
             _ButtonOpen = New RibbonButton(_ribbon, Cmd.cmdButtonOpen)
             _ButtonImportsData = New RibbonButton(_ribbon, Cmd.cmdButtonImportsData)
+            _ButtonLicense = New RibbonButton(_ribbon, Cmd.cmdButtonLicense)
         End Sub
 
     End Class
