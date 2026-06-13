@@ -1,9 +1,10 @@
 ﻿Imports Galaxy.CommonControls.ModernTreeListView
+Imports Galaxy.Workbench.DockDocument
 Imports LicenseVendor
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormLicenseList
-    Inherits System.Windows.Forms.Form
+    Inherits DocumentWindow
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
@@ -25,21 +26,28 @@ Partial Class FormLicenseList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        TreeListView1 = New ModernTreeListView(Of LicenseUser)()
         SuspendLayout()
+        ' 
+        ' TreeListView1
+        ' 
+        TreeListView1.BackColor = Color.White
+        TreeListView1.Dock = DockStyle.Fill
+        TreeListView1.Font = New Font("Segoe UI", 9.5F)
+        TreeListView1.ForeColor = Color.FromArgb(CByte(33), CByte(37), CByte(41))
+        TreeListView1.Location = New Point(0, 0)
+        TreeListView1.Name = "TreeListView1"
+        TreeListView1.Size = New Size(939, 537)
+        TreeListView1.TabIndex = 0
         ' 
         ' FormLicenseList
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(939, 537)
-        Name = "FormLicenseList"
-        Text = "Form1"
-
-        TreeListView1 = New ModernTreeListView(Of LicenseUser)
-        TreeListView1.Dock = DockStyle.Fill
-
         Controls.Add(TreeListView1)
-
+        Name = "FormLicenseList"
+        Text = "客户列表"
         ResumeLayout(False)
     End Sub
 

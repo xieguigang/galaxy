@@ -75,7 +75,7 @@ Partial Class FormMain
         Controls.Add(Ribbon1)
         Controls.Add(StatusStrip1)
         Name = "FormMain"
-        Text = "Form1"
+        Text = "软件授权管理工具"
         StatusStrip1.ResumeLayout(False)
         StatusStrip1.PerformLayout()
         ResumeLayout(False)

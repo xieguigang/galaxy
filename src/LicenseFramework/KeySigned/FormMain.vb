@@ -36,6 +36,7 @@ Public Class FormMain : Implements AppHost
         Call initializeVSPanel()
         Call CommonRuntime.Hook(Me)
         Call CommonRuntime.RegisterOutputWindow()
+        Call CommonRuntime.ShowSingleDocument(Of FormLicenseList)()
     End Sub
 
     Shared Sub New()
