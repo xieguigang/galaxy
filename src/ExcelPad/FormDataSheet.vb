@@ -1,26 +1,19 @@
 ﻿Imports System.Data
 Imports System.Runtime.CompilerServices
-Imports System.Windows.Forms
 Imports Galaxy.Data.TableSheet
 Imports Microsoft.VisualBasic.Data.Framework.IO
 Imports Microsoft.VisualBasic.Data.Framework.StorageProvider
 
 Public Class FormDataSheet
 
-    Dim WithEvents table As New AdvancedDataGridView
-    Dim WithEvents toolbar As New AdvancedDataGridViewSearchToolBar
-
     Dim loader As GridLoaderHandler
     Dim search As GridSearchHandler
 
     Private Sub FormDataSheet_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Controls.Add(table)
-        Controls.Add(toolbar)
-
-        table.Dock = DockStyle.Fill
-        toolbar.Dock = DockStyle.Top
         loader = New GridLoaderHandler(table, toolbar)
         search = New GridSearchHandler(table)
+
+        Call ApplyVsTheme(toolbar)
     End Sub
 
     <MethodImpl(MethodImplOptions.AggressiveInlining)>

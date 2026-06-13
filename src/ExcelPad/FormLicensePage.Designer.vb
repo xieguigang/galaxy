@@ -6,7 +6,7 @@ Partial Class FormLicensePage
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -25,68 +25,83 @@ Partial Class FormLicensePage
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Text = "我的商业软件 v1.0.0"
-        Me.Size = New System.Drawing.Size(800, 600)
-        Me.StartPosition = FormStartPosition.CenterScreen
-
-        ' 状态栏
-        Dim statusPanel As New Panel With {
-            .Dock = DockStyle.Bottom,
-            .Height = 30,
-            .BackColor = System.Drawing.SystemColors.Control
-        }
-
-        Dim lblStatus As New Label With {
-            .Text = If(Workbench.IsLicensed,
-                       $"已授权 - {Workbench.GetCurrentLicense()?.LicenseType.ToString()} - 到期: {Workbench.GetCurrentLicense()?.ExpiryDate}",
-                       "未授权"),
-            .Dock = DockStyle.Fill,
-            .TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        }
+        statusPanel = New Panel()
+        lblStatus = New Label()
+        mainPanel = New Panel()
+        lblWelcome = New Label()
+        btnLicense = New Button()
+        statusPanel.SuspendLayout()
+        mainPanel.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' statusPanel
+        ' 
+        statusPanel.BackColor = Drawing.SystemColors.Control
         statusPanel.Controls.Add(lblStatus)
-        Me.Controls.Add(statusPanel)
-
-        ' 主内容
-        Dim mainPanel As New Panel With {
-            .Dock = DockStyle.Fill
-        }
-
-        Dim lblWelcome As New Label With {
-            .Text = "欢迎使用我的商业软件！",
-            .Font = New System.Drawing.Font("Microsoft YaHei", 16, System.Drawing.FontStyle.Bold),
-            .Location = New System.Drawing.Point(20, 20),
-            .AutoSize = True
-        }
+        statusPanel.Dock = DockStyle.Bottom
+        statusPanel.Location = New System.Drawing.Point(0, 531)
+        statusPanel.Name = "statusPanel"
+        statusPanel.Size = New System.Drawing.Size(784, 30)
+        statusPanel.TabIndex = 0
+        ' 
+        ' lblStatus
+        ' 
+        lblStatus.Dock = DockStyle.Fill
+        lblStatus.Location = New System.Drawing.Point(0, 0)
+        lblStatus.Name = "lblStatus"
+        lblStatus.Size = New System.Drawing.Size(784, 30)
+        lblStatus.TabIndex = 0
+        lblStatus.Text = "未授权"
+        lblStatus.TextAlign = Drawing.ContentAlignment.MiddleLeft
+        ' 
+        ' mainPanel
+        ' 
         mainPanel.Controls.Add(lblWelcome)
-
-        ' 授权信息
-        If Workbench.IsLicensed Then
-            Dim license As LicenseData = Workbench.GetCurrentLicense
-            Dim lblInfo As New Label With {
-                .Text = $"许可证类型: {license.LicenseType.ToString()}" & Environment.NewLine &
-                        $"客户名称: {license.CustomerName}" & Environment.NewLine &
-                        $"授权日期: {license.IssueDate}" & Environment.NewLine &
-                        $"到期日期: {If(String.IsNullOrEmpty(license.ExpiryDate), "永久", license.ExpiryDate)}",
-                .Location = New System.Drawing.Point(20, 70),
-                .AutoSize = True
-            }
-            mainPanel.Controls.Add(lblInfo)
-        End If
-
-        ' 授权管理按钮
-        btnLicense = New Button With {
-            .Text = "授权管理",
-            .Size = New System.Drawing.Size(120, 35),
-            .Location = New System.Drawing.Point(20, 200)
-        }
-
         mainPanel.Controls.Add(btnLicense)
-
-        Me.Controls.Add(mainPanel)
+        mainPanel.Dock = DockStyle.Fill
+        mainPanel.Location = New System.Drawing.Point(0, 0)
+        mainPanel.Name = "mainPanel"
+        mainPanel.Size = New System.Drawing.Size(784, 531)
+        mainPanel.TabIndex = 1
+        ' 
+        ' lblWelcome
+        ' 
+        lblWelcome.AutoSize = True
+        lblWelcome.Font = New System.Drawing.Font("Microsoft YaHei", 16F, Drawing.FontStyle.Bold)
+        lblWelcome.Location = New System.Drawing.Point(20, 20)
+        lblWelcome.Name = "lblWelcome"
+        lblWelcome.Size = New System.Drawing.Size(255, 30)
+        lblWelcome.TabIndex = 0
+        lblWelcome.Text = "欢迎使用我的商业软件！"
+        ' 
+        ' btnLicense
+        ' 
+        btnLicense.Location = New System.Drawing.Point(20, 200)
+        btnLicense.Name = "btnLicense"
+        btnLicense.Size = New System.Drawing.Size(120, 35)
+        btnLicense.TabIndex = 1
+        btnLicense.Text = "授权管理"
+        ' 
+        ' FormLicensePage
+        ' 
+        AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New System.Drawing.Size(784, 561)
+        Controls.Add(mainPanel)
+        Controls.Add(statusPanel)
+        Name = "FormLicensePage"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "我的商业软件 v1.0.0"
+        statusPanel.ResumeLayout(False)
+        mainPanel.ResumeLayout(False)
+        mainPanel.PerformLayout()
+        ResumeLayout(False)
     End Sub
 
-    Dim WithEvents btnLicense As New Button
+    Dim WithEvents btnLicense As Button
+    Dim WithEvents mainPanel As Panel
+    Dim WithEvents lblWelcome As Label
+    Dim WithEvents statusPanel As Panel
+    Dim WithEvents lblStatus As Label
+
 End Class
