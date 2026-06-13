@@ -20,84 +20,108 @@ Public Class KeyGeneratorForm
     WithEvents btnSavePublic As Button
 
     Public Sub New()
-        ' Call InitializeComponent()
+        Call InitializeComponent()
     End Sub
 
-    Private Sub InitializeComponentX()
-        Me.Text = "RSA密钥对生成工具"
-        Me.Size = New Drawing.Size(700, 500)
-        Me.StartPosition = FormStartPosition.CenterScreen
-
-        lblTitle = New Label
-        lblTitle.Text = "RSA 2048位密钥对生成工具"
-        lblTitle.Font = New Drawing.Font("Microsoft YaHei", 14, Drawing.FontStyle.Bold)
-        lblTitle.Location = New Drawing.Point(20, 15)
+    Private Sub InitializeComponent()
+        lblTitle = New Label()
+        btnGenerate = New Button()
+        lblPrompt = New Label()
+        txtPrivateKey = New TextBox()
+        btnSavePrivate = New Button()
+        lblPrompt2 = New Label()
+        txtPublicKey = New TextBox()
+        btnSavePublic = New Button()
+        SuspendLayout()
+        ' 
+        ' lblTitle
+        ' 
         lblTitle.AutoSize = True
-
-
-
-        btnGenerate = New Button
+        lblTitle.Font = New Font("Microsoft YaHei", 14F, FontStyle.Bold)
+        lblTitle.Location = New Point(20, 15)
+        lblTitle.Name = "lblTitle"
+        lblTitle.Size = New Size(256, 26)
+        lblTitle.TabIndex = 0
+        lblTitle.Text = "RSA 2048位密钥对生成工具"
+        ' 
+        ' btnGenerate
+        ' 
+        btnGenerate.Location = New Point(20, 55)
+        btnGenerate.Name = "btnGenerate"
+        btnGenerate.Size = New Size(120, 35)
+        btnGenerate.TabIndex = 1
         btnGenerate.Text = "生成密钥对"
-        btnGenerate.Size = New Drawing.Size(120, 35)
-        btnGenerate.Location = New Drawing.Point(20, 55)
-
-
-
-
-        lblPrompt = New Label
-        lblPrompt.Text = "私钥 (Private Key) - 请妥善保管，切勿泄露:"
-        lblPrompt.Location = New Drawing.Point(20, 105)
+        ' 
+        ' lblPrompt
+        ' 
         lblPrompt.AutoSize = True
-
-        ' 私钥
-
-
-        txtPrivateKey = New TextBox
-
+        lblPrompt.Location = New Point(20, 105)
+        lblPrompt.Name = "lblPrompt"
+        lblPrompt.Size = New Size(246, 15)
+        lblPrompt.TabIndex = 2
+        lblPrompt.Text = "私钥 (Private Key) - 请妥善保管，切勿泄露:"
+        ' 
+        ' txtPrivateKey
+        ' 
+        txtPrivateKey.Location = New Point(20, 125)
         txtPrivateKey.Multiline = True
-        txtPrivateKey.Size = New Drawing.Size(650, 120)
-        txtPrivateKey.Location = New Drawing.Point(20, 125)
+        txtPrivateKey.Name = "txtPrivateKey"
         txtPrivateKey.ReadOnly = True
         txtPrivateKey.ScrollBars = ScrollBars.Vertical
-
-
-        btnSavePrivate = New Button
+        txtPrivateKey.Size = New Size(650, 120)
+        txtPrivateKey.TabIndex = 3
+        ' 
+        ' btnSavePrivate
+        ' 
+        btnSavePrivate.Location = New Point(20, 250)
+        btnSavePrivate.Name = "btnSavePrivate"
+        btnSavePrivate.Size = New Size(100, 30)
+        btnSavePrivate.TabIndex = 4
         btnSavePrivate.Text = "保存私钥"
-        btnSavePrivate.Size = New Drawing.Size(100, 30)
-        btnSavePrivate.Location = New Drawing.Point(20, 250)
-
-
-
-        lblPrompt2 = New Label
-        lblPrompt2.Text = "公钥 (Public Key) - 嵌入到客户端程序中:"
-        lblPrompt2.Location = New Drawing.Point(20, 290)
+        ' 
+        ' lblPrompt2
+        ' 
         lblPrompt2.AutoSize = True
-
-        ' 公钥
-
-
-        txtPublicKey = New TextBox
-
+        lblPrompt2.Location = New Point(20, 290)
+        lblPrompt2.Name = "lblPrompt2"
+        lblPrompt2.Size = New Size(230, 15)
+        lblPrompt2.TabIndex = 5
+        lblPrompt2.Text = "公钥 (Public Key) - 嵌入到客户端程序中:"
+        ' 
+        ' txtPublicKey
+        ' 
+        txtPublicKey.Location = New Point(20, 310)
         txtPublicKey.Multiline = True
-        txtPublicKey.Size = New Drawing.Size(650, 120)
-        txtPublicKey.Location = New Drawing.Point(20, 310)
+        txtPublicKey.Name = "txtPublicKey"
         txtPublicKey.ReadOnly = True
         txtPublicKey.ScrollBars = ScrollBars.Vertical
-
-
-        btnSavePublic = New Button
+        txtPublicKey.Size = New Size(650, 120)
+        txtPublicKey.TabIndex = 6
+        ' 
+        ' btnSavePublic
+        ' 
+        btnSavePublic.Location = New Point(20, 435)
+        btnSavePublic.Name = "btnSavePublic"
+        btnSavePublic.Size = New Size(100, 30)
+        btnSavePublic.TabIndex = 7
         btnSavePublic.Text = "保存公钥"
-        btnSavePublic.Size = New Drawing.Size(100, 30)
-        btnSavePublic.Location = New Drawing.Point(20, 435)
-
-        Me.Controls.Add(lblTitle)
-        Me.Controls.Add(btnGenerate)
-        Me.Controls.Add(lblPrompt)
-        Me.Controls.Add(txtPrivateKey)
-        Me.Controls.Add(btnSavePrivate)
-        Me.Controls.Add(lblPrompt2)
-        Me.Controls.Add(txtPublicKey)
-        Me.Controls.Add(btnSavePublic)
+        ' 
+        ' KeyGeneratorForm
+        ' 
+        ClientSize = New Size(709, 487)
+        Controls.Add(lblTitle)
+        Controls.Add(btnGenerate)
+        Controls.Add(lblPrompt)
+        Controls.Add(txtPrivateKey)
+        Controls.Add(btnSavePrivate)
+        Controls.Add(lblPrompt2)
+        Controls.Add(txtPublicKey)
+        Controls.Add(btnSavePublic)
+        Name = "KeyGeneratorForm"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "RSA密钥对生成工具"
+        ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Private Sub BtnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
@@ -132,17 +156,6 @@ Public Class KeyGeneratorForm
                 MessageBox.Show("私钥已保存", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End Using
-    End Sub
-
-    Private Sub InitializeComponent()
-        SuspendLayout()
-        ' 
-        ' KeyGeneratorForm
-        ' 
-        ClientSize = New Size(663, 396)
-        Name = "KeyGeneratorForm"
-        ResumeLayout(False)
-
     End Sub
 
     Private Sub BtnSavePublic_Click(sender As Object, e As EventArgs) Handles btnSavePublic.Click
