@@ -20,10 +20,10 @@ Public Class KeyGeneratorForm
     WithEvents btnSavePublic As Button
 
     Public Sub New()
-        Call InitializeComponent()
+        ' Call InitializeComponent()
     End Sub
 
-    Private Sub InitializeComponent()
+    Private Sub InitializeComponentX()
         Me.Text = "RSA密钥对生成工具"
         Me.Size = New Drawing.Size(700, 500)
         Me.StartPosition = FormStartPosition.CenterScreen
@@ -132,6 +132,17 @@ Public Class KeyGeneratorForm
                 MessageBox.Show("私钥已保存", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End Using
+    End Sub
+
+    Private Sub InitializeComponent()
+        SuspendLayout()
+        ' 
+        ' KeyGeneratorForm
+        ' 
+        ClientSize = New Size(663, 396)
+        Name = "KeyGeneratorForm"
+        ResumeLayout(False)
+
     End Sub
 
     Private Sub BtnSavePublic_Click(sender As Object, e As EventArgs) Handles btnSavePublic.Click
