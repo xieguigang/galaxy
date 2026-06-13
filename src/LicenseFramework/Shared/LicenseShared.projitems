@@ -10,6 +10,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CryptoHelper.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)LicenseData.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)LicenseData\LicenseStatus.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)LicenseData\LicenseType.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)LicenseData\LicenseValidationResult.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)LicenseData\OnlineLicenseResponse.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)LicenseData\OnlineLicenseRequest.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)LicenseData\LicenseData.vb" />
   </ItemGroup>
 </Project>
