@@ -25,34 +25,14 @@ Partial Class FormLicensePage
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        statusPanel = New Panel()
-        lblStatus = New Label()
         mainPanel = New Panel()
         lblWelcome = New Label()
         btnLicense = New Button()
-        statusPanel.SuspendLayout()
+        statusPanel = New Panel()
+        lblStatus = New Label()
         mainPanel.SuspendLayout()
+        statusPanel.SuspendLayout()
         SuspendLayout()
-        ' 
-        ' statusPanel
-        ' 
-        statusPanel.BackColor = Drawing.SystemColors.Control
-        statusPanel.Controls.Add(lblStatus)
-        statusPanel.Dock = DockStyle.Bottom
-        statusPanel.Location = New System.Drawing.Point(0, 531)
-        statusPanel.Name = "statusPanel"
-        statusPanel.Size = New System.Drawing.Size(784, 30)
-        statusPanel.TabIndex = 0
-        ' 
-        ' lblStatus
-        ' 
-        lblStatus.Dock = DockStyle.Fill
-        lblStatus.Location = New System.Drawing.Point(0, 0)
-        lblStatus.Name = "lblStatus"
-        lblStatus.Size = New System.Drawing.Size(784, 30)
-        lblStatus.TabIndex = 0
-        lblStatus.Text = "未授权"
-        lblStatus.TextAlign = Drawing.ContentAlignment.MiddleLeft
         ' 
         ' mainPanel
         ' 
@@ -82,6 +62,26 @@ Partial Class FormLicensePage
         btnLicense.TabIndex = 1
         btnLicense.Text = "授权管理"
         ' 
+        ' statusPanel
+        ' 
+        statusPanel.BackColor = Drawing.SystemColors.Control
+        statusPanel.Controls.Add(lblStatus)
+        statusPanel.Dock = DockStyle.Bottom
+        statusPanel.Location = New System.Drawing.Point(0, 531)
+        statusPanel.Name = "statusPanel"
+        statusPanel.Size = New System.Drawing.Size(784, 30)
+        statusPanel.TabIndex = 0
+        ' 
+        ' lblStatus
+        ' 
+        lblStatus.Dock = DockStyle.Fill
+        lblStatus.Location = New System.Drawing.Point(0, 0)
+        lblStatus.Name = "lblStatus"
+        lblStatus.Size = New System.Drawing.Size(784, 30)
+        lblStatus.TabIndex = 0
+        lblStatus.Text = "未授权"
+        lblStatus.TextAlign = Drawing.ContentAlignment.MiddleLeft
+        ' 
         ' FormLicensePage
         ' 
         AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
@@ -92,16 +92,16 @@ Partial Class FormLicensePage
         Name = "FormLicensePage"
         StartPosition = FormStartPosition.CenterScreen
         Text = "我的商业软件 v1.0.0"
-        statusPanel.ResumeLayout(False)
         mainPanel.ResumeLayout(False)
         mainPanel.PerformLayout()
+        statusPanel.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
     Dim WithEvents btnLicense As Button
     Dim WithEvents mainPanel As Panel
     Dim WithEvents lblWelcome As Label
-    Dim WithEvents statusPanel As Panel
-    Dim WithEvents lblStatus As Label
+    Private WithEvents statusPanel As Panel
+    Private WithEvents lblStatus As Label
 
 End Class
