@@ -36,35 +36,38 @@ Namespace LicenseFramework.Client
         ''' </summary>
         Public Function Validate(signedLicense As String, currentHardwareFingerprint As String) As LicenseValidationResult
             Try
-                ' 第一步：验证签名
-                Dim signatureResult As LicenseValidationResult = ValidateSignatureOnly(signedLicense)
-                If Not signatureResult.IsValid Then
-                    Return signatureResult
-                End If
-
-                Dim licenseData As LicenseData = signatureResult.License
-
-                ' 第二步：验证硬件指纹
-                If Not String.Equals(licenseData.HardwareFingerprint,
-                                      currentHardwareFingerprint,
-                                      StringComparison.OrdinalIgnoreCase) Then
-                    Return LicenseValidationResult.Fail(LicenseStatus.HardwareMismatch,
-                                                        "硬件指纹不匹配，此许可证不适用于当前计算机")
-                End If
-
-                ' 第三步：验证过期时间
-                If licenseData.IsExpired Then
-                    Return LicenseValidationResult.Fail(LicenseStatus.Expired,
-                                                        $"许可证已于 {licenseData.ExpiryDate} 过期")
-                End If
-
-                Return LicenseValidationResult.Success(licenseData)
-
+                Return ValidateLicenseInternal(signedLicense, currentHardwareFingerprint)
             Catch ex As FormatException
                 Return LicenseValidationResult.Fail(LicenseStatus.Malformed, $"许可证格式错误: {ex.Message}")
             Catch ex As Exception
                 Return LicenseValidationResult.Fail(LicenseStatus.UnknownError, ex.Message)
             End Try
+        End Function
+
+        Private Function ValidateLicenseInternal(signedLicense As String, currentHardwareFingerprint As String) As LicenseValidationResult
+            ' 第一步：验证签名
+            Dim signatureResult As LicenseValidationResult = ValidateSignatureOnly(signedLicense)
+            If Not signatureResult.IsValid Then
+                Return signatureResult
+            End If
+
+            Dim licenseData As LicenseData = signatureResult.License
+
+            ' 第二步：验证硬件指纹
+            If Not String.Equals(licenseData.HardwareFingerprint,
+                                  currentHardwareFingerprint,
+                                  StringComparison.OrdinalIgnoreCase) Then
+                Return LicenseValidationResult.Fail(LicenseStatus.HardwareMismatch,
+                                                    "硬件指纹不匹配，此许可证不适用于当前计算机")
+            End If
+
+            ' 第三步：验证过期时间
+            If licenseData.IsExpired Then
+                Return LicenseValidationResult.Fail(LicenseStatus.Expired,
+                                                    $"许可证已于 {licenseData.ExpiryDate} 过期")
+            End If
+
+            Return LicenseValidationResult.Success(licenseData)
         End Function
 
         ''' <summary>
@@ -74,35 +77,34 @@ Namespace LicenseFramework.Client
             Try
                 If String.IsNullOrEmpty(signedLicense) Then
                     Return LicenseValidationResult.Fail(LicenseStatus.Malformed, "许可证字符串为空")
+                Else
+                    Return ValidateSignatureOnlyInternal(signedLicense)
                 End If
-
-                Dim parts() As String = signedLicense.Split("."c)
-                If parts.Length <> 2 Then
-                    Return LicenseValidationResult.Fail(LicenseStatus.Malformed, "许可证格式错误")
-                End If
-
-                Dim jsonBytes As Byte() = Convert.FromBase64String(parts(0))
-                Dim jsonString As String = Encoding.UTF8.GetString(jsonBytes)
-
-                If Not CryptoHelper.VerifyString(jsonString, parts(1), _publicKeyXml) Then
-                    Return LicenseValidationResult.Fail(LicenseStatus.InvalidSignature, "签名验证失败，许可证可能被篡改")
-                End If
-
-                Dim licenseData As LicenseData = jsonString.LoadJSON(Of LicenseData)
-
-                If licenseData Is Nothing Then
-                    Return LicenseValidationResult.Fail(LicenseStatus.Malformed, "许可证数据为空")
-                End If
-
-                Return LicenseValidationResult.Success(licenseData)
-
             Catch ex As Exception
                 Return LicenseValidationResult.Fail(LicenseStatus.UnknownError, ex.Message)
             End Try
         End Function
 
         Private Function ValidateSignatureOnlyInternal(signedLicense As String) As LicenseValidationResult
+            Dim parts() As String = signedLicense.Split("."c)
+            If parts.Length <> 2 Then
+                Return LicenseValidationResult.Fail(LicenseStatus.Malformed, "许可证格式错误")
+            End If
 
+            Dim jsonBytes As Byte() = Convert.FromBase64String(parts(0))
+            Dim jsonString As String = Encoding.UTF8.GetString(jsonBytes)
+
+            If Not CryptoHelper.VerifyString(jsonString, parts(1), _publicKeyXml) Then
+                Return LicenseValidationResult.Fail(LicenseStatus.InvalidSignature, "签名验证失败，许可证可能被篡改")
+            End If
+
+            Dim licenseData As LicenseData = jsonString.LoadJSON(Of LicenseData)
+
+            If licenseData Is Nothing Then
+                Return LicenseValidationResult.Fail(LicenseStatus.Malformed, "许可证数据为空")
+            End If
+
+            Return LicenseValidationResult.Success(licenseData)
         End Function
 
     End Class
