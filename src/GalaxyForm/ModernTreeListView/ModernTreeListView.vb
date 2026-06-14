@@ -1,5 +1,6 @@
 Imports System.ComponentModel
 Imports System.Drawing.Drawing2D
+Imports System.Runtime.CompilerServices
 
 Namespace ModernTreeListView
 
@@ -342,6 +343,11 @@ Namespace ModernTreeListView
             Return Me
         End Function
 
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Sub Clear()
+            Call SetRoots({})
+        End Sub
+
         ''' <summary>
         ''' Sets the root models (top level nodes). Children are loaded on demand via the registered children getter.
         ''' This is the primary entry point for populating the control.
@@ -681,6 +687,18 @@ Namespace ModernTreeListView
         End Property
 
         ' ==================== DATA LOADING ====================
+
+        Public ReadOnly Property Count As Integer
+            Get
+                Return _rootNodes.Count
+            End Get
+        End Property
+
+        Default Public ReadOnly Property Item(i As Integer) As TModel
+            Get
+                Return _rootNodes(i).Model
+            End Get
+        End Property
 
         Private Sub LoadRoots(roots As IEnumerable(Of TModel))
             CancelEdit()
