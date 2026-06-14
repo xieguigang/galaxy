@@ -1,4 +1,6 @@
-﻿Imports System.Runtime.CompilerServices
+﻿Imports System.Globalization
+Imports System.Runtime.CompilerServices
+Imports System.Text
 Imports Galaxy.Workbench.CommonDialogs
 Imports Galaxy.Workbench.Container
 Imports Galaxy.Workbench.DockDocument
@@ -293,5 +295,35 @@ Public Module CommonRuntime
         page.Show(AppHost.GetDockPanel)
         page.DockState = status
         Return page
+    End Function
+
+    Dim XorKey As Byte
+
+    Public Sub SetSeed(key As Byte)
+        XorKey = key
+    End Sub
+
+    ''' <summary>
+    ''' 在内存中组装并解密获取RSA公钥
+    ''' </summary>
+    Public Function AssembleKey(ParamArray keyParts As String()) As String
+        Try
+            ' 1. 在内存中拼接片段
+            Dim combinedBase64 As String = String.Concat(keyParts)
+            ' 2. Base64 解码为字节数组
+            Dim encryptedBytes As Byte() = Convert.FromBase64String(combinedBase64)
+
+            ' 3. 进行 XOR 解密 (XOR加密和解密是互逆的，再异或一次就还原了)
+            For i As Integer = 0 To encryptedBytes.Length - 1
+                encryptedBytes(i) = encryptedBytes(i) Xor XorKey
+            Next
+
+            ' 4. 将字节数组转换回原始的XML字符串
+            Return Encoding.UTF8.GetString(encryptedBytes)
+        Catch ex As Exception
+            ' 如果解密失败（说明数组被篡改或损坏），返回空字符串或抛出异常
+            ' 工业软件中建议静默处理，不要给破解者明确提示
+            Return String.Empty
+        End Try
     End Function
 End Module

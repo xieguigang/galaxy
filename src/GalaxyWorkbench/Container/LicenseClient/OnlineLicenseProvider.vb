@@ -131,11 +131,8 @@ Namespace LicenseFramework.Client
         ''' <summary>
         ''' 异步请求在线授权
         ''' </summary>
-        Public Function RequestOnlineLicenseAsync(productName As String,
-                                                    productVersion As String) _
-            As System.Threading.Tasks.Task(Of LicenseValidationResult)
-            Return System.Threading.Tasks.Task.Factory.StartNew(
-                Function() RequestOnlineLicense(productName, productVersion))
+        Public Async Function RequestOnlineLicenseAsync(productName As String, productVersion As String) As Task(Of LicenseValidationResult)
+            Return Await Task.Factory.StartNew(Function() RequestOnlineLicense(productName, productVersion))
         End Function
 
     End Class

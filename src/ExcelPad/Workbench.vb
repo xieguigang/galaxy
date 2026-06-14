@@ -24,6 +24,8 @@ Module Workbench
     End Function
 
     Sub New()
+        Call CommonRuntime.SetSeed(&HA7)
+
         ' ===== 第一步：初始化授权管理器 =====
         licenseManager = New LicenseManager(
             publicKeyXml:=GetEmbeddedPublicKey(),
@@ -41,7 +43,10 @@ Module Workbench
     Private Function GetEmbeddedPublicKey() As String
         ' 此处替换为实际的RSA公钥XML
         ' 使用KeyGenerator工具生成密钥对后，将公钥内容粘贴到这里
-        Return "<RSAKeyValue><Modulus>qGmRjIgv7AxQqG6yr/E8hR5JzqffyKqAFepMUOlPvrvw1RmzqIT9ziLzezpUrjjPlJR4BdZVkmqRYgcJqtFFFsTgzXtGbBXplqhaye8brejJ7GmLQylr4aOIgpDDQlBAAzQ2x+M2fzl4TAgLOjZQFRhJXrKC1Xhz087yEbrcdwotd8cA8qEI1ureCOXsyC/GSacmrPGrAdI0PyB82d+301oX78bktskwgHNqraOS5dBy97hthLMKE/1dUXfSGWEVtZvGQx9I26P1UDKYRaj9K4v++DzWupcMgs1VXO3YDXj3/oJMhlDT3uKKBgmicrrBAaZxmmFejsA2Y3ZqLQ/rfQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>"
+        Return CommonRuntime.AssembleKey("m/X05uzC3vHGy9LCmZvqyMPSy9LUmdbgyvXN7sDRkObf9tbgkd7ViOKfz/WS7d3WwcHe7Nbm4cLX6vLoy/fR1dHQlvXK3dbu857dzuvdwt3X8tXNzffL7fWT5cP98czK1vX+wMTt1tP",
+           "h4eHU88Dd/9PgxeX/18vWz8bewp/F1cLN7ZDgyuv23svVk8bo7sDX4+P2y+Xm5t32ld+M6pXB3cuT8+bA6+jN/fbh9c/t/9Xs5Jb/z92Xn5De4sXVxMPQyNPDn8Tmn9bi7pbS1cLk6P",
+           "/U3uSI4PTGxMrV9+DV5sPul/fe5Z+Vw4yUl5bI/5CfxczT1MzQwO/p1tXG6PSSw+XenpDP08/r6uziiJbD8v/B9ODw4vHT/dHg9t+e7pWR95by4+z+9cbNnuyT0YyM493w0tfE6sDUl",
+           "vH/6JT+4//NlIjI7erPy+PzlNLs7OXAys7E1dXl5sb938rK4cLN1OaV/pT91uv2iNXB9pqam4jqyMPSy9LUmZvi39fIycLJ05nm9ublm4ji39fIycLJ05mbiPX05uzC3vHGy9LCmQ==")
     End Function
 
     ''' <summary>
