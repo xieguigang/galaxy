@@ -218,7 +218,7 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' KeyGeneratorForm
         ' 
         AutoScaleDimensions = New SizeF(96.0F, 96.0F)
-        ClientSize = New Size(5124, 1421)
+        ClientSize = New Size(1675, 1098)
         Controls.Add(GroupBox2)
         Controls.Add(GroupBox1)
         Controls.Add(btnGenerate)
