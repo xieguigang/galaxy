@@ -31,6 +31,101 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         Call InitializeComponent()
     End Sub
 
+    Sub RuntimeLayout()
+        ' 
+        ' lblTitle
+        ' 
+        lblTitle.Location = New Point(9, 18)
+        lblTitle.Margin = New Padding(0)
+        lblTitle.Size = New Size(362, 36)
+        ' 
+        ' btnGenerate
+        ' 
+        btnGenerate.Location = New Point(65, 68)
+        btnGenerate.Margin = New Padding(0)
+        btnGenerate.Size = New Size(120, 35)
+        ' 
+        ' lblPrompt
+        ' 
+        lblPrompt.Location = New Point(18, 26)
+        lblPrompt.Margin = New Padding(0)
+        lblPrompt.Size = New Size(246, 15)
+        ' 
+        ' txtPrivateKey
+        ' 
+        txtPrivateKey.Location = New Point(18, 52)
+        txtPrivateKey.Margin = New Padding(0)
+        txtPrivateKey.Size = New Size(1000, 190)
+        ' 
+        ' btnSavePrivate
+        ' 
+        btnSavePrivate.Location = New Point(18, 253)
+        btnSavePrivate.Margin = New Padding(0)
+        btnSavePrivate.Size = New Size(120, 35)
+        ' 
+        ' lblPrompt2
+        ' 
+        lblPrompt2.Location = New Point(18, 300)
+        lblPrompt2.Margin = New Padding(0)
+        lblPrompt2.Size = New Size(230, 15)
+        ' 
+        ' txtPublicKey
+        ' 
+        txtPublicKey.Location = New Point(18, 330)
+        txtPublicKey.Margin = New Padding(0)
+        txtPublicKey.Size = New Size(1000, 190)
+        ' 
+        ' btnSavePublic
+        ' 
+        btnSavePublic.Location = New Point(18, 537)
+        btnSavePublic.Margin = New Padding(0)
+        btnSavePublic.Size = New Size(120, 35)
+        ' 
+        ' Button1
+        ' 
+        Button1.Location = New Point(18, 222)
+        Button1.Margin = New Padding(0)
+        Button1.Size = New Size(120, 35)
+        ' 
+        ' Label1
+        ' 
+        Label1.Location = New Point(212, 78)
+        Label1.Margin = New Padding(0)
+        Label1.Size = New Size(280, 15)
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Location = New Point(248, 229)
+        TextBox1.Margin = New Padding(0)
+        TextBox1.Size = New Size(47, 23)
+        ' 
+        ' Label2
+        ' 
+        Label2.Location = New Point(150, 232)
+        Label2.Margin = New Padding(0)
+        Label2.Size = New Size(98, 15)
+        ' 
+        ' TextBox2
+        ' 
+        TextBox2.Location = New Point(15, 20)
+        TextBox2.Margin = New Padding(0)
+        TextBox2.Size = New Size(1000, 190)
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Location = New Point(19, 122)
+        GroupBox1.Margin = New Padding(41, 19, 41, 19)
+        GroupBox1.Padding = New Padding(41, 19, 41, 19)
+        GroupBox1.Size = New Size(1056, 595)
+        ' 
+        ' GroupBox2
+        ' 
+        GroupBox2.Location = New Point(19, 727)
+        GroupBox2.Margin = New Padding(41, 19, 41, 19)
+        GroupBox2.Padding = New Padding(41, 19, 41, 19)
+        GroupBox2.Size = New Size(1056, 270)
+    End Sub
+
     Private Sub InitializeComponent()
         lblTitle = New Label()
         btnGenerate = New Button()
@@ -309,6 +404,8 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
             txtPrivateKey.Text = .privateKey
             txtPublicKey.Text = .publicKey
         End With
+
+        Call RuntimeLayout()
     End Sub
 
     ''' <summary>
