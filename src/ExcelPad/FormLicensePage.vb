@@ -22,8 +22,6 @@ Public Class FormLicensePage
     End Sub
 
     Private Sub FormLicensePage_Load(sender As Object, e As EventArgs) Handles Me.Load
-        lblStatus.Text = LicenseData.SimpleDescription(Workbench.GetCurrentLicense)
-
         ' 授权信息
         If Workbench.IsLicensed Then
             Dim license As LicenseData = Workbench.GetCurrentLicense

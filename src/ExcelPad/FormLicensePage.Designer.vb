@@ -28,10 +28,7 @@ Partial Class FormLicensePage : Inherits DocumentWindow
         mainPanel = New Panel()
         lblWelcome = New Label()
         btnLicense = New Button()
-        statusPanel = New Panel()
-        lblStatus = New Label()
         mainPanel.SuspendLayout()
-        statusPanel.SuspendLayout()
         SuspendLayout()
         ' 
         ' mainPanel
@@ -41,7 +38,7 @@ Partial Class FormLicensePage : Inherits DocumentWindow
         mainPanel.Dock = DockStyle.Fill
         mainPanel.Location = New System.Drawing.Point(0, 0)
         mainPanel.Name = "mainPanel"
-        mainPanel.Size = New System.Drawing.Size(784, 531)
+        mainPanel.Size = New System.Drawing.Size(784, 561)
         mainPanel.TabIndex = 1
         ' 
         ' lblWelcome
@@ -62,46 +59,26 @@ Partial Class FormLicensePage : Inherits DocumentWindow
         btnLicense.TabIndex = 1
         btnLicense.Text = "授权管理"
         ' 
-        ' statusPanel
-        ' 
-        statusPanel.BackColor = Drawing.SystemColors.Control
-        statusPanel.Controls.Add(lblStatus)
-        statusPanel.Dock = DockStyle.Bottom
-        statusPanel.Location = New System.Drawing.Point(0, 531)
-        statusPanel.Name = "statusPanel"
-        statusPanel.Size = New System.Drawing.Size(784, 30)
-        statusPanel.TabIndex = 0
-        ' 
-        ' lblStatus
-        ' 
-        lblStatus.Dock = DockStyle.Fill
-        lblStatus.Location = New System.Drawing.Point(0, 0)
-        lblStatus.Name = "lblStatus"
-        lblStatus.Size = New System.Drawing.Size(784, 30)
-        lblStatus.TabIndex = 0
-        lblStatus.Text = "未授权"
-        lblStatus.TextAlign = Drawing.ContentAlignment.MiddleLeft
-        ' 
         ' FormLicensePage
         ' 
         AutoScaleDimensions = New System.Drawing.SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New System.Drawing.Size(784, 561)
         Controls.Add(mainPanel)
-        Controls.Add(statusPanel)
+        DockAreas = Microsoft.VisualStudio.WinForms.Docking.DockAreas.Float Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockLeft Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockRight Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockTop Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockBottom Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.Document
+        DoubleBuffered = True
         Name = "FormLicensePage"
+        ShowHint = Microsoft.VisualStudio.WinForms.Docking.DockState.Unknown
         StartPosition = FormStartPosition.CenterScreen
+        TabPageContextMenuStrip = DockContextMenuStrip1
         Text = "我的商业软件 v1.0.0"
         mainPanel.ResumeLayout(False)
         mainPanel.PerformLayout()
-        statusPanel.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
     Dim WithEvents btnLicense As Button
     Dim WithEvents mainPanel As Panel
     Dim WithEvents lblWelcome As Label
-    Private WithEvents statusPanel As Panel
-    Private WithEvents lblStatus As Label
 
 End Class
