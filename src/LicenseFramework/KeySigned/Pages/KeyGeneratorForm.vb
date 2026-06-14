@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text
+Imports Galaxy.Workbench.CommonDialogs
 Imports Galaxy.Workbench.DockDocument
 Imports LicenseVendor.LicenseFramework.[Shared]
 
@@ -22,6 +23,8 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label2 As Label
     Private WithEvents TextBox2 As TextBox
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GroupBox2 As GroupBox
     WithEvents btnGenerate As Button
 
     Public Sub New()
@@ -42,21 +45,28 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         TextBox1 = New TextBox()
         Label2 = New Label()
         TextBox2 = New TextBox()
+        GroupBox1 = New GroupBox()
+        GroupBox2 = New GroupBox()
+        GroupBox1.SuspendLayout()
+        GroupBox2.SuspendLayout()
         SuspendLayout()
         ' 
         ' lblTitle
         ' 
         lblTitle.AutoSize = True
-        lblTitle.Font = New Font("Microsoft YaHei", 14.0F, FontStyle.Bold)
-        lblTitle.Location = New Point(20, 15)
+        lblTitle.Font = New Font("Microsoft YaHei", 20.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblTitle.ForeColor = Color.DeepSkyBlue
+        lblTitle.Location = New Point(9, 18)
+        lblTitle.Margin = New Padding(0)
         lblTitle.Name = "lblTitle"
-        lblTitle.Size = New Size(256, 26)
+        lblTitle.Size = New Size(362, 36)
         lblTitle.TabIndex = 0
         lblTitle.Text = "RSA 2048位密钥对生成工具"
         ' 
         ' btnGenerate
         ' 
-        btnGenerate.Location = New Point(20, 55)
+        btnGenerate.Location = New Point(65, 68)
+        btnGenerate.Margin = New Padding(0)
         btnGenerate.Name = "btnGenerate"
         btnGenerate.Size = New Size(120, 35)
         btnGenerate.TabIndex = 1
@@ -65,7 +75,8 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' lblPrompt
         ' 
         lblPrompt.AutoSize = True
-        lblPrompt.Location = New Point(20, 105)
+        lblPrompt.Location = New Point(18, 26)
+        lblPrompt.Margin = New Padding(0)
         lblPrompt.Name = "lblPrompt"
         lblPrompt.Size = New Size(246, 15)
         lblPrompt.TabIndex = 2
@@ -73,26 +84,29 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         ' txtPrivateKey
         ' 
-        txtPrivateKey.Location = New Point(20, 125)
+        txtPrivateKey.Location = New Point(18, 52)
+        txtPrivateKey.Margin = New Padding(0)
         txtPrivateKey.Multiline = True
         txtPrivateKey.Name = "txtPrivateKey"
         txtPrivateKey.ReadOnly = True
         txtPrivateKey.ScrollBars = ScrollBars.Vertical
-        txtPrivateKey.Size = New Size(650, 120)
+        txtPrivateKey.Size = New Size(1000, 190)
         txtPrivateKey.TabIndex = 3
         ' 
         ' btnSavePrivate
         ' 
-        btnSavePrivate.Location = New Point(20, 250)
+        btnSavePrivate.Location = New Point(18, 253)
+        btnSavePrivate.Margin = New Padding(0)
         btnSavePrivate.Name = "btnSavePrivate"
-        btnSavePrivate.Size = New Size(100, 30)
+        btnSavePrivate.Size = New Size(120, 35)
         btnSavePrivate.TabIndex = 4
         btnSavePrivate.Text = "保存私钥"
         ' 
         ' lblPrompt2
         ' 
         lblPrompt2.AutoSize = True
-        lblPrompt2.Location = New Point(20, 290)
+        lblPrompt2.Location = New Point(18, 300)
+        lblPrompt2.Margin = New Padding(0)
         lblPrompt2.Name = "lblPrompt2"
         lblPrompt2.Size = New Size(230, 15)
         lblPrompt2.TabIndex = 5
@@ -100,27 +114,30 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         ' txtPublicKey
         ' 
-        txtPublicKey.Location = New Point(20, 310)
+        txtPublicKey.Location = New Point(18, 330)
+        txtPublicKey.Margin = New Padding(0)
         txtPublicKey.Multiline = True
         txtPublicKey.Name = "txtPublicKey"
         txtPublicKey.ReadOnly = True
         txtPublicKey.ScrollBars = ScrollBars.Vertical
-        txtPublicKey.Size = New Size(650, 120)
+        txtPublicKey.Size = New Size(1000, 190)
         txtPublicKey.TabIndex = 6
         ' 
         ' btnSavePublic
         ' 
-        btnSavePublic.Location = New Point(20, 435)
+        btnSavePublic.Location = New Point(18, 537)
+        btnSavePublic.Margin = New Padding(0)
         btnSavePublic.Name = "btnSavePublic"
-        btnSavePublic.Size = New Size(100, 30)
+        btnSavePublic.Size = New Size(120, 35)
         btnSavePublic.TabIndex = 7
         btnSavePublic.Text = "保存公钥"
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(20, 630)
+        Button1.Location = New Point(18, 222)
+        Button1.Margin = New Padding(0)
         Button1.Name = "Button1"
-        Button1.Size = New Size(97, 30)
+        Button1.Size = New Size(120, 35)
         Button1.TabIndex = 8
         Button1.Text = "混淆"
         Button1.UseVisualStyleBackColor = True
@@ -129,7 +146,8 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         Label1.AutoSize = True
         Label1.ForeColor = Color.Red
-        Label1.Location = New Point(20, 475)
+        Label1.Location = New Point(212, 78)
+        Label1.Margin = New Padding(0)
         Label1.Name = "Label1"
         Label1.Size = New Size(280, 15)
         Label1.TabIndex = 9
@@ -137,16 +155,18 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(236, 630)
+        TextBox1.Location = New Point(248, 229)
+        TextBox1.Margin = New Padding(0)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(52, 23)
+        TextBox1.Size = New Size(47, 23)
         TextBox1.TabIndex = 10
         TextBox1.Text = "167"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(132, 633)
+        Label2.Location = New Point(150, 232)
+        Label2.Margin = New Padding(0)
         Label2.Name = "Label2"
         Label2.Size = New Size(98, 15)
         Label2.TabIndex = 11
@@ -154,38 +174,68 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         ' TextBox2
         ' 
-        TextBox2.Location = New Point(20, 504)
+        TextBox2.Location = New Point(15, 20)
+        TextBox2.Margin = New Padding(0)
         TextBox2.Multiline = True
         TextBox2.Name = "TextBox2"
         TextBox2.ReadOnly = True
         TextBox2.ScrollBars = ScrollBars.Vertical
-        TextBox2.Size = New Size(650, 120)
+        TextBox2.Size = New Size(1000, 190)
         TextBox2.TabIndex = 12
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(lblPrompt)
+        GroupBox1.Controls.Add(btnSavePrivate)
+        GroupBox1.Controls.Add(txtPrivateKey)
+        GroupBox1.Controls.Add(lblPrompt2)
+        GroupBox1.Controls.Add(txtPublicKey)
+        GroupBox1.Controls.Add(btnSavePublic)
+        GroupBox1.Location = New Point(19, 122)
+        GroupBox1.Margin = New Padding(41, 19, 41, 19)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Padding = New Padding(41, 19, 41, 19)
+        GroupBox1.Size = New Size(1056, 595)
+        GroupBox1.TabIndex = 13
+        GroupBox1.TabStop = False
+        GroupBox1.Text = "生成新的密钥对"
+        ' 
+        ' GroupBox2
+        ' 
+        GroupBox2.Controls.Add(TextBox2)
+        GroupBox2.Controls.Add(Button1)
+        GroupBox2.Controls.Add(TextBox1)
+        GroupBox2.Controls.Add(Label2)
+        GroupBox2.Location = New Point(19, 727)
+        GroupBox2.Margin = New Padding(41, 19, 41, 19)
+        GroupBox2.Name = "GroupBox2"
+        GroupBox2.Padding = New Padding(41, 19, 41, 19)
+        GroupBox2.Size = New Size(1056, 270)
+        GroupBox2.TabIndex = 14
+        GroupBox2.TabStop = False
+        GroupBox2.Text = "字符串混淆代码"
         ' 
         ' KeyGeneratorForm
         ' 
         AutoScaleDimensions = New SizeF(96.0F, 96.0F)
-        ClientSize = New Size(691, 772)
-        Controls.Add(TextBox1)
-        Controls.Add(TextBox2)
-        Controls.Add(Label2)
-        Controls.Add(Label1)
-        Controls.Add(Button1)
-        Controls.Add(lblTitle)
+        ClientSize = New Size(5124, 1421)
+        Controls.Add(GroupBox2)
+        Controls.Add(GroupBox1)
         Controls.Add(btnGenerate)
-        Controls.Add(lblPrompt)
-        Controls.Add(txtPrivateKey)
-        Controls.Add(btnSavePrivate)
-        Controls.Add(lblPrompt2)
-        Controls.Add(txtPublicKey)
-        Controls.Add(btnSavePublic)
+        Controls.Add(Label1)
+        Controls.Add(lblTitle)
         DockAreas = Microsoft.VisualStudio.WinForms.Docking.DockAreas.Float Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockLeft Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockRight Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockTop Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.DockBottom Or Microsoft.VisualStudio.WinForms.Docking.DockAreas.Document
         DoubleBuffered = True
+        Margin = New Padding(0, 6, 0, 6)
         Name = "KeyGeneratorForm"
         ShowHint = Microsoft.VisualStudio.WinForms.Docking.DockState.Unknown
         StartPosition = FormStartPosition.CenterScreen
         TabPageContextMenuStrip = DockContextMenuStrip1
         Text = "RSA密钥对生成工具"
+        GroupBox1.ResumeLayout(False)
+        GroupBox1.PerformLayout()
+        GroupBox2.ResumeLayout(False)
+        GroupBox2.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
