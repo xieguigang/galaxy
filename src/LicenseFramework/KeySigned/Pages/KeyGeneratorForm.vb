@@ -55,35 +55,35 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         txtPrivateKey.Location = New Point(18, 52)
         txtPrivateKey.Margin = New Padding(0)
-        txtPrivateKey.Size = New Size(1000, 190)
+        txtPrivateKey.Size = New Size(1000, 120)
         ' 
         ' btnSavePrivate
         ' 
-        btnSavePrivate.Location = New Point(18, 253)
+        btnSavePrivate.Location = New Point(29, 181)
         btnSavePrivate.Margin = New Padding(0)
         btnSavePrivate.Size = New Size(120, 35)
         ' 
         ' lblPrompt2
         ' 
-        lblPrompt2.Location = New Point(18, 300)
+        lblPrompt2.Location = New Point(18, 227)
         lblPrompt2.Margin = New Padding(0)
         lblPrompt2.Size = New Size(230, 15)
         ' 
         ' txtPublicKey
         ' 
-        txtPublicKey.Location = New Point(18, 330)
+        txtPublicKey.Location = New Point(15, 251)
         txtPublicKey.Margin = New Padding(0)
-        txtPublicKey.Size = New Size(1000, 190)
+        txtPublicKey.Size = New Size(1000, 120)
         ' 
         ' btnSavePublic
         ' 
-        btnSavePublic.Location = New Point(18, 537)
+        btnSavePublic.Location = New Point(29, 380)
         btnSavePublic.Margin = New Padding(0)
         btnSavePublic.Size = New Size(120, 35)
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(18, 222)
+        Button1.Location = New Point(29, 152)
         Button1.Margin = New Padding(0)
         Button1.Size = New Size(120, 35)
         ' 
@@ -95,13 +95,13 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(248, 229)
+        TextBox1.Location = New Point(265, 152)
         TextBox1.Margin = New Padding(0)
         TextBox1.Size = New Size(47, 23)
         ' 
         ' Label2
         ' 
-        Label2.Location = New Point(150, 232)
+        Label2.Location = New Point(167, 155)
         Label2.Margin = New Padding(0)
         Label2.Size = New Size(98, 15)
         ' 
@@ -109,21 +109,23 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         TextBox2.Location = New Point(15, 20)
         TextBox2.Margin = New Padding(0)
-        TextBox2.Size = New Size(1000, 190)
+        TextBox2.Size = New Size(1000, 120)
         ' 
         ' GroupBox1
         ' 
         GroupBox1.Location = New Point(19, 122)
         GroupBox1.Margin = New Padding(41, 19, 41, 19)
         GroupBox1.Padding = New Padding(41, 19, 41, 19)
-        GroupBox1.Size = New Size(1056, 595)
+        GroupBox1.Size = New Size(1056, 427)
         ' 
         ' GroupBox2
         ' 
-        GroupBox2.Location = New Point(19, 727)
+        GroupBox2.Location = New Point(19, 565)
         GroupBox2.Margin = New Padding(41, 19, 41, 19)
         GroupBox2.Padding = New Padding(41, 19, 41, 19)
-        GroupBox2.Size = New Size(1056, 270)
+        GroupBox2.Size = New Size(1056, 206)
+
+        Margin = New Padding(0, 6, 0, 6)
     End Sub
 
     Private Sub InitializeComponent()
@@ -185,12 +187,12 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         txtPrivateKey.Name = "txtPrivateKey"
         txtPrivateKey.ReadOnly = True
         txtPrivateKey.ScrollBars = ScrollBars.Vertical
-        txtPrivateKey.Size = New Size(1000, 190)
+        txtPrivateKey.Size = New Size(1000, 120)
         txtPrivateKey.TabIndex = 3
         ' 
         ' btnSavePrivate
         ' 
-        btnSavePrivate.Location = New Point(18, 253)
+        btnSavePrivate.Location = New Point(29, 181)
         btnSavePrivate.Margin = New Padding(0)
         btnSavePrivate.Name = "btnSavePrivate"
         btnSavePrivate.Size = New Size(120, 35)
@@ -200,7 +202,7 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' lblPrompt2
         ' 
         lblPrompt2.AutoSize = True
-        lblPrompt2.Location = New Point(18, 300)
+        lblPrompt2.Location = New Point(18, 227)
         lblPrompt2.Margin = New Padding(0)
         lblPrompt2.Name = "lblPrompt2"
         lblPrompt2.Size = New Size(230, 15)
@@ -209,18 +211,18 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         ' txtPublicKey
         ' 
-        txtPublicKey.Location = New Point(18, 330)
+        txtPublicKey.Location = New Point(15, 251)
         txtPublicKey.Margin = New Padding(0)
         txtPublicKey.Multiline = True
         txtPublicKey.Name = "txtPublicKey"
         txtPublicKey.ReadOnly = True
         txtPublicKey.ScrollBars = ScrollBars.Vertical
-        txtPublicKey.Size = New Size(1000, 190)
+        txtPublicKey.Size = New Size(1000, 120)
         txtPublicKey.TabIndex = 6
         ' 
         ' btnSavePublic
         ' 
-        btnSavePublic.Location = New Point(18, 537)
+        btnSavePublic.Location = New Point(29, 380)
         btnSavePublic.Margin = New Padding(0)
         btnSavePublic.Name = "btnSavePublic"
         btnSavePublic.Size = New Size(120, 35)
@@ -229,7 +231,7 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(18, 222)
+        Button1.Location = New Point(29, 152)
         Button1.Margin = New Padding(0)
         Button1.Name = "Button1"
         Button1.Size = New Size(120, 35)
@@ -250,7 +252,7 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(248, 229)
+        TextBox1.Location = New Point(265, 152)
         TextBox1.Margin = New Padding(0)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(47, 23)
@@ -260,7 +262,7 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(150, 232)
+        Label2.Location = New Point(167, 155)
         Label2.Margin = New Padding(0)
         Label2.Name = "Label2"
         Label2.Size = New Size(98, 15)
@@ -275,7 +277,7 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         TextBox2.Name = "TextBox2"
         TextBox2.ReadOnly = True
         TextBox2.ScrollBars = ScrollBars.Vertical
-        TextBox2.Size = New Size(1000, 190)
+        TextBox2.Size = New Size(1000, 120)
         TextBox2.TabIndex = 12
         ' 
         ' GroupBox1
@@ -290,7 +292,7 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         GroupBox1.Margin = New Padding(41, 19, 41, 19)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Padding = New Padding(41, 19, 41, 19)
-        GroupBox1.Size = New Size(1056, 595)
+        GroupBox1.Size = New Size(1056, 427)
         GroupBox1.TabIndex = 13
         GroupBox1.TabStop = False
         GroupBox1.Text = "生成新的密钥对"
@@ -301,18 +303,18 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
         GroupBox2.Controls.Add(Button1)
         GroupBox2.Controls.Add(TextBox1)
         GroupBox2.Controls.Add(Label2)
-        GroupBox2.Location = New Point(19, 727)
+        GroupBox2.Location = New Point(19, 565)
         GroupBox2.Margin = New Padding(41, 19, 41, 19)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.Padding = New Padding(41, 19, 41, 19)
-        GroupBox2.Size = New Size(1056, 270)
+        GroupBox2.Size = New Size(1056, 206)
         GroupBox2.TabIndex = 14
         GroupBox2.TabStop = False
         GroupBox2.Text = "字符串混淆代码"
         ' 
         ' KeyGeneratorForm
         ' 
-        AutoScaleDimensions = New SizeF(96.0F, 96.0F)
+        AutoScaleDimensions = New SizeF(96F, 96F)
         ClientSize = New Size(1675, 1098)
         Controls.Add(GroupBox2)
         Controls.Add(GroupBox1)
