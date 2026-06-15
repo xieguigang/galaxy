@@ -6,6 +6,15 @@ Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace LicenseFramework.Client
 
+    Public Class UserToken
+
+        Public Property userName As String
+        Public Property password As String
+        Public Property productName As String
+        Public Property productVersion As String
+
+    End Class
+
     ''' <summary>
     ''' 在线授权提供程序
     ''' 
@@ -44,7 +53,7 @@ Namespace LicenseFramework.Client
             _offlineProvider = offlineProvider
         End Sub
 
-        Public Function RequestOnlineLicenseInternal(productName As String, productVersion As String, userName As String) As LicenseValidationResult
+        Public Function RequestOnlineLicenseInternal(token As UserToken) As LicenseValidationResult
             ' 第一步：采集硬件指纹
             Dim hwInfo As HardwareInfo = _hwCollector.Collect()
             Dim fingerprint As String = _fpGenerator.GenerateFingerprint(hwInfo)
@@ -52,10 +61,11 @@ Namespace LicenseFramework.Client
             ' 第二步：构建请求
             Dim request As New OnlineLicenseRequest() With {
                 .HardwareFingerprint = fingerprint,
-                .ProductName = productName,
-                .ProductVersion = productVersion,
+                .ProductName = token.productName,
+                .ProductVersion = token.productVersion,
                 .RequestTimestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                .User = userName
+                .User = token.userName,
+                .Password = token.password.MD5.ToLower
             }
 
             ' 第三步：计算HMAC签名
@@ -92,13 +102,13 @@ Namespace LicenseFramework.Client
         ''' <summary>
         ''' 请求在线授权
         ''' </summary>
-        Public Function RequestOnlineLicense(productName As String, productVersion As String, userName As String) As LicenseValidationResult
-            If userName.StringEmpty Then
+        Public Function RequestOnlineLicense(token As UserToken) As LicenseValidationResult
+            If token.userName.StringEmpty Then
                 Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed, "需要提供一个在系统中注册的有效的用户名")
             End If
 
             Try
-                Return RequestOnlineLicenseInternal(productName, productVersion, userName)
+                Return RequestOnlineLicenseInternal(token)
             Catch ex As WebException
                 Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed, $"无法连接到授权服务器: {ex.Message}")
             Catch ex As Exception
@@ -137,8 +147,8 @@ Namespace LicenseFramework.Client
         ''' <summary>
         ''' 异步请求在线授权
         ''' </summary>
-        Public Async Function RequestOnlineLicenseAsync(productName As String, productVersion As String, userName As String) As Task(Of LicenseValidationResult)
-            Return Await Task.Factory.StartNew(Function() RequestOnlineLicense(productName, productVersion, userName))
+        Public Async Function RequestOnlineLicenseAsync(token As UserToken) As Task(Of LicenseValidationResult)
+            Return Await Task.Factory.StartNew(Function() RequestOnlineLicense(token))
         End Function
 
     End Class
