@@ -43,6 +43,7 @@ Namespace Plugin
             ' plugins_test used for test the internal plugin development
             If Container.AppEnvironment.IsDevelopmentMode Then
                 Yield $"{App.HOME}/plugins_test".EnumerateFiles("*.dll").ToArray
+                Yield $"{App.HOME}//plugin_test".EnumerateFiles("*.dll").ToArray
             End If
         End Function
 
