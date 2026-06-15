@@ -175,7 +175,7 @@
   <Import Project="..\Shared\LicenseShared.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="System.Management" Version="10.0.5" />
+    <PackageReference Include="System.Management" Version="10.0.9" />
   </ItemGroup>
 
   <ItemGroup>
