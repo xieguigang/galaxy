@@ -209,8 +209,7 @@ Namespace LicenseFramework.Client
 
         Private Sub BtnOnline_Click(sender As Object, e As EventArgs) Handles btnOnline.Click
             If _onlineProvider Is Nothing Then
-                MessageBox.Show("未配置在线授权服务", "提示",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("未配置在线授权服务", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return
             End If
 
