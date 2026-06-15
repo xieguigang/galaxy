@@ -36,6 +36,7 @@ Namespace LicenseFramework.Client
                         Optional serverUrl As String = Nothing,
                         Optional hmacKey As String = Nothing,
                         Optional cacheDirectory As String = Nothing)
+
             _productName = productName
             _productVersion = productVersion
 

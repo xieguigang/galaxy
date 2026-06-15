@@ -25,6 +25,7 @@ Namespace LicenseFramework.Client
         Private _fpGenerator As New FingerprintGenerator()
         Private _validator As LicenseValidator
         Private _cacheDir As String
+
         Private Const CACHE_FILENAME As String = "license.dat"
 
         Public Sub New(publicKeyXml As String, Optional cacheDirectory As String = Nothing)
@@ -32,17 +33,13 @@ Namespace LicenseFramework.Client
 
             If String.IsNullOrEmpty(cacheDirectory) Then
                 ' 默认缓存到用户AppData目录
-                Dim appDataDir As String = Environment.GetFolderPath(
-                    Environment.SpecialFolder.ApplicationData)
-                _cacheDir = Path.Combine(appDataDir, "LicenseFramework", "Cache")
+                _cacheDir = Path.Combine(App.ProductProgramData, "License", "Cache")
             Else
                 _cacheDir = cacheDirectory
             End If
 
             ' 确保缓存目录存在
-            If Not Directory.Exists(_cacheDir) Then
-                Directory.CreateDirectory(_cacheDir)
-            End If
+            Call _cacheDir.MakeDir
         End Sub
 
         ''' <summary>
