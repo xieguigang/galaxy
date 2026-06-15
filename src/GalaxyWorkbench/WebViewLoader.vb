@@ -22,16 +22,36 @@ Public Class WebViewLoader
     ''' <param name="enableDevTool"></param>
     Public Shared Async Function Init(WebView21 As WebView2, Optional enableDevTool As Boolean = False) As Task
         Dim userDataFolder = (App.ProductProgramData & "/.webView2_cache/").GetDirectoryFullPath
-        Dim env As CoreWebView2Environment
+        userDataFolder.MakeDir()
 
-        userDataFolder.MakeDir
-        env = Await CoreWebView2Environment.CreateAsync(Nothing, userDataFolder)
+        ' Optionally enable browser logging for diagnostics
+        Dim envOptions = New CoreWebView2EnvironmentOptions("--enable-logging=stderr --v=1")
+        Dim env As CoreWebView2Environment = Nothing
+        Dim isErr As Boolean = True
 
-        If CommonRuntime.AppHost IsNot Nothing Then
-            Call CommonRuntime.AppHost.StatusMessage($"set webview2 cache at '{userDataFolder}'.")
+        Try
+            env = Await CoreWebView2Environment.CreateAsync(Nothing, userDataFolder, envOptions)
+            If CommonRuntime.AppHost IsNot Nothing Then
+                Call CommonRuntime.AppHost.StatusMessage($"set webview2 cache at '{userDataFolder}'.")
+            End If
+
+            Await WebView21.EnsureCoreWebView2Async(env)
+            isErr = False
+            Return
+        Catch comEx As System.Runtime.InteropServices.COMException
+            ' Log the HResult and message
+            CommonRuntime.AppHost?.StatusMessage($"WebView2 init failed: {comEx.Message} (0x{comEx.HResult:X})")
+        End Try
+
+        If isErr Then
+            ' Fallback: try default environment (no custom userDataFolder)
+            Try
+                Await WebView21.EnsureCoreWebView2Async()
+            Catch innerEx As Exception
+                CommonRuntime.AppHost?.StatusMessage($"Fallback WebView2 init also failed: {innerEx.Message}")
+                Throw
+            End Try
         End If
-
-        Await WebView21.EnsureCoreWebView2Async(env)
     End Function
 
     ReadOnly hostname As String
