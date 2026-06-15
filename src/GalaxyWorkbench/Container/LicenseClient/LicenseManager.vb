@@ -99,7 +99,7 @@ Namespace LicenseFramework.Client
         End Function
 
         Public Sub OpenLicenseDialog()
-            Dim dlg As New LicenseDialog()
+            Dim dlg As New LicenseDialog() With {.UserName = _userName}
 
             Call dlg.SetLicenseData(_offlineProvider, _onlineProvider, _productName, _productVersion, _lastResult)
             Call InputDialog.Input(, config:=dlg)

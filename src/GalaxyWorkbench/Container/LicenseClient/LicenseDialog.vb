@@ -25,6 +25,7 @@ Namespace LicenseFramework.Client
         Private _initialResult As LicenseValidationResult
 
         Public Property IsAuthorized As Boolean = False
+        Public Property UserName As String
 
         Public Sub New()
             Call InitializeComponent()
@@ -215,7 +216,7 @@ Namespace LicenseFramework.Client
 
             Try
                 Me.Cursor = Cursors.WaitCursor
-                Dim result As LicenseValidationResult = _onlineProvider.RequestOnlineLicense(_productName, _productVersion)
+                Dim result As LicenseValidationResult = _onlineProvider.RequestOnlineLicense(_productName, _productVersion, _UserName)
 
                 IsAuthorized = result.IsValid
 
@@ -238,6 +239,10 @@ Namespace LicenseFramework.Client
 
         Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
             Me.Close()
+        End Sub
+
+        Private Sub LicenseDialog_Load(sender As Object, e As EventArgs) Handles Me.Load
+            Text = $"{Text} [用户：{UserName}]"
         End Sub
     End Class
 
