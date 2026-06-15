@@ -194,8 +194,9 @@ Namespace LicenseFramework.Client
         Private Sub BtnImport_Click(sender As Object, e As EventArgs) Handles btnImport.Click
             Dim result As LicenseValidationResult = _offlineProvider.ImportLicenseWithDialog()
 
+            IsAuthorized = result.IsValid
+
             If result.IsValid Then
-                IsAuthorized = True
                 MessageBox.Show("许可证导入成功，软件已授权!", "授权成功",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Close()
@@ -214,11 +215,11 @@ Namespace LicenseFramework.Client
 
             Try
                 Me.Cursor = Cursors.WaitCursor
-                Dim result As LicenseValidationResult = _onlineProvider.RequestOnlineLicense(
-                    _productName, _productVersion)
+                Dim result As LicenseValidationResult = _onlineProvider.RequestOnlineLicense(_productName, _productVersion)
+
+                IsAuthorized = result.IsValid
 
                 If result.IsValid Then
-                    IsAuthorized = True
                     Me.Cursor = Cursors.Default
                     MessageBox.Show("在线激活成功，软件已授权!",
                                     "授权成功", MessageBoxButtons.OK, MessageBoxIcon.Information)

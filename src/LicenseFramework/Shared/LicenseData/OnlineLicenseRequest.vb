@@ -9,5 +9,6 @@
         Public Property ProductVersion As String = String.Empty
         Public Property RequestTimestamp As String = String.Empty
         Public Property RequestSignature As String = String.Empty
+        Public Property User As String
     End Class
 End Namespace

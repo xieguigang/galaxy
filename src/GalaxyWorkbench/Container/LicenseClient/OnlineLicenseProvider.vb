@@ -33,11 +33,10 @@ Namespace LicenseFramework.Client
         Private _timeoutMs As Integer
         Private _offlineProvider As OfflineLicenseProvider
 
-        Public Sub New(publicKeyXml As String,
-                        serverUrl As String,
-                        hmacKey As String,
-                        offlineProvider As OfflineLicenseProvider,
-                        Optional timeoutMs As Integer = 15000)
+        Public Sub New(publicKeyXml As String, serverUrl As String, hmacKey As String,
+                       offlineProvider As OfflineLicenseProvider,
+                       Optional timeoutMs As Integer = 15000)
+
             _validator = New LicenseValidator(publicKeyXml)
             _serverUrl = serverUrl
             _hmacKey = hmacKey
@@ -48,7 +47,7 @@ Namespace LicenseFramework.Client
         ''' <summary>
         ''' 请求在线授权
         ''' </summary>
-        Public Function RequestOnlineLicense(productName As String, productVersion As String) As LicenseValidationResult
+        Public Function RequestOnlineLicense(productName As String, productVersion As String, userName As String) As LicenseValidationResult
             Try
                 ' 第一步：采集硬件指纹
                 Dim hwInfo As HardwareInfo = _hwCollector.Collect()
@@ -59,7 +58,8 @@ Namespace LicenseFramework.Client
                     .HardwareFingerprint = fingerprint,
                     .ProductName = productName,
                     .ProductVersion = productVersion,
-                    .RequestTimestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                    .RequestTimestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    .User = userName
                 }
 
                 ' 第三步：计算HMAC签名
@@ -131,8 +131,8 @@ Namespace LicenseFramework.Client
         ''' <summary>
         ''' 异步请求在线授权
         ''' </summary>
-        Public Async Function RequestOnlineLicenseAsync(productName As String, productVersion As String) As Task(Of LicenseValidationResult)
-            Return Await Task.Factory.StartNew(Function() RequestOnlineLicense(productName, productVersion))
+        Public Async Function RequestOnlineLicenseAsync(productName As String, productVersion As String, userName As String) As Task(Of LicenseValidationResult)
+            Return Await Task.Factory.StartNew(Function() RequestOnlineLicense(productName, productVersion, userName))
         End Function
 
     End Class

@@ -20,31 +20,33 @@ Namespace LicenseFramework.Client
     '''
     Public Class LicenseManager
 
-        Private _offlineProvider As OfflineLicenseProvider
-        Private _onlineProvider As OnlineLicenseProvider
-        Private _productName As String
-        Private _productVersion As String
-        Private _enableOnline As Boolean
-        Private _lastResult As LicenseValidationResult
+        ReadOnly _offlineProvider As OfflineLicenseProvider
+        ReadOnly _onlineProvider As OnlineLicenseProvider
+        ReadOnly _productName As String
+        ReadOnly _productVersion As String
+        ReadOnly _enableOnline As Boolean
+        ReadOnly _userName As String
+
+        Dim _lastResult As LicenseValidationResult
 
         ''' <summary>
         ''' 构造函数（完整版，支持离线+在线双模式）
         ''' </summary>
-        Public Sub New(publicKeyXml As String,
-                        productName As String,
-                        productVersion As String,
-                        Optional serverUrl As String = Nothing,
-                        Optional hmacKey As String = Nothing,
-                        Optional cacheDirectory As String = Nothing)
+        Public Sub New(publicKeyXml As String, productName As String, productVersion As String,
+                       Optional serverUrl As String = Nothing,
+                       Optional hmacKey As String = Nothing,
+                       Optional userName As String = Nothing,
+                       Optional cacheDirectory As String = Nothing)
 
             _productName = productName
             _productVersion = productVersion
-
+            _userName = userName
             ' 初始化离线授权提供程序
             _offlineProvider = New OfflineLicenseProvider(publicKeyXml, cacheDirectory)
 
             ' 初始化在线授权提供程序（如果提供了服务器URL）
             _enableOnline = Not String.IsNullOrEmpty(serverUrl) AndAlso Not String.IsNullOrEmpty(hmacKey)
+
             If _enableOnline Then
                 _onlineProvider = New OnlineLicenseProvider(publicKeyXml, serverUrl, hmacKey, _offlineProvider)
             End If
@@ -67,7 +69,7 @@ Namespace LicenseFramework.Client
             ' 第二步：尝试在线授权
             If _enableOnline Then
                 Diagnostics.Debug.WriteLine("尝试在线授权...")
-                _lastResult = _onlineProvider.RequestOnlineLicense(_productName, _productVersion)
+                _lastResult = _onlineProvider.RequestOnlineLicense(_productName, _productVersion, _userName)
 
                 If _lastResult.IsValid Then
                     Diagnostics.Debug.WriteLine("在线授权验证通过")
@@ -120,10 +122,10 @@ Namespace LicenseFramework.Client
         ''' </summary>
         Public Function ActivateOnline() As LicenseValidationResult
             If _onlineProvider Is Nothing Then
-                Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed,
-                                                    "未配置在线授权服务")
+                Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed, "未配置在线授权服务")
             End If
-            Return _onlineProvider.RequestOnlineLicense(_productName, _productVersion)
+
+            Return _onlineProvider.RequestOnlineLicense(_productName, _productVersion, _userName)
         End Function
 
         ''' <summary>
