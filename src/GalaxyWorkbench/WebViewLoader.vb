@@ -20,7 +20,7 @@ Public Class WebViewLoader
     ''' </summary>
     ''' <param name="WebView21"></param>
     ''' <param name="enableDevTool"></param>
-    Public Shared Async Function Init(WebView21 As WebView2, Optional enableDevTool As Boolean = False) As Task
+    Public Shared Async Function Init(WebView21 As WebView2, Optional enableDevTool As Boolean = False, Optional verboseDebug As Boolean = False) As Task
         Dim userDataFolder = (App.ProductProgramData & "/.webView2_cache/").GetDirectoryFullPath
         userDataFolder.MakeDir()
 
@@ -28,6 +28,10 @@ Public Class WebViewLoader
         Dim envOptions = New CoreWebView2EnvironmentOptions("--enable-logging=stderr --v=1")
         Dim env As CoreWebView2Environment = Nothing
         Dim isErr As Boolean = True
+
+        If Not verboseDebug Then
+            envOptions = Nothing
+        End If
 
         Try
             env = Await CoreWebView2Environment.CreateAsync(Nothing, userDataFolder, envOptions)
