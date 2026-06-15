@@ -100,11 +100,11 @@ Namespace LicenseFramework.Client
             Dim dlg As New LicenseDialog()
 
             Call dlg.SetLicenseData(_offlineProvider, _onlineProvider, _productName, _productVersion, _lastResult)
-            Call InputDialog.Input(Sub(dlg2)
-                                       If DirectCast(dlg, LicenseDialog).IsAuthorized Then
-                                           _lastResult = Validate()
-                                       End If
-                                   End Sub, config:=dlg)
+            Call InputDialog.Input(, config:=dlg)
+
+            If DirectCast(dlg, LicenseDialog).IsAuthorized Then
+                _lastResult = Validate()
+            End If
         End Sub
 
         ''' <summary>
