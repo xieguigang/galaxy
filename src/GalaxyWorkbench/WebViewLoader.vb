@@ -22,7 +22,10 @@ Public Class WebViewLoader
     ''' <param name="enableDevTool"></param>
     Public Shared Async Function Init(WebView21 As WebView2, Optional enableDevTool As Boolean = False) As Task
         Dim userDataFolder = (App.ProductProgramData & "/.webView2_cache/").GetDirectoryFullPath
-        Dim env = Await CoreWebView2Environment.CreateAsync(Nothing, userDataFolder)
+        Dim env As CoreWebView2Environment
+
+        userDataFolder.MakeDir
+        env = Await CoreWebView2Environment.CreateAsync(Nothing, userDataFolder)
 
         If CommonRuntime.AppHost IsNot Nothing Then
             Call CommonRuntime.AppHost.StatusMessage($"set webview2 cache at '{userDataFolder}'.")
