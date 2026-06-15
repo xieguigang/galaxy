@@ -26,6 +26,7 @@ Namespace LicenseFramework.Client
 
         Public Property IsAuthorized As Boolean = False
         Public Property UserName As String
+        Public Property Password As String
 
         Public Sub New()
             Call InitializeComponent()
@@ -211,29 +212,33 @@ Namespace LicenseFramework.Client
             If _onlineProvider Is Nothing Then
                 MessageBox.Show("未配置在线授权服务", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return
+            Else
+                Me.Cursor = Cursors.WaitCursor
             End If
 
             Try
-                Me.Cursor = Cursors.WaitCursor
-                Dim result As LicenseValidationResult = _onlineProvider.RequestOnlineLicense(_productName, _productVersion, _UserName)
+                Dim t As New UserToken With {
+                    .password = _Password,
+                    .userName = _UserName,
+                    .productName = _productName,
+                    .productVersion = _productVersion
+                }
+                Dim result As LicenseValidationResult = _onlineProvider.RequestOnlineLicense(t)
 
                 IsAuthorized = result.IsValid
 
                 If result.IsValid Then
                     Me.Cursor = Cursors.Default
-                    MessageBox.Show("在线激活成功，软件已授权!",
-                                    "授权成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("在线激活成功，软件已授权!", "授权成功", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Me.Close()
                 Else
-                    Me.Cursor = Cursors.Default
-                    MessageBox.Show($"在线激活失败:" & Environment.NewLine & result.Message,
-                                    "激活失败", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    MessageBox.Show($"在线激活失败:" & Environment.NewLine & result.Message, "激活失败", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 End If
             Catch ex As Exception
-                Me.Cursor = Cursors.Default
-                MessageBox.Show($"在线激活异常: {ex.Message}",
-                                "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show($"在线激活异常: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
+
+            Me.Cursor = Cursors.Default
         End Sub
 
         Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
