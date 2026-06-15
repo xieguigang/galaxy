@@ -64,9 +64,9 @@ Namespace LicenseFramework.Client
             _productName = productName
             _productVersion = productVersion
             _userName = userName
+            _password = password
             ' 初始化离线授权提供程序
             _offlineProvider = New OfflineLicenseProvider(publicKeyXml, cacheDirectory)
-
             ' 初始化在线授权提供程序（如果提供了服务器URL）
             _enableOnline = Not String.IsNullOrEmpty(serverUrl) AndAlso Not String.IsNullOrEmpty(hmacKey)
 
