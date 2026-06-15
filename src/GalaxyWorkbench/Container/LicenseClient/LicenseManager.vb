@@ -26,8 +26,30 @@ Namespace LicenseFramework.Client
         ReadOnly _productVersion As String
         ReadOnly _enableOnline As Boolean
         ReadOnly _userName As String
+        ReadOnly _password As String
 
         Dim _lastResult As LicenseValidationResult
+
+        Public ReadOnly Property LastValidationResult As LicenseValidationResult
+            Get
+                Return _lastResult
+            End Get
+        End Property
+
+        Public ReadOnly Property CurrentLicense As LicenseData
+            Get
+                If _lastResult IsNot Nothing AndAlso _lastResult.IsValid Then
+                    Return _lastResult.License
+                End If
+                Return Nothing
+            End Get
+        End Property
+
+        Public ReadOnly Property IsLicensed As Boolean
+            Get
+                Return _lastResult IsNot Nothing AndAlso _lastResult.IsValid
+            End Get
+        End Property
 
         ''' <summary>
         ''' 构造函数（完整版，支持离线+在线双模式）
@@ -36,6 +58,7 @@ Namespace LicenseFramework.Client
                        Optional serverUrl As String = Nothing,
                        Optional hmacKey As String = Nothing,
                        Optional userName As String = Nothing,
+                       Optional password As String = Nothing,
                        Optional cacheDirectory As String = Nothing)
 
             _productName = productName
@@ -69,7 +92,12 @@ Namespace LicenseFramework.Client
             ' 第二步：尝试在线授权
             If _enableOnline Then
                 Diagnostics.Debug.WriteLine("尝试在线授权...")
-                _lastResult = _onlineProvider.RequestOnlineLicense(_productName, _productVersion, _userName)
+                _lastResult = _onlineProvider.RequestOnlineLicense(New UserToken With {
+                     .productVersion = _productVersion,
+                     .productName = _productName,
+                     .password = _password,
+                     .userName = _userName
+                })
 
                 If _lastResult.IsValid Then
                     Diagnostics.Debug.WriteLine("在线授权验证通过")
@@ -125,7 +153,12 @@ Namespace LicenseFramework.Client
                 Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed, "未配置在线授权服务")
             End If
 
-            Return _onlineProvider.RequestOnlineLicense(_productName, _productVersion, _userName)
+            Return _onlineProvider.RequestOnlineLicense(New UserToken With {
+                .productVersion = _productVersion,
+                .productName = _productName,
+                .password = _password,
+                .userName = _userName
+            })
         End Function
 
         ''' <summary>
@@ -142,27 +175,6 @@ Namespace LicenseFramework.Client
             _offlineProvider.ClearCachedLicense()
             _lastResult = Nothing
         End Sub
-
-        Public ReadOnly Property LastValidationResult As LicenseValidationResult
-            Get
-                Return _lastResult
-            End Get
-        End Property
-
-        Public ReadOnly Property CurrentLicense As LicenseData
-            Get
-                If _lastResult IsNot Nothing AndAlso _lastResult.IsValid Then
-                    Return _lastResult.License
-                End If
-                Return Nothing
-            End Get
-        End Property
-
-        Public ReadOnly Property IsLicensed As Boolean
-            Get
-                Return _lastResult IsNot Nothing AndAlso _lastResult.IsValid
-            End Get
-        End Property
 
     End Class
 
