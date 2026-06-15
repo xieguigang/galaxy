@@ -44,57 +44,63 @@ Namespace LicenseFramework.Client
             _offlineProvider = offlineProvider
         End Sub
 
+        Public Function RequestOnlineLicenseInternal(productName As String, productVersion As String, userName As String) As LicenseValidationResult
+            ' 第一步：采集硬件指纹
+            Dim hwInfo As HardwareInfo = _hwCollector.Collect()
+            Dim fingerprint As String = _fpGenerator.GenerateFingerprint(hwInfo)
+
+            ' 第二步：构建请求
+            Dim request As New OnlineLicenseRequest() With {
+                .HardwareFingerprint = fingerprint,
+                .ProductName = productName,
+                .ProductVersion = productVersion,
+                .RequestTimestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                .User = userName
+            }
+
+            ' 第三步：计算HMAC签名
+            Dim signData As String = $"{request.HardwareFingerprint}|{request.ProductName}|{request.ProductVersion}|{request.RequestTimestamp}"
+            request.RequestSignature = CryptoHelper.ComputeHmac(signData, _hmacKey)
+
+            ' 第四步：序列化请求为JSON
+            Dim jsonPayload As String = request.GetJson
+
+            ' 第五步：发送HTTP POST请求
+            Dim responseJson As String = SendHttpPostRequest(_serverUrl, jsonPayload)
+
+            ' 第六步：解析响应
+            Dim response As OnlineLicenseResponse = responseJson.LoadJSON(Of OnlineLicenseResponse)
+
+            If response Is Nothing OrElse response.StatusCode <> 0 Then
+                Dim errMsg As String = If(response?.StatusMessage, "服务器返回无效响应")
+                Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed, errMsg)
+            End If
+
+            ' 第七步：验证返回的许可证
+            Dim result As LicenseValidationResult = _validator.Validate(response.SignedLicense, fingerprint)
+
+            If result.IsValid Then
+                ' 验证通过，缓存许可证
+                If _offlineProvider IsNot Nothing Then
+                    _offlineProvider.CacheLicenseString(response.SignedLicense)
+                End If
+            End If
+
+            Return result
+        End Function
+
         ''' <summary>
         ''' 请求在线授权
         ''' </summary>
         Public Function RequestOnlineLicense(productName As String, productVersion As String, userName As String) As LicenseValidationResult
+            If userName.StringEmpty Then
+                Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed, "需要提供一个在系统中注册的有效的用户名")
+            End If
+
             Try
-                ' 第一步：采集硬件指纹
-                Dim hwInfo As HardwareInfo = _hwCollector.Collect()
-                Dim fingerprint As String = _fpGenerator.GenerateFingerprint(hwInfo)
-
-                ' 第二步：构建请求
-                Dim request As New OnlineLicenseRequest() With {
-                    .HardwareFingerprint = fingerprint,
-                    .ProductName = productName,
-                    .ProductVersion = productVersion,
-                    .RequestTimestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                    .User = userName
-                }
-
-                ' 第三步：计算HMAC签名
-                Dim signData As String = $"{request.HardwareFingerprint}|{request.ProductName}|{request.ProductVersion}|{request.RequestTimestamp}"
-                request.RequestSignature = CryptoHelper.ComputeHmac(signData, _hmacKey)
-
-                ' 第四步：序列化请求为JSON
-                Dim jsonPayload As String = request.GetJson
-
-                ' 第五步：发送HTTP POST请求
-                Dim responseJson As String = SendHttpPostRequest(_serverUrl, jsonPayload)
-
-                ' 第六步：解析响应
-                Dim response As OnlineLicenseResponse = responseJson.LoadJSON(Of OnlineLicenseResponse)
-
-                If response Is Nothing OrElse response.StatusCode <> 0 Then
-                    Dim errMsg As String = If(response?.StatusMessage, "服务器返回无效响应")
-                    Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed, errMsg)
-                End If
-
-                ' 第七步：验证返回的许可证
-                Dim result As LicenseValidationResult = _validator.Validate(response.SignedLicense, fingerprint)
-
-                If result.IsValid Then
-                    ' 验证通过，缓存许可证
-                    If _offlineProvider IsNot Nothing Then
-                        _offlineProvider.CacheLicenseString(response.SignedLicense)
-                    End If
-                End If
-
-                Return result
-
+                Return RequestOnlineLicenseInternal(productName, productVersion, userName)
             Catch ex As WebException
-                Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed,
-                                                    $"无法连接到授权服务器: {ex.Message}")
+                Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed, $"无法连接到授权服务器: {ex.Message}")
             Catch ex As Exception
                 Return LicenseValidationResult.Fail(LicenseStatus.OnlineVerificationFailed, ex.Message)
             End Try
