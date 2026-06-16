@@ -73,7 +73,6 @@
     <ProjectReference Include="..\..\..\..\Microsoft.VisualBasic.Drawing\src\Microsoft.VisualBasic.Drawing\Microsoft.VisualBasic.Drawing.vbproj" />
     <ProjectReference Include="..\..\dockpanelsuite\Themes\ThemeVS2015.vbproj" />
     <ProjectReference Include="..\..\dockpanelsuite\VSDockPanel\VSDockPanel.vbproj" />
-    <ProjectReference Include="..\..\ExcelPad\ExcelPad.vbproj" />
     <ProjectReference Include="..\..\GalaxyData\GalaxyData.vbproj" />
     <ProjectReference Include="..\..\GalaxyForm\GalaxyForm.vbproj" />
     <ProjectReference Include="..\..\GalaxyWorkbench\GalaxyWorkbench.vbproj" />
