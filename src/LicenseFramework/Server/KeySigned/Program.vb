@@ -1,6 +1,7 @@
 Imports System.ComponentModel
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Oracle.LinuxCompatibility.MySQL.Uri
 
 Module Program
 
@@ -15,6 +16,6 @@ Module Program
     <Argument("--mysqli",, CLITypes.File, Description:="the text file that contains the mysql connection uri string.")>
     <Argument("--outfile",, CLITypes.File, PipelineTypes.std_out, Description:="the generated license file.")>
     Public Function GenerateLicense(data As String, mysqli As String, args As CommandLine) As Integer
-
+        Dim url As New ConnectionUri(mysqli.ReadAllLines.FirstOrDefault)
     End Function
 End Module
