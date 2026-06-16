@@ -1,3 +1,4 @@
+Imports System.ComponentModel
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 
@@ -8,6 +9,7 @@ Module Program
     End Function
 
     <ExportAPI("/generate")>
+    <Description("generates the software license file")>
     <Usage("/generate --data <request.txt> --mysqli <mysqli.txt>")>
     Public Function GenerateLicense(data As String, mysqli As String, args As CommandLine) As Integer
 
