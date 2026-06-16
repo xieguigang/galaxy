@@ -29,8 +29,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math\Math.NET5.vbproj" />
     <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+    <ProjectReference Include="..\..\..\..\..\graphQL\src\mysqli\LibMySQL\libmysql.vbproj" />
     <ProjectReference Include="..\..\Vendor\Vendor.vbproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="mysql\" />
   </ItemGroup>
 
   <Import Project="..\..\Shared\LicenseShared.projitems" Label="Shared" />
