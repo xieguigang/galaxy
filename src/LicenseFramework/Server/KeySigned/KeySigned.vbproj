@@ -25,12 +25,14 @@
     <RemoveIntegerChecks>True</RemoveIntegerChecks>
     <DefineConstants>VENDOR_TOOL=1</DefineConstants>
     <OutputPath>G:\galaxy\src\LicenseFramework\Tools</OutputPath>
+    <Optimize>False</Optimize>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <RemoveIntegerChecks>True</RemoveIntegerChecks>
     <DefineConstants>VENDOR_TOOL=1</DefineConstants>
     <OutputPath>G:\galaxy\src\LicenseFramework\Tools</OutputPath>
+    <Optimize>False</Optimize>
   </PropertyGroup>
 
   <ItemGroup>

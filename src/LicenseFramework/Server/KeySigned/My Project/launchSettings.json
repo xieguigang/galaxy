@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "KeySigned": {
+      "commandName": "Project",
+      "commandLineArgs": " /service  --mysqli G:\\galaxy\\src\\LicenseFramework\\Tools\\configs\\mysql.txt  --private_key G:\\galaxy\\src\\LicenseFramework\\Tools\\data\\private_key.xml"
+    }
+  }
+}
