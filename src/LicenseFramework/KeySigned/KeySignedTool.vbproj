@@ -9,8 +9,9 @@
     <Platforms>AnyCPU;x64</Platforms>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <UseWPF>True</UseWPF>
-    <RootNamespace>KeySignedTool</RootNamespace>
+    <RootNamespace>KeySigned</RootNamespace>
     <NoWarn>$(NoWarn);WFO1000</NoWarn>
+    <AssemblyName>KeySignedTool</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -5,10 +5,32 @@
     <RootNamespace>KeySigned</RootNamespace>
     <TargetFramework>net10.0</TargetFramework>
     <Platforms>AnyCPU;x64</Platforms>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <RemoveIntegerChecks>True</RemoveIntegerChecks>
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+    <ProjectReference Include="..\..\Vendor\Vendor.vbproj" />
   </ItemGroup>
 
   <Import Project="..\..\Shared\LicenseShared.projitems" Label="Shared" />

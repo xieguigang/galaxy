@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <RootNamespace>LicenseVendor</RootNamespace>
-    <TargetFrameworks>net10.0-windows</TargetFrameworks>
+    <TargetFrameworks>net10.0</TargetFrameworks>
     <Platforms>AnyCPU;x64</Platforms>
     <Configurations>Debug;Release;Rsharp_app_release;mzkit_win32</Configurations>
   
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     
 
     <IncludeSymbols>True</IncludeSymbols>
@@ -16,9 +16,8 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <OutputType>Library</OutputType>
-    <UseWindowsForms>True</UseWindowsForms>
-    <UseWPF>True</UseWPF>
-    <StartupObject>LicenseVendor.LicenseVendor.LicenseFramework.Vendor.LicenseGeneratorForm</StartupObject>
+   
+   
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
@@ -170,6 +169,42 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-windows|x64'">
     <DefineConstants>VENDOR_TOOL</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Rsharp_app_release|net10.0|AnyCPU'">
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Rsharp_app_release|net10.0|x64'">
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='mzkit_win32|net10.0|AnyCPU'">
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='mzkit_win32|net10.0|x64'">
+    <DefineTrace>True</DefineTrace>
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0|AnyCPU'">
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0|x64'">
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0|AnyCPU'">
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0|x64'">
+    <DefineConstants>VENDOR_TOOL=1</DefineConstants>
   </PropertyGroup>
 
   <Import Project="..\Shared\LicenseShared.projitems" Label="Shared" />
