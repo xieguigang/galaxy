@@ -1,6 +1,5 @@
 ﻿Imports System.IO
 Imports System.Text
-Imports Galaxy.Workbench.CommonDialogs
 Imports Galaxy.Workbench.DockDocument
 Imports LicenseVendor.LicenseFramework.[Shared]
 
@@ -335,6 +334,7 @@ Public Class KeyGeneratorForm : Inherits DocumentWindow
             Dim publicKeyXml As String = String.Empty
             Dim privateKeyXml As String = String.Empty
 
+            CryptoHelper.DeleteRsaKeyContainer()
             CryptoHelper.GenerateRsaKeyPair(publicKeyXml, privateKeyXml)
 
             txtPrivateKey.Text = privateKeyXml

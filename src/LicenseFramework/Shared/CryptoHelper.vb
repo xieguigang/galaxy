@@ -32,16 +32,38 @@ Namespace LicenseFramework.Shared
         ''' 生成RSA 2048位密钥对
         ''' </summary>
         Public Shared Sub GenerateRsaKeyPair(ByRef publicKeyXml As String, ByRef privateKeyXml As String)
+#Disable Warning CA1416 ' Validate platform compatibility
             Dim cspParams As New CspParameters() With {
                 .KeyContainerName = RSA_KEY_CONTAINER_NAME,
                 .Flags = CspProviderFlags.UseMachineKeyStore
             }
+#Enable Warning CA1416 ' Validate platform compatibility
 
             Using rsa As New RSACryptoServiceProvider(2048, cspParams)
                 privateKeyXml = rsa.ToXmlString(True)
                 publicKeyXml = rsa.ToXmlString(False)
             End Using
         End Sub
+
+        ''' <summary>
+        ''' 删除指定的RSA密钥容器
+        ''' </summary>
+        Public Shared Sub DeleteRsaKeyContainer()
+#Disable Warning CA1416 ' Validate platform compatibility
+            Dim cspParams As New CspParameters() With {
+                .KeyContainerName = RSA_KEY_CONTAINER_NAME, ' 必须与生成时的名称一致："LicenseFramework_RSA_2048"
+                .Flags = CspProviderFlags.UseMachineKeyStore ' 必须与生成时的存储位置一致
+            }
+
+            Using rsa As New RSACryptoServiceProvider(cspParams)
+                ' 告诉CSP：不要在容器中持久化保存此密钥
+                rsa.PersistKeyInCsp = False
+                ' 释放资源并从密钥容器中删除该密钥
+                rsa.Clear()
+            End Using
+#Enable Warning CA1416 ' Validate platform compatibility
+        End Sub
+
 
         ''' <summary>
         ''' 使用RSA私钥对字符串进行签名
