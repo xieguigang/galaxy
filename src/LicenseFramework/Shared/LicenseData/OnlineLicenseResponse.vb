@@ -7,7 +7,7 @@
         Public Property StatusCode As Integer = 0
         Public Property StatusMessage As String = String.Empty
         Public Property SignedLicense As String = String.Empty
-        Public Property ServerTimestamp As String = String.Empty
+        Public Property ServerTimestamp As String = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ")
     End Class
 
 End Namespace
