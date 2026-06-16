@@ -1,6 +1,7 @@
 Imports System.IO
 Imports System.Text
 Imports Galaxy.Workbench.CommonDialogs
+Imports LicenseVendor
 Imports LicenseVendor.Database
 Imports LicenseVendor.LicenseFramework.Shared
 Imports LicenseVendor.LicenseFramework.Vendor
@@ -323,19 +324,7 @@ Public Class LicenseGeneratorForm : Inherits InputDialog
                 Try
                     Dim content = File.ReadAllText(dlg.FileName, Encoding.UTF8)
                     txtFingerprint.Text = dlg.FileName
-
-                    ' 尝试从文件中提取指纹哈希
-                    Dim startMarker = "硬件指纹哈希 (Hardware Fingerprint Hash):"
-                    Dim idx = content.IndexOf(startMarker)
-                    If idx >= 0 Then
-                        idx += startMarker.Length
-                        Dim endIdx = content.IndexOf("---", idx)
-                        If endIdx >= 0 Then
-                            _currentFingerprint = content.Substring(idx, endIdx - idx).Trim
-                        End If
-                    Else
-                        _currentFingerprint = content.Trim
-                    End If
+                    _currentFingerprint = FingerprintParser.Parse(content)
                 Catch ex As Exception
                     MessageBox.Show($"读取指纹文件失败: {ex.Message}", "错误",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error)
