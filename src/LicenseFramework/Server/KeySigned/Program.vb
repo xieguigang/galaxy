@@ -21,6 +21,9 @@ Module Program
 
     <ExportAPI("/service")>
     <Usage("/service --mysqli <mysqli.txt> --private_key <private_key.xml> [--port <default=80> --hmacKey <default='YOUR_HMAC_KEY_BASE64_HERE'>]")>
+    <Description("Run http web services for license key signed")>
+    <Argument("--mysqli",, CLITypes.File, Description:="the text file that contains the mysql connection uri string.")>
+    <Argument("--private_key",, CLITypes.File, Description:="the RSA private key xml file of the license key signed tool.")>
     Public Function Listen(mysqli As String, private_key As String, Optional port As Integer = 80, Optional args As CommandLine = Nothing) As Integer
         Dim url As ConnectionUri = ConnectionUri.TryParsing(mysqli.ReadAllLines.FirstOrDefault)
         Dim privateKeyXml As String = private_key.ReadAllText
@@ -134,6 +137,7 @@ Module Program
     <Argument("--data", , CLITypes.File, PipelineTypes.std_in, Description:="the license request file")>
     <Argument("--mysqli",, CLITypes.File, Description:="the text file that contains the mysql connection uri string.")>
     <Argument("--outfile",, CLITypes.File, PipelineTypes.std_out, Description:="the generated license file. the generated license file text content will be print on the standard output if this parameter is missing.")>
+    <Argument("--private_key",, CLITypes.File, Description:="the RSA private key xml file of the license key signed tool.")>
     Public Function GenerateLicense(data As String, mysqli As String, private_key As String, args As CommandLine) As Integer
         Dim url As ConnectionUri = ConnectionUri.TryParsing(mysqli.ReadAllLines.FirstOrDefault)
         Dim outfile As String = args("--outfile")
