@@ -1,9 +1,11 @@
 Imports System.ComponentModel
+Imports KeySigned.license_svrModel
 Imports LicenseVendor.LicenseFramework.Shared
 Imports LicenseVendor.LicenseFramework.Vendor
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Serialization.JSON
+Imports Oracle.LinuxCompatibility.MySQL.MySqlBuilder
 Imports Oracle.LinuxCompatibility.MySQL.Uri
 
 Module Program
@@ -44,9 +46,42 @@ Module Program
             Return -1
         End If
 
+        Dim licenseDb As New LicenseDb(url)
+        Dim user As user = licenseDb.GetUser(request.User, request.Password)
+        Dim expiryDays As Integer = 365
+
+        If user Is Nothing Then
+            Call Console.Error.WriteLine("User not found or password incorrect!")
+            Call Console.Error.Flush()
+
+            Return -1
+        End If
+
+        ' check license
+        Dim checkLicense As license_svrModel.license = licenseDb.CheckLicense(user, request.HardwareFingerprint)
+
+        If checkLicense Is Nothing Then
+            ' create a new license
+            If user.licenses >= user.max_licenses Then
+                Call Console.Error.WriteLine("The number of authorized licenses has reached the maximum limit.")
+                Call Console.Error.Flush()
+
+                Return -1
+            Else
+                Call licenseDb.license.add(
+                    field("user_id") = user.id,
+                    field("product_name") = request.ProductName,
+                    field("product_version") = request.ProductVersion,
+                    field("fingerprint") = request.HardwareFingerprint,
+                    field("expired_time") = Now.AddDays(expiryDays))
+                Call licenseDb.user _
+                    .where(field("id") = user.id) _
+                    .save(field("licenses") = user.licenses + 1)
+            End If
+        End If
+
         Dim generator As New LicenseGenerator(privateKeyXml)
         Dim licenseType As LicenseType = LicenseType.Standard
-        Dim expiryDays As Integer = 365
         Dim licenseData As New LicenseData With {
             .HardwareFingerprint = request.HardwareFingerprint,
             .ProductName = request.ProductName,
