@@ -9,7 +9,7 @@
     <Platforms>AnyCPU;x64</Platforms>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <UseWPF>True</UseWPF>
-    <RootNamespace>KeySigned</RootNamespace>
+    <RootNamespace>KeySignedTool</RootNamespace>
     <NoWarn>$(NoWarn);WFO1000</NoWarn>
   </PropertyGroup>
 

@@ -69,7 +69,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "License", "License", "{D2AB
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LicenseShared", "LicenseFramework\Shared\LicenseShared.shproj", "{81390088-C611-4629-B785-93E1D6F0C913}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KeySigned", "LicenseFramework\KeySigned\KeySigned.vbproj", "{53D80F46-2347-084F-CD99-C6A7374223E4}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KeySignedTool", "LicenseFramework\KeySigned\KeySignedTool.vbproj", "{53D80F46-2347-084F-CD99-C6A7374223E4}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Vendor", "LicenseFramework\Vendor\Vendor.vbproj", "{3A80D62D-AD41-79F1-D58F-0944178C0145}"
 EndProject
