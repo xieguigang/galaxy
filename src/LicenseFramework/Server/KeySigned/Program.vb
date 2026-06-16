@@ -1,4 +1,7 @@
 Imports System.ComponentModel
+Imports Flute.Http
+Imports Flute.Http.Core
+Imports Flute.Http.Core.Message
 Imports KeySigned.license_svrModel
 Imports LicenseVendor.LicenseFramework.Shared
 Imports LicenseVendor.LicenseFramework.Vendor
@@ -24,10 +27,27 @@ Module Program
         Dim hmacKey As String = args("--hmacKey") Or "YOUR_HMAC_KEY_BASE64_HERE"
         Dim licenseDb As New LicenseDb(url)
         Dim generator As New LicenseGenerator(privateKeyXml)
-        Dim licenseType As LicenseType = LicenseType.Standard
+        Dim keySigned As New LicenseKeySignedTool With {
+            .generator = generator,
+            .hmacKey = hmacKey,
+            .licenseDb = licenseDb
+        }
+        Dim http = New HttpDriver().HttpMethod("post", keySigned).GetSocket(port)
 
-
+        Return http.Run
     End Function
+
+    Private Class LicenseKeySignedTool : Implements IAppHandler
+
+        Friend generator As LicenseGenerator
+        Friend licenseDb As LicenseDb
+        Friend hmacKey As String
+
+        Public Sub AppHandler(request As HttpRequest, response As HttpResponse) Implements IAppHandler.AppHandler
+            Dim licenseType As LicenseType = LicenseType.Standard
+
+        End Sub
+    End Class
 
     <ExportAPI("/generate")>
     <Description("generates the software license file")>

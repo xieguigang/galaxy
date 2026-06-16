@@ -77,6 +77,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KeySigned", "LicenseFramewo
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "libmysql", "..\..\graphQL\src\mysqli\LibMySQL\libmysql.vbproj", "{6C7DE093-20C4-99EA-EA33-2F432058BBF2}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Flute.NET5", "..\..\GCModeller\src\runtime\httpd\src\Flute\Flute.NET5.vbproj", "{24611552-70DC-08CD-A63B-B0475723C84F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -423,6 +425,18 @@ Global
 		{6C7DE093-20C4-99EA-EA33-2F432058BBF2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C7DE093-20C4-99EA-EA33-2F432058BBF2}.Release|x64.ActiveCfg = Release|x64
 		{6C7DE093-20C4-99EA-EA33-2F432058BBF2}.Release|x64.Build.0 = Release|x64
+		{24611552-70DC-08CD-A63B-B0475723C84F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24611552-70DC-08CD-A63B-B0475723C84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24611552-70DC-08CD-A63B-B0475723C84F}.Debug|x64.ActiveCfg = Debug|x64
+		{24611552-70DC-08CD-A63B-B0475723C84F}.Debug|x64.Build.0 = Debug|x64
+		{24611552-70DC-08CD-A63B-B0475723C84F}.mzkit_win32|Any CPU.ActiveCfg = mzkit_win32|Any CPU
+		{24611552-70DC-08CD-A63B-B0475723C84F}.mzkit_win32|Any CPU.Build.0 = mzkit_win32|Any CPU
+		{24611552-70DC-08CD-A63B-B0475723C84F}.mzkit_win32|x64.ActiveCfg = mzkit_win32|x64
+		{24611552-70DC-08CD-A63B-B0475723C84F}.mzkit_win32|x64.Build.0 = mzkit_win32|x64
+		{24611552-70DC-08CD-A63B-B0475723C84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24611552-70DC-08CD-A63B-B0475723C84F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24611552-70DC-08CD-A63B-B0475723C84F}.Release|x64.ActiveCfg = Release|x64
+		{24611552-70DC-08CD-A63B-B0475723C84F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -458,6 +472,7 @@ Global
 		{81390088-C611-4629-B785-93E1D6F0C913} = {D2ABC5BF-788E-41AA-A073-767F005486AB}
 		{3A80D62D-AD41-79F1-D58F-0944178C0145} = {D2ABC5BF-788E-41AA-A073-767F005486AB}
 		{6C7DE093-20C4-99EA-EA33-2F432058BBF2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{24611552-70DC-08CD-A63B-B0475723C84F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3958ABFB-93F0-45E4-8957-FED9918DC189}
