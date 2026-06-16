@@ -60,7 +60,10 @@ Module Program
             }
             Dim result As OnlineLicenseResponse = KeySign(request:=data)
 
-            Call response.WriteJSON(result)
+            Try
+                Call response.WriteJSON(result)
+            Catch ex As Exception
+            End Try
         End Sub
 
         Public Function KeySign(request As OnlineLicenseRequest) As OnlineLicenseResponse
@@ -184,7 +187,7 @@ Module Program
     Private Function VerifyTimestamp(timestampStr As String) As Boolean
         Try
             Dim requestTime As DateTime = DateTime.Parse(timestampStr)
-            Dim diff As TimeSpan = DateTime.UtcNow - requestTime
+            Dim diff As TimeSpan = DateTime.Now - requestTime
             Return Math.Abs(diff.TotalMinutes) <= TIMESTAMP_TOLERANCE_MINUTES
         Catch
             Return False
