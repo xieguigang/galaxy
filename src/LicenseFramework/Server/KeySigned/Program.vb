@@ -16,6 +16,19 @@ Module Program
 
     Const TIMESTAMP_TOLERANCE_MINUTES As Integer = 5
 
+    <ExportAPI("/service")>
+    <Usage("/service --mysqli <mysqli.txt> --private_key <private_key.xml> [--port <default=80> --hmacKey <default='YOUR_HMAC_KEY_BASE64_HERE'>]")>
+    Public Function Listen(mysqli As String, private_key As String, Optional port As Integer = 80, Optional args As CommandLine = Nothing) As Integer
+        Dim url As ConnectionUri = ConnectionUri.TryParsing(mysqli.ReadAllLines.FirstOrDefault)
+        Dim privateKeyXml As String = private_key.ReadAllText
+        Dim hmacKey As String = args("--hmacKey") Or "YOUR_HMAC_KEY_BASE64_HERE"
+        Dim licenseDb As New LicenseDb(url)
+        Dim generator As New LicenseGenerator(privateKeyXml)
+        Dim licenseType As LicenseType = LicenseType.Standard
+
+
+    End Function
+
     <ExportAPI("/generate")>
     <Description("generates the software license file")>
     <Usage("/generate --data <request.txt> --mysqli <mysqli.txt> --private_key <private_key.xml> [--outfile <license.lic> --hmacKey <default='YOUR_HMAC_KEY_BASE64_HERE'>]")>
