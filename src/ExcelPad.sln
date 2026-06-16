@@ -73,6 +73,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KeySignedTool", "LicenseFra
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Vendor", "LicenseFramework\Vendor\Vendor.vbproj", "{3A80D62D-AD41-79F1-D58F-0944178C0145}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KeySigned", "LicenseFramework\Server\KeySigned\KeySigned.vbproj", "{DA250A71-2BFB-4767-AB52-6A914A35A285}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -395,6 +397,18 @@ Global
 		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Release|x64.ActiveCfg = Release|x64
 		{3A80D62D-AD41-79F1-D58F-0944178C0145}.Release|x64.Build.0 = Release|x64
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.Debug|x64.ActiveCfg = Debug|x64
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.Debug|x64.Build.0 = Debug|x64
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.mzkit_win32|Any CPU.ActiveCfg = Release|Any CPU
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.mzkit_win32|Any CPU.Build.0 = Release|Any CPU
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.mzkit_win32|x64.ActiveCfg = Release|Any CPU
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.mzkit_win32|x64.Build.0 = Release|Any CPU
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.Release|x64.ActiveCfg = Release|Any CPU
+		{DA250A71-2BFB-4767-AB52-6A914A35A285}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -440,6 +454,7 @@ Global
 		..\..\GCModeller\src\R-sharp\Library\shares\dataframeHelper\dataframeHelper.projitems*{a78e4fd2-ede8-5ee4-77bd-a5084109ec70}*SharedItemsImports = 5
 		..\..\GCModeller\src\R-sharp\Library\shares\R_graphic.interop\R_graphic.interop.projitems*{a78e4fd2-ede8-5ee4-77bd-a5084109ec70}*SharedItemsImports = 5
 		..\..\GCModeller\src\R-sharp\Library\shares\R_plot.interop\R_plot.interop.projitems*{a78e4fd2-ede8-5ee4-77bd-a5084109ec70}*SharedItemsImports = 5
+		LicenseFramework\Shared\LicenseShared.projitems*{da250a71-2bfb-4767-ab52-6a914a35a285}*SharedItemsImports = 5
 		LicenseFramework\Shared\LicenseShared.projitems*{ec84cbb4-8e2d-48ea-9e6c-3d7cf0bbb452}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
