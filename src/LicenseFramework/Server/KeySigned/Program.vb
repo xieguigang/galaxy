@@ -113,14 +113,20 @@ Module Program
                 End If
             End If
 
+            Dim expiredDate As String = DateTime.UtcNow.AddDays(expiryDays).ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+            If checkLicense IsNot Nothing Then
+                expiredDate = checkLicense.expired_time.ToString("yyyy-MM-ddTHH:mm:ssZ")
+            End If
+
             Dim licenseData As New LicenseData With {
                 .HardwareFingerprint = request.HardwareFingerprint,
                 .ProductName = request.ProductName,
                 .ProductVersion = request.ProductVersion,
                 .CustomerName = request.User,
-                .LicenseType = LicenseType,
+                .LicenseType = licenseType,
                 .IssueDate = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"),
-                .ExpiryDate = DateTime.UtcNow.AddDays(expiryDays).ToString("yyyy-MM-ddTHH:mm:ssZ")
+                .ExpiryDate = expiredDate
             }
             Dim signedLicense = generator.GenerateSignedLicense(licenseData)
             Dim result As New OnlineLicenseResponse With {
