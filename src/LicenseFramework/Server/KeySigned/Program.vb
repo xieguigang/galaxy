@@ -46,7 +46,18 @@ Module Program
         Public Sub AppHandler(request As HttpRequest, response As HttpResponse) Implements IAppHandler.AppHandler
             Dim licenseType As LicenseType = LicenseType.Standard
             Dim post As HttpPOSTRequest = DirectCast(request, HttpPOSTRequest)
+            Dim data As New OnlineLicenseRequest With {
+                .HardwareFingerprint = post(NameOf(OnlineLicenseRequest.HardwareFingerprint)),
+                .Password = post(NameOf(OnlineLicenseRequest.Password)),
+                .ProductName = post(NameOf(OnlineLicenseRequest.ProductName)),
+                .ProductVersion = post(NameOf(OnlineLicenseRequest.ProductVersion)),
+                .RequestSignature = post(NameOf(OnlineLicenseRequest.RequestSignature)),
+                .RequestTimestamp = post(NameOf(OnlineLicenseRequest.RequestTimestamp)),
+                .User = post(NameOf(OnlineLicenseRequest.User))
+            }
+            Dim result As OnlineLicenseResponse = KeySign(request:=data)
 
+            Call response.WriteJSON(result)
         End Sub
 
         Public Function KeySign(request As OnlineLicenseRequest) As OnlineLicenseResponse
