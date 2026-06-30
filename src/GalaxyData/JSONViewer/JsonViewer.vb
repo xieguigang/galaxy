@@ -206,6 +206,14 @@ Namespace JSON
                 RaiseEvent ViewAction(node)
             End If
         End Sub
+
+        Private Sub TreeView1_NodeMouseDoubleClick(sender As Object, e As TreeNodeMouseClickEventArgs) Handles TreeView1.NodeMouseDoubleClick
+            Dim node = viewer.GetSelectedTreeNode
+
+            If node IsNot Nothing Then
+                RaiseEvent ViewAction(node)
+            End If
+        End Sub
     End Class
 
 End Namespace
