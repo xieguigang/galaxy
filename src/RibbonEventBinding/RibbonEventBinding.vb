@@ -25,6 +25,10 @@ Public Class RibbonEventBinding : Implements IDisposable, IBindingAction
         evt = Nothing
     End Sub
 
+    Public Sub [Addhandler](handle As Action)
+        evt = handle
+    End Sub
+
     Private Sub exec_call() Handles ribbon.ExecuteEvent
         If Not evt Is Nothing Then
             Try
