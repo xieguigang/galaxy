@@ -78,13 +78,20 @@ Public Module CommonRuntime
         Return outputWindow
     End Function
 
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Public Sub RegisterOutputWindow()
         Call GetOutputWindow()
     End Sub
 
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Public Sub RegisterPropertyWindow()
         Call GetPropertyWindow()
     End Sub
+
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
+    Public Function TryGetToolWindow(name As String) As ToolWindow
+        Return toolWindows.TryGetValue(name)
+    End Function
 
     ''' <summary>
     ''' set value to the <see cref="AppHost"/> in current common workbench runtime.
@@ -118,14 +125,17 @@ Public Module CommonRuntime
         End If
     End Sub
 
-    Public Sub RegisterToolWindow(tool As ToolWindow)
+    Public Sub RegisterToolWindow(tool As ToolWindow, Optional dock As DockState = DockState.DockLeftAutoHide)
         If Not tool.Name.StringEmpty(, True) Then
             toolWindows(tool.Name) = tool
+            toolWindows(tool.Name).Show(AppHost.GetDockPanel)
 
             Dim setting As DockSettings = UISettings.windows.KeyItem(tool.Name)
 
             If Not setting Is Nothing Then
                 Call setting.ApplySettings(tool)
+            Else
+                Call CommonRuntime.Dock(tool, prefer:=dock)
             End If
         End If
     End Sub
