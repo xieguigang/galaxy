@@ -1,4 +1,7 @@
-﻿Public Module Tools
+﻿Imports Microsoft.VisualBasic.ApplicationServices
+Imports System.Runtime.CompilerServices
+
+Public Module Tools
 
     Public Sub OpenUrlWithDefaultBrowser(url As String)
         Try
@@ -9,4 +12,61 @@
             ' 异常处理见下文
         End Try
     End Sub
+End Module
+
+Public Module TreeViewHelper
+
+    ''' <summary>
+    ''' 将 FileSystemTree 加载到 TreeView 控件中
+    ''' </summary>
+    ''' <param name="treeView">目标 TreeView 控件</param>
+    ''' <param name="rootNode">要加载的 FileSystemTree 根节点</param>
+    ''' 
+    <Extension>
+    Public Sub LoadFileSystemTree(treeView As TreeView, rootNode As FileSystemTree)
+        If treeView Is Nothing OrElse rootNode Is Nothing Then
+            Return
+        Else
+            ' 关闭重绘以提高加载速度并防止闪烁
+            treeView.BeginUpdate()
+        End If
+
+        Try
+            treeView.Nodes.Clear()
+
+            ' 递归创建节点
+            Dim treeNode As TreeNode = CreateTreeNode(rootNode)
+            treeView.Nodes.Add(treeNode)
+
+            ' 可选：默认展开根节点
+            treeNode.Expand()
+        Finally
+            ' 恢复重绘
+            treeView.EndUpdate()
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' 递归构建 TreeNode 的核心方法
+    ''' </summary>
+    Private Function CreateTreeNode(fsNode As FileSystemTree) As TreeNode
+        ' 创建当前层的 TreeNode
+        ' 将原始的 FileSystemTree 对象存入 Tag，方便后续交互时直接获取数据
+        Dim treeNode As New TreeNode(fsNode.Name) With {
+            .Tag = fsNode
+        }
+
+        ' 检查是否有子节点（由于你的代码中 IsNullOrEmpty 可能是扩展方法，
+        ' 这里为了代码健壮性，直接进行基础的 Nothing 和 Count 判断）
+        If fsNode.Files IsNot Nothing AndAlso fsNode.Files.Count > 0 Then
+            For Each kvp As KeyValuePair(Of String, FileSystemTree) In fsNode.Files
+                ' 递归创建子节点并添加到当前节点的 Nodes 集合中
+                Dim childNode As TreeNode = CreateTreeNode(kvp.Value)
+                treeNode.Nodes.Add(childNode)
+            Next
+        End If
+
+        Return treeNode
+    End Function
+
 End Module
