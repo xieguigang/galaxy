@@ -5,11 +5,14 @@ Public Module Tools
 
     Public Sub OpenUrlWithDefaultBrowser(url As String)
         Try
-            Dim startInfo As New ProcessStartInfo(url)
-            startInfo.UseShellExecute = True  ' 启用系统关联程序（即默认浏览器）
-            Process.Start(startInfo)
+            ' 启用系统关联程序（即默认浏览器）
+            Dim startInfo As New ProcessStartInfo(url) With {
+                .UseShellExecute = True
+            }
+            Call Process.Start(startInfo)
         Catch ex As Exception
             ' 异常处理见下文
+            Call App.LogException(ex)
         End Try
     End Sub
 End Module
@@ -23,46 +26,63 @@ Public Module TreeViewHelper
     ''' <param name="rootNode">要加载的 FileSystemTree 根节点</param>
     ''' 
     <Extension>
-    Public Sub LoadFileSystemTree(treeView As TreeView, rootNode As FileSystemTree)
+    Public Sub LoadFileSystemTree(treeView As TreeView, rootNode As FileSystemTree, Optional folderIndex As Integer = 1, Optional fileIndex As Integer = 2)
         If treeView Is Nothing OrElse rootNode Is Nothing Then
             Return
         Else
             ' 关闭重绘以提高加载速度并防止闪烁
-            treeView.BeginUpdate()
+            Call treeView.BeginUpdate()
+            Call treeView.Nodes.Clear()
         End If
 
         Try
-            treeView.Nodes.Clear()
-
             ' 递归创建节点
-            Dim treeNode As TreeNode = CreateTreeNode(rootNode)
-            treeView.Nodes.Add(treeNode)
+            Dim treeNode As TreeNode = CreateTreeNode(rootNode, folderIndex, fileIndex)
 
+            treeNode.ImageIndex = 0
+            treeNode.SelectedImageIndex = 0
+            treeNode.StateImageIndex = 0
+
+            Call treeView.Nodes.Add(treeNode)
             ' 可选：默认展开根节点
-            treeNode.Expand()
+            Call treeNode.Expand()
         Finally
             ' 恢复重绘
-            treeView.EndUpdate()
+            Call treeView.EndUpdate()
         End Try
     End Sub
 
     ''' <summary>
     ''' 递归构建 TreeNode 的核心方法
     ''' </summary>
-    Private Function CreateTreeNode(fsNode As FileSystemTree) As TreeNode
+    Private Function CreateTreeNode(fsNode As FileSystemTree, folderIndex As Integer, fileIndex As Integer) As TreeNode
         ' 创建当前层的 TreeNode
         ' 将原始的 FileSystemTree 对象存入 Tag，方便后续交互时直接获取数据
         Dim treeNode As New TreeNode(fsNode.Name) With {
             .Tag = fsNode
         }
 
+        If fsNode.IsDirectory Then
+            treeNode.ImageIndex = folderIndex
+            treeNode.SelectedImageIndex = folderIndex
+            treeNode.StateImageIndex = folderIndex
+        Else
+            treeNode.ImageIndex = fileIndex
+            treeNode.SelectedImageIndex = fileIndex
+            treeNode.StateImageIndex = fileIndex
+        End If
+
         ' 检查是否有子节点（由于你的代码中 IsNullOrEmpty 可能是扩展方法，
         ' 这里为了代码健壮性，直接进行基础的 Nothing 和 Count 判断）
         If fsNode.Files IsNot Nothing AndAlso fsNode.Files.Count > 0 Then
-            For Each kvp As KeyValuePair(Of String, FileSystemTree) In fsNode.Files
+            For Each kvp As KeyValuePair(Of String, FileSystemTree) In fsNode.Files _
+                .OrderBy(Function(f) If(f.Value.IsDirectory, 0, 1)) _
+                .ThenBy(Function(a)
+                            Return a.Key
+                        End Function)
+
                 ' 递归创建子节点并添加到当前节点的 Nodes 集合中
-                Dim childNode As TreeNode = CreateTreeNode(kvp.Value)
-                treeNode.Nodes.Add(childNode)
+                Call treeNode.Nodes.Add(CreateTreeNode(kvp.Value, folderIndex, fileIndex))
             Next
         End If
 
