@@ -299,7 +299,9 @@ Namespace Docking
                         ContentActivating = Nothing
                     End If
 
-                    If Not IsRunningOnMono Then AddHandler sm_localWindowsHook.HookInvoked, m_hookEventHandler
+                    If (Not IsRunningOnMono) AndAlso Not sm_localWindowsHook Is Nothing Then
+                        AddHandler sm_localWindowsHook.HookInvoked, m_hookEventHandler
+                    End If
 
                     If Not InRefreshActiveWindow Then RefreshActiveWindow()
                 End If

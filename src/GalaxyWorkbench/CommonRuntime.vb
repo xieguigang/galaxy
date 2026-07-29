@@ -132,8 +132,11 @@ Public Module CommonRuntime
         If Not tool.Name.StringEmpty(, True) Then
             Dim panel As DockPanel = AppHost.GetDockPanel
 
-            toolWindows(tool.Name) = tool
-            toolWindows(tool.Name).Show(panel, dock)
+            Call DirectCast(AppHost, Form).Invoke(
+                Sub()
+                    toolWindows(tool.Name) = tool
+                    toolWindows(tool.Name).Show(panel, dock)
+                End Sub)
 
             Dim setting As DockSettings = UISettings.windows.KeyItem(tool.Name)
 
