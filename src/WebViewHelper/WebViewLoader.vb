@@ -5,13 +5,25 @@ Imports Microsoft.Web.WebView2.WinForms
 
 Public Class WebViewLoader
 
+    Shared _statusMessage As Action(Of String)
+
+    Public Shared Sub SetMessageHandler(msg As Action(Of String))
+        _statusMessage = msg
+    End Sub
+
+    Private Shared Sub StatusMessage(msg As String)
+        If Not _statusMessage Is Nothing Then
+            Call _statusMessage(msg)
+        End If
+    End Sub
+
     Public Shared Sub DeveloperOptions(WebView21 As WebView2, enable As Boolean, Optional TabText As String = "WebKit")
         WebView21.CoreWebView2.Settings.AreDevToolsEnabled = enable
         WebView21.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = enable
         WebView21.CoreWebView2.Settings.AreDefaultContextMenusEnabled = enable
 
-        If enable AndAlso CommonRuntime.AppHost IsNot Nothing Then
-            Call CommonRuntime.AppHost.StatusMessage($"[{TabText}] WebView2 developer tools has been enable!", Icons8.JobDone)
+        If enable Then
+            Call StatusMessage($"[{TabText}] WebView2 developer tools has been enable!")
         End If
     End Sub
 
@@ -22,12 +34,12 @@ Public Class WebViewLoader
     ''' <param name="enableDevTool"></param>
     Public Shared Async Function Init(WebView21 As WebView2, Optional enableDevTool As Boolean = False, Optional verboseDebug As Boolean = False) As Task
         Dim userDataFolder = (App.ProductProgramData & "/.webView2_cache/").GetDirectoryFullPath
-        userDataFolder.MakeDir()
-
         ' Optionally enable browser logging for diagnostics
         Dim envOptions = New CoreWebView2EnvironmentOptions("--enable-logging=stderr --v=1")
         Dim env As CoreWebView2Environment = Nothing
         Dim isErr As Boolean = True
+
+        Call userDataFolder.MakeDir()
 
         If Not verboseDebug Then
             envOptions = Nothing
@@ -35,15 +47,12 @@ Public Class WebViewLoader
 
         Try
             env = Await CoreWebView2Environment.CreateAsync(Nothing, userDataFolder, envOptions)
-            If CommonRuntime.AppHost IsNot Nothing Then
-                Call CommonRuntime.AppHost.StatusMessage($"set webview2 cache at '{userDataFolder}'.")
-            End If
-
+            Call StatusMessage($"set webview2 cache at '{userDataFolder}'.")
             Await WebView21.EnsureCoreWebView2Async(env)
             isErr = False
         Catch comEx As System.Runtime.InteropServices.COMException
             ' Log the HResult and message
-            CommonRuntime.AppHost?.StatusMessage($"WebView2 init failed: {comEx.Message} (0x{comEx.HResult:X})")
+            StatusMessage($"WebView2 init failed: {comEx.Message} (0x{comEx.HResult:X})")
         End Try
 
         If isErr Then
@@ -51,7 +60,7 @@ Public Class WebViewLoader
             Try
                 Await WebView21.EnsureCoreWebView2Async()
             Catch innerEx As Exception
-                CommonRuntime.AppHost?.StatusMessage($"Fallback WebView2 init also failed: {innerEx.Message}")
+                StatusMessage($"Fallback WebView2 init also failed: {innerEx.Message}")
                 Throw
             End Try
         End If
