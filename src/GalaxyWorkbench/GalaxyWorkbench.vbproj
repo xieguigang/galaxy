@@ -125,4 +125,5 @@
     </Compile>
   </ItemGroup>
   <Import Project="..\LicenseFramework\Shared\LicenseShared.projitems" Label="Shared" />
+  <Import Project="..\WebViewHelper\WebViewHelper.projitems" Label="Shared" />
   </Project>
