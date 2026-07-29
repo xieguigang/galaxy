@@ -1,5 +1,4 @@
-﻿Imports System.Globalization
-Imports System.Runtime.CompilerServices
+﻿Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports Galaxy.Workbench.CommonDialogs
 Imports Galaxy.Workbench.Container
@@ -43,6 +42,10 @@ Public Module CommonRuntime
 
     Dim outputWindow As OutputWindow
     Dim propertyWindow As PropertyWindow
+
+    Sub New()
+        Call WebViewLoader.SetMessageHandler(AddressOf StatusMessage)
+    End Sub
 
     Public Function GetPropertyWindow() As PropertyWindow
         If AppHost Is Nothing Then
