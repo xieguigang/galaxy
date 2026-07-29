@@ -41,7 +41,6 @@ Public Class WebViewLoader
 
             Await WebView21.EnsureCoreWebView2Async(env)
             isErr = False
-            Return
         Catch comEx As System.Runtime.InteropServices.COMException
             ' Log the HResult and message
             CommonRuntime.AppHost?.StatusMessage($"WebView2 init failed: {comEx.Message} (0x{comEx.HResult:X})")
