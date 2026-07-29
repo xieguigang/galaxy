@@ -281,7 +281,10 @@ Namespace Docking
 
                 If m_countSuspendFocusTracking = 0 Then
                     m_countSuspendFocusTracking += 1UI
-                    If Not IsRunningOnMono Then RemoveHandler sm_localWindowsHook.HookInvoked, m_hookEventHandler
+
+                    If (Not IsRunningOnMono) AndAlso sm_localWindowsHook IsNot Nothing Then
+                        RemoveHandler sm_localWindowsHook.HookInvoked, m_hookEventHandler
+                    End If
                 End If
             End Sub
 
