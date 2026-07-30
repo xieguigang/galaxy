@@ -1,4 +1,5 @@
 ﻿Imports System.Management
+Imports System.Runtime.CompilerServices
 
 Public Module Tools
 
@@ -44,6 +45,8 @@ Public Module Tools
     ''' <summary>
     ''' 快速终止当前进程的所有子进程
     ''' </summary>
+    ''' 
+    <MethodImpl(MethodImplOptions.AggressiveInlining)>
     Public Sub KillAllChildrenOfCurrentProcess()
         KillDescendantProcesses(Process.GetCurrentProcess().Id)
     End Sub
