@@ -1,6 +1,4 @@
 ﻿Imports System.Management
-Imports System.Runtime.CompilerServices
-Imports Microsoft.VisualBasic.ApplicationServices
 
 Public Module Tools
 
