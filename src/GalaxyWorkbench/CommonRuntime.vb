@@ -148,11 +148,18 @@ Public Module CommonRuntime
     Public Sub RegisterToolWindow(tool As ToolWindow, Optional dock As DockState = DockState.DockLeftAutoHide)
         If Not tool.Name.StringEmpty(, True) Then
             Dim panel As DockPanel = AppHost.GetDockPanel
+            Dim resetDock As Boolean = False
 
             Call DirectCast(AppHost, Form).Invoke(
                 Sub()
-                    toolWindows(tool.Name) = tool
-                    toolWindows(tool.Name).Show(panel, dock)
+                    If (toolWindows.ContainsKey(tool.Name) AndAlso toolWindows(tool.Name) IsNot tool) OrElse
+                        Not toolWindows.ContainsKey(tool.Name) Then
+
+                        resetDock = True
+
+                        toolWindows(tool.Name) = tool
+                        toolWindows(tool.Name).Show(panel, dock)
+                    End If
                 End Sub)
 
             Dim setting As DockSettings = UISettings.windows.KeyItem(tool.Name)
@@ -160,8 +167,9 @@ Public Module CommonRuntime
             If Not setting Is Nothing Then
                 Call setting.ApplySettings(tool)
             End If
-
-            Call CommonRuntime.Dock(tool, prefer:=dock)
+            If resetDock Then
+                Call CommonRuntime.Dock(tool, prefer:=dock)
+            End If
         End If
     End Sub
 
