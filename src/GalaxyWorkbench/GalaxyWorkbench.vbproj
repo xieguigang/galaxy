@@ -101,9 +101,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="logs\**" />
+    <Compile Remove="Resources\logs\**" />
     <EmbeddedResource Remove="logs\**" />
+    <EmbeddedResource Remove="Resources\logs\**" />
     <None Remove="logs\**" />
+    <None Remove="Resources\logs\**" />
     <Page Remove="logs\**" />
+    <Page Remove="Resources\logs\**" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="System.Drawing" />

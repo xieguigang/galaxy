@@ -1,21 +1,6 @@
-﻿Imports Microsoft.VisualBasic.ApplicationServices
+﻿
 Imports System.Runtime.CompilerServices
-
-Public Module Tools
-
-    Public Sub OpenUrlWithDefaultBrowser(url As String)
-        Try
-            ' 启用系统关联程序（即默认浏览器）
-            Dim startInfo As New ProcessStartInfo(url) With {
-                .UseShellExecute = True
-            }
-            Call Process.Start(startInfo)
-        Catch ex As Exception
-            ' 异常处理见下文
-            Call App.LogException(ex)
-        End Try
-    End Sub
-End Module
+Imports Microsoft.VisualBasic.ApplicationServices
 
 Public Module TreeViewHelper
 
