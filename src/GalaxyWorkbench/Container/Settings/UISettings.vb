@@ -12,6 +12,7 @@ Namespace Container
         Public Property rememberLocation As Boolean = True
         Public Property windowState As FormWindowState
         Public Property windows As DockSettings()
+        Public Property screen As String
 
         Public Shared ReadOnly Property DefaultConfigFile As String = App.ProductProgramData & "/ui_settings.json"
 

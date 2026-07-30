@@ -116,7 +116,24 @@ Public Module CommonRuntime
                 If UISettings.width <= 0 Then UISettings.width = 1000
                 If UISettings.height <= 0 Then UISettings.height = 800
 
-                form.Location = New Point(UISettings.left, UISettings.top)
+                form.StartPosition = FormStartPosition.Manual
+
+                Dim x As Integer = UISettings.left
+                Dim y As Integer = UISettings.top
+
+                If Not UISettings.screen.StringEmpty(, True) Then
+                    ' 获取目标屏幕
+                    Dim targetScreen As Screen = Screen.AllScreens.Where(Function(s) s.DeviceName = UISettings.screen).FirstOrDefault
+
+                    If targetScreen IsNot Nothing Then
+                        ' 计算居中坐标 (使用 WorkingArea 可以避免任务栏遮挡)
+                        ' 如果你想让窗口铺满或者基于左上角，可以使用 targetScreen.Bounds.Left
+                        x = targetScreen.Bounds.Left + x
+                        y = targetScreen.Bounds.Top + y
+                    End If
+                End If
+
+                form.Location = New Point(x, y)
                 form.Size = New Size(UISettings.width, UISettings.height)
 
                 If UISettings.windowState <> FormWindowState.Normal Then
@@ -152,7 +169,10 @@ Public Module CommonRuntime
         If AppHost IsNot Nothing AndAlso UISettings IsNot Nothing Then
             Dim size As Size = AppHost.GetClientSize
             Dim position As Point = AppHost.GetDesktopLocation
+            ' 获取当前窗体所在的屏幕
+            Dim currentScreen As Screen = Screen.FromControl(DirectCast(AppHost, Form))
 
+            UISettings.screen = currentScreen.DeviceName
             UISettings.windows = DockSettings.GetSettings(toolWindows.Values).ToArray
             UISettings.windowState = AppHost.GetWindowState
             UISettings.width = size.Width
