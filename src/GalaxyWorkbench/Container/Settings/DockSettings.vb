@@ -12,6 +12,10 @@ Namespace Container
         Public Property height As Integer
         Public Property key As String Implements INamedValue.Key
 
+        Public Property screenName As String
+        Public Property x As Integer
+        Public Property y As Integer
+
         Public Sub ApplySettings(window As ToolWindow)
             window.DockState = dock
 
@@ -20,6 +24,25 @@ Namespace Container
                     window.Height = height
                 Case DockState.DockLeft, DockState.DockLeftAutoHide, DockState.DockRight, DockState.DockRightAutoHide
                     window.Width = width
+                Case DockState.Float
+                    Dim x = Me.x
+                    Dim y = Me.y
+
+                    If Not screenName.StringEmpty(, True) Then
+                        ' 获取目标屏幕
+                        Dim targetScreen As Screen = Screen.AllScreens.Where(Function(s) s.DeviceName = screenName).FirstOrDefault
+
+                        If targetScreen IsNot Nothing Then
+                            ' 计算居中坐标 (使用 WorkingArea 可以避免任务栏遮挡)
+                            ' 如果你想让窗口铺满或者基于左上角，可以使用 targetScreen.Bounds.Left
+                            x = targetScreen.Bounds.Left + x
+                            y = targetScreen.Bounds.Top + y
+                        End If
+                    End If
+
+                    window.StartPosition = FormStartPosition.Manual
+                    window.Size = New Size(width, height)
+                    window.Location = New Point(x, y)
             End Select
         End Sub
 
@@ -35,11 +58,16 @@ Namespace Container
 
         Public Shared Iterator Function GetSettings(windows As IEnumerable(Of ToolWindow)) As IEnumerable(Of DockSettings)
             For Each tool As ToolWindow In windows.SafeQuery
+                Dim currentScreen As Screen = Screen.FromControl(DirectCast(tool, Form))
+
                 Yield New DockSettings With {
                     .dock = tool.DockState,
                     .key = tool.Name,
                     .width = tool.Width,
-                    .height = tool.Height
+                    .height = tool.Height,
+                    .screenName = currentScreen.DeviceName,
+                    .x = tool.Left,
+                    .y = tool.Top
                 }
             Next
         End Function

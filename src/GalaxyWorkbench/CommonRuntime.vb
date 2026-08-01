@@ -58,7 +58,7 @@ Public Module CommonRuntime
             propertyWindow.TabText = "Property Window"
             propertyWindow.Show(AppHost.GetDockPanel, DockState.DockRightAutoHide)
 
-            Call RegisterToolWindow(propertyWindow)
+            Call RegisterToolWindow(propertyWindow, DockState.DockRightAutoHide)
         End If
 
         Return propertyWindow
@@ -75,7 +75,7 @@ Public Module CommonRuntime
             outputWindow.TabText = "Output Window"
             outputWindow.Show(AppHost.GetDockPanel, DockState.DockBottomAutoHide)
 
-            Call RegisterToolWindow(outputWindow)
+            Call RegisterToolWindow(outputWindow, DockState.DockBottomAutoHide)
         End If
 
         Return outputWindow
@@ -145,7 +145,7 @@ Public Module CommonRuntime
         End If
     End Sub
 
-    Public Sub RegisterToolWindow(tool As ToolWindow, Optional dock As DockState = DockState.DockLeftAutoHide)
+    Public Sub RegisterToolWindow(tool As ToolWindow, Optional dock As DockState = DockState.DockBottomAutoHide)
         If Not tool.Name.StringEmpty(, True) Then
             Dim panel As DockPanel = AppHost.GetDockPanel
             Dim setting As DockSettings = UISettings.windows.KeyItem(tool.Name)
@@ -160,11 +160,13 @@ Public Module CommonRuntime
 
                         If Not setting Is Nothing Then
                             Call setting.ApplySettings(tool)
+                        Else
+                            Call CommonRuntime.Dock(tool, prefer:=dock)
                         End If
+                    Else
+                        Call CommonRuntime.Dock(tool, prefer:=dock)
                     End If
                 End Sub)
-
-            Call CommonRuntime.Dock(tool, prefer:=dock)
         End If
     End Sub
 
@@ -295,13 +297,13 @@ Public Module CommonRuntime
 
                 ' do nothing 
             Case DockState.DockBottomAutoHide
-                win.DockState = DockState.DockBottom
+                win.DockState = prefer
             Case DockState.DockLeftAutoHide
-                win.DockState = DockState.DockLeft
+                win.DockState = prefer
             Case DockState.DockRightAutoHide
-                win.DockState = DockState.DockRight
+                win.DockState = prefer
             Case DockState.DockTopAutoHide
-                win.DockState = DockState.DockTop
+                win.DockState = prefer
         End Select
     End Sub
 
