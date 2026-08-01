@@ -156,7 +156,7 @@ Namespace Docking
 
             If theOnlyPane Is Nothing OrElse theOnlyPane.ActiveContent Is Nothing Then
                 Text = " "  ' use " " instead of string.Empty because the whole title bar will disappear when ControlBox is set to false.
-                Icon = Nothing
+                ' Icon = Nothing
             Else
                 Text = theOnlyPane.ActiveContent.DockHandler.TabText
                 Icon = theOnlyPane.ActiveContent.DockHandler.Icon
