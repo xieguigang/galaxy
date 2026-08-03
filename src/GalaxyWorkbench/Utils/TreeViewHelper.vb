@@ -11,18 +11,21 @@ Public Module TreeViewHelper
     ''' <param name="rootNode">要加载的 FileSystemTree 根节点</param>
     ''' 
     <Extension>
-    Public Sub LoadFileSystemTree(treeView As TreeView, rootNode As FileSystemTree, Optional folderIndex As Integer = 1, Optional fileIndex As Integer = 2)
+    Public Function LoadFileSystemTree(treeView As TreeView, rootNode As FileSystemTree, Optional folderIndex As Integer = 1, Optional fileIndex As Integer = 2) As TreeNode
         If treeView Is Nothing OrElse rootNode Is Nothing Then
-            Return
+            Return Nothing
         Else
             ' 关闭重绘以提高加载速度并防止闪烁
             Call treeView.BeginUpdate()
             Call treeView.Nodes.Clear()
         End If
 
+        ' 递归创建节点
+        Dim treeNode As TreeNode
+
         Try
             ' 递归创建节点
-            Dim treeNode As TreeNode = CreateTreeNode(rootNode, folderIndex, fileIndex)
+            treeNode = CreateTreeNode(rootNode, folderIndex, fileIndex)
 
             treeNode.ImageIndex = 0
             treeNode.SelectedImageIndex = 0
@@ -35,7 +38,9 @@ Public Module TreeViewHelper
             ' 恢复重绘
             Call treeView.EndUpdate()
         End Try
-    End Sub
+
+        Return treeNode
+    End Function
 
     ''' <summary>
     ''' 递归构建 TreeNode 的核心方法

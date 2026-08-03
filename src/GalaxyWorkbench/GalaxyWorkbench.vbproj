@@ -114,7 +114,7 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4078.44" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4129.50" />
     <PackageReference Include="System.Management" Version="10.0.10" />
   </ItemGroup>
   <ItemGroup>
