@@ -167,6 +167,10 @@ Public Module CommonRuntime
 
                     If Not setting Is Nothing Then
                         Call setting.ApplySettings(tool)
+
+                        If setting.dock = DockState.Hidden OrElse setting.dock = DockState.Unknown Then
+                            Call CommonRuntime.Dock(tool, prefer:=dock)
+                        End If
                     Else
                         Call CommonRuntime.Dock(tool, prefer:=dock)
                     End If
