@@ -486,5 +486,6 @@ Global
 		..\..\GCModeller\src\R-sharp\Library\shares\R_plot.interop\R_plot.interop.projitems*{a78e4fd2-ede8-5ee4-77bd-a5084109ec70}*SharedItemsImports = 5
 		LicenseFramework\Shared\LicenseShared.projitems*{da250a71-2bfb-4767-ab52-6a914a35a285}*SharedItemsImports = 5
 		LicenseFramework\Shared\LicenseShared.projitems*{ec84cbb4-8e2d-48ea-9e6c-3d7cf0bbb452}*SharedItemsImports = 5
+		WebViewHelper\WebViewHelper.projitems*{ec84cbb4-8e2d-48ea-9e6c-3d7cf0bbb452}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

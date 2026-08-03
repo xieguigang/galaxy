@@ -147,27 +147,33 @@ Public Module CommonRuntime
 
     Public Sub RegisterToolWindow(tool As ToolWindow, Optional dock As DockState = DockState.DockBottomAutoHide)
         If Not tool.Name.StringEmpty(, True) Then
-            Dim panel As DockPanel = AppHost.GetDockPanel
-            Dim setting As DockSettings = UISettings.windows.KeyItem(tool.Name)
+            Call RegisterToolWindowInternal(tool, dock)
+        Else
+            Call CommonRuntime.Dock(tool, prefer:=dock)
+        End If
+    End Sub
 
-            Call DirectCast(AppHost, Form).Invoke(
-                Sub()
-                    If (toolWindows.ContainsKey(tool.Name) AndAlso toolWindows(tool.Name) IsNot tool) OrElse
-                        Not toolWindows.ContainsKey(tool.Name) Then
+    Private Sub RegisterToolWindowInternal(tool As ToolWindow, dock As DockState)
+        Dim panel As DockPanel = AppHost.GetDockPanel
+        Dim setting As DockSettings = UISettings.windows.KeyItem(tool.Name)
 
-                        toolWindows(tool.Name) = tool
-                        toolWindows(tool.Name).Show(panel, dock)
+        Call DirectCast(AppHost, Form).Invoke(
+            Sub()
+                If (toolWindows.ContainsKey(tool.Name) AndAlso toolWindows(tool.Name) IsNot tool) OrElse
+                    Not toolWindows.ContainsKey(tool.Name) Then
 
-                        If Not setting Is Nothing Then
-                            Call setting.ApplySettings(tool)
-                        Else
-                            Call CommonRuntime.Dock(tool, prefer:=dock)
-                        End If
+                    toolWindows(tool.Name) = tool
+                    toolWindows(tool.Name).Show(panel, dock)
+
+                    If Not setting Is Nothing Then
+                        Call setting.ApplySettings(tool)
                     Else
                         Call CommonRuntime.Dock(tool, prefer:=dock)
                     End If
-                End Sub)
-        End If
+                Else
+                    Call CommonRuntime.Dock(tool, prefer:=dock)
+                End If
+            End Sub)
     End Sub
 
     Public Sub SaveUISettings()
