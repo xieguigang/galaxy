@@ -31,9 +31,7 @@ Namespace LicenseFramework.Shared
 
         Public ReadOnly Property IsValid As Boolean
             Get
-                Return Not String.IsNullOrEmpty(HardwareFingerprint) AndAlso
-                       Not String.IsNullOrEmpty(ProductName) AndAlso
-                       Not IsExpired
+                Return Not String.IsNullOrEmpty(HardwareFingerprint) AndAlso Not IsExpired
             End Get
         End Property
 
