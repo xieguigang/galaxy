@@ -245,8 +245,18 @@ Namespace LicenseFramework.Client
             Me.Close()
         End Sub
 
+        Private Function DisplayUserName() As String
+            If Not UserName.StringEmpty Then
+                Return UserName
+            ElseIf _initialResult Is Nothing OrElse _initialResult.License Is Nothing Then
+                Return ""
+            Else
+                Return _initialResult.License.CustomerName
+            End If
+        End Function
+
         Private Sub LicenseDialog_Load(sender As Object, e As EventArgs) Handles Me.Load
-            Text = $"{Text} [用户：{UserName}]"
+            Text = $"{Text} [用户：{DisplayUserName()}]"
         End Sub
     End Class
 
