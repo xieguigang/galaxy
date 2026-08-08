@@ -76,9 +76,6 @@
    <Import Include="System.Windows.Forms" />
  </ItemGroup>
  <ItemGroup>
-   <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
- </ItemGroup>
- <ItemGroup>
    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data\DataFrame\dataframework-netcore5.vbproj" />
    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%json\JSON-netcore5.vbproj" />
