@@ -9,6 +9,7 @@
     <Import_RootNamespace>WebViewHelper</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)HostMessage.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)WebViewLoader.vb" />
   </ItemGroup>
 </Project>
