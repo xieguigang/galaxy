@@ -139,7 +139,7 @@ Namespace Shell
 
 			Dim guid As New Guid(ShellIIDGuid.IShellItem)
 
-			Dim shellItemIn As IShellItem
+			Dim shellItemIn As IShellItem = Nothing
 			ShellNativeMethods.SHCreateItemFromParsingName(folderPath, IntPtr.Zero, guid, shellItemIn)
 
 			nativeShellLibrary = DirectCast(New ShellLibraryCoClass(), INativeShellLibrary)
@@ -173,7 +173,7 @@ Namespace Shell
         ''' </summary>
         Public Property IconResourceId() As IconReference
 			Get
-				Dim iconRef As String
+				Dim iconRef As String = Nothing
 				nativeShellLibrary.GetIcon(iconRef)
 				Return New IconReference(iconRef)
 			End Get
@@ -236,7 +236,7 @@ Namespace Shell
 			Get
 				Dim guid As New Guid(ShellIIDGuid.IShellItem)
 
-				Dim saveFolderItem As IShellItem
+				Dim saveFolderItem As IShellItem = Nothing
 
 				nativeShellLibrary.GetDefaultSaveFolder(ShellNativeMethods.DefaultSaveFolderType.Detect, guid, saveFolderItem)
 
@@ -254,7 +254,7 @@ Namespace Shell
 				Dim fullPath As String = New DirectoryInfo(value).FullName
 
 				Dim guid As New Guid(ShellIIDGuid.IShellItem)
-				Dim saveFolderItem As IShellItem
+				Dim saveFolderItem As IShellItem = Nothing
 
 				ShellNativeMethods.SHCreateItemFromParsingName(fullPath, IntPtr.Zero, guid, saveFolderItem)
 
@@ -346,7 +346,7 @@ Namespace Shell
 			Dim librariesFolderPath As String = If((kf IsNot Nothing), kf.Path, String.Empty)
 
 			Dim guid As New Guid(ShellIIDGuid.IShellItem)
-			Dim nativeShellItem As IShellItem
+			Dim nativeShellItem As IShellItem = Nothing
 			Dim shellItemPath As String = System.IO.Path.Combine(librariesFolderPath, libraryName & FileExtension)
 			Dim hr As Integer = ShellNativeMethods.SHCreateItemFromParsingName(shellItemPath, IntPtr.Zero, guid, nativeShellItem)
 
@@ -622,7 +622,7 @@ Namespace Shell
 
 		Private Function GetFolders() As List(Of ShellFileSystemFolder)
 			Dim list As New List(Of ShellFileSystemFolder)()
-			Dim itemArray As IShellItemArray
+			Dim itemArray As IShellItemArray = Nothing
 
 			Dim shellItemArrayGuid As New Guid(ShellIIDGuid.IShellItemArray)
 
@@ -636,7 +636,7 @@ Namespace Shell
 			itemArray.GetCount(count)
 
             For i As UInteger = 0 To count - 1UI
-                Dim shellItem As IShellItem
+                Dim shellItem As IShellItem = Nothing
                 itemArray.GetItemAt(i, shellItem)
                 list.Add(New ShellFileSystemFolder(TryCast(shellItem, IShellItem2)))
             Next

@@ -308,7 +308,7 @@ Namespace Shell
         Public ReadOnly Property Parent() As ShellObject
             Get
                 If parentShellObject Is Nothing AndAlso NativeShellItem2 IsNot Nothing Then
-                    Dim parentShellItem As IShellItem
+                    Dim parentShellItem As IShellItem = Nothing
                     Dim hr As HResult = NativeShellItem2.GetParent(parentShellItem)
 
                     If hr = HResult.Ok AndAlso parentShellItem IsNot Nothing Then
@@ -406,7 +406,7 @@ Namespace Shell
             End If
             Return hashValue.Value
         End Function
-        Private Shared hashProvider As New MD5CryptoServiceProvider()
+        Private Shared hashProvider As MD5 = MD5.Create()
         Private hashValue As System.Nullable(Of Integer)
 
         ''' <summary>

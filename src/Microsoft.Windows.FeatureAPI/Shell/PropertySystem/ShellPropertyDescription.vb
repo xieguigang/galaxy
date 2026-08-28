@@ -204,7 +204,7 @@ Namespace Shell.PropertySystem
 					Dim propEnumTypeList As New List(Of ShellPropertyEnumType)()
 
 					Dim guid As New Guid(ShellIIDGuid.IPropertyEnumTypeList)
-					Dim nativeList As IPropertyEnumTypeList
+					Dim nativeList As IPropertyEnumTypeList = Nothing
 					Dim hr As HResult = NativePropertyDescription.GetEnumTypeList(guid, nativeList)
 
 					If nativeList IsNot Nothing AndAlso CoreErrorHelper.Succeeded(hr) Then
@@ -214,7 +214,7 @@ Namespace Shell.PropertySystem
 						guid = New Guid(ShellIIDGuid.IPropertyEnumType)
 
                         For i As UInteger = 0 To count - 1UI
-                            Dim nativeEnumType As IPropertyEnumType
+                            Dim nativeEnumType As IPropertyEnumType = Nothing
                             nativeList.GetAt(i, guid, nativeEnumType)
                             propEnumTypeList.Add(New ShellPropertyEnumType(nativeEnumType))
                         Next

@@ -55,7 +55,7 @@ Namespace Shell.PropertySystem
 				Marshal.ReleaseComObject(store)
 				store = Nothing
 
-				Dim refPath As String
+				Dim refPath As String = Nothing
 				DirectCast(Description.NativePropertyDescription, IPropertyDescription2).GetImageReferenceForValue(propVar, refPath)
 
 				If refPath Is Nothing Then
@@ -261,7 +261,7 @@ Namespace Shell.PropertySystem
 		''' <returns>The formatted value as a string, or null if this property 
 		''' cannot be formatted for display.</returns>
 		Public Function FormatForDisplay(format As PropertyDescriptionFormatOptions) As String Implements IShellProperty.FormatForDisplay
-			Dim formattedString As String
+			Dim formattedString As String = Nothing
 
 			If Description Is Nothing OrElse Description.NativePropertyDescription Is Nothing Then
 				' We cannot do anything without a property description

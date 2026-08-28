@@ -48,7 +48,7 @@ Namespace Shell.PropertySystem
 			' The hash for the function is based off the generic type and which type (constructor) we're using.
 			Dim hash As Integer = GetTypeHash(type, thirdType)
 
-			Dim ctor As Func(Of PropertyKey, ShellPropertyDescription, Object, IShellProperty)
+			Dim ctor As Func(Of PropertyKey, ShellPropertyDescription, Object, IShellProperty) = Nothing
 			If Not _storeCache.TryGetValue(hash, ctor) Then
 				Dim argTypes As Type() = {GetType(PropertyKey), GetType(ShellPropertyDescription), thirdType}
 				ctor = ExpressConstructor(type, argTypes)

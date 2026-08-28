@@ -183,7 +183,7 @@ Namespace Shell
 		''' <param name="parent"></param>
 		''' <returns></returns>
 		Friend Shared Function Create(idListPtr As IntPtr, parent As ShellContainer) As ShellObject
-			Dim nativeShellItem As IShellItem
+			Dim nativeShellItem As IShellItem = Nothing
 
 			Dim retCode As Integer = ShellNativeMethods.SHCreateShellItem(IntPtr.Zero, parent.NativeShellFolder, idListPtr, nativeShellItem)
 
