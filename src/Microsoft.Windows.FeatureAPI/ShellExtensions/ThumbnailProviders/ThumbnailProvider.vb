@@ -25,9 +25,9 @@ Namespace ShellExtensions
 
         ' Determines which interface should be called to return a bitmap
         Private Function GetBitmap(sideLength As Integer) As Bitmap
-            Dim stream As IThumbnailFromStream
-            Dim shellObject As IThumbnailFromShellObject
-            Dim file As IThumbnailFromFile
+            Dim stream As IThumbnailFromStream = Nothing
+            Dim shellObject As IThumbnailFromShellObject = Nothing
+            Dim file As IThumbnailFromFile = Nothing
 
             If _stream IsNot Nothing AndAlso stream.InlineCopy(TryCast(Me, IThumbnailFromStream)) IsNot Nothing Then
                 Return stream.ConstructBitmap(_stream, sideLength)

@@ -272,7 +272,7 @@ Namespace Sensors
 			Dim sensorTypeGuid As Guid
 			nativeISensor.[GetType](sensorTypeGuid)
 
-			Dim stm As SensorTypeData
+			Dim stm As SensorTypeData = Nothing
 			Dim sensorClassType As Type = If(guidToSensorDescr.TryGetValue(sensorTypeGuid, stm), stm.SensorType, GetType(UnknownSensor))
 
 			Try

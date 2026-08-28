@@ -113,7 +113,7 @@ Namespace Sensors
         Public ReadOnly Property FriendlyName() As String
             Get
                 If m_friendlyName Is Nothing Then
-                    Dim name As String
+                    Dim name As String = Nothing
                     Dim hr As HResult = nativeISensor.GetFriendlyName(name)
                     If hr = HResult.Ok Then
                         m_friendlyName = name
@@ -277,7 +277,7 @@ Namespace Sensors
 
         Friend Function InternalUpdateData() As HResult
 
-            Dim iReport As ISensorDataReport
+            Dim iReport As ISensorDataReport = Nothing
             Dim hr As HResult = nativeISensor.GetData(iReport)
             If hr = HResult.Ok Then
                 Try
@@ -342,7 +342,7 @@ Namespace Sensors
 
             Dim keyCollection As IPortableDeviceKeyCollection = New PortableDeviceKeyCollection()
             Try
-                Dim valuesCollection As IPortableDeviceValues
+                Dim valuesCollection As IPortableDeviceValues = Nothing
 
                 For i As Integer = 0 To propKeys.Length - 1
                     Dim propKey As PropertyKey = propKeys(i)
@@ -388,7 +388,7 @@ Namespace Sensors
             End If
 
             Dim list As New List(Of PropertyKey)()
-            Dim collection As IPortableDeviceKeyCollection
+            Dim collection As IPortableDeviceKeyCollection = Nothing
             Dim hr As HResult = nativeISensor.GetSupportedDataFields(collection)
             If hr = HResult.Ok Then
                 Try
@@ -430,7 +430,7 @@ Namespace Sensors
 
             Dim keyCollection As IPortableDeviceKeyCollection = New PortableDeviceKeyCollection()
             Try
-                Dim valuesCollection As IPortableDeviceValues
+                Dim valuesCollection As IPortableDeviceValues = Nothing
                 Dim propKeyToIdx As New Dictionary(Of PropertyKey, Integer)()
 
                 For i As Integer = 0 To propIndexes.Length - 1
@@ -496,7 +496,7 @@ Namespace Sensors
                         pdv.SetValue(propKey, pv)
                     End Using
                 Catch generatedExceptionName As ArgumentException
-                    Dim buffer As Byte()
+                    Dim buffer As Byte() = Nothing
                     If TypeOf value Is Guid Then
                         Dim guid As Guid = CType(value, Guid)
                         pdv.SetGuidValue(propKey, guid)

@@ -167,7 +167,7 @@ Namespace ShellExtensions
             Get
                 ThrowIfDisposed()
                 Const STATFLAG_NONAME As Integer = 1
-                Dim stats As System.Runtime.InteropServices.ComTypes.STATSTG
+                Dim stats As System.Runtime.InteropServices.ComTypes.STATSTG = Nothing
                 _stream.Stat(stats, STATFLAG_NONAME)
                 Return stats.cbSize
             End Get

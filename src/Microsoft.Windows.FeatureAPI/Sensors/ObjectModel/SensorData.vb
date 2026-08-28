@@ -15,8 +15,8 @@ Namespace Sensors
 		Friend Shared Function FromNativeReport(iSensor As ISensor, iReport As ISensorDataReport) As SensorData
 			Dim data As New SensorData()
 
-			Dim keyCollection As IPortableDeviceKeyCollection
-			Dim valuesCollection As IPortableDeviceValues
+			Dim keyCollection As IPortableDeviceKeyCollection = Nothing
+					Dim valuesCollection As IPortableDeviceValues = Nothing
 			iSensor.GetSupportedDataFields(keyCollection)
 			iReport.GetSensorValues(keyCollection, valuesCollection)
 
