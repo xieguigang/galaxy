@@ -15,12 +15,12 @@ Namespace Microsoft.WindowsAPICodePack.Shell.Resources
 	' class via a tool like ResGen or Visual Studio.
 	' To add or remove a member, edit your .ResX file then rerun ResGen
 	' with the /str option, or rebuild your VS project.
-	<System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")> _
-	<System.Diagnostics.DebuggerNonUserCodeAttribute>
-	<System.Runtime.CompilerServices.CompilerGeneratedAttribute>
 	''' <summary>
 	'''   A strongly-typed resource class, for looking up localized strings, etc.
 	''' </summary>
+	<System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")> _
+	<System.Diagnostics.DebuggerNonUserCodeAttribute>
+	<System.Runtime.CompilerServices.CompilerGeneratedAttribute>
 	Friend Class ShellLocalizedMessages
 
 		Private Shared resourceMan As Global.System.Resources.ResourceManager

@@ -150,7 +150,7 @@ Namespace Shell
 				End If
 
 				' It's probably a special folder, try to get it                
-				Dim knownFolderNative As IKnownFolderNative = Nothing = KnownFolderHelper.FromPIDL(pidl)
+				Dim knownFolderNative As IKnownFolderNative = KnownFolderHelper.FromPIDL(pidl)
 				If knownFolderNative IsNot Nothing Then
 					Dim kf As IKnownFolder = KnownFolderHelper.GetKnownFolder(knownFolderNative)
 					If kf Is Nothing Then
