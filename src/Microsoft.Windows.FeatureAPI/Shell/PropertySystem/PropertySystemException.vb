@@ -39,14 +39,5 @@ Namespace Shell.PropertySystem
 			MyBase.New(message, errorCode)
 		End Sub
 
-		''' <summary>
-		''' Initializes an exception from serialization info and a context.
-		''' </summary>
-		''' <param name="info"></param>
-		''' <param name="context"></param>
-		Protected Sub New(info As System.Runtime.Serialization.SerializationInfo, context As System.Runtime.Serialization.StreamingContext)
-			MyBase.New(info, context)
-		End Sub
-
 	End Class
 End Namespace
