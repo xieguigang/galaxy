@@ -49,7 +49,7 @@ Namespace Shell
 		''' <param name="dataObject">An object that implements the IDataObject COM interface.</param>
 		''' <returns>ShellObjectCollection created from the given IDataObject</returns>
 		Public Shared Function FromDataObject(dataObject As System.Runtime.InteropServices.ComTypes.IDataObject) As ShellObjectCollection
-			Dim shellItemArray As IShellItemArray
+			Dim shellItemArray As IShellItemArray = Nothing
 			Dim iid As New Guid(ShellIIDGuid.IShellItemArray)
 			ShellNativeMethods.SHCreateShellItemArrayFromDataObject(dataObject, iid, shellItemArray)
 			Return New ShellObjectCollection(shellItemArray, True)

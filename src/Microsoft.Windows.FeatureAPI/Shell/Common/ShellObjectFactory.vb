@@ -146,7 +146,7 @@ Namespace Shell
 			End If
 
 			' Create a native shellitem from our path
-			Dim nativeShellItem As IShellItem2
+			Dim nativeShellItem As IShellItem2 = Nothing
 			Dim guid As New Guid(ShellIIDGuid.IShellItem2)
 			Dim retCode As Integer = ShellNativeMethods.SHCreateItemFromParsingName(parsingName, IntPtr.Zero, guid, nativeShellItem)
 
@@ -167,7 +167,7 @@ Namespace Shell
 
 			Dim guid As New Guid(ShellIIDGuid.IShellItem2)
 
-			Dim nativeShellItem As IShellItem2
+			Dim nativeShellItem As IShellItem2 = Nothing
 			Dim retCode As Integer = ShellNativeMethods.SHCreateItemFromIDList(idListPtr, guid, nativeShellItem)
 
 			If Not CoreErrorHelper.Succeeded(retCode) Then

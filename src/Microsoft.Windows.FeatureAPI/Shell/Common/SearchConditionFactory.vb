@@ -158,7 +158,7 @@ Namespace Shell
         ''' <see cref="P:Shell.PropertySystem.ShellPropertyDescription.TypeFlags"/> property for IsQueryable flag.
         ''' </remarks>
         Public Shared Function CreateLeafCondition(propertyKey As PropertyKey, value As String, operation As SearchConditionOperation) As SearchCondition
-            Dim canonicalName As String
+            Dim canonicalName As String = Nothing
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(propertyKey, canonicalName)
 
             If String.IsNullOrEmpty(canonicalName) Then
@@ -182,7 +182,7 @@ Namespace Shell
         ''' <see cref="P:Shell.PropertySystem.ShellPropertyDescription.TypeFlags"/> property for IsQueryable flag.
         ''' </remarks>
         Public Shared Function CreateLeafCondition(propertyKey As PropertyKey, value As DateTime, operation As SearchConditionOperation) As SearchCondition
-            Dim canonicalName As String
+            Dim canonicalName As String = Nothing
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(propertyKey, canonicalName)
 
             If String.IsNullOrEmpty(canonicalName) Then
@@ -205,7 +205,7 @@ Namespace Shell
         ''' <see cref="P:Shell.PropertySystem.ShellPropertyDescription.TypeFlags"/> property for IsQueryable flag.
         ''' </remarks>
         Public Shared Function CreateLeafCondition(propertyKey As PropertyKey, value As Boolean, operation As SearchConditionOperation) As SearchCondition
-            Dim canonicalName As String
+            Dim canonicalName As String = Nothing
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(propertyKey, canonicalName)
 
             If String.IsNullOrEmpty(canonicalName) Then
@@ -228,7 +228,7 @@ Namespace Shell
         ''' <see cref="P:Shell.PropertySystem.ShellPropertyDescription.TypeFlags"/> property for IsQueryable flag.
         ''' </remarks>
         Public Shared Function CreateLeafCondition(propertyKey As PropertyKey, value As Double, operation As SearchConditionOperation) As SearchCondition
-            Dim canonicalName As String
+            Dim canonicalName As String = Nothing
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(propertyKey, canonicalName)
 
             If String.IsNullOrEmpty(canonicalName) Then
@@ -251,7 +251,7 @@ Namespace Shell
         ''' <see cref="P:Shell.PropertySystem.ShellPropertyDescription.TypeFlags"/> property for IsQueryable flag.
         ''' </remarks>
         Public Shared Function CreateLeafCondition(propertyKey As PropertyKey, value As Integer, operation As SearchConditionOperation) As SearchCondition
-            Dim canonicalName As String
+            Dim canonicalName As String = Nothing
             PropertySystemNativeMethods.PSGetNameFromPropertyKey(propertyKey, canonicalName)
 
             If String.IsNullOrEmpty(canonicalName) Then
@@ -317,7 +317,7 @@ Namespace Shell
 
             ' Same as the native "IConditionFactory:MakeNot" method
             Dim nativeConditionFactory As IConditionFactory = DirectCast(New ConditionFactoryCoClass(), IConditionFactory)
-            Dim result As ICondition
+            Dim result As ICondition = Nothing
 
             Try
                 Dim hr As HResult = nativeConditionFactory.MakeNot(conditionToBeNegated.NativeSearchCondition, simplify, result)

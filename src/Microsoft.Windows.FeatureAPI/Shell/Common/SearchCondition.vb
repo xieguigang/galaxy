@@ -117,7 +117,7 @@ Namespace Shell
             Dim subConditionsList As New List(Of SearchCondition)()
 
             ' Get the sub-conditions from the native API
-            Dim subConditionObj As Object
+            Dim subConditionObj As Object = Nothing
             Dim guid As New Guid(ShellIIDGuid.IEnumUnknown)
 
             Dim hr As HResult = NativeSearchCondition.GetSubConditions(guid, subConditionObj)

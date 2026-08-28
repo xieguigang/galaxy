@@ -94,7 +94,7 @@ Namespace Shell
 
                 ' Create IShellItem for all the scopes we were given
                 For Each path As String In m_searchScopePaths
-                    Dim scopeShellItem As IShellItem
+                    Dim scopeShellItem As IShellItem = Nothing
 
                     Dim hr As Integer = ShellNativeMethods.SHCreateItemFromParsingName(path, IntPtr.Zero, shellItemGuid, scopeShellItem)
 
@@ -123,7 +123,7 @@ Namespace Shell
                     Return Nothing
                 End If
 
-                Dim shellItem As IShellItem
+                Dim shellItem As IShellItem = Nothing
                 Dim hr As Integer = NativeSearchFolderItemFactory.GetShellItem(guid, shellItem)
 
                 If Not CoreErrorHelper.Succeeded(hr) Then
