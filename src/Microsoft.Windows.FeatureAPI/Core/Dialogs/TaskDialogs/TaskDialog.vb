@@ -791,8 +791,8 @@ Namespace Dialogs
                     Throw New InvalidOperationException(GlobalLocalizedMessages.TaskDialogButtonTextEmpty)
                 End If
 
-                Dim radButton As TaskDialogRadioButton
-                Dim progBar As TaskDialogProgressBar
+                Dim radButton As TaskDialogRadioButton = Nothing
+                Dim progBar As TaskDialogProgressBar = Nothing
 
                 ' Loop through child controls 
                 ' and sort the controls based on type.
@@ -944,8 +944,8 @@ Namespace Dialogs
             ' We only need to apply changes to the 
             ' native dialog when it actually exists.
             If NativeDialogShowing Then
-                Dim button As TaskDialogButton
-                Dim radioButton As TaskDialogRadioButton
+                Dim button As TaskDialogButton = Nothing
+                Dim radioButton As TaskDialogRadioButton = Nothing
                 If TypeOf control Is TaskDialogProgressBar Then
                     If Not m_progressBar.HasValidValues Then
                         Throw New ArgumentException(GlobalLocalizedMessages.TaskDialogProgressBarValueInRange)

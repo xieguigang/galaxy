@@ -8,7 +8,7 @@ Namespace ApplicationServices
     Public Module Power
 
         Public Function GetSystemPowerCapabilities() As PowerManagementNativeMethods.SystemPowerCapabilities
-            Dim powerCap As PowerManagementNativeMethods.SystemPowerCapabilities
+            Dim powerCap As PowerManagementNativeMethods.SystemPowerCapabilities = Nothing
 
             Dim retval As UInteger = PowerManagementNativeMethods.CallNtPowerInformation(PowerManagementNativeMethods.PowerInformationLevel.SystemPowerCapabilities, IntPtr.Zero, 0, powerCap, CType(Marshal.SizeOf(GetType(PowerManagementNativeMethods.SystemPowerCapabilities)), UInt32))
 

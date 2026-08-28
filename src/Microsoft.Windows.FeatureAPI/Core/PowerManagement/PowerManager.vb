@@ -165,7 +165,6 @@ Namespace ApplicationServices
                 CoreHelpers.ThrowIfNotXP()
                 Return m_monitorRequired
             End Get
-            <System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")>
             Set
                 CoreHelpers.ThrowIfNotXP()
 
@@ -194,7 +193,6 @@ Namespace ApplicationServices
 
                 Return m_requestBlockSleep
             End Get
-            <System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name:="FullTrust")>
             Set
                 CoreHelpers.ThrowIfNotXP()
 

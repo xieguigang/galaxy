@@ -152,7 +152,7 @@ Namespace Internal
         Private Shared Function GetDynamicConstructor(type As Type) As Func(Of Object, PropVariant)
             SyncLock _padlock
                 ' initial check, if action is found, return it
-                Dim action As Func(Of Object, PropVariant)
+                Dim action As Func(Of Object, PropVariant) = Nothing
                 If Not _cache.TryGetValue(type, action) Then
                     ' iterates through all constructors
                     Dim constructor As ConstructorInfo = GetType(PropVariant).GetConstructor(New Type() {type})
@@ -705,7 +705,7 @@ Namespace Internal
                 End If
             End SyncLock
 
-            Dim action As Action(Of PropVariant, Array, UInteger)
+            Dim action As Action(Of PropVariant, Array, UInteger) = Nothing
             If Not _vectorActions.TryGetValue(GetType(T), action) Then
                 Throw New InvalidCastException(GlobalLocalizedMessages.PropVariantUnsupportedType)
             End If
