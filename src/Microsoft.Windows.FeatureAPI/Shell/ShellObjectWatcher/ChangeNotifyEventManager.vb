@@ -21,7 +21,7 @@ Namespace Shell
 		Private _events As New Dictionary(Of ShellObjectChangeTypes, [Delegate])()
 
 		Public Sub Register(changeType As ShellObjectChangeTypes, handler As [Delegate])
-			Dim del As [Delegate]
+			Dim del As [Delegate] = Nothing
 			If Not _events.TryGetValue(changeType, del) Then
 				_events.Add(changeType, handler)
 			Else
@@ -31,7 +31,7 @@ Namespace Shell
 		End Sub
 
 		Public Sub Unregister(changeType As ShellObjectChangeTypes, handler As [Delegate])
-			Dim del As [Delegate]
+			Dim del As [Delegate] = Nothing
 			If _events.TryGetValue(changeType, del) Then
 				del = MulticastDelegate.Remove(del, handler)
 				If del Is Nothing Then
@@ -51,7 +51,7 @@ Namespace Shell
 			' Removes FromInterrupt flag if pressent
 			changeType = changeType And Not ShellObjectChangeTypes.FromInterrupt
 
-			Dim del As [Delegate]
+			Dim del As [Delegate] = Nothing
             For Each change As ShellObjectChangeTypes In _changeOrder.Where(Function(x) (x And changeType) <> 0)
                 If _events.TryGetValue(change, del) Then
                     del.DynamicInvoke(sender, args)

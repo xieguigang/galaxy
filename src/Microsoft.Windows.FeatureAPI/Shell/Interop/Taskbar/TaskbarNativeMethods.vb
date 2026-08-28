@@ -160,7 +160,7 @@ Namespace Taskbar
 		End Sub
 
 		Friend Shared Function GetWindowPropertyStore(hwnd As IntPtr) As IPropertyStore
-			Dim propStore As IPropertyStore
+			Dim propStore As IPropertyStore = Nothing
 			Dim guid As New Guid(ShellIIDGuid.IPropertyStore)
 			Dim rc As Integer = SHGetPropertyStoreForWindow(hwnd, guid, propStore)
 			If rc <> 0 Then

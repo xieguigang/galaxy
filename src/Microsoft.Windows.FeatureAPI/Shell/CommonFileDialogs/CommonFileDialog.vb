@@ -1035,7 +1035,7 @@ Namespace Dialogs
         End Function
 
         Friend Shared Function GetShellItemAt(array As IShellItemArray, i As Integer) As IShellItem
-            Dim result As IShellItem
+            Dim result As IShellItem = Nothing
             Dim index As UInteger = CUInt(i)
             array.GetItemAt(index, result)
             Return result
@@ -1144,8 +1144,8 @@ Namespace Dialogs
                     ' Make sure all custom properties are sync'ed
                     If parent.Controls IsNot Nothing Then
                         For Each control As CommonFileDialogControl In parent.Controls
-                            Dim textBox__1 As CommonFileDialogTextBox
-                            Dim groupBox As CommonFileDialogGroupBox
+                            Dim textBox__1 As CommonFileDialogTextBox = Nothing
+                            Dim groupBox As CommonFileDialogGroupBox = Nothing
 
                             If textBox__1.InlineCopy(TryCast(control, CommonFileDialogTextBox)) IsNot Nothing Then
                                 textBox__1.SyncValue()
@@ -1210,8 +1210,8 @@ Namespace Dialogs
                 ' Find control
                 Dim control As DialogControl = Me.parent.Controls.GetControlbyId(dwIDCtl)
 
-                Dim controlInterface As ICommonFileDialogIndexedControls
-                Dim menu As CommonFileDialogMenu
+                Dim controlInterface As ICommonFileDialogIndexedControls = Nothing
+                Dim menu As CommonFileDialogMenu = Nothing
 
                 ' Process ComboBox and/or RadioButtonList                
                 If controlInterface.InlineCopy(TryCast(control, ICommonFileDialogIndexedControls)) IsNot Nothing Then

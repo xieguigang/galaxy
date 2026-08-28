@@ -67,7 +67,7 @@ Namespace Shell
             End Sub
 
             Private Sub MessageReceived(sender As Object, e As WindowMessageEventArgs)
-                Dim action As Action(Of WindowMessageEventArgs)
+                Dim action As Action(Of WindowMessageEventArgs) = Nothing
                 If Callbacks.TryGetValue(e.Message.Msg, action) Then
                     action(e)
                 End If

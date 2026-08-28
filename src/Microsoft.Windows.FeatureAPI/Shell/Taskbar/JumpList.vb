@@ -121,7 +121,7 @@ Namespace Taskbar
 				' and then abort. If we wait until the user calls RefreshTaskbarlist(), it will be too late.
 				' The user needs to use this number before they update the jumplist.
 
-				Dim removedItems As Object
+				Dim removedItems As Object = Nothing
 				Dim maxSlotsInList__1 As UInteger = 10
 				' default
 				' Native call to start adding items to the taskbar destination list
@@ -282,7 +282,7 @@ Namespace Taskbar
 
 		Private Sub BeginList()
 			' Get list of removed items from native code
-			Dim removedItems As Object
+			Dim removedItems As Object = Nothing
 			Dim maxSlotsInList As UInteger = 10
 			' default
 			' Native call to start adding items to the taskbar destination list
@@ -332,7 +332,7 @@ Namespace Taskbar
         Public ReadOnly Property RemovedDestinations() As IEnumerable
 			Get
 				' Get list of removed items from native code
-				Dim removedItems As Object
+				Dim removedItems As Object = Nothing
 
 				customDestinationList.GetRemovedDestinations(TaskbarNativeMethods.TaskbarGuids.IObjectArray, removedItems)
 
@@ -349,11 +349,11 @@ Namespace Taskbar
             ' Process each removed item based on its type
             For i As UInteger = 0 To count - 1UI
                 ' Native call to retrieve objects from IObjectArray
-                Dim item As Object
+                Dim item As Object = Nothing
                 removedItems.GetAt(i, TaskbarNativeMethods.TaskbarGuids.IUnknown, item)
 
                 Dim shellItem As IShellItem = TryCast(item, IShellItem)
-                Dim shellLink As IShellLinkW
+                Dim shellLink As IShellLinkW = Nothing
 				' Process item
 				If shellItem IsNot Nothing Then
 					removedItemsArray.Add(RemoveCustomCategoryItem(shellItem))
@@ -482,7 +482,7 @@ Namespace Taskbar
 
 			' Add each task's shell representation to the object array
 			For Each task As JumpListTask In userTasks
-				Dim seperator As JumpListSeparator
+				Dim seperator As JumpListSeparator = Nothing
 				Dim link As JumpListLink = TryCast(task, JumpListLink)
 				If link IsNot Nothing Then
 					taskContent.AddObject(link.NativeShellLink)

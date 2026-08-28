@@ -70,7 +70,7 @@ Namespace Taskbar
 				Throw New ArgumentException(GlobalLocalizedMessages.ThumbnailManagerInvalidHandle, "windowHandle")
 			End If
 
-			Dim thumbnail As TabbedThumbnail
+			Dim thumbnail As TabbedThumbnail = Nothing
 			Return If(_tabbedThumbnailCache.TryGetValue(windowHandle, thumbnail), thumbnail, Nothing)
 		End Function
 
@@ -97,7 +97,7 @@ Namespace Taskbar
 				Throw New ArgumentNullException("windowsControl")
 			End If
 
-			Dim thumbnail As TabbedThumbnail
+			Dim thumbnail As TabbedThumbnail = Nothing
 			Return If(_tabbedThumbnailCacheWPF.TryGetValue(windowsControl, thumbnail), thumbnail, Nothing)
 		End Function
 

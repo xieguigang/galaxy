@@ -137,7 +137,7 @@ Namespace Shell
 				Case CUInt(WindowMessage.Destroy)
 					Exit Select
 				Case Else
-					Dim listener As MessageListener
+					Dim listener As MessageListener = Nothing
 					If _listeners.TryGetValue(hwnd, listener) Then
 						Dim message As New Message(hwnd, msg, wparam, lparam, 0, New NativePoint())
                         Call listener._MessageReceived(listener, New WindowMessageEventArgs(message))

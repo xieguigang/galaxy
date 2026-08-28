@@ -20,9 +20,9 @@ Namespace Shell
 
 				Dim guid As New Guid(ShellIIDGuid.IShellItem2)
 				If notifyStruct.item1 <> IntPtr.Zero AndAlso (CType(_event, ShellObjectChangeTypes) And ShellObjectChangeTypes.SystemImageUpdate) = ShellObjectChangeTypes.None Then
-					Dim nativeShellItem As IShellItem2
+					Dim nativeShellItem As IShellItem2 = Nothing
 					If CoreErrorHelper.Succeeded(ShellNativeMethods.SHCreateItemFromIDList(notifyStruct.item1, guid, nativeShellItem)) Then
-						Dim name As String
+						Dim name As String = Nothing
 						nativeShellItem.GetDisplayName(ShellNativeMethods.ShellItemDesignNameOptions.FileSystemPath, name)
 						ItemName = name
 
@@ -33,9 +33,9 @@ Namespace Shell
 				End If
 
 				If notifyStruct.item2 <> IntPtr.Zero Then
-					Dim nativeShellItem As IShellItem2
+					Dim nativeShellItem As IShellItem2 = Nothing
 					If CoreErrorHelper.Succeeded(ShellNativeMethods.SHCreateItemFromIDList(notifyStruct.item2, guid, nativeShellItem)) Then
-						Dim name As String
+						Dim name As String = Nothing
 						nativeShellItem.GetDisplayName(ShellNativeMethods.ShellItemDesignNameOptions.FileSystemPath, name)
 						ItemName2 = name
 
