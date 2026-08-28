@@ -77,7 +77,7 @@ Namespace Dialogs.Controls
                 End If
 
                 For Each control As T In MyBase.Items
-                    Dim groupBox As CommonFileDialogGroupBox
+                    Dim groupBox As CommonFileDialogGroupBox = Nothing
 					' NOTE: we don't ToLower() the strings - casing effects 
 					' hash codes, so we are case-sensitive.
 					If control.Name = name Then

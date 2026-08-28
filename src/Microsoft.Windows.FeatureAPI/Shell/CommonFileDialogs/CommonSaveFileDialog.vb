@@ -199,7 +199,7 @@ Namespace Dialogs
 				Dim nativeDialog As IFileSaveDialog = TryCast(GetNativeFileDialog(), IFileSaveDialog)
 
 				If nativeDialog IsNot Nothing Then
-					Dim propertyStore As IPropertyStore
+					Dim propertyStore As IPropertyStore = Nothing
 					Dim hr As HResult = nativeDialog.GetProperties(propertyStore)
 
 					If propertyStore IsNot Nothing AndAlso CoreErrorHelper.Succeeded(hr) Then
@@ -225,7 +225,7 @@ Namespace Dialogs
 		End Function
 
 		Friend Overrides Sub PopulateWithFileNames(names As System.Collections.ObjectModel.Collection(Of String))
-			Dim item As IShellItem
+			Dim item As IShellItem = Nothing
 			saveDialogCoClass.GetResult(item)
 
 			If item Is Nothing Then
@@ -236,7 +236,7 @@ Namespace Dialogs
 		End Sub
 
 		Friend Overrides Sub PopulateWithIShellItems(items As System.Collections.ObjectModel.Collection(Of IShellItem))
-			Dim item As IShellItem
+			Dim item As IShellItem = Nothing
 			saveDialogCoClass.GetResult(item)
 
 			If item Is Nothing Then

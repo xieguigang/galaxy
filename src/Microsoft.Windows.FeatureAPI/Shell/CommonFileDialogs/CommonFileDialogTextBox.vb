@@ -95,7 +95,7 @@ Namespace Dialogs.Controls
 			' setting the textValue member variable then return it.
 
 			If customizedDialog IsNot Nothing Then
-				Dim textValue As String
+				Dim textValue As String = Nothing
 				customizedDialog.GetEditBoxText(Me.Id, textValue)
 
 				MyBase.Text = textValue

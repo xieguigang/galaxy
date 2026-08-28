@@ -216,7 +216,7 @@ Namespace Shell
 		End Sub
 
 		Friend Shared Function GetFolderType(typeId As Guid) As String
-			Dim type As String
+			Dim type As String = Nothing
 			Return If(types.TryGetValue(typeId, type), type, String.Empty)
 		End Function
 	End Class

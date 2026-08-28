@@ -136,7 +136,7 @@ Namespace Dialogs
 		End Sub
 
 		Friend Overrides Sub PopulateWithFileNames(names As Collection(Of String))
-			Dim resultsArray As IShellItemArray
+			Dim resultsArray As IShellItemArray = Nothing
 			Dim count As UInteger
 
 			openDialogCoClass.GetResults(resultsArray)
@@ -151,7 +151,7 @@ Namespace Dialogs
         End Sub
 
 		Friend Overrides Sub PopulateWithIShellItems(items As Collection(Of IShellItem))
-			Dim resultsArray As IShellItemArray
+			Dim resultsArray As IShellItemArray = Nothing
 			Dim count As UInteger
 
 			openDialogCoClass.GetResults(resultsArray)

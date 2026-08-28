@@ -32,7 +32,7 @@ Namespace Shell
 		''' <param name="folderId">The Guid identifier for a known folder.</param>
 		''' <returns>A <see cref="T:System.String"/> value.</returns>
 		Friend Shared Function NameForGuid(folderId As Guid) As String
-			Dim folder As String
+			Dim folder As String = Nothing
 			If Not folders.TryGetValue(folderId, folder) Then
 				Throw New ArgumentException(GlobalLocalizedMessages.FolderIdsUnknownGuid, "folderId")
 			End If

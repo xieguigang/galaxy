@@ -17,7 +17,7 @@ Namespace Shell
 		Friend Shared Function FromPIDL(pidl As IntPtr) As IKnownFolderNative
 			Dim knownFolderManager As New KnownFolderManagerClass()
 
-			Dim knownFolder As IKnownFolderNative
+			Dim knownFolder As IKnownFolderNative = Nothing
 			Dim hr As HResult = knownFolderManager.FindFolderFromIDList(pidl, knownFolder)
 
 			Return If((hr = HResult.Ok), knownFolder, Nothing)
@@ -30,7 +30,7 @@ Namespace Shell
 		''' <returns>A known folder representing the specified name.</returns>
 		''' <exception cref="System.ArgumentException">Thrown if the given Known Folder ID is invalid.</exception>
 		Public Shared Function FromKnownFolderId(knownFolderId As Guid) As IKnownFolder
-			Dim knownFolderNative As IKnownFolderNative
+			Dim knownFolderNative As IKnownFolderNative = Nothing
 			Dim knownFolderManager As New KnownFolderManagerClass()
 
 			Dim hr As HResult = knownFolderManager.GetFolder(knownFolderId, knownFolderNative)
@@ -51,7 +51,7 @@ Namespace Shell
 		''' <param name="knownFolderId">A GUID for the requested known folder.</param>
 		''' <returns>A known folder representing the specified name. Returns null if Known Folder is not found or could not be created.</returns>
 		Friend Shared Function FromKnownFolderIdInternal(knownFolderId As Guid) As IKnownFolder
-			Dim knownFolderNative As IKnownFolderNative
+			Dim knownFolderNative As IKnownFolderNative = Nothing
 			Dim knownFolderManager As IKnownFolderManager = DirectCast(New KnownFolderManagerClass(), IKnownFolderManager)
 
 			Dim hr As HResult = knownFolderManager.GetFolder(knownFolderId, knownFolderNative)
@@ -69,7 +69,7 @@ Namespace Shell
 			System.Diagnostics.Debug.Assert(knownFolderNative IsNot Nothing, "Native IKnownFolder should not be null.")
 
 			' Get the native IShellItem2 from the native IKnownFolder
-			Dim shellItem As IShellItem2
+			Dim shellItem As IShellItem2 = Nothing
 			Dim guid As New Guid(ShellIIDGuid.IShellItem2)
 			Dim hr As HResult = knownFolderNative.GetShellItem(0, guid, shellItem)
 
@@ -105,7 +105,7 @@ Namespace Shell
 		''' <returns>A known folder representing the specified name.</returns>
 		''' <exception cref="System.ArgumentException">Thrown if the given canonical name is invalid or if the KnownFolder could not be created.</exception>
 		Public Shared Function FromCanonicalName(canonicalName As String) As IKnownFolder
-			Dim knownFolderNative As IKnownFolderNative
+			Dim knownFolderNative As IKnownFolderNative = Nothing
 			Dim knownFolderManager As IKnownFolderManager = DirectCast(New KnownFolderManagerClass(), IKnownFolderManager)
 
 			knownFolderManager.GetFolderByName(canonicalName, knownFolderNative)
@@ -150,7 +150,7 @@ Namespace Shell
 				End If
 
 				' It's probably a special folder, try to get it                
-				Dim knownFolderNative As IKnownFolderNative = KnownFolderHelper.FromPIDL(pidl)
+				Dim knownFolderNative As IKnownFolderNative = Nothing = KnownFolderHelper.FromPIDL(pidl)
 				If knownFolderNative IsNot Nothing Then
 					Dim kf As IKnownFolder = KnownFolderHelper.GetKnownFolder(knownFolderNative)
 					If kf Is Nothing Then

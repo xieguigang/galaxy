@@ -548,7 +548,7 @@ Namespace Dialogs
             End If
 
             ' Create a native shellitem from our path
-            Dim nativeShellItem As IShellItem2
+            Dim nativeShellItem As IShellItem2 = Nothing
             Dim guid As New Guid(ShellIIDGuid.IShellItem2)
             Dim retCode As Integer = ShellNativeMethods.SHCreateItemFromParsingName(path, IntPtr.Zero, guid, nativeShellItem)
 
@@ -785,7 +785,7 @@ Namespace Dialogs
 
             If Not String.IsNullOrEmpty(m_initialDirectory) Then
                 ' Create a native shellitem from our path
-                Dim initialDirectoryShellItem As IShellItem2
+                Dim initialDirectoryShellItem As IShellItem2 = Nothing
                 ShellNativeMethods.SHCreateItemFromParsingName(m_initialDirectory, IntPtr.Zero, guid__1, initialDirectoryShellItem)
 
                 ' If we get a real shell item back, 
@@ -799,7 +799,7 @@ Namespace Dialogs
 
             If Not String.IsNullOrEmpty(m_defaultDirectory) Then
                 ' Create a native shellitem from our path
-                Dim defaultDirectoryShellItem As IShellItem2
+                Dim defaultDirectoryShellItem As IShellItem2 = Nothing
                 ShellNativeMethods.SHCreateItemFromParsingName(m_defaultDirectory, IntPtr.Zero, guid__1, defaultDirectoryShellItem)
 
                 ' If we get a real shell item back, 
@@ -961,8 +961,8 @@ Namespace Dialogs
 
                 customize.SetControlState(control.Id, state)
             ElseIf propertyName = "SelectedIndex" Then
-                Dim list As CommonFileDialogRadioButtonList
-                Dim box As CommonFileDialogComboBox
+                Dim list As CommonFileDialogRadioButtonList = Nothing
+                Dim box As CommonFileDialogComboBox = Nothing
 
                 If list.InlineCopy(TryCast(control, CommonFileDialogRadioButtonList)) IsNot Nothing Then
                     customize.SetSelectedControlItem(list.Id, list.SelectedIndex)
