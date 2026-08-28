@@ -7,7 +7,6 @@ Namespace ApplicationServices
     ''' <summary>
     ''' This exception is thrown when there are problems with getting piece of data within PowerManager.
     ''' </summary>
-    <Serializable>
     Public Class PowerManagerException
         Inherits Exception
 
@@ -32,15 +31,6 @@ Namespace ApplicationServices
         ''' <param name="innerException">An inner exception on which to base this exception.</param>
         Public Sub New(message As String, innerException As Exception)
             MyBase.New(message, innerException)
-        End Sub
-
-        ''' <summary>
-        ''' Initializes an exception from serialization info and a context.
-        ''' </summary>
-        ''' <param name="info">SerializationInfo for the exception.</param>
-        ''' <param name="context">StreamingContext for the exception.</param>
-        Protected Sub New(info As System.Runtime.Serialization.SerializationInfo, context As System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
         End Sub
 
     End Class

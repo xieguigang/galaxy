@@ -5,7 +5,6 @@ Namespace Controls
     ''' <summary>
     ''' An exception thrown when an error occurs while dealing with Control objects.
     ''' </summary>
-    <Serializable>
     Public Class CommonControlException
         Inherits COMException
         ''' <summary>
@@ -47,15 +46,6 @@ Namespace Controls
         ''' <param name="errorCode"></param>
         Friend Sub New(message As String, errorCode As HResult)
             Me.New(message, CInt(errorCode))
-        End Sub
-
-        ''' <summary>
-        ''' Initializes an exception from serialization info and a context.
-        ''' </summary>
-        ''' <param name="info"></param>
-        ''' <param name="context"></param>
-        Protected Sub New(info As System.Runtime.Serialization.SerializationInfo, context As System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
         End Sub
 
     End Class

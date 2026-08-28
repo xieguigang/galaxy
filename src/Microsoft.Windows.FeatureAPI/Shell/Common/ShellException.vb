@@ -6,7 +6,6 @@ Namespace Shell
     ''' <summary>
     ''' An exception thrown when an error occurs while dealing with ShellObjects.
     ''' </summary>
-    <Serializable>
     Public Class ShellException
         Inherits ExternalException
         ''' <summary>
@@ -64,15 +63,6 @@ Namespace Shell
         ''' <param name="errorCode">HRESULT of an operation</param>        
         Public Sub New(errorCode As Integer)
             MyBase.New(GlobalLocalizedMessages.ShellExceptionDefaultText, errorCode)
-        End Sub
-
-        ''' <summary>
-        ''' Initializes an exception from serialization info and a context.
-        ''' </summary>
-        ''' <param name="info"></param>
-        ''' <param name="context"></param>
-        Protected Sub New(info As System.Runtime.Serialization.SerializationInfo, context As System.Runtime.Serialization.StreamingContext)
-            MyBase.New(info, context)
         End Sub
 
     End Class

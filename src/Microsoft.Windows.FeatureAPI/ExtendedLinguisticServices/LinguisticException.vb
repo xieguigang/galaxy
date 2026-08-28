@@ -17,7 +17,6 @@ Namespace ExtendedLinguisticServices
 	''' condition which causes it to fail. Please note that other .NET exceptions are also
 	''' possible to be thrown from the ELS managed wrappers.
 	''' </summary>
-	<Serializable> _
 	Public Class LinguisticException
 		Inherits Win32Exception
 		' Common HResult values.
@@ -35,16 +34,6 @@ Namespace ExtendedLinguisticServices
 		Friend Sub New(hResult__1 As UInt32)
 			MyBase.New(CInt(hResult__1))
 			HResult = CInt(hResult__1)
-		End Sub
-
-		''' <summary>
-		''' Initializes a new instance of the <see cref="LinguisticException">LinguisticException</see> class
-		'''  with the specified context and the serialization information.
-		''' </summary>
-		''' <param name="info">The <see cref="System.Runtime.Serialization.SerializationInfo">SerializationInfo</see> associated with this exception.</param>
-		''' <param name="context">A <see cref="System.Runtime.Serialization.StreamingContext">StreamingContext</see> that represents the context of this exception.</param>
-		Protected Sub New(info As SerializationInfo, context As StreamingContext)
-			MyBase.New(info, context)
 		End Sub
 
 		''' <summary>

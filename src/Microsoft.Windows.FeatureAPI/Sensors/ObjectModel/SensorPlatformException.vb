@@ -6,19 +6,8 @@ Namespace Sensors
 	''' <summary>
 	''' Defines an exception specific to the sensors.
 	''' </summary>
-	<Serializable> _
 	Public Class SensorPlatformException
 		Inherits Exception
-		''' <summary>
-		''' Initializes a new instance of the Sensors.SensorPlatformException class
-		'''  with the specified context and the serialization information.
-		''' </summary>
-		''' <param name="info">The System.Runtime.Serialization.SerializationInfo associated with this exception.</param>
-		''' <param name="context">A System.Runtime.Serialization.StreamingContext that represents the context of this exception.</param>
-		Protected Sub New(info As SerializationInfo, context As StreamingContext)
-			MyBase.New(info, context)
-		End Sub
-
 		''' <summary>
 		''' Initializes a new instance of the Sensors.SensorPlatformException 
 		''' class with the specified detailed description.

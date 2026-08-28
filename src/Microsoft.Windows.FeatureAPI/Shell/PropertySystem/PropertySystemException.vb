@@ -5,7 +5,6 @@ Namespace Shell.PropertySystem
 	''' <summary>
 	''' An exception thrown when an error occurs while dealing with the Property System API.
 	''' </summary>
-	<Serializable> _
 	Public Class PropertySystemException
 		Inherits ExternalException
 		''' <summary>
