@@ -60,7 +60,7 @@ Imports Microsoft.VisualBasic.Drawing
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Linq
-Imports Microsoft.VisualBasic.Math.Distributions
+Imports Microsoft.VisualBasic.Math.Distributions.Summary
 Imports SMRUCC.Rsharp.Runtime.Vectorization
 
 Public Class ShowColumnStat
