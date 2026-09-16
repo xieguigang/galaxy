@@ -49,6 +49,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GalaxyForm", "..\GalaxyForm
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Microsoft.VisualBasic.Drawing", "..\..\..\Microsoft.VisualBasic.Drawing\src\Microsoft.VisualBasic.Drawing\Microsoft.VisualBasic.Drawing.vbproj", "{A240E65C-9AB8-05B4-EEB0-CC68B805C697}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "imaging.NET5", "..\..\..\GCModeller\src\runtime\sciBASIC#\gr\Microsoft.VisualBasic.Imaging\imaging.NET5.vbproj", "{BD8C956B-9028-5A3D-7360-1432B2E5B63C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -365,6 +367,22 @@ Global
 		{A240E65C-9AB8-05B4-EEB0-CC68B805C697}.Rsharp_app_release|Any CPU.Build.0 = Rsharp_app_release|Any CPU
 		{A240E65C-9AB8-05B4-EEB0-CC68B805C697}.Rsharp_app_release|x64.ActiveCfg = Rsharp_app_release|x64
 		{A240E65C-9AB8-05B4-EEB0-CC68B805C697}.Rsharp_app_release|x64.Build.0 = Rsharp_app_release|x64
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Debug|x64.ActiveCfg = Debug|x64
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Debug|x64.Build.0 = Debug|x64
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.mzkit_win32|Any CPU.ActiveCfg = mzkit_win32|Any CPU
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.mzkit_win32|Any CPU.Build.0 = mzkit_win32|Any CPU
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.mzkit_win32|x64.ActiveCfg = mzkit_win32|x64
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.mzkit_win32|x64.Build.0 = mzkit_win32|x64
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Release|x64.ActiveCfg = Release|x64
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Release|x64.Build.0 = Release|x64
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Rsharp_app_release|Any CPU.ActiveCfg = Rsharp_app_release|Any CPU
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Rsharp_app_release|Any CPU.Build.0 = Rsharp_app_release|Any CPU
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Rsharp_app_release|x64.ActiveCfg = Rsharp_app_release|x64
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C}.Rsharp_app_release|x64.Build.0 = Rsharp_app_release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -387,6 +405,7 @@ Global
 		{C420E9C1-2677-3ED0-E1C9-F9F65B925B20} = {804D3536-26DC-4782-ACC2-547A74664828}
 		{6D92EC28-0154-2203-FA0C-CE5AF0CDE368} = {D18AD8E2-F9B9-4580-AB15-B1DC615BDF1F}
 		{A240E65C-9AB8-05B4-EEB0-CC68B805C697} = {804D3536-26DC-4782-ACC2-547A74664828}
+		{BD8C956B-9028-5A3D-7360-1432B2E5B63C} = {804D3536-26DC-4782-ACC2-547A74664828}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8C62369-53DD-457C-AE08-2E62E51654CD}

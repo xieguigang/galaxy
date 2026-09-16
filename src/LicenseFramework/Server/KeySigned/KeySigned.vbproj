@@ -12,26 +12,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <RemoveIntegerChecks>True</RemoveIntegerChecks>
     <DefineConstants>VENDOR_TOOL=1</DefineConstants>
-    <OutputPath>G:\galaxy\src\LicenseFramework\Tools</OutputPath>
+    <OutputPath>../../Tools</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <RemoveIntegerChecks>True</RemoveIntegerChecks>
     <DefineConstants>VENDOR_TOOL=1</DefineConstants>
-    <OutputPath>G:\galaxy\src\LicenseFramework\Tools</OutputPath>
+    <OutputPath>../../Tools</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <RemoveIntegerChecks>True</RemoveIntegerChecks>
     <DefineConstants>VENDOR_TOOL=1</DefineConstants>
-    <OutputPath>G:\galaxy\src\LicenseFramework\Tools</OutputPath>
+    <OutputPath>../../Tools</OutputPath>
     <Optimize>False</Optimize>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <RemoveIntegerChecks>True</RemoveIntegerChecks>
     <DefineConstants>VENDOR_TOOL=1</DefineConstants>
-    <OutputPath>G:\galaxy\src\LicenseFramework\Tools</OutputPath>
+    <OutputPath>../../Tools</OutputPath>
     <Optimize>False</Optimize>
   </PropertyGroup>
 
