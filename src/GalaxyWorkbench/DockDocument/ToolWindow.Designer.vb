@@ -80,64 +80,67 @@ Namespace DockDocument
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
-            Me.components = New System.ComponentModel.Container()
+            components = New ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ToolWindow))
-            Me.DockContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-            Me.FloatToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.AutoHideToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.DockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.CloseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-            Me.seperatorLine = New System.Windows.Forms.ToolStripSeparator()
-            Me.DockContextMenuStrip1.SuspendLayout()
-            Me.SuspendLayout()
-            '
-            'ContextMenuStrip1
-            '
-            Me.DockContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FloatToolStripMenuItem, Me.DockToolStripMenuItem, Me.AutoHideToolStripMenuItem, Me.seperatorLine, Me.CloseToolStripMenuItem})
-            Me.DockContextMenuStrip1.Name = "ContextMenuStrip1"
-            Me.DockContextMenuStrip1.Size = New System.Drawing.Size(181, 120)
-            '
-            'FloatToolStripMenuItem
-            '
-            Me.FloatToolStripMenuItem.Image = CType(resources.GetObject("FloatToolStripMenuItem.Image"), System.Drawing.Image)
-            Me.FloatToolStripMenuItem.Name = "FloatToolStripMenuItem"
-            Me.FloatToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-            Me.FloatToolStripMenuItem.Text = "Float"
-            '
-            'AutoHideToolStripMenuItem
-            '
-            Me.AutoHideToolStripMenuItem.Name = "AutoHideToolStripMenuItem"
-            Me.AutoHideToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-            Me.AutoHideToolStripMenuItem.Text = "Auto Hide"
-            '
-            'DockToolStripMenuItem
-            '
-            Me.DockToolStripMenuItem.Image = CType(resources.GetObject("DockToolStripMenuItem.Image"), System.Drawing.Image)
-            Me.DockToolStripMenuItem.Name = "DockToolStripMenuItem"
-            Me.DockToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-            Me.DockToolStripMenuItem.Text = "Dock"
-            '
-            'CloseToolStripMenuItem
-            '
-            Me.CloseToolStripMenuItem.Image = CType(resources.GetObject("CloseToolStripMenuItem.Image"), System.Drawing.Image)
-            Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-            Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-            Me.CloseToolStripMenuItem.Text = "Close"
-            '
-            'ToolStripMenuItem1
-            '
-            Me.seperatorLine.Name = "ToolStripMenuItem1"
-            Me.seperatorLine.Size = New System.Drawing.Size(177, 6)
-            '
-            'Form1
-            '
-            Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-            Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-            Me.ClientSize = New System.Drawing.Size(530, 675)
-            Me.Name = "Form1"
-            Me.Text = "Form1"
-            Me.DockContextMenuStrip1.ResumeLayout(False)
-            Me.ResumeLayout(False)
+            DockContextMenuStrip1 = New ContextMenuStrip(components)
+            FloatToolStripMenuItem = New ToolStripMenuItem()
+            DockToolStripMenuItem = New ToolStripMenuItem()
+            AutoHideToolStripMenuItem = New ToolStripMenuItem()
+            seperatorLine = New ToolStripSeparator()
+            CloseToolStripMenuItem = New ToolStripMenuItem()
+            DockContextMenuStrip1.SuspendLayout()
+            SuspendLayout()
+            ' 
+            ' DockContextMenuStrip1
+            ' 
+            DockContextMenuStrip1.Items.AddRange(New ToolStripItem() {FloatToolStripMenuItem, DockToolStripMenuItem, AutoHideToolStripMenuItem, seperatorLine, CloseToolStripMenuItem})
+            DockContextMenuStrip1.Name = "ContextMenuStrip1"
+            DockContextMenuStrip1.Size = New Size(129, 98)
+            ' 
+            ' FloatToolStripMenuItem
+            ' 
+            FloatToolStripMenuItem.Image = CType(resources.GetObject("FloatToolStripMenuItem.Image"), Image)
+            FloatToolStripMenuItem.Name = "FloatToolStripMenuItem"
+            FloatToolStripMenuItem.Size = New Size(128, 22)
+            FloatToolStripMenuItem.Text = "Float"
+            ' 
+            ' DockToolStripMenuItem
+            ' 
+            DockToolStripMenuItem.Image = CType(resources.GetObject("DockToolStripMenuItem.Image"), Image)
+            DockToolStripMenuItem.Name = "DockToolStripMenuItem"
+            DockToolStripMenuItem.Size = New Size(128, 22)
+            DockToolStripMenuItem.Text = "Dock"
+            ' 
+            ' AutoHideToolStripMenuItem
+            ' 
+            AutoHideToolStripMenuItem.Name = "AutoHideToolStripMenuItem"
+            AutoHideToolStripMenuItem.Size = New Size(128, 22)
+            AutoHideToolStripMenuItem.Text = "Auto Hide"
+            ' 
+            ' seperatorLine
+            ' 
+            seperatorLine.Name = "seperatorLine"
+            seperatorLine.Size = New Size(125, 6)
+            ' 
+            ' CloseToolStripMenuItem
+            ' 
+            CloseToolStripMenuItem.Image = CType(resources.GetObject("CloseToolStripMenuItem.Image"), Image)
+            CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
+            CloseToolStripMenuItem.Size = New Size(128, 22)
+            CloseToolStripMenuItem.Text = "Close"
+            ' 
+            ' ToolWindow
+            ' 
+            AutoScaleDimensions = New SizeF(7F, 15F)
+            AutoScaleMode = AutoScaleMode.Font
+            ClientSize = New Size(337, 779)
+            DockAreas = DockAreas.Float Or DockAreas.DockLeft Or DockAreas.DockRight Or DockAreas.DockTop Or DockAreas.DockBottom Or DockAreas.Document
+            Margin = New Padding(4, 3, 4, 3)
+            Name = "ToolWindow"
+            ShowHint = DockState.Unknown
+            Text = "Tool Window"
+            DockContextMenuStrip1.ResumeLayout(False)
+            ResumeLayout(False)
 
         End Sub
 
