@@ -193,7 +193,9 @@ Namespace Docking
             End Get
 
             Set(value As DockState)
-                If m_dockState = value Then Return
+                If m_dockState = value Then
+                    Return
+                End If
 
                 DockPanel.SuspendLayout(True)
 
