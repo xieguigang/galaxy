@@ -47,7 +47,7 @@ Public Module CommonRuntime
         Call WebViewLoader.SetMessageHandler(AddressOf StatusMessage)
     End Sub
 
-    Public Function GetPropertyWindow() As PropertyWindow
+    Public Function GetPropertyWindow(Optional title As String = Nothing) As PropertyWindow
         If AppHost Is Nothing Then
             Call NoWorkbenchHostForm()
         End If
@@ -59,6 +59,10 @@ Public Module CommonRuntime
             propertyWindow.Show(AppHost.GetDockPanel, DockState.DockRightAutoHide)
 
             Call RegisterToolWindow(propertyWindow, DockState.DockRightAutoHide)
+        End If
+
+        If Not title.StringEmpty Then
+            propertyWindow.Text = title
         End If
 
         Return propertyWindow
