@@ -78,6 +78,10 @@ Namespace DockDocument.Presets
             Return propertyGrid
         End Function
 
+        Public Sub Clear()
+            propertyGrid.SelectedObject = Nothing
+        End Sub
+
         ''' <summary>
         ''' set selected object and then refresh the <see cref="propertyGrid"/>
         ''' </summary>
@@ -89,10 +93,12 @@ Namespace DockDocument.Presets
             propertyGrid.SelectedObject = obj
             propertyGrid.Refresh()
 
-            If Not expands Is Nothing Then
-                For Each name As String In expands
-                    Call ExpandPropertyInGrid(propertyGrid, name)
-                Next
+            If Not obj Is Nothing Then
+                If Not expands Is Nothing Then
+                    For Each name As String In expands
+                        Call ExpandPropertyInGrid(propertyGrid, name)
+                    Next
+                End If
             End If
         End Sub
 
