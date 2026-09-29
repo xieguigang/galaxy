@@ -65,6 +65,8 @@
     <Optimize>False</Optimize>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FormCalculator.Designer.vb" />
+    <Compile Include="FormCalculator.vb" />
     <Compile Include="Workbench.vb" />
     <Compile Include="FormLicensePage.Designer.vb" />
     <Compile Include="FormLicensePage.vb" />
@@ -80,6 +82,7 @@
     <Compile Include="RibbonItems.Designer.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FormCalculator.resx" />
     <EmbeddedResource Include="FormLicensePage.resx" />
     <EmbeddedResource Include="FormDataSheet.resx" />
     <EmbeddedResource Include="FormMain.resx" />

@@ -80,11 +80,13 @@ Public Class FormMain : Implements AppHost
         Call CommonRuntime.Hook(Me)
         Call CommonRuntime.RegisterOutputWindow()
 
-        If Not Workbench.CheckLicense() Then
-            Call App.Exit()
-        Else
-            Call Workbench.SetLicenseStatus()
-        End If
+        'If Not Workbench.CheckLicense() Then
+        '    Call App.Exit()
+        'Else
+        '    Call Workbench.SetLicenseStatus()
+        'End If
+
+        Call CommonRuntime.RegisterToolWindow(New FormCalculator, DockState.DockLeft)
     End Sub
 
     Private Sub OpenLicensePage()
