@@ -1,13 +1,12 @@
-﻿Imports System
-Imports System.ComponentModel
-Imports System.Drawing
-Imports System.Windows.Forms
+﻿Imports System.ComponentModel
 Imports System.Diagnostics.CodeAnalysis
+Imports System.Drawing
 
 Namespace Docking
-    Public Class DockContent
-        Inherits Form
+
+    Public Class DockContent : Inherits Form
         Implements IDockContent
+
         Public Sub New()
             m_dockHandler = New DockContentHandler(Me, New GetPersistStringCallback(AddressOf GetPersistString))
             AddHandler m_dockHandler.DockStateChanged, New EventHandler(AddressOf DockHandler_DockStateChanged)
@@ -236,7 +235,7 @@ Namespace Docking
             Return DockHandler.IsDockStateValid(dockState)
         End Function
 
-#If NET35 Or NET40
+#If NET35 Or NET40 Then
         /// <summary>
         /// Context menu.
         /// </summary>

@@ -168,6 +168,7 @@ Namespace DockDocument
             AutoScaleMode = AutoScaleMode.Dpi
             DoubleBuffered = True
             VisualStudioToolStripExtender1 = New VisualStudioToolStripExtender(components)
+            Width = 350
 
             Call ApplyVsTheme(DockContextMenuStrip1)
         End Sub
