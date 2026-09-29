@@ -168,7 +168,24 @@ Namespace DockDocument
             AutoScaleMode = AutoScaleMode.Dpi
             DoubleBuffered = True
             VisualStudioToolStripExtender1 = New VisualStudioToolStripExtender(components)
-            Width = 350
+
+            ' 停靠窗口的实际尺寸由 DockPanel 布局引擎控制，Width 会被覆盖
+            ' 只有 Float 状态下 Width 才有意义
+            If DockPanel IsNot Nothing Then
+                Select Case DockState
+                    Case DockState.DockLeft, DockState.DockLeftAutoHide
+                        DockHandler.AutoHidePortion = 350   ' 左侧: 绝对像素 350
+                    Case DockState.DockRight, DockState.DockRightAutoHide
+                        DockHandler.AutoHidePortion = 350   ' 右侧: 绝对像素 350
+                    Case DockState.DockTop, DockState.DockTopAutoHide,
+                 DockState.DockBottom, DockState.DockBottomAutoHide
+                        DockHandler.AutoHidePortion = 220   ' 上/下: 绝对像素高度
+                    Case DockState.Float, DockState.Unknown
+                        Width = 350                          ' 仅浮动状态有效
+                End Select
+            Else
+                Width = 350  ' 作为普通 WinForm 使用时
+            End If
 
             Call ApplyVsTheme(DockContextMenuStrip1)
         End Sub
