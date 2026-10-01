@@ -17,6 +17,21 @@ Public Class RibbonEventBinding : Implements IDisposable, IBindingAction
         End Get
     End Property
 
+    Public Event Click(sender As RibbonButton)
+
+    Public Property Enabled As Boolean
+        Get
+            If ribbon Is Nothing Then
+                Return False
+            Else
+                Return ribbon.Enabled
+            End If
+        End Get
+        Set(value As Boolean)
+            ribbon.Enabled = value
+        End Set
+    End Property
+
     Sub New(btn As RibbonButton)
         ribbon = btn
     End Sub
@@ -30,6 +45,8 @@ Public Class RibbonEventBinding : Implements IDisposable, IBindingAction
     End Sub
 
     Private Sub exec_call() Handles ribbon.ExecuteEvent
+        RaiseEvent Click(ribbon)
+
         If Not evt Is Nothing Then
             Try
                 Call evt()
@@ -40,7 +57,7 @@ Public Class RibbonEventBinding : Implements IDisposable, IBindingAction
                 Call App.LogException(ex)
             End Try
         Else
-            Call CommonRuntime.LogText($"[ribbon menu] no event handler was attached: {ribbon.Label}")
+            Call CommonRuntime.LogText($"[ribbon menu] no custom event handler was attached: {ribbon.Label}")
         End If
     End Sub
 
