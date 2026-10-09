@@ -53,11 +53,7 @@
 #End Region
 
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
-Imports Microsoft.VisualBasic.Data.ChartPlots
-Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot
-Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Data
-Imports Microsoft.VisualBasic.Drawing
-Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.Data.Plots
 Imports Microsoft.VisualBasic.Imaging.Drawing2D.Colors
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.Distributions.Summary
@@ -95,15 +91,15 @@ Public Class ShowColumnStat
 
             ' plot bar plot to show counts
             Dim serials = Designer.GetColors("paper", factors.Length).Select(Function(c, i) New NamedValue(Of Color)(factors(i).Key, c)).ToArray
-            Dim bar As New BarDataGroup With {
-                .Serials = serials,
-                .Samples = {New BarDataSample With {
-                    .tag = "Factors",
-                    .data = factors.Select(Function(f) CDbl(f.Count)).ToArray
-                }}
-            }
+            'Dim bar As New BarDataGroup With {
+            '    .Serials = serials,
+            '    .Samples = {New BarDataSample With {
+            '        .tag = "Factors",
+            '        .data = factors.Select(Function(f) CDbl(f.Count)).ToArray
+            '    }}
+            '}
 
-            PictureBox1.BackgroundImage = bar.Plot(size:=New Size(2700, 2100), dpi:=300).AsGDIImage.CTypeGdiImage
+            'PictureBox1.BackgroundImage = BarPlot.Plot(size:=New Size(2700, 2100), dpi:=300).AsGDIImage.CTypeGdiImage
 
         ElseIf TypeOf vec Is Boolean() Then
             Dim flags As Boolean() = vec.AsObjectEnumerator.Select(Function(b) CBool(b)).ToArray
@@ -125,7 +121,7 @@ Public Class ShowColumnStat
                 }}
             }
 
-            PictureBox1.BackgroundImage = bar.Plot(size:=New Size(2700, 2100), dpi:=300).AsGDIImage.CTypeGdiImage
+            ' PictureBox1.BackgroundImage = bar.Plot(size:=New Size(2700, 2100), dpi:=300).AsGDIImage.CTypeGdiImage
 
         ElseIf TypeOf vec Is Date() Then
             ' do nothing?
@@ -156,17 +152,17 @@ IS_NUMERIC:    ' is numeric
                 .value = num
             }
 
-            PictureBox1.BackgroundImage = ViolinPlot.Plot(
-                dataset:={data},
-                margin:="padding:300px 150px 500px 600px;",
-                yTickFormat:="G2",
-                title:=key,
-                ytickFontCSS:="font-style: normal; font-size: 20; font-family: " & FontFace.BookmanOldStyle & ";",
-                titleFontCSS:="font-style: strong; font-size: 48; font-family: " & FontFace.BookmanOldStyle & ";",
-                ppi:=300,
-                showStats:=False,
-                removesOutliers:=False
-            ).AsGDIImage.CTypeGdiImage
+            'PictureBox1.BackgroundImage = ViolinPlot.Plot(
+            '    dataset:={data},
+            '    margin:="padding:300px 150px 500px 600px;",
+            '    yTickFormat:="G2",
+            '    title:=key,
+            '    ytickFontCSS:="font-style: normal; font-size: 20; font-family: " & FontFace.BookmanOldStyle & ";",
+            '    titleFontCSS:="font-style: strong; font-size: 48; font-family: " & FontFace.BookmanOldStyle & ";",
+            '    ppi:=300,
+            '    showStats:=False,
+            '    removesOutliers:=False
+            ').AsGDIImage.CTypeGdiImage
         End If
     End Sub
 End Class

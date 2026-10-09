@@ -57,8 +57,8 @@
 Imports Galaxy.Workbench
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.DataStructures
-Imports Microsoft.VisualBasic.Data.ChartPlots
-Imports Microsoft.VisualBasic.Data.ChartPlots.BarPlot.Data
+Imports Microsoft.VisualBasic.Data.Plots
+Imports Microsoft.VisualBasic.Data.Plots.Canvas
 Imports Microsoft.VisualBasic.Data.visualize.Network.Graph
 Imports Microsoft.VisualBasic.Data.visualize.Network.Layouts.SpringForce
 Imports Microsoft.VisualBasic.Drawing
@@ -173,7 +173,7 @@ Public Class InputDataVisual
         }
     End Function
 
-    Private Iterator Function getSerials(x As Array, getVector As Func(Of String, Array)) As IEnumerable(Of SerialData)
+    Private Iterator Function getSerials(x As Array, getVector As Func(Of String, Array)) As IEnumerable(Of Series)
         Dim idx As i32 = Scan0
         Dim grid As DataGridView = Me.canvas.GetChartPadCanvas.DataGridView1
         Dim getXName As String = GetX()
@@ -227,7 +227,7 @@ Public Class InputDataVisual
                 Next
 
                 For Each group In group_maps
-                    Dim s = Scatter.FromPoints(group.Value.Item1, lineColor:=group.Value.Item2)
+                    Dim s = Series.FromPoints(group.Value.Item1, group.Value.Item2, group.Key)
 
                     Call table.Columns.Add(group.Key, GetType(Double))
                     Call yList.Add(group.Value.Item1.Select(Function(p) p.Y).ToArray)
@@ -246,7 +246,7 @@ SingleS:    For Each name As String In GetY()
                     .Select(Function(xi, i) New PointF(xi, y(i))) _
                     .OrderByDescending(Function(p) p.X) _
                     .ToArray
-                Dim s = Scatter.FromPoints(points, lineColor:=colorSet(++idx))
+                Dim s = Series.FromPoints(points, colorSet(++idx), name)
 
                 Call table.Columns.Add(name, GetType(Double))
                 Call yList.Add(y)
@@ -322,10 +322,10 @@ SingleS:    For Each name As String In GetY()
         Select Case ComboBox1.SelectedItem.ToString
             Case "Scatter"
                 Dim groups = getSerials(x, getVector).ToArray
-                Return Scatter.Plot(groups, size:=size, drawLine:=False, padding:=padding).AsGDIImage
+                Return ScatterPlot.Plot(groups, size:=size).AsGDIImage
             Case "Line"
                 Dim groups = getSerials(x, getVector).ToArray
-                Return Scatter.Plot(groups, size:=size, drawLine:=True, padding:=padding).AsGDIImage
+                Return ScatterPlot.Plot(groups, size:=size).AsGDIImage
             Case "BarPlot"
                 Dim catNames As String() = x _
                     .AsObjectEnumerator() _
@@ -335,15 +335,7 @@ SingleS:    For Each name As String In GetY()
 
                 padding = "padding:200px 600px 200px 200px;"
 
-                Return BarPlot.BarPlotAPI _
-                    .Plot(
-                        data:=getCategorySerials(catNames, getVector),
-                        size:=size.SizeParser,
-                        padding:=padding,
-                        dpi:=100
-                    ) _
-                    .AsGDIImage
-
+                Return BarPlot.Plot(getCategorySerials(catNames, getVector), size:=size).AsGDIImage
             Case "BoxPlot", "ViolinPlot"
                 Throw New NotImplementedException
             Case "Histogram"
@@ -352,7 +344,7 @@ SingleS:    For Each name As String In GetY()
                     .Select(Function(xi) CDbl(xi)) _
                     .ToArray
 
-                Return BarPlot.Histogram.Histogram.HistogramPlot(xvec, CSng((xvec.Max - xvec.Min) / 64), size:=size, padding:=padding).AsGDIImage
+                Return HistogramPlot.Plot(xvec, CSng((xvec.Max - xvec.Min) / 64), size:=size).AsGDIImage
             Case Else
                 Throw New NotImplementedException
         End Select
