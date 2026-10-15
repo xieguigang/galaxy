@@ -17,13 +17,18 @@ Public NotInheritable Class WebView2CommandChannel
                 .type = type,
                 .payload = payload
             }
-
-            Dim options As New JsonSerializerOptions(JsonSerializerOptions.Web)
-            Dim json As String = JsonSerializer.Serialize(cmd, options)
+            Dim json As String = ToJson(any:=cmd)
 
             Call webView?.CoreWebView2?.PostWebMessageAsJson(json)
         End If
     End Sub
+
+    Public Shared Function ToJson(any As Object) As String
+        Dim options As New JsonSerializerOptions(JsonSerializerOptions.Web)
+        Dim json As String = JsonSerializer.Serialize(any, options)
+
+        Return json 
+    End Function
 
     Public Class CommandMessage
 
