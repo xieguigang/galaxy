@@ -159,7 +159,7 @@ Namespace DockDocument.Presets
             End SyncLock
 
             If added Then
-                Call Invoke(Sub() SyncComboBox())
+                Call DirectCast(CommonRuntime.AppHost, Form).Invoke(Sub() SyncComboBox())
             End If
         End Sub
 
@@ -187,11 +187,11 @@ Namespace DockDocument.Presets
             End SyncLock
 
             If created Then
-                Call Invoke(Sub() SyncComboBox())
+                Call DirectCast(CommonRuntime.AppHost, Form).Invoke(Sub() SyncComboBox())
             End If
 
             If CStr(ToolStripComboBox1.SelectedItem) = name Then
-                Call Invoke(Sub() TextBox1.AppendText(text & vbCrLf))
+                Call DirectCast(CommonRuntime.AppHost, Form).Invoke(Sub() TextBox1.AppendText(text & vbCrLf))
             End If
         End Sub
 
@@ -219,13 +219,14 @@ Namespace DockDocument.Presets
                     icon = My.Resources.Icons8.icons8_done_144
             End Select
 
-            Call Invoke(Sub()
-                            Dim offset As Integer = DataGridView1.Rows.Add(icon, time.ToString("HH:mm:ss"), action, message)
-                            Dim row As DataGridViewRow = DataGridView1.Rows(offset)
+            Call DirectCast(CommonRuntime.AppHost, Form).Invoke(
+                Sub()
+                    Dim offset As Integer = DataGridView1.Rows.Add(icon, time.ToString("HH:mm:ss"), action, message)
+                    Dim row As DataGridViewRow = DataGridView1.Rows(offset)
 
-                            row.Tag = level.Description
-                            DataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit)
-                        End Sub)
+                    row.Tag = level.Description
+                    DataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit)
+                End Sub)
         End Sub
 
         Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
