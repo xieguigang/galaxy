@@ -64,7 +64,6 @@
             'ToolStripComboBox1
             '
             Me.ToolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-            Me.ToolStripComboBox1.Items.AddRange(New Object() {"Action Output", "Log Text"})
             Me.ToolStripComboBox1.Name = "ToolStripComboBox1"
             Me.ToolStripComboBox1.Size = New System.Drawing.Size(150, 25)
             '
