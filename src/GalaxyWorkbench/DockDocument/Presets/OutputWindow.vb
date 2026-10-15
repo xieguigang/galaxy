@@ -190,7 +190,9 @@ Namespace DockDocument.Presets
                 Call DirectCast(CommonRuntime.AppHost, Form).Invoke(Sub() SyncComboBox())
             End If
 
-            If CStr(ToolStripComboBox1.SelectedItem) = name Then
+            Dim current As String = DirectCast(CommonRuntime.AppHost, Form).Invoke(Function() CStr(ToolStripComboBox1.SelectedItem))
+
+            If current = name Then
                 Call DirectCast(CommonRuntime.AppHost, Form).Invoke(Sub() TextBox1.AppendText(text & vbCrLf))
             End If
         End Sub
